@@ -1,4 +1,5 @@
 texttv.nu
 =========
 
-Home of the PhoneGap app for texttv.nu
+Home of the PhoneGap app for http://texttv.nu/.
+
