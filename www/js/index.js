@@ -112,10 +112,14 @@ var app = {
 $.mobile.page.prototype.options.keepNative = "select, input, textarea, button";
 $.event.special.tap.tapholdThreshold = 300;
 
+/**
+ * Modul som håller koll på stjärnmärkasidor
+ * Sidor lagras i local storage
+ */
 var texttv_stars = (function() {
 
 	var module = {},
-	starredPages = {};
+		starredPages = {};
 
 	function loadStarredPages() {
 
@@ -133,12 +137,16 @@ var texttv_stars = (function() {
 	}
 
 	function setStarredPages(objPages) {
+		
 		starredPages = objPages;
 		saveStarredPages();
+
 	}
 
 	function getStarredPages() {
+		
 		return starredPages;
+
 	}
 
 	function starPage(pageRange) {
@@ -161,11 +169,14 @@ var texttv_stars = (function() {
 	}
 
 	function isPageStarred(pageRange) {
+
 		return $.inArray("" + pageRange, starredPages) !== -1 ? true : false;
 	}
 
 	function saveStarredPages() {
+
 		localStorage.setItem("starredPages", JSON.stringify(starredPages));
+
 	}
 
 	module.toggleStarPage = function(pageRange) {
@@ -199,6 +210,10 @@ var texttv_stars = (function() {
 
 });
 
+/**
+ * Huvudmodul för texttv.nu-appen
+ * Sköter hämtning av sidor, rendering av templates, navigation osv.
+ */
 var texttv = (function() {
 
 	var module = {
@@ -283,8 +298,8 @@ var texttv = (function() {
 			// Page is loaded from server
 			
 			// Determine prev page link (upper left corner)
-			var prevPageRange = null;
-			var prevPage = null;
+			var prevPageRange = null,
+				prevPage = null;
 			
 			// Add the page(s) we just loaded to history
 			if (! args.isReload) {
@@ -623,7 +638,7 @@ var texttv = (function() {
 			}
 		}); // sortable
 
-		ga_storage._trackEvent('stars', 'edit', 'hide');
+		ga_storage._trackEvent('stars', 'edit', 'show');
 
 	}; // showStarredPagesEdit
 
