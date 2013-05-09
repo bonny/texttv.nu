@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset=utf-8 />
+	<title>TextTV IOS app</title>
+	
+	<meta name="apple-mobile-web-app-title" content="TextTV.nu" />
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no" />
+	<meta name="description" content="TextTV.nu app" />
+
+	<link href="css/Ubuntu-Mono-400-700.css" rel="stylesheet" />
+	<link href="css/font-awesome.css" rel="stylesheet" />
+	<link href="js/pull-to-refresh/pull-to-refresh.css" rel="stylesheet" />
+	<link href="css/normalize.css" rel="stylesheet" />
+	<link href="css/index.css" rel="stylesheet" />
+	
+	<script type="text/html" id='tmpl_pages'><article
+		class="pages"
+		data-pageRange="<%= pageRange %>"
+		>
+		<header>
+			<ul>
+				<% if (prevPageRange) { %>
+					<li class="nav-prev">
+						<button data-prevpage="<%= prevPageRange %>">
+							<i class=" icon-chevron-left"></i>
+							<%
+							if (prevPage) {
+								if (prevPage.pageTitle) {
+									print (prevPage.pageTitle);
+								} else {
+									print (prevPage.pageRange);
+								}
+							}
+							%>
+						</button>
+					</li>
+					<% } %>
+				<li class="nav-current">
+					<input
+						type="text"
+						step="any"
+						value="<%
+						if (typeof(pageTitle) != "undefined") {
+							print (pageTitle);
+						} else {
+							print (pageRange);
+						}
+						%>"
+					>
+					</li>
+				<li class="nav-star">
+					<button>
+						<% if (pageIsStarred) { %>
+							<i class="icon-star"></i>
+						<% } else { %>
+							<i class="icon-star-empty"></i>
+						<% } %>
+					</button>
+				</li>
+				<li class="nav-star-change">
+					<button>
+						<i class="icon-cog"></i>
+						<i class="icon-star"></i>
+					</button>
+					<div class="nav-star-change-pages">
+						<div class="arrow-up"></div>
+						<div class="nav-star-change-pages-list"></div>
+					</div>
+				</li>
+			</ul>
+		</header>
+		
+		<div class="page-content scrollable">
+			<div class="wrap">
+				<div class="pull-to-refresh">
+					<!-- content replaced by plugin -->
+				</div>
+
+				<ul>
+					<% _.each(pages, function(page) { %>
+						<li><%= page.content %></li>
+					<% }); %>
+				</ul>
+			</div>
+		</div>
+		
+		</article>
+	</script>
+	
+	<script type="text/html" id='tmpl_textpage'><article class="pages page-is-text">
+		<header>
+			<ul>
+				<li class="nav-current">
+					<span class="nav-current-title">
+						<%= textTitle %>
+					</span>
+				</li>
+			</ul>
+		</header>
+		<div class="text-content">
+			<%= textContent %>
+		</div>
+		</article>
+	</script>
+
+</head>
+	
+<body ontouchstart="">
+	
+	
+        <style>
+
+/*#demo-window, article.pages {
+    width: 100%;
+    height: 287px;
+    z-index: 999;
+    position: relative;
+}
+
+.scrollable {
+    overflow-y: auto;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+}
+*/
+.scrollable .wrap {
+    min-height: 100%;
+    padding-bottom: 1px;
+    /*background: #f5f5f5;*/
+    -webkit-transform: translateZ(0);
+}
+
+.pull-to-refresh {
+    line-height: 40px;
+    height: 40px;
+    width: 100%; 
+    
+    position: absolute; 
+    left: 0; 
+    top: -40px;
+
+    z-index: -1;
+    /*background-color: yellow;*/
+    font-size: 12px;
+    color: #aaa;
+}
+
+
+</style>
+
+	<div id="output_pages"></div>
+	
+	<footer>
+		<nav>
+			<ul>
+				<li class="nav-home">
+					<button>
+						<i class="icon-home"></i>
+						100
+					</button>
+				</li>
+				<li class="nav-stars">
+					<button>
+						<i class="icon-star"></i>
+						Favoriter
+					</button>
+				</li>
+				<!-- <li>
+				 <button>
+				 <i class="icon-reorder"></i>
+				 Meny
+				 </button>
+				 </li> -->
+				<li class="nav-about">
+					<button>
+						<i class="icon-question-sign"></i>
+						Om
+					</button>
+				</li>
+				
+			</ul>
+		</nav>
+	</footer>
+	
+	<div id="spinner" class="icon-spinner icon-spin"></div>
+	
+	<div id="star-animation"><i class="icon-star"></i></div>
+	
+	<div id="message">
+		<div id="message-content"></div>
+	</div>
+		
+	<script src="cordova-2.4.0.js"></script>
+
+	<script src="js/jquery-1.9.0.min.js"></script>
+	<script src="js/jquery.mobile-1.3.0-rc.1.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/underscore-min.js"></script>
+	<script src="js/jquery.ui.touch-punch.min.js"></script>
+	<script src="js/taptoscroll.js"></script>
+	<script src="js/pull-to-refresh/jquery.plugin.pullToRefresh.js"></script>
+	<script src="js/index.js"></script>
+	<script>
+        // If running form file system:
+        // file://localhost/Users/bonny/Documents/Cordova23/TextTV/www/index.html
+		// var isApp = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+        
+        // Dirty hack to check if moi the developer is testing it in my browser
+        var isApp = (navigator.userAgent.indexOf("Intel Mac OS X") == -1);
+
+        // If it's not in a is_uiwebview, then I try it directly in mobile safari
+        var is_uiwebview = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(navigator.userAgent);
+		if ( is_uiwebview ) {
+			// PhoneGap application
+			app.initialize();
+		} else {
+			// Web page
+			$(function() {
+				texttv.init();
+			});
+		}
+	</script>
+
+	<script src="js/GALocalStorage.js"></script>
+	<script>
+		ga_storage._setAccount('UA-181460-22');
+		ga_storage._setDomain('none');
+		ga_storage._trackPageview('start app');
+	</script>
+
+</body>
