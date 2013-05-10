@@ -17,7 +17,7 @@
  * under the License.
  */
 var app = {
-			 
+
 		// Application Constructor
 		initialize: function() {
 				this.bindEvents();
@@ -38,7 +38,7 @@ var app = {
 			//app.receivedEvent('deviceready');
 			window.plugins.tapToScroll.initListener();
 			texttv.init();
-			
+
 			/*
 			// bug: only works on double tap for me
 			window.addEventListener("statusTap", function() {
@@ -415,6 +415,8 @@ var texttv = (function() {
 		$(document).on(clickevent, ".nav-about button", module.navAbout);
 		$(document).on(clickevent, ".nav-stars button", module.clickNavStars);
 		$(document).on(clickevent, ".nav-star-change button", module.showStarredPagesEdit);
+		$(document).on(clickevent, ".nav-page-prev button", module.navPagePrev);
+		$(document).on(clickevent, ".nav-page-next button", module.navPageNext);
 
 		// have problems with tap and vclick on this list
 		$(document).on("click", ".nav-star-change-pages li .icon-minus-sign", module.clickStarRemove);
@@ -446,7 +448,7 @@ var texttv = (function() {
 
 	// CLick on article when starred pages is visible = hide the starred pages
 	module.clickStarredPagesEditArticle = function(e) {
-		
+
 		// pass this
 		module.showStarredPagesEdit.apply(this);
 
@@ -456,17 +458,19 @@ var texttv = (function() {
 	module.swipe = function(e, data) {
 
 		if (!module.pageCurrent) return;
-		
+
 		var pageRange = null,
 			dir = null;
 
 		if ("swipeleft" === e.type) {
-		
+
 			pageRange = module.pageCurrent[0].next_page;
-		
+
 		} else if ("swiperight" === e.type) {
+
 			pageRange = module.pageCurrent[0].prev_page;
 			dir = "back";
+
 		}
 
 		module.loadPage(pageRange, {
@@ -562,7 +566,7 @@ var texttv = (function() {
 	};
 
 	/**
-	 * Go to previos page = fetch previous page from history
+	 * Go to previous page = fetch previous page from history
 	 */
 	module.navPrev = function(e) {
 
@@ -579,6 +583,34 @@ var texttv = (function() {
 		ga_storage._trackEvent('nav', 'navigate', 'prev');
 
 	};
+
+	/**
+	 * Go to prev page by number
+	 */
+	module.navPagePrev = function(e) {
+
+		e.stopPropagation();
+		e.preventDefault();
+
+		var prevPage = parseInt(module.pageCurrent[0].num) - 1;
+		module.loadPage(prevPage, {});
+
+		ga_storage._trackEvent('nav', 'navigate', 'page prev');
+
+	};
+
+	module.navPageNext = function(e) {
+
+		e.stopPropagation();
+		e.preventDefault();
+
+		var nextPage = parseInt(module.pageCurrent[0].num) + 1;
+		module.loadPage(nextPage, {});
+
+		ga_storage._trackEvent('nav', 'navigate', 'page next');
+
+	};
+
 
 	module.showStarredPagesEdit = function(e) {
 
