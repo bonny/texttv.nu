@@ -586,25 +586,34 @@ var texttv = (function() {
 
 	/**
 	 * Go to prev page by number
+	 * Used from buttons in bottom nav
 	 */
 	module.navPagePrev = function(e) {
 
 		e.stopPropagation();
 		e.preventDefault();
 
-		var prevPage = parseInt(module.pageCurrent[0].num) - 1;
-		module.loadPage(prevPage, {});
+		console.log("module.pageCurrent", module.pageCurrent[0]);
+		var prevPage = module.pageCurrent[0].prev_page;
+		module.loadPage(prevPage, {
+			direction: "back"
+		});
 
 		ga_storage._trackEvent('nav', 'navigate', 'page prev');
 
 	};
 
+	/**
+	 * Go to next page by number
+	 * Used from buttons in bottom nav
+	 */
 	module.navPageNext = function(e) {
 
 		e.stopPropagation();
 		e.preventDefault();
 
-		var nextPage = parseInt(module.pageCurrent[0].num) + 1;
+		console.log("module.pageCurrent", module.pageCurrent[0]);
+		var nextPage = module.pageCurrent[0].next_page;
 		module.loadPage(nextPage, {});
 
 		ga_storage._trackEvent('nav', 'navigate', 'page next');
