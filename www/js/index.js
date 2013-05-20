@@ -257,7 +257,7 @@ var texttv = (function() {
 					module.loadPage(module.pageCurrentRange, { isReload: true });
 					def.resolve();
 
-				}, 100);
+				}, 0);
 
 				return def.promise();
 			}
@@ -265,6 +265,12 @@ var texttv = (function() {
 
 	};
 
+	/*
+	args: {
+		direction: forward | back
+		isReload false | true
+	}
+	*/
 	module.loadPage = function(pageRange, args) {
 
 		var opts = {
@@ -274,7 +280,14 @@ var texttv = (function() {
 		args = $.extend(opts, args);
 
 		module.hideMessage();
-		module.body.addClass("is-loading-page is-loading-page-" + opts.direction);
+		
+		var loadingClass = "";
+		if (opts.isReload === true) {
+			loadingClass = "reload";
+		} else {
+			loadingClass = opts.direction;
+		}
+		module.body.addClass("is-loading-page is-loading-page-" + loadingClass);
 
 		var div_new_article = $("<article />"),
 			url = module.ajaxurl + pageRange + "?jsoncallback=?";
@@ -373,7 +386,7 @@ var texttv = (function() {
 			setTimeout(function() {
 								 
 				// remove class and new page will be visible
-				module.body.removeClass("is-loading-page is-loading-page-forward is-loading-page-back");
+				module.body.alterClass("is-loading-page is-loading-page-*");
 
 				// Existing articles
 				var articles = module.pages.find("article");

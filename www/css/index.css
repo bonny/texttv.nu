@@ -90,26 +90,12 @@ a {
 	margin-top: -1em;
 }
 
-/*.pages .pull-to-refresh {
-	background: yellow;
-	z-index: 100;
-	position: absolute;
-	left: 0;
-	width: 100%;
-	height: 40px;
-	top: 0;
-	display: none;
-}
-.page-content { background-color: red !important };
-
-*/
 .page-content {
 	position: absolute;
 	top: 43px;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	xborder: 1px solid red;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
 	
@@ -133,25 +119,30 @@ a {
 	border-bottom: 1px solid #1e2125;
 	border-top: 1px solid #35373e;
 }
+
 .page-content li:first-of-type { padding-top: 1em }
 .page-content li:last-of-type { border-bottom: none }
 .nav-prev {
 	left: .5em;
 	display: none;
 }
+
 .nav-prev button {
 	padding-left: 0;
 	height: 2em;
 	border: 0;
 }
+
 .nav-prev button,
 .nav-star button { }
+
 .nav-prev i {
 	font-size: 18px;
 	position: relative;
 	top: 2px;
 	width: .75em;
 }
+
 .nav-prev,
 .nav-star,
 footer,
@@ -187,12 +178,14 @@ footer i {
 	width: 100% !important;
 	margin-bottom: .2ex;
 }
+
 .nav-star,
 .nav-star-change {
 	right: 0em;
 	margin-top: -1.2em !important;
 	font-size: 18px;
 }
+
 .nav-star-change .icon-star { display: none }
 .nav-star-change .arrow-up {
 	width: 0;
@@ -204,12 +197,14 @@ footer i {
 	top: -7px;
 	right: 7px;
 }
+
 .nav-star button,
 .nav-star-change button {
 	border: none;
 	height: 2em;
 	padding: .5em;
 }
+
 .nav-star-change { display: none }
 .nav-prev button:active,
 .nav-star button:active,
@@ -217,9 +212,20 @@ footer i {
 	color: white;
 	text-shadow: 0 0 10px white, 0 0 10px white;
 }
-article.page-is-favs .nav-star-change { display: block }
-article.favs-is-empty .nav-star-change { display: none }
-article.page-is-favs .nav-star { display: none }
+
+article.page-is-favs .nav-star-change { 
+	display: block;
+}
+article.favs-is-empty .nav-star-change { 
+	display: none;
+ }
+
+article.page-is-favs .nav-star,
+article.page-is-favs .nav-share
+ { 
+	display: none;
+}
+
 .nav-star-change-pages {
 	position: absolute;
 	right: 3px;
@@ -289,6 +295,20 @@ body.page-is-home .nav-home button {
 	color: #7b9ebc;
 	background-color: #282828;
 }
+
+/* button for sharing */
+.nav-share {
+	right: 1.5em;
+	margin-top: -1.15em !important;
+	font-size: 20px;
+
+}
+.nav-share button {
+	border: none;
+	height: 2em;
+	padding: .5em;
+}
+
 .nav-current {
 	left: 50%;
 	font-size: 18px;
@@ -325,13 +345,34 @@ button {
 	border: 1px solid #4e596e;
 	border-radius: 3px;
 }
-article { -webkit-transition: all 300ms ease-out }
+
+#output_pages {
+	/*-webkit-transform: translateZ(0);*/
+}
+
+/* set slide effect. default 300, but higher to test */
+article { 
+	/*-webkit-transition: all .3s ease-out;*/
+	/*transition: translateX .3s ease-out, translateY .3s ease-out, opacity .5s ease-out;*/
+	
+	-webkit-transition: opacity .3s, -webkit-transform .4s ease-out;
+	
+
+	/*-webkit-transform: translateZ(0);*/
+}
+
+/* default position and stuff */
 article:nth-last-of-type(1) {
 	-webkit-transform: translateX(0%);
 	opacity: 1;
 	box-shadow: 0 0px 10px 0px rgba(30, 30, 30, 1);
 }
-article:nth-last-of-type(2) { opacity: 0 }
+
+/* fade out article that is behind new one = the previous active one */
+article:nth-last-of-type(2) { 
+	opacity: 0;
+}
+
 article:nth-of-type(1) { z-index: 1 }
 article:nth-of-type(2) { z-index: 2 }
 article:nth-of-type(3) { z-index: 3 }
@@ -341,6 +382,7 @@ article .root > h1
 {
  -webkit-transition: all 100ms ease-out;
 }*/
+
 /* fade out prev article when adding new */
 .is-loading-page article:nth-last-of-type(2) { opacity: 1 }
 /*
@@ -355,12 +397,22 @@ opacity: .5;
 	opacity: 0;
 	box-shadow: 0 0px 10px 0px rgba(30, 30, 30, 0);
 }
-/* loading back */
+
+/* loading back = slide in next pages from left */
 .is-loading-page-back article:nth-last-of-type(1) {
 	-webkit-transform: translateX(-100%);
 	opacity: 1;
 	box-shadow: 0 0px 10px 0px rgba(30, 30, 30, 0);
 }
+
+/* loading by reload = .... dunno? */
+.is-loading-page-reload article:nth-last-of-type(1) {
+	-webkit-transform: translateY(100%);
+	opacity: 0;
+	box-shadow: 0 0px 10px 0px rgba(30, 30, 30, 0);
+}
+
+
 /* last added pages after loaded */
 footer {
 	position: absolute;

@@ -28,7 +28,6 @@
 				'</div>';
 
 
-
 		return this.each(function() {
 			if (!isTouch) {
 				return;
@@ -81,19 +80,20 @@
 					isActivated = false;
 				}
 			}).on('touchend', function(ev) {
+				
 				var top = e.scrollTop();
 				
 				if (isActivated) { // loading state
 					isLoading = true;
 					isActivated = false;
 
-					release.css('opacity', 0);;
+					//release.css('opacity', 0);
 					pull.css('opacity', 0);
-					loading.css('opacity', 1);
+					//loading.css('opacity', 1);
 					arrow.hide();
-					spinner.show();
+					// spinner.show();
 
-					ptr.css('position', 'static');
+					//ptr.css('position', 'static');
 
 					cfg.callback().done(function() {
 						ptr.animate({
@@ -106,6 +106,7 @@
 							isLoading = false;
 						});
 					});
+
 				}
 			});
 		});
