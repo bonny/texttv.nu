@@ -369,7 +369,7 @@ var texttv = (function() {
 			// Set page class state
 			// module.body.removeClass("page-is-home page-is-favs page-is-settings page-is-menu");
 			module.body.alterClass("page-is-*");
-			
+
 			if (args.pageClass) {
 				rendered_article.addClass( args.pageClass );
 				module.body.addClass( args.pageClass );
@@ -625,7 +625,8 @@ var texttv = (function() {
 		e.stopPropagation();
 		e.preventDefault();
 
-		console.log("module.pageCurrent", module.pageCurrent[0]);
+		console.log("module.pageCurrent.next_page");
+		console.log(module.pageCurrent[0].next_page);
 		var nextPage = module.pageCurrent[0].next_page;
 		module.loadPage(nextPage, {});
 

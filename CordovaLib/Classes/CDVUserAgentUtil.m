@@ -84,20 +84,24 @@ static NSMutableArray* gPendingSetUserAgentBlocks = nil;
     }
 }
 
-+ (void)releaseLock:(NSInteger)lockToken
++ (void)releaseLock:(NSInteger*)lockToken
 {
-    NSAssert(gCurrentLockToken == lockToken, @"Got token %d, expected %d", lockToken, gCurrentLockToken);
+    if (*lockToken == 0) {
+        return;
+    }
+    NSAssert(gCurrentLockToken == *lockToken, @"Got token %d, expected %d", *lockToken, gCurrentLockToken);
 
-    VerboseLog(@"Released lock %d", lockToken);
+    VerboseLog(@"Released lock %d", *lockToken);
     if ([gPendingSetUserAgentBlocks count] > 0) {
         void (^block)() = [gPendingSetUserAgentBlocks objectAtIndex:0];
         [gPendingSetUserAgentBlocks removeObjectAtIndex:0];
         gCurrentLockToken = ++gNextLockToken;
-        NSLog (@"Gave lock %d", gCurrentLockToken);
+        NSLog(@"Gave lock %d", gCurrentLockToken);
         block(gCurrentLockToken);
     } else {
         gCurrentLockToken = 0;
     }
+    *lockToken = 0;
 }
 
 + (void)setUserAgent:(NSString*)value lockToken:(NSInteger)lockToken

@@ -40,6 +40,7 @@
 		30E5649213A7FCAF007403D8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		F30359E116D57F5200181C1B /* TapToScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = F30359E016D57F5200181C1B /* TapToScroll.m */; };
+		F3C71C96174ACD6600B4642F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C71C95174ACD6600B4642F /* AssetsLibrary.framework */; };
 		F3FD1B0D16D8C83200024E8C /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3FD1B0C16D8C83200024E8C /* icon-72@2x.png */; };
 		F3FD1B0F16D8C86300024E8C /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F3FD1B0E16D8C86300024E8C /* Default-Portrait~ipad.png */; };
 		F840E1F1165FE0F500CFE078 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
@@ -102,6 +103,7 @@
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		F30359DF16D57F5200181C1B /* TapToScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapToScroll.h; sourceTree = "<group>"; };
 		F30359E016D57F5200181C1B /* TapToScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapToScroll.m; sourceTree = "<group>"; };
+		F3C71C95174ACD6600B4642F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		F3FD1B0C16D8C83200024E8C /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72@2x.png"; sourceTree = "<group>"; };
 		F3FD1B0E16D8C86300024E8C /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = TextTV/config.xml; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3C71C96174ACD6600B4642F /* AssetsLibrary.framework in Frameworks */,
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -172,6 +175,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				F3C71C95174ACD6600B4642F /* AssetsLibrary.framework */,
 				F3FD1B0E16D8C86300024E8C /* Default-Portrait~ipad.png */,
 				F3FD1B0C16D8C83200024E8C /* icon-72@2x.png */,
 				F840E1F0165FE0F500CFE078 /* config.xml */,

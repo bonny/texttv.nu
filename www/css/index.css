@@ -298,8 +298,8 @@ body.page-is-home .nav-home button {
 
 /* button for sharing */
 .nav-share {
-	right: 1.5em;
-	margin-top: -1.15em !important;
+	right: 1.6em;
+	margin-top: -1.1em !important;
 	font-size: 20px;
 
 }
@@ -308,6 +308,15 @@ body.page-is-home .nav-home button {
 	height: 2em;
 	padding: .5em;
 }
+
+.nav-share button:active {
+	color: white;
+	text-shadow: 0 0 10px white, 0 0 10px white;
+}
+
+
+
+
 
 .nav-current {
 	left: 50%;
@@ -352,9 +361,9 @@ button {
 
 /* set slide effect. default 300, but higher to test */
 article { 
-	/*-webkit-transition: all .3s ease-out;*/
 	/*transition: translateX .3s ease-out, translateY .3s ease-out, opacity .5s ease-out;*/
 	
+	-webkit-transition: all .3s ease-out;
 	-webkit-transition: opacity .3s, -webkit-transform .4s ease-out;
 	
 
