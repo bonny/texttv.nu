@@ -56,6 +56,7 @@
         <plugin name="Globalization" value="CDVGlobalization" />
         <plugin name="InAppBrowser" value="CDVInAppBrowser" />
         <plugin name="TapToScroll" value="TapToScroll" />
+        <plugin name="Social" value="Social" />
     </plugins>
 
     <access origin="*" />
