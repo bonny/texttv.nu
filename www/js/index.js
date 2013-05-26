@@ -837,7 +837,8 @@ var texttv = (function() {
 				}
 				var str_ids = ids.join(",");
 
-				var imageULR = "http://texttv.nu/images/46233806014.png";
+				// var imageURL = "http://texttv.nu/images/46233806014.png";
+				var imageURL = "www/img/logo.png";
 				var pageURL = "http://texttv.nu/" + module.pageCurrentRange + "/arkiv/delat/" + str_ids;
 				
 				var message = "";
@@ -848,7 +849,7 @@ var texttv = (function() {
 				}
 				message += " (Delat från TextTV.nu)";
 
-				window.plugins.social.share(message, pageURL, imageULR);
+				window.plugins.social.share(message, pageURL, imageURL);
 
 			} else {
 				// alert("can not use social plugin");
