@@ -838,14 +838,15 @@ var texttv = (function() {
 				var str_ids = ids.join(",");
 
 				var imageULR = "http://texttv.nu/images/46233806014.png";
-				var pageURL = "http://texttv.nu/" + str_ids + "/arkiv/shared/" + str_ids;
+				var pageURL = "http://texttv.nu/" + module.pageCurrentRange + "/arkiv/delat/" + str_ids;
 				
 				var message = "";
 				if (ids.length === 1) {
-					message += "Delat från texttv.nu, sidan " + module.pageCurrentRange + ": " + pageURL;
+					message += "Text TV sida " + module.pageCurrentRange + ": " + pageURL;
 				} else {
-					message += "Delat från texttv.nu, sidorna " + module.pageCurrentRange + ": " + pageURL;
+					message += "Text TV sidorna " + module.pageCurrentRange + ": " + pageURL;
 				}
+				message += " (Delat från TextTV.nu)";
 
 				window.plugins.social.share(message, pageURL, imageULR);
 
