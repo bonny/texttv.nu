@@ -30,13 +30,13 @@
     <preference name="ShowSplashScreenSpinner" value="true" />
     <preference name="FadeSplashScreen" value="true" />
     <preference name="FadeSplashScreenDuration" value="2" />
-
     <preference name="MediaPlaybackRequiresUserAction" value="false" />
     <preference name="AllowInlineMediaPlayback" value="false" />
 	<preference name="BackupWebStorage" value="cloud" />
     <preference name="DisallowOverscroll" value="true" />
 
     <plugins>
+        <plugin name="Social" value="Social" />
         <plugin name="Device" value="CDVDevice" />
         <plugin name="Logger" value="CDVLogger" />
         <plugin name="Compass" value="CDVLocation" />
@@ -55,8 +55,6 @@
         <plugin name="Battery" value="CDVBattery" />
         <plugin name="Globalization" value="CDVGlobalization" />
         <plugin name="InAppBrowser" value="CDVInAppBrowser" />
-        <plugin name="TapToScroll" value="TapToScroll" />
-        <plugin name="Social" value="Social" />
     </plugins>
 
     <access origin="*" />

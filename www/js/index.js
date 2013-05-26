@@ -36,9 +36,9 @@ var app = {
 		// function, we must explicity call 'app.receivedEvent(...);'
 		onDeviceReady: function() {
 			//app.receivedEvent('deviceready');
-			window.plugins.tapToScroll.initListener();
-			texttv.init();
+			// window.plugins.tapToScroll.initListener();
 
+			texttv.init();
 			/*
 			// bug: only works on double tap for me
 			window.addEventListener("statusTap", function() {
@@ -448,6 +448,9 @@ var texttv = (function() {
 		// Links that should open in built in browser
 		$(document).on("click", "a[target='_system']", module.openURLInAppBrowser);
 
+		// share button
+		$(document).on(clickevent, ".nav-share button", module.socialShare);
+
 	};
 
 	module.openURLInAppBrowser = function(e) {
@@ -812,6 +815,45 @@ var texttv = (function() {
 			this.blur();
 		}
 		
+	};
+
+	/**
+	 * Share current pagerange using social share plugin
+	 */
+	module.socialShare = function() {
+
+		// Check that  plugin is available (only ios >= 6)
+		window.plugins.social.available(function(avail) {
+		
+			if (avail) {
+				
+				// console.log(module.pageCurrentRange);
+
+				var ids = [];
+				for (var page in module.pageCurrent) {
+					//console.log( module.pageCurrent[ page ] );
+					// console.log( JSON.stringify( module.pageCurrent[ page ] ) );
+					ids.push( module.pageCurrent[ page ]["id"] );
+				}
+				var str_ids = ids.join(",");
+
+				var imageULR = "http://texttv.nu/images/46233806014.png";
+				var pageURL = "http://texttv.nu/" + str_ids + "/arkiv/shared/" + str_ids;
+				
+				var message = "";
+				if (ids.length === 1) {
+					message += "Delat från texttv.nu, sidan " + module.pageCurrentRange + ": " + pageURL;
+				} else {
+					message += "Delat från texttv.nu, sidorna " + module.pageCurrentRange + ": " + pageURL;
+				}
+
+				window.plugins.social.share(message, pageURL, imageULR);
+
+			} else {
+				// alert("can not use social plugin");
+			}
+		});
+
 	};
 
 	return module;
