@@ -233,6 +233,14 @@ var texttv = (function() {
 		module.addListeners();
 		module.starred_pages.init();
 
+		if (window.plugins && window.plugins.social) {
+			window.plugins.social.available(function(avail) {
+				if (avail) {
+					module.body.addClass("has-feature-social");
+				}
+			});
+		}
+
 		texttv.loadPage("100", {
 			title: "100",
 			pageClass: "page-is-home"
@@ -839,15 +847,18 @@ var texttv = (function() {
 
 				// var imageURL = "http://texttv.nu/images/46233806014.png";
 				var imageURL = "www/img/logo.png";
-				var pageURL = "http://texttv.nu/" + module.pageCurrentRange + "/arkiv/delat/" + str_ids;
+				imageURL = ""; // no image/screenshot for now...
+				var pageURL = "http://texttv.nu/" + module.pageCurrentRange + "/arkiv/id/" + str_ids;
 				
 				var message = "";
+				var cleanedPageRange = _.string.rtrim( module.pageCurrentRange, "," );
 				if (ids.length === 1) {
-					message += "Text TV sida " + module.pageCurrentRange + ": " + pageURL;
+					// message += "Text" + cleanedPageRange + ": " + pageURL;
+					message = pageURL;
 				} else {
-					message += "Text TV sidorna " + module.pageCurrentRange + ": " + pageURL;
+					// message += "Text TV sidorna " + cleanedPageRange + ": " + pageURL;
+					message = pageURL;
 				}
-				message += " (Delat från TextTV.nu)";
 
 				window.plugins.social.share(message, pageURL, imageURL);
 

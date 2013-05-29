@@ -221,7 +221,7 @@ article.favs-is-empty .nav-star-change {
  }
 
 article.page-is-favs .nav-star,
-article.page-is-favs .nav-share
+article.page-is-favs .nav-shareXXX
  { 
 	display: none;
 }
@@ -301,6 +301,7 @@ body.page-is-home .nav-home button {
 	right: 1.6em;
 	margin-top: -1.1em !important;
 	font-size: 20px;
+	display: none;
 
 }
 .nav-share button {
@@ -314,9 +315,9 @@ body.page-is-home .nav-home button {
 	text-shadow: 0 0 10px white, 0 0 10px white;
 }
 
-
-
-
+.has-feature-social .nav-share {
+	display: block;
+}
 
 .nav-current {
 	left: 50%;
