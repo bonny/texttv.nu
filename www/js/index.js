@@ -848,7 +848,7 @@ var texttv = (function() {
 				// var imageURL = "http://texttv.nu/images/46233806014.png";
 				var imageURL = "www/img/logo.png";
 				imageURL = ""; // no image/screenshot for now...
-				var pageURL = "http://texttv.nu/" + module.pageCurrentRange + "/arkiv/id/" + str_ids;
+				var pageURL = "http://texttv.nu/" + _.string.rtrim( module.pageCurrentRange, "," ) + "/arkiv/id/" + str_ids;
 				
 				var message = "";
 				var cleanedPageRange = _.string.rtrim( module.pageCurrentRange, "," );
