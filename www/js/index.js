@@ -617,7 +617,7 @@ var texttv = (function() {
 		e.stopPropagation();
 		e.preventDefault();
 
-		console.log("module.pageCurrent", module.pageCurrent[0]);
+		// console.log("module.pageCurrent", module.pageCurrent[0]);
 		var prevPage = module.pageCurrent[0].prev_page;
 		module.loadPage(prevPage, {
 			direction: "back"
@@ -636,8 +636,8 @@ var texttv = (function() {
 		e.stopPropagation();
 		e.preventDefault();
 
-		console.log("module.pageCurrent.next_page");
-		console.log(module.pageCurrent[0].next_page);
+		//console.log("module.pageCurrent.next_page");
+		//console.log(module.pageCurrent[0].next_page);
 		var nextPage = module.pageCurrent[0].next_page;
 		module.loadPage(nextPage, {});
 
