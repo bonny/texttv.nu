@@ -33,7 +33,10 @@
 
     <header class="bar bar-header bar-positive">
       <button class="button button-clear icon ion-ios7-arrow-back"> 100</button>
-      <h1 class="title">TextTV.nu</h1>
+      <h1 class="title">
+        <img src="img/logo.png" alt="" width=15>
+        TextTV.nu
+      </h1>
       <button class="button button-clear icon ion-navicon-round" ng-click="toggleMenu()"></button>
     </header>
     
@@ -56,7 +59,9 @@
 
     </div> -->
 
-    <content scroll="true" overflow-scroll="true" has-header="true" has-footer="true">
+    <content scroll="true" overflow-scroll="false" has-header="true" has-footer="false">
+
+    <refresher>Dra för att ladda om</refresher>
 
       <!-- 
       http://www.idangero.us/sliders/swiper/
@@ -64,16 +69,24 @@
       <div class="swiper-container">
         <div class="swiper-wrapper"></div>
       </div>
-
+      
+      <!-- Reload + Share buttons below texttv-content -->
       <div class="list card list--share">
 
         <div class="item item-text">
 
           <div class="button-bar">
-            <a class="button">
+
+            <a class="button button-clearx">
+              <i class="icon ion-ios7-reload"></i>
+              Ladda om
+            </a>
+
+            <a class="button button-clearx">
               <i class="icon ion-ios7-upload-outline"></i>
               Dela
             </a>
+
           </div>
 
         </div>

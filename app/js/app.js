@@ -2,31 +2,6 @@
 angular.module('texttv', ['ionic'])
 .controller('TexttvCtrl', function($scope) {
 
-  $scope.tasks = [
-		{ title: 'Collect coins' },
-		{ title: 'Eat mushrooms' },
-		{ title: 'Get high enough to grab the flag' },
-		{ title: 'Find the Princess' }
-	];
-
-	/*
-      Sport, Resultat377
-      Sport, Resultat V75571
-      Leifbys text-tv-favoriter
-      1) Målservice 377
-      2) Skytteligor (fotboll) 351
-      3) Tipset i sista stund 327
-      4) Resultat/Tabellbörsen 330
-      5) Tipset 551
-      Dela på Twitter
-      Dela på Facebook
-      Permalänk
-      Blogg Om TextTV.nu
-      Ladda hem vår app
-      för Iphone/Ipad
-
-	*/
-
 	$scope.startPages = {
 		firstRow: [
 			{ title: "Nyheter", range: "100" },
