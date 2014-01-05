@@ -32,6 +32,7 @@
   <pane side-menu-content>
 
     <header class="bar bar-header bar-positive">
+      <button class="button button-clear icon ion-ios7-arrow-back"> 100</button>
       <h1 class="title">TextTV.nu</h1>
       <button class="button button-clear icon ion-navicon-round" ng-click="toggleMenu()"></button>
     </header>
@@ -57,47 +58,32 @@
 
     <content scroll="true" overflow-scroll="true" has-header="true" has-footer="true">
 
-    <!-- 
-    http://www.idangero.us/sliders/swiper/
-    -->
-    <div class="swiper-container">
-      <div class="swiper-wrapper"></div>
-    </div>
-
-    <div class="list card">
-
-      <div class="item item-text">
-
-        <div class="button-bar">
-          <a class="button">
-            <i class="icon ion-ios7-upload-outline"></i>
-            Dela
-          </a>
-        </div>
-
-      </div>
-
-    </div>
-    
-    <!-- 
-    <div class="card">
-    
-      <div class="item item-divider">
-        I'm a Header in a Card!
-      </div>
-      <div class="item item-text-wrap">
-        This is a basic Card with some text.
-      </div>
-      <div class="item item-text-wrap">
-        This is a basic Card with some text.
-      </div>
+      <!-- 
+      http://www.idangero.us/sliders/swiper/
       -->
-  
-    </div>
+      <div class="swiper-container">
+        <div class="swiper-wrapper"></div>
+      </div>
+
+      <div class="list card list--share">
+
+        <div class="item item-text">
+
+          <div class="button-bar">
+            <a class="button">
+              <i class="icon ion-ios7-upload-outline"></i>
+              Dela
+            </a>
+          </div>
+
+        </div>
+ 
+      </div>
 
     </content>
 
-    <div class="tabs tabs-icon-top tabs-stable">
+    
+<!--     <div class="tabs tabs-icon-top tabs-stable">
       <a class="tab-item" ng-click="toggleMenu()">
         <i class="icon ion-navicon-round"></i>
         Sidor
@@ -115,7 +101,7 @@
         Nästa
       </a>
     </div>
-
+ -->
   </pane>
 
   <!-- Sidebar menu at right -->
