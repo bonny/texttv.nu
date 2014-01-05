@@ -41,7 +41,7 @@
 	/* 17 is good for when in a card of type image */
 	font-size: 17px;
 
-	letter-spacing: -.2ex;
+	letter-spacing: -.1ex;
 	line-height: 1;
 
 	/* Always hate this hack, but without it the text is way to blurry */
@@ -50,12 +50,16 @@
 	/* match border radius of card */
 	border-top-left-radius: 1px;
 	border-top-right-radius: 1px;
+
+	padding-top: 1em;
+	padding-bottom: 1em;
 }
 
 /* Make swiper contain the above font size */
 .swiper-container, .swiper-slide {
 
-	height: 360px;
+	height: 28em;
+	text-align: center;
 
 	/* get above tab nav */
 	/*z-index: 5;*/
@@ -93,8 +97,7 @@
 }
 
 .W,
-.W a,
-a { color: #ddd }
+.W a { color: #ddd }
 
 /* Cyan */
 .C,
