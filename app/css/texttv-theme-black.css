@@ -3,6 +3,11 @@
  * each page is wrapped in .root
  */
 
+.scroll-refresher {
+	background: #f8f8f8;
+	background: #b2b2b2;
+}
+
 .list--share {
 	margin-top: 0;
 	margin-left: 0;

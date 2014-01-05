@@ -18,6 +18,27 @@ angular.module('texttv', ['ionic'])
 
 .controller('TexttvCtrl', function($scope) {
 
+	$scope.leftButtons = [
+		{ 
+			type: 'button-clear',
+			content: '<i class="icon ion-ios7-arrow-back"></i> Tillbaka',
+			tap: function(e) {
+				console.log("Click back button");
+			}
+		}
+	];
+
+	$scope.rightButtons = [
+		{ 
+			type: 'button-clear',
+			content: '<i class="icon ion-navicon-round"></i>',
+			tap: function(e) {
+				console.log("Click menu button");
+				$scope.toggleMenu();
+			}
+		}
+	];
+
 	$scope.onRefresh = function() {
 		
 		console.log("Do refresh");
@@ -26,6 +47,17 @@ angular.module('texttv', ['ionic'])
 		setTimeout(function() {
 			$scope.$broadcast('scroll.refreshComplete');
 		}, 1000);
+
+		/*
+		Before drag:
+		scroll-refresher ng-scope
+		
+		Under tiden synlig/redo
+		scroll-refresher ng-scope active
+
+		Under tider refreshing
+		scroll-refresher ng-scope active refreshing
+		*/
 
 	};
 
