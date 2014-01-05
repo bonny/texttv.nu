@@ -1,6 +1,33 @@
 
 angular.module('texttv', ['ionic'])
+
+.config(function ($compileProvider){
+	// Needed for phonegap routing
+	$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
+})
+
+.config(function($routeProvider, $locationProvider) {
+	
+	console.log("Init routeconfig");
+	
+	$routeProvider.otherwise({
+		redirectTo: '/home'
+	});
+
+})
+
 .controller('TexttvCtrl', function($scope) {
+
+	$scope.onRefresh = function() {
+		
+		console.log("Do refresh");
+		
+		// Fake refresh for now
+		setTimeout(function() {
+			$scope.$broadcast('scroll.refreshComplete');
+		}, 1000);
+
+	};
 
 	$scope.startPages = {
 		firstRow: [
