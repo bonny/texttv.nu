@@ -1,0 +1,26 @@
+{
+  "name": "texttv3",
+  "version": "0.0.0",
+  "authors": [
+    "Pär Thernström <par@earthpeople.se>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.9",
+    "swiper": "~2.4.1",
+    "normalize-css": "~2.1.3",
+    "html5-mobile-boilerplate": "~4.1.0",
+    "ionic": "~0.9.18-alpha",
+    "zepto": "~1.1.2",
+    "jquery": "~2.0.3",
+    "jquery.cookie": "~1.4.0",
+    "ubuntu-font": "*"
+  }
+}

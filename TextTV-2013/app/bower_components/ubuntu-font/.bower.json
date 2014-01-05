@@ -1,0 +1,15 @@
+{
+  "name": "ubuntu-font",
+  "description": "The Ubuntu Font Family are a set of matching new libre/open fonts in development during 2010--2011. The development is being funded by Canonical Ltd on behalf the wider Free Software community and the Ubuntu project.  The technical font design work and implementation is being undertaken by Dalton Maag.",
+  "homepage": "https://github.com/mariomc/ubuntu-font",
+  "_release": "38b43eb5a3",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "38b43eb5a3a536358dbc8e063417b37740fcbb0d"
+  },
+  "_source": "git://github.com/mariomc/ubuntu-font.git",
+  "_target": "*",
+  "_originalSource": "ubuntu-font",
+  "_direct": true
+}
