@@ -9,14 +9,26 @@ angular.module('texttv', ['ionic'])
 .config(function($routeProvider, $locationProvider) {
 	
 	console.log("Init routeconfig");
+
+	$routeProvider.when('/home', {
+		templateUrl: 'templates/app.html',
+		controller: 'HomeCtrl'
+	});
 	
 	$routeProvider.otherwise({
-		redirectTo: '/home'
+		redirectTo: '/apa',
+		controller: 'HomeCtrl'
 	});
 
 })
 
+.controller('HomeCtrl', function($scope) {
+	alert(123);
+})
+
 .controller('TexttvCtrl', function($scope) {
+
+	$scope.headerTitle = "<img src='img/logo.png' alt=' height=15> TextTV.nu";
 
 	$scope.leftButtons = [
 		{ 
