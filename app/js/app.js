@@ -1,35 +1,101 @@
 
-angular.module('texttv', ['ionic'])
+var texttvApp = angular.module('texttvApp', ['ionic', 'ngAnimate', 'ngRoute']);
+texttvApp.run();
 
-.config(function ($compileProvider){
+texttvApp.config(function ($compileProvider){
 	// Needed for phonegap routing
 	$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
-})
+});
 
-.config(function($routeProvider, $locationProvider) {
-	
-	console.log("Init routeconfig");
 
-	$routeProvider.when('/home', {
-		templateUrl: 'templates/app.html',
-		controller: 'HomeCtrl'
+texttvApp.config(function($routeProvider, $locationProvider) {
+		
+	$routeProvider.when('/sida/:pageRange', {
+		action: "loadPageRange"
 	});
 	
+	// Start of app / website
 	$routeProvider.otherwise({
-		redirectTo: '/apa',
-		controller: 'HomeCtrl'
+		redirectTo: '/start',
+		//templateUrl: 'partials/home.html',
+		//controller: 'StartCtrl'
+		action: "loadPageRange"
 	});
 
-})
+});
 
-.controller('HomeCtrl', function($scope) {
-	alert(123);
-})
 
-.controller('TexttvCtrl', function($scope) {
+/**
+ * Start of app / website
+ */
+texttvApp.controller('StartCtrl', function($scope) {
+	console.log( "StartCtrl" );
+	//alert($scope.headerTitle);
+	$scope.headerbar.title = "YO!";
+	$scope.leftButtons = "yoyoyo";
+	$scope.test = "hejsan hoppsan";
+	$scope.headerbar.titleTest = "";
+});
 
-	$scope.headerTitle = "<img src='img/logo.png' alt=' height=15> TextTV.nu";
+texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams) {
 
+	console.log("Start TexttvCtrl");
+
+	$scope.headerbar = {
+		title: "<img src='img/logo.png' alt=' height=15> TextTV.nu",
+		titleTest: null,
+		showBackButton: 0
+	};
+
+	$scope.test = {
+		title: "Title i test objekt"
+	};
+
+	// Listen for changes to the Route. When the route
+	// changes, let's set the renderAction model value so
+	// that it can render in the Strong element.
+	// http://www.bennadel.com/blog/2420-Mapping-AngularJS-Routes-Onto-URL-Parameters-And-Client-Side-Events.htm
+	$scope.$on(
+		"$routeChangeSuccess",
+		function( $currentRoute, $previousRoute ){
+
+			var action = $route.current.action;
+			var pageRange = $routeParams.pageRange;
+
+			if (action == "loadPageRange") {
+
+				console.log("Load load load!", $routeParams);
+
+				$.getJSON("http://texttv.nu/api/get/" + pageRange, function(page) {
+				
+					var newSlide;
+					//var newSlide = mySwiper.createSlide( "Prev" );
+					//newSlide.append();
+
+					newSlide = mySwiper.createSlide(page[0].content[0]);
+					newSlide.append();
+
+					//newSlide = mySwiper.createSlide( "Next" );
+					//newSlide.append();
+
+					//mySwiper.swipeTo(1);
+
+				});
+
+
+			}
+
+		}
+	);
+
+	// Prev, current, and next texttv pages
+	$scope.pages = {
+		prev: null,
+		current: null,
+		next: null
+	};
+
+	//*
 	$scope.leftButtons = [
 		{ 
 			type: 'button-clear',
@@ -45,17 +111,21 @@ angular.module('texttv', ['ionic'])
 			type: 'button-clear',
 			content: '<i class="icon ion-navicon-round"></i>',
 			tap: function(e) {
-				console.log("Click menu button");
 				$scope.toggleMenu();
 			}
 		}
 	];
+	// */
 
+	/**
+	 * When pull-to-refresh is activated
+	 */
 	$scope.onRefresh = function() {
 		
 		console.log("Do refresh");
 		
 		// Fake refresh for now
+		// Call this to let refresher that we are done
 		setTimeout(function() {
 			$scope.$broadcast('scroll.refreshComplete');
 		}, 1000);
@@ -113,10 +183,47 @@ angular.module('texttv', ['ionic'])
 		$scope.sideMenuController.toggleRight();
 	};
 
-});
+}); // end TexttvCtrl
 
+/*
+texttvApp.config(['$routeProvider',
+  function($routeProvider) {
+	$routeProvider.
+	  when('/phones', {
+		templateUrl: 'partials/list.html',
+		controller: 'PhoneListCtrl'
+	  }).
+	  otherwise({
+		redirectTo: '/phones'
+	  });
+  }]);
+*/
+
+
+// Activate slider onDomReady
 var mySwiper;
 $(function($) {
+
+	var $document = $(document);
+	
+	// Listen for clicks in root area
+	$document.on("click", ".root a", function(e) {
+
+		var $this = $(this);
+		var pageRange = $this.attr("href");
+		
+		// Get scope
+		var $scope = angular.element( this ).scope(); // .info('me')
+
+		// and close any open sidebar
+		$scope.sideMenuController.close();
+
+		// Go to new url
+		document.location = "#/sida" + pageRange;
+
+		e.preventDefault();
+
+	});
 
   mySwiper = new Swiper('.swiper-container',{
 	//Your options here:
@@ -146,22 +253,6 @@ $(function($) {
 	}*/
   });
 
-  $.getJSON("http://texttv.nu/api/get/100", function(page) {
-
-	// console.log(page);
-	// console.log(mySwiper);
-	
-	var newSlide = mySwiper.createSlide( "Prev" );
-	newSlide.append();
-
-	newSlide = mySwiper.createSlide(page[0].content[0]);
-	newSlide.append();
-
-	newSlide = mySwiper.createSlide( "Next" );
-	newSlide.append();
-
-	mySwiper.swipeTo(1);
-
-  });
+  
 
 }, false);

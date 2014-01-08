@@ -9,7 +9,7 @@
   <meta http-equiv="cleartype" content="on">
 </head>
 
-<body ng-app="texttv" ng-controller="TexttvCtrl">
+<body ng-app="texttvApp" ng-controller="TexttvCtrl">
   
   <link rel="stylesheet" href="bower_components/ionic/dist/css/ionic.css">
   <link rel="stylesheet" href="bower_components/swiper/dist/idangerous.swiper.css">
@@ -17,143 +17,177 @@
 
   <script src="bower_components/jquery/jquery.js"></script>
   <script src="bower_components/ionic/dist/js/ionic.js"></script>
-  <script src="bower_components/ionic/dist/js/angular/angular.js"></script>
-  <script src="bower_components/ionic/dist/js/angular/angular-animate.js"></script>
+  <!-- <script src="bower_components/ionic/dist/js/angular/angular.js"></script>
   <script src="bower_components/ionic/dist/js/angular/angular-route.js"></script>
+  <script src="bower_components/ionic/dist/js/angular/angular-animate.js"></script>
   <script src="bower_components/ionic/dist/js/angular/angular-touch.js"></script>
-  <script src="bower_components/ionic/dist/js/angular/angular-sanitize.js"></script>
+  <script src="bower_components/ionic/dist/js/angular/angular-sanitize.js"></script> -->
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+
   <script src="bower_components/ionic/dist/js/ionic-angular.js"></script>
   <script src="bower_components/swiper/dist/idangerous.swiper-2.4.js"></script>
   <script src="js/app.js"></script>
 
   <side-menus>
 
-  <!-- Center content -->
-  <pane side-menu-content>
-
-    <header-bar 
-      title="headerTitle" 
-      class="bar bar-header bar-positive" 
-      left-buttons="leftButtons" 
-      right-buttons="rightButtons">
-    </header-bar>
-    
-   <!--
-   <div class="bar bar-header item-input-inset bar-positive">
-  <label class="item-input-wrapper">
-    <i class="icon ion-ios7-search placeholder-icon"></i>
-    <input type="number" min="100" max="999" pattern="\d*" placeholder="Gå till sida" autofocus>
-  </label>
-  <button class="button button-clear button-clear">
-    Ok
-  </button>
-</div>
--->
-
-
-    <!-- <div class="bar bar-subheader">
+    <!-- Center content -->
+    <pane side-menu-content>
       
-      <h2 class="title">Sub Header</h2>
-
-    </div> -->
-
-    <content scroll="true" overflow-scroll="false" has-header="true" has-footer="false" on-refresh="onRefresh()">
-
-    <refresher></refresher>
-
-      <!-- 
-      http://www.idangero.us/sliders/swiper/
+      <!--
+      <header-bar
+          title="headerbar.title" 
+          class="bar bar-header bar-positive" 
+          left-buttons="leftButtons" 
+          right-buttons="rightButtons">
+      </header-bar>
       -->
-      <div class="swiper-container">
-        <div class="swiper-wrapper"></div>
+     
+      <div class="bar bar-header item-input-inset bar-positive">
+        
+        <button ng-show="headerbar.showBackButton" class="nav-title-slide-ios7 button button-clear" ng-click="navBack()">
+          <i class="icon ion-ios7-arrow-back"></i>
+          Tillbaka
+        </button>
+        
+        <h1 class="title" ng-bind-html="headerbar.title"></h1>
+        
+        <button class="button button-clear" ng-click="toggleMenu()">
+          <i class="icon ion-navicon-round"></i>
+        </button>
+        
       </div>
-      
-      <!-- Reload + Share buttons below texttv-content -->
-      <div class="list card list--share">
 
-        <div class="item item-text">
+     <!--
+     <div class="bar bar-header item-input-inset bar-positive">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios7-search placeholder-icon"></i>
+      <input type="number" min="100" max="999" pattern="\d*" placeholder="Gå till sida" autofocus>
+    </label>
+    <button class="button button-clear button-clear">
+      Ok
+    </button>
+  </div>
+  -->
 
-          <div class="button-bar">
+      <!-- <div class="bar bar-subheader">
+        
+        <h2 class="title">Sub Header</h2>
 
-            <a class="button button-clearx">
-              <i class="icon ion-ios7-reload"></i>
-              Ladda om
-            </a>
+      </div> -->
 
-            <a class="button button-clearx">
-              <i class="icon ion-ios7-upload-outline"></i>
-              Dela
-            </a>
+      <content scroll="true" overflow-scroll="false" has-header="true" has-footer="false" on-refresh="onRefresh()">
+
+      <refresher></refresher>
+
+        <div ng-view></div>
+
+        <!--
+        debug things
+        show/hide back button in nav bar
+        <input type="checkbox" name="" id="" ng-model="headerbar.showBackButton"> show/hide back button
+        -->
+        
+
+        <!-- 
+        http://www.idangero.us/sliders/swiper/
+        -->
+        <div class="swiper-container">
+          <div class="swiper-wrapper"></div>
+        </div>
+        
+        <!-- Reload + Share buttons below texttv-content -->
+        <div class="list card list--share">
+
+          <div class="item item-text">
+
+            <div class="button-bar">
+
+              <a class="button button-clearx">
+                <i class="icon ion-ios7-reload"></i>
+                Ladda om
+              </a>
+
+              <a class="button button-clearx">
+                <i class="icon ion-ios7-upload-outline"></i>
+                Dela
+              </a>
+
+            </div>
 
           </div>
-
+   
         </div>
- 
+
+      </content>
+
+      
+  <!--     <div class="tabs tabs-icon-top tabs-stable">
+        <a class="tab-item" ng-click="toggleMenu()">
+          <i class="icon ion-navicon-round"></i>
+          Sidor
+        </a>
+        <a class="tab-item">
+          <i class="icon ion-home"></i>
+          Hem
+        </a>
+        <a class="tab-item">
+          <i class="icon ion-arrow-left-a"></i>
+          Föregående
+        </a>
+        <a class="tab-item">
+            <i class="icon ion-arrow-right-a"></i>
+          Nästa
+        </a>
+      </div>
+   -->
+    </pane>
+
+    <!-- Sidebar menu at right -->
+    <side-menu side="right">
+    
+      <header class="bar bar-header bar-dark">
+        <h1 class="title">Meny</h1>
+        <button class="button button-clear ion-close-circled" ng-click="toggleMenu()"></button>
+      </header>
+      
+      <content scroll="true" overflow-scroll="false" has-header="true">
+
+      <!-- List with all selected page recommendations -->
+      <div class="list">
+    
+        <a ng-repeat="page in sidebar.pages" class="item" href="#/sida/{{page.range}}">
+          {{page.title}}
+          <span class="item-note">
+            {{page.range}}
+          </span>
+        </a>
+
       </div>
 
-    </content>
+      <div class="card">
+        <!-- <div class="item item-divider">
+          Om TextTv.nu
+        </div> -->
+        <div class="item item-text-wrap">
+          Gillar du vår texttv-app?
+          <br>
+          <a target="_blank" href="https://itunes.apple.com/se/app/texttv.nu/id607998045‎">ge den ett bra betyg på appstore</a> och gör oss glada :)
+        </div>
+        <div class="item item-text-wrap">
+          <a target="_blank" href="https://twitter.com/TextTV_nu">Följ texttv.nu på Twitter</a>
+         </div>
 
-    
-<!--     <div class="tabs tabs-icon-top tabs-stable">
-      <a class="tab-item" ng-click="toggleMenu()">
-        <i class="icon ion-navicon-round"></i>
-        Sidor
-      </a>
-      <a class="tab-item">
-        <i class="icon ion-home"></i>
-        Hem
-      </a>
-      <a class="tab-item">
-        <i class="icon ion-arrow-left-a"></i>
-        Föregående
-      </a>
-      <a class="tab-item">
-          <i class="icon ion-arrow-right-a"></i>
-        Nästa
-      </a>
-    </div>
- -->
-  </pane>
-
-  <!-- Sidebar menu at right -->
-  <side-menu side="right">
-  
-    <header class="bar bar-header bar-dark">
-      <h1 class="title">Meny</h1>
-      <button class="button button-clear ion-close-circled" ng-click="toggleMenu()"></button>
-    </header>
-    
-    <content scroll="true" overflow-scroll="false" has-header="true">
-
-    <!-- List with all selected page recommendations -->
-    <div class="list">
-  
-      <a ng-repeat="page in sidebar.pages" class="item" href="#">
-        {{page.title}}
-        <span class="item-note">{{page.range}}</span>
-      </a>
-
-    </div>
-
-    <div class="card">
-      <!-- <div class="item item-divider">
-        Om TextTv.nu
-      </div> -->
-      <div class="item item-text-wrap">
-        Gillar du vår texttv-app?
-        <br>
-        <a target="_blank" href="https://itunes.apple.com/se/app/texttv.nu/id607998045‎">ge den ett bra betyg på appstore</a> och gör oss glada :)
       </div>
-      <div class="item item-text-wrap">
-        <a target="_blank" href="https://twitter.com/TextTV_nu">Följ texttv.nu på Twitter</a>
-       </div>
 
-    </div>
+      </content>
 
-    </content>
-
-  </side-menu>
-
+    </side-menu>
+  
   </side-menus>
 
 </body>
