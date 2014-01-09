@@ -259,6 +259,17 @@
 	color: #ddd;
 }
 
+/* White, also default color */
+.root,
+.W,
+.W a,
+.root a {
+	color: #eee;
+}
+.bgW {
+	background: #eee;
+}
+
 /* red color and background */
 .R {
 	color: rgb(200, 0, 0);
@@ -317,11 +328,3 @@
 	background: #F0F
 }
 
-/* White */
-.W,
-.W a {
-	color: #eee;
-}
-.bgW {
-	background: #eee;
-}
