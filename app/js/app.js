@@ -59,6 +59,9 @@ texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams) {
 		"$routeChangeSuccess",
 		function( $currentRoute, $previousRoute ){
 
+			// Close any open side menu
+			$scope.sideMenuController.close();
+
 			var action = $route.current.action;
 			var pageRange = $routeParams.pageRange;
 
@@ -213,10 +216,10 @@ $(function($) {
 		var pageRange = $this.attr("href");
 		
 		// Get scope
-		var $scope = angular.element( this ).scope(); // .info('me')
+		//var $scope = angular.element( this ).scope(); // .info('me')
 
 		// and close any open sidebar
-		$scope.sideMenuController.close();
+		//$scope.sideMenuController.close();
 
 		// Go to new url
 		document.location = "#/sida" + pageRange;
