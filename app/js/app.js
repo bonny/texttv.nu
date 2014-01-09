@@ -47,10 +47,6 @@ texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams) {
 		showBackButton: 0
 	};
 
-	$scope.test = {
-		title: "Title i test objekt"
-	};
-
 	// Listen for changes to the Route. When the route
 	// changes, let's set the renderAction model value so
 	// that it can render in the Strong element.
@@ -75,8 +71,15 @@ texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams) {
 					//var newSlide = mySwiper.createSlide( "Prev" );
 					//newSlide.append();
 
+					$scope.pages.current = page;
+
+					console.log($scope.pages.current);
+
 					newSlide = mySwiper.createSlide(page[0].content[0]);
 					newSlide.append();
+
+					// Tell angular we have changed something
+					$scope.$apply();
 
 					//newSlide = mySwiper.createSlide( "Next" );
 					//newSlide.append();
@@ -84,7 +87,6 @@ texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams) {
 					//mySwiper.swipeTo(1);
 
 				});
-
 
 			}
 

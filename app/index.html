@@ -53,8 +53,16 @@
           <i class="icon ion-ios7-arrow-back"></i>
           Tillbaka
         </button>
-        
-        <h1 class="title" ng-bind-html="headerbar.title"></h1>
+
+        <h1 class="title">
+          
+          <span ng-show="!pages.current.length" ng-bind-html="headerbar.title"></span>
+         
+          <span ng-show="pages.current.length">
+            {{ pages.current[0].num }}
+          </span>
+
+        </h1>
         
         <button class="button button-clear" ng-click="toggleMenu()">
           <i class="icon ion-navicon-round"></i>
