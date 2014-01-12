@@ -122,7 +122,7 @@ texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams, $compi
 			resistance: true,
 			useCSS3Transforms: true,
 			xcalculateHeight: true,
-			cssWidthAndHeight: true
+			xcssWidthAndHeight: true
 			/*onSlideChangeStart: function(swiper) {
 				console.log("onSlideChangeStart");
 			},

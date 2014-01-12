@@ -826,7 +826,7 @@
 						],
 						"settings":
 						{
-							"function_name_status_row": -1,
+							"function_name_status_row": 0,
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
