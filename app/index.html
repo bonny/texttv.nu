@@ -16,7 +16,7 @@
 	<script src="bower_components/ionic/dist/js/ionic.js"></script>
 	<script src="bower_components/ionic/dist/js/angular/angular.js"></script>
 	<script src="bower_components/ionic/dist/js/angular/angular-route.js"></script>
-	<script src="bower_components/ionic/dist/js/angular-ui/angular-ui-router.js"></script>
+	<!-- <script src="bower_components/ionic/dist/js/angular-ui/angular-ui-router.js"></script> -->
 	<script src="bower_components/ionic/dist/js/angular/angular-animate.js"></script>
 	<script src="bower_components/ionic/dist/js/angular/angular-touch.js"></script>
 	<script src="bower_components/ionic/dist/js/angular/angular-sanitize.js"></script>
@@ -109,7 +109,7 @@
 
 		<!-- Sidebar menu at right -->
 		<side-menu side="right">
-			<div ng-include="'partials/sidebar-menu-right.html'"></div>
+			<ng-include src="'partials/sidebar-menu-right.html'"></ng-include>
 		</side-menu>
 			
 	</side-menus>

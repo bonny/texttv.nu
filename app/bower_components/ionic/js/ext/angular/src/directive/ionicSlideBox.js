@@ -3,17 +3,19 @@
 
 /**
  * @description
- * The slideBoxCtrol lets you quickly create a multi-page 
- * container where each page can be swiped or dragged between
+ * The sideMenuCtrl lets you quickly have a draggable side
+ * left and/or right menu, which a center content area.
  */
 
 angular.module('ionic.ui.slideBox', [])
 
 /**
- * The internal controller for the slide box controller.
+ * The internal controller for the side menu controller. This
+ * extends our core Ionic side menu controller and exposes
+ * some side menu stuff on the current scope.
  */
 
-.directive('slideBox', ['$timeout', '$compile', 'SlideBoxDelegate', function($timeout, $compile, SlideBoxDelegate) {
+.directive('slideBox', ['$timeout', '$compile', function($timeout, $compile) {
   return {
     restrict: 'E',
     replace: true,
@@ -23,8 +25,7 @@ angular.module('ionic.ui.slideBox', [])
       slideInterval: '@',
       showPager: '@',
       disableScroll: '@',
-      onSlideChanged: '&',
-      activeSlide: '='
+      onSlideChanged: '&'
     },
     controller: ['$scope', '$element', function($scope, $element) {
       var _this = this;
@@ -47,15 +48,9 @@ angular.module('ionic.ui.slideBox', [])
           $scope.currentSlide = slideIndex;
           $scope.onSlideChanged({index:$scope.currentSlide});
           $scope.$parent.$broadcast('slideBox.slideChanged', slideIndex);
-          $scope.activeSlide = slideIndex;
+
           // Try to trigger a digest
           $timeout(function() {});
-        }
-      });
-
-      $scope.$watch('activeSlide', function(nv) {
-        if(angular.isDefined(nv)){
-          slider.slide(nv);
         }
       });
 
@@ -72,8 +67,6 @@ angular.module('ionic.ui.slideBox', [])
       });
 
       $scope.$parent.slideBox = slider;
-
-      SlideBoxDelegate.register($scope, $element);
 
       this.getNumSlides = function() {
         return slider.getNumSlides();

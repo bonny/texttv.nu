@@ -53,17 +53,7 @@
       if(!window.device) {
         return navigator.userAgent.toLowerCase().indexOf('android') >= 0;
       }
-      return window.device.platform === "Android";
-    },
-
-    // Check if the platform is the one detected by cordova
-    is: function(type) {
-      if(window.device) {
-        return window.device.platform === type || window.device.platform.toLowerCase() === type;
-      }
-
-      // A quick hack for 
-      return navigator.userAgent.toLowerCase().indexOf(type.toLowerCase()) >= 0;
+      return device.platform === "Android";
     }
   };
 

@@ -3,162 +3,6 @@
  * each page is wrapped in .root
  */
 
-/*
-.stuff-to-show {
-	border: 1px solid red;
-}
-
-.test.ng-hide-add,
-.test.ng-hide-remove {
-  display: block!important;
-}
-
-
-.stuff-to-show {
-    -webkit-transition: all linear 1.5s;
-    transition: all linear 1.5s;
-    opacity: 1;
-    max-height: 100px;
-}
-
-.stuff-to-show.ng-hide {
-	opacity: 0;
-	max-height: 0;
-}
-
-.stuff-to-show.ng-hide-add, .stuff-to-show.ng-hide-remove {
-	display:block!important;
-}
-*/
-
-
-.fader-animation.ng-enter,
-.fader-animation.ng-leave {
-    -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2.5s;
-    -moz-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2.5s;
-    -o-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2.5s;
-    transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2.5s;
-}
-
-.fader-animation.ng-enter {
-    -ms-opacity: 0;
-    opacity: 0;
-}
-.fader-animation.ng-enter.ng-enter-active {
-    -ms-opacity: 1;
-    opacity: 1;
-}
-
-.fader-animation.ng-leave {
-    -ms-opacity: 1;
-    opacity: 1;
-}
-.fader-animation.ng-leave.ng-leave-active {
-    -ms-opacity: 0;
-    opacity: 0;
-}
-
-
-
-.animate-enter {
-	-webkit-transition: 1s linear all; /* Chrome */
-	transition: 1s linear all;
-	opacity: 0;
-}
- 
-.animate-enter.animate-enter-active {
-	opacity: 1;
-}
-
-/*
- The animate class is apart of the element and the ng-enter class
- is attached to the element once the enter animation event is triggered
-*/
-.reveal-animation.ng-enter {
- -webkit-transition: 1s linear all; /* Safari/Chrome */
- transition: 1s linear all; /* All other modern browsers and IE10+ */
- 
- /* The animation preparation code */
- opacity: 0;
-}
- 
-/*
- Keep in mind that you want to combine both CSS
- classes together to avoid any CSS-specificity
- conflicts
-*/
-.reveal-animation.ng-enter.ng-enter-active {
- /* The animation code itself */
- opacity: 1;
-}
-
-
-.fade-hide, .fade-show {
-  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-}
-.show-animation {
-  background-color:red;
-  -webkit-transition:all linear 0.5s;
-  -moz-transition:all linear 0.5s;
-  -ms-transition:all linear 0.5s;
-  -o-transition:all linear 0.5s;
-  transition:all linear 0.5s;
-  opacity: 0;
-}
-
-.show-animation.show-animation-active {
-  background: blue;
-  opacity: 1;
-}
-.fade-hide {
-  opacity:1;
-}
-.fade-hide.fade-hide-active {
-  opacity:0;
-}
-
-.fade-show {
-  opacity:0;
-}
-.fade-show.fade-show-active {
-  opacity:1;
-}
-
-.view-enter, .view-leave, .slide-enter, .slide-leave, .wave-enter, .wave-leave {
-  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-}
-
-.view-enter {
-  opacity:0;
-  left:100px;
-  width:100%;
-  position:absolute;
-}
-.view-enter.view-enter-active {
-  left:0;
-  opacity:1;
-}
-
-.view-leave {
-  position:absolute;
-  left:0;
-  width:100%;
-  opacity:1;
-}
-.view-leave.view-leave-active {
-  left:-100px;
-  opacity:0;
-}
-
-
-
-
 .scroll-refresher {
 	background: #f8f8f8;
 	background: #b2b2b2;
@@ -201,11 +45,14 @@
  * Set font size and general colors in the wrapper
  */
 .swiper-wrapper {
+}
+
+.swiper-container {
 	background: #2a2d33 url('data:image/gif;base64,R0lGODlhRQAmAKIAACgrMiosMykrMiksNCksMiotMyksMyotNCH5BAAAAAAALAAAAABFACYAAAP/WGe3Rsyo1kqUCjbJdj/FZADSARWEZawM4YQsZT6TJaK4aWkrTEAtGuX3IEp4IGBlsVwxGy6ABZTcmDaoqwvlcmGfVJAABsoYn5ptSBmEmlKKlnsheoSdzEBaPuW4hB4gETIFJCkzM1t/JDpMbIIyDBlVTytbTkGAl5JunE42AA0AahMOTFlJEYx0Dn9XNBcKMD2zPyqBO0eEPVAXF16BvRsnKXALJA8GATuzr5xXnVZLcaWnKCUafQSGIqnXBwHLVRemECkRxR0abwuujSPnmNjnh9MRa1lxrbxQ9SO8vqD0MSCgQok4clp0ibEiVKABL0xZ2jLEEhZbZbhwKCFl/5DFKypklRF1IsAMaoI4hDAFjSGmQyxqDGo0zIs6ILkUOqDVbt+QJRUHmtQHSWSHUD5o4XTVx5FKfaM6fJvDjglBFjFtwSEybYGAGD7GWLpmM2SWEdqOSKL4xoaimiZChYphhUQGGvpC0gCicBuPc2DQYRqZgyFLBlF7fSJj9UDBJYoSwoT0JMStnRQE/2gitYINAwOSSfqQ2WrWwBjSgY0lCEgxeit3MIkamylpNlEQvjoROiWGiVTpZPGy+Y1NtP9KVNkM2BxgWRCQWZ5UokcXaWO1YtanVImjvxtbj71nJcDozKB9X/yDsBR3yzBdmy5gHmQlRG+nZLCRdKTOZv95fULVEdsE8ZodIaWTRirLHeSaWikVkkoy0eDhjn7kXEIUHQ4OtpMaxekgmyDcjcfHOxhAwgkPHOCS12QjGCTKKHmFVF+L6kCjTz0HSOEecXTFCMKNa61k0UIO/SAAEh184JYHfLEXxx8YffaBHcWtgV4vIZpTXTaovLQTOl72hAIjRjxmiDlbHpRRO/hgGEZbrfykwjpTTkdFMaH9kB8rh+ihX0/n7MghVkY4aU4OSGxpUFZTUKBfDT0VkRArnxw5Dod0LCRBVKqcxMUrh5ImEnubwbChYO2kil8hXtyZogqI3XalK8YwpKANnr2BIzqeDeTYIdcIYaQV6FSDbJNSGF4JDrNQ8mdFMVCGF8aUpXGXEmBYGJVELl6MUgYBvb0UKTtLXesMj0oAg0iT0zoiaRIOGdqTB050hFUFobB5CkDSjATMWbpM8IcTTPkaHwoJAAA7');	
 }
-.root {
 
-	xbackground: #2a2d33 url('data:image/gif;base64,R0lGODlhRQAmAKIAACgrMiosMykrMiksNCksMiotMyksMyotNCH5BAAAAAAALAAAAABFACYAAAP/WGe3Rsyo1kqUCjbJdj/FZADSARWEZawM4YQsZT6TJaK4aWkrTEAtGuX3IEp4IGBlsVwxGy6ABZTcmDaoqwvlcmGfVJAABsoYn5ptSBmEmlKKlnsheoSdzEBaPuW4hB4gETIFJCkzM1t/JDpMbIIyDBlVTytbTkGAl5JunE42AA0AahMOTFlJEYx0Dn9XNBcKMD2zPyqBO0eEPVAXF16BvRsnKXALJA8GATuzr5xXnVZLcaWnKCUafQSGIqnXBwHLVRemECkRxR0abwuujSPnmNjnh9MRa1lxrbxQ9SO8vqD0MSCgQok4clp0ibEiVKABL0xZ2jLEEhZbZbhwKCFl/5DFKypklRF1IsAMaoI4hDAFjSGmQyxqDGo0zIs6ILkUOqDVbt+QJRUHmtQHSWSHUD5o4XTVx5FKfaM6fJvDjglBFjFtwSEybYGAGD7GWLpmM2SWEdqOSKL4xoaimiZChYphhUQGGvpC0gCicBuPc2DQYRqZgyFLBlF7fSJj9UDBJYoSwoT0JMStnRQE/2gitYINAwOSSfqQ2WrWwBjSgY0lCEgxeit3MIkamylpNlEQvjoROiWGiVTpZPGy+Y1NtP9KVNkM2BxgWRCQWZ5UokcXaWO1YtanVImjvxtbj71nJcDozKB9X/yDsBR3yzBdmy5gHmQlRG+nZLCRdKTOZv95fULVEdsE8ZodIaWTRirLHeSaWikVkkoy0eDhjn7kXEIUHQ4OtpMaxekgmyDcjcfHOxhAwgkPHOCS12QjGCTKKHmFVF+L6kCjTz0HSOEecXTFCMKNa61k0UIO/SAAEh184JYHfLEXxx8YffaBHcWtgV4vIZpTXTaovLQTOl72hAIjRjxmiDlbHpRRO/hgGEZbrfykwjpTTkdFMaH9kB8rh+ihX0/n7MghVkY4aU4OSGxpUFZTUKBfDT0VkRArnxw5Dod0LCRBVKqcxMUrh5ImEnubwbChYO2kil8hXtyZogqI3XalK8YwpKANnr2BIzqeDeTYIdcIYaQV6FSDbJNSGF4JDrNQ8mdFMVCGF8aUpXGXEmBYGJVELl6MUgYBvb0UKTtLXesMj0oAg0iT0zoiaRIOGdqTB050hFUFobB5CkDSjATMWbpM8IcTTPkaHwoJAAA7');
+
+.root {
 
 	text-align: left;
 	display: inline-block;
@@ -221,7 +68,7 @@
 	font-size: 18px;
 
 	/* 17 is good for when in a card of type image */
-	font-size: 17px;
+	font-size: 18px;
 
 	letter-spacing: -.1ex;
 	line-height: 1;
@@ -240,7 +87,7 @@
 /* Make swiper contain the above font size */
 .swiper-container, .swiper-slide {
 	
-	height: 28em;
+	/*height: 28em;*/
 	text-align: center;
 
 	/* get above tab nav */

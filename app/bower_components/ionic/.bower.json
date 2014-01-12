@@ -1,6 +1,6 @@
 {
   "name": "ionic",
-  "version": "0.9.19-alpha",
+  "version": "0.9.18-alpha",
   "homepage": "https://github.com/driftyco/ionic",
   "authors": [
     "Max Lynch <max@drifty.com>",
@@ -41,13 +41,13 @@
     "test",
     "tests"
   ],
-  "_release": "0.9.19-alpha",
+  "_release": "0.9.18-alpha",
   "_resolution": {
     "type": "version",
-    "tag": "v0.9.19-alpha",
-    "commit": "d03cd381205180f1c368629bbeed2dc479294ae0"
+    "tag": "v0.9.18-alpha",
+    "commit": "aa4053b3651195db75a502600f808a314f8212b7"
   },
   "_source": "git://github.com/driftyco/ionic.git",
-  "_target": "~0.9.18-alpha",
+  "_target": "0.9.18-alpha",
   "_originalSource": "ionic"
 }

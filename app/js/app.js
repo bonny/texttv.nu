@@ -1,6 +1,6 @@
 
 var texttvApp = angular.module('texttvApp', ['ionic', 'ngAnimate', 'ngRoute', 'ngAnimate-animate.css']);
-texttvApp.run();
+//texttvApp.run();
 
 texttvApp.config(function ($compileProvider){
 	// Needed for phonegap routing
@@ -41,7 +41,7 @@ texttvApp.controller('StartCtrl', function($scope) {
 	$scope.headerbar.titleTest = "";
 });
 
-texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams) {
+texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams, $compile) {
 
 	console.log("Init TexttvCtrl");
 
@@ -64,35 +64,45 @@ texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams) {
 
 			var action = $route.current.action;
 			var pageRange = $routeParams.pageRange;
-
+			
 			if (action == "loadHome") {
 				
 				console.log("loadHome");
+				$scope.headerbar.showBackButton = false;
 
 			} else if (action == "loadPageRange") {
 
 				console.log("Load pageRange!", pageRange);
+				$scope.headerbar.showBackButton = true;
 
 				$.getJSON("http://texttv.nu/api/get/" + pageRange, function(page) {
 				
-					var newSlide;
 					//var newSlide = mySwiper.createSlide( "Prev" );
 					//newSlide.append();
 
+					// Render template for current page range
 					$scope.pages.current = page;
+					console.log("$scope.pages.current", $scope.pages.current);
 
-					console.log($scope.pages.current);
-
-					newSlide = mySwiper.createSlide(page[0].content[0]);
+					// Create and append new empty slide
+					var newSlide = mySwiper.createSlide( "" );
 					newSlide.append();
 
+					// Render an angular template using ng-include
+					var includetag = angular.element("<ng-include src=\"'partials/texttv-page.html'\"></ng-include>");
+					var el = $compile( includetag )( $scope.$new() );
+
+					// Append rendered template to slide
+					var lastSlide = $( mySwiper.getLastSlide() );
+					lastSlide.append(el);
+
+					mySwiper.reInit();
+					mySwiper.resizeFix(); // call this function after you change Swiper's size without resizing of window.
+						
 					// Tell angular we have changed something
 					$scope.$apply();
 
-					//newSlide = mySwiper.createSlide( "Next" );
-					//newSlide.append();
-
-					//mySwiper.swipeTo(1);
+					//mySwiper.swipeTo(01);
 
 				});
 
@@ -229,6 +239,8 @@ $(function($) {
 	mode: 'horizontal',
 	resistance: true,
 	useCSS3Transforms: true,
+	xcalculateHeight: true,
+	xcssWidthAndHeight: true
 	/*onSlideChangeStart: function(swiper) {
 		console.log("onSlideChangeStart");
 	},

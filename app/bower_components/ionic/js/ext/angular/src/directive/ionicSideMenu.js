@@ -60,6 +60,11 @@ angular.module('ionic.ui.sideMenu', ['ionic.service.gesture'])
         var defaultPrevented = false;
         var isDragging = false;
 
+        ionic.on('mousedown', function(e) {
+          // If the child element prevented the drag, don't drag
+          defaultPrevented = e.defaultPrevented;
+        });
+
         // Listen for taps on the content to close the menu
         /*
         ionic.on('tap', function(e) {

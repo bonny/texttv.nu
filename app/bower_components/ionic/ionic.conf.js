@@ -25,7 +25,6 @@ module.exports = function(config) {
       'dist/js/angular/angular-mocks.js',
       'dist/js/angular/angular-touch.js',
       'dist/js/angular/angular-sanitize.js',
-      'dist/js/angular-ui/angular-ui-router.js',
       'dist/js/ionic-angular.js',
 
       'test/**/*.js',
