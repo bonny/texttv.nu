@@ -1,8 +1,8 @@
 /*!
- * Copyright 2013 Drifty Co.
+ * Copyright 2014 Drifty Co.
  * http://drifty.com/
  *
- * Ionic, v0.9.17
+ * Ionic, v0.9.19
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -16,7 +16,7 @@
 window.ionic = {
   controllers: {},
   views: {},
-  version: '0.9.17'
+  version: '0.9.19'
 };;
 (function(ionic) {
 
@@ -199,6 +199,12 @@ window.ionic = {
         e = e.parentNode;
       }
       return null;
+    },
+
+    rectContains: function(x, y, x1, y1, x2, y2) {
+      if(x < x1 || x > x2) return false;
+      if(y < y1 || y > y2) return false;
+      return true;
     }
   };
 })(window.ionic);
@@ -1783,7 +1789,17 @@ window.ionic = {
       if(!window.device) {
         return navigator.userAgent.toLowerCase().indexOf('android') >= 0;
       }
-      return device.platform === "Android";
+      return window.device.platform === "Android";
+    },
+
+    // Check if the platform is the one detected by cordova
+    is: function(type) {
+      if(window.device) {
+        return window.device.platform === type || window.device.platform.toLowerCase() === type;
+      }
+
+      // A quick hack for 
+      return navigator.userAgent.toLowerCase().indexOf(type.toLowerCase()) >= 0;
     }
   };
 
@@ -4717,7 +4733,7 @@ ionic.views.Scroll = ionic.views.View.inherit({
 
         var width = Math.min(_this.maxWidth, Math.max(window.outerWidth - 40, lb.offsetWidth));
 
-        lb.style.width = width;
+        lb.style.width = width + 'px';
 
         lb.style.marginLeft = (-lb.offsetWidth) / 2 + 'px';
         lb.style.marginTop = (-lb.offsetHeight) / 2 + 'px';

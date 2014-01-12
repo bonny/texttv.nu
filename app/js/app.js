@@ -1,5 +1,5 @@
 
-var texttvApp = angular.module('texttvApp', ['ionic', 'ngAnimate', 'ngRoute']);
+var texttvApp = angular.module('texttvApp', ['ionic', 'ngAnimate', 'ngRoute', 'ngAnimate-animate.css']);
 texttvApp.run();
 
 texttvApp.config(function ($compileProvider){
@@ -13,13 +13,17 @@ texttvApp.config(function($routeProvider, $locationProvider) {
 	$routeProvider.when('/sida/:pageRange', {
 		action: "loadPageRange"
 	});
+
+	$routeProvider.when('/home', {
+		action: "loadHome"
+	});
 	
 	// Start of app / website
 	$routeProvider.otherwise({
-		redirectTo: '/start',
+		redirectTo: '/home',
 		//templateUrl: 'partials/home.html',
 		//controller: 'StartCtrl'
-		action: "loadPageRange"
+		action: "otherwise"
 	});
 
 });
@@ -39,7 +43,7 @@ texttvApp.controller('StartCtrl', function($scope) {
 
 texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams) {
 
-	console.log("Start TexttvCtrl");
+	console.log("Init TexttvCtrl");
 
 	$scope.headerbar = {
 		title: "<img src='img/logo.png' alt=' height=15> TextTV.nu",
@@ -61,9 +65,13 @@ texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams) {
 			var action = $route.current.action;
 			var pageRange = $routeParams.pageRange;
 
-			if (action == "loadPageRange") {
+			if (action == "loadHome") {
+				
+				console.log("loadHome");
 
-				console.log("Load load load!", $routeParams);
+			} else if (action == "loadPageRange") {
+
+				console.log("Load pageRange!", pageRange);
 
 				$.getJSON("http://texttv.nu/api/get/" + pageRange, function(page) {
 				
@@ -190,20 +198,6 @@ texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams) {
 
 }); // end TexttvCtrl
 
-/*
-texttvApp.config(['$routeProvider',
-  function($routeProvider) {
-	$routeProvider.
-	  when('/phones', {
-		templateUrl: 'partials/list.html',
-		controller: 'PhoneListCtrl'
-	  }).
-	  otherwise({
-		redirectTo: '/phones'
-	  });
-  }]);
-*/
-
 
 // Activate slider onDomReady
 var mySwiper;
@@ -236,10 +230,10 @@ $(function($) {
 	resistance: true,
 	useCSS3Transforms: true,
 	/*onSlideChangeStart: function(swiper) {
-	  console.log("onSlideChangeStart");
+		console.log("onSlideChangeStart");
 	},
 	onSlideChangeEnd: function(swiper) {
-	  console.log("onSlideChangeEnd");
+		console.log("onSlideChangeEnd");
 	},
 	onMomentumBounce: function() {
 		console.log("onMomentumBounce");

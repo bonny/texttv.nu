@@ -28,9 +28,10 @@ angular.module('ionic.service.modal', ['ionic.service.templateLoad', 'ngAnimate'
 
     // Remove and destroy the modal scope
     remove: function() {
-      var element = angular.element(this.el);
+      var self  = this,
+          element = angular.element(this.el);
       $animate.leave(angular.element(this.el), function() {
-        scope.$destroy();
+        self.scope.$destroy();
       });
     }
   });
@@ -68,9 +69,10 @@ angular.module('ionic.service.modal', ['ionic.service.templateLoad', 'ngAnimate'
       return modal;
     },
     fromTemplateUrl: function(url, cb, options) {
-      TemplateLoader.load(url).then(function(templateString) {
+      return TemplateLoader.load(url).then(function(templateString) {
         var modal = createModal(templateString, options || {});
-        cb(modal);
+        cb ? cb(modal) : null;
+        return modal;
       });
     },
   };

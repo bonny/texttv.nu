@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-angular.module('ionic.ui.content', [])
+angular.module('ionic.ui.content', ['ionic.ui.service'])
 
 /**
  * Panel is a simple 100% width and height, fixed panel. It's meant for content to be
@@ -18,7 +18,7 @@ angular.module('ionic.ui.content', [])
 
 // The content directive is a core scrollable content area
 // that is part of many View hierarchies
-.directive('content', ['$parse', '$timeout', function($parse, $timeout) {
+.directive('content', ['$parse', '$timeout', 'Platform', 'ScrollDelegate', function($parse, $timeout, Platform, ScrollDelegate) {
   return {
     restrict: 'E',
     replace: true,
@@ -30,6 +30,9 @@ angular.module('ionic.ui.content', [])
       onScroll: '&',
       onScrollComplete: '&',
       refreshComplete: '=',
+      onInfiniteScroll: '=',
+      infiniteScrollDistance: '@',
+      hasBouncing: '@',
       scroll: '@',
       hasScrollX: '@',
       hasScrollY: '@',
@@ -37,16 +40,17 @@ angular.module('ionic.ui.content', [])
       scrollbarY: '@',
       scrollEventInterval: '@'
     },
+
     compile: function(element, attr, transclude) {
-      return function($scope, $element, $attr) {
+      if(attr.hasHeader == "true") { element.addClass('has-header'); }
+      if(attr.hasSubheader == "true") { element.addClass('has-subheader'); }
+      if(attr.hasFooter == "true") { element.addClass('has-footer'); }
+      if(attr.hasTabs == "true") { element.addClass('has-tabs'); }
+
+      return function link($scope, $element, $attr) {
         var clone, sc, sv,
           addedPadding = false,
           c = $element.eq(0);
-
-        if(attr.hasHeader == "true") { c.addClass('has-header'); }
-        if(attr.hasSubheader == "true") { c.addClass('has-subheader'); }
-        if(attr.hasFooter == "true") { c.addClass('has-footer'); }
-        if(attr.hasTabs == "true") { c.addClass('has-tabs'); }
 
         // If they want plain overflow scrolling, add that as a class
         if($scope.scroll === "false") {
@@ -54,7 +58,7 @@ angular.module('ionic.ui.content', [])
           $element.append(clone);
         } else if(attr.overflowScroll === "true") {
           c.addClass('overflow-scroll');
-          clone = transclude($scope.$parent);
+          clone = transclude($scope.$parent); 
           $element.append(clone);
         } else {
           sc = document.createElement('div');
@@ -82,11 +86,15 @@ angular.module('ionic.ui.content', [])
             };
           }
 
-
           // Otherwise, supercharge this baby!
           $timeout(function() {
+            var hasBouncing = $scope.$eval($scope.hasBouncing);
+            var enableBouncing = !Platform.is('Android') && hasBouncing !== false;
+            // No bouncing by default for Android users, lest they take up pitchforks
+            // to our bouncing goodness
             sv = new ionic.views.Scroll({
               el: $element[0],
+              bouncing: enableBouncing,
               scrollbarX: $scope.$eval($scope.scrollbarX) !== false,
               scrollbarY: $scope.$eval($scope.scrollbarY) !== false,
               scrollingX: $scope.$eval($scope.hasScrollX) === true,
@@ -114,31 +122,45 @@ angular.module('ionic.ui.content', [])
               });
             }
 
-            $element.bind('scroll', function(e) {
-              $scope.onScroll({
-                event: e,
-                scrollTop: e.detail ? e.detail.scrollTop : e.originalEvent ? e.originalEvent.detail.scrollTop : 0,
-                scrollLeft: e.detail ? e.detail.scrollLeft: e.originalEvent ? e.originalEvent.detail.scrollLeft : 0
-              });
-            });
+            // Register for scroll delegate event handling
+            ScrollDelegate.register($scope, $element);
 
-            $scope.$parent.$on('scroll.resize', function(e) {
-              // Run the resize after this digest
-              $timeout(function() {
-                sv && sv.resize();
-              });
-            });
-
-            $scope.$parent.$on('scroll.refreshComplete', function(e) {
-              sv && sv.finishPullToRefresh();
-            });
-            
             // Let child scopes access this 
             $scope.$parent.scrollView = sv;
           });
 
-
-
+          // Check if this supports infinite scrolling and listen for scroll events
+          // to trigger the infinite scrolling
+          var infiniteScroll = $element.find('infinite-scroll');
+          var infiniteStarted = false;
+          if(infiniteScroll) {
+            // Parse infinite scroll distance
+            var distance = attr.infiniteScrollDistance || '1%';
+            var maxScroll;
+            if(distance.indexOf('%')) {
+              // It's a multiplier
+              maxScroll = function() {
+                return sv.getScrollMax().top * ( 1 - parseInt(distance, 10) / 100 );
+              };
+            } else {
+              // It's a pixel value
+              maxScroll = function() {
+                return sv.getScrollMax().top - parseInt(distance, 10);
+              };
+            }
+            $element.bind('scroll', function(e) {
+              if( sv && !infiniteStarted && (sv.getValues().top > maxScroll() ) ) {
+                infiniteStarted = true;
+                infiniteScroll.addClass('active');
+                var cb = function() {
+                  sv.resize();
+                  infiniteStarted = false;
+                  infiniteScroll.removeClass('active');
+                };
+                $scope.$apply(angular.bind($scope, $scope.onInfiniteScroll, cb));
+              }
+            });
+          }
         }
 
         // if padding attribute is true, then add padding if it wasn't added to the .scroll
@@ -168,7 +190,14 @@ angular.module('ionic.ui.content', [])
     transclude: true,
     template: '<div class="scroll-refresher"><div class="scroll-refresher-content" ng-transclude></div></div>'
   };
-});
+})
 
+.directive('infiniteScroll', function() {
+  return {
+    restrict: 'E',
+    replace: false,
+    template: '<div class="scroll-infinite"><div class="scroll-infinite-content"><i class="icon ion-loading-d icon-refreshing"></i></div></div>'
+  };
+});
 
 })();

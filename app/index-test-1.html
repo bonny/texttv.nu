@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>TextTV.nu</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+  <meta http-equiv="cleartype" content="on">
+
+  <link rel="stylesheet" href="bower_components/ionic/dist/css/ionic.css">
+  <link rel="stylesheet" href="bower_components/swiper/dist/idangerous.swiper.css">
+  <link rel="stylesheet" href="css/texttv-theme-black.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/2.0/animate.min.css">
+
+  <script src="bower_components/jquery/jquery.js"></script>
+  <script src="bower_components/ionic/dist/js/ionic.js"></script>
+  <script src="bower_components/ionic/dist/js/angular/angular.js"></script>
+  <script src="bower_components/ionic/dist/js/angular/angular-route.js"></script>
+  <script src="bower_components/ionic/dist/js/angular/angular-animate.js"></script>
+  <script src="bower_components/ionic/dist/js/angular/angular-touch.js"></script>
+  <script src="bower_components/ionic/dist/js/angular/angular-sanitize.js"></script>
+  <script src="bower_components/ionic/dist/js/ionic-angular.js"></script>
+  <script src="bower_components/swiper/dist/idangerous.swiper-2.4.js"></script>
+
+  <style>
+    body {
+      margin: 5em;
+    }
+    .hiddenWithOpacity {
+      opacity: 0;
+    }
+
+     
+    .animate-repeat.ng-move,
+    .animate-repeat.ng-enter,
+    .animate-repeat.ng-leave {
+      -webkit-transition:all linear 0.5s;
+      transition:all linear 0.5s;
+    }
+     
+    .animate-repeat.ng-leave.ng-leave-active,
+    .animate-repeat.ng-move,
+    .animate-repeat.ng-enter {
+      opacity:0;
+      max-height:0;
+    }
+     
+    .animate-repeat.ng-leave,
+    .animate-repeat.ng-move.ng-move-active,
+    .animate-repeat.ng-enter.ng-enter-active {
+      opacity:1;
+      max-height:40px;
+    }    
+  </style>
+
+  <script>
+
+    var app = angular.module("myApp", ["ngAnimate"]);
+
+    app.controller("myCtrl", function($scope) {
+
+      $scope.newItem = "";
+
+      $scope.items = ["Jag är ett första item, yo"];
+
+      $scope.submitNew = function(x) {
+        $scope.items.push($scope.newItem);
+        $scope.newItem = "";
+      };
+
+    });
+
+    jQuery(function($) {
+
+    });
+
+
+
+
+
+  </script>
+
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+  <div id="test1" class="animated">Hejsan hoppsan</div>
+
+  <p>
+    <form ng-submit="submitNew()">
+      <input ng-model="newItem" autofocus>
+    </form>
+  </p>
+
+  <p>New item: {{newItem}}</p>
+
+  <p>Items:
+  <br>
+  {{items}}
+  </p>
+
+  <p>As list</p>
+  <ul>
+    <li class="animate-repeat" ng-repeat="oneThing in items">Index: {{$index}}, oneThing: {{oneThing}}</li>
+  </ul>
+
+</body>
+</html>
