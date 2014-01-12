@@ -4,33 +4,67 @@ Ouputs full ouput to be used inside a swiper slide
 -->
 
 <!-- for each page in pagerange (eg. 100-102), output each pages contents -->
-<div ng-repeat="page in pages.current">
 
-	<!-- Actual contents goes in content array. Each index there is one page in html -->
-	<div ng-repeat="subpage in page.content" ng-bind-html="subpage">
-	</div>
-
+<div ng-if="!pages">
+	Hämtar sida
 </div>
 
-<!-- Reload + Share buttons below texttv-content -->
-<div class="list card list--share">
+<div ng-if="pages" class="xdn-fade-down xdn-bounce">
 
-	<div class="item item-text">
+	<div ng-repeat="page in pages">
 
-		<div class="button-bar">
+		<!-- Actual contents goes in content array. Each index there is one page in html -->
+		<div ng-repeat="subpage in page.content" ng-bind-html="subpage">
+		</div>
 
-			<a class="button">
-				<i class="icon ion-ios7-reload"></i>
-				Ladda om
-			</a>
+	</div>
 
-			<a class="button">
-				<i class="icon ion-ios7-upload-outline"></i>
-				Dela
-			</a>
+	<!-- Reload + Share buttons below texttv-content -->
+	<div class="list card list--share">
+
+		<div class="item item-text">
+
+			<div class="button-bar">
+
+				<a class="button">
+					<i class="icon ion-ios7-reload"></i>
+					Ladda om
+				</a>
+
+				<a class="button">
+					<i class="icon ion-ios7-upload-outline"></i>
+					Dela
+				</a>
+
+			</div>
+
+		</div>
+
+		<div class="item item-divider">
+			<h2>Debuginfo</h2>
+		</div>
+
+		<div class="item item-text">
+			
+			<ul class="list">
+				<li class="item">
+					pageRange:
+					{{pageRange}}
+				</li>
+
+				<li class="item">
+					time:
+					{{myVar.time}}
+				</li>
+
+				<li class="item">
+					parent:
+					{{$parent.headerbar.showBackButton}}
+				</li>
+			</ul>
 
 		</div>
 
 	</div>
 
-</div>
+</div><!-- // if pages exist -->

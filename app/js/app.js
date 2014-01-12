@@ -28,6 +28,62 @@ texttvApp.config(function($routeProvider, $locationProvider) {
 
 });
 
+/**
+ * Create directive that loads and shows a div with a texttv-page
+ *
+ * Example:
+ *  <texttvpage pageRange="100-110"></texttvpage>
+ */
+texttvApp.directive('texttvPage', function() {
+
+	console.log("Init directive");
+
+	return {
+		restrict: 'E',
+		templateUrl: 'partials/texttv-page.html',
+		scope: {
+			pageRange: "="
+		},
+		controller: function($scope, $http, $timeout) {
+
+			// $scope here is for this template only
+			console.log("texttvPage directive controller");
+			$scope.myVar = {
+				time: new Date()
+			};
+
+			// $scope.$parent.headerbar.title = "apa";
+			$scope.$parent.headerbar.showBackButton = true;
+			
+			// Render template for current page range
+			// Load page and then updates automatically when we get data
+			var url = $scope.$parent.api.base + "get/" + $scope.pageRange;
+			$http.get(url).success(function(data, status, headers, config) {
+
+				// Fake a small delay to test spinning wheel/loading look and feeling
+				//*
+				$timeout(function() {
+					
+					$scope.pages = data;
+
+				}, 0);
+				// */
+
+
+				//mySwiper.reInit();
+				//mySwiper.resizeFix(); // call this function after you change Swiper's size without resizing of window.
+
+			});
+
+		},
+		link: function(scope, iElement, iAttrs, controller, transcludeFn) {
+
+			//console.log("scope", scope.$parent.api);
+
+		}
+	};
+
+});
 
 /**
  * Start of app / website
@@ -51,6 +107,54 @@ texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams, $compi
 		showBackButton: 0
 	};
 
+	$scope.api = {
+		base: "http://texttv.nu/api/"
+	};
+
+	$scope.setupSwiper = function() {
+
+		// make this better, look at this:
+		// http://stackoverflow.com/questions/16286605/initialize-angularjs-service-with-asynchronous-data
+		// http://stackoverflow.com/questions/18646756/how-to-run-function-in-angular-controller-on-document-ready
+		$scope.swiper = new Swiper('.swiper-container',{
+			//Your options here:
+			mode: 'horizontal',
+			resistance: true,
+			useCSS3Transforms: true,
+			xcalculateHeight: true,
+			cssWidthAndHeight: true
+			/*onSlideChangeStart: function(swiper) {
+				console.log("onSlideChangeStart");
+			},
+			onSlideChangeEnd: function(swiper) {
+				console.log("onSlideChangeEnd");
+			},
+			onMomentumBounce: function() {
+				console.log("onMomentumBounce");
+			},
+			onResistanceBefore: function() {
+				console.log("onResistanceBefore");
+			},
+			onResistanceAfter: function() {
+				console.log("onResistanceAfter");
+			},
+			onSetWrapperTransition: function(swiper, duration) {
+				console.log("onSetWrapperTransition", duration);	
+			},
+			onSetWrapperTransform: function (swiper, transform) {
+				console.log("onSetWrapperTransform", transform);
+			}*/
+		});
+
+	};
+
+	// Setup swiper on dom ready
+	angular.element(document).ready(function() {
+
+		$scope.setupSwiper();
+
+	});
+
 	// Listen for changes to the Route. When the route
 	// changes, let's set the renderAction model value so
 	// that it can render in the Strong element.
@@ -58,6 +162,8 @@ texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams, $compi
 	$scope.$on(
 		"$routeChangeSuccess",
 		function( $currentRoute, $previousRoute ){
+
+			console.log("on routeChangeSuccess");
 
 			// Close any open side menu
 			$scope.sideMenuController.close();
@@ -73,38 +179,21 @@ texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams, $compi
 			} else if (action == "loadPageRange") {
 
 				console.log("Load pageRange!", pageRange);
-				$scope.headerbar.showBackButton = true;
 
-				$.getJSON("http://texttv.nu/api/get/" + pageRange, function(page) {
-				
-					//var newSlide = mySwiper.createSlide( "Prev" );
-					//newSlide.append();
+				// Render texttv page using our own directive
+				// This directive loads the page via the api
+				var includetag = angular.element("<texttv-page page-range=\"'" + pageRange + "'\"></texttv-page>");
+				var el = $compile( includetag )( $scope.$new() );
 
-					// Render template for current page range
-					$scope.pages.current = page;
-					console.log("$scope.pages.current", $scope.pages.current);
+				// Create and append new empty slide
+				var newSlide = $scope.swiper.createSlide( "" );
+				newSlide.append();
 
-					// Create and append new empty slide
-					var newSlide = mySwiper.createSlide( "" );
-					newSlide.append();
+				// Append template to slide
+				var lastSlide = $( $scope.swiper.getLastSlide() );
+				lastSlide.append( el );
 
-					// Render an angular template using ng-include
-					var includetag = angular.element("<ng-include src=\"'partials/texttv-page.html'\"></ng-include>");
-					var el = $compile( includetag )( $scope.$new() );
-
-					// Append rendered template to slide
-					var lastSlide = $( mySwiper.getLastSlide() );
-					lastSlide.append(el);
-
-					mySwiper.reInit();
-					mySwiper.resizeFix(); // call this function after you change Swiper's size without resizing of window.
-						
-					// Tell angular we have changed something
-					$scope.$apply();
-
-					//mySwiper.swipeTo(01);
-
-				});
+				//mySwiper.swipeTo(01);
 
 			}
 
@@ -210,7 +299,7 @@ texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams, $compi
 
 
 // Activate slider onDomReady
-var mySwiper;
+/*
 $(function($) {
 
 	var $document = $(document);
@@ -234,36 +323,8 @@ $(function($) {
 
 	});
 
-  mySwiper = new Swiper('.swiper-container',{
-	//Your options here:
-	mode: 'horizontal',
-	resistance: true,
-	useCSS3Transforms: true,
-	xcalculateHeight: true,
-	xcssWidthAndHeight: true
-	/*onSlideChangeStart: function(swiper) {
-		console.log("onSlideChangeStart");
-	},
-	onSlideChangeEnd: function(swiper) {
-		console.log("onSlideChangeEnd");
-	},
-	onMomentumBounce: function() {
-		console.log("onMomentumBounce");
-	},
-	onResistanceBefore: function() {
-		console.log("onResistanceBefore");
-	},
-	onResistanceAfter: function() {
-		console.log("onResistanceAfter");
-	},
-	onSetWrapperTransition: function(swiper, duration) {
-		console.log("onSetWrapperTransition", duration);	
-	},
-	onSetWrapperTransform: function (swiper, transform) {
-		console.log("onSetWrapperTransform", transform);
-	}*/
-  });
 
   
 
 }, false);
+*/
