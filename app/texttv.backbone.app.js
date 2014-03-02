@@ -58,6 +58,9 @@ var SidebarView = Backbone.View.extend({
 		var $item = $(e.target);
 		var pageRange = $item.data("pagerange");
 		console.log("pageRange", pageRange);
+
+		texttvapp.TextTVPages.add( new texttvapp.textTVPage({ pageRange: pageRange }) );
+
 	}
 
 });
@@ -74,9 +77,54 @@ texttvapp.sidebarView = new SidebarView({
  */
 var TextTVPageModel = Backbone.Model.extend({
 
+	defaults: {
+		pageRange: null,
+		sourceData: null
+	},
+
+	initialize: function() {
+		
+		this.on("change:pageRange", this.loadPageRange);
+
+		// Load pagerange directly if set on init
+		if ( this.has("pageRange") ) {
+			this.loadPageRange();
+		}
+
+	},
+
+
+	loadPageRange: function() {
+
+		$.ajax({
+			dataType: "json",
+			url: "http://texttv.nu/api/get/" + this.get("pageRange"),
+			context: this
+		})
+			.done(function(r) {
+				console.log("Got remote data", r);
+				this.set("sourceData", r);
+			})
+			.fail(function(r) {
+				console.log("Dit NOT get remote data, something failed", r);
+			});
+
+	}
+
 });
 
-texttvapp.textTVPageModel = new TextTVPageModel();
+texttvapp.textTVPage = TextTVPageModel;
+
+var TextTVPagesCollection = Backbone.Collection.extend({
+	model: TextTVPageModel
+});
+
+texttvapp.TextTVPages = new TextTVPagesCollection();
+
+
+/*
+var testpage = new texttvapp.textTVPage({ pageRange: "100-101" });
+*/
 
 /**
  * Main view and model
