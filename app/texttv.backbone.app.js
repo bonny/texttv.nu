@@ -41,7 +41,7 @@ var SidebarView = Backbone.View.extend({
 
 	toggle: function() {
 		
-		console.log("Open or close sidebar in sidebar view");
+		// console.log("Open or close sidebar in sidebar view");
 		this.model.set("isOpen", !this.model.get("isOpen"));
 
 	},
@@ -53,12 +53,15 @@ var SidebarView = Backbone.View.extend({
 	},
 
 	itemClick: function(e) {
+		
+		// console.log("click sidebar page range");
+		
 		e.preventDefault();
-		console.log("click sidebar page range");
-		var $item = $(e.target);
+		
+		var $item = $(e.target).closest(".item");
 		var pageRange = $item.data("pagerange");
-		console.log("pageRange", pageRange);
 
+		// console.log("pageRange", pageRange);
 		texttvapp.TextTVPages.add( new texttvapp.textTVPage({ pageRange: pageRange }) );
 
 	}
@@ -116,7 +119,17 @@ var TextTVPageModel = Backbone.Model.extend({
 texttvapp.textTVPage = TextTVPageModel;
 
 var TextTVPagesCollection = Backbone.Collection.extend({
-	model: TextTVPageModel
+
+	model: TextTVPageModel,
+
+	initialize: function() {
+		this.on("add", this.pageAdded);
+	},
+
+	pageAdded: function(addedPage) {
+		console.log("page was added to collection", addedPage);
+	}
+
 });
 
 texttvapp.TextTVPages = new TextTVPagesCollection();
@@ -160,12 +173,12 @@ var MainView = Backbone.View.extend({
 	},
 
 	toggleSidebar: function() {
-		console.log("Open or close sidebar in main view");
+		// console.log("Open or close sidebar in main view");
 		texttvapp.sidebarView.toggle();
 	},
 
 	render: function() {
-		console.log("Render mainView");
+		// console.log("Render mainView");
 		var renderedHTML = this.template( this.model.attributes );
 		this.$el.html(renderedHTML);
 		return this;
