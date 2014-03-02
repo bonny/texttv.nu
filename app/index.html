@@ -7,26 +7,20 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 	<meta http-equiv="cleartype" content="on">
-	<link rel="stylesheet" href="bower_components/ionic/dist/css/ionic.css">
+	<link rel="stylesheet" href="bower_components/ionic/release/css/ionic.css">
 	<link rel="stylesheet" href="bower_components/swiper/dist/idangerous.swiper.css">
 	
 	<link rel="stylesheet" href="css/texttv-theme-black.css">
 
 	<script src="bower_components/jquery/jquery.js"></script>
-	<script src="bower_components/ionic/dist/js/ionic.js"></script>
-	<script src="bower_components/ionic/dist/js/angular/angular.js"></script>
-	<script src="bower_components/ionic/dist/js/angular/angular-route.js"></script>
-	<!-- <script src="bower_components/ionic/dist/js/angular-ui/angular-ui-router.js"></script> -->
-	<script src="bower_components/ionic/dist/js/angular/angular-animate.js"></script>
-	<script src="bower_components/ionic/dist/js/angular/angular-touch.js"></script>
-	<script src="bower_components/ionic/dist/js/angular/angular-sanitize.js"></script>
+	<script src="bower_components/ionic/release/js/ionic.bundle.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
 	
 	<!-- Animation helpers -->
 	<!-- https://github.com/yearofmoo/ngAnimate-animate.css -->
 	<link rel="stylesheet" href="bower_components/animate.css/animate.css">
-	<script src="bower_components/ngAnimate-animate.css/animate.js"></script>
 
-	<script src="bower_components/ionic/dist/js/ionic-angular.js"></script>
+	<script src="bower_components/ngAnimate-animate.css/animate.js"></script>
 	<script src="bower_components/swiper/dist/idangerous.swiper-2.4.js"></script>
 	<script src="js/app.js"></script>
 
@@ -34,10 +28,10 @@
 
 <body ng-app="texttvApp" ng-controller="TexttvCtrl">
 	
-		<side-menus>
+	<ion-side-menus>
 
 		<!-- Center content -->
-		<pane side-menu-content>
+		<ion-pane ion-side-menu-content>
 			
 			<!--
 			<header-bar
@@ -88,9 +82,9 @@
 				<h2 class="title">Sub Header</h2>
 			</div> -->
 
-			<content scroll="true" overflow-scroll="false" has-header="true" has-footer="false" on-refresh="onRefresh()">
+			<ion-content scroll="true" overflow-scroll="false" has-header="true" has-footer="false" on-refresh="onRefresh()">
 
-				<refresher></refresher>
+				<ion-refresher></ion-refresher>
 
 				<div ng-view></div>
 
@@ -104,16 +98,16 @@
 				
 				<ng-include src="'partials/debug.html'"></ng-include>
 
-			</content>
+			</ion-content>
 			
-		</pane>
+		</ion-pane>
 
 		<!-- Sidebar menu at right -->
-		<side-menu side="right">
+		<ion-side-menu side="right">
 			<ng-include src="'partials/sidebar-menu-right.html'"></ng-include>
-		</side-menu>
+		</ion-side-menu>
 			
-	</side-menus>
+	</ion-side-menus>
 
 </body>
 </html>

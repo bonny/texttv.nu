@@ -4,28 +4,71 @@
  * --------------------------------------------------
  */
 
-.hidden, 
-.hide { 
-  display: none; 
+.hide {
+  display: none;
+}
+.opacity-hide {
+  opacity: 0;
+}
+.grade-b .opacity-hide,
+.grade-c .opacity-hide {
+  opacity: 1;
+  display: none;
 }
 .show {
   display: block;
 }
+.opacity-show {
+  opacity: 1;
+}
 .invisible {
   visibility: hidden;
+}
+
+.hide-footer {
+  .bar-footer,
+  .tabs {
+    display: none;
+  }
+  .has-footer,
+  .has-tabs {
+    bottom: 0;
+  }
 }
 
 .inline {
   display: inline-block;
 }
 
+.disable-pointer-events {
+  pointer-events: none;
+}
+
+.enable-pointer-events {
+  pointer-events: auto;
+}
+
+.disable-user-behavior {
+  // used to prevent the browser from doing its native behavior. this doesnt 
+  // prevent the scrolling, but cancels the contextmenu, tap highlighting, etc
+
+  @include user-select(none);
+  @include touch-callout(none);
+  @include tap-highlight-transparent();
+
+  -webkit-user-drag: none;
+  
+  -ms-touch-action: none;
+  -ms-content-zooming: none;
+}
+
 .block {
   display: block;
   clear: both;
-  &:after { 
-    display: block; 
-    visibility: hidden; 
-    clear: both; 
+  &:after {
+    display: block;
+    visibility: hidden;
+    clear: both;
     height: 0;
     content: ".";
   }
@@ -93,8 +136,8 @@
 /**
  * Utility Colors
  * --------------------------------------------------
- * Utility colors are added to help set a naming convention. You'll 
- * notice we purposely do not use words like "red" or "blue", but 
+ * Utility colors are added to help set a naming convention. You'll
+ * notice we purposely do not use words like "red" or "blue", but
  * instead have colors which represent an emotion or generic theme.
  */
 

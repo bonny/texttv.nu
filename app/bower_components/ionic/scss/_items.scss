@@ -89,7 +89,9 @@
 }
 
 // Link and Button Active States
-a.item, button.item {
+.item.active,
+.ionic-pseudo .item:active,
+.item-complex.active .item-content {
   @include item-active-style($item-default-active-bg, $item-default-active-border);
 
   // Different active themes for <a> and <button> items
@@ -194,6 +196,7 @@ a.item-content {
   text-decoration: none;
 }
 
+.item-text-wrap .item,
 .item-text-wrap,
 .item-text-wrap h1,
 .item-text-wrap h2,
@@ -308,15 +311,23 @@ a.item-content {
   position: absolute;
   top: $item-padding / 2;
   left: $item-padding / 2;
-  min-width: initial;
-  min-height: $item-icon-font-size;
-  font-size: $item-icon-font-size;
+  min-width: $item-icon-font-size + ($button-border-width * 2);
+  min-height: $item-icon-font-size + ($button-border-width * 2);
+  font-size: $item-button-font-size;
+  line-height: $item-button-line-height;
 
-  .icon {
+  .icon:before {
     position: relative;
     left: auto;
     width: auto;
     line-height: $item-icon-font-size - 1;
+  }
+
+  > .button {
+    margin: 0px 2px;
+    min-height: $item-icon-font-size + ($button-border-width * 2);
+    font-size: $item-button-font-size;
+    line-height: $item-button-line-height;
   }
 }
 
@@ -335,11 +346,12 @@ button.item.item-button-right {
   position: absolute;
   top: $item-padding / 2;
   right: $item-padding;
-  min-width: initial;
-  min-height: $item-icon-font-size;
-  font-size: $item-icon-font-size;
+  min-width: $item-icon-font-size + ($button-border-width * 2);
+  min-height: $item-icon-font-size + ($button-border-width * 2);
+  font-size: $item-button-font-size;
+  line-height: $item-button-line-height;
 
-  .icon {
+  .icon:before {
     position: relative;
     left: auto;
     width: auto;
@@ -348,8 +360,10 @@ button.item.item-button-right {
 
   > .button {
     margin: 0px 2px;
-    min-height: $item-icon-font-size;
-    font-size: $item-icon-font-size;
+    min-width: $item-icon-font-size + ($button-border-width * 2);
+    min-height: $item-icon-font-size + ($button-border-width * 2);
+    font-size: $item-button-font-size;
+    line-height: $item-button-line-height;
   }
 }
 
@@ -362,12 +376,16 @@ button.item.item-button-right {
  */
 
 a.item, 
-button.item {
+button.item,
+.item a[href].item-content,
+.item[ng-click] a.item-content {
   padding-right: (($item-padding * 3) - 5);
 }
 
 a.item:after,
-button.item:after {
+button.item:after,
+.item a[href].item-content:after,
+.item[ng-click] a.item-content:after {
   /* By default, both <a> and <button> have right side arrow icons */
   @include display-flex();
   @include align-items(center);
@@ -388,11 +406,25 @@ button.item:after {
   speak: none;
 }
 
+.grade-b,
+.grade-c {
+  a.item:after,
+  button.item:after,
+  .item a[href].item-content:after,
+  .item[ng-click] a.item-content:after {
+    // override Ionicon arrow with boring character for low end devices
+    @include font-smoothing(none);
+    content: '>';
+    font-family: 'monospace';
+  }
+}
+
 // do not show the default right arrow when they want their own right side icon
 a.item-icon-right:after,
 button.item-icon-right:after,
 a.item-button-right:after,
-button.item-button-right:after {
+button.item-button-right:after,
+.item a.item-content:after {
   display: none;
 }
 
@@ -419,7 +451,8 @@ button.item-button-right:after {
 // Item Thumbnails
 // -------------------------------
 
-.item-thumbnail-left {
+.item-thumbnail-left,
+.item-thumbnail-left .item-content {
   padding-left: $item-thumbnail-width + $item-thumbnail-margin + $item-padding;
   min-height: $item-thumbnail-height + ($item-thumbnail-margin * 2);
 
@@ -432,8 +465,12 @@ button.item-button-right:after {
     width: 100%;
   }
 }
+.item-thumbnail-left.item-complex {
+  padding-left: 0;
+}
 
-.item-thumbnail-right {
+.item-thumbnail-right,
+.item-thumbnail-right .item-content {
   padding-right: $item-thumbnail-width + $item-thumbnail-margin + $item-padding;
   min-height: $item-thumbnail-height + ($item-thumbnail-margin * 2);
 
@@ -445,6 +482,9 @@ button.item-button-right:after {
     max-height: $item-thumbnail-height;
     width: 100%;
   }
+}
+.item-thumbnail-left.item-complex {
+  padding-right: 0;
 }
 
 

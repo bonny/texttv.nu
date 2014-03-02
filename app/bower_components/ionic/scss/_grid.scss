@@ -121,3 +121,14 @@
   @include flex(0, 0, 90%);
   max-width: 90%;
 }
+
+
+/* Responsive Grid Classes */
+/* Adding a class of responsive-X to a row */
+/* will trigger the flex-direction to */
+/* change to column and add some margin */
+/* to any columns in the row for clearity */
+
+@include responsive-grid-break('.responsive-sm', $grid-responsive-sm-break);
+@include responsive-grid-break('.responsive-md', $grid-responsive-md-break);
+@include responsive-grid-break('.responsive-lg', $grid-responsive-lg-break);

@@ -164,8 +164,8 @@ texttvApp.controller('TexttvCtrl', function($scope, $route, $routeParams, $compi
 		function( $currentRoute, $previousRoute ){
 
 			console.log("on routeChangeSuccess");
-
 			// Close any open side menu
+
 			$scope.sideMenuController.close();
 
 			var action = $route.current.action;

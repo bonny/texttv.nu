@@ -6,14 +6,16 @@ Note: __Ionic is Alpha software__ and currently best supports iOS 6+ and Android
 
 # What is Ionic?
 
-Ionic is the open source HTML5 Mobile Framework for building amazing, cross-platform hybrid native apps with HTML, JavaScript, and CSS.
+Ionic is the open source HTML5 Mobile Framework for building amazing, cross-platform hybrid native apps with HTML, JavaScript, and CSS. Just like this one:
+
+![Weather Demo](http://ionicframework.com/img/weather1x.png)
 
 We built Ionic because we wanted a framework that focused on building hybrid native apps, rather than mobile websites. We wanted this framework to be obsessive about great design and performance. A framework that left the past behind and focused on the future where mobile devices could make HTML5 feel native.
 
 It's important to realize that Ionic is not a replacement for frameworks used for building mobile web apps. There are a lot
 of great solutions that work well for websites, like [jQuery Mobile](http://jquerymobile.com/).
 
-Ionic is also not a good solution if you need to support older generation devices. Our [compatibility](http://ionicframework.com/docs/#browser-support) *starts* at iOS 6 and Android 4.1. We will never support versions earlier than those. This is a framework for the future. Learn more, [Where does the Ionic Framework fit in?](http://ionicframework.com/blog/where-does-the-ionic-framework-fit-in/)
+Ionic is also not a good solution if you need to support older generation devices. Our [compatibility](http://ionicframework.com/docs/#browser-support) *starts* at iOS 6 and Android 4.1. We will never support versions earlier than those. This is a framework for the future. Learn more: [Where does the Ionic Framework fit in?](http://ionicframework.com/blog/where-does-the-ionic-framework-fit-in/)
 
 
 ## Quick Start
@@ -33,28 +35,22 @@ $ ionic start myproject
 
 ### Manual Start
 
-The source files are in the `dist/` folder. You can just grab the `dist/js/ionic.js`, `dist/js/ionic-angular.js`, and `dist/ionic.css` files and
-you'll be good to go. For most cases, you'll need AngularJS as well, which we bundle a current 1.2.x version in `dist/js/angular`.
+- Download the latest **stable** release from:
+  * The release folder of this repository
+  * The Ionic CDN: [Latest Release](http://code.ionicframework.com/)
+  * `bower install ionic` 
+- Download the **bleeding edge just-from-master release** from:
+  * The Ionic CDN: [Nightly Build](http://code.ionicframework.com/#nightly)
+  * Look in the [ionic-bower Repository](https://github.com/driftyco/ionic-bower) for the latest version, and do for example `bower install driftyco/ionic-bower#0.9.23-alpha-652` (`bower install ionic` will have the latest available soon)
+  
+Once you have a release, use `js/ionic.js`, `js/ionic-angular.js`, and `css/ionic.css`.
 
-## Running examples
+For most cases, you'll need AngularJS as well.  This is bundled in `js/angular/` and `js/angular-ui-router/`.
 
-You will first have to install dependencies by running:
 
-    npm install
+## Demos
 
-Make sure that you have [npm](https://github.com/isaacs/npm) already installed.
-
-Ionic comes with many interesting examples showing the power of the framework. To
-check them out, navigate into the source folder, and start a web server. The easiest
-way is to use Python:
-
-    python -m SimpleHTTPServer 8000
-
-    node_modules/grunt-cli/bin/grunt watch
-
-    http://localhost:8000/examples/starters/
-
-    http://localhost:8000/test/
+ - [Ionic Codepen.io Demos](http://codepen.io/ionic/public-list)
 
 
 ## Community
@@ -75,7 +71,7 @@ way is to use Python:
 
 **Ben Sperry**
 
-+ <https://twitter.com/helloimben>
++ <https://twitter.com/benjsperry>
 + <https://github.com/bensperry>
 
 **Adam Bradley**
@@ -83,6 +79,33 @@ way is to use Python:
 + <https://twitter.com/adamdbradley>
 + <https://github.com/adamdbradley>
 
+## Development
+
+* `npm install` to setup
+* `grunt` to jshint & build
+* `grunt watch` to watch and rebuild on change
+* `grunt karma:single` to test one-time
+* `grunt karma:watch` to test and re-run on source change
+* `grunt protractor:local` to test e2e tests locally (requires static server on port 8080)
+* `grunt e2e-watch` to run end to end tests on change of files in `test/e2e/**/*`
+* `grunt cloudtest` to run unit & e2e tests in the cloud
+
+### Commit Conventions
+
+* Uses http://github.com/ajoslin/conventional-changelog conventions
+
+### Pushing Releases
+
+(uses AngularJS's bash utils - when you run any script, run it with `--git-push-dryrun=true` to do 'mock' git pushes)
+
+* Run `./scripts/release/finalize-version.sh --action=prepare` to:
+  - Remove version suffix
+  - Write new version to package/bower/component.json
+  - Move build files to `release/`
+  - Commit & tag the release
+* Run `./scripts/release/finalize-version.sh --action=publish` to:
+  - Push out new version
+* Once new version is pushed out, run `./scripts/release/initialize-new-version.sh` (usage is shown in file), to bump to next version with bump type / version suffix / version name specified.
 
 ## LICENSE
 
