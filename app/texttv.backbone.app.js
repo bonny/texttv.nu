@@ -39,6 +39,10 @@ var SidebarView = Backbone.View.extend({
 		texttvapp.mainView.$el.toggleClass("open-sidebar", this.model.get("isOpen"));
 	},
 
+	close: function() {
+		this.model.set("isOpen", false);
+	},
+
 	toggle: function() {
 		
 		// console.log("Open or close sidebar in sidebar view");
@@ -64,6 +68,8 @@ var SidebarView = Backbone.View.extend({
 		// Init a page and load it
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({ pageRange: pageRange }) );
 		page.addToSwiper();
+
+		this.close();
 
 	}
 
@@ -93,7 +99,7 @@ var TextTVPageModel = Backbone.Model.extend({
 	initialize: function() {
 		
 		this.on("change:pageRange", this.loadPageRange);
-		this.on("change:sourceData", this.addContentToSwiper);
+		this.on("change:sourceData", this.sourceDataChanged);
 
 		// Load pagerange directly if set on init
 		if ( this.has("pageRange") ) {
@@ -105,12 +111,26 @@ var TextTVPageModel = Backbone.Model.extend({
 	addToSwiper: function() {
 
 		var ajaxPromise = this.get("ajaxPromise");
+		
 		var newSlide = TextTVSwiper.swiper.createSlide('<p>Laddar ' + this.get("pageRange") + '</p>');
 		newSlide.append();
+		
 		this.set("swiperSlide", newSlide);
 
 	},
 
+	sourceDataChanged: function() {
+		
+		this.addContentToSwiper();
+
+		var swiperSlide = this.get("swiperSlide");
+		TextTVSwiper.swiper.swipeTo( swiperSlide.index() );
+
+	},
+
+	/**
+	 * Add page contents to the swiper slide when the ajax call is done
+	 */
 	addContentToSwiper: function() {
 		
 		console.log("addContentToSwiper");
