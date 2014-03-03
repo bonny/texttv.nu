@@ -57,6 +57,8 @@
 
 	text-align: left;
 	display: inline-block;
+	vertical-align: top;
+	/*width: 100%;*/
 	
 	font-family: "ubuntu mono", "courier new", monospace;
 	/* make more text fit horizontaly, but still keep it readable */

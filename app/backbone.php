@@ -4,7 +4,6 @@
 <head>
 	<meta charset="utf-8">
 	<title>TextTV.nu backbone version</title>
-	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
 
 	<link rel="stylesheet" href="bower_components/ionic/release/css/ionic.css">
@@ -25,35 +24,38 @@
 	<div id="MainView" class="view view--main"></div>
 	
 	<script id="MainViewTemplate" type="text/x-template">
-		<div id="MainView" class="view view--main">
-		
-			<div class="bar bar-header bar-positive">
+	
+		<div class="bar bar-header bar-positive">
 
-				<% if (hasPrevPage) { %>
+			<% if (hasPrevPage) { %>
 				<button class="button button-clear">
 					<i class="icon ion-ios7-arrow-back"></i>
 					Tillbaka
 				</button>
+			<% } %>
+
+			<h1 class="title">
+				<% if (title == "TextTV.nu") { %>
+					<img src="img/logo.png" alt="'" height="15">
 				<% } %>
+				<%- title %>
+			</h1>
 
-				<h1 class="title">
-					<% if (title == "TextTV.nu") { %>
-						<img src="img/logo.png" alt="'" height="15">
-					<% } %>
-					<%- title %>
-				</h1>
+			<button class="button button-clear icon ion-navicon js-sidebarToggle"></button>
 
-				<button class="button button-clear icon ion-navicon js-sidebarToggle"></button>
+		</div>
 
-			</div>
+		<div class="content has-header">
+			
+			<p>texttv-sidor kommer här dårå</p>
 
-			<div class="content has-header">
-				
-				<p>texttv-sidor kommer här dårå</p>
-
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+				</div>
 			</div>
 
 		</div>
+
 	</script>
 
 	<div id="SidebarRight" class="menu menu-right">
@@ -96,6 +98,25 @@
 			overflow-y: scroll;
 			-webkit-overflow-scrolling: touch;
 		}
+		.content {
+			height: 100%;
+		}
+		.swiper-container {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			overflow: hidden;
+		}
+		.swiper-slide {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			overflow-y: scroll;
+			-webkit-overflow-scrolling: touch;
+		}
+
 	</style>
 
 	<script src="texttv.backbone.app.js"></script>

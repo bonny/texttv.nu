@@ -61,8 +61,9 @@ var SidebarView = Backbone.View.extend({
 		var $item = $(e.target).closest(".item");
 		var pageRange = $item.data("pagerange");
 
-		// console.log("pageRange", pageRange);
-		texttvapp.TextTVPages.add( new texttvapp.textTVPage({ pageRange: pageRange }) );
+		// Init a page and load it
+		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({ pageRange: pageRange }) );
+		page.addToSwiper();
 
 	}
 
@@ -82,12 +83,17 @@ var TextTVPageModel = Backbone.Model.extend({
 
 	defaults: {
 		pageRange: null,
-		sourceData: null
+		sourceData: null,
+		ajaxPromise: null,
+
+		// The swiper slide that has been connected to this page
+		swiperSlide: null
 	},
 
 	initialize: function() {
 		
 		this.on("change:pageRange", this.loadPageRange);
+		this.on("change:sourceData", this.addContentToSwiper);
 
 		// Load pagerange directly if set on init
 		if ( this.has("pageRange") ) {
@@ -96,10 +102,35 @@ var TextTVPageModel = Backbone.Model.extend({
 
 	},
 
+	addToSwiper: function() {
+
+		var ajaxPromise = this.get("ajaxPromise");
+		var newSlide = TextTVSwiper.swiper.createSlide('<p>Laddar ' + this.get("pageRange") + '</p>');
+		newSlide.append();
+		this.set("swiperSlide", newSlide);
+
+	},
+
+	addContentToSwiper: function() {
+		
+		console.log("addContentToSwiper");
+		var sourceData = this.get("sourceData");
+		var sliderHTML = "";
+		
+		_.each(sourceData, function(onePageData) {
+			for (var i = 0; i < onePageData.content.length; i++) {
+				sliderHTML += onePageData.content[i];
+			}
+		});
+		
+		var swiperSlide = this.get("swiperSlide");
+		swiperSlide.html(sliderHTML);
+
+	},
 
 	loadPageRange: function() {
 
-		$.ajax({
+		var ajaxPromise = $.ajax({
 			dataType: "json",
 			url: "http://texttv.nu/api/get/" + this.get("pageRange"),
 			context: this
@@ -111,6 +142,8 @@ var TextTVPageModel = Backbone.Model.extend({
 			.fail(function(r) {
 				console.log("Dit NOT get remote data, something failed", r);
 			});
+
+		this.set("ajaxPromise", ajaxPromise);
 
 	}
 
@@ -168,8 +201,12 @@ var MainView = Backbone.View.extend({
 	},
 
 	initialize: function() {
+		
 		this.listenTo(this.model, "change", this.render);
 		this.render();
+		
+		TextTVSwiper.initialize();
+
 	},
 
 	toggleSidebar: function() {
@@ -185,6 +222,43 @@ var MainView = Backbone.View.extend({
 	}
 
 });
+
+/**
+ * Controls the Swiper
+ */
+var TextTVSwiper = {
+	
+	elms: [],
+	
+	initialize: function() {
+		
+		this.swiper_container = $('.swiper-container');
+		this.swiper = this.swiper_container.swiper({
+			mode:'horizontal',
+			loop: false
+		});
+
+	},
+/*
+	addPage: function(page) {
+		
+		// Use ajaxPromise to detect when page is loaded (or failed)
+		// Wait until loaded to add content to new swiper slide
+		var ajaxPromise = page.get("ajaxPromise");
+
+		var newSlide = this.swiper.createSlide('<p>Here is my new slide yo</p>');
+		newSlide.append();
+
+		ajaxPromise.done(this.pageDoneLoading);
+
+	},
+
+	pageDoneLoading: function(r) {
+		console.log("ey!", r);
+	}
+*/
+};
+_.extend(TextTVSwiper, Backbone.Events);
 
 texttvapp.mainView = new MainView({
 	model: texttvapp.mainModel
