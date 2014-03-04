@@ -66,8 +66,10 @@ var SidebarView = Backbone.View.extend({
 		var pageRange = $item.data("pagerange");
 
 		// Init a page and load it
-		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({ pageRange: pageRange }) );
-		page.addToSwiper();
+		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
+			pageRange: pageRange,
+			addToSwiper: true
+		}) );
 
 		this.close();
 
@@ -104,6 +106,11 @@ var TextTVPageModel = Backbone.Model.extend({
 		// Load pagerange directly if set on init
 		if ( this.has("pageRange") ) {
 			this.loadPageRange();
+		}
+
+		// Add to swiper directly
+		if (this.get("addToSwiper") ) {
+			this.addToSwiper();
 		}
 
 	},
@@ -144,6 +151,7 @@ var TextTVPageModel = Backbone.Model.extend({
 		});
 		
 		var swiperSlide = this.get("swiperSlide");
+		console.log("swiperSlide", swiperSlide);
 		swiperSlide.html(sliderHTML);
 
 	},
@@ -217,15 +225,47 @@ var MainView = Backbone.View.extend({
 	template: _.template( $("#MainViewTemplate").html() ),
 
 	events: {
-		"click .js-sidebarToggle": "toggleSidebar"
+		"click .js-sidebarToggle": "toggleSidebar",
+		"click a": "clickLinkInRoot"
 	},
 
+	/**
+	 * Init the app
+	 */
 	initialize: function() {
 		
 		this.listenTo(this.model, "change", this.render);
 		this.render();
 		
 		TextTVSwiper.initialize();
+
+		this.loadHome();
+
+	},
+
+	loadHome: function() {
+
+		console.log("load home");
+		var pageRange = 100;
+		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
+			pageRange: pageRange,
+			addToSwiper: true
+		}) );
+
+	},
+
+	clickLinkInRoot: function(e) {
+		
+		var $a = $(e.target);
+
+		// Check if link is inside .root
+		var $root = $a.closest(".root");
+		if ( $root.length ) {
+			var href = $a.attr("href");
+			console.log("href", href);
+		}
+		
+		e.preventDefault();
 
 	},
 
