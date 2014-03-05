@@ -13,6 +13,7 @@
 
 	<script src="bower_components/jquery/jquery.js"></script>
 	<script src="bower_components/underscore/underscore.js"></script>
+	<script src="bower_components/underscore.string/dist/underscore.string.min.js"></script>
 	<script src="bower_components/backbone/backbone.js"></script>
 	<script src="bower_components/fastclick/lib/fastclick.js"></script>
 	<script src="bower_components/swiper/dist/idangerous.swiper-2.4.js"></script>
