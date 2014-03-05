@@ -209,3 +209,12 @@ T.ex. sida 200 blir icke centrerad..
 	background: #F0F
 }
 
+/* styles for ipad */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  {
+	
+	/* make one page fit in portrait mode, make two pages fit in landscape */
+	.root {
+		font-size: 23px;
+	}
+
+}
