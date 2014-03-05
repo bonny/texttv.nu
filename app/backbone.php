@@ -32,6 +32,15 @@
 		</div>
 	</script>
 
+	<!-- Failed to load page -->
+	<script id="LoadingPageTemplateFailed" type="text/x-template">
+		<div class="pageIsLoading pageIsLoading--failed">
+			<div class="pageIsLoading-failIcon ion-alert-circled"></div>
+			<p class="pageIsLoading-text"><%= pageRange %></p>
+			<p class="pageIsLoading-text">Kunde inte läsa in sidan.<br>Försök igen om en kort stund.</p>
+		</div>
+	</script>
+	
 	<script id="MainViewTemplate" type="text/x-template">
 	
 		<div class="bar bar-header bar-positive">

@@ -51,7 +51,8 @@
 	text-align: center;
 }
 
-.pageIsLoading-spinnerIcon {
+.pageIsLoading-spinnerIcon,
+.pageIsLoading-failIcon {
 	font-size: 44px;
 	color: #666;
 }
@@ -60,6 +61,7 @@
 	margin-top: 20px;
 	color: #666;
 	font-size: 24px;
+	line-height: 1.2;
 }
 
 /**
@@ -113,7 +115,7 @@ T.ex. sida 200 blir icke centrerad..
 	font-size: 16px;
 
 	letter-spacing: -.1ex;
-	line-height: 1;
+	line-height: 1.1;
 
 	/* Always hate this hack, but without it the text is way to blurry */
 	-webkit-font-smoothing: antialiased;

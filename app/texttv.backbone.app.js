@@ -99,6 +99,7 @@ var TextTVPageModel = Backbone.Model.extend({
 	},
 
 	templateLoading: _.template( $("#LoadingPageTemplate").html() ),
+	templateLoadingFailed: _.template( $("#LoadingPageTemplateFailed").html() ),
 
 	initialize: function() {
 		
@@ -172,8 +173,9 @@ var TextTVPageModel = Backbone.Model.extend({
 			dataType: "json",
 			url: "http://texttv.nu/api/get/" + this.get("pageRange"),
 			context: this,
-			data: { slow_answer: 1 },
-			cache: false // @TODO do our own caching later on...
+			cache: false, // @TODO do our own caching later on...
+			// data: { slow_answer: 1 }, // enable this to test how it looks with slow network
+			// timeout: 1000 // enable this to test timeout/fail message
 		})
 			.done(function(r) {
 				console.log("Got remote data", r);
@@ -181,9 +183,17 @@ var TextTVPageModel = Backbone.Model.extend({
 			})
 			.fail(function(r) {
 				console.log("Dit NOT get remote data, something failed", r);
+				this.loadFailed();
 			});
 
 		this.set("ajaxPromise", ajaxPromise);
+
+	},
+
+	loadFailed: function() {
+		
+		var swiperSlide = this.get("swiperSlide");
+		swiperSlide.html( this.templateLoadingFailed(this.attributes) );
 
 	}
 
