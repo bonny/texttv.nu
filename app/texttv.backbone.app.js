@@ -98,6 +98,8 @@ var TextTVPageModel = Backbone.Model.extend({
 		swiperSlide: null
 	},
 
+	templateLoading: _.template( $("#LoadingPageTemplate").html() ),
+
 	initialize: function() {
 		
 		this.on("change:pageRange", this.loadPageRange);
@@ -119,19 +121,26 @@ var TextTVPageModel = Backbone.Model.extend({
 
 		var ajaxPromise = this.get("ajaxPromise");
 		
-		var newSlide = TextTVSwiper.swiper.createSlide('<p>Laddar ' + this.get("pageRange") + '</p>');
+		// Add new slide and swipe to that directly. Content from server has not arrived yet.
+		var newSlide = TextTVSwiper.swiper.createSlide( this.templateLoading(this.attributes) );
+		
 		newSlide.append();
 		
+		TextTVSwiper.swiper.swipeTo( newSlide.index() );
+
 		this.set("swiperSlide", newSlide);
 
 	},
 
+	/**
+	 * When source data has changed = page has loaded from server
+	 */
 	sourceDataChanged: function() {
 		
 		this.addContentToSwiper();
 
 		var swiperSlide = this.get("swiperSlide");
-		TextTVSwiper.swiper.swipeTo( swiperSlide.index() );
+		
 
 	},
 
@@ -146,6 +155,7 @@ var TextTVPageModel = Backbone.Model.extend({
 		
 		_.each(sourceData, function(onePageData) {
 			for (var i = 0; i < onePageData.content.length; i++) {
+				//sliderHTML += "<div class='TextTVPage'>" + onePageData.content[i] + "</div>";
 				sliderHTML += onePageData.content[i];
 			}
 		});
@@ -161,7 +171,9 @@ var TextTVPageModel = Backbone.Model.extend({
 		var ajaxPromise = $.ajax({
 			dataType: "json",
 			url: "http://texttv.nu/api/get/" + this.get("pageRange"),
-			context: this
+			context: this,
+			data: { slow_answer: 1 },
+			cache: false // @TODO do our own caching later on...
 		})
 			.done(function(r) {
 				console.log("Got remote data", r);
@@ -258,12 +270,29 @@ var MainView = Backbone.View.extend({
 		
 		var $a = $(e.target);
 
-		// Check if link is inside .root
-		var $root = $a.closest(".root");
-		if ( $root.length ) {
-			var href = $a.attr("href");
-			console.log("href", href);
+		// Check if link is texttv-link, i.e. a link that looks like /nnn or /nnn-nnn
+		//var $root = $a.closest(".root");
+		//if ( $root.length ) {
+
+		var href = _.str.trim( $a.attr("href"), " /");
+		
+		// Check if link is nnn or nnn-nnn
+		var matches = href.match(/\d{3}(-\d{3})?/);
+		console.log(href, matches);
+		if ( matches !== null) {
+
+			// Seems to be a texttv-link
+			console.log("Link looks like texttv-link", href);
+			var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
+				pageRange: href,
+				addToSwiper: true
+			}) );
+
+
 		}
+
+
+		// }
 		
 		e.preventDefault();
 

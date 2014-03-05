@@ -13,7 +13,7 @@
 
 	<script src="bower_components/jquery/jquery.js"></script>
 	<script src="bower_components/underscore/underscore.js"></script>
-	<script src="bower_components/underscore.string/dist/underscore.string.min.js"></script>
+	<script src="bower_components/underscore.string/lib/underscore.string.js"></script>
 	<script src="bower_components/backbone/backbone.js"></script>
 	<script src="bower_components/fastclick/lib/fastclick.js"></script>
 	<script src="bower_components/swiper/dist/idangerous.swiper-2.4.js"></script>
@@ -24,6 +24,14 @@
 
 	<div id="MainView" class="view view--main"></div>
 	
+	<!-- "Loading page..." -template -->
+	<script id="LoadingPageTemplate" type="text/x-template">
+		<div class="pageIsLoading">
+			<div class="pageIsLoading-spinnerIcon ion-loading-c"></div>
+			<p class="pageIsLoading-text"><%= pageRange %></p>
+		</div>
+	</script>
+
 	<script id="MainViewTemplate" type="text/x-template">
 	
 		<div class="bar bar-header bar-positive">
@@ -39,7 +47,9 @@
 				<% if (title == "TextTV.nu") { %>
 					<img src="img/logo.png" alt="'" height="15">
 				<% } %>
-				<%- title %>
+				<a href="/100" class="bar-header-titleLink">
+					<%- title %>
+				</a>
 			</h1>
 
 			<button class="button button-clear icon ion-navicon js-sidebarToggle"></button>

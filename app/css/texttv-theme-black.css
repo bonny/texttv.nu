@@ -40,6 +40,27 @@
 	src: url(../bower_components/ubuntu-font/ubuntumono-b.ttf) format('truetype');
 }
 
+/* remove underline from link in header bar */
+.bar-header-titleLink {
+	text-decoration: none;
+}
+
+/* While a page is loading */
+.pageIsLoading {
+	margin-top: 40px;
+	text-align: center;
+}
+
+.pageIsLoading-spinnerIcon {
+	font-size: 44px;
+	color: #666;
+}
+
+.pageIsLoading-text {
+	margin-top: 20px;
+	color: #666;
+	font-size: 24px;
+}
 
 /**
  * Set font size and general colors in the wrapper
@@ -52,6 +73,24 @@
 	color: #eee;
 }
 
+/* Make swiper contain the above font size */
+.swiper-container, .swiper-slide {
+	
+	/*height: 28em;*/
+	text-align: center;
+
+	/* get above tab nav */
+	/*z-index: 5;*/
+}
+
+
+/*
+Wrapper for .root
+T.ex. sida 200 blir icke centrerad..
+*/
+.TextTVPage {
+	text-align: center;
+}
 
 .root {
 
@@ -71,7 +110,7 @@
 	font-size: 18px;
 
 	/* 17 is good for when in a card of type image */
-	font-size: 18px;
+	font-size: 16px;
 
 	letter-spacing: -.1ex;
 	line-height: 1;
@@ -85,16 +124,6 @@
 
 	padding-top: 1em;
 	padding-bottom: 1em;
-}
-
-/* Make swiper contain the above font size */
-.swiper-container, .swiper-slide {
-	
-	/*height: 28em;*/
-	text-align: center;
-
-	/* get above tab nav */
-	/*z-index: 5;*/
 }
 
 
