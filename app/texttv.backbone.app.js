@@ -68,7 +68,8 @@ var SidebarView = Backbone.View.extend({
 		// Init a page and load it
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 			pageRange: pageRange,
-			addToSwiper: true
+			addToSwiper: true,
+			animateSwiper: false
 		}) );
 
 		this.close();
@@ -95,7 +96,10 @@ var TextTVPageModel = Backbone.Model.extend({
 		ajaxPromise: null,
 
 		// The swiper slide that has been connected to this page
-		swiperSlide: null
+		swiperSlide: null,
+
+		addToSwiper: false,
+		animateSwiper: true
 	},
 
 	templateLoading: _.template( $("#LoadingPageTemplate").html() ),
@@ -127,7 +131,12 @@ var TextTVPageModel = Backbone.Model.extend({
 		
 		newSlide.append();
 		
-		TextTVSwiper.swiper.swipeTo( newSlide.index() );
+		// mySwiper.swipeTo(index, speed, runCallbacks)
+		// run transition to the slide with index number equal to 'index' parameter for the speed equal to 'speed' parameter.
+		// You can set 'runCallbacks' to false (by default it is 'true') 
+		// and transition will not produce onSlideChange callback functions.
+		var speed = this.get("animateSwiper") ? TextTVSwiper.swiper.params.speed : 0;
+		TextTVSwiper.swiper.swipeTo( newSlide.index(), speed );
 
 		this.set("swiperSlide", newSlide);
 
@@ -271,7 +280,8 @@ var MainView = Backbone.View.extend({
 		var pageRange = 100;
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 			pageRange: pageRange,
-			addToSwiper: true
+			addToSwiper: true,
+			animateSwiper: false
 		}) );
 
 	},
@@ -295,7 +305,8 @@ var MainView = Backbone.View.extend({
 			console.log("Link looks like texttv-link", href);
 			var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 				pageRange: href,
-				addToSwiper: true
+				addToSwiper: true,
+				animateSwiper: false
 			}) );
 
 
