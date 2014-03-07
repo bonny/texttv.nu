@@ -33,14 +33,68 @@
 	</script>
 
 	<!-- Failed to load page -->
-	<script id="LoadingPageTemplateFailed" type="text/x-template">
+	<script id="LoadingPageTemplateFailed" type="text/x-handlebars-template">
 		<div class="pageIsLoading pageIsLoading--failed">
 			<div class="pageIsLoading-failIcon ion-alert-circled"></div>
 			<p class="pageIsLoading-text"><%= pageRange %></p>
 			<p class="pageIsLoading-text">Kunde inte läsa in sidan.<br>Försök igen om en kort stund.</p>
 		</div>
 	</script>
+
+	<!-- Texttv-page-template -->
+	<script id="TextTVPageTemplate" type="text/text/x-handlebars">
+		
+		<div class="list card list--share">
+
+			<div class="item item-text">
+
+				<div class="button-bar">
+
+					<a class="button">
+						<i class="icon ion-ios7-reload"></i>
+						Ladda om
+					</a>
+
+					<a class="button">
+						<i class="icon ion-ios7-upload-outline"></i>
+						Dela
+					</a>
+
+				</div>
+
+			</div>
+
+			<!--
+			<div class="item item-divider">
+				<h2>Debuginfo</h2>
+			</div>
+
+			<div class="item item-text">
+				
+				<ul class="list">
+					<li class="item ng-binding">
+						pageRange:
+						100
+					</li>
+
+					<li class="item ng-binding">
+						time:
+						"2014-03-07T19:34:12.299Z"
+					</li>
+
+					<li class="item ng-binding">
+						parent:
+						
+					</li>
+				</ul>
+
+			</div>
+			-->
+
+		</div>
+	</script>
 	
+	<!-- Main page template, including divs for swiper -->
 	<script id="MainViewTemplate" type="text/x-template">
 	
 		<div class="bar bar-header bar-positive">

@@ -104,6 +104,7 @@ var TextTVPageModel = Backbone.Model.extend({
 
 	templateLoading: _.template( $("#LoadingPageTemplate").html() ),
 	templateLoadingFailed: _.template( $("#LoadingPageTemplateFailed").html() ),
+	templatePage: _.template( $("#TextTVPageTemplate").html() ),
 
 	initialize: function() {
 		
@@ -171,7 +172,11 @@ var TextTVPageModel = Backbone.Model.extend({
 		});
 		
 		var swiperSlide = this.get("swiperSlide");
-		console.log("swiperSlide", swiperSlide);
+		
+		var sliderHTMLBelow = this.templatePage( this.attributes );
+		console.log("sliderHTMLBelow", sliderHTMLBelow);
+		sliderHTML += sliderHTMLBelow;
+		
 		swiperSlide.html(sliderHTML);
 
 	},
