@@ -25,7 +25,7 @@
 	<div id="MainView" class="view view--main"></div>
 	
 	<!-- "Loading page..." -template -->
-	<script id="LoadingPageTemplate" type="text/x-template">
+	<script id="LoadingPageTemplate" type="text/html">
 		<div class="pageIsLoading">
 			<div class="pageIsLoading-spinnerIcon ion-loading-c"></div>
 			<p class="pageIsLoading-text"><%= pageRange %></p>
@@ -33,7 +33,7 @@
 	</script>
 
 	<!-- Failed to load page -->
-	<script id="LoadingPageTemplateFailed" type="text/x-handlebars-template">
+	<script id="LoadingPageTemplateFailed" type="text/html">
 		<div class="pageIsLoading pageIsLoading--failed">
 			<div class="pageIsLoading-failIcon ion-alert-circled"></div>
 			<p class="pageIsLoading-text"><%= pageRange %></p>
@@ -42,8 +42,16 @@
 	</script>
 
 	<!-- Texttv-page-template -->
-	<script id="TextTVPageTemplate" type="text/text/x-handlebars">
+	<script id="TextTVPageTemplate" type="text/html">
 		
+		<!-- Foreach page, output it's contents -->
+		<% 
+		_.each(sourceData, function(page) { %>
+			<% _.each(page.content, function(pageContents) { %>
+				<%= pageContents %>
+			<% }) %>
+		<% }) %>
+
 		<div class="list card list--share">
 
 			<div class="item item-text">
@@ -107,10 +115,10 @@
 			<% } %>
 
 			<h1 class="title">
-				<% if (title == "TextTV.nu") { %>
-					<img src="img/logo.png" alt="'" height="15">
-				<% } %>
 				<a href="/100" class="bar-header-titleLink">
+					<% if (title == "TextTV.nu") { %>
+						<img src="img/logo.png" alt="'" height="15">
+					<% } %>
 					<%- title %>
 				</a>
 			</h1>

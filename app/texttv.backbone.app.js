@@ -160,27 +160,15 @@ var TextTVPageModel = Backbone.Model.extend({
 	 */
 	addContentToSwiper: function() {
 		
-		console.log("addContentToSwiper");
-		var sourceData = this.get("sourceData");
-		var sliderHTML = "";
-		
-		_.each(sourceData, function(onePageData) {
-			for (var i = 0; i < onePageData.content.length; i++) {
-				//sliderHTML += "<div class='TextTVPage'>" + onePageData.content[i] + "</div>";
-				sliderHTML += onePageData.content[i];
-			}
-		});
-		
 		var swiperSlide = this.get("swiperSlide");
-		
-		var sliderHTMLBelow = this.templatePage( this.attributes );
-		console.log("sliderHTMLBelow", sliderHTMLBelow);
-		sliderHTML += sliderHTMLBelow;
-		
+		var sliderHTML = this.templatePage( this.attributes );	
 		swiperSlide.html(sliderHTML);
 
 	},
 
+	/**
+	 * Load a the range of pages via AJAX
+	 */
 	loadPageRange: function() {
 
 		var ajaxPromise = $.ajax({

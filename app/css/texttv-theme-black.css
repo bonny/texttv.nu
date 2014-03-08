@@ -40,9 +40,18 @@
 	src: url(../bower_components/ubuntu-font/ubuntumono-b.ttf) format('truetype');
 }
 
-/* remove underline from link in header bar */
+/*
+remove underline from link in header bar
+also make the clickable area bigger
+*/
 .bar-header-titleLink {
 	text-decoration: none;
+	display: inline-block;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.bar-header-titleLink:active {
+	background: blue;
 }
 
 /* While a page is loading */
