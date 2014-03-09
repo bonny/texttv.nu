@@ -288,16 +288,11 @@ var MainView = Backbone.View.extend({
 	clickLinkInRoot: function(e) {
 		
 		var $a = $(e.target);
+		var href = _.str.trim( $a.attr("href"), " /");
+
 
 		// Check if link is texttv-link, i.e. a link that looks like /nnn or /nnn-nnn
-		//var $root = $a.closest(".root");
-		//if ( $root.length ) {
-
-		var href = _.str.trim( $a.attr("href"), " /");
-		
-		// Check if link is nnn or nnn-nnn
 		var matches = href.match(/\d{3}(-\d{3})?/);
-		// console.log(href, matches);
 		if ( matches !== null) {
 
 			// Seems to be a texttv-link
@@ -308,11 +303,7 @@ var MainView = Backbone.View.extend({
 				animateSwiper: false
 			}) );
 
-
 		}
-
-
-		// }
 		
 		e.preventDefault();
 
@@ -382,12 +373,31 @@ var TextTVSwiper = {
 			return false;
 		}
 
-		TextTVSwiper.prepareSliderAfterPageChange();
+		// If we just swiped to a slide that is a "page placeholder" then load that page
+		var activeSlide = TextTVSwiper.swiper.activeSlide();
+		if (activeSlide.parentModel) {
+	
+			// If slide already contains a page then prepare that slide for next next/prev-swipe
+			TextTVSwiper.prepareSliderAfterPageChange();
+
+		} else if (activeSlide.pageRange) {
+
+			console.log("load page!", activeSlide.pageRange);
+			
+			var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
+				pageRange: activeSlide.pageRange,
+				addToSwiper: true,
+				animateSwiper: false
+			}) );
+
+		}
 
 	},
 
 	prepareSliderAfterPageChange: function() {
+		
 		console.log("prepareSliderAfterPageChange()");
+		
 		var slides = TextTVSwiper.swiper.slides;
 		var activeSlide = TextTVSwiper.swiper.activeSlide();
 		var activeSlideClone = activeSlide.clone();
@@ -415,10 +425,12 @@ var TextTVSwiper = {
 
 		// Create slide before current page
 		var slideBefore = TextTVSwiper.swiper.createSlide( TextTVSwiper.templatePrevPage(templateData) );
+		slideBefore.pageRange = templateData.prevPageRange;
 		slideBefore.prepend();
 
 		// Create empty slide after current page
 		var slideAfter = TextTVSwiper.swiper.createSlide( TextTVSwiper.templateNextPage(templateData) );
+		slideAfter.pageRange = templateData.nextPageRange;
 		slideAfter.append();
 
 		// Finally slide to second slide = the slide we slided to
