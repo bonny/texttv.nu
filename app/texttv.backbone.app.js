@@ -131,6 +131,10 @@ var TextTVPageModel = Backbone.Model.extend({
 		var newSlide = TextTVSwiper.swiper.createSlide( this.templateLoading(this.attributes) );
 		
 		newSlide.append();
+
+		// Store a reference to this model in the slide, so we from the slide can get this model
+		$.data(newSlide, "parentmodel", this);
+		newSlide.parentModel = this;
 		
 		// mySwiper.swipeTo(index, speed, runCallbacks)
 		// run transition to the slide with index number equal to 'index' parameter for the speed equal to 'speed' parameter.
@@ -152,6 +156,7 @@ var TextTVPageModel = Backbone.Model.extend({
 
 		var swiperSlide = this.get("swiperSlide");
 		
+		TextTVSwiper.prepareSliderAfterPageChange();
 
 	},
 
@@ -161,7 +166,8 @@ var TextTVPageModel = Backbone.Model.extend({
 	addContentToSwiper: function() {
 		
 		var swiperSlide = this.get("swiperSlide");
-		var sliderHTML = this.templatePage( this.attributes );	
+		var sliderHTML = this.templatePage( this.attributes );
+
 		swiperSlide.html(sliderHTML);
 
 	},
@@ -180,11 +186,11 @@ var TextTVPageModel = Backbone.Model.extend({
 			// timeout: 1000 // enable this to test timeout/fail message
 		})
 			.done(function(r) {
-				console.log("Got remote data", r);
+				//console.log("Got remote data", r, this);
 				this.set("sourceData", r);
 			})
 			.fail(function(r) {
-				console.log("Dit NOT get remote data, something failed", r);
+				//console.log("Dit NOT get remote data, something failed", r);
 				this.loadFailed();
 			});
 
@@ -212,7 +218,7 @@ var TextTVPagesCollection = Backbone.Collection.extend({
 	},
 
 	pageAdded: function(addedPage) {
-		console.log("page was added to collection", addedPage);
+		// console.log("page was added to collection", addedPage);
 	}
 
 });
@@ -269,7 +275,7 @@ var MainView = Backbone.View.extend({
 
 	loadHome: function() {
 
-		console.log("load home");
+		//console.log("load home");
 		var pageRange = 100;
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 			pageRange: pageRange,
@@ -291,11 +297,11 @@ var MainView = Backbone.View.extend({
 		
 		// Check if link is nnn or nnn-nnn
 		var matches = href.match(/\d{3}(-\d{3})?/);
-		console.log(href, matches);
+		// console.log(href, matches);
 		if ( matches !== null) {
 
 			// Seems to be a texttv-link
-			console.log("Link looks like texttv-link", href);
+			//console.log("Link looks like texttv-link", href);
 			var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 				pageRange: href,
 				addToSwiper: true,
@@ -328,6 +334,7 @@ var MainView = Backbone.View.extend({
 
 /**
  * Controls the Swiper
+ * Initialized is called from mainView
  */
 var TextTVSwiper = {
 	
@@ -338,10 +345,87 @@ var TextTVSwiper = {
 		this.swiper_container = $('.swiper-container');
 		this.swiper = this.swiper_container.swiper({
 			mode:'horizontal',
-			loop: false
+			loop: false,
+
+			// Callback function, will be executed when you release the slider
+			onTouchEnd: this.onTouchEnd,
+
+			// Callback function, will be executed in the beginning of animation to other slide (next or previous). Don't work with freeMode.
+			onSlideChangeStart: this.onSlideChangeStart,
+
+			// Callback function, will be executed after animation to other slide (next or previous). Don't work with freeMode.
+			onSlideChangeEnd: this.onSlideChangeEnd
+
+			//onSlideNext, onSlidePrev
+
 		});
 
+		this.templateNextPage = _.template( $("#NextPageTemplate").html() );
+		this.templatePrevPage = _.template( $("#PrevPageTemplate").html() );
+
 	},
+
+	onTouchEnd: function() {
+		// console.log("onTouchEnd");
+	},
+
+	onSlideChangeStart: function() {
+		// console.log("onSlideChangeStart");
+	},
+
+	/**
+	 * When slide is changed, make before and after slides empty pages, not loaded, but ready to be
+	 */
+	onSlideChangeEnd: function(swiper, direction) {
+		
+		if ("to" == direction) {
+			return false;
+		}
+
+		TextTVSwiper.prepareSliderAfterPageChange();
+
+	},
+
+	prepareSliderAfterPageChange: function() {
+		console.log("prepareSliderAfterPageChange()");
+		var slides = TextTVSwiper.swiper.slides;
+		var activeSlide = TextTVSwiper.swiper.activeSlide();
+		var activeSlideClone = activeSlide.clone();
+		var activeSlideIndex = TextTVSwiper.swiper.activeIndex;
+		var parentModel = activeSlide.parentModel;
+		var parentAttributes = parentModel && parentModel.attributes || {};
+
+		// Copy over parent model from slide to new clone
+		activeSlideClone.parentModel = parentModel;
+		
+		// Keep only our current slide
+		TextTVSwiper.swiper.removeAllSlides();
+		activeSlideClone.append();
+
+		// Create data for template
+		var templateData = {
+			nextPageRange: null,
+			prevPageRange: null
+		};
+
+		if (parentAttributes && parentAttributes.sourceData && parentAttributes.sourceData[0]) {
+			templateData.nextPageRange = parentAttributes.sourceData[0].next_page;
+			templateData.prevPageRange = parentAttributes.sourceData[0].prev_page;
+		}
+
+		// Create slide before current page
+		var slideBefore = TextTVSwiper.swiper.createSlide( TextTVSwiper.templatePrevPage(templateData) );
+		slideBefore.prepend();
+
+		// Create empty slide after current page
+		var slideAfter = TextTVSwiper.swiper.createSlide( TextTVSwiper.templateNextPage(templateData) );
+		slideAfter.append();
+
+		// Finally slide to second slide = the slide we slided to
+		TextTVSwiper.swiper.swipeTo(1, 0, false);
+
+	}
+
 /*
 	addPage: function(page) {
 		

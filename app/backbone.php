@@ -23,6 +23,25 @@
 <body>
 
 	<div id="MainView" class="view view--main"></div>
+
+	<!-- Placeholder template for next page (and "prev") -->
+	<script id="NextPageTemplate" type="text/html">
+		<div class="placeholderPage placeholderPage--next">
+			<div class="placeholderPage-text">
+				<p>Släpp för att ladda</p>
+				<p class="placeholderPage-pageRange"><%= obj.nextPageRange %></p>
+			</div>
+		</div>
+	</script>
+
+	<script id="PrevPageTemplate" type="text/html">
+		<div class="placeholderPage placeholderPage--prev">
+			<div class="placeholderPage-text">
+				<p>Släpp för att ladda</p>
+				<p class="placeholderPage-pageRange"><%= obj.prevPageRange %></p>
+			</div>
+		</div>
+	</script>
 	
 	<!-- "Loading page..." -template -->
 	<script id="LoadingPageTemplate" type="text/html">
@@ -37,7 +56,7 @@
 		<div class="pageIsLoading pageIsLoading--failed">
 			<div class="pageIsLoading-failIcon ion-alert-circled"></div>
 			<p class="pageIsLoading-text"><%= pageRange %></p>
-			<p class="pageIsLoading-text">Kunde inte läsa in sidan.<br>Försök igen om en kort stund.</p>
+			<p class="pageIsLoading-text">Kunde inte läsa in sidan.<br>Försök igen om en stund.</p>
 		</div>
 	</script>
 
