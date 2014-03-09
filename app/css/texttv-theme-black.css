@@ -51,7 +51,7 @@ also make the clickable area bigger
 	padding-right: 30px;
 }
 .bar-header-titleLink:active {
-	background: blue;
+	color: #ddd !important;
 }
 
 /* While a page is loading */
