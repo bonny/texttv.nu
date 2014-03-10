@@ -182,7 +182,7 @@ var TextTVPageModel = Backbone.Model.extend({
 			url: "http://texttv.nu/api/get/" + this.get("pageRange"),
 			context: this,
 			cache: false, // @TODO do our own caching later on...
-			data: { slow_answer: 1 }, // enable this to test how it looks with slow network
+			//data: { slow_answer: 1 }, // enable this to test how it looks with slow network
 			// timeout: 1000 // enable this to test timeout/fail message
 		})
 			.done(function(r) {
@@ -256,7 +256,9 @@ var MainView = Backbone.View.extend({
 
 	events: {
 		"click .js-sidebarToggle": "toggleSidebar",
-		"click a": "clickLinkInRoot"
+		"click a": "clickLinkInRoot",
+		"click .js-reloadPage": "reloadPage",
+		"click .js-sharePage": "sharePage"
 	},
 
 	/**
@@ -270,6 +272,28 @@ var MainView = Backbone.View.extend({
 		TextTVSwiper.initialize();
 
 		this.loadHome();
+
+	},
+
+	/**
+	 * Reloads the current page range
+	 * @TODO: if remote page has not changed then "nothing" will happen
+	 * due to sourceData never changing
+	 */
+	reloadPage: function() {
+
+		var currentSlide = TextTVSwiper.swiper.activeSlide();
+
+		// parentModel = TextTVPageModel
+		var parentModel = currentSlide.parentModel;
+		//parentModel.loadPageRange();
+		
+		// parentModel.attributes.sourceData[0].next_page = "apa";
+		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
+			pageRange: parentModel.get("pageRange"),
+			addToSwiper: true,
+			animateSwiper: false
+		}) );
 
 	},
 

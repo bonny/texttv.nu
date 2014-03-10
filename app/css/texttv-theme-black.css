@@ -112,7 +112,9 @@ T.ex. sida 200 blir icke centrerad..
 }
 
 .root {
-
+	
+	/*height: 27em;*/
+	/*background: red;*/
 	text-align: left;
 	display: inline-block;
 	vertical-align: top;

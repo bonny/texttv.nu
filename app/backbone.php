@@ -72,19 +72,21 @@
 				<%= pageContents %>
 			<% }) %>
 		<% }) %>
-
+		
+		<!-- <p>Hej Hopp svejs<br>hejs<br>före</p> -->
+		
 		<div class="list card list--share">
 
 			<div class="item item-text">
 
 				<div class="button-bar">
 
-					<a class="button">
+					<a class="button js-reloadPage">
 						<i class="icon ion-ios7-reload"></i>
 						Ladda om
 					</a>
 
-					<a class="button">
+					<a class="button js-sharePage">
 						<i class="icon ion-ios7-upload-outline"></i>
 						Dela
 					</a>
@@ -92,6 +94,8 @@
 				</div>
 
 			</div>
+
+			<!-- <p>Hej Hopp svejs<br>hejs<br>efter</p> -->
 
 			<!--
 			<div class="item item-divider">
@@ -209,12 +213,13 @@
 			top: 0;
 			left: 0;
 			right: 0;
-			bottom: 0;
+			bottom: 40px; /* 40 px = same height as header bar */
 			overflow: hidden;
 		}
 		.swiper-slide {
 			width: 100%;
 			height: 100%;
+			/*height: calc(100% - 40px);*/
 			overflow: hidden;
 			overflow-y: scroll;
 			-webkit-overflow-scrolling: touch;
