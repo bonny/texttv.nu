@@ -182,7 +182,7 @@ var TextTVPageModel = Backbone.Model.extend({
 			url: "http://texttv.nu/api/get/" + this.get("pageRange"),
 			context: this,
 			cache: false, // @TODO do our own caching later on...
-			// data: { slow_answer: 1 }, // enable this to test how it looks with slow network
+			data: { slow_answer: 1 }, // enable this to test how it looks with slow network
 			// timeout: 1000 // enable this to test timeout/fail message
 		})
 			.done(function(r) {

@@ -27,18 +27,20 @@
 	<!-- Placeholder template for next page (and "prev") -->
 	<script id="NextPageTemplate" type="text/html">
 		<div class="placeholderPage placeholderPage--next">
+			<div class="placeholderPage-icon ion-document-text"></div>
 			<div class="placeholderPage-text">
-				<p>Släpp för att ladda</p>
 				<p class="placeholderPage-pageRange"><%= obj.nextPageRange %></p>
+				<!-- <p>Släpp för att ladda</p> -->
 			</div>
 		</div>
 	</script>
 
 	<script id="PrevPageTemplate" type="text/html">
 		<div class="placeholderPage placeholderPage--prev">
+			<div class="placeholderPage-icon ion-document-text"></div>
 			<div class="placeholderPage-text">
-				<p>Släpp för att ladda</p>
 				<p class="placeholderPage-pageRange"><%= obj.prevPageRange %></p>
+				<!-- <p>Släpp för att ladda</p> -->
 			</div>
 		</div>
 	</script>

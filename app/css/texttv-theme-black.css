@@ -50,18 +50,20 @@ also make the clickable area bigger
 	padding-left: 30px;
 	padding-right: 30px;
 }
+
 .bar-header-titleLink:active {
 	color: #ddd !important;
 }
 
 /* While a page is loading */
-.pageIsLoading, .placeholderPage{
+.pageIsLoading, .placeholderPage {
 	margin-top: 40px;
 	text-align: center;
 }
 
 .pageIsLoading-spinnerIcon,
-.pageIsLoading-failIcon {
+.pageIsLoading-failIcon,
+.placeholderPage-icon {
 	font-size: 44px;
 	color: #666;
 }
@@ -76,7 +78,7 @@ also make the clickable area bigger
 
 .placeholderPage-pageRange {
 	/*font-weight: bold;*/
-	font-size: 66px;
+	/*font-size: 66px;*/
 }
 
 /**
