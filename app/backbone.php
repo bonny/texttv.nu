@@ -175,19 +175,22 @@
 		<div class="scroll-content has-header" scroll="true" overflow-scroll="false" has-header="true">
 			
 			<div class="list list--pages">
-				<a class="item" href="" data-pagerange="100">Start <span class="item-note">100</span></a>
-				<a class="item" href="" data-pagerange="100-105">Nyheter <span class="item-note">100-105</span></a>
-				<a class="item" href="" data-pagerange="101-102">Inrikes <span class="item-note">101-102</span></a>
-				<a class="item" href="" data-pagerange="104-105">Urikes <span class="item-note">104-105</span></a>
-				<a class="item" href="" data-pagerange="200">Ekonomi <span class="item-note">200</span></a>
-				<a class="item" href="" data-pagerange="300-301">Sport <span class="item-note">300-301</span></a>
-				<a class="item" href="" data-pagerange="377">Sportresultat <span class="item-note">377</span></a>
-				<a class="item" href="" data-pagerange="571">Sportresultat, V75 <span class="item-note">571</span></a>
-				<a class="item" href="" data-pagerange="400">Väder <span class="item-note">400</span></a>
-				<a class="item" href="" data-pagerange="500">Blandat <span class="item-note">500</span></a>
-				<a class="item" href="" data-pagerange="600">På TV <span class="item-note">600</span></a>
-				<a class="item" href="" data-pagerange="700">Innehåll <span class="item-note">700</span></a>
-				<a class="item" href="" data-pagerange="800">UR <span class="item-note">800</span></a>
+				<label class="item item-input">
+					<input type="number" pattern="\d*" placeholder="Gå direkt till sida">
+				</label>
+				<a class="item item-texttvpage" href="" data-pagerange="100">Start <span class="item-note">100</span></a>
+				<a class="item item-texttvpage" href="" data-pagerange="100-105">Nyheter <span class="item-note">100-105</span></a>
+				<a class="item item-texttvpage" href="" data-pagerange="101-102">Inrikes <span class="item-note">101-102</span></a>
+				<a class="item item-texttvpage" href="" data-pagerange="104-105">Urikes <span class="item-note">104-105</span></a>
+				<a class="item item-texttvpage" href="" data-pagerange="200">Ekonomi <span class="item-note">200</span></a>
+				<a class="item item-texttvpage" href="" data-pagerange="300-301">Sport <span class="item-note">300-301</span></a>
+				<a class="item item-texttvpage" href="" data-pagerange="377">Sportresultat <span class="item-note">377</span></a>
+				<a class="item item-texttvpage" href="" data-pagerange="571">Sportresultat, V75 <span class="item-note">571</span></a>
+				<a class="item item-texttvpage" href="" data-pagerange="400">Väder <span class="item-note">400</span></a>
+				<a class="item item-texttvpage" href="" data-pagerange="500">Blandat <span class="item-note">500</span></a>
+				<a class="item item-texttvpage" href="" data-pagerange="600">På TV <span class="item-note">600</span></a>
+				<a class="item item-texttvpage" href="" data-pagerange="700">Innehåll <span class="item-note">700</span></a>
+				<a class="item item-texttvpage" href="" data-pagerange="800">UR <span class="item-note">800</span></a>
 			</div>
 
 		</div>

@@ -28,7 +28,7 @@ var SidebarView = Backbone.View.extend({
 	
 	events: {
 		"click .js-sidebarToggle": "toggle",
-		"click .list--pages .item": "itemClick",
+		"click .list--pages .item .item-texttvpage": "itemClick",
 	},
 
 	initialize: function() {
