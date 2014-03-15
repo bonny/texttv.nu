@@ -175,9 +175,14 @@
 		<div class="scroll-content has-header" scroll="true" overflow-scroll="false" has-header="true">
 			
 			<div class="list list--pages">
-				<label class="item item-input">
-					<input type="number" pattern="\d*" placeholder="Gå direkt till sida">
-				</label>
+
+				<div class="item item-input-inset">
+					<label class="item-input-wrapper">
+						<i class="icon ion-document placeholder-icon"></i>
+						<input type="number" pattern="\d*" placeholder="Gå direkt till sida">
+					</label>
+				</div>
+
 				<a class="item item-texttvpage" href="" data-pagerange="100">Start <span class="item-note">100</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="100-105">Nyheter <span class="item-note">100-105</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="101-102">Inrikes <span class="item-note">101-102</span></a>
