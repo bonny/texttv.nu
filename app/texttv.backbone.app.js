@@ -6,6 +6,20 @@ window.addEventListener('load', function() {
 
 var texttvapp = texttvapp || {};
 
+/**
+ * Add helpers
+ */
+texttvapp.helpers = {
+
+	/**
+	 * Check if link is texttv-link, i.e. a link that looks like /nnn or /nnn-nnn
+	 */
+	isValidPageRange: function(pageRange) {
+		var matches = pageRange.match(/\d{3}(-\d{3})?/);
+		return (matches !== null);
+	}
+
+};
 
 /**
  * Sidebar model
@@ -62,17 +76,20 @@ var SidebarView = Backbone.View.extend({
 		
 		var $target = $(e.target);
 		var pageRange = $target.val();
-		console.log("pageRange", pageRange);
-		// @TODO: add function/helper that validates pageRanges so I can reuse
 
-		// Init a page and load it
-		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
-			pageRange: pageRange,
-			addToSwiper: true,
-			animateSwiper: false
-		}) );
+		if ( texttvapp.helpers.isValidPageRange(pageRange)) {
 
-		this.close();
+			// Init a page and load it
+			var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
+				pageRange: pageRange,
+				addToSwiper: true,
+				animateSwiper: false
+			}) );
+
+			this.close();
+
+		}
+
 
 	},
 
@@ -333,13 +350,10 @@ var MainView = Backbone.View.extend({
 		var $a = $(e.target);
 		var href = _.str.trim( $a.attr("href"), " /");
 
-
 		// Check if link is texttv-link, i.e. a link that looks like /nnn or /nnn-nnn
-		var matches = href.match(/\d{3}(-\d{3})?/);
-		if ( matches !== null) {
+		if ( texttvapp.helpers.isValidPageRange(href) ) {
 
 			// Seems to be a texttv-link
-			//console.log("Link looks like texttv-link", href);
 			var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 				pageRange: href,
 				addToSwiper: true,
