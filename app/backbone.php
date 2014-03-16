@@ -176,10 +176,17 @@
 			
 			<div class="list list--pages">
 
+				
+					<label class="item item-input">
+						<i class="icon ion-document placeholder-icon"></i>
+						<input class="sidebar-input-page" type="number" pattern="\d*" placeholder="Gå till sida">
+					</label>
+				
+				
 				<div class="item item-input-inset">
 					<label class="item-input-wrapper">
 						<i class="icon ion-document placeholder-icon"></i>
-						<input class="sidebar-input-page" type="number" pattern="\d*" placeholder="Gå direkt till sida">
+						<input class="sidebar-input-page" type="number" pattern="\d*" placeholder="Gå till sida">
 					</label>
 				</div>
 
