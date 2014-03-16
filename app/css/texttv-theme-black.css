@@ -147,6 +147,17 @@ T.ex. sida 200 blir icke centrerad..
 	padding-bottom: 1em;
 }
 
+/*
+styles for ipad:
+make one page fit in portrait mode, make two pages fit in landscape
+*/
+@media only screen and (min-width : 768px) {
+	
+	.root {
+		font-size: 23px;
+	}
+
+}
 
 .root h1 {
 	display: inline;
@@ -228,12 +239,33 @@ T.ex. sida 200 blir icke centrerad..
 	background: #F0F
 }
 
-/* styles for ipad */
-@media only screen and (min-width : 768px) {
-	
-	/* make one page fit in portrait mode, make two pages fit in landscape */
-	.root {
-		font-size: 23px;
-	}
 
+#MainView {
+	-webkit-transition: all .15s ease-in-out;
+}
+#MainView.open-sidebar {
+	-webkit-transform: translateX(-275px);
+}
+.menu .scroll-content {
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+.content {
+	height: 100%;
+}
+.swiper-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 40px; /* 40 px = same height as header bar */
+	overflow: hidden;
+}
+.swiper-slide {
+	width: 100%;
+	height: 100%;
+	/*height: calc(100% - 40px);*/
+	overflow: hidden;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 }

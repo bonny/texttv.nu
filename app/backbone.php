@@ -179,7 +179,7 @@
 				<div class="item item-input-inset">
 					<label class="item-input-wrapper">
 						<i class="icon ion-document placeholder-icon"></i>
-						<input type="number" pattern="\d*" placeholder="Gå direkt till sida">
+						<input class="sidebar-input-page" type="number" pattern="\d*" placeholder="Gå direkt till sida">
 					</label>
 				</div>
 
@@ -201,39 +201,6 @@
 		</div>
 
 	</div>
-
-	<style>
-		#MainView {
-			-webkit-transition: all .15s ease-in-out;
-		}
-		#MainView.open-sidebar {
-			-webkit-transform: translateX(-275px);
-		}
-		.menu .scroll-content {
-			overflow-y: scroll;
-			-webkit-overflow-scrolling: touch;
-		}
-		.content {
-			height: 100%;
-		}
-		.swiper-container {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 40px; /* 40 px = same height as header bar */
-			overflow: hidden;
-		}
-		.swiper-slide {
-			width: 100%;
-			height: 100%;
-			/*height: calc(100% - 40px);*/
-			overflow: hidden;
-			overflow-y: scroll;
-			-webkit-overflow-scrolling: touch;
-		}
-
-	</style>
 
 	<script src="texttv.backbone.app.js"></script>
 

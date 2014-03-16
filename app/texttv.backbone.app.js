@@ -28,7 +28,8 @@ var SidebarView = Backbone.View.extend({
 	
 	events: {
 		"click .js-sidebarToggle": "toggle",
-		"click .list--pages .item .item-texttvpage": "itemClick",
+		"click .list--pages .item-texttvpage": "itemClick",
+		"change .sidebar-input-page": "inputChange"
 	},
 
 	initialize: function() {
@@ -56,10 +57,28 @@ var SidebarView = Backbone.View.extend({
 
 	},
 
+	// Load pageRange when changing to a valid pageRange in the input
+	inputChange: function(e) {
+		
+		var $target = $(e.target);
+		var pageRange = $target.val();
+		console.log("pageRange", pageRange);
+		// @TODO: add function/helper that validates pageRanges so I can reuse
+
+		// Init a page and load it
+		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
+			pageRange: pageRange,
+			addToSwiper: true,
+			animateSwiper: false
+		}) );
+
+		this.close();
+
+	},
+
+	// Load pageRange when clicking a pageRank-link
 	itemClick: function(e) {
-		
-		// console.log("click sidebar page range");
-		
+			
 		e.preventDefault();
 		
 		var $item = $(e.target).closest(".item");
