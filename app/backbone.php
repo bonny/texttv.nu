@@ -190,6 +190,12 @@
 					</label>
 				</div>
 
+				<div class="item item-divider">Mest besökta</div>
+				<a class="item item-texttvpage" href="" data-pagerange="377">377</a>
+				<a class="item item-texttvpage" href="" data-pagerange="300">300</a>
+
+
+				<div class="item item-divider">Sidor</div>
 				<a class="item item-texttvpage" href="" data-pagerange="100">Start <span class="item-note">100</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="100-105">Nyheter <span class="item-note">100-105</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="101-102">Inrikes <span class="item-note">101-102</span></a>
