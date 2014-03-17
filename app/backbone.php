@@ -176,13 +176,11 @@
 			
 			<div class="list list--pages">
 
-				
-					<label class="item item-input">
-						<i class="icon ion-document placeholder-icon"></i>
-						<input class="sidebar-input-page" type="number" pattern="\d*" placeholder="Gå till sida">
-					</label>
-				
-				
+				<label class="item item-input">
+					<i class="icon ion-document placeholder-icon"></i>
+					<input class="sidebar-input-page" type="number" pattern="\d*" placeholder="Gå till sida">
+				</label>
+							
 				<div class="item item-input-inset">
 					<label class="item-input-wrapper">
 						<i class="icon ion-document placeholder-icon"></i>
@@ -193,7 +191,6 @@
 				<div class="item item-divider">Mest besökta</div>
 				<a class="item item-texttvpage" href="" data-pagerange="377">377</a>
 				<a class="item item-texttvpage" href="" data-pagerange="300">300</a>
-
 
 				<div class="item item-divider">Sidor</div>
 				<a class="item item-texttvpage" href="" data-pagerange="100">Start <span class="item-note">100</span></a>
@@ -209,6 +206,7 @@
 				<a class="item item-texttvpage" href="" data-pagerange="600">På TV <span class="item-note">600</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="700">Innehåll <span class="item-note">700</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="800">UR <span class="item-note">800</span></a>
+
 			</div>
 
 		</div>

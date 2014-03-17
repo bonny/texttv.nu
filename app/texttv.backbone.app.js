@@ -452,9 +452,7 @@ var TextTVSwiper = {
 	},
 
 	prepareSliderAfterPageChange: function() {
-		
-		console.log("prepareSliderAfterPageChange()");
-		
+			
 		var slides = TextTVSwiper.swiper.slides;
 		var activeSlide = TextTVSwiper.swiper.activeSlide();
 		var activeSlideClone = activeSlide.clone();
@@ -474,7 +472,6 @@ var TextTVSwiper = {
 			nextPageRange: null,
 			prevPageRange: null
 		};
-
 		if (parentAttributes && parentAttributes.sourceData && parentAttributes.sourceData[0]) {
 			templateData.nextPageRange = parentAttributes.sourceData[0].next_page;
 			templateData.prevPageRange = parentAttributes.sourceData[0].prev_page;
@@ -483,6 +480,7 @@ var TextTVSwiper = {
 		// Create slide before current page
 		var slideBefore = TextTVSwiper.swiper.createSlide( TextTVSwiper.templatePrevPage(templateData) );
 		slideBefore.pageRange = templateData.prevPageRange;
+		// @BUG: this makes webkit-overflow-scrolling not working in the sidebar
 		slideBefore.prepend();
 
 		// Create empty slide after current page
