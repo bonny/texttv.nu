@@ -283,3 +283,15 @@ make one page fit in portrait mode, make two pages fit in landscape
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 }
+
+
+/*
+Fixa till högerspalten lite, t.ex. gillar jag inte de feta rubrikerna som ionic använder
+*/
+.menu-right .item-divider {
+	font-weight: normal;
+	text-transform: uppercase;
+	padding-top: 2em;
+	color: #666;
+	font-size: 14px;
+}
