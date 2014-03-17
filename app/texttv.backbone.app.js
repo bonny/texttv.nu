@@ -121,6 +121,8 @@ var SidebarView = Backbone.View.extend({
 				animateSwiper: false
 			}) );
 
+			$target.val("");
+
 			this.close();
 
 		}
