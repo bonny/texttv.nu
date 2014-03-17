@@ -17,9 +17,44 @@ texttvapp.helpers = {
 	isValidPageRange: function(pageRange) {
 		var matches = pageRange.match(/\d{3}(-\d{3})?/);
 		return (matches !== null);
+	},
+
+	updateMostVisited: function() {
+		
+		var test = texttvapp.storage.get("stats", function(stats) { 
+
+			var pages = stats.pages;
+			pages = _.sortBy(pages, function(val) { return val.count; });
+			pages = pages.reverse();
+
+			var $elm = $("#SidebarMostVisisted");
+			var templateMostVisited = _.template( $("#MostVisitedTemplate").html() );
+			$elm.html( templateMostVisited( { pages: pages } ) );
+
+		});
+
 	}
 
 };
+
+texttvapp.storage = new Lawnchair({
+	name: "texttv",
+	adapter: "dom"
+}, function(storage) {
+	
+	console.log("Storage init");
+	
+	storage.exists("stats", function(exists) {
+		if (false === exists) {
+			storage.save({
+				key: "stats",
+				pages: {}
+			});
+		}
+	});
+
+
+});
 
 /**
  * Sidebar model
@@ -213,6 +248,7 @@ var TextTVPageModel = Backbone.Model.extend({
 	 */
 	loadPageRange: function() {
 
+		var self = this;
 		var ajaxPromise = $.ajax({
 			dataType: "json",
 			url: "http://texttv.nu/api/get/" + this.get("pageRange"),
@@ -222,12 +258,37 @@ var TextTVPageModel = Backbone.Model.extend({
 			// timeout: 1000 // enable this to test timeout/fail message
 		})
 			.done(function(r) {
+				
 				//console.log("Got remote data", r, this);
 				this.set("sourceData", r);
+
+				// Update stats
+				var stats = texttvapp.storage.get("stats", function(stats) {
+	
+					var pageRange = self.get("pageRange");
+					
+					if ( !_.has(stats.pages, pageRange)) {
+						console.log("ad page to stats");
+						stats.pages[pageRange] = {
+							pageRange: pageRange,
+							count: 0
+						};
+					}
+					
+					stats.pages[pageRange].count++;
+
+					texttvapp.storage.save(stats, function(stats) {
+						// console.log("added stats", stats);
+					});
+
+				});
+
 			})
 			.fail(function(r) {
+
 				//console.log("Dit NOT get remote data, something failed", r);
 				this.loadFailed();
+
 			});
 
 		this.set("ajaxPromise", ajaxPromise);
@@ -308,6 +369,8 @@ var MainView = Backbone.View.extend({
 		TextTVSwiper.initialize();
 
 		this.loadHome();
+
+		texttvapp.helpers.updateMostVisited();
 
 	},
 

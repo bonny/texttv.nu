@@ -17,12 +17,27 @@
 	<script src="bower_components/backbone/backbone.js"></script>
 	<script src="bower_components/fastclick/lib/fastclick.js"></script>
 	<script src="bower_components/swiper/dist/idangerous.swiper-2.4.js"></script>
+	<script src="js/lawnchair-0.6.1.min.js"></script>
 
 </head>
 
 <body>
 
 	<div id="MainView" class="view view--main"></div>
+
+	<!-- Template for most visited pages in sidebar -->
+	<script id="MostVisitedTemplate" type="text/html">
+
+		<div class="item item-divider">Dina mest besökta</div>
+
+		<% _.each(pages, function(page) { %>  
+			<a class="item item-texttvpage" href="" data-pagerange="<%= page.pageRange %>">
+				<%= page.pageRange %>
+				<span class="item-note"><%= page.count %></span>
+			</a>
+		<% }); %>
+		
+	</script>
 
 	<!-- Placeholder template for next page (and "prev") -->
 	<script id="NextPageTemplate" type="text/html">
@@ -190,10 +205,12 @@
 					</label>
 				</div>
 				-->
-
-				<div class="item item-divider">Dina mest besökta</div>
-				<a class="item item-texttvpage" href="" data-pagerange="377">377</a>
-				<a class="item item-texttvpage" href="" data-pagerange="300">300</a>
+				
+				<div id="SidebarMostVisisted">
+					<div class="item item-divider">Dina mest besökta</div>
+					<a class="item item-texttvpage" href="" data-pagerange="377">377</a>
+					<a class="item item-texttvpage" href="" data-pagerange="300">300</a>
+				</div>
 
 				<div class="item item-divider">Sidor</div>
 				<a class="item item-texttvpage" href="" data-pagerange="100">Start <span class="item-note">100</span></a>
