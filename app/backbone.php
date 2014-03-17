@@ -176,17 +176,20 @@
 			
 			<div class="list list--pages">
 
+				<div class="item item-divider">Gå till sida</div>
 				<label class="item item-input">
 					<i class="icon ion-document placeholder-icon"></i>
-					<input class="sidebar-input-page" type="number" pattern="\d*" placeholder="Gå till sida">
+					<input class="sidebar-input-page" type="number" pattern="\d*" placeholder="Skriv in sida att gå till">
 				</label>
-							
+				
+				<!--		
 				<div class="item item-input-inset">
 					<label class="item-input-wrapper">
 						<i class="icon ion-document placeholder-icon"></i>
 						<input class="sidebar-input-page" type="number" pattern="\d*" placeholder="Gå till sida">
 					</label>
 				</div>
+				-->
 
 				<div class="item item-divider">Mest besökta</div>
 				<a class="item item-texttvpage" href="" data-pagerange="377">377</a>

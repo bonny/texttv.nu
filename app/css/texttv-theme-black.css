@@ -257,7 +257,12 @@ make one page fit in portrait mode, make two pages fit in landscape
 .menu .scroll-content {
 	/*border: 1px solid yellow;*/
 	overflow-y: scroll;
-	-webkit-overflow-scrolling: touch;
+
+	/*
+	below does not work. see
+	// @BUG: this makes webkit-overflow-scrolling not working in the sidebar
+	*/
+	/* -webkit-overflow-scrolling: touch; */
 }
 .content {
 	height: 100%;
