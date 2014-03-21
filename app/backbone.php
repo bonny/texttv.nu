@@ -206,11 +206,7 @@
 				</div>
 				-->
 				
-				<div id="SidebarMostVisisted">
-					<div class="item item-divider">Dina mest besökta</div>
-					<a class="item item-texttvpage" href="" data-pagerange="377">377</a>
-					<a class="item item-texttvpage" href="" data-pagerange="300">300</a>
-				</div>
+				<div id="SidebarMostVisisted"></div>
 
 				<div class="item item-divider">Sidor</div>
 				<a class="item item-texttvpage" href="" data-pagerange="100">Start <span class="item-note">100</span></a>
@@ -219,7 +215,7 @@
 				<a class="item item-texttvpage" href="" data-pagerange="104-105">Urikes <span class="item-note">104-105</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="200">Ekonomi <span class="item-note">200</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="300-301">Sport <span class="item-note">300-301</span></a>
-				<a class="item item-texttvpage" href="" data-pagerange="377">Sportresultat <span class="item-note">377</span></a>
+				<a class="item item-texttvpage" href="" data-pagerange="376">Sportresultat <span class="item-note">377</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="571">Sportresultat, V75 <span class="item-note">571</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="400">Väder <span class="item-note">400</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="500">Blandat <span class="item-note">500</span></a>
