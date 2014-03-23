@@ -27,15 +27,19 @@
 
 	<!-- Template for most visited pages in sidebar -->
 	<script id="MostVisitedTemplate" type="text/html">
+		
+		<% if (pages.length) { %>
 
-		<div class="item item-divider">Dina mest besökta</div>
+			<div class="item item-divider">Dina mest besökta</div>
 
-		<% _.each(pages, function(page) { %>  
-			<a class="item item-texttvpage" href="" data-pagerange="<%= page.pageRange %>">
-				<%= page.pageRange %>
-				<span class="item-note"><%= page.count %></span>
-			</a>
-		<% }); %>
+			<% _.each(pages, function(page) { %>  
+				<a class="item item-texttvpage" href="" data-pagerange="<%= page.pageRange %>">
+					<%= page.pageRange %>
+					<span class="item-note"><%= page.count %></span>
+				</a>
+			<% }); %>
+
+		<% } %>
 		
 	</script>
 
