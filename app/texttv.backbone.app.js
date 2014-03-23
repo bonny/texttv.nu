@@ -27,6 +27,9 @@ texttvapp.helpers = {
 			pages = _.sortBy(pages, function(val) { return val.count; });
 			pages = pages.reverse();
 
+			// Only show the latest nn pages
+			pages = pages.slice(0, 10);
+
 			var $elm = $("#SidebarMostVisisted");
 			var templateMostVisited = _.template( $("#MostVisitedTemplate").html() );
 			$elm.html( templateMostVisited( { pages: pages } ) );
