@@ -180,6 +180,15 @@ make one page fit in portrait mode, make two pages fit in landscape
 .root a {
 	color: #eee;
 }
+
+.root a {
+}
+.root a:focus,
+.root a:active
+ {
+	background: #666;
+}
+
 .bgW {
 	background: #eee;
 }
@@ -294,4 +303,14 @@ Fixa till högerspalten lite, t.ex. gillar jag inte de feta rubrikerna som ionic
 	padding-top: 2em;
 	color: #666;
 	font-size: 14px;
+}
+
+.MostVisitedPagesItems .item {
+	float: left;
+	width: 50%;
+	text-align: center;
+}
+
+.MostVisitedPagesItems .item-note {
+	display: none;
 }

@@ -32,12 +32,14 @@
 
 			<div class="item item-divider">Dina mest besökta</div>
 
-			<% _.each(pages, function(page) { %>  
-				<a class="item item-texttvpage" href="" data-pagerange="<%= page.pageRange %>">
-					<%= page.pageRange %>
-					<span class="item-note"><%= page.count %></span>
-				</a>
-			<% }); %>
+			<div class="MostVisitedPagesItems">
+				<% _.each(pages, function(page) { %>  
+					<a class="item item-texttvpage" href="" data-pagerange="<%= page.pageRange %>">
+						<%= page.pageRange %>
+						<span class="item-note"><%= page.count %></span>
+					</a>
+				<% }); %>
+			</div>
 
 		<% } %>
 		
