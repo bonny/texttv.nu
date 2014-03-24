@@ -197,6 +197,9 @@ var TextTVPageModel = Backbone.Model.extend({
 			this.addToSwiper();
 		}
 
+		// Update most visited after each load
+		texttvapp.helpers.updateMostVisited();
+
 	},
 
 	addToSwiper: function() {
@@ -374,8 +377,6 @@ var MainView = Backbone.View.extend({
 		TextTVSwiper.initialize();
 
 		this.loadHome();
-
-		texttvapp.helpers.updateMostVisited();
 
 	},
 
