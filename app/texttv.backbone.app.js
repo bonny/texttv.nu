@@ -386,6 +386,59 @@ texttvapp.mainModel = new MainModel();
 
 
 /**
+ * MainViewBar = the main bar with back button and texttv.nu-logo
+ * own view since mainvew can't be updated because then slider get's overwritten
+ */
+var MainViewBar = Backbone.View.extend({
+	
+	el: "#MainViewBar",
+	
+	template: _.template( $("#MainViewBarTemplate").html() ),
+
+	events: {
+		"click .js-sidebarToggle": "toggleSidebar",
+		"click .bar-header-titleLink": "loadHome"
+	},
+
+	toggleSidebar: function() {
+		// console.log("Open or close sidebar in main view");
+		texttvapp.sidebarView.toggle();
+	},
+
+	loadHome: function(e) {
+		
+		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
+			pageRange: 100,
+			addToSwiper: true,
+			animateSwiper: false,
+			initiatedBy: "click"
+		}) );
+
+		e.preventDefault();
+
+	},
+
+	render: function() {
+
+		console.log("MainViewBar", MainViewBar);
+
+		var renderedHTML = this.template( this.model.attributes );
+		this.$el.html(renderedHTML);		
+
+	},
+
+	initialize: function() {
+		
+		console.log("initialize MainViewBar");
+
+		this.render();
+
+	}
+
+});
+
+
+/**
  * MainView = view that controls the GUI
  */
 var MainView = Backbone.View.extend({
@@ -393,7 +446,6 @@ var MainView = Backbone.View.extend({
 	el: "#MainView",
 	
 	template: _.template( $("#MainViewTemplate").html() ),
-	templateBar: _.template( $("#MainViewBarTemplate").html() ),
 
 	events: {
 		"click .js-sidebarToggle": "toggleSidebar",
@@ -474,11 +526,6 @@ var MainView = Backbone.View.extend({
 
 	},
 
-	toggleSidebar: function() {
-		// console.log("Open or close sidebar in main view");
-		texttvapp.sidebarView.toggle();
-	},
-
 	render: function() {
 		
 		console.log("Render mainView");
@@ -486,8 +533,8 @@ var MainView = Backbone.View.extend({
 		var renderedHTML = this.template( this.model.attributes );
 		this.$el.html(renderedHTML);		
 		
-		var barHTML = this.templateBar( this.model.attributes );
-		this.$el.find("#MainViewBar").html( barHTML );
+		//var barHTML = this.templateBar( this.model.attributes );
+		//this.$el.find("#MainViewBar").html( barHTML );
 		
 		return this;
 	}
@@ -553,7 +600,7 @@ var TextTVSwiper = {
 
 		} else if (activeSlide.pageRange) {
 
-			console.log("load page!", activeSlide.pageRange);
+			// console.log("load page!", activeSlide.pageRange);
 			
 			var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 				pageRange: activeSlide.pageRange,
@@ -633,3 +680,6 @@ texttvapp.mainView = new MainView({
 	model: texttvapp.mainModel
 });
 
+texttvapp.mainViewBar = new MainViewBar({
+	model: texttvapp.mainModel
+});

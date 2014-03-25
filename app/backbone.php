@@ -23,6 +23,9 @@
 
 <body>
 
+	<!-- @TODO: denna ska vara innuti #mainview ju, annars funkar inte sidebar -->
+	<div id="MainViewBar"></div>
+
 	<div id="MainView" class="view view--main"></div>
 
 	<!-- Template for most visited pages in sidebar -->
@@ -178,8 +181,6 @@
 	<!-- Main page template, including divs for swiper -->
 	<script id="MainViewTemplate" type="text/x-template">
 		
-		<div id="MainViewBar"></div>
-
 		<div class="content has-header">
 			
 			<div class="swiper-container">
