@@ -81,7 +81,8 @@ var SidebarView = Backbone.View.extend({
 	events: {
 		"click .js-sidebarToggle": "toggle",
 		"click .list--pages .item-texttvpage": "itemClick",
-		"change .sidebar-input-page": "inputChange"
+		//"change .sidebar-input-page": "inputChange",
+		"keyup .sidebar-input-page": "inputChange",
 	},
 
 	initialize: function() {
@@ -125,6 +126,7 @@ var SidebarView = Backbone.View.extend({
 			}) );
 
 			$target.val("");
+			$target.blur();
 
 			this.close();
 
@@ -276,11 +278,12 @@ var TextTVPageModel = Backbone.Model.extend({
 					var pageRange = self.get("pageRange");
 					
 					if ( !_.has(stats.pages, pageRange)) {
-						console.log("ad page to stats");
+
 						stats.pages[pageRange] = {
 							pageRange: pageRange,
 							count: 0
 						};
+						
 					}
 					
 					stats.pages[pageRange].count++;
