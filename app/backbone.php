@@ -148,8 +148,8 @@
 		</div>
 	</script>
 	
-	<!-- Main page template, including divs for swiper -->
-	<script id="MainViewTemplate" type="text/x-template">
+	<!-- Bar template, with back-button and texttv.nu logo -->
+	<script id="MainViewBarTemplate" type="text/x-template">
 	
 		<div class="bar bar-header bar-positive">
 
@@ -172,11 +172,16 @@
 			<button class="button button-clear icon ion-navicon js-sidebarToggle"></button>
 
 		</div>
+	
+	</script>
+
+	<!-- Main page template, including divs for swiper -->
+	<script id="MainViewTemplate" type="text/x-template">
+		
+		<div id="MainViewBar"></div>
 
 		<div class="content has-header">
 			
-			<p>texttv-sidor kommer här dårå</p>
-
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
 				</div>

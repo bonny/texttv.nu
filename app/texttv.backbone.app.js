@@ -122,7 +122,8 @@ var SidebarView = Backbone.View.extend({
 			var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 				pageRange: pageRange,
 				addToSwiper: true,
-				animateSwiper: false
+				animateSwiper: false,
+				initiatedBy: "manual"
 			}) );
 
 			$target.val("");
@@ -147,7 +148,8 @@ var SidebarView = Backbone.View.extend({
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 			pageRange: pageRange,
 			addToSwiper: true,
-			animateSwiper: false
+			animateSwiper: false,
+			initiatedBy: "click"
 		}) );
 
 		this.close();
@@ -177,7 +179,13 @@ var TextTVPageModel = Backbone.Model.extend({
 		swiperSlide: null,
 
 		addToSwiper: false,
-		animateSwiper: true
+		animateSwiper: true,
+
+		// type of event that inited this page load, like "swipe" or "click"
+		// used to determine if the prev-button should be shown
+		initiatedBy: null,
+
+		prevPageSourceData: null
 	},
 
 	templateLoading: _.template( $("#LoadingPageTemplate").html() ),
@@ -235,7 +243,7 @@ var TextTVPageModel = Backbone.Model.extend({
 		
 		this.addContentToSwiper();
 
-		var swiperSlide = this.get("swiperSlide");
+		// var swiperSlide = this.get("swiperSlide");
 		
 		TextTVSwiper.prepareSliderAfterPageChange();
 
@@ -263,38 +271,62 @@ var TextTVPageModel = Backbone.Model.extend({
 			dataType: "json",
 			url: "http://texttv.nu/api/get/" + this.get("pageRange"),
 			context: this,
-			cache: false, // @TODO do our own caching later on...
+
+			// @TODO do our own caching later on...
+			// http://api.jquery.com/jquery.ajaxprefilter/
+			// beforeSend
+			cache: false,
+
 			//data: { slow_answer: 1 }, // enable this to test how it looks with slow network
 			// timeout: 1000 // enable this to test timeout/fail message
-		})
+		})	
+			// when a page is done loading from server
 			.done(function(r) {
 				
 				//console.log("Got remote data", r, this);
+				// set sourcedata, will trigger page template render
 				this.set("sourceData", r);
 
-				// Update stats
+				// Update stats for use in sidebar
 				var stats = texttvapp.storage.get("stats", function(stats) {
 	
 					var pageRange = self.get("pageRange");
 					
+					// If this is the first load of this pageRange then add it to the stats array
 					if ( !_.has(stats.pages, pageRange)) {
 
 						stats.pages[pageRange] = {
 							pageRange: pageRange,
 							count: 0
 						};
-						
+
 					}
 					
 					stats.pages[pageRange].count++;
 
+					// Save stats
 					texttvapp.storage.save(stats, function(stats) {
 						// console.log("added stats", stats);
 					});
 
-				});
+				}); // stats sidebar
+
+				// Save data for back-button
+				/*if ( this.get("initiatedBy") == "click" ) {
+
+					console.log( "page load was initiated by click = show back button to prev page" );
+					console.log( this.get("pageRange") );
+					
+				}*/
+
+				// Save all page loads in a global history?
+				// OK stupid, texttvapp.TextTVPages already is a collection with all pages!
+
+
 
 			})
+
+			// when loading failes, due to network down, lag, etc.
 			.fail(function(r) {
 
 				//console.log("Dit NOT get remote data, something failed", r);
@@ -361,6 +393,7 @@ var MainView = Backbone.View.extend({
 	el: "#MainView",
 	
 	template: _.template( $("#MainViewTemplate").html() ),
+	templateBar: _.template( $("#MainViewBarTemplate").html() ),
 
 	events: {
 		"click .js-sidebarToggle": "toggleSidebar",
@@ -400,7 +433,8 @@ var MainView = Backbone.View.extend({
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 			pageRange: parentModel.get("pageRange"),
 			addToSwiper: true,
-			animateSwiper: false
+			animateSwiper: false,
+			initiatedBy: "reloadButton"
 		}) );
 
 	},
@@ -412,7 +446,8 @@ var MainView = Backbone.View.extend({
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 			pageRange: pageRange,
 			addToSwiper: true,
-			animateSwiper: false
+			animateSwiper: false,
+			initiatedBy: "homeButton"
 		}) );
 
 	},
@@ -429,7 +464,8 @@ var MainView = Backbone.View.extend({
 			var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 				pageRange: href,
 				addToSwiper: true,
-				animateSwiper: false
+				animateSwiper: false,
+				initiatedBy: "click"
 			}) );
 
 		}
@@ -444,9 +480,15 @@ var MainView = Backbone.View.extend({
 	},
 
 	render: function() {
-		// console.log("Render mainView");
+		
+		console.log("Render mainView");
+		
 		var renderedHTML = this.template( this.model.attributes );
-		this.$el.html(renderedHTML);
+		this.$el.html(renderedHTML);		
+		
+		var barHTML = this.templateBar( this.model.attributes );
+		this.$el.find("#MainViewBar").html( barHTML );
+		
 		return this;
 	}
 
@@ -516,7 +558,8 @@ var TextTVSwiper = {
 			var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 				pageRange: activeSlide.pageRange,
 				addToSwiper: true,
-				animateSwiper: false
+				animateSwiper: false,
+				initiatedBy: "swipe"
 			}) );
 
 		}
