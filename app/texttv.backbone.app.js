@@ -279,6 +279,7 @@ var TextTVPageModel = Backbone.Model.extend({
 			// @TODO do our own caching later on...
 			// http://api.jquery.com/jquery.ajaxprefilter/
 			// beforeSend
+			// http://stackoverflow.com/questions/10585578/changing-the-cache-time-in-jquery
 			cache: false,
 
 			//data: { slow_answer: 1 }, // enable this to test how it looks with slow network
