@@ -23,10 +23,17 @@
 
 <body>
 
-	<!-- @TODO: denna ska vara innuti #mainview ju, annars funkar inte sidebar -->
-	<div id="MainViewBar"></div>
 
-	<div id="MainView" class="view view--main"></div>
+	<div class="view view--main">
+
+		<!-- @TODO: denna ska vara innuti #mainview ju, annars funkar inte sidebar -->
+		<!-- will contain bar with back button etc. -->
+		<div id="MainViewBar"></div>
+		
+		<!-- will contain swiper etc. -->
+		<div id="MainView" class="content has-header"></div>
+
+	</div>
 
 	<!-- Template for most visited pages in sidebar -->
 	<script id="MostVisitedTemplate" type="text/html">
@@ -181,13 +188,9 @@
 	<!-- Main page template, including divs for swiper -->
 	<script id="MainViewTemplate" type="text/x-template">
 		
-		<div class="content has-header">
-			
-			<div class="swiper-container">
-				<div class="swiper-wrapper">
-				</div>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
 			</div>
-
 		</div>
 
 	</script>

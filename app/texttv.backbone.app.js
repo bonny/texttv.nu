@@ -45,7 +45,7 @@ texttvapp.storage = new Lawnchair({
 	adapter: "dom"
 }, function(storage) {
 	
-	console.log("Storage init");
+	// console.log("Storage init");
 	
 	storage.exists("stats", function(exists) {
 		if (false === exists) {
@@ -86,11 +86,15 @@ var SidebarView = Backbone.View.extend({
 	},
 
 	initialize: function() {
+		
 		this.listenTo(this.model, "change:isOpen", this.openOrClose);
+
 	},
 
 	openOrClose: function() {
-		texttvapp.mainView.$el.toggleClass("open-sidebar", this.model.get("isOpen"));
+
+		texttvapp.mainView.$el.closest(".view--main").toggleClass("open-sidebar", this.model.get("isOpen"));
+
 	},
 
 	close: function() {
@@ -401,7 +405,7 @@ var MainViewBar = Backbone.View.extend({
 	},
 
 	toggleSidebar: function() {
-		// console.log("Open or close sidebar in main view");
+		//console.log("Open or close sidebar in main view");
 		texttvapp.sidebarView.toggle();
 	},
 
@@ -420,8 +424,6 @@ var MainViewBar = Backbone.View.extend({
 
 	render: function() {
 
-		console.log("MainViewBar", MainViewBar);
-
 		var renderedHTML = this.template( this.model.attributes );
 		this.$el.html(renderedHTML);		
 
@@ -429,8 +431,6 @@ var MainViewBar = Backbone.View.extend({
 
 	initialize: function() {
 		
-		console.log("initialize MainViewBar");
-
 		this.render();
 
 	}
@@ -528,7 +528,7 @@ var MainView = Backbone.View.extend({
 
 	render: function() {
 		
-		console.log("Render mainView");
+		// console.log("Render mainView");
 		
 		var renderedHTML = this.template( this.model.attributes );
 		this.$el.html(renderedHTML);		
