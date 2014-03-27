@@ -16,7 +16,7 @@
 	<script src="bower_components/underscore.string/lib/underscore.string.js"></script>
 	<script src="bower_components/backbone/backbone.js"></script>
 	<script src="bower_components/fastclick/lib/fastclick.js"></script>
-	<script src="bower_components/swiper/dist/idangerous.swiper-2.4.js"></script>
+	<script src="bower_components/swiper/dist/idangerous.swiper.min.js"></script>
 	<script src="js/lawnchair-0.6.1.min.js"></script>
 
 </head>

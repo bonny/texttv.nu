@@ -1,8 +1,13 @@
 {
   "name": "swiper",
-  "repo": "nolimits4web/Swiper",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nolimits4web/Swiper.git"
+  },
   "description": "Mobile touch slider and framework with hardware accelerated transitions",
-  "version": "2.4.1",
+  "version": "2.5.5",
+  "author": "Vladimir Kharlampidi",
+  "homepage": "http://www.idangero.us/sliders/swiper/",
   "keywords": [
     "swiper",
     "swipe",
@@ -10,22 +15,32 @@
   ],
   "dependencies": {},
   "scripts": [
-    "dev/idangerous.swiper.js"
+    "dist/idangerous.swiper.js"
   ],
-  "main": "dev/idangerous.swiper.js",
+  "main": "dist/idangerous.swiper.js",
   "styles": [
-    "dev/idangerous.swiper.css"
+    "dist/idangerous.swiper.css"
   ],
-  "license": "MIT",
-  "homepage": "https://github.com/nolimits4web/Swiper",
-  "_release": "2.4.1",
+  "license": [
+    "GPL",
+    "MIT"
+  ],
+  "ignore": [
+    ".*",
+    "demo-apps",
+    "demos",
+    "Gruntfile",
+    "lib",
+    "node_modules",
+    "package.json"
+  ],
+  "_release": "2.5.5",
   "_resolution": {
     "type": "version",
-    "tag": "v2.4.1",
-    "commit": "bddfa31bfcffaa2519af75501df2ac56368d32fd"
+    "tag": "v2.5.5",
+    "commit": "a7988cdce2935f914ce820d3a0ecbaa275737565"
   },
   "_source": "git://github.com/nolimits4web/Swiper.git",
-  "_target": "~2.4.1",
-  "_originalSource": "swiper",
-  "_direct": true
+  "_target": "~2.5.5",
+  "_originalSource": "swiper"
 }

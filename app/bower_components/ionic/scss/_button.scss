@@ -51,7 +51,7 @@
     padding: 0 0 $button-border-width 0;
     vertical-align: inherit;
     font-size: $button-icon-size;
-    line-height: $button-height - $button-border-width;
+    line-height: $button-height - $button-border-width + 1;
   }
   &.icon-left:before {
     float: left;
@@ -164,7 +164,6 @@
   border-color: transparent;
   background: none;
 
-  &.button:active, 
   &.button.active {
     border-color: transparent;
     background: none;
@@ -187,7 +186,7 @@
   background: none;
   box-shadow: none;
 
-  &:active, &.active {
+  &.active {
     opacity: 0.3;
   }
 }
@@ -206,8 +205,8 @@
 .button-block {
   display: block;
   clear: both;
-  
-  &:after { 
+
+  &:after {
     clear: both;
   }
 }

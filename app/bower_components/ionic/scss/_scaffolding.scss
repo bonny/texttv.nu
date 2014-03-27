@@ -10,19 +10,8 @@
   @include box-sizing(border-box);
 }
 
-a {
-  -webkit-user-drag: none;
-  -webkit-tap-highlight-color: transparent;
-
-  &[href]:hover {
-    cursor: pointer;
-  }
-}
-img {
-  -webkit-user-drag: none;
-}
-
-body, .ionic-body {
+body,
+.ionic-body {
   @include touch-callout(none);
   @include font-smoothing(antialiased);
   @include text-size-adjust(none);
@@ -92,7 +81,6 @@ body.grade-c {
   @include user-select(none);
   @include touch-callout(none);
   @include text-size-adjust(none);
-  @include translateZ(0);
   @include transform-origin(left, top);
   -webkit-backface-visibility: hidden;
 }
@@ -189,6 +177,7 @@ body.grade-c {
   font-size: 30px;
 
   .icon-pulling {
+    @include animation-name(refresh-spin-back);
     @include animation-duration(200ms);
     @include animation-timing-function(linear);
     @include animation-fill-mode(both);
@@ -203,6 +192,16 @@ body.grade-c {
 @-webkit-keyframes refresh-spin {
   0% {-webkit-transform: rotate(0); }
   100% {-webkit-transform: rotate(-180deg); }
+}
+
+@keyframes refresh-spin-back {
+  0% { transform: rotate(-180deg); }
+  100% { transform: rotate(0); }
+}
+
+@-webkit-keyframes refresh-spin-back {
+  0% {-webkit-transform: rotate(-180deg); }
+  100% {-webkit-transform: rotate(0); }
 }
 
 .scroll-refresher.active {
@@ -224,7 +223,7 @@ body.grade-c {
   }
 
   .ionic-refresher-content {
-    .icon-pulling {
+    i.icon.icon-pulling {
       @include animation-name(refresh-spin);
     }
   }
@@ -283,14 +282,24 @@ ion-infinite-scroll.active .scroll-infinite {
 .has-subheader {
   top: $bar-height * 2;
 }
+.has-tabs-top {
+  top: $bar-height + $tabs-height;
+}
+.has-header.has-subheader.has-tabs-top {
+  top: 2 * $bar-height + $tabs-height;
+}
 
 .has-footer {
   bottom: $bar-height;
 }
 
-// Specify that a content area will have tabs
-.has-tabs {
-  bottom: 49px;
+.has-tabs,
+.bar-footer.has-tabs {
+  bottom: $tabs-height;
+}
+
+.has-footer.has-tabs {
+  bottom: $tabs-height + $bar-height;
 }
 
 // A full screen section with a solid background
@@ -301,7 +310,8 @@ ion-infinite-scroll.active .scroll-infinite {
 .view {
   z-index: $z-index-view;
 }
-.pane, .view {
+.pane,
+.view {
   position: absolute;
   top: 0;
   right: 0;
@@ -309,5 +319,5 @@ ion-infinite-scroll.active .scroll-infinite {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background-color: $base-background-color;
 }

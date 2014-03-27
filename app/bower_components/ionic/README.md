@@ -2,7 +2,7 @@
 
 The best place to start with Ionic is our [documentation page](http://ionicframework.com/docs/).
 
-Note: __Ionic is Alpha software__ and currently best supports iOS 6+ and Android 4.1+ (though we are working on Android performance improvements). Ionic is changing quickly as we work towards the beta.
+Note: Ionic currently best supports iOS 6+ and Android 4.1+, with limited support for Android 2.3. Ionic is changing quickly as we work towards the beta.
 
 # What is Ionic?
 
@@ -79,33 +79,47 @@ For most cases, you'll need AngularJS as well.  This is bundled in `js/angular/`
 + <https://twitter.com/adamdbradley>
 + <https://github.com/adamdbradley>
 
+**Andy Joslin**
+
++ <https://twitter.com/andytjoslin>
++ <https://github.com/ajoslin>
+
 ## Development
 
-* `npm install` to setup
-* `grunt` to jshint & build
-* `grunt watch` to watch and rebuild on change
-* `grunt karma:single` to test one-time
-* `grunt karma:watch` to test and re-run on source change
-* `grunt protractor:local` to test e2e tests locally (requires static server on port 8080)
-* `grunt e2e-watch` to run end to end tests on change of files in `test/e2e/**/*`
-* `grunt cloudtest` to run unit & e2e tests in the cloud
+* `npm install && npm install -g gulp protractor` to setup
+* `gulp` or `gulp build` to build
+* `gulp docs` to generate docs (read Documentation below for how to test docs locally).
+* `gulp build --release` to build with minification & strip debugs
+* `gulp watch` to watch and rebuild on change
+* `gulp karma` to test one-time
+* `gulp karma-watch` to test and re-run on source change
+* `gulp protractor` to test e2e tests locally
+* `gulp cloudtest` to run e2e tests in the cloud
+
+### Documentation
+
+* To test documentation, follow these steps:
+  1. Clone ionic-site to `./tmp/ionic-site` - this is where the `gulp docs` task builds to.  `./tmp` is the folder that travis uses to do all of its tasks.
+    - `mkdir tmp && git clone git@github.com:driftyco/ionic-site tmp/ionic-site`
+  2. Make jekyll rebuild whenever you change the site.
+    - `cd tmp/ionic-site && jekyll serve -w`
+  3. Go back to project root and build the docs
+    - `gulp docs`
+  4. Open localhost:4000 and see your changes! Re-run `gulp docs` again whenever you change something, and jekyll will update the site.
 
 ### Commit Conventions
 
 * Uses http://github.com/ajoslin/conventional-changelog conventions
 
-### Pushing Releases
+### Pushing New Release of Ionic
 
-(uses AngularJS's bash utils - when you run any script, run it with `--git-push-dryrun=true` to do 'mock' git pushes)
-
-* Run `./scripts/release/finalize-version.sh --action=prepare` to:
-  - Remove version suffix
-  - Write new version to package/bower/component.json
-  - Move build files to `release/`
-  - Commit & tag the release
-* Run `./scripts/release/finalize-version.sh --action=publish` to:
-  - Push out new version
-* Once new version is pushed out, run `./scripts/release/initialize-new-version.sh` (usage is shown in file), to bump to next version with bump type / version suffix / version name specified.
+- Almost all of the logic for releasing Ionic is done on the Travis server
+- To push a new release:
+  1. Update package.json version to new version
+  2. Update package.json codename to new codename
+  3. Generate changelog with `gulp changelog` and make sure it is OK
+  4. Commit these and push to master
+- Travis will detect that this commit changed the version in package.json and push out all necessary for this new release (tags, release files, site config, ...)
 
 ## LICENSE
 
