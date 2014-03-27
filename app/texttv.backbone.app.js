@@ -28,7 +28,7 @@ texttvapp.helpers = {
 			pages = pages.reverse();
 
 			// Exclude some common pages, like 100 that feels unnessesary since it's at the top of the pages below anyway (and will always be the top one..)
-			var excludedPageRanges = [100,];
+			var excludedPageRanges = [100];
 			pages = _.filter(pages, function(item) {
 				return ( excludedPageRanges.indexOf(item.pageRange) === -1 );
 			});
