@@ -323,3 +323,22 @@ Fixa till högerspalten lite, t.ex. gillar jag inte de feta rubrikerna som ionic
 .MostVisitedPagesItems .item-note {
 	display: none;
 }
+
+/*
+animations as angular does it:
+.animate-enter-setup, .animate-leave-setup {
+.animate-enter-setup {
+.animate-enter-setup.animate-enter-start {
+.animate-leave-setup.animate-leave-start {
+.animate-leave-setup{
+*/
+
+
+/* back button in header bar */
+/* when no previous page/history exists then it's hidden */
+.button-back {
+	opacity: 0;
+}
+
+.button-back-hidden {
+}

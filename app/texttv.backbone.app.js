@@ -269,6 +269,34 @@ var TextTVPageModel = Backbone.Model.extend({
 
 		swiperSlide.html(sliderHTML);
 
+		// Get history items
+		var click_history = texttvapp.TextTVPages.filter(function(item) {
+			return ( item.get("initiatedBy") == "click" || item.get("initiatedBy") == "homeButton" );
+		});
+
+		// Remove last entry (which is the current item)
+		click_history.pop();
+		
+		// If we have history then show back button
+		if (click_history.length) {
+		
+			var $backbutton = $(".js-backButton");
+			var $backbuttonText = $(".js-backButton-text");
+			$backbuttonText.text( _.last(click_history).get("pageRange") );
+			$backbutton.animate({
+				opacity: 1,
+				display: "block"
+			});
+
+		}
+
+		console.log( click_history );
+
+
+		// update bar
+		//texttvapp.mainViewBar.render();
+		//texttvapp.mainViewBar.model.set("hasPrevPagex", 123);
+
 	},
 
 	/**
@@ -431,6 +459,7 @@ var MainViewBar = Backbone.View.extend({
 
 	render: function() {
 
+		console.log("render mainviewbar");
 		var renderedHTML = this.template( this.model.attributes );
 		this.$el.html(renderedHTML);		
 

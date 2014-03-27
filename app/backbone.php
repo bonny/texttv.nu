@@ -26,7 +26,6 @@
 
 	<div class="view view--main">
 
-		<!-- @TODO: denna ska vara innuti #mainview ju, annars funkar inte sidebar -->
 		<!-- will contain bar with back button etc. -->
 		<div id="MainViewBar"></div>
 		
@@ -133,12 +132,12 @@
 	
 		<div class="bar bar-header bar-positive">
 
-			<% if (hasPrevPage) { %>
-				<button class="button button-clear">
+			<% // if (hasPrevPage) { %>
+				<button class="button button-clear js-backButton button-back">
 					<i class="icon ion-ios7-arrow-back"></i>
-					Tillbaka
+					<span class="js-backButton-text">Tillbaka</span>
 				</button>
-			<% } %>
+			<% // } %>
 
 			<h1 class="title">
 				<a href="/100" class="bar-header-titleLink">
