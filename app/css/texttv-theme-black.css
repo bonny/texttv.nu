@@ -13,6 +13,11 @@
 	margin-left: 0;
 	margin-right: 0;
 }
+.list--share .item {
+	background-color: transparent;
+	border-bottom: none;
+	padding: 0;
+}
 .list--share::before {
 	content: "";
 	position: absolute;

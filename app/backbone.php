@@ -96,17 +96,7 @@
 	<!-- Texttv-page-template -->
 	<script id="TextTVPageTemplate" type="text/html">
 		
-		<!-- Foreach page, output it's contents -->
-		<% 
-		_.each(sourceData, function(page) { %>
-			<% _.each(page.content, function(pageContents) { %>
-				<%= pageContents %>
-			<% }) %>
-		<% }) %>
-		
-		<!-- <p>Hej Hopp svejs<br>hejs<br>före</p> -->
-		
-		<div class="list card list--share">
+		<div class="list list--share">
 
 			<div class="item item-text">
 
@@ -126,36 +116,16 @@
 
 			</div>
 
-			<!-- <p>Hej Hopp svejs<br>hejs<br>efter</p> -->
-
-			<!--
-			<div class="item item-divider">
-				<h2>Debuginfo</h2>
-			</div>
-
-			<div class="item item-text">
-				
-				<ul class="list">
-					<li class="item ng-binding">
-						pageRange:
-						100
-					</li>
-
-					<li class="item ng-binding">
-						time:
-						"2014-03-07T19:34:12.299Z"
-					</li>
-
-					<li class="item ng-binding">
-						parent:
-						
-					</li>
-				</ul>
-
-			</div>
-			-->
-
 		</div>
+
+		<!-- Foreach page, output it's contents -->
+		<% 
+		_.each(sourceData, function(page) { %>
+			<% _.each(page.content, function(pageContents) { %>
+				<%= pageContents %>
+			<% }) %>
+		<% }) %>
+		
 	</script>
 	
 	<!-- Bar template, with back-button and texttv.nu logo -->
