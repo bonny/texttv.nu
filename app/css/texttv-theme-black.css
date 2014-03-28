@@ -355,4 +355,5 @@ animations as angular does it:
 }
 .button-back:active {
 	opacity: .3;
+	-webkit-transition: opacity 0;
 }
