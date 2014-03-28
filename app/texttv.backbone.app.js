@@ -270,19 +270,22 @@ var TextTVPageModel = Backbone.Model.extend({
 		swiperSlide.html(sliderHTML);
 
 		// Get history items
-		var click_history = texttvapp.TextTVPages.filter(function(item) {
+		/*var click_history = texttvapp.TextTVPages.filter(function(item) {
 			return ( item.get("initiatedBy") == "click" || item.get("initiatedBy") == "homeButton" );
 		});
 
 		// Remove last entry (which is the current item)
 		click_history.pop();
+		*/
+
 		
 		// If we have history then show back button
+		console.table( texttvapp.TextTVPagesHistory.toJSON() );
 		var $backbutton = $(".js-backButton");
-		if (click_history.length) {
+		if (texttvapp.TextTVPagesHistory.length > 0 && 100 != texttvapp.TextTVPagesHistory.last().get("pageRange")) {
 		
 			var $backbuttonText = $(".js-backButton-text");
-			$backbuttonText.text( _.last(click_history).get("pageRange") );
+			$backbuttonText.text( texttvapp.TextTVPagesHistory.at( texttvapp.TextTVPagesHistory.length-2 ).get("pageRange") );
 			$backbutton.addClass("button-back--enabled");
 			/*$backbutton.animate({
 				opacity: 1,
@@ -293,7 +296,7 @@ var TextTVPageModel = Backbone.Model.extend({
 			$backbutton.removeClass("button-back--enabled");
 		}
 
-		console.log( click_history );
+		//console.log( click_history );
 
 
 		// update bar
@@ -391,7 +394,8 @@ var TextTVPageModel = Backbone.Model.extend({
 
 texttvapp.textTVPage = TextTVPageModel;
 
-var TextTVPagesCollection = Backbone.Collection.extend({
+
+var TextTVPagesClickCollection = Backbone.Collection.extend({
 
 	model: TextTVPageModel,
 
@@ -401,6 +405,32 @@ var TextTVPagesCollection = Backbone.Collection.extend({
 
 	pageAdded: function(addedPage) {
 		// console.log("page was added to collection", addedPage);
+		// Keep track of all pages that should be in history
+	}
+
+});
+
+texttvapp.TextTVPagesHistory = new TextTVPagesClickCollection();
+
+var TextTVPagesCollection = Backbone.Collection.extend({
+
+	model: TextTVPageModel,
+
+	initialize: function() {
+		this.on("add", this.pageAdded);
+	},
+
+	pageAdded: function(addedPage) {
+		
+		// Keep track of all pages that should be in history
+		//console.log("page was added to collection", addedPage.get("initiatedBy"));
+
+		if ( "backButton" == addedPage.get("initiatedBy") || "homeButton" == addedPage.get("initiatedBy") || "click" == addedPage.get("initiatedBy") ) {
+			// console.log("add to click history");
+			texttvapp.TextTVPagesHistory.add( addedPage );
+		}
+
+
 	}
 
 });
@@ -452,7 +482,7 @@ var MainViewBar = Backbone.View.extend({
 		e.preventDefault();
 
 		// Get all click history
-		var click_history = texttvapp.TextTVPages.filter(function(item) {
+		/*var click_history = texttvapp.TextTVPages.filter(function(item) {
 			return ( item.get("initiatedBy") == "click" || item.get("initiatedBy") == "homeButton" );
 		});
 
@@ -462,13 +492,33 @@ var MainViewBar = Backbone.View.extend({
 		// Now the last item should be the one we want to go back to
 
 		var prevPage = _.last(click_history);
+		*/
+
+		// All history is in texttvapp.TextTVPagesHistory
+		// We don't want to go to the current page, which is texttvapp.TextTVPagesHistory.length - 1
+		// so remove that
+		console.table(texttvapp.TextTVPagesHistory.toJSON());
+		texttvapp.TextTVPagesHistory.pop();
+
+		// but be want to go to the page before that, texttvapp.TextTVPagesHistory.length - 2, or the last one after we removed the current page
+		var prevPageModel = texttvapp.TextTVPagesHistory.last();
+
+		// remove the last item if it's not the last one = page 100, we always keep that
+		if (texttvapp.TextTVPagesHistory.length > 1) {
+			texttvapp.TextTVPagesHistory.pop();
+		}
+		// remove the prevPageModel from the history
+		//console.table(texttvapp.TextTVPagesHistory.toJSON());
+		console.table(texttvapp.TextTVPagesHistory.toJSON());
+		// then also remove the last item = 
 
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
-			pageRange: prevPage.get("pageRange"),
+			pageRange: prevPageModel.get("pageRange"),
 			addToSwiper: true,
 			animateSwiper: false,
 			initiatedBy: "backButton"
 		}) );
+
 
 	},
 
