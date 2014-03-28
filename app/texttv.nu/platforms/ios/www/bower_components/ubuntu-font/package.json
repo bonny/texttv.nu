@@ -1,0 +1,23 @@
+{
+  "name": "ubuntu-font",
+  "description": "Ubuntu Font Family",
+  "version": "0.8.0",
+  "keywords": ["font", "ubuntu"],
+  "homepage": "http://font.ubuntu.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mariomc/ubuntu-font.git"
+  },
+  "contributors": [
+    {
+      "name": "Mário Gonçalves",
+      "web": "http://github.com/mariomc"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "Ubuntu Font Licence",
+      "url": "http://font.ubuntu.com/licence/"
+    }
+  ]
+}

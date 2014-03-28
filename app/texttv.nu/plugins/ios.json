@@ -3,7 +3,25 @@
         "installed": [],
         "uninstalled": []
     },
-    "config_munge": {},
-    "installed_plugins": {},
+    "config_munge": {
+        "framework": {
+            "Social.framework": {
+                "false": 1
+            },
+            "MessageUI.framework": {
+                "false": 1
+            }
+        },
+        "config.xml": {
+            "/*": {
+                "<feature name=\"SocialSharing\"><param name=\"ios-package\" value=\"SocialSharing\" /></feature>": 1
+            }
+        }
+    },
+    "installed_plugins": {
+        "nl.x-services.plugins.socialsharing": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        }
+    },
     "dependent_plugins": {}
 }

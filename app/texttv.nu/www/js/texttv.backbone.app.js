@@ -542,7 +542,7 @@ var MainViewBar = Backbone.View.extend({
 
 	render: function() {
 
-		// 	console.log("render mainviewbar");
+		// console.log("render mainviewbar");
 		var renderedHTML = this.template( this.model.attributes );
 		this.$el.html(renderedHTML);		
 
@@ -804,7 +804,7 @@ texttvapp.mainViewBar = new MainViewBar({
 });
 
 function onDeviceReady() {
-	alert("onDeviceReady()");
+
 }
 document.addEventListener('deviceready', onDeviceReady, false);
 

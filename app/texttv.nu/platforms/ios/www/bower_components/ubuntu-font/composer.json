@@ -1,0 +1,9 @@
+{
+  "name": "mariomc/ubuntu-font",
+  "description": "Ubuntu Font Family",
+  "keywords": ["ubuntu", "font"],
+  "homepage": "http://font.ubuntu.com/",
+  "license": [
+      "Ubuntu Font Licence 1.0"
+  ]
+}
