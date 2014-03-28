@@ -439,7 +439,37 @@ var MainViewBar = Backbone.View.extend({
 
 	events: {
 		"click .js-sidebarToggle": "toggleSidebar",
-		"click .bar-header-titleLink": "loadHome"
+		"click .bar-header-titleLink": "loadHome",
+		"click .js-backButton": "backButton"
+	},
+
+	/**
+	 * The backbutton. The most used button on the web, but will it be the most clicked in this app??!
+	 */
+	backButton: function(e) {
+
+		console.log("Click back button");
+		e.preventDefault();
+
+		// Get all click history
+		var click_history = texttvapp.TextTVPages.filter(function(item) {
+			return ( item.get("initiatedBy") == "click" || item.get("initiatedBy") == "homeButton" );
+		});
+
+		// Remove last entry = the current page, since we don't want to go back to the same page
+		click_history.pop();
+
+		// Now the last item should be the one we want to go back to
+
+		var prevPage = _.last(click_history);
+
+		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
+			pageRange: prevPage.get("pageRange"),
+			addToSwiper: true,
+			animateSwiper: false,
+			initiatedBy: "backButton"
+		}) );
+
 	},
 
 	toggleSidebar: function() {
