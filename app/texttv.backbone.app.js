@@ -278,9 +278,9 @@ var TextTVPageModel = Backbone.Model.extend({
 		click_history.pop();
 		
 		// If we have history then show back button
+		var $backbutton = $(".js-backButton");
 		if (click_history.length) {
 		
-			var $backbutton = $(".js-backButton");
 			var $backbuttonText = $(".js-backButton-text");
 			$backbuttonText.text( _.last(click_history).get("pageRange") );
 			$backbutton.addClass("button-back--enabled");
@@ -289,6 +289,8 @@ var TextTVPageModel = Backbone.Model.extend({
 				display: "block"
 			});*/
 
+		} else {
+			$backbutton.removeClass("button-back--enabled");
 		}
 
 		console.log( click_history );
