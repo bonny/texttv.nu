@@ -338,7 +338,12 @@ animations as angular does it:
 /* when no previous page/history exists then it's hidden */
 .button-back {
 	opacity: 0;
+	-webkit-transform: translate3d(10px,0px,0)
 }
 
-.button-back-hidden {
+.button-back--enabled {
+	opacity: 1;
+
+	transition: -webkit-transform .25s linear, opacity .5s;
+	-webkit-transform: translate3d(0px,0px,0)
 }

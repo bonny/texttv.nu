@@ -283,10 +283,11 @@ var TextTVPageModel = Backbone.Model.extend({
 			var $backbutton = $(".js-backButton");
 			var $backbuttonText = $(".js-backButton-text");
 			$backbuttonText.text( _.last(click_history).get("pageRange") );
-			$backbutton.animate({
+			$backbutton.addClass("button-back--enabled");
+			/*$backbutton.animate({
 				opacity: 1,
 				display: "block"
-			});
+			});*/
 
 		}
 
@@ -459,7 +460,7 @@ var MainViewBar = Backbone.View.extend({
 
 	render: function() {
 
-		console.log("render mainviewbar");
+		// 	console.log("render mainviewbar");
 		var renderedHTML = this.template( this.model.attributes );
 		this.$el.html(renderedHTML);		
 
