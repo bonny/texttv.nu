@@ -1,0 +1,25 @@
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/ant-build/texttvnu.ap_ \
+ : /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/res/drawable/icon.png \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/res/drawable-hdpi/icon.png \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/res/drawable-ldpi/icon.png \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/res/drawable-mdpi/icon.png \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/res/drawable-xhdpi/icon.png \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/res/values/strings.xml \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/res/xml/config.xml \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/ant-build/res/drawable/icon.png \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/ant-build/res/drawable-hdpi/icon.png \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/ant-build/res/drawable-ldpi/icon.png \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/ant-build/res/drawable-mdpi/icon.png \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/ant-build/res/drawable-xhdpi/icon.png \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/_where-is-www.txt \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/cordova.js \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/cordova_plugins.js \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/css \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/img \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/index.html \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/js \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/css/index.css \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/img/logo.png \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/js/index.js \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/ant-build/AndroidManifest.xml \
