@@ -357,3 +357,11 @@ animations as angular does it:
 	opacity: .3;
 	-webkit-transition: opacity 0;
 }
+
+#MainViewBar .button-clear:active {
+	opacity: .3;
+}
+
+#SidebarRight .item:active {
+	background-color: #D9D9D9;
+}
