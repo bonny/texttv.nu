@@ -3,7 +3,7 @@
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>TextTV.nu backbone version</title>
+	<title>TextTV.nu</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
 
 	<link rel="stylesheet" href="bower_components/ionic/release/css/ionic.css">
