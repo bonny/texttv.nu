@@ -542,7 +542,7 @@ var MainViewBar = Backbone.View.extend({
 
 	render: function() {
 
-		// 	console.log("render mainviewbar");
+		// console.log("render mainviewbar");
 		var renderedHTML = this.template( this.model.attributes );
 		this.$el.html(renderedHTML);		
 
@@ -584,6 +584,23 @@ var MainView = Backbone.View.extend({
 		TextTVSwiper.initialize();
 
 		this.loadHome();
+
+	},
+
+	sharePage: function() {
+
+		var activeSlide = TextTVSwiper.swiper.activeSlide();
+		
+		if (activeSlide.parentModel) {
+			
+			var sourceData = activeSlide.parentModel.get("sourceData");
+			var shareURL = "http://texttv.nu/app/arkiv/datum-sida/" + _.pluck(sourceData, "id").join(",");
+
+			window.plugins.socialsharing.share(shareURL, null, 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
+
+		}
+
+
 
 	},
 
@@ -804,7 +821,9 @@ texttvapp.mainViewBar = new MainViewBar({
 });
 
 function onDeviceReady() {
-	alert("onDeviceReady()");
+
+	alert( StatusBar );
+
 }
 document.addEventListener('deviceready', onDeviceReady, false);
 

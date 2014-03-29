@@ -13,7 +13,13 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <preference name="DisallowOverscroll" value="true" />
     <feature name="SocialSharing">
         <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+        <param name="ios-package" value="SocialSharing" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+        <param name="ios-package" value="CDVDevice" />
     </feature>
 </widget>

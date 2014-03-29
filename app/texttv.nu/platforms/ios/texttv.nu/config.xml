@@ -19,6 +19,11 @@
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
+    <feature name="StatusBar">
+        <param name="ios-package" onload="true" value="CDVStatusBar" />
+    </feature>
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
     <name>texttv.nu</name>
     <description>
         En iOS-app för SVT Text.
@@ -31,5 +36,8 @@
     <preference name="DisallowOverscroll" value="true" />
     <feature name="SocialSharing">
         <param name="ios-package" value="SocialSharing" />
+    </feature>
+    <feature name="Device">
+        <param name="ios-package" value="CDVDevice" />
     </feature>
 </widget>

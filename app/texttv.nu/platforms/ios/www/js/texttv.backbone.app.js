@@ -268,40 +268,25 @@ var TextTVPageModel = Backbone.Model.extend({
 		var sliderHTML = this.templatePage( this.attributes );
 
 		swiperSlide.html(sliderHTML);
-
-		// Get history items
-		/*var click_history = texttvapp.TextTVPages.filter(function(item) {
-			return ( item.get("initiatedBy") == "click" || item.get("initiatedBy") == "homeButton" );
-		});
-
-		// Remove last entry (which is the current item)
-		click_history.pop();
-		*/
-
 		
 		// If we have history then show back button
 		console.table( texttvapp.TextTVPagesHistory.toJSON() );
 		var $backbutton = $(".js-backButton");
 		if (texttvapp.TextTVPagesHistory.length > 0 && 100 != texttvapp.TextTVPagesHistory.last().get("pageRange")) {
 		
+			/*
+			// Don't add current pageRange to the back button, it got confusing to see all those ranges everywhere
 			var $backbuttonText = $(".js-backButton-text");
 			$backbuttonText.text( texttvapp.TextTVPagesHistory.at( texttvapp.TextTVPagesHistory.length-2 ).get("pageRange") );
+			*/
+			
 			$backbutton.addClass("button-back--enabled");
-			/*$backbutton.animate({
-				opacity: 1,
-				display: "block"
-			});*/
 
 		} else {
+
 			$backbutton.removeClass("button-back--enabled");
+
 		}
-
-		//console.log( click_history );
-
-
-		// update bar
-		//texttvapp.mainViewBar.render();
-		//texttvapp.mainViewBar.model.set("hasPrevPagex", 123);
 
 	},
 
@@ -587,6 +572,23 @@ var MainView = Backbone.View.extend({
 
 	},
 
+	sharePage: function() {
+
+		var activeSlide = TextTVSwiper.swiper.activeSlide();
+		
+		if (activeSlide.parentModel) {
+			
+			var sourceData = activeSlide.parentModel.get("sourceData");
+			var shareURL = "http://texttv.nu/app/arkiv/datum-sida/" + _.pluck(sourceData, "id").join(",");
+
+			window.plugins.socialsharing.share(shareURL, null, 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
+
+		}
+
+
+
+	},
+
 	/**
 	 * Reloads the current page range
 	 * @TODO: if remote page has not changed then "nothing" will happen
@@ -804,7 +806,9 @@ texttvapp.mainViewBar = new MainViewBar({
 });
 
 function onDeviceReady() {
-	alert("onDeviceReady()");
+
+	alert( StatusBar );
+
 }
 document.addEventListener('deviceready', onDeviceReady, false);
 

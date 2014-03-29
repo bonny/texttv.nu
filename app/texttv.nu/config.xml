@@ -10,4 +10,10 @@
     <content src="index.html" />
     <access origin="*" />
 	<preference name="DisallowOverscroll" value="true"/>
+	<feature name="SocialSharing">
+	  <param name="ios-package" value="SocialSharing" />
+	</feature>
+	<feature name="Device">
+	    <param name="ios-package" value="CDVDevice" />
+	</feature>
 </widget>

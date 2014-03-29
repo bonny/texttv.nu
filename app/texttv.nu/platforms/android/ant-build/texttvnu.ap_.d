@@ -21,6 +21,7 @@
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/img \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/index.html \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/js \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/plugins \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/bower_components/angular \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/bower_components/angular-animate \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/bower_components/angular-sanitize \
@@ -443,4 +444,13 @@
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/js/lawnchair-0.6.1.min.js \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/js/old-cordova-script.js \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/js/texttv.backbone.app.js \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/plugins/nl.x-services.plugins.socialsharing \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/plugins/org.apache.cordova.device \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/plugins/org.apache.cordova.statusbar \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/plugins/nl.x-services.plugins.socialsharing/www \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/plugins/nl.x-services.plugins.socialsharing/www/SocialSharing.js \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/plugins/org.apache.cordova.device/www \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/plugins/org.apache.cordova.device/www/device.js \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/plugins/org.apache.cordova.statusbar/www \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/assets/www/plugins/org.apache.cordova.statusbar/www/statusbar.js \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttv.nu/platforms/android/ant-build/AndroidManifest.xml \
