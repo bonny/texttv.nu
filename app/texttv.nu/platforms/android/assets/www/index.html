@@ -22,8 +22,8 @@
 
 </head>
 
-<!-- @TODO: this should be dynamic -->
-<body class="platform-ios7 platform-cordova">
+<!-- js will add these or similar: class="platform-ios7 platform-cordova" -->
+<body>
 
 	<div class="view view--main">
 
@@ -107,7 +107,7 @@
 						Ladda om
 					</a>
 
-					<a class="button js-sharePage">
+					<a class="button js-sharePage hideIfNotCordova">
 						<i class="icon ion-ios7-upload-outline"></i>
 						Dela
 					</a>
@@ -136,7 +136,7 @@
 			<% // if (hasPrevPage) { %>
 				<button class="button button-clear js-backButton button-back">
 					<i class="icon ion-ios7-arrow-back"></i>
-					<span class="js-backButton-text">Tillbaka</span>
+					<span class="js-backButton-text"></span>
 				</button>
 			<% // } %>
 

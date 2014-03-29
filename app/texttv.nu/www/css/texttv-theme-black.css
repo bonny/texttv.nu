@@ -368,3 +368,9 @@ animations as angular does it:
 #SidebarRight .item:active {
 	background-color: #D9D9D9;
 }
+
+/* hide share button if we are not on a device */
+body:not(.platform-cordova) .hideIfNotCordova {
+	display: none;
+}
+

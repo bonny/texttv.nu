@@ -109,13 +109,12 @@ var SidebarView = Backbone.View.extend({
 
 	toggle: function() {
 		
-		// console.log("Open or close sidebar in sidebar view");
 		this.model.set("isOpen", !this.model.get("isOpen"));
 
 	},
 
 	render: function() {
-		console.log("Render sidebarView");
+
 		return this;
 
 	},
@@ -268,40 +267,24 @@ var TextTVPageModel = Backbone.Model.extend({
 		var sliderHTML = this.templatePage( this.attributes );
 
 		swiperSlide.html(sliderHTML);
-
-		// Get history items
-		/*var click_history = texttvapp.TextTVPages.filter(function(item) {
-			return ( item.get("initiatedBy") == "click" || item.get("initiatedBy") == "homeButton" );
-		});
-
-		// Remove last entry (which is the current item)
-		click_history.pop();
-		*/
-
 		
 		// If we have history then show back button
-		console.table( texttvapp.TextTVPagesHistory.toJSON() );
 		var $backbutton = $(".js-backButton");
 		if (texttvapp.TextTVPagesHistory.length > 0 && 100 != texttvapp.TextTVPagesHistory.last().get("pageRange")) {
 		
+			/*
+			// Don't add current pageRange to the back button, it got confusing to see all those ranges everywhere
 			var $backbuttonText = $(".js-backButton-text");
 			$backbuttonText.text( texttvapp.TextTVPagesHistory.at( texttvapp.TextTVPagesHistory.length-2 ).get("pageRange") );
+			*/
+			
 			$backbutton.addClass("button-back--enabled");
-			/*$backbutton.animate({
-				opacity: 1,
-				display: "block"
-			});*/
 
 		} else {
+
 			$backbutton.removeClass("button-back--enabled");
+
 		}
-
-		//console.log( click_history );
-
-
-		// update bar
-		//texttvapp.mainViewBar.render();
-		//texttvapp.mainViewBar.model.set("hasPrevPagex", 123);
 
 	},
 
@@ -328,7 +311,6 @@ var TextTVPageModel = Backbone.Model.extend({
 			// when a page is done loading from server
 			.done(function(r) {
 				
-				//console.log("Got remote data", r, this);
 				// set sourcedata, will trigger page template render
 				this.set("sourceData", r);
 
@@ -351,30 +333,17 @@ var TextTVPageModel = Backbone.Model.extend({
 
 					// Save stats
 					texttvapp.storage.save(stats, function(stats) {
-						// console.log("added stats", stats);
+						// after stats added
 					});
 
 				}); // stats sidebar
-
-				// Save data for back-button
-				/*if ( this.get("initiatedBy") == "click" ) {
-
-					console.log( "page load was initiated by click = show back button to prev page" );
-					console.log( this.get("pageRange") );
-					
-				}*/
-
-				// Save all page loads in a global history?
-				// OK stupid, texttvapp.TextTVPages already is a collection with all pages!
-
-
 
 			})
 
 			// when loading failes, due to network down, lag, etc.
 			.fail(function(r) {
 
-				//console.log("Dit NOT get remote data, something failed", r);
+				// Did NOT get remote data, something failed
 				this.loadFailed();
 
 			});
@@ -404,8 +373,7 @@ var TextTVPagesClickCollection = Backbone.Collection.extend({
 	},
 
 	pageAdded: function(addedPage) {
-		// console.log("page was added to collection", addedPage);
-		// Keep track of all pages that should be in history
+		
 	}
 
 });
@@ -423,11 +391,10 @@ var TextTVPagesCollection = Backbone.Collection.extend({
 	pageAdded: function(addedPage) {
 		
 		// Keep track of all pages that should be in history
-		//console.log("page was added to collection", addedPage.get("initiatedBy"));
-
 		if ( "backButton" == addedPage.get("initiatedBy") || "homeButton" == addedPage.get("initiatedBy") || "click" == addedPage.get("initiatedBy") ) {
-			// console.log("add to click history");
+
 			texttvapp.TextTVPagesHistory.add( addedPage );
+
 		}
 
 
@@ -478,21 +445,7 @@ var MainViewBar = Backbone.View.extend({
 	 */
 	backButton: function(e) {
 
-		console.log("Click back button");
 		e.preventDefault();
-
-		// Get all click history
-		/*var click_history = texttvapp.TextTVPages.filter(function(item) {
-			return ( item.get("initiatedBy") == "click" || item.get("initiatedBy") == "homeButton" );
-		});
-
-		// Remove last entry = the current page, since we don't want to go back to the same page
-		click_history.pop();
-
-		// Now the last item should be the one we want to go back to
-
-		var prevPage = _.last(click_history);
-		*/
 
 		// All history is in texttvapp.TextTVPagesHistory
 		// We don't want to go to the current page, which is texttvapp.TextTVPagesHistory.length - 1
@@ -507,10 +460,6 @@ var MainViewBar = Backbone.View.extend({
 		if (texttvapp.TextTVPagesHistory.length > 1) {
 			texttvapp.TextTVPagesHistory.pop();
 		}
-		// remove the prevPageModel from the history
-		//console.table(texttvapp.TextTVPagesHistory.toJSON());
-		console.table(texttvapp.TextTVPagesHistory.toJSON());
-		// then also remove the last item = 
 
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 			pageRange: prevPageModel.get("pageRange"),
@@ -518,13 +467,12 @@ var MainViewBar = Backbone.View.extend({
 			animateSwiper: false,
 			initiatedBy: "backButton"
 		}) );
-
-
 	},
 
 	toggleSidebar: function() {
-		//console.log("Open or close sidebar in main view");
+
 		texttvapp.sidebarView.toggle();
+
 	},
 
 	loadHome: function(e) {
@@ -542,7 +490,6 @@ var MainViewBar = Backbone.View.extend({
 
 	render: function() {
 
-		// console.log("render mainviewbar");
 		var renderedHTML = this.template( this.model.attributes );
 		this.$el.html(renderedHTML);		
 
@@ -594,9 +541,13 @@ var MainView = Backbone.View.extend({
 		if (activeSlide.parentModel) {
 			
 			var sourceData = activeSlide.parentModel.get("sourceData");
-			var shareURL = "http://texttv.nu/app/arkiv/datum-sida/" + _.pluck(sourceData, "id").join(",");
+			var shareURL = "http://texttv.nu/sida/arkiv/sidor/" + _.pluck(sourceData, "id").join(",");
 
-			window.plugins.socialsharing.share(shareURL, null, 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
+			window.plugins.socialsharing.share(shareURL, 
+												null, 
+												'https://pbs.twimg.com/profile_images/1757178629/logo5.png',
+												shareURL
+											);
 
 		}
 
@@ -606,8 +557,6 @@ var MainView = Backbone.View.extend({
 
 	/**
 	 * Reloads the current page range
-	 * @TODO: if remote page has not changed then "nothing" will happen
-	 * due to sourceData never changing
 	 */
 	reloadPage: function() {
 
@@ -629,7 +578,6 @@ var MainView = Backbone.View.extend({
 
 	loadHome: function() {
 
-		//console.log("load home");
 		var pageRange = 100;
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 			pageRange: pageRange,
@@ -664,14 +612,9 @@ var MainView = Backbone.View.extend({
 
 	render: function() {
 		
-		// console.log("Render mainView");
-		
 		var renderedHTML = this.template( this.model.attributes );
 		this.$el.html(renderedHTML);		
-		
-		//var barHTML = this.templateBar( this.model.attributes );
-		//this.$el.find("#MainViewBar").html( barHTML );
-		
+				
 		return this;
 	}
 
@@ -735,9 +678,7 @@ var TextTVSwiper = {
 			TextTVSwiper.prepareSliderAfterPageChange();
 
 		} else if (activeSlide.pageRange) {
-
-			// console.log("load page!", activeSlide.pageRange);
-			
+		
 			var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 				pageRange: activeSlide.pageRange,
 				addToSwiper: true,
@@ -791,24 +732,6 @@ var TextTVSwiper = {
 
 	}
 
-/*
-	addPage: function(page) {
-		
-		// Use ajaxPromise to detect when page is loaded (or failed)
-		// Wait until loaded to add content to new swiper slide
-		var ajaxPromise = page.get("ajaxPromise");
-
-		var newSlide = this.swiper.createSlide('<p>Here is my new slide yo</p>');
-		newSlide.append();
-
-		ajaxPromise.done(this.pageDoneLoading);
-
-	},
-
-	pageDoneLoading: function(r) {
-		console.log("ey!", r);
-	}
-*/
 };
 _.extend(TextTVSwiper, Backbone.Events);
 
@@ -822,7 +745,9 @@ texttvapp.mainViewBar = new MainViewBar({
 
 function onDeviceReady() {
 
-	alert( StatusBar );
+	// Add classes to body depending on current device
+	var css_platform = "platform-" + device.platform.toLowerCase() + parseInt(device.version);
+	document.querySelector("body").classList.add(css_platform, "platform-cordova");
 
 }
 document.addEventListener('deviceready', onDeviceReady, false);

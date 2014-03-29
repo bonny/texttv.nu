@@ -541,9 +541,13 @@ var MainView = Backbone.View.extend({
 		if (activeSlide.parentModel) {
 			
 			var sourceData = activeSlide.parentModel.get("sourceData");
-			var shareURL = "http://texttv.nu/app/arkiv/datum-sida/" + _.pluck(sourceData, "id").join(",");
+			var shareURL = "http://texttv.nu/sida/arkiv/sidor/" + _.pluck(sourceData, "id").join(",");
 
-			window.plugins.socialsharing.share(shareURL, null, 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
+			window.plugins.socialsharing.share(shareURL, 
+												null, 
+												'https://pbs.twimg.com/profile_images/1757178629/logo5.png',
+												shareURL
+											);
 
 		}
 
@@ -553,8 +557,6 @@ var MainView = Backbone.View.extend({
 
 	/**
 	 * Reloads the current page range
-	 * @TODO: if remote page has not changed then "nothing" will happen
-	 * due to sourceData never changing
 	 */
 	reloadPage: function() {
 
