@@ -25,6 +25,9 @@
         },
         "org.apache.cordova.statusbar": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "org.apache.cordova.console": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
         }
     },
     "dependent_plugins": {}

@@ -345,8 +345,11 @@ animations as angular does it:
 .button-back {
 	-webkit-transition: -webkit-transform .5s ease-out, opacity .5s;
 	opacity: 0;
-	-webkit-transform: translate3d(10px,0px,0)
-
+	-webkit-transform: translate3d(10px,0px,0);
+	
+	/* make it a bit wider so it's easy to tap */
+	width: 50px;
+	text-align: left;
 }
 
 .button-back--enabled {

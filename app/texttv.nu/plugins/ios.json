@@ -15,6 +15,7 @@
         "config.xml": {
             "/*": {
                 "<feature name=\"SocialSharing\"><param name=\"ios-package\" value=\"SocialSharing\" /></feature>": 1,
+                "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>": 1,
                 "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>": 1,
                 "<feature name=\"StatusBar\"><param name=\"ios-package\" onload=\"true\" value=\"CDVStatusBar\" /></feature>": 1,
                 "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />": 1,
@@ -24,6 +25,9 @@
     },
     "installed_plugins": {
         "nl.x-services.plugins.socialsharing": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "org.apache.cordova.console": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "org.apache.cordova.device": {

@@ -1,56 +1,41 @@
-objc[35518]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
-2014-03-29 10:17:26.277 texttv.nu[35518:70b] Cannot find executable for CFBundle 0xbe50fb0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
-2014-03-29 10:17:26.282 texttv.nu[35518:70b] Cannot find executable for CFBundle 0xc063f20 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
-2014-03-29 10:17:26.293 texttv.nu[35518:70b] Cannot find executable for CFBundle 0xbf91310 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
-2014-03-29 10:17:26.299 texttv.nu[35518:70b] Cannot find executable for CFBundle 0xc079380 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
-2014-03-29 10:17:26.338 texttv.nu[35518:70b] Multi-tasking -> Device: YES, App: YES
-2014-03-29 10:17:26.350 texttv.nu[35518:70b] Unlimited access to network resources
-2014-03-29 10:17:26.387 texttv.nu[35518:70b] [CDVTimer][statusbar] 10.125995ms
-2014-03-29 10:17:26.388 texttv.nu[35518:70b] [CDVTimer][TotalPluginStartup] 10.749996ms
-2014-03-29 10:17:26.576 texttv.nu[35518:70b] Resetting plugins due to page load.
-2014-03-29 10:17:29.818 texttv.nu[35518:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/7385B64A-353E-487B-BF45-82B2CDE8782A/texttv.nu.app/www/index.html
-objc[36088]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
-2014-03-29 10:18:34.108 texttv.nu[36088:70b] Cannot find executable for CFBundle 0xc0b81e0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
-2014-03-29 10:18:34.117 texttv.nu[36088:70b] Cannot find executable for CFBundle 0xbfad220 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
-2014-03-29 10:18:34.127 texttv.nu[36088:70b] Cannot find executable for CFBundle 0xc17dc10 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
-2014-03-29 10:18:34.130 texttv.nu[36088:70b] Cannot find executable for CFBundle 0xbfc9620 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
-2014-03-29 10:18:34.172 texttv.nu[36088:70b] Multi-tasking -> Device: YES, App: YES
-2014-03-29 10:18:34.184 texttv.nu[36088:70b] Unlimited access to network resources
-2014-03-29 10:18:34.235 texttv.nu[36088:70b] [CDVTimer][statusbar] 21.712959ms
-2014-03-29 10:18:34.236 texttv.nu[36088:70b] [CDVTimer][TotalPluginStartup] 22.505999ms
-2014-03-29 10:18:34.374 texttv.nu[36088:70b] Resetting plugins due to page load.
-2014-03-29 10:18:35.198 texttv.nu[36088:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/7385B64A-353E-487B-BF45-82B2CDE8782A/texttv.nu.app/www/index.html
-objc[37937]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
-2014-03-29 10:20:43.317 texttv.nu[37937:70b] Cannot find executable for CFBundle 0xbf6d2e0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
-2014-03-29 10:20:43.341 texttv.nu[37937:70b] Cannot find executable for CFBundle 0xbe5b250 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
-2014-03-29 10:20:43.356 texttv.nu[37937:70b] Cannot find executable for CFBundle 0xc146b10 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
-2014-03-29 10:20:43.359 texttv.nu[37937:70b] Cannot find executable for CFBundle 0xc088480 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
-2014-03-29 10:20:43.519 texttv.nu[37937:70b] Multi-tasking -> Device: YES, App: YES
-2014-03-29 10:20:43.530 texttv.nu[37937:70b] Unlimited access to network resources
-2014-03-29 10:20:43.568 texttv.nu[37937:70b] [CDVTimer][statusbar] 10.607004ms
-2014-03-29 10:20:43.568 texttv.nu[37937:70b] [CDVTimer][TotalPluginStartup] 11.233985ms
-2014-03-29 10:20:43.669 texttv.nu[37937:70b] Resetting plugins due to page load.
-2014-03-29 10:20:44.340 texttv.nu[37937:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/7385B64A-353E-487B-BF45-82B2CDE8782A/texttv.nu.app/www/index.html
-objc[38496]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
-2014-03-29 10:21:17.620 texttv.nu[38496:70b] Cannot find executable for CFBundle 0xbf8fe30 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
-2014-03-29 10:21:17.648 texttv.nu[38496:70b] Cannot find executable for CFBundle 0xc1abd30 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
-2014-03-29 10:21:17.653 texttv.nu[38496:70b] Cannot find executable for CFBundle 0xc1b98e0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
-2014-03-29 10:21:17.664 texttv.nu[38496:70b] Cannot find executable for CFBundle 0xbfb15f0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
-2014-03-29 10:21:17.706 texttv.nu[38496:70b] Multi-tasking -> Device: YES, App: YES
-2014-03-29 10:21:17.716 texttv.nu[38496:70b] Unlimited access to network resources
-2014-03-29 10:21:17.764 texttv.nu[38496:70b] [CDVTimer][statusbar] 21.345019ms
-2014-03-29 10:21:17.766 texttv.nu[38496:70b] [CDVTimer][TotalPluginStartup] 22.472024ms
-2014-03-29 10:21:17.891 texttv.nu[38496:70b] Resetting plugins due to page load.
-2014-03-29 10:21:18.495 texttv.nu[38496:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/7385B64A-353E-487B-BF45-82B2CDE8782A/texttv.nu.app/www/index.html
-objc[39030]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
-2014-03-29 10:21:45.160 texttv.nu[39030:70b] Cannot find executable for CFBundle 0xc0ae440 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
-2014-03-29 10:21:45.163 texttv.nu[39030:70b] Cannot find executable for CFBundle 0xbf7ce10 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
-2014-03-29 10:21:45.169 texttv.nu[39030:70b] Cannot find executable for CFBundle 0xbf8eed0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
-2014-03-29 10:21:45.171 texttv.nu[39030:70b] Cannot find executable for CFBundle 0xbf944a0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
-2014-03-29 10:21:45.207 texttv.nu[39030:70b] Multi-tasking -> Device: YES, App: YES
-2014-03-29 10:21:45.217 texttv.nu[39030:70b] Unlimited access to network resources
-2014-03-29 10:21:45.249 texttv.nu[39030:70b] [CDVTimer][statusbar] 9.428978ms
-2014-03-29 10:21:45.250 texttv.nu[39030:70b] [CDVTimer][TotalPluginStartup] 10.040045ms
-2014-03-29 10:21:45.276 texttv.nu[39030:70b] Resetting plugins due to page load.
-2014-03-29 10:21:45.603 texttv.nu[39030:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/7385B64A-353E-487B-BF45-82B2CDE8782A/texttv.nu.app/www/index.html
-2014-03-29 10:22:10.541 texttv.nu[39030:3f07] void SendDelegateMessage(NSInvocation *): delegate (webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:) failed to return after waiting 10 seconds. main run loop mode: kCFRunLoopDefaultMode
+objc[45408]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-29 10:43:13.945 texttv.nu[45408:70b] Cannot find executable for CFBundle 0xbe64fe0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-29 10:43:13.953 texttv.nu[45408:70b] Cannot find executable for CFBundle 0xc074ba0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-29 10:43:13.966 texttv.nu[45408:70b] Cannot find executable for CFBundle 0xc1803e0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-29 10:43:13.974 texttv.nu[45408:70b] Cannot find executable for CFBundle 0xc18aab0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-29 10:43:14.048 texttv.nu[45408:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-29 10:43:14.061 texttv.nu[45408:70b] Unlimited access to network resources
+2014-03-29 10:43:14.101 texttv.nu[45408:70b] [CDVTimer][statusbar] 9.899974ms
+2014-03-29 10:43:14.103 texttv.nu[45408:70b] [CDVTimer][TotalPluginStartup] 11.554956ms
+2014-03-29 10:43:14.209 texttv.nu[45408:70b] Resetting plugins due to page load.
+2014-03-29 10:43:14.934 texttv.nu[45408:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/7385B64A-353E-487B-BF45-82B2CDE8782A/texttv.nu.app/www/index.html
+2014-03-29 10:43:36.155 texttv.nu[45408:4007] void SendDelegateMessage(NSInvocation *): delegate (webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:) failed to return after waiting 10 seconds. main run loop mode: kCFRunLoopDefaultMode
+2014-03-29 10:43:36.160 texttv.nu[45408:70b] {"available":true,"platform":"iOS","version":"7.1","uuid":"3C95B455-D8E7-4E41-9394-5346EA3A44C7","cordova":"3.4.0","model":"x86_64"}
+objc[46056]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-29 10:47:17.702 texttv.nu[46056:70b] Cannot find executable for CFBundle 0xbe9a170 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-29 10:47:17.706 texttv.nu[46056:70b] Cannot find executable for CFBundle 0xc198380 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-29 10:47:17.717 texttv.nu[46056:70b] Cannot find executable for CFBundle 0xbfd7150 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-29 10:47:17.720 texttv.nu[46056:70b] Cannot find executable for CFBundle 0xbfdb000 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-29 10:47:17.763 texttv.nu[46056:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-29 10:47:17.773 texttv.nu[46056:70b] Unlimited access to network resources
+2014-03-29 10:47:17.808 texttv.nu[46056:70b] [CDVTimer][statusbar] 8.320987ms
+2014-03-29 10:47:17.809 texttv.nu[46056:70b] [CDVTimer][TotalPluginStartup] 9.019017ms
+2014-03-29 10:47:17.926 texttv.nu[46056:70b] Resetting plugins due to page load.
+2014-03-29 10:47:18.603 texttv.nu[46056:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/7385B64A-353E-487B-BF45-82B2CDE8782A/texttv.nu.app/www/index.html
+objc[46625]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-29 10:48:12.006 texttv.nu[46625:70b] Cannot find executable for CFBundle 0xc160020 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-29 10:48:12.026 texttv.nu[46625:70b] Cannot find executable for CFBundle 0xbe6d110 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-29 10:48:12.040 texttv.nu[46625:70b] Cannot find executable for CFBundle 0xbf60350 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-29 10:48:12.047 texttv.nu[46625:70b] Cannot find executable for CFBundle 0xbe86840 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-29 10:48:12.108 texttv.nu[46625:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-29 10:48:12.119 texttv.nu[46625:70b] Unlimited access to network resources
+2014-03-29 10:48:12.157 texttv.nu[46625:70b] [CDVTimer][statusbar] 8.843005ms
+2014-03-29 10:48:12.158 texttv.nu[46625:70b] [CDVTimer][TotalPluginStartup] 9.881973ms
+2014-03-29 10:48:12.296 texttv.nu[46625:70b] Resetting plugins due to page load.
+2014-03-29 10:48:12.928 texttv.nu[46625:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/7385B64A-353E-487B-BF45-82B2CDE8782A/texttv.nu.app/www/index.html
+2014-03-29 10:48:46.063 texttv.nu[46625:70b] error JSON.stringify()ing argument: TypeError: JSON.stringify cannot serialize cyclic structures.
+2014-03-29 10:48:46.063 texttv.nu[46625:70b] error JSON.stringify()ing argument: TypeError: JSON.stringify cannot serialize cyclic structures.
+2014-03-29 10:48:57.806 texttv.nu[46625:70b] error JSON.stringify()ing argument: TypeError: JSON.stringify cannot serialize cyclic structures.
+2014-03-29 10:49:00.012 texttv.nu[46625:70b] error JSON.stringify()ing argument: TypeError: JSON.stringify cannot serialize cyclic structures.
+2014-03-29 10:49:01.599 texttv.nu[46625:70b] error JSON.stringify()ing argument: TypeError: JSON.stringify cannot serialize cyclic structures.
+2014-03-29 10:49:04.744 texttv.nu[46625:70b] error JSON.stringify()ing argument: TypeError: JSON.stringify cannot serialize cyclic structures.

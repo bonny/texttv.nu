@@ -807,7 +807,9 @@ texttvapp.mainViewBar = new MainViewBar({
 
 function onDeviceReady() {
 
-	alert( StatusBar );
+	// Add classes to body depending on current device
+	var css_platform = "platform-" + device.platform.toLowerCase() + parseInt(device.version);
+	document.querySelector("body").classList.add(css_platform, "platform-cordova");
 
 }
 document.addEventListener('deviceready', onDeviceReady, false);
