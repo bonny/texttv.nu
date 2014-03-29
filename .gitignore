@@ -10,3 +10,7 @@ bin-release/
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
 texttv.sublime-workspace
+
+app/texttv.nu/platforms/ios/cordova/console.log
+
+app/texttv.nu/platforms/ios/cordova/console.log
