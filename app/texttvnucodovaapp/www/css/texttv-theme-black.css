@@ -1,0 +1,379 @@
+/**
+ * Black theme for a texttv-page
+ * each page is wrapped in .root
+ */
+
+.scroll-refresher {
+	background: #f8f8f8;
+	background: #b2b2b2;
+}
+
+.list--share {
+	margin-top: 0;
+	margin-left: 0;
+	margin-right: 0;
+}
+.list--share .item {
+	background-color: transparent;
+	border-bottom: none;
+	padding: 0;
+}
+.list--share::before {
+	content: "";
+	position: absolute;
+	top: -10px;
+	left: 0;
+	width: 100%;
+	height: 10px;
+	z-index: 10;
+	box-shadow: 0px 0px 10px 0px black;
+	margin: 0px auto;
+}
+
+.list--share .button {
+	background-color: transparent;
+	color: #eee;
+	border-color: #999;
+}
+	
+/* This is the font that is the narrowest and monospace and feels good etc. */
+@font-face {
+	font-family: 'Ubuntu Mono';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../bower_components/ubuntu-font/ubuntumono-r.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Ubuntu Mono';
+	font-style: normal;
+	font-weight: 700;
+	src: url(../bower_components/ubuntu-font/ubuntumono-b.ttf) format('truetype');
+}
+
+/*
+remove underline from link in header bar
+also make the clickable area bigger
+*/
+.bar-header-titleLink {
+	text-decoration: none;
+	display: inline-block;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.bar-header-titleLink:active {
+	color: #ddd !important;
+}
+
+/* While a page is loading */
+.pageIsLoading, .placeholderPage {
+	margin-top: 40px;
+	text-align: center;
+}
+
+.pageIsLoading-spinnerIcon,
+.pageIsLoading-failIcon,
+.placeholderPage-icon {
+	font-size: 44px;
+	color: #666;
+}
+
+.pageIsLoading-text,
+.placeholderPage-text {
+	margin-top: 20px;
+	color: #666;
+	font-size: 24px;
+	line-height: 1.2;
+}
+
+.placeholderPage-pageRange {
+	/*font-weight: bold;*/
+	/*font-size: 66px;*/
+}
+
+/**
+ * Set font size and general colors in the wrapper
+ */
+.swiper-wrapper {
+}
+
+.swiper-container {
+	background: #2a2d33 url('data:image/gif;base64,R0lGODlhRQAmAKIAACgrMiosMykrMiksNCksMiotMyksMyotNCH5BAAAAAAALAAAAABFACYAAAP/WGe3Rsyo1kqUCjbJdj/FZADSARWEZawM4YQsZT6TJaK4aWkrTEAtGuX3IEp4IGBlsVwxGy6ABZTcmDaoqwvlcmGfVJAABsoYn5ptSBmEmlKKlnsheoSdzEBaPuW4hB4gETIFJCkzM1t/JDpMbIIyDBlVTytbTkGAl5JunE42AA0AahMOTFlJEYx0Dn9XNBcKMD2zPyqBO0eEPVAXF16BvRsnKXALJA8GATuzr5xXnVZLcaWnKCUafQSGIqnXBwHLVRemECkRxR0abwuujSPnmNjnh9MRa1lxrbxQ9SO8vqD0MSCgQok4clp0ibEiVKABL0xZ2jLEEhZbZbhwKCFl/5DFKypklRF1IsAMaoI4hDAFjSGmQyxqDGo0zIs6ILkUOqDVbt+QJRUHmtQHSWSHUD5o4XTVx5FKfaM6fJvDjglBFjFtwSEybYGAGD7GWLpmM2SWEdqOSKL4xoaimiZChYphhUQGGvpC0gCicBuPc2DQYRqZgyFLBlF7fSJj9UDBJYoSwoT0JMStnRQE/2gitYINAwOSSfqQ2WrWwBjSgY0lCEgxeit3MIkamylpNlEQvjoROiWGiVTpZPGy+Y1NtP9KVNkM2BxgWRCQWZ5UokcXaWO1YtanVImjvxtbj71nJcDozKB9X/yDsBR3yzBdmy5gHmQlRG+nZLCRdKTOZv95fULVEdsE8ZodIaWTRirLHeSaWikVkkoy0eDhjn7kXEIUHQ4OtpMaxekgmyDcjcfHOxhAwgkPHOCS12QjGCTKKHmFVF+L6kCjTz0HSOEecXTFCMKNa61k0UIO/SAAEh184JYHfLEXxx8YffaBHcWtgV4vIZpTXTaovLQTOl72hAIjRjxmiDlbHpRRO/hgGEZbrfykwjpTTkdFMaH9kB8rh+ihX0/n7MghVkY4aU4OSGxpUFZTUKBfDT0VkRArnxw5Dod0LCRBVKqcxMUrh5ImEnubwbChYO2kil8hXtyZogqI3XalK8YwpKANnr2BIzqeDeTYIdcIYaQV6FSDbJNSGF4JDrNQ8mdFMVCGF8aUpXGXEmBYGJVELl6MUgYBvb0UKTtLXesMj0oAg0iT0zoiaRIOGdqTB050hFUFobB5CkDSjATMWbpM8IcTTPkaHwoJAAA7');	
+	color: #eee;
+}
+
+/* Make swiper contain the above font size */
+.swiper-container, .swiper-slide {
+	
+	/*height: 28em;*/
+	text-align: center;
+
+	/* get above tab nav */
+	/*z-index: 5;*/
+}
+
+
+/*
+Wrapper for .root
+T.ex. sida 200 blir icke centrerad..
+*/
+.TextTVPage {
+	text-align: center;
+}
+
+.root {
+	
+	/*height: 27em;*/
+	/*background: red;*/
+	text-align: left;
+	display: inline-block;
+	vertical-align: top;
+	/*width: 100%;*/
+	
+	font-family: "ubuntu mono", "courier new", monospace;
+	/* make more text fit horizontaly, but still keep it readable */
+	
+	white-space: pre;
+	/* 24 is good in desktop, 16 for mobile */
+	font-size: 24px;
+	
+	/* 18 is good for full width */
+	font-size: 18px;
+
+	/* 17 is good for when in a card of type image */
+	font-size: 16.5px;
+
+	letter-spacing: -.1ex;
+	line-height: 1.1;
+
+	/* Move left a bit since it looks wrongly aligned otherwise */
+	margin-left: -.5em;
+
+	/* Always hate this hack, but without it the text is way to blurry */
+	-webkit-font-smoothing: antialiased;
+
+	/* match border radius of card */
+	border-top-left-radius: 1px;
+	border-top-right-radius: 1px;
+
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+/*
+styles for ipad:
+make one page fit in portrait mode, make two pages fit in landscape
+*/
+@media only screen and (min-width : 768px) {
+	
+	.root {
+		font-size: 23px;
+	}
+
+}
+
+.root h1 {
+	display: inline;
+	font-size: 1em;
+	font-family: inherit;
+}
+
+/* row at top of a page, where it says current page and date */
+.toprow {
+	color: #ddd;
+}
+
+/* White, also default color */
+.root,
+.W,
+.W a,
+.root a {
+	color: #eee;
+}
+
+.root a {
+}
+.root a:focus,
+.root a:active
+ {
+	background: #666;
+}
+
+.bgW {
+	background: #eee;
+}
+
+/* red color and background */
+.R {
+	color: rgb(200, 0, 0);
+}
+.bgR {
+	background: rgb(200, 0, 0);
+}
+
+.B,
+.B a { color: #1122CC }
+
+/* Yellow */
+.Y,
+.Y a { color: #e2e200 }
+
+.bgY {
+	background: #e2e200;
+}
+
+
+/* Cyan */
+.C,
+.C a { 
+	color: #00c8ee;
+}
+.bgC {
+	background: #00c8ee;
+}
+
+.bgB,
+.bgB a {
+	background: #33e;
+}
+
+/* green */
+.DH {
+	/* font-size: 1.2em; */
+	/* letter-spacing: -0.175ex; */
+	font-weight: 700;
+}
+
+/* Green */
+.G,
+.G a { 
+	color: #0C0;
+}
+.bgG {
+	background: #0C0;
+}
+
+/* Magenta */
+.M {
+	color: #F0F	
+}
+.bgM {
+	background: #F0F
+}
+
+
+.view--main {
+	-webkit-transition: all .15s ease-in-out;
+}
+.view--main.open-sidebar {
+	-webkit-transform: translateX(-275px);
+}
+
+#MainView {
+	
+}
+
+
+.menu {
+	/*border: 1px solid red;*/
+}
+.menu .scroll-content {
+	/*border: 1px solid yellow;*/
+	overflow-y: scroll;
+
+	/*
+	below does not work. see
+	// @BUG: this makes webkit-overflow-scrolling not working in the sidebar
+	*/
+	/* -webkit-overflow-scrolling: touch; */
+}
+.content {
+	height: 100%;
+}
+.swiper-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 40px; /* 40 px = same height as header bar */
+	overflow: hidden;
+}
+.swiper-slide {
+	width: 100%;
+	height: 100%;
+	/*height: calc(100% - 40px);*/
+	overflow: hidden;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+
+/*
+Fixa till högerspalten lite, t.ex. gillar jag inte de feta rubrikerna som ionic använder
+*/
+.menu-right .item-divider {
+	font-weight: normal;
+	text-transform: uppercase;
+	padding-top: 2em;
+	color: #666;
+	font-size: 14px;
+}
+
+.MostVisitedPagesItems .item {
+	float: left;
+	width: 50%;
+	text-align: center;
+}
+
+.MostVisitedPagesItems .item-note {
+	display: none;
+}
+
+/*
+animations as angular does it:
+.animate-enter-setup, .animate-leave-setup {
+.animate-enter-setup {
+.animate-enter-setup.animate-enter-start {
+.animate-leave-setup.animate-leave-start {
+.animate-leave-setup{
+*/
+
+
+/* back button in header bar */
+/* when no previous page/history exists then it's hidden */
+.button-back {
+	-webkit-transition: -webkit-transform .5s ease-out, opacity .5s;
+	opacity: 0;
+	-webkit-transform: translate3d(10px,0px,0);
+	
+	/* make it a bit wider so it's easy to tap */
+	width: 50px;
+	text-align: left;
+}
+
+.button-back--enabled {
+	opacity: 1;
+	-webkit-transform: translate3d(0px,0px,0)
+}
+.button-back:active {
+	opacity: .3;
+	-webkit-transition: opacity 0;
+}
+
+#MainViewBar .button-clear:active {
+	opacity: .3;
+}
+
+#SidebarRight .item:active {
+	background-color: #D9D9D9;
+}
+
+/* hide share button if we are not on a device */
+body:not(.platform-cordova) .hideIfNotCordova {
+	display: none;
+}
+
+.loading {
+	-webkit-transform: translateX(-50%);
+}
