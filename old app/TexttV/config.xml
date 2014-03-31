@@ -34,6 +34,7 @@
     <preference name="AllowInlineMediaPlayback" value="false" />
 	<preference name="BackupWebStorage" value="cloud" />
     <preference name="DisallowOverscroll" value="true" />
+	<preference name="BackgroundColor" value="0xff0000ff"/>
 
     <plugins>
         <plugin name="Social" value="Social" />

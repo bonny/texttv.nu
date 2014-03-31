@@ -44,6 +44,7 @@
 		46D0EAB0507D4002AB15B6F1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EC6BCDC232428EAF8634C8 /* MessageUI.framework */; };
 		DBFB319969FE475D83D0894B /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7301028463EB4E689D769882 /* CDVLogger.m */; };
 		BA7044716DB343EBB5211777 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E6AB07C72481C92AA0DD4 /* CDVStatusBar.m */; };
+		DE9D2E70CAC34B1D8608C781 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A24C968BDF843F29E8F1708 /* CDVSplashScreen.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,8 @@
 		FF885BE2CB4E4BA7B9D2ECC6 /* CDVLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLogger.h"; path = "org.apache.cordova.console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		6C8E6AB07C72481C92AA0DD4 /* CDVStatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVStatusBar.m"; path = "org.apache.cordova.statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		9F1DC9E9ED554457AF54C315 /* CDVStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVStatusBar.h"; path = "org.apache.cordova.statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		8A24C968BDF843F29E8F1708 /* CDVSplashScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVSplashScreen.m"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		523FE5B404504A8CAEBDD446 /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +253,8 @@
 				FF885BE2CB4E4BA7B9D2ECC6 /* CDVLogger.h */,
 				6C8E6AB07C72481C92AA0DD4 /* CDVStatusBar.m */,
 				9F1DC9E9ED554457AF54C315 /* CDVStatusBar.h */,
+				8A24C968BDF843F29E8F1708 /* CDVSplashScreen.m */,
+				523FE5B404504A8CAEBDD446 /* CDVSplashScreen.h */,
 			);
 			name = Plugins;
 			path = "TextTV.nu/Plugins";
@@ -448,6 +453,7 @@
 				E2D7672732A54E238F9DD6CB /* SocialSharing.m in Sources */,
 				DBFB319969FE475D83D0894B /* CDVLogger.m in Sources */,
 				BA7044716DB343EBB5211777 /* CDVStatusBar.m in Sources */,
+				DE9D2E70CAC34B1D8608C781 /* CDVSplashScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

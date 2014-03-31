@@ -19,4 +19,8 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+    </feature>
+	<preference name="BackgroundColor" value="0xff0000ff"/>
 </widget>

@@ -299,3 +299,486 @@ objc[85662]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.a
 2014-03-30 22:09:09.013 TextTV.nu[85662:70b] false
 2014-03-30 22:09:09.752 TextTV.nu[85662:70b] THREAD WARNING: ['SocialSharing'] took '59.994873' ms. Plugin should use a background thread.
 2014-03-30 22:09:10.900 TextTV.nu[85662:70b] false
+2014-03-30 22:10:26.164 TextTV.nu[85662:70b] THREAD WARNING: ['SocialSharing'] took '97.522949' ms. Plugin should use a background thread.
+2014-03-30 22:10:48.950 TextTV.nu[85662:70b] false
+objc[86447]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 22:14:13.294 TextTV.nu[86447:70b] Cannot find executable for CFBundle 0xbf30a60 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 22:14:13.299 TextTV.nu[86447:70b] Cannot find executable for CFBundle 0xc131610 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 22:14:13.314 TextTV.nu[86447:70b] Cannot find executable for CFBundle 0xbe80ff0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 22:14:13.330 TextTV.nu[86447:70b] Cannot find executable for CFBundle 0xc060420 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 22:14:13.404 TextTV.nu[86447:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 22:14:13.415 TextTV.nu[86447:70b] Unlimited access to network resources
+2014-03-30 22:14:13.467 TextTV.nu[86447:70b] [CDVTimer][statusbar] 24.628997ms
+2014-03-30 22:14:13.468 TextTV.nu[86447:70b] [CDVTimer][TotalPluginStartup] 25.315046ms
+2014-03-30 22:14:13.595 TextTV.nu[86447:70b] Resetting plugins due to page load.
+2014-03-30 22:14:14.306 TextTV.nu[86447:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[87018]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 22:14:56.391 TextTV.nu[87018:70b] Cannot find executable for CFBundle 0xbe66120 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 22:14:56.405 TextTV.nu[87018:70b] Cannot find executable for CFBundle 0xbe6e2d0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 22:14:56.414 TextTV.nu[87018:70b] Cannot find executable for CFBundle 0xbe872d0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 22:14:56.420 TextTV.nu[87018:70b] Cannot find executable for CFBundle 0xbea03e0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 22:14:56.478 TextTV.nu[87018:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 22:14:56.489 TextTV.nu[87018:70b] Unlimited access to network resources
+2014-03-30 22:14:56.528 TextTV.nu[87018:70b] [CDVTimer][statusbar] 9.023964ms
+2014-03-30 22:14:56.528 TextTV.nu[87018:70b] [CDVTimer][TotalPluginStartup] 9.678006ms
+2014-03-30 22:14:56.668 TextTV.nu[87018:70b] Resetting plugins due to page load.
+2014-03-30 22:14:57.458 TextTV.nu[87018:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[88372]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 22:22:37.775 TextTV.nu[88372:70b] Cannot find executable for CFBundle 0xbe86850 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 22:22:37.817 TextTV.nu[88372:70b] Cannot find executable for CFBundle 0xbf6d390 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 22:22:37.830 TextTV.nu[88372:70b] Cannot find executable for CFBundle 0xbea5c10 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 22:22:37.840 TextTV.nu[88372:70b] Cannot find executable for CFBundle 0xbecea30 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 22:22:37.885 TextTV.nu[88372:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 22:22:37.896 TextTV.nu[88372:70b] Unlimited access to network resources
+2014-03-30 22:22:37.945 TextTV.nu[88372:70b] [CDVTimer][statusbar] 19.814014ms
+2014-03-30 22:22:37.946 TextTV.nu[88372:70b] [CDVTimer][TotalPluginStartup] 20.570993ms
+2014-03-30 22:22:38.144 TextTV.nu[88372:70b] Resetting plugins due to page load.
+2014-03-30 22:22:38.869 TextTV.nu[88372:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+Terminating in response to SpringBoard's termination.
+objc[88958]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 22:25:01.801 TextTV.nu[88958:70b] Cannot find executable for CFBundle 0xc029150 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 22:25:01.942 TextTV.nu[88958:70b] Cannot find executable for CFBundle 0xc038cf0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 22:25:01.946 TextTV.nu[88958:70b] Cannot find executable for CFBundle 0xbf3e1d0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 22:25:01.951 TextTV.nu[88958:70b] Cannot find executable for CFBundle 0xbf49fe0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 22:25:02.005 TextTV.nu[88958:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 22:25:02.016 TextTV.nu[88958:70b] Unlimited access to network resources
+2014-03-30 22:25:02.054 TextTV.nu[88958:70b] [CDVTimer][statusbar] 8.490980ms
+2014-03-30 22:25:02.055 TextTV.nu[88958:70b] [CDVTimer][TotalPluginStartup] 9.533048ms
+2014-03-30 22:25:02.179 TextTV.nu[88958:70b] Resetting plugins due to page load.
+2014-03-30 22:25:02.893 TextTV.nu[88958:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[89554]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 22:25:45.571 TextTV.nu[89554:70b] Cannot find executable for CFBundle 0xbf623b0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 22:25:45.575 TextTV.nu[89554:70b] Cannot find executable for CFBundle 0xbf65570 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 22:25:45.591 TextTV.nu[89554:70b] Cannot find executable for CFBundle 0xc1584b0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 22:25:45.594 TextTV.nu[89554:70b] Cannot find executable for CFBundle 0xbf6bf90 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 22:25:45.676 TextTV.nu[89554:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 22:25:45.688 TextTV.nu[89554:70b] Unlimited access to network resources
+2014-03-30 22:25:45.726 TextTV.nu[89554:70b] [CDVTimer][statusbar] 8.988023ms
+2014-03-30 22:25:45.727 TextTV.nu[89554:70b] [CDVTimer][TotalPluginStartup] 10.339975ms
+2014-03-30 22:25:45.935 TextTV.nu[89554:70b] Resetting plugins due to page load.
+2014-03-30 22:25:46.715 TextTV.nu[89554:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[90412]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:03:36.787 TextTV.nu[90412:70b] Cannot find executable for CFBundle 0xbf68230 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:03:36.826 TextTV.nu[90412:70b] Cannot find executable for CFBundle 0xbf7d6b0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:03:36.838 TextTV.nu[90412:70b] Cannot find executable for CFBundle 0xbf97e00 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:03:36.841 TextTV.nu[90412:70b] Cannot find executable for CFBundle 0xbe5ce60 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:03:36.933 TextTV.nu[90412:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:03:36.949 TextTV.nu[90412:70b] Unlimited access to network resources
+2014-03-30 23:03:37.139 TextTV.nu[90412:70b] [CDVTimer][statusbar] 35.232008ms
+2014-03-30 23:03:37.182 TextTV.nu[90412:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:03:37.183 TextTV.nu[90412:70b] [CDVTimer][splashscreen] 42.384982ms
+2014-03-30 23:03:37.184 TextTV.nu[90412:70b] [CDVTimer][TotalPluginStartup] 79.783022ms
+2014-03-30 23:03:37.187 TextTV.nu[90412:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:03:37.191 TextTV.nu[90412:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:03:37.192 TextTV.nu[90412:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:03:37.291 TextTV.nu[90412:70b] Resetting plugins due to page load.
+2014-03-30 23:03:38.062 TextTV.nu[90412:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[91151]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:18:17.247 TextTV.nu[91151:70b] Cannot find executable for CFBundle 0xc142e00 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:18:17.255 TextTV.nu[91151:70b] Cannot find executable for CFBundle 0xbe717d0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:18:17.279 TextTV.nu[91151:70b] Cannot find executable for CFBundle 0xbe96760 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:18:17.286 TextTV.nu[91151:70b] Cannot find executable for CFBundle 0xc14c990 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:18:17.333 TextTV.nu[91151:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:18:17.344 TextTV.nu[91151:70b] Unlimited access to network resources
+2014-03-30 23:18:17.381 TextTV.nu[91151:70b] [CDVTimer][statusbar] 8.821964ms
+2014-03-30 23:18:17.389 TextTV.nu[91151:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:18:17.389 TextTV.nu[91151:70b] [CDVTimer][splashscreen] 7.294953ms
+2014-03-30 23:18:17.390 TextTV.nu[91151:70b] [CDVTimer][TotalPluginStartup] 17.314017ms
+2014-03-30 23:18:17.392 TextTV.nu[91151:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:18:17.395 TextTV.nu[91151:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:18:17.397 TextTV.nu[91151:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:18:17.584 TextTV.nu[91151:70b] Resetting plugins due to page load.
+2014-03-30 23:18:18.379 TextTV.nu[91151:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[91716]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:18:48.780 TextTV.nu[91716:70b] Cannot find executable for CFBundle 0xc149460 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:18:48.815 TextTV.nu[91716:70b] Cannot find executable for CFBundle 0xc15b2c0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:18:48.820 TextTV.nu[91716:70b] Cannot find executable for CFBundle 0xc037480 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:18:48.846 TextTV.nu[91716:70b] Cannot find executable for CFBundle 0xbe503e0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:18:48.899 TextTV.nu[91716:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:18:48.910 TextTV.nu[91716:70b] Unlimited access to network resources
+2014-03-30 23:18:48.957 TextTV.nu[91716:70b] [CDVTimer][statusbar] 18.868983ms
+2014-03-30 23:18:48.964 TextTV.nu[91716:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:18:48.964 TextTV.nu[91716:70b] [CDVTimer][splashscreen] 6.713033ms
+2014-03-30 23:18:48.965 TextTV.nu[91716:70b] [CDVTimer][TotalPluginStartup] 26.826978ms
+2014-03-30 23:18:48.967 TextTV.nu[91716:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:18:48.970 TextTV.nu[91716:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:18:48.972 TextTV.nu[91716:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:18:49.162 TextTV.nu[91716:70b] Resetting plugins due to page load.
+2014-03-30 23:18:49.867 TextTV.nu[91716:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[92287]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:19:25.482 TextTV.nu[92287:70b] Cannot find executable for CFBundle 0xc0b4ef0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:19:25.507 TextTV.nu[92287:70b] Cannot find executable for CFBundle 0xbfb1280 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:19:25.511 TextTV.nu[92287:70b] Cannot find executable for CFBundle 0xbfbe750 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:19:25.526 TextTV.nu[92287:70b] Cannot find executable for CFBundle 0xbfd19f0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:19:25.569 TextTV.nu[92287:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:19:25.581 TextTV.nu[92287:70b] Unlimited access to network resources
+2014-03-30 23:19:25.628 TextTV.nu[92287:70b] [CDVTimer][statusbar] 19.392014ms
+2014-03-30 23:19:25.638 TextTV.nu[92287:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:19:25.639 TextTV.nu[92287:70b] [CDVTimer][splashscreen] 10.205984ms
+2014-03-30 23:19:25.640 TextTV.nu[92287:70b] [CDVTimer][TotalPluginStartup] 30.797005ms
+2014-03-30 23:19:25.641 TextTV.nu[92287:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:19:25.645 TextTV.nu[92287:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:19:25.646 TextTV.nu[92287:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:19:25.890 TextTV.nu[92287:70b] Resetting plugins due to page load.
+2014-03-30 23:19:26.671 TextTV.nu[92287:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+Terminating in response to SpringBoard's termination.
+objc[92852]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:19:52.862 TextTV.nu[92852:70b] Cannot find executable for CFBundle 0xbf3dcc0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:19:52.874 TextTV.nu[92852:70b] Cannot find executable for CFBundle 0xc03b580 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:19:52.878 TextTV.nu[92852:70b] Cannot find executable for CFBundle 0xc130240 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:19:52.902 TextTV.nu[92852:70b] Cannot find executable for CFBundle 0xc170540 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:19:52.952 TextTV.nu[92852:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:19:52.963 TextTV.nu[92852:70b] Unlimited access to network resources
+2014-03-30 23:19:53.008 TextTV.nu[92852:70b] [CDVTimer][statusbar] 18.415034ms
+2014-03-30 23:19:53.015 TextTV.nu[92852:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:19:53.015 TextTV.nu[92852:70b] [CDVTimer][splashscreen] 6.754041ms
+2014-03-30 23:19:53.016 TextTV.nu[92852:70b] [CDVTimer][TotalPluginStartup] 26.376963ms
+2014-03-30 23:19:53.018 TextTV.nu[92852:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:19:53.021 TextTV.nu[92852:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:19:53.023 TextTV.nu[92852:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:19:53.214 TextTV.nu[92852:70b] Resetting plugins due to page load.
+2014-03-30 23:19:53.949 TextTV.nu[92852:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[93479]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:23:12.251 TextTV.nu[93479:70b] Cannot find executable for CFBundle 0xbf38a80 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:23:12.298 TextTV.nu[93479:70b] Cannot find executable for CFBundle 0xbf34020 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:23:12.326 TextTV.nu[93479:70b] Cannot find executable for CFBundle 0xc0591a0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:23:12.334 TextTV.nu[93479:70b] Cannot find executable for CFBundle 0xbe1b550 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:23:12.389 TextTV.nu[93479:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:23:12.401 TextTV.nu[93479:70b] Unlimited access to network resources
+2014-03-30 23:23:12.560 TextTV.nu[93479:70b] [CDVTimer][statusbar] 21.196008ms
+2014-03-30 23:23:12.578 TextTV.nu[93479:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:23:12.579 TextTV.nu[93479:70b] [CDVTimer][splashscreen] 18.481016ms
+2014-03-30 23:23:12.579 TextTV.nu[93479:70b] [CDVTimer][TotalPluginStartup] 40.917993ms
+2014-03-30 23:23:12.581 TextTV.nu[93479:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:23:12.585 TextTV.nu[93479:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:23:12.587 TextTV.nu[93479:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:23:12.827 TextTV.nu[93479:70b] Resetting plugins due to page load.
+2014-03-30 23:23:13.514 TextTV.nu[93479:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[94048]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:23:40.277 TextTV.nu[94048:70b] Cannot find executable for CFBundle 0xbeb1e10 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:23:40.295 TextTV.nu[94048:70b] Cannot find executable for CFBundle 0xbec8f80 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:23:40.303 TextTV.nu[94048:70b] Cannot find executable for CFBundle 0xbedab60 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:23:40.311 TextTV.nu[94048:70b] Cannot find executable for CFBundle 0xbee0e10 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:23:40.369 TextTV.nu[94048:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:23:40.380 TextTV.nu[94048:70b] Unlimited access to network resources
+2014-03-30 23:23:40.416 TextTV.nu[94048:70b] [CDVTimer][statusbar] 8.841991ms
+2014-03-30 23:23:40.423 TextTV.nu[94048:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:23:40.424 TextTV.nu[94048:70b] [CDVTimer][splashscreen] 6.982982ms
+2014-03-30 23:23:40.425 TextTV.nu[94048:70b] [CDVTimer][TotalPluginStartup] 17.398000ms
+2014-03-30 23:23:40.427 TextTV.nu[94048:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:23:40.431 TextTV.nu[94048:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:23:40.433 TextTV.nu[94048:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:23:40.602 TextTV.nu[94048:70b] Resetting plugins due to page load.
+2014-03-30 23:23:41.378 TextTV.nu[94048:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[94624]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:24:34.299 TextTV.nu[94624:70b] Cannot find executable for CFBundle 0xc1d5950 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:24:34.308 TextTV.nu[94624:70b] Cannot find executable for CFBundle 0xc086520 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:24:34.319 TextTV.nu[94624:70b] Cannot find executable for CFBundle 0xc1efda0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:24:34.321 TextTV.nu[94624:70b] Cannot find executable for CFBundle 0xc1f09a0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:24:34.366 TextTV.nu[94624:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:24:34.378 TextTV.nu[94624:70b] Unlimited access to network resources
+2014-03-30 23:24:34.427 TextTV.nu[94624:70b] [CDVTimer][statusbar] 18.831015ms
+2014-03-30 23:24:34.434 TextTV.nu[94624:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:24:34.435 TextTV.nu[94624:70b] [CDVTimer][splashscreen] 6.570041ms
+2014-03-30 23:24:34.435 TextTV.nu[94624:70b] [CDVTimer][TotalPluginStartup] 26.857018ms
+2014-03-30 23:24:34.437 TextTV.nu[94624:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:24:34.441 TextTV.nu[94624:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:24:34.443 TextTV.nu[94624:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:24:34.604 TextTV.nu[94624:70b] Resetting plugins due to page load.
+2014-03-30 23:24:35.337 TextTV.nu[94624:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[95361]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:26:37.279 TextTV.nu[95361:70b] Cannot find executable for CFBundle 0xbf7c220 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:26:37.284 TextTV.nu[95361:70b] Cannot find executable for CFBundle 0xc18d370 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:26:37.289 TextTV.nu[95361:70b] Cannot find executable for CFBundle 0xc1a0fd0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:26:37.311 TextTV.nu[95361:70b] Cannot find executable for CFBundle 0xc1ba5c0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:26:37.360 TextTV.nu[95361:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:26:37.373 TextTV.nu[95361:70b] Unlimited access to network resources
+2014-03-30 23:26:37.407 TextTV.nu[95361:70b] [CDVTimer][statusbar] 8.509994ms
+2014-03-30 23:26:37.414 TextTV.nu[95361:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:26:37.414 TextTV.nu[95361:70b] [CDVTimer][splashscreen] 6.522000ms
+2014-03-30 23:26:37.415 TextTV.nu[95361:70b] [CDVTimer][TotalPluginStartup] 16.358972ms
+2014-03-30 23:26:37.417 TextTV.nu[95361:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:26:37.421 TextTV.nu[95361:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:26:37.423 TextTV.nu[95361:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:26:37.575 TextTV.nu[95361:70b] Resetting plugins due to page load.
+2014-03-30 23:26:38.394 TextTV.nu[95361:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[96547]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:30:33.929 TextTV.nu[96547:70b] Cannot find executable for CFBundle 0xbe4adb0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:30:33.960 TextTV.nu[96547:70b] Cannot find executable for CFBundle 0xbf6f3d0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:30:33.965 TextTV.nu[96547:70b] Cannot find executable for CFBundle 0xc043900 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:30:33.974 TextTV.nu[96547:70b] Cannot find executable for CFBundle 0xc166aa0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:30:34.140 TextTV.nu[96547:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:30:34.179 TextTV.nu[96547:70b] Unlimited access to network resources
+2014-03-30 23:30:34.350 TextTV.nu[96547:70b] [CDVTimer][statusbar] 79.423964ms
+2014-03-30 23:30:34.380 TextTV.nu[96547:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:30:34.381 TextTV.nu[96547:70b] [CDVTimer][splashscreen] 30.197024ms
+2014-03-30 23:30:34.382 TextTV.nu[96547:70b] [CDVTimer][TotalPluginStartup] 110.770047ms
+2014-03-30 23:30:34.383 TextTV.nu[96547:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:30:34.387 TextTV.nu[96547:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:30:34.388 TextTV.nu[96547:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:30:34.493 TextTV.nu[96547:70b] Resetting plugins due to page load.
+objc[97165]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:34:21.098 TextTV.nu[97165:70b] Cannot find executable for CFBundle 0xbf84870 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:34:21.103 TextTV.nu[97165:70b] Cannot find executable for CFBundle 0xbf90740 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:34:21.117 TextTV.nu[97165:70b] Cannot find executable for CFBundle 0xc1c7150 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:34:21.131 TextTV.nu[97165:70b] Cannot find executable for CFBundle 0xc1e3830 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:34:21.179 TextTV.nu[97165:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:34:21.190 TextTV.nu[97165:70b] Unlimited access to network resources
+2014-03-30 23:34:21.237 TextTV.nu[97165:70b] [CDVTimer][statusbar] 18.783987ms
+2014-03-30 23:34:21.244 TextTV.nu[97165:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:34:21.244 TextTV.nu[97165:70b] [CDVTimer][splashscreen] 6.375015ms
+2014-03-30 23:34:21.245 TextTV.nu[97165:70b] [CDVTimer][TotalPluginStartup] 26.312947ms
+2014-03-30 23:34:21.247 TextTV.nu[97165:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:34:21.251 TextTV.nu[97165:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:34:21.252 TextTV.nu[97165:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:34:21.441 TextTV.nu[97165:70b] Resetting plugins due to page load.
+2014-03-30 23:34:22.148 TextTV.nu[97165:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[97738]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:35:11.511 TextTV.nu[97738:70b] Cannot find executable for CFBundle 0xc1aad80 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:35:11.528 TextTV.nu[97738:70b] Cannot find executable for CFBundle 0xc0d40a0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:35:11.539 TextTV.nu[97738:70b] Cannot find executable for CFBundle 0xbeac7e0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:35:11.547 TextTV.nu[97738:70b] Cannot find executable for CFBundle 0xbebafc0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:35:11.610 TextTV.nu[97738:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:35:11.621 TextTV.nu[97738:70b] Unlimited access to network resources
+2014-03-30 23:35:11.665 TextTV.nu[97738:70b] [CDVTimer][statusbar] 17.498016ms
+2014-03-30 23:35:11.672 TextTV.nu[97738:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:35:11.673 TextTV.nu[97738:70b] [CDVTimer][splashscreen] 6.623030ms
+2014-03-30 23:35:11.673 TextTV.nu[97738:70b] [CDVTimer][TotalPluginStartup] 25.430977ms
+2014-03-30 23:35:11.675 TextTV.nu[97738:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:35:11.679 TextTV.nu[97738:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:35:11.680 TextTV.nu[97738:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:35:11.792 TextTV.nu[97738:70b] Resetting plugins due to page load.
+2014-03-30 23:35:12.456 TextTV.nu[97738:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[98456]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:41:43.464 TextTV.nu[98456:70b] Cannot find executable for CFBundle 0xc03aab0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:41:43.469 TextTV.nu[98456:70b] Cannot find executable for CFBundle 0xc043c10 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:41:43.493 TextTV.nu[98456:70b] Cannot find executable for CFBundle 0xbf75df0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:41:43.505 TextTV.nu[98456:70b] Cannot find executable for CFBundle 0xc117d00 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:41:43.569 TextTV.nu[98456:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:41:43.580 TextTV.nu[98456:70b] Unlimited access to network resources
+2014-03-30 23:41:43.617 TextTV.nu[98456:70b] [CDVTimer][statusbar] 8.682013ms
+2014-03-30 23:41:43.624 TextTV.nu[98456:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:41:43.624 TextTV.nu[98456:70b] [CDVTimer][splashscreen] 6.931007ms
+2014-03-30 23:41:43.625 TextTV.nu[98456:70b] [CDVTimer][TotalPluginStartup] 16.830981ms
+2014-03-30 23:41:43.627 TextTV.nu[98456:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:41:43.631 TextTV.nu[98456:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:41:43.632 TextTV.nu[98456:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:41:43.733 TextTV.nu[98456:70b] Resetting plugins due to page load.
+2014-03-30 23:41:44.389 TextTV.nu[98456:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[99024]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:42:35.137 TextTV.nu[99024:70b] Cannot find executable for CFBundle 0xc0bbb20 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:42:35.143 TextTV.nu[99024:70b] Cannot find executable for CFBundle 0xbfbf230 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:42:35.150 TextTV.nu[99024:70b] Cannot find executable for CFBundle 0xbfc8ea0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:42:35.156 TextTV.nu[99024:70b] Cannot find executable for CFBundle 0xbe99d60 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:42:35.204 TextTV.nu[99024:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:42:35.215 TextTV.nu[99024:70b] Unlimited access to network resources
+2014-03-30 23:42:35.255 TextTV.nu[99024:70b] [CDVTimer][statusbar] 8.634984ms
+2014-03-30 23:42:35.263 TextTV.nu[99024:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:42:35.264 TextTV.nu[99024:70b] [CDVTimer][splashscreen] 7.489026ms
+2014-03-30 23:42:35.264 TextTV.nu[99024:70b] [CDVTimer][TotalPluginStartup] 17.791986ms
+2014-03-30 23:42:35.266 TextTV.nu[99024:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:42:35.270 TextTV.nu[99024:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:42:35.272 TextTV.nu[99024:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:42:35.373 TextTV.nu[99024:70b] Resetting plugins due to page load.
+2014-03-30 23:42:36.039 TextTV.nu[99024:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[99605]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:43:57.593 TextTV.nu[99605:70b] Cannot find executable for CFBundle 0xc050980 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:43:57.632 TextTV.nu[99605:70b] Cannot find executable for CFBundle 0xc04b720 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:43:57.636 TextTV.nu[99605:70b] Cannot find executable for CFBundle 0xc06a6c0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:43:57.646 TextTV.nu[99605:70b] Cannot find executable for CFBundle 0xbe5b5f0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:43:57.694 TextTV.nu[99605:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:43:57.705 TextTV.nu[99605:70b] Unlimited access to network resources
+2014-03-30 23:43:57.742 TextTV.nu[99605:70b] [CDVTimer][statusbar] 8.585036ms
+2014-03-30 23:43:57.749 TextTV.nu[99605:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:43:57.749 TextTV.nu[99605:70b] [CDVTimer][splashscreen] 6.587982ms
+2014-03-30 23:43:57.750 TextTV.nu[99605:70b] [CDVTimer][TotalPluginStartup] 16.789019ms
+2014-03-30 23:43:57.752 TextTV.nu[99605:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:43:57.756 TextTV.nu[99605:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:43:57.757 TextTV.nu[99605:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:43:57.949 TextTV.nu[99605:70b] Resetting plugins due to page load.
+2014-03-30 23:43:58.164 TextTV.nu[99605:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[321]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:45:37.125 TextTV.nu[321:70b] Cannot find executable for CFBundle 0xbe424d0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:45:37.142 TextTV.nu[321:70b] Cannot find executable for CFBundle 0xc02cf80 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:45:37.146 TextTV.nu[321:70b] Cannot find executable for CFBundle 0xc03a7a0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:45:37.164 TextTV.nu[321:70b] Cannot find executable for CFBundle 0xc06a920 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:45:37.209 TextTV.nu[321:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:45:37.220 TextTV.nu[321:70b] Unlimited access to network resources
+2014-03-30 23:45:37.258 TextTV.nu[321:70b] [CDVTimer][statusbar] 9.170055ms
+2014-03-30 23:45:37.264 TextTV.nu[321:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:45:37.266 TextTV.nu[321:70b] [CDVTimer][splashscreen] 7.767975ms
+2014-03-30 23:45:37.267 TextTV.nu[321:70b] [CDVTimer][TotalPluginStartup] 18.362999ms
+2014-03-30 23:45:37.269 TextTV.nu[321:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:45:37.273 TextTV.nu[321:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:45:37.274 TextTV.nu[321:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:45:37.428 TextTV.nu[321:70b] Resetting plugins due to page load.
+2014-03-30 23:45:37.888 TextTV.nu[321:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[972]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:46:21.247 TextTV.nu[972:70b] Cannot find executable for CFBundle 0xc184140 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:46:21.270 TextTV.nu[972:70b] Cannot find executable for CFBundle 0xbe32d60 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:46:21.279 TextTV.nu[972:70b] Cannot find executable for CFBundle 0xbe454f0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:46:21.288 TextTV.nu[972:70b] Cannot find executable for CFBundle 0xbe57000 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:46:21.331 TextTV.nu[972:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:46:21.342 TextTV.nu[972:70b] Unlimited access to network resources
+2014-03-30 23:46:21.377 TextTV.nu[972:70b] [CDVTimer][statusbar] 8.489013ms
+2014-03-30 23:46:21.383 TextTV.nu[972:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:46:21.384 TextTV.nu[972:70b] [CDVTimer][splashscreen] 6.540000ms
+2014-03-30 23:46:21.384 TextTV.nu[972:70b] [CDVTimer][TotalPluginStartup] 16.256988ms
+2014-03-30 23:46:21.386 TextTV.nu[972:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:46:21.390 TextTV.nu[972:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:46:21.391 TextTV.nu[972:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:46:21.580 TextTV.nu[972:70b] Resetting plugins due to page load.
+2014-03-30 23:46:21.962 TextTV.nu[972:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[1586]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:48:26.141 TextTV.nu[1586:70b] Cannot find executable for CFBundle 0xbfb1aa0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:48:26.158 TextTV.nu[1586:70b] Cannot find executable for CFBundle 0xc18bcb0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:48:26.164 TextTV.nu[1586:70b] Cannot find executable for CFBundle 0xbfc9ff0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:48:26.191 TextTV.nu[1586:70b] Cannot find executable for CFBundle 0xbeb8230 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:48:26.237 TextTV.nu[1586:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:48:26.250 TextTV.nu[1586:70b] Unlimited access to network resources
+2014-03-30 23:48:26.300 TextTV.nu[1586:70b] [CDVTimer][statusbar] 13.212025ms
+2014-03-30 23:48:26.308 TextTV.nu[1586:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:48:26.309 TextTV.nu[1586:70b] [CDVTimer][splashscreen] 6.945014ms
+2014-03-30 23:48:26.309 TextTV.nu[1586:70b] [CDVTimer][TotalPluginStartup] 22.386968ms
+2014-03-30 23:48:26.312 TextTV.nu[1586:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:48:26.317 TextTV.nu[1586:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:48:26.319 TextTV.nu[1586:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:48:26.512 TextTV.nu[1586:70b] Resetting plugins due to page load.
+2014-03-30 23:48:27.393 TextTV.nu[1586:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[2172]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-30 23:49:53.899 TextTV.nu[2172:70b] Cannot find executable for CFBundle 0xbe736b0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-30 23:49:53.928 TextTV.nu[2172:70b] Cannot find executable for CFBundle 0xc15dc40 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-30 23:49:53.931 TextTV.nu[2172:70b] Cannot find executable for CFBundle 0xc161b40 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-30 23:49:53.937 TextTV.nu[2172:70b] Cannot find executable for CFBundle 0xbf56c60 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-30 23:49:53.986 TextTV.nu[2172:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-30 23:49:53.997 TextTV.nu[2172:70b] Unlimited access to network resources
+2014-03-30 23:49:54.035 TextTV.nu[2172:70b] [CDVTimer][statusbar] 8.983016ms
+2014-03-30 23:49:54.042 TextTV.nu[2172:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:49:54.043 TextTV.nu[2172:70b] [CDVTimer][splashscreen] 6.895006ms
+2014-03-30 23:49:54.043 TextTV.nu[2172:70b] [CDVTimer][TotalPluginStartup] 17.247021ms
+2014-03-30 23:49:54.045 TextTV.nu[2172:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:49:54.049 TextTV.nu[2172:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:49:54.050 TextTV.nu[2172:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-30 23:49:54.167 TextTV.nu[2172:70b] Resetting plugins due to page load.
+2014-03-30 23:49:54.943 TextTV.nu[2172:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+Terminating in response to SpringBoard's termination.
+objc[2924]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-31 00:01:07.769 TextTV.nu[2924:70b] Cannot find executable for CFBundle 0xc142c20 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-31 00:01:07.798 TextTV.nu[2924:70b] Cannot find executable for CFBundle 0xc08e0a0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-31 00:01:07.808 TextTV.nu[2924:70b] Cannot find executable for CFBundle 0xc09e0c0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-31 00:01:07.812 TextTV.nu[2924:70b] Cannot find executable for CFBundle 0xc0a4e50 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-31 00:01:07.858 TextTV.nu[2924:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-31 00:01:07.869 TextTV.nu[2924:70b] Unlimited access to network resources
+2014-03-31 00:01:08.045 TextTV.nu[2924:70b] [CDVTimer][statusbar] 11.220992ms
+2014-03-31 00:01:08.054 TextTV.nu[2924:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:01:08.055 TextTV.nu[2924:70b] [CDVTimer][splashscreen] 8.324981ms
+2014-03-31 00:01:08.056 TextTV.nu[2924:70b] [CDVTimer][TotalPluginStartup] 21.643996ms
+2014-03-31 00:01:08.058 TextTV.nu[2924:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:01:08.062 TextTV.nu[2924:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:01:08.065 TextTV.nu[2924:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:01:08.251 TextTV.nu[2924:70b] Resetting plugins due to page load.
+2014-03-31 00:01:09.314 TextTV.nu[2924:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+Terminating in response to SpringBoard's termination.
+objc[3498]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-31 00:01:43.829 TextTV.nu[3498:70b] Cannot find executable for CFBundle 0xc0be910 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-31 00:01:43.852 TextTV.nu[3498:70b] Cannot find executable for CFBundle 0xbe88860 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-31 00:01:43.855 TextTV.nu[3498:70b] Cannot find executable for CFBundle 0xbe89400 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-31 00:01:43.862 TextTV.nu[3498:70b] Cannot find executable for CFBundle 0xbea5e00 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-31 00:01:43.912 TextTV.nu[3498:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-31 00:01:43.923 TextTV.nu[3498:70b] Unlimited access to network resources
+2014-03-31 00:01:43.970 TextTV.nu[3498:70b] [CDVTimer][statusbar] 18.719971ms
+2014-03-31 00:01:43.978 TextTV.nu[3498:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:01:43.978 TextTV.nu[3498:70b] [CDVTimer][splashscreen] 7.674038ms
+2014-03-31 00:01:43.979 TextTV.nu[3498:70b] [CDVTimer][TotalPluginStartup] 27.590036ms
+2014-03-31 00:01:43.981 TextTV.nu[3498:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:01:43.984 TextTV.nu[3498:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:01:43.986 TextTV.nu[3498:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:01:44.107 TextTV.nu[3498:70b] Resetting plugins due to page load.
+2014-03-31 00:01:44.945 TextTV.nu[3498:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[4190]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-31 00:03:16.158 TextTV.nu[4190:70b] Cannot find executable for CFBundle 0xc18c930 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-31 00:03:16.166 TextTV.nu[4190:70b] Cannot find executable for CFBundle 0xc19d740 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-31 00:03:16.175 TextTV.nu[4190:70b] Cannot find executable for CFBundle 0xc1adc00 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-31 00:03:16.179 TextTV.nu[4190:70b] Cannot find executable for CFBundle 0xbe49e90 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-31 00:03:16.227 TextTV.nu[4190:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-31 00:03:16.238 TextTV.nu[4190:70b] Unlimited access to network resources
+2014-03-31 00:03:16.284 TextTV.nu[4190:70b] [CDVTimer][statusbar] 18.950999ms
+2014-03-31 00:03:16.291 TextTV.nu[4190:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:03:16.292 TextTV.nu[4190:70b] [CDVTimer][splashscreen] 6.823003ms
+2014-03-31 00:03:16.292 TextTV.nu[4190:70b] [CDVTimer][TotalPluginStartup] 27.024984ms
+2014-03-31 00:03:16.294 TextTV.nu[4190:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:03:16.299 TextTV.nu[4190:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:03:16.300 TextTV.nu[4190:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:03:16.494 TextTV.nu[4190:70b] Resetting plugins due to page load.
+2014-03-31 00:03:17.148 TextTV.nu[4190:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[4785]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-31 00:05:29.737 TextTV.nu[4785:70b] Cannot find executable for CFBundle 0xbea8220 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-31 00:05:29.768 TextTV.nu[4785:70b] Cannot find executable for CFBundle 0xc0a8590 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-31 00:05:29.773 TextTV.nu[4785:70b] Cannot find executable for CFBundle 0xbea8900 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-31 00:05:29.782 TextTV.nu[4785:70b] Cannot find executable for CFBundle 0xc1bbbe0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-31 00:05:29.827 TextTV.nu[4785:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-31 00:05:29.840 TextTV.nu[4785:70b] Unlimited access to network resources
+2014-03-31 00:05:29.879 TextTV.nu[4785:70b] [CDVTimer][statusbar] 8.518994ms
+2014-03-31 00:05:29.886 TextTV.nu[4785:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:05:29.887 TextTV.nu[4785:70b] [CDVTimer][splashscreen] 7.384002ms
+2014-03-31 00:05:29.887 TextTV.nu[4785:70b] [CDVTimer][TotalPluginStartup] 17.225981ms
+2014-03-31 00:05:29.889 TextTV.nu[4785:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:05:29.893 TextTV.nu[4785:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:05:29.895 TextTV.nu[4785:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:05:30.022 TextTV.nu[4785:70b] Resetting plugins due to page load.
+2014-03-31 00:05:30.781 TextTV.nu[4785:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[5397]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-31 00:09:02.424 TextTV.nu[5397:70b] Cannot find executable for CFBundle 0xc143ff0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-31 00:09:02.434 TextTV.nu[5397:70b] Cannot find executable for CFBundle 0xbe57570 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-31 00:09:02.463 TextTV.nu[5397:70b] Cannot find executable for CFBundle 0xc1669b0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-31 00:09:02.468 TextTV.nu[5397:70b] Cannot find executable for CFBundle 0xbe64c70 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-31 00:09:02.615 TextTV.nu[5397:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-31 00:09:02.627 TextTV.nu[5397:70b] Unlimited access to network resources
+2014-03-31 00:09:02.664 TextTV.nu[5397:70b] [CDVTimer][statusbar] 9.636045ms
+2014-03-31 00:09:02.673 TextTV.nu[5397:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:09:02.674 TextTV.nu[5397:70b] [CDVTimer][splashscreen] 7.732034ms
+2014-03-31 00:09:02.675 TextTV.nu[5397:70b] [CDVTimer][TotalPluginStartup] 20.249009ms
+2014-03-31 00:09:02.676 TextTV.nu[5397:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:09:02.681 TextTV.nu[5397:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:09:02.683 TextTV.nu[5397:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:09:02.845 TextTV.nu[5397:70b] Resetting plugins due to page load.
+2014-03-31 00:09:03.639 TextTV.nu[5397:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[5994]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-31 00:11:04.976 TextTV.nu[5994:70b] Cannot find executable for CFBundle 0xc16b7b0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-31 00:11:05.000 TextTV.nu[5994:70b] Cannot find executable for CFBundle 0xc049aa0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-31 00:11:05.015 TextTV.nu[5994:70b] Cannot find executable for CFBundle 0xc087680 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-31 00:11:05.033 TextTV.nu[5994:70b] Cannot find executable for CFBundle 0xc182ef0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-31 00:11:05.081 TextTV.nu[5994:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-31 00:11:05.091 TextTV.nu[5994:70b] Unlimited access to network resources
+2014-03-31 00:11:05.137 TextTV.nu[5994:70b] [CDVTimer][statusbar] 10.183990ms
+2014-03-31 00:11:05.144 TextTV.nu[5994:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:11:05.145 TextTV.nu[5994:70b] [CDVTimer][splashscreen] 7.395983ms
+2014-03-31 00:11:05.145 TextTV.nu[5994:70b] [CDVTimer][TotalPluginStartup] 18.849015ms
+2014-03-31 00:11:05.147 TextTV.nu[5994:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:11:05.151 TextTV.nu[5994:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:11:05.152 TextTV.nu[5994:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:11:05.329 TextTV.nu[5994:70b] Resetting plugins due to page load.
+2014-03-31 00:11:06.065 TextTV.nu[5994:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+objc[6589]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-31 00:13:14.936 TextTV.nu[6589:70b] Cannot find executable for CFBundle 0xbe35190 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-31 00:13:14.941 TextTV.nu[6589:70b] Cannot find executable for CFBundle 0xbe3d5d0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/MusicLibrary.axbundle> (not loaded)
+2014-03-31 00:13:14.962 TextTV.nu[6589:70b] Cannot find executable for CFBundle 0xbe6cc20 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-31 00:13:14.975 TextTV.nu[6589:70b] Cannot find executable for CFBundle 0xc0498e0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SocialFramework.axbundle> (not loaded)
+2014-03-31 00:13:15.022 TextTV.nu[6589:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-31 00:13:15.033 TextTV.nu[6589:70b] Unlimited access to network resources
+2014-03-31 00:13:15.069 TextTV.nu[6589:70b] [CDVTimer][statusbar] 8.626997ms
+2014-03-31 00:13:15.076 TextTV.nu[6589:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:13:15.076 TextTV.nu[6589:70b] [CDVTimer][splashscreen] 6.768048ms
+2014-03-31 00:13:15.077 TextTV.nu[6589:70b] [CDVTimer][TotalPluginStartup] 16.649008ms
+2014-03-31 00:13:15.079 TextTV.nu[6589:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:13:15.082 TextTV.nu[6589:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:13:15.084 TextTV.nu[6589:70b] WARNING: The splashscreen image named Default-Portrait was not found
+2014-03-31 00:13:15.272 TextTV.nu[6589:70b] Resetting plugins due to page load.
+2014-03-31 00:13:15.945 TextTV.nu[6589:70b] Finished load of: file:///Users/bonny/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/4BBB6501-6E45-4545-B302-2FAA1A8233BA/TextTV.nu.app/www/index.html
+2014-03-31 00:16:42.956 TextTV.nu[6589:70b] THREAD WARNING: ['SocialSharing'] took '130.651855' ms. Plugin should use a background thread.
+2014-03-31 00:16:43.192 TextTV.nu[6589:70b] Cannot find executable for CFBundle 0xc0a4ea0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/SharingFramework.axbundle> (not loaded)
+2014-03-31 00:16:44.364 TextTV.nu[6589:70b] false
+2014-03-31 00:16:45.421 TextTV.nu[6589:70b] THREAD WARNING: ['SocialSharing'] took '47.452148' ms. Plugin should use a background thread.
+2014-03-31 00:16:46.593 TextTV.nu[6589:70b] false
+2014-03-31 00:16:48.389 TextTV.nu[6589:70b] THREAD WARNING: ['SocialSharing'] took '52.271729' ms. Plugin should use a background thread.
+2014-03-31 00:16:50.175 TextTV.nu[6589:70b] false
