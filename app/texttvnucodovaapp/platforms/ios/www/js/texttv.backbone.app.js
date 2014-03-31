@@ -21,8 +21,6 @@ texttvapp.helpers = {
 
 	updateMostVisited: function() {
 
-		setTimeout(function() { loadingElm.removeClass("active"); loadingElm.remove(); }, 2000);
-
 		var test = texttvapp.storage.get("stats", function(stats) { 
 
 			var pages = stats.pages;
@@ -784,3 +782,11 @@ function onDeviceReady() {
 }
 document.addEventListener('deviceready', onDeviceReady, false);
 
+/**
+ * Scroll to top when tap on status bar
+ */
+window.addEventListener("statusTap", function() {
+	
+	$(".swiper-slide-active").scrollTop(0);
+
+});

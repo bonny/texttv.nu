@@ -12,7 +12,8 @@
                 "<feature name=\"StatusBar\"><param name=\"ios-package\" onload=\"true\" value=\"CDVStatusBar\" /></feature>": 1,
                 "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />": 1,
                 "<preference name=\"StatusBarBackgroundColor\" value=\"#000000\" />": 1,
-                "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>": 1
+                "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
+                "<feature name=\"TapToScroll\"><param name=\"ios-package\" value=\"TapToScroll\" /></feature>": 1
             }
         },
         "framework": {
@@ -41,6 +42,9 @@
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "org.apache.cordova.splashscreen": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "com.phonegap.TapToScroll": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         }
     },

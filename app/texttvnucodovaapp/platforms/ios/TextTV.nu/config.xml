@@ -33,6 +33,9 @@
     </feature>
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarBackgroundColor" value="#000000" />
+    <feature name="TapToScroll">
+        <param name="ios-package" value="TapToScroll" />
+    </feature>
     <name>TextTV.nu</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -52,4 +55,5 @@
     <preference name="splashscreen" value="splash" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="BackgroundColor" value="0xff0000ff" />
+    <preference name="DisallowOverscroll" value="true" />
 </widget>

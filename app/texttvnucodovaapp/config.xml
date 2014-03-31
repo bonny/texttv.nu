@@ -19,4 +19,5 @@
 	<preference name="splashscreen" value="splash" />
 	<preference name="ShowSplashScreenSpinner" value="false" />
 	<preference name="BackgroundColor" value="0xff0000ff"/>
+    <preference name="DisallowOverscroll" value="true" />
 </widget>

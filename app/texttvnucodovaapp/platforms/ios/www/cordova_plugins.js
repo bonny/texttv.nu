@@ -41,6 +41,13 @@ module.exports = [
         "clobbers": [
             "navigator.splashscreen"
         ]
+    },
+    {
+        "file": "plugins/com.phonegap.TapToScroll/www/taptoscroll.js",
+        "id": "com.phonegap.TapToScroll.TapToScroll",
+        "clobbers": [
+            "window.TapToScroll"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -50,7 +57,8 @@ module.exports.metadata =
     "nl.x-services.plugins.socialsharing": "4.0.8",
     "org.apache.cordova.console": "0.2.7",
     "org.apache.cordova.statusbar": "0.1.3",
-    "org.apache.cordova.splashscreen": "0.2.7"
+    "org.apache.cordova.splashscreen": "0.2.7",
+    "com.phonegap.TapToScroll": "0.1.0"
 }
 // BOTTOM OF METADATA
 });

@@ -32,6 +32,9 @@
         },
         "org.apache.cordova.splashscreen": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "com.phonegap.TapToScroll": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
         }
     },
     "dependent_plugins": {}
