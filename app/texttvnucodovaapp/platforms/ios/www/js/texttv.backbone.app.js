@@ -787,6 +787,6 @@ document.addEventListener('deviceready', onDeviceReady, false);
  */
 window.addEventListener("statusTap", function() {
 	
-	$(".swiper-slide-active").scrollTop(0);
+	$(".swiper-slide-active").animate( { scrollTop: 0 });
 
 });
