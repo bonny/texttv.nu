@@ -374,3 +374,6 @@ body:not(.platform-cordova) .hideIfNotCordova {
 	display: none;
 }
 
+.loading {
+	-webkit-transform: translateX(-50%);
+}

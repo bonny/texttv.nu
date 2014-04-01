@@ -20,7 +20,7 @@ texttvapp.helpers = {
 	},
 
 	updateMostVisited: function() {
-		
+
 		var test = texttvapp.storage.get("stats", function(stats) { 
 
 			var pages = stats.pages;
@@ -540,6 +540,10 @@ var MainView = Backbone.View.extend({
 		
 		if (activeSlide.parentModel) {
 			
+			var loadingElm = $( _.template( $("#LoadingTemplate").html() )() );
+			$("body").append(loadingElm);
+			loadingElm.addClass("active");
+
 			var sourceData = activeSlide.parentModel.get("sourceData");
 			var pageIDs = _.pluck(sourceData, "id").join(",");
 
@@ -550,7 +554,7 @@ var MainView = Backbone.View.extend({
 			$.getJSON(apiEndpoint)
 				// api call successful
 				.done(function(data) {
-					
+									
 					if (data.is_ok === false) {
 						alert("Kunde inte dela sidan just nu. Försök igen om en stund!");
 						return;
@@ -559,15 +563,17 @@ var MainView = Backbone.View.extend({
 					window.plugins.socialsharing.share(data.permalink, // body text
 												data.title,  // title?
 												data.screenshot, // image
-												null // link
-											);
+												null, // link
+												function(msg) { console.log(msg); }, function(msg) { console.log(msg); });
 
-
-					// console.log("share api data", data);
 				})
 				// api call not successful
 				.fail(function() {
 
+				})
+				// always
+				.then(function() {
+					loadingElm.remove();
 				});
 			//var shareURL = "http://texttv.nu/sida/arkiv/sidor/" + _.pluck(sourceData, "id").join(",");
 
@@ -766,11 +772,41 @@ texttvapp.mainViewBar = new MainViewBar({
 });
 
 function onDeviceReady() {
-
+    navigator.splashscreen.show();
 	// Add classes to body depending on current device
 	var css_platform = "platform-" + device.platform.toLowerCase() + parseInt(device.version);
 	document.querySelector("body").classList.add(css_platform, "platform-cordova");
 
+	navigator.splashscreen.hide();
+
 }
 document.addEventListener('deviceready', onDeviceReady, false);
 
+/**
+ * Scroll to top when tap on status bar
+ * Some ideas here:
+ * http://www.tricedesigns.com/2013/10/08/status-tapscroll-to-top-in-phonegap-apps-on-ios/
+ */
+window.addEventListener("statusTap", function() {
+	
+	$elmToScroll = $(".swiper-slide-active")
+
+	// disable touch scroll to kill existing inertial movement
+	$elmToScroll.css({
+		'-webkit-overflow-scrolling' : 'auto',
+		// 'overflow-y' : 'hidden'
+	});
+ 
+	$elmToScroll.animate({ scrollTop: 0}, 300, "swing", function(){
+
+		// re-enable touch scrolling
+		target.css({
+			'-webkit-overflow-scrolling' : 'touch',
+			// 'overflow-y' : 'scroll'
+		});
+
+	});
+
+	// $elmToScroll.animate( { scrollTop: 0 });
+
+});

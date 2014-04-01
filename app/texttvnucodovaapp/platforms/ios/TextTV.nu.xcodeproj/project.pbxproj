@@ -45,7 +45,7 @@
 		DBFB319969FE475D83D0894B /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7301028463EB4E689D769882 /* CDVLogger.m */; };
 		BA7044716DB343EBB5211777 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E6AB07C72481C92AA0DD4 /* CDVStatusBar.m */; };
 		DE9D2E70CAC34B1D8608C781 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A24C968BDF843F29E8F1708 /* CDVSplashScreen.m */; };
-		E1225DE1E7B94FAAB6310234 /* TapToScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 74ACAF5334C5443E8C7C5647 /* TapToScroll.m */; };
+		23E2F974EFC94527B65D75CF /* TapToScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC3196E82844C294C040E3 /* TapToScroll.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,8 +122,8 @@
 		9F1DC9E9ED554457AF54C315 /* CDVStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVStatusBar.h"; path = "org.apache.cordova.statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		8A24C968BDF843F29E8F1708 /* CDVSplashScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVSplashScreen.m"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		523FE5B404504A8CAEBDD446 /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		74ACAF5334C5443E8C7C5647 /* TapToScroll.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "TapToScroll.m"; path = "com.phonegap.TapToScroll/TapToScroll.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		47D01475166645249258AC8B /* TapToScroll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TapToScroll.h"; path = "com.phonegap.TapToScroll/TapToScroll.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		8CCC3196E82844C294C040E3 /* TapToScroll.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "TapToScroll.m"; path = "com.phonegap.TapToScroll/TapToScroll.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		1823C2FB87C34433828D1DC7 /* TapToScroll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TapToScroll.h"; path = "com.phonegap.TapToScroll/TapToScroll.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,8 +258,8 @@
 				9F1DC9E9ED554457AF54C315 /* CDVStatusBar.h */,
 				8A24C968BDF843F29E8F1708 /* CDVSplashScreen.m */,
 				523FE5B404504A8CAEBDD446 /* CDVSplashScreen.h */,
-				74ACAF5334C5443E8C7C5647 /* TapToScroll.m */,
-				47D01475166645249258AC8B /* TapToScroll.h */,
+				8CCC3196E82844C294C040E3 /* TapToScroll.m */,
+				1823C2FB87C34433828D1DC7 /* TapToScroll.h */,
 			);
 			name = Plugins;
 			path = "TextTV.nu/Plugins";
@@ -459,7 +459,7 @@
 				DBFB319969FE475D83D0894B /* CDVLogger.m in Sources */,
 				BA7044716DB343EBB5211777 /* CDVStatusBar.m in Sources */,
 				DE9D2E70CAC34B1D8608C781 /* CDVSplashScreen.m in Sources */,
-				E1225DE1E7B94FAAB6310234 /* TapToScroll.m in Sources */,
+				23E2F974EFC94527B65D75CF /* TapToScroll.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

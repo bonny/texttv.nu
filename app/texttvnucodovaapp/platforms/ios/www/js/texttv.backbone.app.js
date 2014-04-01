@@ -784,9 +784,27 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 /**
  * Scroll to top when tap on status bar
+ * Some ideas here:
+ * http://www.tricedesigns.com/2013/10/08/status-tapscroll-to-top-in-phonegap-apps-on-ios/
  */
 window.addEventListener("statusTap", function() {
 	
-	$(".swiper-slide-active").animate( { scrollTop: 0 });
+	$elmToScroll = $(".swiper-slide-active")
+
+	// disable touch scroll to kill existing inertial movement
+	$elmToScroll.css({
+		'-webkit-overflow-scrolling' : 'auto',
+		// 'overflow-y' : 'hidden'
+	});
+ 
+	$elmToScroll.animate({ scrollTop: 0 }, 300, "swing", function() {
+
+		// re-enable touch scrolling
+		$elmToScroll.css({
+			'-webkit-overflow-scrolling' : 'touch',
+			// 'overflow-y' : 'scroll'
+		});
+
+	});
 
 });

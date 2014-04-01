@@ -7,6 +7,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
 	<meta name="format-detection" content="telephone=no" />
 
+	<style>
+		/*body, .view--main {
+			background-color: black !important;
+		}*/
+	</style>
+
 	<link rel="stylesheet" href="bower_components/ionic/release/css/ionic.css">
 	<link rel="stylesheet" href="bower_components/swiper/dist/idangerous.swiper.css">
 	<link rel="stylesheet" href="css/texttv-theme-black.css">
@@ -24,6 +30,22 @@
 
 <!-- js will add these or similar: class="platform-ios7 platform-cordova" -->
 <body>
+
+	<!-- <div class="modal-backdrop"></div> -->
+
+	<script id="LoadingTemplate" type="text/html">
+
+		<div class="loading-backdrop show-backdrop fade-in">
+			<div class="loading">
+				<div class="ion-loading-c"></div>
+			</div>
+		</div>
+
+	</script>
+	
+	<!-- <div class="modal modal--loading">
+		<div class="ion-loading-c"></div>
+	</div> -->
 
 	<div class="view view--main">
 

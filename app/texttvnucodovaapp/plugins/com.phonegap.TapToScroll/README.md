@@ -5,15 +5,13 @@ Capture tap events on the status bar.
 
 This plugin is aimed at libraries like Sencha for users who want to execute custom code like scrolling their list views on status tap.
 
-By j-mcnally and [triceam](https://github.com/triceam/cordova-statusTap)
-
 Installation
 ============
 
 To use this plugin, all you have to do is add this to your project use the PhoneGap CLI:
 
 ```
-phonegap local plugin add https://github.com/j-mcnally/cordova-statusTap
+phonegap local plugin add https://github.com/triceam/cordova-statusTap
 ```
 The CLI tooling sets up all JS file references, and the plugin will initialize itself.  
 
@@ -58,11 +56,12 @@ That's it... very simple.
 
 Details
 ============
+This implementation is forked from https://github.com/j-mcnally/cordova-statusTap
 
-Updated to Cordova 3.0 by triceam
-
-Triceam's Changes include:
+Changes include:
 
 1. Updated for PhoneGap/Cordova CLI usage
 2. Added auto-initialization - no need to manually initialize anymore
-3. Updated ARC compatibility
+3. Updated for ARC compatibility
+
+The main implementation is exactly the same as the original.

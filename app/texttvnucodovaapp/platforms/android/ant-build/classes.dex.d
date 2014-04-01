@@ -9,4 +9,5 @@
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/ant-build/classes/nl/xservices/plugins/SocialSharing$1.class \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/ant-build/classes/nl/xservices/plugins/SocialSharing.class \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/ant-build/classes/org/apache/cordova/device/Device.class \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/ant-build/classes/org/apache/cordova/splashscreen/SplashScreen.class \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/ant-build/dexedLibs/classes-67e526424df042caa5b99bb3c9af37b6.jar \

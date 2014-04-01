@@ -21,6 +21,14 @@
     <access origin="*" />
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="ios-package" value="CDVSplashScreen" />
+        <param name="onload" value="true" />
     </feature>
-	<preference name="BackgroundColor" value="0xff0000ff"/>
+    <preference name="auto-hide-splash-screen" value="false" />
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="FadeSplashScreen" value="false" />
+    <preference name="splashscreen" value="splash" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="BackgroundColor" value="0xff0000ff" />
+    <preference name="DisallowOverscroll" value="true" />
 </widget>
