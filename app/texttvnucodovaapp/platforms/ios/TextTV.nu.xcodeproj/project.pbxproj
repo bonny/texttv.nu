@@ -46,6 +46,12 @@
 		BA7044716DB343EBB5211777 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E6AB07C72481C92AA0DD4 /* CDVStatusBar.m */; };
 		DE9D2E70CAC34B1D8608C781 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A24C968BDF843F29E8F1708 /* CDVSplashScreen.m */; };
 		23E2F974EFC94527B65D75CF /* TapToScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC3196E82844C294C040E3 /* TapToScroll.m */; };
+		11AD7D6CC5324B3CA8918592 /* UniversalAnalyticsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 972CFDD9F11D42069D6E2222 /* UniversalAnalyticsPlugin.m */; };
+		D55E301605AA4A4BB9D62478 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9671A3B55084112BA56E338 /* libGoogleAnalyticsServices.a */; };
+		BEF2A9B8F0744862961B6B0D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83A5DCF8F8514D91B98D7482 /* SystemConfiguration.framework */; };
+		2E3DB08631D14E68A220BBA0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCFBC0498E0943ABA5613DC1 /* CoreData.framework */; };
+		EDC558BAC7F441B38D698731 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29284A303D14F2D92FF42D8 /* AdSupport.framework */; };
+		AD7B6B4B6D144B3CA26D5716 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C54B00D6FB4260AD943FFC /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +130,19 @@
 		523FE5B404504A8CAEBDD446 /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		8CCC3196E82844C294C040E3 /* TapToScroll.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "TapToScroll.m"; path = "com.phonegap.TapToScroll/TapToScroll.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		1823C2FB87C34433828D1DC7 /* TapToScroll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TapToScroll.h"; path = "com.phonegap.TapToScroll/TapToScroll.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		972CFDD9F11D42069D6E2222 /* UniversalAnalyticsPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UniversalAnalyticsPlugin.m"; path = "com.danielcwilson.plugins.googleanalytics/UniversalAnalyticsPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		D9671A3B55084112BA56E338 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libGoogleAnalyticsServices.a"; path = "TextTV.nu/Plugins/com.danielcwilson.plugins.googleanalytics/libGoogleAnalyticsServices.a"; sourceTree = "<group>"; fileEncoding = 4; };
+		564975994FF444E280A89C84 /* UniversalAnalyticsPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UniversalAnalyticsPlugin.h"; path = "com.danielcwilson.plugins.googleanalytics/UniversalAnalyticsPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		2390D19F9DA24228B8D7F4D9 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAIDictionaryBuilder.h"; path = "com.danielcwilson.plugins.googleanalytics/GAIDictionaryBuilder.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		DC4CD426949940F9B3982B81 /* GAIFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAIFields.h"; path = "com.danielcwilson.plugins.googleanalytics/GAIFields.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		F0129031012F4989AF2C4985 /* GAILogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAILogger.h"; path = "com.danielcwilson.plugins.googleanalytics/GAILogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		4F1160E17FBE4CB18BEE17F0 /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAITrackedViewController.h"; path = "com.danielcwilson.plugins.googleanalytics/GAITrackedViewController.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		80E9EC01438845DB8C33F6C7 /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAI.h"; path = "com.danielcwilson.plugins.googleanalytics/GAI.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		0C62F67865EF422B82E16CAE /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAITracker.h"; path = "com.danielcwilson.plugins.googleanalytics/GAITracker.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		83A5DCF8F8514D91B98D7482 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		FCFBC0498E0943ABA5613DC1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreData.framework"; path = "System/Library/Frameworks/CoreData.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		A29284A303D14F2D92FF42D8 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AdSupport.framework"; path = "System/Library/Frameworks/AdSupport.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		09C54B00D6FB4260AD943FFC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libz.dylib"; path = "usr/lib/libz.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +157,11 @@
 				5AEE5B35173C68D80009041E /* CoreLocation.framework in Frameworks */,
 				5653684FEA9544B19BE5918D /* Social.framework in Frameworks */,
 				46D0EAB0507D4002AB15B6F1 /* MessageUI.framework in Frameworks */,
+				D55E301605AA4A4BB9D62478 /* libGoogleAnalyticsServices.a in Frameworks */,
+				BEF2A9B8F0744862961B6B0D /* SystemConfiguration.framework in Frameworks */,
+				2E3DB08631D14E68A220BBA0 /* CoreData.framework in Frameworks */,
+				EDC558BAC7F441B38D698731 /* AdSupport.framework in Frameworks */,
+				AD7B6B4B6D144B3CA26D5716 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +257,12 @@
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
 				98B9DF4402D7430781635DD7 /* Social.framework */,
 				01EC6BCDC232428EAF8634C8 /* MessageUI.framework */,
+				6770CA3C780C4FF9A7969BAB /* GoogleAnalytics.a */,
+				D9671A3B55084112BA56E338 /* libGoogleAnalyticsServices.a */,
+				83A5DCF8F8514D91B98D7482 /* SystemConfiguration.framework */,
+				FCFBC0498E0943ABA5613DC1 /* CoreData.framework */,
+				A29284A303D14F2D92FF42D8 /* AdSupport.framework */,
+				09C54B00D6FB4260AD943FFC /* libz.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -260,6 +290,14 @@
 				523FE5B404504A8CAEBDD446 /* CDVSplashScreen.h */,
 				8CCC3196E82844C294C040E3 /* TapToScroll.m */,
 				1823C2FB87C34433828D1DC7 /* TapToScroll.h */,
+				972CFDD9F11D42069D6E2222 /* UniversalAnalyticsPlugin.m */,
+				564975994FF444E280A89C84 /* UniversalAnalyticsPlugin.h */,
+				2390D19F9DA24228B8D7F4D9 /* GAIDictionaryBuilder.h */,
+				DC4CD426949940F9B3982B81 /* GAIFields.h */,
+				F0129031012F4989AF2C4985 /* GAILogger.h */,
+				4F1160E17FBE4CB18BEE17F0 /* GAITrackedViewController.h */,
+				80E9EC01438845DB8C33F6C7 /* GAI.h */,
+				0C62F67865EF422B82E16CAE /* GAITracker.h */,
 			);
 			name = Plugins;
 			path = "TextTV.nu/Plugins";
@@ -460,6 +498,7 @@
 				BA7044716DB343EBB5211777 /* CDVStatusBar.m in Sources */,
 				DE9D2E70CAC34B1D8608C781 /* CDVSplashScreen.m in Sources */,
 				23E2F974EFC94527B65D75CF /* TapToScroll.m in Sources */,
+				11AD7D6CC5324B3CA8918592 /* UniversalAnalyticsPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +578,10 @@
 				);
 				PRODUCT_NAME = "TextTV.nu";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/TextTV.nu/Plugins/com.danielcwilson.plugins.googleanalytics\"",
+				);
 			};
 			name = Debug;
 		};
@@ -570,6 +613,10 @@
 				);
 				PRODUCT_NAME = "TextTV.nu";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/TextTV.nu/Plugins/com.danielcwilson.plugins.googleanalytics\"",
+				);
 			};
 			name = Release;
 		};

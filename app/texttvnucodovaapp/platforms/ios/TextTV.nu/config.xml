@@ -36,6 +36,9 @@
     <feature name="TapToScroll">
         <param name="ios-package" value="TapToScroll" />
     </feature>
+    <feature name="UniversalAnalytics">
+        <param name="ios-package" value="UniversalAnalyticsPlugin" />
+    </feature>
     <name>TextTV.nu</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -56,4 +59,7 @@
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="BackgroundColor" value="0xff0000ff" />
     <preference name="DisallowOverscroll" value="true" />
+    <feature name="GAPlugin">
+        <param name="ios-package" value="GAPlugin" />
+    </feature>
 </widget>

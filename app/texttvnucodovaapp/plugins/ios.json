@@ -13,7 +13,8 @@
                 "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />": 1,
                 "<preference name=\"StatusBarBackgroundColor\" value=\"#000000\" />": 1,
                 "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
-                "<feature name=\"TapToScroll\"><param name=\"ios-package\" value=\"TapToScroll\" /></feature>": 1
+                "<feature name=\"TapToScroll\"><param name=\"ios-package\" value=\"TapToScroll\" /></feature>": 1,
+                "<feature name=\"UniversalAnalytics\"><param name=\"ios-package\" value=\"UniversalAnalyticsPlugin\" /></feature>": 1
             }
         },
         "framework": {
@@ -24,6 +25,18 @@
                 "false": 1
             },
             "CoreGraphics.framework": {
+                "false": 1
+            },
+            "CoreData.framework": {
+                "false": 1
+            },
+            "SystemConfiguration.framework": {
+                "false": 1
+            },
+            "AdSupport.framework": {
+                "false": 1
+            },
+            "libz.dylib": {
                 "false": 1
             }
         }
@@ -45,6 +58,9 @@
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "com.phonegap.TapToScroll": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "com.danielcwilson.plugins.googleanalytics": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         }
     },

@@ -34,6 +34,13 @@ module.exports = [
         "clobbers": [
             "window.TapToScroll"
         ]
+    },
+    {
+        "file": "plugins/com.danielcwilson.plugins.googleanalytics/www/analytics.js",
+        "id": "com.danielcwilson.plugins.googleanalytics.UniversalAnalytics",
+        "clobbers": [
+            "analytics"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -44,7 +51,8 @@ module.exports.metadata =
     "org.apache.cordova.device": "0.2.8",
     "org.apache.cordova.statusbar": "0.1.3",
     "org.apache.cordova.splashscreen": "0.2.7",
-    "com.phonegap.TapToScroll": "0.1.0"
+    "com.phonegap.TapToScroll": "0.1.0",
+    "com.danielcwilson.plugins.googleanalytics": "0.2.0"
 }
 // BOTTOM OF METADATA
 });
