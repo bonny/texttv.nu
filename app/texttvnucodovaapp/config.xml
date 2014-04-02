@@ -23,4 +23,7 @@
 	<feature name="GAPlugin" >
     	<param name="ios-package" value="GAPlugin"/>
 	</feature>
+	<feature name="StatusBar" >
+    	<param name="ios-package" value="StatusBar"/>
+	</feature>
 </widget>

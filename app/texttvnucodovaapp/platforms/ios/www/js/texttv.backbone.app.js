@@ -798,6 +798,26 @@ function onDeviceReady() {
 
 	navigator.splashscreen.hide();
 
+	/*
+	statusbar = navigator.statusBar;
+	alert(statusbar);
+	statusbar.hide();
+	statusbar.show();
+	
+	setTimeout(function() {
+		statusbar.whiteTint();
+	}, 1000);
+	setTimeout(function() {
+		statusbar.blackTint();
+	}, 2000);
+
+	setTimeout(function() {
+		statusbar.hide();
+	}, 3000);
+
+	*/
+
+
 }
 document.addEventListener('deviceready', onDeviceReady, false);
 

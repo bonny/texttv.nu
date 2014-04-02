@@ -390,6 +390,11 @@ var TextTVPagesCollection = Backbone.Collection.extend({
 
 	pageAdded: function(addedPage) {
 		
+		// Let's track all pages
+		if (typeof analytics !== "undefined") {
+			analytics.trackView("Load pageRange " + addedPage.get("pageRange"));
+		}
+
 		// Keep track of all pages that should be in history
 		if ( "backButton" == addedPage.get("initiatedBy") || "homeButton" == addedPage.get("initiatedBy") || "click" == addedPage.get("initiatedBy") ) {
 
@@ -546,6 +551,9 @@ var MainView = Backbone.View.extend({
 
 			var sourceData = activeSlide.parentModel.get("sourceData");
 			var pageIDs = _.pluck(sourceData, "id").join(",");
+			var pageNums = _.pluck(sourceData, "num").join(",");
+
+			analytics.trackEvent('App', 'Share', pageNums);
 
 			// Call the texttv api to get permalink and screenshot
 			// http://digital.texttv.nu/api/share/2664651
@@ -578,8 +586,6 @@ var MainView = Backbone.View.extend({
 			//var shareURL = "http://texttv.nu/sida/arkiv/sidor/" + _.pluck(sourceData, "id").join(",");
 
 		}
-
-
 
 	},
 
@@ -772,15 +778,53 @@ texttvapp.mainViewBar = new MainViewBar({
 });
 
 function onDeviceReady() {
-    navigator.splashscreen.show();
+	
+	/*
+	https://github.com/danwilson/google-analytics-plugin
+	To track a Screen (PageView):
+
+	analytics.trackView('Screen Title')
+	To track an Event:
+
+	analytics.trackEvent('Category', 'Action', 'Label', Value) Label and Value are optional, Value is numeric
+	*/
+	analytics.startTrackerWithId("UA-181460-25");
+	analytics.trackView('Start app')
+
+	// navigator.splashscreen.show();
 	// Add classes to body depending on current device
 	var css_platform = "platform-" + device.platform.toLowerCase() + parseInt(device.version);
 	document.querySelector("body").classList.add(css_platform, "platform-cordova");
 
 	navigator.splashscreen.hide();
 
+	/*
+	statusbar = navigator.statusBar;
+	alert(statusbar);
+	statusbar.hide();
+	statusbar.show();
+	
+	setTimeout(function() {
+		statusbar.whiteTint();
+	}, 1000);
+	setTimeout(function() {
+		statusbar.blackTint();
+	}, 2000);
+
+	setTimeout(function() {
+		statusbar.hide();
+	}, 3000);
+
+	*/
+
+
 }
 document.addEventListener('deviceready', onDeviceReady, false);
+
+function onDeviceResume() {
+	analytics.trackEvent('App', 'Resume');
+}
+document.addEventListener("resume", onDeviceResume, false);
 
 /**
  * Scroll to top when tap on status bar
@@ -797,16 +841,14 @@ window.addEventListener("statusTap", function() {
 		// 'overflow-y' : 'hidden'
 	});
  
-	$elmToScroll.animate({ scrollTop: 0}, 300, "swing", function(){
+	$elmToScroll.animate({ scrollTop: 0 }, 300, "swing", function() {
 
 		// re-enable touch scrolling
-		target.css({
+		$elmToScroll.css({
 			'-webkit-overflow-scrolling' : 'touch',
 			// 'overflow-y' : 'scroll'
 		});
 
 	});
-
-	// $elmToScroll.animate( { scrollTop: 0 });
 
 });

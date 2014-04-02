@@ -29,13 +29,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.statusbar/www/statusbar.js",
-        "id": "org.apache.cordova.statusbar.statusbar",
-        "clobbers": [
-            "window.StatusBar"
-        ]
-    },
-    {
         "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
         "id": "org.apache.cordova.splashscreen.SplashScreen",
         "clobbers": [
@@ -55,6 +48,13 @@ module.exports = [
         "clobbers": [
             "analytics"
         ]
+    },
+    {
+        "file": "plugins/com.patrickheneise.cordova.statusbar/www/StatusBar.js",
+        "id": "com.patrickheneise.cordova.statusbar.StatusBar",
+        "clobbers": [
+            "navigator.statusbar"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -63,10 +63,10 @@ module.exports.metadata =
     "org.apache.cordova.device": "0.2.8",
     "nl.x-services.plugins.socialsharing": "4.0.8",
     "org.apache.cordova.console": "0.2.7",
-    "org.apache.cordova.statusbar": "0.1.3",
     "org.apache.cordova.splashscreen": "0.2.7",
     "com.phonegap.TapToScroll": "0.1.0",
-    "com.danielcwilson.plugins.googleanalytics": "0.2.0"
+    "com.danielcwilson.plugins.googleanalytics": "0.2.0",
+    "com.patrickheneise.cordova.statusbar": "0.0.2"
 }
 // BOTTOM OF METADATA
 });

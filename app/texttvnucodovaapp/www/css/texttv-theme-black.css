@@ -265,6 +265,7 @@ make one page fit in portrait mode, make two pages fit in landscape
 
 .view--main {
 	-webkit-transition: all .15s ease-in-out;
+	background-color: black;
 }
 .view--main.open-sidebar {
 	-webkit-transform: translateX(-275px);
@@ -296,9 +297,14 @@ make one page fit in portrait mode, make two pages fit in landscape
 	top: 0;
 	left: 0;
 	right: 0;
-	bottom: 40px; /* 40 px = same height as header bar */
+	bottom: 44px; /* 40 px = same height as header bar */
 	overflow: hidden;
 }
+
+.platform-ios7.platform-cordova:not(.fullscreen) .swiper-container {
+	bottom: 64px
+}
+
 .swiper-slide {
 	width: 100%;
 	height: 100%;
@@ -377,3 +383,8 @@ body:not(.platform-cordova) .hideIfNotCordova {
 .loading {
 	-webkit-transform: translateX(-50%);
 }
+
+/*
+.platform-ios7.platform-cordova:not(.fullscreen) .bar-header > *
+when on device bar goes from 44px to 67px
+*/

@@ -10,6 +10,9 @@
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
+    <feature name="UniversalAnalytics">
+        <param name="android-package" value="com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin" />
+    </feature>
     <name>TextTV.nu</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -31,7 +34,10 @@
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="BackgroundColor" value="0xff0000ff" />
     <preference name="DisallowOverscroll" value="true" />
-    <feature name="UniversalAnalytics">
-        <param name="android-package" value="com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin" />
+    <feature name="GAPlugin">
+        <param name="ios-package" value="GAPlugin" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="ios-package" value="StatusBar" />
     </feature>
 </widget>

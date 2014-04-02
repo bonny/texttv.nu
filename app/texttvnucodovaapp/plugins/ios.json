@@ -9,12 +9,10 @@
                 "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>": 1,
                 "<feature name=\"SocialSharing\"><param name=\"ios-package\" value=\"SocialSharing\" /></feature>": 1,
                 "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>": 1,
-                "<feature name=\"StatusBar\"><param name=\"ios-package\" onload=\"true\" value=\"CDVStatusBar\" /></feature>": 1,
-                "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />": 1,
-                "<preference name=\"StatusBarBackgroundColor\" value=\"#000000\" />": 1,
                 "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
                 "<feature name=\"TapToScroll\"><param name=\"ios-package\" value=\"TapToScroll\" /></feature>": 1,
-                "<feature name=\"UniversalAnalytics\"><param name=\"ios-package\" value=\"UniversalAnalyticsPlugin\" /></feature>": 1
+                "<feature name=\"UniversalAnalytics\"><param name=\"ios-package\" value=\"UniversalAnalyticsPlugin\" /></feature>": 1,
+                "<feature name=\"StatusBar\"><param name=\"ios-package\" value=\"StatusBar\" /></feature>": 1
             }
         },
         "framework": {
@@ -51,9 +49,6 @@
         "org.apache.cordova.console": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
-        "org.apache.cordova.statusbar": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
         "org.apache.cordova.splashscreen": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
@@ -61,6 +56,9 @@
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "com.danielcwilson.plugins.googleanalytics": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "com.patrickheneise.cordova.statusbar": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         }
     },

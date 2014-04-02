@@ -32,9 +32,6 @@
         "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
-        "org.apache.cordova.statusbar": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
         "org.apache.cordova.splashscreen": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
@@ -42,6 +39,9 @@
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "com.danielcwilson.plugins.googleanalytics": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "com.patrickheneise.cordova.statusbar": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         }
     },

@@ -23,4 +23,5 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
+    #import <NewRelicAgent/NewRelic.h>
 #endif

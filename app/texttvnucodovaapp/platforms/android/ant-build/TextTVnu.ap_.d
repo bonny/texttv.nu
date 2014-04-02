@@ -443,11 +443,16 @@
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/js/lawnchair-0.6.1.min.js \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/js/old-cordova-script.js \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/js/texttv.backbone.app.js \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/com.danielcwilson.plugins.googleanalytics \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/com.patrickheneise.cordova.statusbar \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/com.phonegap.TapToScroll \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/nl.x-services.plugins.socialsharing \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/org.apache.cordova.device \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen \
-/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/org.apache.cordova.statusbar \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/com.danielcwilson.plugins.googleanalytics/www \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/com.danielcwilson.plugins.googleanalytics/www/analytics.js \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/com.patrickheneise.cordova.statusbar/www \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/com.patrickheneise.cordova.statusbar/www/StatusBar.js \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/com.phonegap.TapToScroll/www \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/com.phonegap.TapToScroll/www/taptoscroll.js \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/nl.x-services.plugins.socialsharing/www \
@@ -456,6 +461,4 @@
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/org.apache.cordova.device/www/device.js \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen/www \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen/www/splashscreen.js \
-/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/org.apache.cordova.statusbar/www \
-/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/plugins/org.apache.cordova.statusbar/www/statusbar.js \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/ant-build/AndroidManifest.xml \

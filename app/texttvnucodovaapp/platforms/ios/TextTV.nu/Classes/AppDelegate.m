@@ -63,6 +63,9 @@
  */
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
+
+    [NewRelicAgent startWithApplicationToken:@"AA70cc47f26ef1184fca20d4de2440527982b3456c"];
+
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
 
 #if __has_feature(objc_arc)
