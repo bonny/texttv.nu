@@ -302,7 +302,7 @@ var TextTVPageModel = Backbone.Model.extend({
 		var self = this;
 		var ajaxPromise = $.ajax({
 			dataType: "json",
-			url: "http://texttv.nu/api/get/" + this.get("pageRange") + "/?cb=" + cacheBusterString,
+			url: "http://api.texttv.nu/api/get/" + this.get("pageRange") + "/?cb=" + cacheBusterString,
 			context: this,
 
 			// @TODO do our own caching later on...
@@ -465,7 +465,7 @@ var MainViewBar = Backbone.View.extend({
 		// All history is in texttvapp.TextTVPagesHistory
 		// We don't want to go to the current page, which is texttvapp.TextTVPagesHistory.length - 1
 		// so remove that
-		console.table(texttvapp.TextTVPagesHistory.toJSON());
+		// console.table(texttvapp.TextTVPagesHistory.toJSON());
 		texttvapp.TextTVPagesHistory.pop();
 
 		// but be want to go to the page before that, texttvapp.TextTVPagesHistory.length - 2, or the last one after we removed the current page
@@ -567,7 +567,7 @@ var MainView = Backbone.View.extend({
 
 			// Call the texttv api to get permalink and screenshot
 			// http://digital.texttv.nu/api/share/2664651
-			var apiEndpoint = "http://digital.texttv.nu/api/share/" + pageIDs;
+			var apiEndpoint = "http://api.texttv.nu/api/share/" + pageIDs;
 
 			$.getJSON(apiEndpoint)
 				// api call successful
