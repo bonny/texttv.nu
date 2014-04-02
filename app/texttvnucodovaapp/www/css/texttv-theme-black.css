@@ -9,15 +9,34 @@
 }
 
 .list--share {
-	margin-top: 0;
-	margin-left: 0;
-	margin-right: 0;
+	margin: 0;
+	padding: 10px;
+	/*
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	*/
 }
 .list--share .item {
 	background-color: transparent;
 	border-bottom: none;
 	padding: 0;
+	border: none;
 }
+
+.list--share .item .button {
+	background-color: #333;
+	border-color: #666;
+	border-radius: 5px;
+}
+.list--share .item .button:active {
+	background-color: #444;
+}
+
+/* add item behind share/reload-buttons and blur */
+/*	-webkit-filter: blur(3px); */
+
 .list--share::before {
 	content: "";
 	position: absolute;
