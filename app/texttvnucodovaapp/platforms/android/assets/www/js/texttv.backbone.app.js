@@ -293,17 +293,27 @@ var TextTVPageModel = Backbone.Model.extend({
 	 */
 	loadPageRange: function() {
 
+		// Cache requests by adding timestamp that is rounded to nearest minute, downwards
+		// so all requests within a minute can get cached by nginx
+		// Request URL will be like: http://texttv.nu/api/get/110-111/?cb=2014-3-2_19:7
+		var cacheBusterTime = new Date();
+		var cacheBusterString = cacheBusterTime.getUTCFullYear() + "-" + cacheBusterTime.getUTCDay() + "-" + cacheBusterTime.getUTCDate() + "_" + cacheBusterTime.getUTCHours() + ":" + cacheBusterTime.getUTCMinutes();
+
 		var self = this;
 		var ajaxPromise = $.ajax({
 			dataType: "json",
-			url: "http://texttv.nu/api/get/" + this.get("pageRange"),
+			url: "http://api.texttv.nu/api/get/" + this.get("pageRange") + "/?cb=" + cacheBusterString,
 			context: this,
 
 			// @TODO do our own caching later on...
 			// http://api.jquery.com/jquery.ajaxprefilter/
 			// beforeSend
 			// http://stackoverflow.com/questions/10585578/changing-the-cache-time-in-jquery
-			cache: false,
+			// request url before own caching: 
+			// http://texttv.nu/api/get/115
+			// after caching want to be like:
+			// http://texttv.nu/api/get/115?cache=123 <- time rounded to nearest minute
+			cache: true,
 
 			//data: { slow_answer: 1 }, // enable this to test how it looks with slow network
 			// timeout: 1000 // enable this to test timeout/fail message
@@ -455,7 +465,7 @@ var MainViewBar = Backbone.View.extend({
 		// All history is in texttvapp.TextTVPagesHistory
 		// We don't want to go to the current page, which is texttvapp.TextTVPagesHistory.length - 1
 		// so remove that
-		console.table(texttvapp.TextTVPagesHistory.toJSON());
+		// console.table(texttvapp.TextTVPagesHistory.toJSON());
 		texttvapp.TextTVPagesHistory.pop();
 
 		// but be want to go to the page before that, texttvapp.TextTVPagesHistory.length - 2, or the last one after we removed the current page
@@ -557,7 +567,7 @@ var MainView = Backbone.View.extend({
 
 			// Call the texttv api to get permalink and screenshot
 			// http://digital.texttv.nu/api/share/2664651
-			var apiEndpoint = "http://digital.texttv.nu/api/share/" + pageIDs;
+			var apiEndpoint = "http://api.texttv.nu/api/share/" + pageIDs;
 
 			$.getJSON(apiEndpoint)
 				// api call successful

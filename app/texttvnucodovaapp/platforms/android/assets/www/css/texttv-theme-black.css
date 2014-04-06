@@ -3,21 +3,38 @@
  * each page is wrapped in .root
  */
 
-.scroll-refresher {
-	background: #f8f8f8;
-	background: #b2b2b2;
-}
-
 .list--share {
-	margin-top: 0;
-	margin-left: 0;
-	margin-right: 0;
+	/*
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	*/
+	background-color: #1a1b1b;
+	padding-top: 3px;
+	margin-bottom: 0;
+	border-bottom: 1px solid #444;
 }
 .list--share .item {
 	background-color: transparent;
 	border-bottom: none;
 	padding: 0;
+	border: none;
 }
+
+.list--share .item .button {
+	background-color: transparent;
+	border-color: none;
+	border: none;
+	/*border-radius: 5px;*/
+}
+.list--share .item .button:active {
+	color: rgba(238, 238, 238, .75);
+}
+
+/* add item behind share/reload-buttons and blur */
+/*	-webkit-filter: blur(3px); */
+/*
 .list--share::before {
 	content: "";
 	position: absolute;
@@ -29,6 +46,7 @@
 	box-shadow: 0px 0px 10px 0px black;
 	margin: 0px auto;
 }
+*/
 
 .list--share .button {
 	background-color: transparent;
@@ -99,7 +117,12 @@ also make the clickable area bigger
 }
 
 .swiper-container {
-	background: #2a2d33 url('data:image/gif;base64,R0lGODlhRQAmAKIAACgrMiosMykrMiksNCksMiotMyksMyotNCH5BAAAAAAALAAAAABFACYAAAP/WGe3Rsyo1kqUCjbJdj/FZADSARWEZawM4YQsZT6TJaK4aWkrTEAtGuX3IEp4IGBlsVwxGy6ABZTcmDaoqwvlcmGfVJAABsoYn5ptSBmEmlKKlnsheoSdzEBaPuW4hB4gETIFJCkzM1t/JDpMbIIyDBlVTytbTkGAl5JunE42AA0AahMOTFlJEYx0Dn9XNBcKMD2zPyqBO0eEPVAXF16BvRsnKXALJA8GATuzr5xXnVZLcaWnKCUafQSGIqnXBwHLVRemECkRxR0abwuujSPnmNjnh9MRa1lxrbxQ9SO8vqD0MSCgQok4clp0ibEiVKABL0xZ2jLEEhZbZbhwKCFl/5DFKypklRF1IsAMaoI4hDAFjSGmQyxqDGo0zIs6ILkUOqDVbt+QJRUHmtQHSWSHUD5o4XTVx5FKfaM6fJvDjglBFjFtwSEybYGAGD7GWLpmM2SWEdqOSKL4xoaimiZChYphhUQGGvpC0gCicBuPc2DQYRqZgyFLBlF7fSJj9UDBJYoSwoT0JMStnRQE/2gitYINAwOSSfqQ2WrWwBjSgY0lCEgxeit3MIkamylpNlEQvjoROiWGiVTpZPGy+Y1NtP9KVNkM2BxgWRCQWZ5UokcXaWO1YtanVImjvxtbj71nJcDozKB9X/yDsBR3yzBdmy5gHmQlRG+nZLCRdKTOZv95fULVEdsE8ZodIaWTRirLHeSaWikVkkoy0eDhjn7kXEIUHQ4OtpMaxekgmyDcjcfHOxhAwgkPHOCS12QjGCTKKHmFVF+L6kCjTz0HSOEecXTFCMKNa61k0UIO/SAAEh184JYHfLEXxx8YffaBHcWtgV4vIZpTXTaovLQTOl72hAIjRjxmiDlbHpRRO/hgGEZbrfykwjpTTkdFMaH9kB8rh+ihX0/n7MghVkY4aU4OSGxpUFZTUKBfDT0VkRArnxw5Dod0LCRBVKqcxMUrh5ImEnubwbChYO2kil8hXtyZogqI3XalK8YwpKANnr2BIzqeDeTYIdcIYaQV6FSDbJNSGF4JDrNQ8mdFMVCGF8aUpXGXEmBYGJVELl6MUgYBvb0UKTtLXesMj0oAg0iT0zoiaRIOGdqTB050hFUFobB5CkDSjATMWbpM8IcTTPkaHwoJAAA7');	
+	/*background: #2a2d33 url('data:image/gif;base64,R0lGODlhRQAmAKIAACgrMiosMykrMiksNCksMiotMyksMyotNCH5BAAAAAAALAAAAABFACYAAAP/WGe3Rsyo1kqUCjbJdj/FZADSARWEZawM4YQsZT6TJaK4aWkrTEAtGuX3IEp4IGBlsVwxGy6ABZTcmDaoqwvlcmGfVJAABsoYn5ptSBmEmlKKlnsheoSdzEBaPuW4hB4gETIFJCkzM1t/JDpMbIIyDBlVTytbTkGAl5JunE42AA0AahMOTFlJEYx0Dn9XNBcKMD2zPyqBO0eEPVAXF16BvRsnKXALJA8GATuzr5xXnVZLcaWnKCUafQSGIqnXBwHLVRemECkRxR0abwuujSPnmNjnh9MRa1lxrbxQ9SO8vqD0MSCgQok4clp0ibEiVKABL0xZ2jLEEhZbZbhwKCFl/5DFKypklRF1IsAMaoI4hDAFjSGmQyxqDGo0zIs6ILkUOqDVbt+QJRUHmtQHSWSHUD5o4XTVx5FKfaM6fJvDjglBFjFtwSEybYGAGD7GWLpmM2SWEdqOSKL4xoaimiZChYphhUQGGvpC0gCicBuPc2DQYRqZgyFLBlF7fSJj9UDBJYoSwoT0JMStnRQE/2gitYINAwOSSfqQ2WrWwBjSgY0lCEgxeit3MIkamylpNlEQvjoROiWGiVTpZPGy+Y1NtP9KVNkM2BxgWRCQWZ5UokcXaWO1YtanVImjvxtbj71nJcDozKB9X/yDsBR3yzBdmy5gHmQlRG+nZLCRdKTOZv95fULVEdsE8ZodIaWTRirLHeSaWikVkkoy0eDhjn7kXEIUHQ4OtpMaxekgmyDcjcfHOxhAwgkPHOCS12QjGCTKKHmFVF+L6kCjTz0HSOEecXTFCMKNa61k0UIO/SAAEh184JYHfLEXxx8YffaBHcWtgV4vIZpTXTaovLQTOl72hAIjRjxmiDlbHpRRO/hgGEZbrfykwjpTTkdFMaH9kB8rh+ihX0/n7MghVkY4aU4OSGxpUFZTUKBfDT0VkRArnxw5Dod0LCRBVKqcxMUrh5ImEnubwbChYO2kil8hXtyZogqI3XalK8YwpKANnr2BIzqeDeTYIdcIYaQV6FSDbJNSGF4JDrNQ8mdFMVCGF8aUpXGXEmBYGJVELl6MUgYBvb0UKTtLXesMj0oAg0iT0zoiaRIOGdqTB050hFUFobB5CkDSjATMWbpM8IcTTPkaHwoJAAA7');	*/
+
+	background: linear-gradient(45deg, rgba(0, 0, 0, .75) 0%,rgba(0, 0, 0, 0) 100%);
+	background: url(../img/bg-blurred-home-page.png);
+	background-size: cover;
+
 	color: #eee;
 }
 
@@ -265,6 +288,7 @@ make one page fit in portrait mode, make two pages fit in landscape
 
 .view--main {
 	-webkit-transition: all .15s ease-in-out;
+	background-color: #333;
 }
 .view--main.open-sidebar {
 	-webkit-transform: translateX(-275px);
@@ -296,9 +320,14 @@ make one page fit in portrait mode, make two pages fit in landscape
 	top: 0;
 	left: 0;
 	right: 0;
-	bottom: 40px; /* 40 px = same height as header bar */
+	bottom: 44px; /* 40 px = same height as header bar */
 	overflow: hidden;
 }
+
+.platform-ios7.platform-cordova:not(.fullscreen) .swiper-container {
+	bottom: 64px
+}
+
 .swiper-slide {
 	width: 100%;
 	height: 100%;
@@ -377,3 +406,8 @@ body:not(.platform-cordova) .hideIfNotCordova {
 .loading {
 	-webkit-transform: translateX(-50%);
 }
+
+/*
+.platform-ios7.platform-cordova:not(.fullscreen) .bar-header > *
+when on device bar goes from 44px to 67px
+*/
