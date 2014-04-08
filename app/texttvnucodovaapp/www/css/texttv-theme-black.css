@@ -86,7 +86,7 @@ also make the clickable area bigger
 
 /* While a page is loading */
 .pageIsLoading, .placeholderPage {
-	margin-top: 240px;
+	margin-top: 140px;
 	text-align: center;
 }
 
