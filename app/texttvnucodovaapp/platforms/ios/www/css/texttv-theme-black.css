@@ -10,10 +10,10 @@
 	left: 0;
 	right: 0;
 	*/
-	background-color: #1a1b1b;
+	background-color: rgba(26, 27, 47, .5);
 	padding-top: 3px;
 	margin-bottom: 0;
-	border-bottom: 1px solid #444;
+	border-bottom: 1px solid rgba(26, 27, 47, .75);
 }
 .list--share .item {
 	background-color: transparent;
@@ -122,6 +122,7 @@ also make the clickable area bigger
 	background: linear-gradient(45deg, rgba(0, 0, 0, .75) 0%,rgba(0, 0, 0, 0) 100%);
 	background: url(../img/bg-blurred-home-page.png);
 	background-size: cover;
+	background-position: center;
 
 	color: #eee;
 }
@@ -287,11 +288,27 @@ make one page fit in portrait mode, make two pages fit in landscape
 
 
 .view--main {
-	-webkit-transition: all .15s ease-in-out;
+	-webkit-transition: -webkit-transform .15s ease-in-out;
 	background-color: #333;
 }
 .view--main.open-sidebar {
 	-webkit-transform: translateX(-275px);
+	/*-webkit-transition: opacity .25s 0s, visibility 0s 2s;*/
+}
+
+.view--main .swiper-container {
+
+	-webkit-transition: opacity .15s ease-in-out;
+	opacity: 1;
+
+}
+.view--main.open-sidebar .swiper-container {
+	opacity: .5;
+	/*xdisplay: none;
+	visibility: hidden;
+	opacity: .5;
+	-webkit-transition: opacity .25s 0s, visibility 0s 2s;
+	*/
 }
 
 #MainView {
@@ -310,7 +327,7 @@ make one page fit in portrait mode, make two pages fit in landscape
 	below does not work. see
 	// @BUG: this makes webkit-overflow-scrolling not working in the sidebar
 	*/
-	/* -webkit-overflow-scrolling: touch; */
+	/*-webkit-overflow-scrolling: touch;*/
 }
 .content {
 	height: 100%;

@@ -53,7 +53,7 @@
 	color: #eee;
 	border-color: #999;
 }
-	
+
 /* This is the font that is the narrowest and monospace and feels good etc. */
 @font-face {
 	font-family: 'Ubuntu Mono';
@@ -86,7 +86,7 @@ also make the clickable area bigger
 
 /* While a page is loading */
 .pageIsLoading, .placeholderPage {
-	margin-top: 40px;
+	margin-top: 240px;
 	text-align: center;
 }
 
@@ -94,13 +94,13 @@ also make the clickable area bigger
 .pageIsLoading-failIcon,
 .placeholderPage-icon {
 	font-size: 44px;
-	color: #666;
+	color: rgba(255,255,255, .5);
 }
 
 .pageIsLoading-text,
 .placeholderPage-text {
 	margin-top: 20px;
-	color: #666;
+	color: rgba(255,255,255, .5);
 	font-size: 24px;
 	line-height: 1.2;
 }
@@ -129,7 +129,7 @@ also make the clickable area bigger
 
 /* Make swiper contain the above font size */
 .swiper-container, .swiper-slide {
-	
+
 	/*height: 28em;*/
 	text-align: center;
 
@@ -147,21 +147,21 @@ T.ex. sida 200 blir icke centrerad..
 }
 
 .root {
-	
+
 	/*height: 27em;*/
 	/*background: red;*/
 	text-align: left;
 	display: inline-block;
 	vertical-align: top;
 	/*width: 100%;*/
-	
+
 	font-family: "ubuntu mono", "courier new", monospace;
 	/* make more text fit horizontaly, but still keep it readable */
-	
+
 	white-space: pre;
 	/* 24 is good in desktop, 16 for mobile */
 	font-size: 24px;
-	
+
 	/* 18 is good for full width */
 	font-size: 18px;
 
@@ -190,7 +190,7 @@ styles for ipad:
 make one page fit in portrait mode, make two pages fit in landscape
 */
 @media only screen and (min-width : 768px) {
-	
+
 	.root {
 		font-size: 23px;
 	}
@@ -250,7 +250,7 @@ make one page fit in portrait mode, make two pages fit in landscape
 
 /* Cyan */
 .C,
-.C a { 
+.C a {
 	color: #00c8ee;
 }
 .bgC {
@@ -271,7 +271,7 @@ make one page fit in portrait mode, make two pages fit in landscape
 
 /* Green */
 .G,
-.G a { 
+.G a {
 	color: #0C0;
 }
 .bgG {
@@ -280,7 +280,7 @@ make one page fit in portrait mode, make two pages fit in landscape
 
 /* Magenta */
 .M {
-	color: #F0F	
+	color: #F0F
 }
 .bgM {
 	background: #F0F
@@ -288,15 +288,31 @@ make one page fit in portrait mode, make two pages fit in landscape
 
 
 .view--main {
-	-webkit-transition: all .15s ease-in-out;
+	-webkit-transition: -webkit-transform .15s ease-in-out;
 	background-color: #333;
 }
 .view--main.open-sidebar {
 	-webkit-transform: translateX(-275px);
+	/*-webkit-transition: opacity .25s 0s, visibility 0s 2s;*/
+}
+
+.view--main .swiper-container {
+
+	-webkit-transition: opacity .15s ease-in-out;
+	opacity: 1;
+
+}
+.view--main.open-sidebar .swiper-container {
+	opacity: .5;
+	/*xdisplay: none;
+	visibility: hidden;
+	opacity: .5;
+	-webkit-transition: opacity .25s 0s, visibility 0s 2s;
+	*/
 }
 
 #MainView {
-	
+
 }
 
 
@@ -311,7 +327,7 @@ make one page fit in portrait mode, make two pages fit in landscape
 	below does not work. see
 	// @BUG: this makes webkit-overflow-scrolling not working in the sidebar
 	*/
-	/* -webkit-overflow-scrolling: touch; */
+	/*-webkit-overflow-scrolling: touch;*/
 }
 .content {
 	height: 100%;
@@ -376,7 +392,7 @@ animations as angular does it:
 	-webkit-transition: -webkit-transform .5s ease-out, opacity .5s;
 	opacity: 0;
 	-webkit-transform: translate3d(10px,0px,0);
-	
+
 	/* make it a bit wider so it's easy to tap */
 	width: 50px;
 	text-align: left;

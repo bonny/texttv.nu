@@ -304,17 +304,7 @@ var TextTVPageModel = Backbone.Model.extend({
 			dataType: "json",
 			url: "http://api.texttv.nu/api/get/" + this.get("pageRange") + "/?cb=" + cacheBusterString,
 			context: this,
-
-			// @TODO do our own caching later on...
-			// http://api.jquery.com/jquery.ajaxprefilter/
-			// beforeSend
-			// http://stackoverflow.com/questions/10585578/changing-the-cache-time-in-jquery
-			// request url before own caching: 
-			// http://texttv.nu/api/get/115
-			// after caching want to be like:
-			// http://texttv.nu/api/get/115?cache=123 <- time rounded to nearest minute
 			cache: true,
-
 			//data: { slow_answer: 1 }, // enable this to test how it looks with slow network
 			// timeout: 1000 // enable this to test timeout/fail message
 		})	
@@ -807,7 +797,7 @@ function onDeviceReady() {
 	document.querySelector("body").classList.add(css_platform, "platform-cordova");
 
 	navigator.splashscreen.hide();
-
+	
 	/*
 	statusbar = navigator.statusBar;
 	alert(statusbar);

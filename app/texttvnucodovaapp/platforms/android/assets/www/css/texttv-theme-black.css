@@ -10,10 +10,10 @@
 	left: 0;
 	right: 0;
 	*/
-	background-color: #1a1b1b;
+	background-color: rgba(26, 27, 47, .5);
 	padding-top: 3px;
 	margin-bottom: 0;
-	border-bottom: 1px solid #444;
+	border-bottom: 1px solid rgba(26, 27, 47, .75);
 }
 .list--share .item {
 	background-color: transparent;
@@ -122,6 +122,7 @@ also make the clickable area bigger
 	background: linear-gradient(45deg, rgba(0, 0, 0, .75) 0%,rgba(0, 0, 0, 0) 100%);
 	background: url(../img/bg-blurred-home-page.png);
 	background-size: cover;
+	background-position: center;
 
 	color: #eee;
 }

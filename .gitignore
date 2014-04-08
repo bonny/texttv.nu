@@ -16,3 +16,7 @@ app/texttv.nu/platforms/ios/cordova/console.log
 app/texttv.nu/platforms/ios/cordova/console.log
 
 app/texttvnucodovaapp/platforms/ios/cordova/console.log
+
+app/texttvnucodovaapp/platforms/android/ant-build/TextTVnu-debug.apk
+
+*.apk
