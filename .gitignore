@@ -20,3 +20,5 @@ app/texttvnucodovaapp/platforms/ios/cordova/console.log
 app/texttvnucodovaapp/platforms/android/ant-build/TextTVnu-debug.apk
 
 *.apk
+
+app/texttvnucodovaapp/platforms/android/ant-build/TextTVnu-debug-unaligned.apk
