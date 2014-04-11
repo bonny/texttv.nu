@@ -440,6 +440,7 @@
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/bower_components/underscore.string/test/test_underscore/vendor/qunit.js \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/css/texttv-theme-black.css \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/img/bg-blurred-home-page.png \
+/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/img/bg-blurred.png \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/img/logo.png \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/js/lawnchair-0.6.1.min.js \
 /Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/android/assets/www/js/old-cordova-script.js \
