@@ -21,7 +21,7 @@ texttvapp.helpers = {
 
 	updateMostVisited: function() {
 
-		var test = texttvapp.storage.get("stats", function(stats) { 
+		var test = texttvapp.storage.get("stats", function(stats) {
 
 			var pages = stats.pages;
 			pages = _.sortBy(pages, function(val) { return val.count; });
@@ -50,9 +50,9 @@ texttvapp.storage = new Lawnchair({
 	name: "texttv",
 	adapter: "dom"
 }, function(storage) {
-	
+
 	// console.log("Storage init");
-	
+
 	storage.exists("stats", function(exists) {
 		if (false === exists) {
 			storage.save({
@@ -83,7 +83,7 @@ texttvapp.sidebar = new Sidebar();
  * Sidebar view
  */
 var SidebarView = Backbone.View.extend({
-	
+
 	events: {
 		"click .js-sidebarToggle": "toggle",
 		"click .list--pages .item-texttvpage": "itemClick",
@@ -92,7 +92,7 @@ var SidebarView = Backbone.View.extend({
 	},
 
 	initialize: function() {
-		
+
 		this.listenTo(this.model, "change:isOpen", this.openOrClose);
 
 	},
@@ -105,7 +105,7 @@ var SidebarView = Backbone.View.extend({
 		// due to bug/feature of swiper we need to hide it to make touch scrolling w overflow of sidebar work
 		/*console.log(123)
 		$(".swiper-container").on("webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd", function() {
-			
+
 			//$(this).css({ display: "none" });
 			console.log(self.model.get("isOpen"));
 
@@ -120,8 +120,14 @@ var SidebarView = Backbone.View.extend({
 		this.model.set("isOpen", false);
 	},
 
+	// click on sidebar ikon
 	toggle: function() {
-		
+
+		if (typeof analytics !== "undefined") {
+			var strOpenOrClose = this.model.get("isOpen") ? "Close" : "Open";
+			analytics.trackEvent('App', 'Sidebar', strOpenOrClose);
+		}
+
 		this.model.set("isOpen", !this.model.get("isOpen"));
 
 	},
@@ -134,7 +140,7 @@ var SidebarView = Backbone.View.extend({
 
 	// Load pageRange when changing to a valid pageRange in the input
 	inputChange: function(e) {
-		
+
 		var $target = $(e.target);
 		var pageRange = $target.val();
 
@@ -160,9 +166,9 @@ var SidebarView = Backbone.View.extend({
 
 	// Load pageRange when clicking a pageRank-link
 	itemClick: function(e) {
-			
+
 		e.preventDefault();
-		
+
 		var $item = $(e.target).closest(".item");
 		var pageRange = $item.data("pagerange");
 
@@ -215,7 +221,7 @@ var TextTVPageModel = Backbone.Model.extend({
 	templatePage: _.template( $("#TextTVPageTemplate").html() ),
 
 	initialize: function() {
-		
+
 		this.on("change:pageRange", this.loadPageRange);
 		this.on("change:sourceData", this.sourceDataChanged);
 
@@ -237,19 +243,19 @@ var TextTVPageModel = Backbone.Model.extend({
 	addToSwiper: function() {
 
 		var ajaxPromise = this.get("ajaxPromise");
-		
+
 		// Add new slide and swipe to that directly. Content from server has not arrived yet.
 		var newSlide = TextTVSwiper.swiper.createSlide( this.templateLoading(this.attributes) );
-		
+
 		newSlide.append();
 
 		// Store a reference to this model in the slide, so we from the slide can get this model
 		$.data(newSlide, "parentmodel", this);
 		newSlide.parentModel = this;
-		
+
 		// mySwiper.swipeTo(index, speed, runCallbacks)
 		// run transition to the slide with index number equal to 'index' parameter for the speed equal to 'speed' parameter.
-		// You can set 'runCallbacks' to false (by default it is 'true') 
+		// You can set 'runCallbacks' to false (by default it is 'true')
 		// and transition will not produce onSlideChange callback functions.
 		var speed = this.get("animateSwiper") ? TextTVSwiper.swiper.params.speed : 0;
 		TextTVSwiper.swiper.swipeTo( newSlide.index(), speed );
@@ -262,11 +268,11 @@ var TextTVPageModel = Backbone.Model.extend({
 	 * When source data has changed = page has loaded from server
 	 */
 	sourceDataChanged: function() {
-		
+
 		this.addContentToSwiper();
 
 		// var swiperSlide = this.get("swiperSlide");
-		
+
 		TextTVSwiper.prepareSliderAfterPageChange();
 
 	},
@@ -275,22 +281,22 @@ var TextTVPageModel = Backbone.Model.extend({
 	 * Add page contents to the swiper slide when the ajax call is done
 	 */
 	addContentToSwiper: function() {
-		
+
 		var swiperSlide = this.get("swiperSlide");
 		var sliderHTML = this.templatePage( this.attributes );
 
 		swiperSlide.html(sliderHTML);
-		
+
 		// If we have history then show back button
 		var $backbutton = $(".js-backButton");
 		if (texttvapp.TextTVPagesHistory.length > 0 && 100 != texttvapp.TextTVPagesHistory.last().get("pageRange")) {
-		
+
 			/*
 			// Don't add current pageRange to the back button, it got confusing to see all those ranges everywhere
 			var $backbuttonText = $(".js-backButton-text");
 			$backbuttonText.text( texttvapp.TextTVPagesHistory.at( texttvapp.TextTVPagesHistory.length-2 ).get("pageRange") );
 			*/
-			
+
 			$backbutton.addClass("button-back--enabled");
 
 		} else {
@@ -319,19 +325,20 @@ var TextTVPageModel = Backbone.Model.extend({
 			context: this,
 			cache: true,
 			//data: { slow_answer: 1 }, // enable this to test how it looks with slow network
-			// timeout: 1000 // enable this to test timeout/fail message
-		})	
+			// timeout: 1000, // enable this to test timeout/fail message
+			timeout: 2000
+		})
 			// when a page is done loading from server
 			.done(function(r) {
-				
+
 				// set sourcedata, will trigger page template render
 				this.set("sourceData", r);
 
 				// Update stats for use in sidebar
 				var stats = texttvapp.storage.get("stats", function(stats) {
-	
+
 					var pageRange = self.get("pageRange");
-					
+
 					// If this is the first load of this pageRange then add it to the stats array
 					if ( !_.has(stats.pages, pageRange)) {
 
@@ -341,7 +348,7 @@ var TextTVPageModel = Backbone.Model.extend({
 						};
 
 					}
-					
+
 					stats.pages[pageRange].count++;
 
 					// Save stats
@@ -366,7 +373,7 @@ var TextTVPageModel = Backbone.Model.extend({
 	},
 
 	loadFailed: function() {
-		
+
 		var swiperSlide = this.get("swiperSlide");
 		swiperSlide.html( this.templateLoadingFailed(this.attributes) );
 
@@ -386,7 +393,7 @@ var TextTVPagesClickCollection = Backbone.Collection.extend({
 	},
 
 	pageAdded: function(addedPage) {
-		
+
 	}
 
 });
@@ -402,10 +409,15 @@ var TextTVPagesCollection = Backbone.Collection.extend({
 	},
 
 	pageAdded: function(addedPage) {
-		
+
 		// Let's track all pages
 		if (typeof analytics !== "undefined") {
+
 			analytics.trackView("Load pageRange " + addedPage.get("pageRange"));
+
+			// Analytics kind of interaction used to load next pageRange
+			analytics.trackEvent('App', 'Nav initiation', addedPage.get("initiatedBy"));
+
 		}
 
 		// Keep track of all pages that should be in history
@@ -414,7 +426,6 @@ var TextTVPagesCollection = Backbone.Collection.extend({
 			texttvapp.TextTVPagesHistory.add( addedPage );
 
 		}
-
 
 	}
 
@@ -447,9 +458,9 @@ texttvapp.mainModel = new MainModel();
  * own view since mainvew can't be updated because then slider get's overwritten
  */
 var MainViewBar = Backbone.View.extend({
-	
+
 	el: "#MainViewBar",
-	
+
 	template: _.template( $("#MainViewBarTemplate").html() ),
 
 	events: {
@@ -494,7 +505,7 @@ var MainViewBar = Backbone.View.extend({
 	},
 
 	loadHome: function(e) {
-		
+
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 			pageRange: 100,
 			addToSwiper: true,
@@ -509,12 +520,12 @@ var MainViewBar = Backbone.View.extend({
 	render: function() {
 
 		var renderedHTML = this.template( this.model.attributes );
-		this.$el.html(renderedHTML);		
+		this.$el.html(renderedHTML);
 
 	},
 
 	initialize: function() {
-		
+
 		this.render();
 
 	}
@@ -526,9 +537,9 @@ var MainViewBar = Backbone.View.extend({
  * MainView = view that controls the GUI
  */
 var MainView = Backbone.View.extend({
-	
+
 	el: "#MainView",
-	
+
 	template: _.template( $("#MainViewTemplate").html() ),
 
 	events: {
@@ -542,10 +553,10 @@ var MainView = Backbone.View.extend({
 	 * Init the app
 	 */
 	initialize: function() {
-		
+
 		this.listenTo(this.model, "change", this.render);
 		this.render();
-		
+
 		TextTVSwiper.initialize();
 
 		this.loadHome();
@@ -555,9 +566,9 @@ var MainView = Backbone.View.extend({
 	sharePage: function() {
 
 		var activeSlide = TextTVSwiper.swiper.activeSlide();
-		
+
 		if (activeSlide.parentModel) {
-			
+
 			var loadingElm = $( _.template( $("#LoadingTemplate").html() )() );
 			$("body").append(loadingElm);
 			loadingElm.addClass("active");
@@ -575,7 +586,7 @@ var MainView = Backbone.View.extend({
 			$.getJSON(apiEndpoint)
 				// api call successful
 				.done(function(data) {
-									
+
 					if (data.is_ok === false) {
 						alert("Kunde inte dela sidan just nu. Försök igen om en stund!");
 						return;
@@ -612,7 +623,7 @@ var MainView = Backbone.View.extend({
 		// parentModel = TextTVPageModel
 		var parentModel = currentSlide.parentModel;
 		//parentModel.loadPageRange();
-		
+
 		// parentModel.attributes.sourceData[0].next_page = "apa";
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 			pageRange: parentModel.get("pageRange"),
@@ -636,7 +647,7 @@ var MainView = Backbone.View.extend({
 	},
 
 	clickLinkInRoot: function(e) {
-		
+
 		var $a = $(e.target);
 		var href = _.str.trim( $a.attr("href"), " /");
 
@@ -652,16 +663,16 @@ var MainView = Backbone.View.extend({
 			}) );
 
 		}
-		
+
 		e.preventDefault();
 
 	},
 
 	render: function() {
-		
+
 		var renderedHTML = this.template( this.model.attributes );
-		this.$el.html(renderedHTML);		
-				
+		this.$el.html(renderedHTML);
+
 		return this;
 	}
 
@@ -672,14 +683,16 @@ var MainView = Backbone.View.extend({
  * Initialized is called from mainView
  */
 var TextTVSwiper = {
-	
+
 	elms: [],
-	
+
 	initialize: function() {
-		
+
 		this.swiper_container = $('.swiper-container');
 		this.swiper = this.swiper_container.swiper({
+			
 			mode:'horizontal',
+			
 			loop: false,
 
 			// Callback function, will be executed when you release the slider
@@ -689,9 +702,51 @@ var TextTVSwiper = {
 			onSlideChangeStart: this.onSlideChangeStart,
 
 			// Callback function, will be executed after animation to other slide (next or previous). Don't work with freeMode.
-			onSlideChangeEnd: this.onSlideChangeEnd
+			onSlideChangeEnd: this.onSlideChangeEnd,
+
+			// Callback function, will be executed when swiper's wrapper change its position.
+			// p - returns object with current transform offset.
+			/*
+			onSetWrapperTransform: function(swiper, transform) {
+				//console.log("onSetWrapperTransform", transform);
+				//console.log( swiper.width );
+				//console.log( swiper.width - transform.x );
+
+				// minus = going forward
+				// positive = going backward
+				var pos = swiper.width + transform.x;
+				var nextSlideIndex = null;
+				var newPos;
+
+				if (pos > 0) {
+					nextSlideIndex = swiper.activeIndex - 1;
+					newPos = (swiper.width/2) - pos/2;
+				} else {
+					nextSlideIndex = swiper.activeIndex + 1;
+					newPos = (swiper.width/2) + pos/2;
+				}
+
+
+				console.log( "nextSlideIndex", nextSlideIndex );
+				//console.log( swiper.activeIndex );
+				var nextSlide = swiper.getSlide( nextSlideIndex );
+
+				var text = $(".placeholderPage--next");
+				console.log(text.length);
+				
+				text.css({
+					WebkitTransform: 'translateX(-'+newPos+'px)'
+				});
+				console.log(text);
+			},
+			*/
+
+			/*onTouchMove: function(swiper){
+				console.log("onTouchMove", this);
+			}*/
 
 			//onSlideNext, onSlidePrev
+
 
 		});
 
@@ -712,7 +767,7 @@ var TextTVSwiper = {
 	 * When slide is changed, make before and after slides empty pages, not loaded, but ready to be
 	 */
 	onSlideChangeEnd: function(swiper, direction) {
-		
+
 		if ("to" == direction) {
 			return false;
 		}
@@ -720,12 +775,12 @@ var TextTVSwiper = {
 		// If we just swiped to a slide that is a "page placeholder" then load that page
 		var activeSlide = TextTVSwiper.swiper.activeSlide();
 		if (activeSlide.parentModel) {
-	
+
 			// If slide already contains a page then prepare that slide for next next/prev-swipe
 			TextTVSwiper.prepareSliderAfterPageChange();
 
 		} else if (activeSlide.pageRange) {
-		
+
 			var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 				pageRange: activeSlide.pageRange,
 				addToSwiper: true,
@@ -738,7 +793,7 @@ var TextTVSwiper = {
 	},
 
 	prepareSliderAfterPageChange: function() {
-			
+
 		var slides = TextTVSwiper.swiper.slides;
 		var activeSlide = TextTVSwiper.swiper.activeSlide();
 		var activeSlideClone = activeSlide.clone();
@@ -748,7 +803,7 @@ var TextTVSwiper = {
 
 		// Copy over parent model from slide to new clone
 		activeSlideClone.parentModel = parentModel;
-		
+
 		// Keep only our current slide
 		TextTVSwiper.swiper.removeAllSlides();
 		activeSlideClone.append();
@@ -791,7 +846,7 @@ texttvapp.mainViewBar = new MainViewBar({
 });
 
 function onDeviceReady() {
-	
+
 	/*
 	https://github.com/danwilson/google-analytics-plugin
 	To track a Screen (PageView):
@@ -810,13 +865,13 @@ function onDeviceReady() {
 	document.querySelector("body").classList.add(css_platform, "platform-cordova");
 
 	navigator.splashscreen.hide();
-	
+
 	/*
 	statusbar = navigator.statusBar;
 	alert(statusbar);
 	statusbar.hide();
 	statusbar.show();
-	
+
 	setTimeout(function() {
 		statusbar.whiteTint();
 	}, 1000);
@@ -845,7 +900,7 @@ document.addEventListener("resume", onDeviceResume, false);
  * http://www.tricedesigns.com/2013/10/08/status-tapscroll-to-top-in-phonegap-apps-on-ios/
  */
 window.addEventListener("statusTap", function() {
-	
+
 	$elmToScroll = $(".swiper-slide-active")
 
 	// disable touch scroll to kill existing inertial movement
@@ -853,7 +908,7 @@ window.addEventListener("statusTap", function() {
 		'-webkit-overflow-scrolling' : 'auto',
 		// 'overflow-y' : 'hidden'
 	});
- 
+
 	$elmToScroll.animate({ scrollTop: 0 }, 300, "swing", function() {
 
 		// re-enable touch scrolling

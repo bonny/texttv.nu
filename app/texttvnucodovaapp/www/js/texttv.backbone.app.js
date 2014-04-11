@@ -326,7 +326,7 @@ var TextTVPageModel = Backbone.Model.extend({
 			cache: true,
 			//data: { slow_answer: 1 }, // enable this to test how it looks with slow network
 			// timeout: 1000, // enable this to test timeout/fail message
-			timeout: 1000
+			timeout: 2000
 		})
 			// when a page is done loading from server
 			.done(function(r) {
@@ -416,7 +416,7 @@ var TextTVPagesCollection = Backbone.Collection.extend({
 			analytics.trackView("Load pageRange " + addedPage.get("pageRange"));
 
 			// Analytics kind of interaction used to load next pageRange
-			analytics.trackEvent('App', 'Nav initiation', get("initiatedBy"));
+			analytics.trackEvent('App', 'Nav initiation', addedPage.get("initiatedBy"));
 
 		}
 
@@ -690,7 +690,9 @@ var TextTVSwiper = {
 
 		this.swiper_container = $('.swiper-container');
 		this.swiper = this.swiper_container.swiper({
+			
 			mode:'horizontal',
+			
 			loop: false,
 
 			// Callback function, will be executed when you release the slider
@@ -700,9 +702,51 @@ var TextTVSwiper = {
 			onSlideChangeStart: this.onSlideChangeStart,
 
 			// Callback function, will be executed after animation to other slide (next or previous). Don't work with freeMode.
-			onSlideChangeEnd: this.onSlideChangeEnd
+			onSlideChangeEnd: this.onSlideChangeEnd,
+
+			// Callback function, will be executed when swiper's wrapper change its position.
+			// p - returns object with current transform offset.
+			/*
+			onSetWrapperTransform: function(swiper, transform) {
+				//console.log("onSetWrapperTransform", transform);
+				//console.log( swiper.width );
+				//console.log( swiper.width - transform.x );
+
+				// minus = going forward
+				// positive = going backward
+				var pos = swiper.width + transform.x;
+				var nextSlideIndex = null;
+				var newPos;
+
+				if (pos > 0) {
+					nextSlideIndex = swiper.activeIndex - 1;
+					newPos = (swiper.width/2) - pos/2;
+				} else {
+					nextSlideIndex = swiper.activeIndex + 1;
+					newPos = (swiper.width/2) + pos/2;
+				}
+
+
+				console.log( "nextSlideIndex", nextSlideIndex );
+				//console.log( swiper.activeIndex );
+				var nextSlide = swiper.getSlide( nextSlideIndex );
+
+				var text = $(".placeholderPage--next");
+				console.log(text.length);
+				
+				text.css({
+					WebkitTransform: 'translateX(-'+newPos+'px)'
+				});
+				console.log(text);
+			},
+			*/
+
+			/*onTouchMove: function(swiper){
+				console.log("onTouchMove", this);
+			}*/
 
 			//onSlideNext, onSlidePrev
+
 
 		});
 
