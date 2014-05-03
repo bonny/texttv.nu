@@ -1,9 +1,4 @@
 
-// Add fastclick on load
-window.addEventListener('load', function() {
-	FastClick.attach(document.body);
-}, false);
-
 var texttvapp = texttvapp || {};
 
 /**
@@ -46,22 +41,37 @@ texttvapp.helpers = {
 
 };
 
+// Initialize storage using Lawnchair
 texttvapp.storage = new Lawnchair({
 	name: "texttv",
 	adapter: "dom"
 }, function(storage) {
 
-	// console.log("Storage init");
-
+	// Make sure "stats" storage exists, as empty object by default
 	storage.exists("stats", function(exists) {
+		
 		if (false === exists) {
+
 			storage.save({
 				key: "stats",
 				pages: {}
 			});
+
 		}
 	});
 
+	// Make sure "favs" storage exists, as empty object by default
+	storage.exists("favs", function(exists) {
+		
+		if (false === exists) {
+
+			storage.save({
+				key: "favs",
+				pages: []
+			});
+
+		}
+	});
 
 });
 
@@ -103,7 +113,7 @@ var SidebarView = Backbone.View.extend({
 		var self = this;
 
 		// due to bug/feature of swiper we need to hide it to make touch scrolling w overflow of sidebar work
-		/*console.log(123)
+		/*
 		$(".swiper-container").on("webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd", function() {
 
 			//$(this).css({ display: "none" });
@@ -171,13 +181,24 @@ var SidebarView = Backbone.View.extend({
 
 		var $item = $(e.target).closest(".item");
 		var pageRange = $item.data("pagerange");
+		var initiatedBy = "click";
+	
+		// Check if click is from favs
+		if ( $item.closest(".FavsItems").length ) {
+			initiatedBy = "clickFav";
+		}
+
+		// Check if click is from most visited
+		if ( $item.closest(".MostVisitedPagesItems").length ) {
+			initiatedBy = "clickMostVisited";
+		}
 
 		// Init a page and load it
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 			pageRange: pageRange,
 			addToSwiper: true,
 			animateSwiper: false,
-			initiatedBy: "click"
+			initiatedBy: initiatedBy
 		}) );
 
 		this.close();
@@ -326,7 +347,7 @@ var TextTVPageModel = Backbone.Model.extend({
 			cache: true,
 			//data: { slow_answer: 1 }, // enable this to test how it looks with slow network
 			// timeout: 1000, // enable this to test timeout/fail message
-			timeout: 2000
+			timeout: 3000
 		})
 			// when a page is done loading from server
 			.done(function(r) {
@@ -504,16 +525,22 @@ var MainViewBar = Backbone.View.extend({
 
 	},
 
+	// load home = load favorites, that by default is only 100
 	loadHome: function(e) {
 
+		var arrFavsPageRanges = texttvapp.favs.getAsPageRangeArray();
+
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
-			pageRange: 100,
+			//pageRange: 100,
+			pageRange: arrFavsPageRanges.join(","),
 			addToSwiper: true,
 			animateSwiper: false,
-			initiatedBy: "click"
+			initiatedBy: "clickHome"
 		}) );
 
-		e.preventDefault();
+		if (e) {
+			e.preventDefault();
+		}
 
 	},
 
@@ -559,7 +586,9 @@ var MainView = Backbone.View.extend({
 
 		TextTVSwiper.initialize();
 
-		this.loadHome();
+		// this.loadHome();
+		// load home/favs by trigger click in mainbar
+		//texttvapp.mainViewBar.loadHome();
 
 	},
 
@@ -632,8 +661,11 @@ var MainView = Backbone.View.extend({
 			initiatedBy: "reloadButton"
 		}) );
 
+		analytics.trackEvent('App', 'ReloadPage', parentModel.get("pageRange"));
+
 	},
 
+	/*
 	loadHome: function() {
 
 		var pageRange = 100;
@@ -645,6 +677,7 @@ var MainView = Backbone.View.extend({
 		}) );
 
 	},
+	*/
 
 	clickLinkInRoot: function(e) {
 
@@ -845,6 +878,7 @@ texttvapp.mainViewBar = new MainViewBar({
 	model: texttvapp.mainModel
 });
 
+
 function onDeviceReady() {
 
 	/*
@@ -856,8 +890,10 @@ function onDeviceReady() {
 
 	analytics.trackEvent('Category', 'Action', 'Label', Value) Label and Value are optional, Value is numeric
 	*/
+
+	// Init Google Analytics
 	analytics.startTrackerWithId("UA-181460-25");
-	analytics.trackView('Start app')
+	analytics.trackView('Start app');
 
 	// navigator.splashscreen.show();
 	// Add classes to body depending on current device
@@ -901,12 +937,11 @@ document.addEventListener("resume", onDeviceResume, false);
  */
 window.addEventListener("statusTap", function() {
 
-	$elmToScroll = $(".swiper-slide-active")
+	$elmToScroll = $(".swiper-slide-active");
 
 	// disable touch scroll to kill existing inertial movement
 	$elmToScroll.css({
 		'-webkit-overflow-scrolling' : 'auto',
-		// 'overflow-y' : 'hidden'
 	});
 
 	$elmToScroll.animate({ scrollTop: 0 }, 300, "swing", function() {
@@ -914,9 +949,34 @@ window.addEventListener("statusTap", function() {
 		// re-enable touch scrolling
 		$elmToScroll.css({
 			'-webkit-overflow-scrolling' : 'touch',
-			// 'overflow-y' : 'scroll'
 		});
 
 	});
 
 });
+
+window.addEventListener('load', function() {
+
+	// Add fastclick
+	FastClick.attach(document.body);
+
+	// when sidebar is open and tap on main view = close sidebar
+	$(document).on("click", ".view--main.open-sidebar", function(e) {
+
+		var $target = $(e.target);
+		
+		// dont show/hide if clicked elm is .js-sidebarToggle, i.e. the icon that toggles the nav = inception!
+		if ( $target.is(".js-sidebarToggle") ) {
+			return true;
+		}
+
+		// Hide sidebar
+		texttvapp.sidebarView.close();
+
+	});
+
+	// Load home/favs
+	texttvapp.mainViewBar.loadHome();
+
+}, false);
+

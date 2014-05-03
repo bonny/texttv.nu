@@ -19,11 +19,14 @@
 	<link rel="stylesheet" href="bower_components/animate.css/animate.css">
 
 	<script src="bower_components/jquery/jquery.js"></script>
+	<!-- <script src="js/jquery.ui.custom.min.js"></script>
+	<script src="js/jquery.ui.touch-punch.min.js"></script> -->
 	<script src="bower_components/underscore/underscore.js"></script>
 	<script src="bower_components/underscore.string/lib/underscore.string.js"></script>
 	<script src="bower_components/backbone/backbone.js"></script>
 	<script src="bower_components/fastclick/lib/fastclick.js"></script>
 	<script src="bower_components/swiper/dist/idangerous.swiper.min.js"></script>
+	<script src="bower_components/Sortable/Sortable.js"></script>
 	<script src="js/lawnchair-0.6.1.min.js"></script>
 
 </head>
@@ -57,12 +60,79 @@
 
 	</div>
 
+	<!-- Template for favorite pages in sidebar -->
+	<script id="FavsTemplate" type="text/html">
+
+		<% // if (pages.length) { %>
+
+			<div class="item item-divider">
+				Favoriter
+				<button 
+					class="FavsItemEdit 
+							button 
+							xbutton-small 
+							button-clear 
+							button-positive 
+							xicon-right 
+							xion-ios7-plus-outline
+						">
+						Ändra
+				</button>
+
+				<button 
+					class="FavsItemEditDone 
+							button 
+							xbutton-small 
+							button-clear 
+							button-positive 
+							xicon-right 
+							xion-ios7-plus-outline
+						">
+						Klar
+				</button>
+
+			</div>
+
+			<ul class="FavsItems" id="FavsItems">
+				<% _.each(pages, function(page) { %>
+					<li class="item item-texttvpage" href="" data-pagerange="<%= page.pageRange %>">
+					<i class="icon ion-ios7-close-outline FavsItem-remove"></i>
+						<%= page.pageRange %>
+						<!-- <span class="item-note"><%= page.count %></span> -->
+						<span class="FavsItem-draggable">
+					</li>
+				<% }); %>
+			</ul>
+
+			<div class="FavsItem-add">
+				<label class="item item-input">
+					<i class="icon ion-document placeholder-icon"></i>
+					<input class="sidebar-input-favitem-add" type="number" pattern="\d" 
+					placeholder="Skriv in sida att lägga till">
+				</label>
+			</div>
+
+		<% // } %>
+
+	</script>
+
+	<!-- template for a single favsitem -->
+	<script id="FavsItemTemplate" type="text/html">
+
+		<li class="item item-texttvpage" href="" data-pagerange="<%= pageRange %>">
+		<i class="icon ion-ios7-close-outline FavsItem-remove"></i>
+			<%= pageRange %>
+			<span class="FavsItem-draggable">
+		</li>
+
+	</script>
+
 	<!-- Template for most visited pages in sidebar -->
 	<script id="MostVisitedTemplate" type="text/html">
 
 		<% if (pages.length) { %>
 
-			<div class="item item-divider">Dina mest besökta</div>
+			<div class="item item-divider">Mest besökta</div>
 
 			<div class="MostVisitedPagesItems">
 				<% _.each(pages, function(page) { %>
@@ -201,7 +271,7 @@
 				<div class="item item-divider">Gå till sida</div>
 				<label class="item item-input">
 					<i class="icon ion-document placeholder-icon"></i>
-					<input class="sidebar-input-page" type="number" pattern="\d*" placeholder="Skriv in sida att gå till">
+					<input class="sidebar-input-page" type="number" pattern="\d*" placeholder="T.ex. 200 eller 300">
 				</label>
 
 				<!--
@@ -213,13 +283,15 @@
 				</div>
 				-->
 
+				<div id="SidebarFavs"></div>
+
 				<div id="SidebarMostVisisted"></div>
 
 				<div class="item item-divider">Sidor</div>
 				<a class="item item-texttvpage" href="" data-pagerange="100">Start <span class="item-note">100</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="100-105">Nyheter <span class="item-note">100-105</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="101-102">Inrikes <span class="item-note">101-102</span></a>
-				<a class="item item-texttvpage" href="" data-pagerange="104-105">Urikes <span class="item-note">104-105</span></a>
+				<a class="item item-texttvpage" href="" data-pagerange="104-105">Utrikes <span class="item-note">104-105</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="200">Ekonomi <span class="item-note">200</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="300-301">Sport <span class="item-note">300-301</span></a>
 				<a class="item item-texttvpage" href="" data-pagerange="376">Sportresultat <span class="item-note">376</span></a>
@@ -232,12 +304,18 @@
 
 			</div>
 
-		</div>
+			<div class="item item-divider">Om</div>
+			<a class="item" href="http://texttv.nu/sida/om-texttv-nu?utm_source=app&utm_medium=sidebar&utm_campaign=sidebar">Om texttv.nu</a>
+			<a class="item" href="https://twitter.com/texttv_nu">Följ oss på Twitter</a>
+			<a class="item" href="mailto:kontakt@texttv.nu">kontakt@texttv.nu</a>
+
+		</div><!-- // scroll-content -->
 
 	</div>
 
 	<script src="cordova.js"></script>
-	<script src="js/texttv.backbone.app.js"></script>
+	<script src="js/texttv.backbone.app.js?v3-maj-2014_3"></script>
+	<script src="js/texttv.favs.js?v3-maj-2014_3"></script>
 
 </body>
 </html>

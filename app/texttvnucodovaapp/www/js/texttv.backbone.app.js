@@ -310,7 +310,11 @@ var TextTVPageModel = Backbone.Model.extend({
 
 		// If we have history then show back button
 		var $backbutton = $(".js-backButton");
-		if (texttvapp.TextTVPagesHistory.length > 0 && 100 != texttvapp.TextTVPagesHistory.last().get("pageRange")) {
+		if (
+			texttvapp.TextTVPagesHistory.length > 0 
+			// reset button if prev page is 100
+			// && 100 != texttvapp.TextTVPagesHistory.last().get("pageRange")
+			) {
 
 			/*
 			// Don't add current pageRange to the back button, it got confusing to see all those ranges everywhere
@@ -442,7 +446,8 @@ var TextTVPagesCollection = Backbone.Collection.extend({
 		}
 
 		// Keep track of all pages that should be in history
-		if ( "backButton" == addedPage.get("initiatedBy") || "homeButton" == addedPage.get("initiatedBy") || "click" == addedPage.get("initiatedBy") ) {
+		var arrTypesToTrack = "backButton,homeButton,click,clickFav,clickHome,clickMostVisited".split(",");
+		if ( arrTypesToTrack.indexOf( addedPage.get("initiatedBy") ) !== -1 ) {
 
 			texttvapp.TextTVPagesHistory.add( addedPage );
 

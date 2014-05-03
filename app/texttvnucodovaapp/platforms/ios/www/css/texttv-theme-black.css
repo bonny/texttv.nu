@@ -362,7 +362,9 @@ Fixa till högerspalten lite, t.ex. gillar jag inte de feta rubrikerna som ionic
 	font-size: 14px;
 }
 
-.MostVisitedPagesItems .item {
+.MostVisitedPagesItems .item,
+.FavsItems .item
+ {
 	float: left;
 	width: 50%;
 	text-align: center;
@@ -370,6 +372,10 @@ Fixa till högerspalten lite, t.ex. gillar jag inte de feta rubrikerna som ionic
 
 .MostVisitedPagesItems .item-note {
 	display: none;
+}
+
+.FavsItems {
+	overflow: hidden;
 }
 
 /*
@@ -424,3 +430,87 @@ body:not(.platform-cordova) .hideIfNotCordova {
 .platform-ios7.platform-cordova:not(.fullscreen) .bar-header > *
 when on device bar goes from 44px to 67px
 */
+
+
+.FavsItem-draggable {
+	background: rgba(0, 0, 0, 0) url(../img/draggable-handle-bg.gif) top right repeat-y;
+	position: absolute;
+	top: 8px;
+	bottom: 8px;
+	right: 8px;
+	width: 80px;
+	padding: 0;
+	cursor: move;
+}
+
+.FavsItems .sortable-ghost {
+	background: rgba(0, 255, 0, .25);
+}
+
+.FavsItemEdit,
+.FavsItemEditDone {
+	position: absolute;
+	bottom: -0.9ex;
+	right: 0;
+
+	/* match style of divider */
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.FavsItem-remove {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	padding: 10px; /* for larger click area */
+	color: rgb(239, 78, 58);
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	cursor: pointer;
+}
+
+/* things to animate */
+.FavsItem-remove,
+.FavsItem-draggable,
+.FavsItemEdit,
+.FavsItemEditDone,
+.FavsItem-add {
+	transition: all 0.5s ease-out 0s;
+	-webkit-transition: all 0.5s ease-out 0s;
+}
+
+
+/* things to only show or hide when editing */
+.FavsItem-remove,
+.FavsItem-draggable,
+.FavsItemEditDone,
+.FavsItem-add
+ {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.FavsItem-add {
+	overflow: hidden;
+	max-height: 0;
+	clear: both;
+	border-top: 1px solid rgb(221, 221, 221);
+}
+
+#SidebarFavs.is-editing .FavsItem-remove,
+#SidebarFavs.is-editing .FavsItem-draggable,
+#SidebarFavs.is-editing .FavsItemEditDone,
+#SidebarFavs.is-editing .FavsItem-add
+ {
+	visibility: visible;
+	opacity: 1;
+}
+
+#SidebarFavs.is-editing .FavsItem-add {
+	max-height: 50px;
+}
+
+#SidebarFavs.is-editing .FavsItemEdit {
+	visibility: hidden;
+	opacity: 0;
+}

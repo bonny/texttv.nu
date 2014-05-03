@@ -63,7 +63,7 @@ var FavsView = Backbone.View.extend({
 		var self = this;
 		texttvapp.storage.get("favs", function(favs) {
 
-			console.log("loaded favs", favs);
+			// console.log("loaded favs", favs);
 
 			// Make sure at least one page exists, so user has something to start with
 			if ( _.isEmpty(favs.pages) ) {
@@ -119,14 +119,11 @@ var FavsView = Backbone.View.extend({
 
 	inputChange: function(e) {
 		
-		console.log("add page");
-
 		var $target = $(e.target);
 		var pageRange = $target.val();
 
 		if ( texttvapp.helpers.isValidPageRange(pageRange)) {
 		
-			console.log("valid range!");
 			var newPageData = {
 				pageRange: pageRange
 			};
@@ -175,21 +172,17 @@ var FavsView = Backbone.View.extend({
 
 			});
 
-			/*
-			_on(this.el, 'dragstart', this._onDragStart);
-			_on(this.el, 'dragend', this._onDrop);
-			*/
-
 			// Disable sidebar scrolling when draging
 			$(document).on("touchstart", "#SidebarFavs.is-editing .item-texttvpage", function(e) {
-				console.log("dragstart", e);
+
 				texttvapp.sidebarView.$el.find(".scroll-content").css({
 					overflowY: "hidden"
 				});
+
 			});
 
 			$(document).on("touchend", "#SidebarFavs.is-editing .item-texttvpage", function() {
-				console.log("dragend");
+
 				texttvapp.sidebarView.$el.find(".scroll-content").css({
 					overflowY: "scroll"
 				});
@@ -201,13 +194,9 @@ var FavsView = Backbone.View.extend({
 
 	render: function() {
 
-		var self = this;
-		
+		var self = this;	
 		var favs = this.model.get("favs");
 		var pages = favs.pages;
-
-		console.log("fav pages to render", favs);
-
 		var $elm = $("#SidebarFavs");
 		$elm.html( self.template( { pages: pages } ) );
 
