@@ -1,9 +1,4 @@
 
-// Add fastclick on load
-window.addEventListener('load', function() {
-	FastClick.attach(document.body);
-}, false);
-
 var texttvapp = texttvapp || {};
 
 /**
@@ -326,7 +321,7 @@ var TextTVPageModel = Backbone.Model.extend({
 			cache: true,
 			//data: { slow_answer: 1 }, // enable this to test how it looks with slow network
 			// timeout: 1000, // enable this to test timeout/fail message
-			timeout: 2000
+			timeout: 3000
 		})
 			// when a page is done loading from server
 			.done(function(r) {
@@ -467,6 +462,10 @@ var MainViewBar = Backbone.View.extend({
 		"click .js-sidebarToggle": "toggleSidebar",
 		"click .bar-header-titleLink": "loadHome",
 		"click .js-backButton": "backButton"
+	},
+
+	clickAnywhere: function(e) {
+		console.log(123);
 	},
 
 	/**
@@ -856,8 +855,10 @@ function onDeviceReady() {
 
 	analytics.trackEvent('Category', 'Action', 'Label', Value) Label and Value are optional, Value is numeric
 	*/
+
+	// Init Google Analytics
 	analytics.startTrackerWithId("UA-181460-25");
-	analytics.trackView('Start app')
+	analytics.trackView('Start app');
 
 	// navigator.splashscreen.show();
 	// Add classes to body depending on current device
@@ -901,12 +902,11 @@ document.addEventListener("resume", onDeviceResume, false);
  */
 window.addEventListener("statusTap", function() {
 
-	$elmToScroll = $(".swiper-slide-active")
+	$elmToScroll = $(".swiper-slide-active");
 
 	// disable touch scroll to kill existing inertial movement
 	$elmToScroll.css({
 		'-webkit-overflow-scrolling' : 'auto',
-		// 'overflow-y' : 'hidden'
 	});
 
 	$elmToScroll.animate({ scrollTop: 0 }, 300, "swing", function() {
@@ -914,9 +914,31 @@ window.addEventListener("statusTap", function() {
 		// re-enable touch scrolling
 		$elmToScroll.css({
 			'-webkit-overflow-scrolling' : 'touch',
-			// 'overflow-y' : 'scroll'
 		});
 
 	});
 
 });
+
+window.addEventListener('load', function() {
+
+	// Add fastclick
+	FastClick.attach(document.body);
+
+	// when sidebar is open and tap on main view = close sidebar
+	$(document).on("click", ".view--main.open-sidebar", function(e) {
+
+		var $target = $(e.target);
+		
+		// dont show/hide if clicked elm is .js-sidebarToggle, i.e. the icon that toggles the nav = inception!
+		if ( $target.is(".js-sidebarToggle") ) {
+			return true;
+		}
+
+		// Hide sidebar
+		texttvapp.sidebarView.close();
+
+	});
+
+}, false);
+
