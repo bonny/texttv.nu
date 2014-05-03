@@ -1018,14 +1018,14 @@ var FavsView = Backbone.View.extend({
 			*/
 
 			// Disable sidebar scrolling when draging
-			$(document).on("dragstart", ".FavsItems .item-texttvpage", function() {
-				console.log("dragstart");
+			$(document).on("touchstart", "#SidebarFavs.is-editing .item-texttvpage", function(e) {
+				console.log("dragstart", e);
 				texttvapp.sidebarView.$el.find(".scroll-content").css({
 					overflowY: "hidden"
 				});
 			});
 
-			$(document).on("dragend", ".FavsItems .item-texttvpage", function() {
+			$(document).on("touchend", "#SidebarFavs.is-editing .item-texttvpage", function() {
 				console.log("dragend");
 				texttvapp.sidebarView.$el.find(".scroll-content").css({
 					overflowY: "scroll"
