@@ -535,7 +535,7 @@ var MainViewBar = Backbone.View.extend({
 			pageRange: arrFavsPageRanges.join(","),
 			addToSwiper: true,
 			animateSwiper: false,
-			initiatedBy: "click"
+			initiatedBy: "clickHome"
 		}) );
 
 		if (e) {
