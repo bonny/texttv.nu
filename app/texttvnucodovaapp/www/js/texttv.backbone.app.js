@@ -251,8 +251,6 @@ var TextTVPageModel = Backbone.Model.extend({
 		// Update most visited after each load
 		texttvapp.helpers.updateMostVisited();
 
-		// texttvapp.helpers.updateFavs();
-
 	},
 
 	addToSwiper: function() {
@@ -901,6 +899,22 @@ var FavsView = Backbone.View.extend({
 
 	},
 
+	// can be used in console to clear favs
+	// in console: texttvapp.favsView.clearFavs();
+	clearFavs: function() {
+		
+		var favs = {
+			key: "favs",
+			pages: []
+		};
+
+		texttvapp.storage.save(favs, function(favs) {
+			// after favs saved
+			console.log("favs saved and cleared");
+		});
+
+	},
+
 	loadFavs: function() {
 
 		var self = this;
@@ -977,7 +991,14 @@ var FavsView = Backbone.View.extend({
 		var $target = $(e.target);
 		var $li = $target.closest("li");
 		var pageRange = $li.data("pagerange");
-		confirm("Ta bort "  + pageRange + " från favoriter?");
+		
+		if ( confirm("Ta bort "  + pageRange + " från favoriter?") ) {
+
+			$li.remove();
+
+		}
+
+
 		e.stopPropagation();
 
 	},
