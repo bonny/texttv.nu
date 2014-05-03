@@ -73,7 +73,6 @@ texttvapp.storage = new Lawnchair({
 		}
 	});
 
-
 });
 
 /**
@@ -515,10 +514,14 @@ var MainViewBar = Backbone.View.extend({
 
 	},
 
+	// load home = load favorites, that by default is only 100
 	loadHome: function(e) {
 
+		var arrFavsPageRanges = texttvapp.favs.getAsPageRangeArray();
+
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
-			pageRange: 100,
+			//pageRange: 100,
+			pageRange: arrFavsPageRanges.join(","),
 			addToSwiper: true,
 			animateSwiper: false,
 			initiatedBy: "click"
@@ -856,205 +859,6 @@ texttvapp.mainView = new MainView({
 
 texttvapp.mainViewBar = new MainViewBar({
 	model: texttvapp.mainModel
-});
-
-
-/**
- * Favs model
- */
-var FavsModel = Backbone.Model.extend({
-
-	defaults: {
-		favs: {}
-	}
-
-});
-
-texttvapp.favs = new FavsModel();
-
-var FavsView = Backbone.View.extend({
-
-	template: _.template( $("#FavsTemplate").html() ),
-	template_single: _.template( $("#FavsItemTemplate").html() ),
-
-	events: {
-		"click .abc": "func",
-		"click .FavsItemEdit": "beginEdit",
-		"click .FavsItemEditDone": "endEdit",
-		"click .FavsItem-remove": "askToRemoveItem",
-		"keyup .sidebar-input-favitem-add": "inputChange",
-	},
-
-	initialize: function() {
-
-		this.loadFavs();
-		this.render();
-		this.makeSortable();
-
-	},
-
-	// can be used in console to clear favs
-	// in console: texttvapp.favsView.clearFavs();
-	clearFavs: function() {
-		
-		var favs = {
-			key: "favs",
-			pages: []
-		};
-
-		texttvapp.storage.save(favs, function(favs) {
-			// after favs saved
-			console.log("favs saved and cleared");
-		});
-
-	},
-
-	loadFavs: function() {
-
-		var self = this;
-		texttvapp.storage.get("favs", function(favs) {
-
-			console.log("loaded favs", favs);
-
-			// Make sure at least one page exists, so user has something to start with
-			if ( _.isEmpty(favs.pages) ) {
-				
-				favs.pages.push({
-					pageRange: 100
-				});
-			}
-
-			self.model.set("favs", favs);
-
-		});
-
-	},
-
-	beginEdit: function() {
-		this.$el.addClass("is-editing");
-	},
-
-	// save favs when editing is done
-	endEdit: function() {
-	
-		this.$el.removeClass("is-editing");
-
-		var items = this.$el.find(".FavsItems .item-texttvpage");
-		var favs = {
-			key: "favs",
-			pages: []
-		};
-		_.each(items, function(item) {
-			var pageRange = item.dataset.pagerange;
-			favs.pages.push({
-				pageRange: pageRange
-			});
-		});
-
-		texttvapp.storage.save(favs, function(favs) {
-			// after favs saved
-			console.log("favs saved");
-		});
-
-	},
-
-	inputChange: function(e) {
-		
-		console.log("add page");
-
-		var $target = $(e.target);
-		var pageRange = $target.val();
-
-		if ( texttvapp.helpers.isValidPageRange(pageRange)) {
-		
-			console.log("valid range!");
-			var newPageData = {
-				pageRange: pageRange
-			};
-			
-			this.$el.find(".FavsItems").append( this.template_single( newPageData ) );
-
-			$target.val("");
-
-		}
-
-	},
-
-	askToRemoveItem: function(e) {
-
-		var $target = $(e.target);
-		var $li = $target.closest("li");
-		var pageRange = $li.data("pagerange");
-		
-		if ( confirm("Ta bort "  + pageRange + " från favoriter?") ) {
-
-			$li.remove();
-
-		}
-
-
-		e.stopPropagation();
-
-	},
-
-	makeSortable : function() {
-	
-		var FavsItems = document.querySelector("#FavsItems");
-
-		if (FavsItems) {
-		
-			new Sortable(FavsItems, {
-				handle: ".FavsItem-draggable",
-				onUpdate: function (evt){
-					/*var itemEl = evt.item; // the current dragged HTMLElement
-					console.log(itemEl);*/
-				},
-
-			});
-
-			/*
-			_on(this.el, 'dragstart', this._onDragStart);
-			_on(this.el, 'dragend', this._onDrop);
-			*/
-
-			// Disable sidebar scrolling when draging
-			$(document).on("touchstart", "#SidebarFavs.is-editing .item-texttvpage", function(e) {
-				console.log("dragstart", e);
-				texttvapp.sidebarView.$el.find(".scroll-content").css({
-					overflowY: "hidden"
-				});
-			});
-
-			$(document).on("touchend", "#SidebarFavs.is-editing .item-texttvpage", function() {
-				console.log("dragend");
-				texttvapp.sidebarView.$el.find(".scroll-content").css({
-					overflowY: "scroll"
-				});
-
-			});
-
-		}
-	},
-
-	render: function() {
-
-		var self = this;
-		
-		var favs = this.model.get("favs");
-		var pages = favs.pages;
-
-		console.log("fav pages to render", favs);
-
-		var $elm = $("#SidebarFavs");
-		$elm.html( self.template( { pages: pages } ) );
-
-	}
-
-});
-
-texttvapp.favsView = new FavsView({
-	el: "#SidebarFavs",
-	model: texttvapp.favs
 });
 
 

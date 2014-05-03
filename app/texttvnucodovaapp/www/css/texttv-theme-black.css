@@ -435,11 +435,11 @@ when on device bar goes from 44px to 67px
 .FavsItem-draggable {
 	background: rgba(0, 0, 0, 0) url(../img/draggable-handle-bg.gif) top right repeat-y;
 	position: absolute;
-	top: 10px;
-	bottom: 10px;
-	right: 5px;
-	width: 5px;
-	padding: 0px 30px 0 10px;
+	top: 8px;
+	bottom: 8px;
+	right: 8px;
+	width: 80px;
+	padding: 0;
 	cursor: move;
 }
 
