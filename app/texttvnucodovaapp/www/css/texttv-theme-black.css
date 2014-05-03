@@ -438,3 +438,13 @@ when on device bar goes from 44px to 67px
 	padding: 0px 10px 0 10px;
 	cursor: move;
 }
+
+.FavsItems .sortable-ghost {
+	background: rgba(0, 255, 0, .25);
+}
+
+.FavsItemAdd {
+	position: absolute;
+	bottom: .1em;
+	right: 0;
+}

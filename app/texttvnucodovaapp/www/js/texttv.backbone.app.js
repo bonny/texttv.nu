@@ -885,7 +885,8 @@ var FavsView = Backbone.View.extend({
 	template: _.template( $("#FavsTemplate").html() ),
 
 	events: {
-		"click .abc": "func"
+		"click .abc": "func",
+		"click .FavsItemAdd": "showAddInput"
 	},
 
 	initialize: function() {
@@ -893,6 +894,10 @@ var FavsView = Backbone.View.extend({
 		this.render();
 		this.makeSortable();
 
+	},
+
+	showAddInput: function() {
+		alert(123);
 	},
 
 	makeSortable : function() {

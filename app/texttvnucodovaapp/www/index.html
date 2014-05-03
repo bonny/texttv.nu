@@ -65,7 +65,18 @@
 
 		<% if (pages.length) { %>
 
-			<div class="item item-divider">Favoriter</div>
+			<div class="item item-divider">
+				Favoriter
+				<button 
+					class="FavsItemAdd 
+							button 
+							button-small 
+							button-clear 
+							button-positive 
+							icon-right 
+							ion-ios7-plus-outline
+						"><!-- Lägg till --></button>
+			</div>
 
 			<ul class="FavsItems" id="FavsItems">
 				<% _.each(pages, function(page) { %>
