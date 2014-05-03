@@ -895,8 +895,30 @@ var FavsView = Backbone.View.extend({
 
 	initialize: function() {
 
+		this.loadFavs();
 		this.render();
 		this.makeSortable();
+
+	},
+
+	loadFavs: function() {
+
+		var self = this;
+		texttvapp.storage.get("favs", function(favs) {
+
+			console.log("loaded favs", favs);
+
+			// Make sure at least one page exists, so user has something to start with
+			if ( _.isEmpty(favs.pages) ) {
+				
+				favs.pages[100] = {
+					pageRange: 100
+				};
+			}
+
+			self.model.set("favs", favs);
+
+		});
 
 	},
 
@@ -904,8 +926,28 @@ var FavsView = Backbone.View.extend({
 		this.$el.addClass("is-editing");
 	},
 
+	// save favs when editing is done
 	endEdit: function() {
+	
 		this.$el.removeClass("is-editing");
+
+		var items = this.$el.find(".FavsItems .item-texttvpage");
+		var favs = {
+			key: "favs",
+			pages: {}
+		};
+		_.each(items, function(item) {
+			var pageRange = item.dataset.pagerange;
+			favs.pages[pageRange] = {
+				pageRange: pageRange
+			};
+		});
+
+		texttvapp.storage.save(favs, function(favs) {
+			// after favs saved
+			console.log("favs saved");
+		});
+
 	},
 
 	inputChange: function(e) {
@@ -960,25 +1002,14 @@ var FavsView = Backbone.View.extend({
 	render: function() {
 
 		var self = this;
-		var test = texttvapp.storage.get("stats", function(stats) {
+		
+		var favs = this.model.get("favs");
+		var pages = favs.pages;
 
-			var pages = stats.pages;
-			pages = _.sortBy(pages, function(val) { return val.count; });
-			pages = pages.reverse();
+		console.log("fav pages to render", favs);
 
-			// Exclude some common pages, like 100 that feels unnessesary since it's at the top of the pages below anyway (and will always be the top one..)
-			var excludedPageRanges = [100];
-			pages = _.filter(pages, function(item) {
-				return ( excludedPageRanges.indexOf(item.pageRange) === -1 );
-			});
-
-			// Only show the latest nn pages
-			pages = pages.slice(0, 4);
-
-			var $elm = $("#SidebarFavs");
-			$elm.html( self.template( { pages: pages } ) );
-
-		});
+		var $elm = $("#SidebarFavs");
+		$elm.html( self.template( { pages: pages } ) );
 
 	}
 
@@ -986,7 +1017,7 @@ var FavsView = Backbone.View.extend({
 
 texttvapp.favsView = new FavsView({
 	el: "#SidebarFavs",
-	model: FavsModel
+	model: texttvapp.favs
 });
 
 
