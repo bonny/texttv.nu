@@ -47,8 +47,6 @@ texttvapp.storage = new Lawnchair({
 	adapter: "dom"
 }, function(storage) {
 
-	// console.log("Storage init");
-
 	// Make sure "stats" storage exists, as empty object by default
 	storage.exists("stats", function(exists) {
 		
@@ -116,7 +114,7 @@ var SidebarView = Backbone.View.extend({
 		var self = this;
 
 		// due to bug/feature of swiper we need to hide it to make touch scrolling w overflow of sidebar work
-		/*console.log(123)
+		/*
 		$(".swiper-container").on("webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd", function() {
 
 			//$(this).css({ display: "none" });
@@ -480,10 +478,6 @@ var MainViewBar = Backbone.View.extend({
 		"click .js-sidebarToggle": "toggleSidebar",
 		"click .bar-header-titleLink": "loadHome",
 		"click .js-backButton": "backButton"
-	},
-
-	clickAnywhere: function(e) {
-		console.log(123);
 	},
 
 	/**
@@ -1012,11 +1006,33 @@ var FavsView = Backbone.View.extend({
 			new Sortable(FavsItems, {
 				handle: ".FavsItem-draggable",
 				onUpdate: function (evt){
-					var itemEl = evt.item; // the current dragged HTMLElement
-					console.log(itemEl);
+					/*var itemEl = evt.item; // the current dragged HTMLElement
+					console.log(itemEl);*/
 				},
 
 			});
+
+			/*
+			_on(this.el, 'dragstart', this._onDragStart);
+			_on(this.el, 'dragend', this._onDrop);
+			*/
+
+			// Disable sidebar scrolling when draging
+			$(document).on("dragstart", ".FavsItems .item-texttvpage", function() {
+				console.log("dragstart");
+				texttvapp.sidebarView.$el.find(".scroll-content").css({
+					overflowY: "hidden"
+				});
+			});
+
+			$(document).on("dragend", ".FavsItems .item-texttvpage", function() {
+				console.log("dragend");
+				texttvapp.sidebarView.$el.find(".scroll-content").css({
+					overflowY: "scroll"
+				});
+
+			});
+
 		}
 	},
 
