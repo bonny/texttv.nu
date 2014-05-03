@@ -41,6 +41,7 @@ texttvapp.helpers = {
 
 };
 
+// Initialize storage using Lawnchair
 texttvapp.storage = new Lawnchair({
 	name: "texttv",
 	adapter: "dom"
@@ -48,12 +49,29 @@ texttvapp.storage = new Lawnchair({
 
 	// console.log("Storage init");
 
+	// Make sure "stats" storage exists, as empty object by default
 	storage.exists("stats", function(exists) {
+		
 		if (false === exists) {
+
 			storage.save({
 				key: "stats",
 				pages: {}
 			});
+
+		}
+	});
+
+	// Make sure "favs" storage exists, as empty object by default
+	storage.exists("favs", function(exists) {
+		
+		if (false === exists) {
+
+			storage.save({
+				key: "favs",
+				pages: {}
+			});
+
 		}
 	});
 
@@ -232,6 +250,8 @@ var TextTVPageModel = Backbone.Model.extend({
 
 		// Update most visited after each load
 		texttvapp.helpers.updateMostVisited();
+
+		// texttvapp.helpers.updateFavs();
 
 	},
 
@@ -631,6 +651,8 @@ var MainView = Backbone.View.extend({
 			initiatedBy: "reloadButton"
 		}) );
 
+		analytics.trackEvent('App', 'ReloadPage', parentModel.get("pageRange"));
+
 	},
 
 	loadHome: function() {
@@ -843,6 +865,85 @@ texttvapp.mainView = new MainView({
 texttvapp.mainViewBar = new MainViewBar({
 	model: texttvapp.mainModel
 });
+
+
+/**
+ * Favs model
+ */
+var FavsModel = Backbone.Model.extend({
+
+	defaults: {
+		favs: {}
+	}
+
+});
+
+texttvapp.favs = new FavsModel();
+
+var FavsView = Backbone.View.extend({
+
+	template: _.template( $("#FavsTemplate").html() ),
+
+	events: {
+		"click .abc": "func"
+	},
+
+	initialize: function() {
+
+		this.render();
+		this.makeSortable();
+
+	},
+
+	makeSortable : function() {
+	
+		var FavsItems = document.querySelector("#FavsItems");
+
+		if (FavsItems) {
+		
+			new Sortable(FavsItems, {
+				handle: ".FavsItem-draggable",
+				onUpdate: function (evt){
+					var itemEl = evt.item; // the current dragged HTMLElement
+					console.log(itemEl);
+				},
+
+			});
+		}
+	},
+
+	render: function() {
+
+		var self = this;
+		var test = texttvapp.storage.get("stats", function(stats) {
+
+			var pages = stats.pages;
+			pages = _.sortBy(pages, function(val) { return val.count; });
+			pages = pages.reverse();
+
+			// Exclude some common pages, like 100 that feels unnessesary since it's at the top of the pages below anyway (and will always be the top one..)
+			var excludedPageRanges = [100];
+			pages = _.filter(pages, function(item) {
+				return ( excludedPageRanges.indexOf(item.pageRange) === -1 );
+			});
+
+			// Only show the latest nn pages
+			pages = pages.slice(0, 4);
+
+			var $elm = $("#SidebarFavs");
+			$elm.html( self.template( { pages: pages } ) );
+
+		});
+
+	}
+
+});
+
+texttvapp.favsView = new FavsView({
+	el: "#SidebarFavs",
+	model: FavsModel
+});
+
 
 function onDeviceReady() {
 

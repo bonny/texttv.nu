@@ -1,0 +1,37 @@
+{
+  "name": "Sortable",
+  "main": "Sortable.js",
+  "version": "0.1.8",
+  "homepage": "http://rubaxa.github.io/Sortable/",
+  "authors": [
+    "RubaXa <ibnRubaXa@gmail.com>"
+  ],
+  "description": "Sortable is a minimalist JavaScript library for modern browsers and touch devices. No jQuery.",
+  "keywords": [
+    "sortable",
+    "reorder",
+    "list",
+    "html5",
+    "drag",
+    "and",
+    "drop",
+    "dnd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.1.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.8",
+    "commit": "186dd119a38f7ee12189f28eca6c5b562c7a3beb"
+  },
+  "_source": "git://github.com/RubaXa/Sortable.git",
+  "_target": "~0.1.8",
+  "_originalSource": "Sortable",
+  "_direct": true
+}
