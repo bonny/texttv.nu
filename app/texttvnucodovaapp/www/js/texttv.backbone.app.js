@@ -69,7 +69,7 @@ texttvapp.storage = new Lawnchair({
 
 			storage.save({
 				key: "favs",
-				pages: {}
+				pages: []
 			});
 
 		}
@@ -911,9 +911,9 @@ var FavsView = Backbone.View.extend({
 			// Make sure at least one page exists, so user has something to start with
 			if ( _.isEmpty(favs.pages) ) {
 				
-				favs.pages[100] = {
+				favs.pages.push({
 					pageRange: 100
-				};
+				});
 			}
 
 			self.model.set("favs", favs);
@@ -934,13 +934,13 @@ var FavsView = Backbone.View.extend({
 		var items = this.$el.find(".FavsItems .item-texttvpage");
 		var favs = {
 			key: "favs",
-			pages: {}
+			pages: []
 		};
 		_.each(items, function(item) {
 			var pageRange = item.dataset.pagerange;
-			favs.pages[pageRange] = {
+			favs.pages.push({
 				pageRange: pageRange
-			};
+			});
 		});
 
 		texttvapp.storage.save(favs, function(favs) {
