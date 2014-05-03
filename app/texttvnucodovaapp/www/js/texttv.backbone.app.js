@@ -886,7 +886,9 @@ var FavsView = Backbone.View.extend({
 
 	events: {
 		"click .abc": "func",
-		"click .FavsItemAdd": "showAddInput"
+		"click .FavsItemEdit": "beginEdit",
+		"click .FavsItemEditDone": "endEdit",
+		"click .FavsItem-remove": "askToRemoveItem"
 	},
 
 	initialize: function() {
@@ -896,8 +898,22 @@ var FavsView = Backbone.View.extend({
 
 	},
 
-	showAddInput: function() {
-		alert(123);
+	beginEdit: function() {
+		this.$el.addClass("is-editing");
+	},
+
+	endEdit: function() {
+		this.$el.removeClass("is-editing");
+	},
+
+	askToRemoveItem: function(e) {
+
+		var $target = $(e.target);
+		var $li = $target.closest("li");
+		var pageRange = $li.data("pagerange");
+		confirm("Ta bort "  + pageRange + " från favoriter?");
+		e.stopPropagation();
+
 	},
 
 	makeSortable : function() {

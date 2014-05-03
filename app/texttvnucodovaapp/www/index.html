@@ -68,21 +68,35 @@
 			<div class="item item-divider">
 				Favoriter
 				<button 
-					class="FavsItemAdd 
+					class="FavsItemEdit 
 							button 
 							xbutton-small 
 							button-clear 
 							button-positive 
-							icon-right 
-							ion-ios7-plus-outline
+							xicon-right 
+							xion-ios7-plus-outline
 						">
-						Lägg till
-						</button>
+						Ändra
+				</button>
+
+				<button 
+					class="FavsItemEditDone 
+							button 
+							xbutton-small 
+							button-clear 
+							button-positive 
+							xicon-right 
+							xion-ios7-plus-outline
+						">
+						Klar
+				</button>
+
 			</div>
 
 			<ul class="FavsItems" id="FavsItems">
 				<% _.each(pages, function(page) { %>
 					<li class="item item-texttvpage" href="" data-pagerange="<%= page.pageRange %>">
+					<i class="icon ion-ios7-close-outline FavsItem-remove"></i>
 						<%= page.pageRange %>
 						<!-- <span class="item-note"><%= page.count %></span> -->
 						<span class="FavsItem-draggable">

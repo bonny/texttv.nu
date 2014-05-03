@@ -443,7 +443,8 @@ when on device bar goes from 44px to 67px
 	background: rgba(0, 255, 0, .25);
 }
 
-.FavsItemAdd {
+.FavsItemEdit,
+.FavsItemEditDone {
 	position: absolute;
 	bottom: -0.9ex;
 	right: 0;
@@ -451,4 +452,46 @@ when on device bar goes from 44px to 67px
 	/* match style of divider */
 	font-size: 14px;
 	text-transform: uppercase;
+}
+
+.FavsItem-remove {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	padding: 10px; /* for larger click area */
+	color: rgb(239, 78, 58);
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+/* things to animate */
+.FavsItem-remove,
+.FavsItem-draggable,
+.FavsItemEdit,
+.FavsItemEditDone {
+	transition: all 0.25s ease-in-out 0s;
+	-webkit-transition: all 0.25s ease-in-out 0s;
+}
+
+
+/* things to only show or hide when editing */
+.FavsItem-remove,
+.FavsItem-draggable,
+.FavsItemEditDone
+ {
+	visibility: hidden;
+	opacity: 0;
+}
+
+#SidebarFavs.is-editing .FavsItem-remove,
+#SidebarFavs.is-editing .FavsItem-draggable,
+#SidebarFavs.is-editing .FavsItemEditDone
+ {
+	visibility: visible;
+	opacity: 1;
+}
+
+#SidebarFavs.is-editing .FavsItemEdit {
+	visibility: hidden;
+	opacity: 0;
 }
