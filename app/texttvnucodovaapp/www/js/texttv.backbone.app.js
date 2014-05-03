@@ -181,13 +181,24 @@ var SidebarView = Backbone.View.extend({
 
 		var $item = $(e.target).closest(".item");
 		var pageRange = $item.data("pagerange");
+		var initiatedBy = "click";
+	
+		// Check if click is from favs
+		if ( $item.closest(".FavsItems").length ) {
+			initiatedBy = "clickFav";
+		}
+
+		// Check if click is from most visited
+		if ( $item.closest(".MostVisitedPagesItems").length ) {
+			initiatedBy = "clickMostVisited";
+		}
 
 		// Init a page and load it
 		var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
 			pageRange: pageRange,
 			addToSwiper: true,
 			animateSwiper: false,
-			initiatedBy: "click"
+			initiatedBy: initiatedBy
 		}) );
 
 		this.close();

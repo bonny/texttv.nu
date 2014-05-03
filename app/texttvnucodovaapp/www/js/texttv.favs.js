@@ -28,7 +28,6 @@ var FavsView = Backbone.View.extend({
 	template_single: _.template( $("#FavsItemTemplate").html() ),
 
 	events: {
-		"click .abc": "func",
 		"click .FavsItemEdit": "beginEdit",
 		"click .FavsItemEditDone": "endEdit",
 		"click .FavsItem-remove": "askToRemoveItem",
@@ -82,6 +81,9 @@ var FavsView = Backbone.View.extend({
 
 	beginEdit: function() {
 		this.$el.addClass("is-editing");
+
+		analytics.trackEvent('App', 'Favs', "StartChange");
+
 	},
 
 	// save favs when editing is done
@@ -110,6 +112,8 @@ var FavsView = Backbone.View.extend({
 			self.loadFavs();
 
 		});
+
+		analytics.trackEvent('App', 'Favs', "EndChange");
 
 	},
 
@@ -143,7 +147,11 @@ var FavsView = Backbone.View.extend({
 		
 		if ( confirm("Ta bort "  + pageRange + " från favoriter?") ) {
 
-			$li.remove();
+			$li.fadeOut("slow", function() {
+
+				$li.remove();
+				
+			});
 
 		}
 
