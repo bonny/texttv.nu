@@ -104,10 +104,28 @@
 				<% }); %>
 			</ul>
 
+			<div class="FavsItem-add">
+				<label class="item item-input">
+					<i class="icon ion-document placeholder-icon"></i>
+					<input class="sidebar-input-favitem-add" type="number" pattern="\d" 
+					placeholder="Skriv in sida att lägga till">
+				</label>
+			</div>
+
 		<% } %>
 
 	</script>
 
+	<!-- template for a single favsitem -->
+	<script id="FavsItemTemplate" type="text/html">
+
+		<li class="item item-texttvpage" href="" data-pagerange="<%= pageRange %>">
+		<i class="icon ion-ios7-close-outline FavsItem-remove"></i>
+			<%= pageRange %>
+			<span class="FavsItem-draggable">
+		</li>
+
+	</script>
 
 	<!-- Template for most visited pages in sidebar -->
 	<script id="MostVisitedTemplate" type="text/html">

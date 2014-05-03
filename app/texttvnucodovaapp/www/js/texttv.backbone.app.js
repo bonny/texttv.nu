@@ -883,12 +883,14 @@ texttvapp.favs = new FavsModel();
 var FavsView = Backbone.View.extend({
 
 	template: _.template( $("#FavsTemplate").html() ),
+	template_single: _.template( $("#FavsItemTemplate").html() ),
 
 	events: {
 		"click .abc": "func",
 		"click .FavsItemEdit": "beginEdit",
 		"click .FavsItemEditDone": "endEdit",
-		"click .FavsItem-remove": "askToRemoveItem"
+		"click .FavsItem-remove": "askToRemoveItem",
+		"keyup .sidebar-input-favitem-add": "inputChange",
 	},
 
 	initialize: function() {
@@ -904,6 +906,28 @@ var FavsView = Backbone.View.extend({
 
 	endEdit: function() {
 		this.$el.removeClass("is-editing");
+	},
+
+	inputChange: function(e) {
+		
+		console.log("add page");
+
+		var $target = $(e.target);
+		var pageRange = $target.val();
+
+		if ( texttvapp.helpers.isValidPageRange(pageRange)) {
+		
+			console.log("valid range!");
+			var newPageData = {
+				pageRange: pageRange
+			};
+			
+			this.$el.find(".FavsItems").append( this.template_single( newPageData ) );
+
+			$target.val("");
+
+		}
+
 	},
 
 	askToRemoveItem: function(e) {

@@ -374,6 +374,10 @@ Fixa till högerspalten lite, t.ex. gillar jag inte de feta rubrikerna som ionic
 	display: none;
 }
 
+.FavsItems {
+	overflow: hidden;
+}
+
 /*
 animations as angular does it:
 .animate-enter-setup, .animate-leave-setup {
@@ -469,7 +473,8 @@ when on device bar goes from 44px to 67px
 .FavsItem-remove,
 .FavsItem-draggable,
 .FavsItemEdit,
-.FavsItemEditDone {
+.FavsItemEditDone,
+.FavsItem-add {
 	transition: all 0.25s ease-in-out 0s;
 	-webkit-transition: all 0.25s ease-in-out 0s;
 }
@@ -478,18 +483,31 @@ when on device bar goes from 44px to 67px
 /* things to only show or hide when editing */
 .FavsItem-remove,
 .FavsItem-draggable,
-.FavsItemEditDone
+.FavsItemEditDone,
+.FavsItem-add
  {
 	visibility: hidden;
 	opacity: 0;
 }
 
+.FavsItem-add {
+	overflow: hidden;
+	max-height: 0;
+	clear: both;
+	border-top: 1px solid rgb(221, 221, 221);
+}
+
 #SidebarFavs.is-editing .FavsItem-remove,
 #SidebarFavs.is-editing .FavsItem-draggable,
-#SidebarFavs.is-editing .FavsItemEditDone
+#SidebarFavs.is-editing .FavsItemEditDone,
+#SidebarFavs.is-editing .FavsItem-add
  {
 	visibility: visible;
 	opacity: 1;
+}
+
+#SidebarFavs.is-editing .FavsItem-add {
+	max-height: 200px;
 }
 
 #SidebarFavs.is-editing .FavsItemEdit {
