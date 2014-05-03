@@ -527,7 +527,9 @@ var MainViewBar = Backbone.View.extend({
 			initiatedBy: "click"
 		}) );
 
-		e.preventDefault();
+		if (e) {
+			e.preventDefault();
+		}
 
 	},
 
@@ -573,7 +575,9 @@ var MainView = Backbone.View.extend({
 
 		TextTVSwiper.initialize();
 
-		this.loadHome();
+		// this.loadHome();
+		// load home/favs by trigger click in mainbar
+		//texttvapp.mainViewBar.loadHome();
 
 	},
 
@@ -650,6 +654,7 @@ var MainView = Backbone.View.extend({
 
 	},
 
+	/*
 	loadHome: function() {
 
 		var pageRange = 100;
@@ -661,6 +666,7 @@ var MainView = Backbone.View.extend({
 		}) );
 
 	},
+	*/
 
 	clickLinkInRoot: function(e) {
 
@@ -957,6 +963,9 @@ window.addEventListener('load', function() {
 		texttvapp.sidebarView.close();
 
 	});
+
+	// Load home/favs
+	texttvapp.mainViewBar.loadHome();
 
 }, false);
 
