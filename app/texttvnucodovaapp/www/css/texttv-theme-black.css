@@ -370,6 +370,11 @@ Fixa till högerspalten lite, t.ex. gillar jag inte de feta rubrikerna som ionic
 	text-align: center;
 }
 
+/* don't show most visited any more - we use the mighty favs instead */
+#SidebarMostVisisted {
+	display: none;
+}
+
 .MostVisitedPagesItems .item-note {
 	display: none;
 }
