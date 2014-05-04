@@ -9,8 +9,8 @@
                 "<feature name=\"SocialSharing\"><param name=\"android-package\" value=\"nl.xservices.plugins.SocialSharing\" /></feature>": 1,
                 "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>": 1,
                 "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /></feature>": 1,
-                "<feature name=\"UniversalAnalytics\"><param name=\"android-package\" value=\"com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin\" /></feature>": 1,
-                "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>": 1
+                "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>": 1,
+                "<feature name=\"UniversalAnalytics\"><param name=\"android-package\" value=\"com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin\" /></feature>": 1
             }
         },
         "AndroidManifest.xml": {
@@ -39,13 +39,13 @@
         "com.phonegap.TapToScroll": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
-        "com.danielcwilson.plugins.googleanalytics": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
         "com.patrickheneise.cordova.statusbar": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "org.apache.cordova.inappbrowser": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "com.danielcwilson.plugins.googleanalytics": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         }
     },

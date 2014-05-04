@@ -99,11 +99,39 @@ var SidebarView = Backbone.View.extend({
 		"click .list--pages .item-texttvpage": "itemClick",
 		//"change .sidebar-input-page": "inputChange",
 		"keyup .sidebar-input-page": "inputChange",
+		"click .item-external-link": "openExternalLink"
 	},
 
 	initialize: function() {
 
 		this.listenTo(this.model, "change:isOpen", this.openOrClose);
+
+	},
+
+	openExternalLink: function(e) {
+
+		var $link = $(e.target);
+		var target = $link.attr("target");
+		var href = $link.attr("href");
+
+		// If inappbrowser is not loaded = running in regular browser, then don't open in _blank
+		if (typeof cordova == "object") {
+		
+			// plugin loaded
+			e.preventDefault();
+			
+			if ("_system" == target) {
+
+				var ref = window.open(href, '_system', 'location=yes');
+
+			}
+
+		} else {
+
+			// not loaded
+
+		}
+
 
 	},
 
