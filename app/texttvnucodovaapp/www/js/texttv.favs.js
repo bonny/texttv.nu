@@ -68,6 +68,7 @@ var FavsView = Backbone.View.extend({
 			// Make sure at least one page exists, so user has something to start with
 			if ( _.isEmpty(favs.pages) ) {
 				
+				favs.pages = [];
 				favs.pages.push({
 					pageRange: 100
 				});
