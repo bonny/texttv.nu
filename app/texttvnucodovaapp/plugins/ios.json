@@ -12,7 +12,8 @@
                 "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
                 "<feature name=\"TapToScroll\"><param name=\"ios-package\" value=\"TapToScroll\" /></feature>": 1,
                 "<feature name=\"UniversalAnalytics\"><param name=\"ios-package\" value=\"UniversalAnalyticsPlugin\" /></feature>": 1,
-                "<feature name=\"StatusBar\"><param name=\"ios-package\" value=\"StatusBar\" /></feature>": 1
+                "<feature name=\"StatusBar\"><param name=\"ios-package\" value=\"StatusBar\" /></feature>": 1,
+                "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>": 1
             }
         },
         "framework": {
@@ -23,7 +24,7 @@
                 "false": 1
             },
             "CoreGraphics.framework": {
-                "false": 1
+                "false": 2
             },
             "CoreData.framework": {
                 "false": 1
@@ -59,6 +60,9 @@
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "com.patrickheneise.cordova.statusbar": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         }
     },
