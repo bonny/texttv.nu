@@ -161,9 +161,11 @@ var SidebarView = Backbone.View.extend({
 	// click on sidebar ikon
 	toggle: function() {
 
-		if (typeof analytics !== "undefined") {
+		try {
 			var strOpenOrClose = this.model.get("isOpen") ? "Close" : "Open";
 			analytics.trackEvent('App', 'Sidebar', strOpenOrClose);
+		} catch(e) {
+			console.log(e);
 		}
 
 		this.model.set("isOpen", !this.model.get("isOpen"));
@@ -464,14 +466,17 @@ var TextTVPagesCollection = Backbone.Collection.extend({
 	pageAdded: function(addedPage) {
 
 		// Let's track all pages
-		if (typeof analytics !== "undefined") {
+		try {
 
 			analytics.trackView("Load pageRange " + addedPage.get("pageRange"));
 
 			// Analytics kind of interaction used to load next pageRange
 			analytics.trackEvent('App', 'Nav initiation', addedPage.get("initiatedBy"));
 
+		} catch (e) {
+			console.log(e);
 		}
+
 
 		// Keep track of all pages that should be in history
 		console.log(addedPage.get("initiatedBy"));
@@ -710,7 +715,11 @@ var MainView = Backbone.View.extend({
 			initiatedBy: "reloadButton"
 		}) );
 
-		analytics.trackEvent('App', 'ReloadPage', parentModel.get("pageRange"));
+		try {
+			analytics.trackEvent('App', 'ReloadPage', parentModel.get("pageRange"));
+		} catch(e) {
+			console.log(e);
+		}
 
 	},
 
