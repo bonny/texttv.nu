@@ -14,7 +14,7 @@
   ],
   "dependencies": {
     "backbone": "*",
-    "swiper": "~2.5.5",
+    "swiper": "~2.6",
     "normalize-css": "~2.1.3",
     "ionic": "1.0.0-beta.1",
     "jquery": "~2.0.3",
