@@ -482,6 +482,21 @@ var TextTVPagesCollection = Backbone.Collection.extend({
 
 		}
 
+		// update mainbar so home start can be enable/disabled
+		// texttvapp.mainViewBar.render();
+		// MainViewBarTemplate
+
+		// If home screen then show filled star
+		var $homeFavsIcon = $(".js-homeFavsIcon");
+		if ( "clickHome" == addedPage.get("initiatedBy")) {
+			$homeFavsIcon.addClass("ion-ios7-star");
+			$homeFavsIcon.removeClass("ion-ios7-star-outline");
+		} else {
+			$homeFavsIcon.removeClass("ion-ios7-star");
+			$homeFavsIcon.addClass("ion-ios7-star-outline");			
+		}
+
+
 	}
 
 });
