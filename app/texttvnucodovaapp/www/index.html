@@ -184,7 +184,10 @@
 		<div class="pageIsLoading pageIsLoading--failed">
 			<div class="pageIsLoading-failIcon ion-alert-circled"></div>
 			<p class="pageIsLoading-text"><%= pageRange %></p>
-			<p class="pageIsLoading-text">Kunde inte läsa in sidan.<br>Försök igen om en stund.</p>
+			<p class="pageIsLoading-text">Kunde inte läsa in sidan.
+			<!-- <br>Försök igen om en stund. -->
+			</p>
+			<p class="pageIsLoading-text"><a data-pagerange="<%= pageRange %>" href="#">Försök igen</a></p>
 		</div>
 	</script>
 

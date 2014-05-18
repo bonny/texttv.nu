@@ -379,7 +379,7 @@ var TextTVPageModel = Backbone.Model.extend({
 			url: "http://api.texttv.nu/api/get/" + this.get("pageRange") + "/?cb=" + cacheBusterString,
 			context: this,
 			cache: true,
-			//data: { slow_answer: 1 }, // enable this to test how it looks with slow network
+			// data: { slow_answer: 1 }, // enable this to test how it looks with slow network
 			// timeout: 1000, // enable this to test timeout/fail message
 			timeout: 3000
 		})
@@ -737,17 +737,35 @@ var MainView = Backbone.View.extend({
 	},
 	*/
 
+	/**
+	 * Click link in root = in swiper probably
+	 */
 	clickLinkInRoot: function(e) {
 
 		var $a = $(e.target);
 		var href = _.str.trim( $a.attr("href"), " /");
+		var pageRange;
 
 		// Check if link is texttv-link, i.e. a link that looks like /nnn or /nnn-nnn
 		if ( texttvapp.helpers.isValidPageRange(href) ) {
+			
+			pageRange = href;
+
+		} else {
+
+			// else check if data page range exists
+			var dataPageRange = $a.data("pagerange");
+			if (texttvapp.helpers.isValidPageRange(dataPageRange)) {
+				pageRange = dataPageRange;
+			}
+
+		}
+
+		if (pageRange) {
 
 			// Seems to be a texttv-link
 			var page = texttvapp.TextTVPages.add( new texttvapp.textTVPage({
-				pageRange: href,
+				pageRange: pageRange,
 				addToSwiper: true,
 				animateSwiper: false,
 				initiatedBy: "click"

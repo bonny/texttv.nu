@@ -105,6 +105,10 @@ also make the clickable area bigger
 	line-height: 1.2;
 }
 
+.pageIsLoading-text a {
+	color: inherit;
+}
+
 .placeholderPage-pageRange {
 	/*font-weight: bold;*/
 	/*font-size: 66px;*/
