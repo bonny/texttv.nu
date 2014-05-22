@@ -10,8 +10,14 @@ texttvapp.helpers = {
 	 * Check if link is texttv-link, i.e. a link that looks like /nnn or /nnn-nnn
 	 */
 	isValidPageRange: function(pageRange) {
+		
+		if ( ! pageRange ) {
+			return false;
+		}
+
 		var matches = pageRange.match(/\d{3}(-\d{3})?/);
 		return (matches !== null);
+		
 	},
 
 	updateMostVisited: function() {
