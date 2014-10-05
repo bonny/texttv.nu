@@ -16,7 +16,7 @@
     "backbone": "*",
     "swiper": "~2.7",
     "normalize-css": "~3.0.2",
-    "ionic": "1.0.0-beta.5b",
+    "ionic": "~1.0.0-beta.13",
     "jquery": "~2.1.1",
     "jquery.cookie": "~1.4.0",
     "ubuntu-font": "*",

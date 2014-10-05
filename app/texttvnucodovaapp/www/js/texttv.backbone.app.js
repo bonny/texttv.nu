@@ -978,11 +978,19 @@ function onDeviceReady() {
 	analytics.trackView('Start app');
 
 	// navigator.splashscreen.show();
+	var body = document.querySelector("body");
 	// Add classes to body depending on current device
-	var css_platform = "platform-" + device.platform.toLowerCase() + parseInt(device.version);
-	document.querySelector("body").classList.add(css_platform, "platform-cordova");
+	var css_platform_with_version = "platform-" + device.platform.toLowerCase() + parseInt(device.version);
+	body.classList.add(css_platform_with_version, "platform-cordova");
+
+	var css_platform = "platform-" + device.platform.toLowerCase();
+	body.classList.add(css_platform, "platform-cordova");
 
 	navigator.splashscreen.hide();
+
+    //StatusBar.overlaysWebView(true);
+    //StatusBar.show();
+
 
 	/*
 	statusbar = navigator.statusBar;
