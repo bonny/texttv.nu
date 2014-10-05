@@ -18,5 +18,7 @@ app/texttvnucodovaapp/platforms/android/ant-build/
 *.apk
 
 # http://stackoverflow.com/questions/17911204/gitignore-for-phonegap-cordova-3-0-projects-what-should-i-commit
-platforms/
+#platforms/
 app/index.php
+
+# /app/texttvnucodovaapp/platforms/ios/TextTV.nu/TextTV.nu-Info.plist
