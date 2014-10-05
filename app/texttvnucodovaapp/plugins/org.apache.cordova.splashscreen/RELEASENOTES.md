@@ -49,3 +49,37 @@
 ### 0.2.7 (Feb 05, 2014)
 * [CB-3562] Fix aspect ratio on landscape-only iPhone applications
 * CB-4051 fix for splashscreen rotation problem
+
+### 0.3.0 (Apr 17, 2014)
+* Add Tizen support to plugin
+* CB-6422: [windows8] use cordova/exec/proxy
+* CB-4051: [ios] - Re-fix - Splashscreen rotation problem (closes #13)
+* CB-6460: Update license headers
+* CB-6465: Add license headers to Tizen code
+* Add NOTICE file
+
+### 0.3.1 (Jun 05, 2014)
+* documentation translation: cordova-plugin-splashscreen
+* Lisa testing pulling in plugins for plugin: cordova-plugin-splashscreen
+* Lisa testing pulling in plugins for plugin: cordova-plugin-splashscreen
+* Lisa testing pulling in plugins for plugin: cordova-plugin-splashscreen
+* Lisa testing pulling in plugins for plugin: cordova-plugin-splashscreen
+* CB-6810 Add license to CONTRIBUTING.md
+* [wp8] updated quirk for  and combined iOS,WP8,BB10 quirks as they are all the same
+* [wp] implemented OnInit so splash screen can be shown before cordova page is loaded
+* [wp] plugin must be autoloaded for AutoHideSplashScreen preference to work
+* CB-6483 Use splash screen image from manifest on Windows8
+* CB-6491 add CONTRIBUTING.md
+* Revert "Merge branch 'tizen' of http://github.com/siovene/cordova-plugin-splashscreen"
+
+### 0.3.2 (Aug 06, 2014)
+* CB-6127 Updated translations for docs
+* CB-7041 ios: Fix image filename logic when setting the iPad splash screen
+* fixes Splashscreen crash on WP8
+* Remove outdated doc
+
+### 0.3.3 (Sep 17, 2014)
+* CB-7249 cordova-plugin-splashscreen documentation translation
+* Renamed test dir, added nested plugin.xml
+* added documentation for manual tests
+* CB-7196 port splashscreen tests to framework

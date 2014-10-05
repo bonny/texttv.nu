@@ -2,16 +2,24 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="nl.x-services.plugins.socialsharing"
-        version="4.0.8">
+        version="4.3.8">
 
   <name>SocialSharing</name>
 
   <description>
-    This plugin allows you to share (combinations of) text, image or a link via the native sharing widget of your device.
-    Android is fully supported, as well as iOS 6 and up. Windows Phone has somewhat limited support.
+    This plugin allows you to share text, images (and other files), or a link via the native sharing widget of your device.
+    Android is fully supported, as well as iOS 6 and up. WP8 has somewhat limited support.
   </description>
 
+  <author>Eddy Verbruggen</author>
+
   <license>MIT</license>
+
+  <keywords>Social, Share, Twitter, Facebook, Email, SMS, WhatsApp</keywords>
+
+  <repo>https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git</repo>
+
+  <issue>https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/issues</issue>
 
   <engines>
     <engine name="cordova" version=">=3.0.0"/>
@@ -27,14 +35,15 @@
     <config-file target="config.xml" parent="/*">
       <feature name="SocialSharing">
         <param name="ios-package" value="SocialSharing"/>
+        <param name="onload" value="true" />
       </feature>
     </config-file>
 
     <header-file src="src/ios/SocialSharing.h"/>
     <source-file src="src/ios/SocialSharing.m"/>
 
-    <framework src="Social.framework" />
-    <framework src="MessageUI.framework" />
+    <framework src="Social.framework" weak="true" />
+    <framework src="MessageUI.framework" weak="true" />
   </platform>
 
   <!-- android -->

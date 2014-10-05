@@ -1,9 +1,16 @@
 # PhoneGap Social Sharing plugin for Android, iOS and Windows Phone
 
-by Eddy Verbruggen, [read my blog about this plugin](http://www.x-services.nl/phonegap-share-plugin-facebook-twitter-social-media/754)
+by [@EddyVerbruggen](http://www.twitter.com/eddyverbruggen), [read my blog about this plugin](http://www.x-services.nl/phonegap-share-plugin-facebook-twitter-social-media/754)
 
 * These instructions are for PhoneGap 3.0.0 and up.
 * For Phonegap 2.9.0 and lower, see [the 2.x branch](https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/tree/phonegap-2.x/).
+
+<table width="100%">
+    <tr>
+        <td width="100"><a href="http://plugins.telerik.com/plugin/socialsharing"><img src="http://www.x-services.nl/github-images/telerik-verified-plugins-marketplace.png" width="97px" height="71px" alt="Marketplace logo"/></a></td>
+        <td>For a quick demo app and easy code samples, check out the plugin page at the Verified Plugins Marketplace: http://plugins.telerik.com/plugin/socialsharing</td>
+    </tr>
+</table>
 
 ## 0. Index
 
@@ -16,6 +23,7 @@ by Eddy Verbruggen, [read my blog about this plugin](http://www.x-services.nl/ph
 4. Usage
   4. [iOS and Android](#4a-usage-on-ios-and-android)
   4. [Windows Phone](#4b-usage-on-windows-phone)
+  4. [Share-popover on iPad](#4c-share-popover-on-ipad)
 5. [Credits](#5-credits)
 6. [License](#6-license)
 
@@ -25,15 +33,15 @@ This plugin allows you to use the native sharing window of your mobile device.
 
 * Works on Android, version 2.3.3 and higher (probably 2.2 as well).
 * Works on iOS6 and iOS7.
-* Works on Windows Phone 8 since v4.0 of this plugin (maybe even 7, but I have no such testdevice).
-* Share text, a link, an image (or other files like pdf or ics). Subject is also supported, when the receiving app supports it.
+* Works on Windows Phone 8 since v4.0 of this plugin (maybe even WP7, but I have no such testdevice).
+* Share text, a link, a images (or other files like pdf or ics). Subject is also supported, when the receiving app supports it.
 * Supports sharing files from the internet, the local filesystem, or from the www folder.
 * You can skip the sharing dialog and directly share to Twitter, Facebook, or other apps.
 * Compatible with [Cordova Plugman](https://github.com/apache/cordova-plugman).
 * Officially supported by [PhoneGap Build](https://build.phonegap.com/plugins).
 
 ## 2. Screenshots
-iOS 7
+iOS 7 (iPhone)
 
 ![ScreenShot](screenshot-ios7-share.png)
 
@@ -41,7 +49,11 @@ Sharing options are based on what has been setup in the device settings
 
 ![ScreenShot](screenshots-ios7-shareconfig.png)
 
-iOS 6
+iOS 7 (iPad) - a popup like this requires [a little more effort](#4c-share-popover-on-ipad)
+
+![ScreenShot](screenshot-ios7-ipad-share.png)
+
+iOS 6 (iPhone)
 
 ![ScreenShot](screenshot-ios6-share.png)
 
@@ -52,6 +64,10 @@ Android
 Windows Phone 8
 
 ![ScreenShot](screenshot-wp8-share.jpg)
+
+#### Alternative ShareSheet (iOS only, using the [Cordova ActionSheet plugin](https://github.com/EddyVerbruggen/cordova-plugin-actionsheet))
+
+![ScreenShot](https://raw.githubusercontent.com/EddyVerbruggen/cordova-plugin-actionsheet/master/screenshots/ios-share.png)
 
 ## 3. Installation
 
@@ -74,7 +90,7 @@ SocialSharing.js is brought in automatically. There is no need to change or add 
 
 ### Manually
 
-1\. Add the following xml to your `config.xml` in the root directory of your `www` folder:
+1\. Add the following xml to all the `config.xml` files you can find:
 ```xml
 <!-- for iOS -->
 <feature name="SocialSharing">
@@ -82,7 +98,7 @@ SocialSharing.js is brought in automatically. There is no need to change or add 
 </feature>
 ```
 ```xml
-<!-- for Android -->
+<!-- for Android (you will find one in res/xml) -->
 <feature name="SocialSharing">
   <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
 </feature>
@@ -115,8 +131,6 @@ Android: Copy `SocialSharing.java` to `platforms/android/src/nl/xservices/plugin
 Window Phone: Copy `SocialSharing.cs` to `platforms/wp8/Plugins/nl.x-services.plugins.socialsharing` (create the folders)
 
 ### PhoneGap Build
-NOTE: Windows Phone 8 is only supported by version 4.0 and up.
-
 SocialSharing works with PhoneGap build too! Version 3.0 and up of this plugin are compatible with PhoneGap 3.0.0 and up.
 Use an older version of this plugin if you target PhoneGap < 3.0.0.
 
@@ -126,10 +140,13 @@ Just add the following xml to your `config.xml` to always use the latest version
 ```
 or to use an exact version:
 ```xml
-<gap:plugin name="nl.x-services.plugins.socialsharing" version="4.0" />
+<gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.0" />
 ```
 
-SocialSharing.js is brought in automatically. There is no need to change or add anything in your html.
+SocialSharing.js is brought in automatically. Make sure though you include a reference to cordova.js in your index.html's head:
+```html
+<script type="text/javascript" src="cordova.js"></script>
+```
 
 ## 4a. Usage on iOS and Android
 You can share text, a subject (in case the user selects the email application), (any type and location of) file (like an image), and a link.
@@ -139,8 +156,9 @@ However, what exactly gets shared, depends on the application the user chooses t
 - Google+ / Hangouts (Android only): message, subject, link
 - Flickr: message, image (an image is required for this option to show up).
 - Facebook iOS: message, image (other filetypes are not supported), link.
-- Facebook Android: sharing a message is not possible. You can share either a link or an image (not both), but a description can not be prefilled. See [this Facebook issue which they won't solve](https://developers.facebook.com/x/bugs/332619626816423/).
+- Facebook Android: sharing a message is not possible. You can share either a link or an image (not both), but a description can not be prefilled. See [this Facebook issue which they won't solve](https://developers.facebook.com/x/bugs/332619626816423/). As an alternative you can use `shareViaFacebookWithPasteMessageHint` since plugin version 4.3.4. See below for details.
 
+### Using the share sheet
 Here are some examples you can copy-paste to test the various combinations:
 ```html
 <button onclick="window.plugins.socialsharing.share('Message only')">message only</button>
@@ -148,7 +166,10 @@ Here are some examples you can copy-paste to test the various combinations:
 <button onclick="window.plugins.socialsharing.share(null, null, null, 'http://www.x-services.nl')">link only</button>
 <button onclick="window.plugins.socialsharing.share('Message and link', null, null, 'http://www.x-services.nl')">message and link</button>
 <button onclick="window.plugins.socialsharing.share(null, null, 'https://www.google.nl/images/srpr/logo4w.png', null)">image only</button>
-<button onclick="window.plugins.socialsharing.share(null, null, 'data:image/png;base64,R0lGODlhDAAMALMBAP8AAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUKAAEALAAAAAAMAAwAQAQZMMhJK7iY4p3nlZ8XgmNlnibXdVqolmhcRQA7', null)">base64 image only</button>
+// Beware: passing a base64 file as 'data:' is not supported on Android 2.x: https://code.google.com/p/android/issues/detail?id=7901#c43
+// Hint: when sharing a base64 encoded file on Android you can set the filename by passing it as the subject (second param)
+<button onclick="window.plugins.socialsharing.share(null, 'Android filename', 'data:image/png;base64,R0lGODlhDAAMALMBAP8AAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUKAAEALAAAAAAMAAwAQAQZMMhJK7iY4p3nlZ8XgmNlnibXdVqolmhcRQA7', null)">base64 image only</button>
+// Hint: you can share multiple files by using an array as thirds param: ['file 1','file 2', ..], but beware of this Android Kitkat Facebook issue: [#164]
 <button onclick="window.plugins.socialsharing.share('Message and image', null, 'https://www.google.nl/images/srpr/logo4w.png', null)">message and image</button>
 <button onclick="window.plugins.socialsharing.share('Message, image and link', null, 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl')">message, image and link</button>
 <button onclick="window.plugins.socialsharing.share('Message, subject, image and link', 'The subject', 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl')">message, subject, image and link</button>
@@ -159,25 +180,62 @@ Example: share a PDF file from the local www folder:
 <button onclick="window.plugins.socialsharing.share('Here is your PDF file', 'Your PDF', 'www/files/manual.pdf')">Share PDF</button>
 ```
 
-Or directly share via Twitter, Facebook, WhatsApp or SMS:
+### Sharing directly to..
+Twitter
 ```html
+<!-- unlike most apps Twitter doesn't like it when you use an array to pass multiple files as the second param -->
 <button onclick="window.plugins.socialsharing.shareViaTwitter('Message via Twitter')">message via Twitter</button>
-<button onclick="window.plugins.socialsharing.shareViaTwitter('Message and link via Twitter', null, 'http://www.x-services.nl')">msg and link via Twitter</button>
-<button onclick="window.plugins.socialsharing.shareViaFacebook('Message via Facebook', null, null, function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">msg via Facebook (with errcallback)</button>
-<button onclick="window.plugins.socialsharing.shareViaWhatsApp('Message via WhatsApp', null, null, function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">msg via WhatsApp (with errcallback)</button>
+<button onclick="window.plugins.socialsharing.shareViaTwitter('Message and link via Twitter', null /* img */, 'http://www.x-services.nl')">msg and link via Twitter</button>
+```
+
+Facebook
+```html
+<button onclick="window.plugins.socialsharing.shareViaFacebook('Message via Facebook', null /* img */, null /* url */, function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">msg via Facebook (with errcallback)</button>
+```
+
+Facebook with prefilled message - as a workaround for [this Facebook Android bug](https://developers.facebook.com/x/bugs/332619626816423/).
+
+* On Android the user will see a Toast message with a message you control (default: "If you like you can paste a message from your clipboard").
+* On iOS this function behaves the same as `shareViaFacebook`.
+```html
+<button onclick="window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint('Message via Facebook', null /* img */, null /* url */, 'Paste it dude!', function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">msg via Facebook (with errcallback)</button>
+```
+
+WhatsApp
+```html
+<button onclick="window.plugins.socialsharing.shareViaWhatsApp('Message via WhatsApp', null /* img */, null /* url */, function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">msg via WhatsApp (with errcallback)</button>
+```
+
+SMS (note that on Android SMS via Hangouts may not behave correctly)
+```html
 <!-- Want to share a prefilled SMS text? -->
 <button onclick="window.plugins.socialsharing.shareViaSMS('My cool message', null /* see the note below */, function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})">share via SMS</button>
 <!-- Want to prefill some phonenumbers as well? Pass this instead of null. Important notes: For stable usage of shareViaSMS on Android 4.4 and up you require to add at least one phonenumber! Also, on Android make sure you use v4.0.3 or higher of this plugin, otherwise sharing multiple numbers to non-Samsung devices will fail -->
 <button onclick="window.plugins.socialsharing.shareViaSMS('My cool message', '0612345678,0687654321', function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})">share via SMS</button>
 ```
-If Facebook, Twitter or WhatsApp is not available, the errorCallback is called with the text 'not available'.
+
+Email - code inspired by the [EmailComposer plugin](https://github.com/katzer/cordova-plugin-email-composer)
+```js
+window.plugins.socialsharing.shareViaEmail(
+  'Message', // can contain HTML tags, but support on Android is rather limited:  http://stackoverflow.com/questions/15136480/how-to-send-html-content-with-image-through-android-default-email-client
+  'Subject',
+  ['to@person1.com', 'to@person2.com'], // TO: must be null or an array
+  ['cc@person1.com'], // CC: must be null or an array
+  null, // BCC: must be null or an array
+  ['https://www.google.nl/images/srpr/logo4w.png','www/localimage.png'], // FILES: can be null, a string, or an array
+  onSuccess, // called when sharing worked, but also when the user cancelled sharing via email (I've found no way to detect the difference)
+  onError // called when sh*t hits the fan
+);
+```
+
+If Facebook, Twitter, WhatsApp, SMS or Email is not available, the errorCallback is called with the text 'not available'.
 
 If you feel lucky, you can even try to start any application with the `shareVia` function:
 ```html
 <!-- start facebook on iOS (same as `shareViaFacebook`), if Facebook is not installed, the errorcallback will be invoked with message 'not available' -->
 <button onclick="window.plugins.socialsharing.shareVia('com.apple.social.facebook', 'Message via FB', null, null, null, function(){console.log('share ok')}, function(msg) {alert('error: ' + msg)})">message via Facebook</button>
 <!-- start facebook on Android (same as `shareViaFacebook`), if Facebook is not installed, the errorcallback will be invoked with message 'not available' -->
-<button onclick="window.plugins.socialsharing.shareVia('facebook', 'Message via FB', null, null, null, function(){console.log('share ok'), function(msg) {alert('error: ' + msg)})">message via Facebook</button>
+<button onclick="window.plugins.socialsharing.shareVia('facebook', 'Message via FB', null, null, null, function(){console.log('share ok')}, function(msg) {alert('error: ' + msg)})">message via Facebook</button>
 <!-- start twitter on iOS (same as `shareViaTwitter`), if Twitter is not installed, the errorcallback will be invoked with message 'not available' -->
 <button onclick="window.plugins.socialsharing.shareVia('com.apple.social.twitter', 'Message via Twitter', null, null, 'http://www.x-services.nl', function(){console.log('share ok')}, function(msg) {alert('error: ' + msg)})">message and link via Twitter on iOS</button>
 <!-- if you share to a non existing/supported app, the errorcallback will be invoked with message 'not available' -->
@@ -191,28 +249,38 @@ What can we pass to the `shareVia` function?
 You can even test if a sharing option is available with `canShareVia`!
 You'll need to pass everything you want to share, because (at least on Android) some apps may only become available when an image is added.
 The function will invoke the successCallback when it can be shared to via `shareVia`, and the errorCallback if not. As a bonus on Android, the errorCallback contains a JSON Array of available packages you can pass to shareVia.
+You can even specify the activity if the app offers multiple sharing ways, passing 'packageName/activityName'. (for example, WeChat, passing 'com.tencent.mm' or 'com.tencent.mm/com.tencent.mm.ui.tools.ShareImgUI' to share to chat, passing 'com.tencent.mm/com.tencent.mm.ui.tools.ShareToTimeLineUI' to share to moments).
+
 ```html
+<button onclick="window.plugins.socialsharing.canShareVia('com.tencent.mm/com.tencent.mm.ui.tools.ShareToTimeLineUI', 'msg', null, img, null, function(e){alert(e)}, function(e){alert(e)})">is WeChat available on Android?</button>
 <button onclick="window.plugins.socialsharing.canShareVia('com.apple.social.facebook', 'msg', null, null, null, function(e){alert(e)}, function(e){alert(e)})">is facebook available on iOS?</button>
 <button onclick="window.plugins.socialsharing.canShareVia('whatsapp', 'msg', null, null, null, function(e){alert(e)}, function(e){alert(e)})">is WhatsApp available?</button>
 <button onclick="window.plugins.socialsharing.canShareVia('sms', 'msg', null, null, null, function(e){alert(e)}, function(e){alert(e)})">is SMS available?</button>
+<!-- Email is a different beast, so I added a specific method for it -->
+<button onclick="window.plugins.socialsharing.canShareViaEmail(function(e){alert(e)}, function(e){alert(e)})">is Email available?</button>
 ```
 
 Want to share images from a local folder (like an image you just selected from the CameraRoll)?
 ```javascript
-// note: instead of available(), you could also check the useragent (android or ios6+)
+// use a local image from inside the www folder:
+window.plugins.socialsharing.share(null, null, 'www/image.gif', null); // success/error callback params may be added as 5th and 6th param
+// .. or a local image from anywhere else (if permitted):
+// local-iOS:
+window.plugins.socialsharing.share(null, null, '/Users/username/Library/Application Support/iPhone/6.1/Applications/25A1E7CF-079F-438D-823B-55C6F8CD2DC0/Documents/.nl.x-services.appname/pics/img.jpg');
+// local-iOS-alt:
+window.plugins.socialsharing.share(null, null, 'file:///Users/username/Library/Application Support/iPhone/6.1/Applications/25A1E7CF-079F-438D-823B-55C6F8CD2DC0/Documents/.nl.x-services.appname/pics/img.jpg');
+// local-Android:
+window.plugins.socialsharing.share(null, null, 'file:///storage/emulated/0/nl.xservices.testapp/5359/Photos/16832/Thumb.jpg');
+// .. or an image from the internet:
+window.plugins.socialsharing.share(null, null, 'http://domain.com/image.jpg');
+```
+
+If your app still supports iOS5, you'll want to check whether or not the plugin is available as it only supports iOS6 and up.
+```javascript
 window.plugins.socialsharing.available(function(isAvailable) {
+  // the boolean is only false on iOS < 6
   if (isAvailable) {
-    // use a local image from inside the www folder:
-    window.plugins.socialsharing.share(null, null, 'www/image.gif', null); // success/error callback params may be added as 5th and 6th param
-    // .. or a local image from anywhere else (if permitted):
-    // local-iOS:
-    window.plugins.socialsharing.share(null, null, '/Users/username/Library/Application Support/iPhone/6.1/Applications/25A1E7CF-079F-438D-823B-55C6F8CD2DC0/Documents/.nl.x-services.appname/pics/img.jpg');
-    // local-iOS-alt:
-    window.plugins.socialsharing.share(null, null, 'file:///Users/username/Library/Application Support/iPhone/6.1/Applications/25A1E7CF-079F-438D-823B-55C6F8CD2DC0/Documents/.nl.x-services.appname/pics/img.jpg');
-    // local-Android:
-    window.plugins.socialsharing.share(null, null, 'file:///storage/emulated/0/nl.xservices.testapp/5359/Photos/16832/Thumb.jpg');
-    // .. or an image from the internet:
-    window.plugins.socialsharing.share(null, null, 'http://domain.com/image.jpg');
+    // now use any of the share() functions
   }
 });
 ```
@@ -223,6 +291,25 @@ If you can't get the plugin to work, have a look at [this demo project](https://
 Since version 3.8 the plugin passes a boolean to the successCallback to let the app know whether or not content was actually shared, or the share widget was closed by the user.
 On iOS this works as expected, but on Android some sharing targets may return false, even though sharing succeeded. This is not a limitation of the plugin, it's the target app which doesn't play nice.
 To make it more confusing, when sharing via SMS on Android, you'll likely always have the successCallback invoked. Thanks Google.
+
+#### Sharing multiple images (or other files)
+Since version 4.3.0 of this plugin you can pass an array of files to the share and shareVia functions.
+```js
+// sharing multiple images via Facebook (you can mix protocols and file locations)
+window.plugins.socialsharing.shareViaFacebook(
+  'Optional message, may be ignored by Facebook app',
+  ['https://www.google.nl/images/srpr/logo4w.png','www/image.gif'],
+  null);
+
+// sharing a PDF and an image
+window.plugins.socialsharing.share(
+  'Optional message',
+  'Optional title',
+  ['www/manual.pdf','https://www.google.nl/images/srpr/logo4w.png'],
+  'http://www.myurl.com');
+```
+
+Note that a lot of apps support sharing multiple files, but Twitter just doesn't accept more that one file.
 
 #### iOS quirk (with camera plugin)
 When using this plugin in the callback of the Phonegap camera plugin, wrap the call to `share()` in a `setTimeout()`.
@@ -240,8 +327,10 @@ And thanks for the tip, Simon Robichaud!
 
 
 ## 4b. Usage on Windows Phone
-The Javascript API is ofcourse the same as for iOS and Android, but the possibilities are quite limited.
-Windows Phone supports two flavours: message only, or a combination of message, title and link.
+The available methods on WP8 are: `available`, `canShareViaEmail`, `share` and `shareViaEmail`.
+Currently the first two always return true, but this may change in the future in case I can find a way to truly detect the availability.
+
+The `share` function on WP8 supports two flavours: message only, or a combination of message, title and link.
 
 Beware: for now please pass null values for all non used attributes, like in the examples below.
 
@@ -255,11 +344,36 @@ Sharing a link:
 <button onclick="window.plugins.socialsharing.share('Optional message', 'Optional title', null, 'http://www.x-services.nl')">message, title, link</button>
 ```
 
-Sharing an image (only images from the internet are supported):
+Sharing an image (only images from the internet are supported). If you pass more than one image as an array, only the first one is used:
 ```html
 <button onclick="window.plugins.socialsharing.share('Optional message', 'Optional title', 'https://www.google.nl/images/srpr/logo4w.png', null)">image only</button>
 ```
 
+## 4c. Share-popover on iPad
+Carlos Sola-Llonch, a user of this plugin, pointed me at an [iOS document](https://developer.apple.com/library/ios/documentation/uikit/reference/UIActivityViewController_Class/Reference/Reference.html)
+stating "On iPad, you must present the view controller in a popover. On iPhone and iPod touch, you must present it modally."
+
+He also provided me with the required code to do so (thanks!). I've adapted it a little to make sure current behaviour is
+not altered, but with a little extra effort you can use this new popover feature.
+
+The trick is overriding the function `window.plugins.socialsharing.iPadPopupCoordinates` by your own implementation
+to tell the iPad where to show the popup exactly. It need to be a string like "100,200,300,300" (left,top,width,height).
+
+You need to override this method after `deviceready` has fired.
+
+You have various options, like checking the click event on a button and determine the event.clientX and event.clientY,
+or use this code Carlos showed me to grab the coordinates of a static button somewhere on your page:
+
+```js
+window.plugins.socialsharing.iPadPopupCoordinates = function() {
+  var rect = document.getElementById('share_button').getBoundingClientRect();
+  return rect.left + "," + rect.top + "," + rect.width + "," + rect.height;
+};
+```
+
+Note that since iOS 8 this popup is the only way Apple allows you to share stuff, so this plugin has been adjusted to use this plugin as standard for iOS 8 and positions
+the popup at the bottom of the screen (seems like a logical default because that's where it previously was as well).
+You can however override this position in the same way as explained above.
 
 ## 5. Credits ##
 

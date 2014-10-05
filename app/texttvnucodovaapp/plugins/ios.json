@@ -9,11 +9,11 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "xml": "<feature name=\"TapToScroll\"><param name=\"ios-package\" value=\"TapToScroll\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"SocialSharing\"><param name=\"ios-package\" value=\"SocialSharing\" /></feature>",
+                            "xml": "<feature name=\"UniversalAnalytics\"><param name=\"ios-package\" value=\"UniversalAnalyticsPlugin\" /></feature>",
                             "count": 1
                         },
                         {
@@ -21,23 +21,19 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"TapToScroll\"><param name=\"ios-package\" value=\"TapToScroll\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"StatusBar\"><param name=\"ios-package\" value=\"StatusBar\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"UniversalAnalytics\"><param name=\"ios-package\" value=\"UniversalAnalyticsPlugin\" /></feature>",
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SocialSharing\"><param name=\"ios-package\" value=\"SocialSharing\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -47,13 +43,13 @@
                 "parents": {
                     "Social.framework": [
                         {
-                            "xml": "false",
+                            "xml": "true",
                             "count": 1
                         }
                     ],
                     "MessageUI.framework": [
                         {
-                            "xml": "false",
+                            "xml": "true",
                             "count": 1
                         }
                     ],
@@ -98,28 +94,25 @@
         }
     },
     "installed_plugins": {
-        "org.apache.cordova.device": {
+        "com.phonegap.TapToScroll": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
-        "nl.x-services.plugins.socialsharing": {
+        "com.danielcwilson.plugins.googleanalytics": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "org.apache.cordova.console": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
-        "org.apache.cordova.splashscreen": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
-        "com.phonegap.TapToScroll": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
-        "com.patrickheneise.cordova.statusbar": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
         "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
-        "com.danielcwilson.plugins.googleanalytics": {
+        "org.apache.cordova.splashscreen": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "nl.x-services.plugins.socialsharing": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         }
     },
