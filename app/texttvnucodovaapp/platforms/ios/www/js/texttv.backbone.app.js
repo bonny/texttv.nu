@@ -385,9 +385,9 @@ var TextTVPageModel = Backbone.Model.extend({
 			url: "http://api.texttv.nu/api/get/" + this.get("pageRange") + "/?cb=" + cacheBusterString,
 			context: this,
 			cache: true,
-			// data: { slow_answer: 1 }, // enable this to test how it looks with slow network
-			// timeout: 1000, // enable this to test timeout/fail message
-			timeout: 3000
+			timeout: 3000,
+			//data: { slow_answer: 1 }, // enable this to test how it looks with slow network
+			//timeout: 1000, // enable this to test timeout/fail message
 		})
 			// when a page is done loading from server
 			.done(function(r) {
@@ -685,7 +685,19 @@ var MainView = Backbone.View.extend({
 												data.title,  // title?
 												data.screenshot, // image
 												null, // link
-												function(msg) { console.log(msg); }, function(msg) { console.log(msg); });
+												function(msg) {
+
+													// ok callback
+													console.log("ok callback");
+													console.log(msg);
+
+												}, function(msg) {
+
+													// err callback
+													console.log("err callback");
+													console.log(msg); 
+
+												});
 
 				})
 				// api call not successful
@@ -754,14 +766,21 @@ var MainView = Backbone.View.extend({
 
 		// Check if link is texttv-link, i.e. a link that looks like /nnn or /nnn-nnn
 		if ( texttvapp.helpers.isValidPageRange(href) ) {
-			
+
 			pageRange = href;
 
 		} else {
-
+			
 			// else check if data page range exists
 			var dataPageRange = $a.data("pagerange");
+			
+			// make sure it's a string because string functions will fail otherwise
+			if (typeof dataPageRange == "number") {
+				dataPageRange = dataPageRange.toString();
+			}
+
 			if (texttvapp.helpers.isValidPageRange(dataPageRange)) {
+
 				pageRange = dataPageRange;
 			}
 
