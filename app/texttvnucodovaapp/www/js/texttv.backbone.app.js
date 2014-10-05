@@ -485,7 +485,7 @@ var TextTVPagesCollection = Backbone.Collection.extend({
 
 
 		// Keep track of all pages that should be in history
-		console.log(addedPage.get("initiatedBy"));
+		// console.log(addedPage.get("initiatedBy"));
 		var arrTypesToTrack = "backButton,homeButton,click,clickFav,clickHome,clickMostVisited,swipe".split(",");
 		if ( arrTypesToTrack.indexOf( addedPage.get("initiatedBy") ) !== -1 ) {
 
