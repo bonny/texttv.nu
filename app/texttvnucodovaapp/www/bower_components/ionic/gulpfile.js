@@ -1,3 +1,10 @@
+var gulp = require('gulp');
+var pkg = require('./package.json');
+var semver = require('semver');
+var through = require('through');
+
+var argv = require('minimist')(process.argv.slice(2));
+
 var _ = require('lodash');
 var buildConfig = require('./config/build.config.js');
 var changelog = require('conventional-changelog');
@@ -5,20 +12,16 @@ var connect = require('connect');
 var dgeni = require('dgeni');
 var es = require('event-stream');
 var htmlparser = require('htmlparser2');
+var irc = require('ircb');
 var lunr = require('lunr');
+var marked = require('marked');
 var mkdirp = require('mkdirp');
+var twitter = require('node-twitter-api');
 var yaml = require('js-yaml');
 
 var http = require('http');
 var cp = require('child_process');
 var fs = require('fs');
-
-var gulp = require('gulp');
-var pkg = require('./package.json');
-var semver = require('semver');
-var through = require('through');
-
-var argv = require('minimist')(process.argv.slice(2));
 
 var concat = require('gulp-concat');
 var footer = require('gulp-footer');
@@ -43,70 +46,9 @@ if (IS_RELEASE_BUILD) {
   );
 }
 
-
 gulp.task('default', ['build']);
 gulp.task('build', ['bundle', 'sass']);
-
-gulp.task('docs-index', function() {
-  var idx = lunr(function() {
-    this.field('path');
-    this.field('title', {boost: 10});
-    this.field('body');
-    this.ref('path');
-  });
-  var ref = {};
-
-  return gulp.src([
-    'tmp/ionic-site/docs/{components,guide,overview,angularjs}/**/*.{md,html}',
-    'tmp/ionic-site/tutorials/**/*.{md,html}'
-  ])
-    .pipe(es.map(function(file, callback) {
-      //docs for gulp file objects: https://github.com/wearefractal/vinyl
-      var contents = file.contents.toString(); //was buffer
-      // Grab relative path from ionic-site root
-      var relpath = file.path.replace(/^.*?tmp\/ionic-site\//, '');
-
-      // Read out the yaml portion of the Jekyll file
-      var title, layout;
-      var yamlStartIndex = contents.indexOf('---');
-      var yamlEndIndex = contents.indexOf('---', yamlStartIndex+3); //starting from start
-      var yamlRaw = contents.substring(yamlStartIndex+3, yamlEndIndex);
-
-      var properties =  yaml.safeLoad(yamlRaw);
-      contents = contents.substring(yamlEndIndex+3);
-
-      if(properties.title && properties.layout) {
-        title = properties.title;
-        layout = properties.layout;
-      } else {
-        return callback('layout and title properties not found in Jekyll file '+relpath);
-      }
-
-      var body = '';
-      // Parse all html and use only text portion
-      var parser = new htmlparser.Parser({
-        ontext: function(text){
-          // Ignore any Jekyll expressions
-          body += text.replace(/{%.*%}/, '', 'g');
-        },
-      });
-      parser.write(contents);
-      parser.end();
-
-      // Add the data to the indexer and ref object
-      idx.add({'path': relpath, 'body': body, 'title': title});
-      ref[relpath] = {'title': title, 'layout': layout};
-
-      callback();
-    })).on('end', function() {
-      // Write out as one json file
-      mkdirp.sync('tmp/ionic-site/data');
-      fs.writeFileSync(
-        'tmp/ionic-site/data/index.json',
-        JSON.stringify({'ref': ref, 'index': idx.toJSON()})
-      );
-    });
-});
+gulp.task('validate', ['jshint', 'ddescribe-iit', 'karma']);
 
 gulp.task('docs', function(done) {
   var docVersion = argv['doc-version'];
@@ -115,25 +57,39 @@ gulp.task('docs', function(done) {
     return process.exit(1);
   }
   process.env.DOC_VERSION = docVersion;
-  return dgeni('docs/docs.config.js').generateDocs().then(function() {
+  return dgeni(__dirname + '/docs/docs.config.js').generateDocs().then(function() {
     gutil.log('Docs for', gutil.colors.cyan(docVersion), 'generated!');
   });
 });
 
 var IS_WATCH = false;
-gulp.task('watch', ['bundle'], function() {
+gulp.task('watch', ['build'], function() {
   IS_WATCH = true;
   gulp.watch('js/**/*.js', ['bundle']);
   gulp.watch('scss/**/*.scss', ['sass']);
 });
 
 gulp.task('changelog', function(done) {
+  var newCodename = fs.readFileSync('config/CODENAMES').toString().split('\n')[0];
+  var file = argv.standalone ? '' : __dirname + '/CHANGELOG.md';
+  var subtitle = argv.subtitle || '"' + newCodename + '"';
+  var toHtml = !!argv.html;
+  var dest = argv.dest || 'CHANGELOG.md';
+  var from = argv.from;
   changelog({
-    repository: pkg.repository.url,
+    repository: 'https://github.com/driftyco/ionic',
     version: pkg.version,
+    subtitle: subtitle,
+    file: file,
+    from: from
   }, function(err, data) {
     if (err) return done(err);
-    fs.writeFileSync('CHANGELOG.md', data);
+    if (toHtml) {
+      data = marked(data, {
+        gfm: true
+      });
+    }
+    fs.writeFileSync(dest, data);
     done();
   });
 });
@@ -158,18 +114,21 @@ gulp.task('bundle', [
 });
 
 gulp.task('jshint', function() {
-  return gulp.src(['js/**/*.js', 'test/**/*.js'])
+  return gulp.src(['js/**/*.js'])
     .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('jshint-stylish'));
+    .pipe(jshint.reporter(require('jshint-summary')({
+      fileColCol: ',bold',
+      positionCol: ',bold',
+      codeCol: 'green,bold',
+      reasonCol: 'cyan'
+    })))
+    .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('ddescribe-iit', function() {
   return gulp.src(['test/**/*.js', 'js/**/*.js'])
     .pipe(notContains([
-      'ddescribe',
-      'iit',
-      'xit',
-      'xdescribe'
+      'ddescribe', 'iit', 'xit', 'xdescribe'
     ]));
 });
 
@@ -224,13 +183,9 @@ gulp.task('sass', function(done) {
       }
     }))
     .pipe(concat('ionic.css'))
-    .pipe(header(banner))
     .pipe(gulp.dest(buildConfig.distCss))
-    .pipe(gulpif(IS_RELEASE_BUILD, minifyCss({
-      keepSpecialComments: 0
-    })))
+    .pipe(gulpif(IS_RELEASE_BUILD, minifyCss()))
     .pipe(rename({ extname: '.min.css' }))
-    .pipe(header(banner))
     .pipe(gulp.dest(buildConfig.distCss))
     .on('end', done);
 });
@@ -251,6 +206,168 @@ gulp.task('version', function() {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('release-tweet', function(done) {
+  var oauth = {
+    consumerKey: process.env.TWITTER_CONSUMER_KEY,
+    consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+    accessToken: process.env.TWITTER_ACCESS_TOKEN,
+    accessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+  };
+  var client = new twitter(oauth);
+  client.statuses(
+    'update',
+    { status: buildConfig.releaseMessage() },
+    oauth.accessToken,
+    oauth.accessTokenSecret,
+    done
+  );
+});
+
+gulp.task('release-irc', function(done) {
+  var client = irc({
+    host: 'irc.freenode.net',
+    secure: true,
+    nick: 'ionitron',
+    username: 'ionitron',
+    realName: 'ionitron',
+    channels: ['#ionic']
+  }, function() {
+    client.say('#ionic', buildConfig.releaseMessage(), function() {
+      client.quit('', done);
+    });
+  });
+});
+
+gulp.task('docs-index', function() {
+  var idx = lunr(function() {
+    this.field('path');
+    this.field('title', {boost: 10});
+    this.field('body');
+    this.ref('id');
+  });
+  var ref = {};
+  var refId = 0;
+
+  function addToIndex(path, title, layout, body) {
+    // Add the data to the indexer and ref object
+    idx.add({'path': path, 'body': body, 'title': title, id: refId});
+    ref[refId] = {'p': path, 't': title, 'l': layout};
+    refId++;
+  }
+
+  return gulp.src([
+    'tmp/ionic-site/docs/{components,guide,api,overview}/**/*.{md,html,markdown}',
+    'tmp/ionic-site/docs/index.html',
+    'tmp/ionic-site/getting-started/index.html',
+    'tmp/ionic-site/tutorials/**/*.{md,html,markdown}',
+    'tmp/ionic-site/_posts/**/*.{md,html,markdown}'
+  ])
+    .pipe(es.map(function(file, callback) {
+      //docs for gulp file objects: https://github.com/wearefractal/vinyl
+      var contents = file.contents.toString(); //was buffer
+
+      // Grab relative path from ionic-site root
+      var relpath = file.path.replace(/^.*?tmp\/ionic-site\//, '');
+
+      // Read out the yaml portion of the Jekyll file
+      var yamlStartIndex = contents.indexOf('---');
+
+      if (yamlStartIndex === -1) {
+        return callback();
+      }
+
+      // read Jekyll's page yaml variables at the top of the file
+      var yamlEndIndex = contents.indexOf('---', yamlStartIndex+3); //starting from start
+      var yamlRaw = contents.substring(yamlStartIndex+3, yamlEndIndex);
+
+      var pageData =  yaml.safeLoad(yamlRaw);
+      if(!pageData.title || !pageData.layout) {
+        return callback();
+      }
+
+      // manually set to not be searchable, or for a blog post, manually set to be searchable
+      if(pageData.searchable === false || (pageData.layout == 'post' && pageData.searchable !== true)) {
+        return callback();
+      }
+
+      // clean up some content so code variables are searchable too
+      contents = contents.substring(yamlEndIndex+3);
+      contents = contents.replace(/<code?>/gi, '');
+      contents = contents.replace(/<\/code>/gi, '');
+      contents = contents.replace(/<code?></gi, '');
+      contents = contents.replace(/><\/code>/gi, '');
+      contents = contents.replace(/`</gi, '');
+      contents = contents.replace(/>`/gi, '');
+
+      // create a clean path to the URL
+      var path = '/' + relpath.replace('index.md', '')
+                              .replace('index.html', '')
+                              .replace('.md', '.html')
+                              .replace('.markdown', '.html');
+      if(pageData.layout == 'post') {
+        path = '/blog/' + path.substring(19).replace('.html', '/');
+      }
+
+      var parser;
+      if(pageData.search_sections === true) {
+        // each section within the content should be its own search result
+        var section = { body: '', title: '' };
+        var isTitleOpen = false;
+
+        parser = new htmlparser.Parser({
+          ontext: function(text){
+            if(isTitleOpen) {
+              section.title += text; // get the title of this section
+            } else {
+              section.body += text.replace(/{%.*%}/, '', 'g'); // Ignore any Jekyll expressions
+            }
+          },
+          onopentag: function(name, attrs) {
+            if(name == 'section' && attrs.id) {
+              // start building new section data
+              section = { body: '', path: path + '#' + attrs.id, title: '' };
+            } else if( (name == 'h1' || name == 'h2' || name == 'h3') && attrs.class == 'title') {
+              isTitleOpen = true; // the next text will be this sections title
+            }
+          },
+          onclosetag: function(name) {
+            if(name == 'section') {
+              // section closed, index this section then clear it out
+              addToIndex(section.path, section.title, pageData.layout, section.body);
+              section = { body: '', title: '' };
+            } else if( (name == 'h1' || name == 'h2' || name == 'h3') && isTitleOpen) {
+              isTitleOpen = false;
+            }
+          }
+        });
+        parser.write(contents);
+        parser.end();
+
+      } else {
+        // index the entire page
+        var body = '';
+        parser = new htmlparser.Parser({
+          ontext: function(text){
+            body += text.replace(/{%.*%}/, '', 'g'); // Ignore any Jekyll expressions
+          }
+        });
+        parser.write(contents);
+        parser.end();
+
+        addToIndex(path, pageData.title, pageData.layout, body);
+      }
+
+      callback();
+
+    })).on('end', function() {
+      // Write out as one json file
+      mkdirp.sync('tmp/ionic-site/data');
+      fs.writeFileSync(
+        'tmp/ionic-site/data/index.json',
+        JSON.stringify({'ref': ref, 'index': idx.toJSON()})
+      );
+    });
+});
 
 gulp.task('sauce-connect', sauceConnect);
 
@@ -259,10 +376,10 @@ gulp.task('cloudtest', ['protractor-sauce'], function(cb) {
 });
 
 gulp.task('karma', function(cb) {
-  return karma(cb, ['config/karma.conf.js', '--single-run=true']);
+  return karma(cb, [__dirname + '/config/karma.conf.js', '--single-run=true']);
 });
 gulp.task('karma-watch', function(cb) {
-  return karma(cb, ['config/karma.conf.js']);
+  return karma(cb, [__dirname + '/config/karma.conf.js']);
 });
 
 var connectServer;
@@ -285,7 +402,7 @@ function karma(cb, args) {
     args.push('--reporters='+argv.reporters.trim());
   }
   cp.spawn('node', [
-    './node_modules/karma/bin/karma',
+    __dirname + '/node_modules/karma/bin/karma',
     'start'
   ].concat(args), { stdio: 'inherit' })
   .on('exit', function(code) {

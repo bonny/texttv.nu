@@ -1,14 +1,16 @@
-<a href="https://travis-ci.org/driftyco/ionic"><img src="https://travis-ci.org/driftyco/ionic.png?branch=master" data-bindattr-164="164" title="Build Status Images"></a>
+<a href="https://travis-ci.org/driftyco/ionic"><img src="http://img.shields.io/travis/driftyco/ionic.svg?style=flat" data-bindattr-164="164" title="Build Status Images"></a>
+
+[![Issues Ready](https://badge.waffle.io/driftyco/ionic.png?label=ready&title=Ready)](https://waffle.io/driftyco/ionic)
 
 The best place to start with Ionic is our [documentation page](http://ionicframework.com/docs/).
 
-Note: Ionic currently best supports iOS 6+ and Android 4.1+, with limited support for Android 2.3. Ionic is changing quickly as we work towards the beta.
+Ionic currently best supports iOS 6+ and Android 4.1+, with scaled-down support for Android 2.3.
 
 # What is Ionic?
 
-Ionic is the open source HTML5 Mobile Framework for building amazing, cross-platform hybrid native apps with HTML, JavaScript, and CSS. Just like this one:
+Ionic is the open source HTML5 Mobile Framework for building amazing, cross-platform hybrid native apps with HTML, JavaScript, and CSS.
 
-![Weather Demo](http://ionicframework.com/img/weather1x.png)
+![Ionic GUI](http://ionicframework.com/img/gui_screen.jpg)
 
 We built Ionic because we wanted a framework that focused on building hybrid native apps, rather than mobile websites. We wanted this framework to be obsessive about great design and performance. A framework that left the past behind and focused on the future where mobile devices could make HTML5 feel native.
 
@@ -38,11 +40,11 @@ $ ionic start myproject
 - Download the latest **stable** release from:
   * The release folder of this repository
   * The Ionic CDN: [Latest Release](http://code.ionicframework.com/)
-  * `bower install ionic` 
+  * `bower install ionic`
 - Download the **bleeding edge just-from-master release** from:
   * The Ionic CDN: [Nightly Build](http://code.ionicframework.com/#nightly)
   * Look in the [ionic-bower Repository](https://github.com/driftyco/ionic-bower) for the latest version, and do for example `bower install driftyco/ionic-bower#0.9.23-alpha-652` (`bower install ionic` will have the latest available soon)
-  
+
 Once you have a release, use `js/ionic.js`, `js/ionic-angular.js`, and `css/ionic.css`.
 
 For most cases, you'll need AngularJS as well.  This is bundled in `js/angular/` and `js/angular-ui-router/`.
@@ -59,7 +61,7 @@ For most cases, you'll need AngularJS as well.  This is bundled in `js/angular/`
 * Subscribe to the [Ionic Newsletter](http://ionicframework.com/subscribe/).
 * Have a question that's not a feature request or bug report? [Discuss on the Ionic Forum](http://forum.ionicframework.com/).
 * Read our [Blog](http://ionicframework.com/blog/).
-* Have a feature request or find a bug? [Submit an issue](https://github.com/driftyco/ionic/issues).
+* Have a feature request or find a bug? [Submit an issue](http://ionicframework.com/submit-issue/).
 
 
 ## Authors
@@ -87,6 +89,7 @@ For most cases, you'll need AngularJS as well.  This is bundled in `js/angular/`
 ## Development
 
 * `npm install && npm install -g gulp protractor` to setup
+* (if you wish to run end-to-end tests): `webdriver-manager update --chrome` to install the webdriver.
 * `gulp` or `gulp build` to build
 * `gulp docs` to generate docs (read Documentation below for how to test docs locally).
 * `gulp build --release` to build with minification & strip debugs
@@ -116,9 +119,9 @@ For most cases, you'll need AngularJS as well.  This is bundled in `js/angular/`
 - Almost all of the logic for releasing Ionic is done on the Travis server
 - To push a new release:
   1. Update package.json version to new version
-  2. Update package.json codename to new codename
-  3. Generate changelog with `gulp changelog` and make sure it is OK
-  4. Commit these and push to master
+  2. Generate changelog with `gulp changelog` 
+  3. Go through the changelog, and fix any mistakes or clarify any unclear commit messages
+  4. Commit package.json and CHANGELOG.md and push to master
 - Travis will detect that this commit changed the version in package.json and push out all necessary for this new release (tags, release files, site config, ...)
 
 ## LICENSE

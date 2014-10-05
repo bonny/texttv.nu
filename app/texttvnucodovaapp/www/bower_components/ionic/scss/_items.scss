@@ -53,13 +53,13 @@
     @include display-flex();
     position: absolute;
     top: $item-padding;
-    right: ($item-padding * 2) + 5;
+    right: ($item-padding * 2);
   }
   &.item-button-right .badge {
     right: ($item-padding * 2) + 35;
   }
   &.item-divider .badge {
-    top: $item-padding / 2;
+    top: ceil($item-padding / 2);
   }
   .badge + .badge {
     margin-right: 5px;
@@ -101,8 +101,12 @@
 }
 
 // Link and Button Active States
-.item.active:not(.item-divider):not(.item-input):not(.item-input-inset),
-.item-complex.active .item-content {
+.item.active,
+.item.activated,
+.item-complex.active .item-content,
+.item-complex.activated .item-content,
+.item .item-content.active,
+.item .item-content.activated {
   @include item-active-style($item-default-active-bg, $item-default-active-border);
 
   // Different active themes for <a> and <button> items
@@ -188,7 +192,7 @@ button.item.item-complex {
 .item-radio .item-content {
   position: relative;
   z-index: $z-index-item;
-  padding: $item-padding (($item-padding * 3) - 5) $item-padding $item-padding;
+  padding: $item-padding (ceil( ($item-padding * 3) + ($item-padding / 3) ) - 5) $item-padding $item-padding;
   border: none;
   background-color: white;
 }
@@ -200,6 +204,7 @@ a.item-content {
 }
 
 .item-text-wrap .item,
+.item-text-wrap .item-content,
 .item-text-wrap,
 .item-text-wrap h1,
 .item-text-wrap h2,
@@ -216,7 +221,7 @@ a.item-content {
 .item-body h5,
 .item-body h6,
 .item-body p {
-  overflow: hidden;
+  overflow: visible;
   white-space: normal;
 }
 .item-complex.item-text-wrap,
@@ -227,8 +232,8 @@ a.item-content {
 .item-complex.item-text-wrap h5,
 .item-complex.item-text-wrap h6,
 .item-complex.item-text-wrap p {
-  overflow: hidden;
-  white-space: nowrap;
+  overflow: visible;
+  white-space: normal;
 }
 
 
@@ -260,40 +265,53 @@ a.item-content {
 }
 
 .item-icon-left {
-  padding-left: ($item-padding * 3);
+  padding-left: ceil( ($item-padding * 3) + ($item-padding / 3) );
 
   .icon {
-    left: $item-padding / 2;
+    left: ceil( ($item-padding / 3) * 2);
   }
 }
 .item-complex.item-icon-left {
   padding-left: 0;
 
   .item-content {
-    padding-left: ($item-padding * 3);
+    padding-left: ceil( ($item-padding * 3) + ($item-padding / 3) );
   }
 }
 
 .item-icon-right {
-  padding-right: ($item-padding * 3);
+  padding-right: ceil( ($item-padding * 3) + ($item-padding / 3) );
 
   .icon {
-    right: $item-padding / 2;
+    right: ceil( ($item-padding / 3) * 2);
   }
 }
 .item-complex.item-icon-right {
   padding-right: 0;
 
   .item-content {
-    padding-right: ($item-padding * 3);
+    padding-right: ceil( ($item-padding * 3) + ($item-padding / 3) );
   }
 }
 
 .item-icon-left.item-icon-right .icon:first-child {
   right: auto;
 }
-.item-icon-left.item-icon-right .icon:last-child {
+.item-icon-left.item-icon-right .icon:last-child,
+.item-icon-left .item-delete .icon {
   left: auto;
+}
+
+.item-icon-left .icon-accessory,
+.item-icon-right .icon-accessory {
+  color: $item-icon-accessory-color;
+  font-size: $item-icon-accessory-font-size;
+}
+.item-icon-left .icon-accessory {
+  left: floor($item-padding / 5);
+}
+.item-icon-right .icon-accessory {
+  right: floor($item-padding / 5);
 }
 
 
@@ -304,7 +322,7 @@ a.item-content {
  */
 
 .item-button-left {
-  padding-left: $item-padding * 4.5;
+  padding-left: ceil($item-padding * 4.5);
 }
 
 .item-button-left > .button,
@@ -312,8 +330,8 @@ a.item-content {
   @include display-flex();
   @include align-items(center);
   position: absolute;
-  top: $item-padding / 2;
-  left: $item-padding / 2;
+  top: ceil($item-padding / 2);
+  left: ceil( ($item-padding / 3) * 2);
   min-width: $item-icon-font-size + ($button-border-width * 2);
   min-height: $item-icon-font-size + ($button-border-width * 2);
   font-size: $item-button-font-size;
@@ -347,7 +365,7 @@ button.item.item-button-right {
   @include display-flex();
   @include align-items(center);
   position: absolute;
-  top: $item-padding / 2;
+  top: ceil($item-padding / 2);
   right: $item-padding;
   min-width: $item-icon-font-size + ($button-border-width * 2);
   min-height: $item-icon-font-size + ($button-border-width * 2);
@@ -371,69 +389,13 @@ button.item.item-button-right {
 }
 
 
-/**
- * Auto Right Arrow Icon
- * --------------------------------------------------
- * By default, if an .item is created out of an <a> or <button>
- * then a arrow will be added to the right side of the item.
- */
-
-a.item,
-button.item,
-.item[href] .item-content,
-.item[ng-click] .item-content {
-  padding-right: (($item-padding * 3) - 5);
-
-  &:after {
-    // By default, both <a> and <button> have right side arrow icons
-    @include display-flex();
-    @include align-items(center);
-    @include font-smoothing(antialiased);
-    position: absolute;
-    top: 0;
-    right: $item-padding - 4;
-    height: 100%;
-    color: #ccc;
-    content: "\f125"; // ion-chevron-right
-    text-transform: none;
-    font-weight: normal;
-    font-style: normal;
-    font-variant: normal;
-    font-size: 16px;
-    font-family: 'Ionicons';
-    line-height: 1;
-    speak: none;
-  }
-}
-
-.grade-b,
-.grade-c {
-  a.item:after,
-  button.item:after,
-  .item[href] .item-content:after,
-  .item[ng-click] .item-content:after {
-    // override Ionicon arrow with boring character for low end devices
-    @include font-smoothing(none);
-    content: '>';
-    font-family: 'monospace';
-  }
-}
-
-// do not show the default right arrow when they want their own right side icon
-a.item-icon-right:after,
-button.item-icon-right:after,
-a.item-button-right:after,
-button.item-button-right:after,
-.item a.item-content:after {
-  display: none;
-}
-
-
 // Item Avatar
 // -------------------------------
 
 .item-avatar,
-.item-avatar .item-content {
+.item-avatar .item-content,
+.item-avatar-left,
+.item-avatar-left .item-content {
   padding-left: $item-avatar-width + ($item-padding * 2);
   min-height: $item-avatar-width + ($item-padding * 2);
 
@@ -445,7 +407,24 @@ button.item-button-right:after,
     max-width: $item-avatar-width;
     max-height: $item-avatar-height;
     width: 100%;
-    border-radius: 4px;
+    border-radius: $item-avatar-border-radius;
+  }
+}
+
+.item-avatar-right,
+.item-avatar-right .item-content {
+  padding-right: $item-avatar-width + ($item-padding * 2);
+  min-height: $item-avatar-width + ($item-padding * 2);
+
+  > img:first-child,
+  .item-image {
+    position: absolute;
+    top: $item-padding;
+    right: $item-padding;
+    max-width: $item-avatar-width;
+    max-height: $item-avatar-height;
+    width: 100%;
+    border-radius: $item-avatar-border-radius;
   }
 }
 
@@ -469,6 +448,7 @@ button.item-button-right:after,
   }
 }
 .item-avatar.item-complex,
+.item-avatar-left.item-complex,
 .item-thumbnail-left.item-complex {
   padding-left: 0;
 }
@@ -488,6 +468,7 @@ button.item-button-right:after,
     width: 100%;
   }
 }
+.item-avatar-right.item-complex,
 .item-thumbnail-right.item-complex {
   padding-right: 0;
 }
@@ -527,8 +508,8 @@ button.item-button-right:after,
 // -------------------------------
 
 .item-divider {
-  padding-top: $item-padding / 2;
-  padding-bottom: $item-padding / 2;
+  padding-top: ceil($item-padding / 2);
+  padding-bottom: ceil($item-padding / 2);
   min-height: 30px;
   background-color: $item-divider-bg;
   color: $item-divider-color;
@@ -602,7 +583,6 @@ button.item-button-right:after,
   width: $item-left-edit-open-width;
   height: 100%;
   line-height: 100%;
-  opacity: 0;
 
   .button {
     height: 100%;
@@ -620,7 +600,6 @@ button.item-button-right:after,
 .list-left-editing .item-left-edit,
 .item-left-editing .item-left-edit {
   @include translate3d($item-left-edit-left, 0, 0);
-  opacity: 1;
 }
 
 
@@ -641,6 +620,7 @@ button.item-button-right:after,
 // -------------------------------
 
 .item-right-edit {
+  @include transition(all $item-edit-transition-function $item-edit-transition-duration);
   position: absolute;
   top: 0;
   right: 0;
@@ -676,6 +656,8 @@ button.item-button-right:after,
 .item-reordering {
   // item is actively being reordered
   position: absolute;
+  left: 0;
+  top: 0;
   z-index: $z-index-item-reordering;
   width: 100%;
   box-shadow: 0px 0px 10px 0px #aaa;
@@ -688,6 +670,18 @@ button.item-button-right:after,
 .item-placeholder {
   // placeholder for the item that's being reordered
   opacity: 0.7;
+}
+
+.item-left-edit.item-delete,
+.item-right-edit.item-reorder {
+  opacity: 1;
+  &.ng-hide {
+    opacity: 0;
+  }
+  &.ng-hide-add,
+  &.ng-hide-remove {
+    display: block !important;
+  }
 }
 
 
@@ -707,8 +701,4 @@ button.item-button-right:after,
     border: none;
     border-radius: 0;
   }
-}
-
-.item-options-hide .item-options {
-  display: none;
 }

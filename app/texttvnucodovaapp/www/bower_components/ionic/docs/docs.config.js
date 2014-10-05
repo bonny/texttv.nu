@@ -27,14 +27,9 @@ module.exports = function(config) {
 
   config.set('processing.api-docs', {
     outputPath: 'api/${docType}/${name}/index.md',
-    path: 'api/${docType}/${name}',
+    path: 'api/${docType}/${name}/',
     moduleOutputPath: 'api/module/${name}/index.md',
-    modulePath: 'api/module/${name}'
-  });
-
-  config.set('processing.pages-data', {
-    template: ['pages-data.template.html'],
-    outputPath: '_layouts/docs_api.html'
+    modulePath: 'api/module/${name}/'
   });
 
   config.append('rendering.filters', [
@@ -66,7 +61,8 @@ module.exports = function(config) {
     require('./processors/keywords'),
     require('./processors/pages-data'),
     require('./processors/index-page'),
-    require('./processors/version-data')
+    require('./processors/version-data'),
+    require('./processors/jekyll')
   ]);
 
   return config;

@@ -289,8 +289,12 @@ $item-button-line-height:         32px !default;
 $item-icon-font-size:             32px !default;
 $item-icon-fill-font-size:        28px !default;
 
+$item-icon-accessory-color:       #ccc !default;
+$item-icon-accessory-font-size:   16px !default;
+
 $item-avatar-width:               40px !default;
 $item-avatar-height:              40px !default;
+$item-avatar-border-radius:       4px !default;
 
 $item-thumbnail-width:            80px !default;
 $item-thumbnail-height:           80px !default;
@@ -501,7 +505,6 @@ $checkbox-on-bg-dark:             $dark !default;
 $checkbox-off-border-default:     $positive !default;
 $checkbox-on-bg-default:          $positive !default;
 
-
 $checkbox-check-width:            3px !default;
 $checkbox-check-color:            #fff !default;
 
@@ -530,8 +533,7 @@ $range-default-track-bg:          #ccc !default;
 // Menus
 // -------------------------------
 
-$menu-bg:                         #eee !default;
-$menu-inset-border-color:         #bbb !default;
+$menu-bg:                         #fff !default;
 $menu-width:                      275px !default;
 $menu-animation-speed:            200ms !default;
 
@@ -579,7 +581,6 @@ $sheet-border-radius-bottom:      0px 0px 3px 3px !default;
 // Popups
 // -------------------------------
 
-$popup-backdrop-fadein-duration:  0.1s !default;
 $popup-width:                     250px !default;
 $popup-enter-animation:           superScaleIn !default;
 $popup-enter-animation-duration:  0.2s !default;
@@ -591,6 +592,19 @@ $popup-background-color:          rgba(255,255,255,0.9) !default;
 $popup-button-border-radius:      2px !default;
 $popup-button-line-height:        20px !default;
 $popup-button-min-height:         45px !default;
+
+
+// Loading
+// -------------------------------
+
+$loading-text-color:              #fff !default;
+$loading-bg-color:                rgba(0,0,0,0.7) !default;
+$loading-padding:                 20px !default;
+$loading-border-radius:           5px !default;
+$loading-font-size:               15px !default;
+
+$loading-backdrop-fadein-duration:0.3s !default;
+$loading-backdrop-bg-color:       rgba(0,0,0,0.7) !default;
 
 
 // Badges
@@ -637,6 +651,7 @@ $badge-default-text:              #AAAAAA !default;
 
 $z-index-action-sheet:            11 !default;
 $z-index-badge:                   1 !default;
+$z-index-backdrop:                10 !default;
 $z-index-bar:                     10 !default;
 $z-index-bar-title:               0 !default;
 $z-index-bar-button:              1 !default;
@@ -648,13 +663,17 @@ $z-index-item-options:            1 !default;
 $z-index-item-radio:              3 !default;
 $z-index-item-reordering:         9 !default;
 $z-index-item-toggle:             3 !default;
+$z-index-loading:                 11 !default;
 $z-index-menu:                    0 !default;
 $z-index-modal:                   10 !default;
 $z-index-pane:                    1 !default;
 $z-index-popup:                   11 !default;
-$z-index-popup-backdrop:          10 !default;
 $z-index-scroll-bar:              9999 !default;
 $z-index-slider-pager:            1 !default;
 $z-index-tabs:                    5 !default;
 $z-index-view:                    1 !default;
 
+// Platform
+// -------------------------------
+
+$ios7-statusbar-height:           20px !default;

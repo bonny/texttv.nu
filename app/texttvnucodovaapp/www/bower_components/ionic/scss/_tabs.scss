@@ -90,6 +90,7 @@
 }
 
 /* Allow parent element to have tabs-top */
+/* If you change this, change platform.scss as well */
 .tabs-top > .tabs,
 .tabs.tabs-top {
   top: $bar-height;
@@ -123,13 +124,15 @@
   }
 }
 
-.tabs-item-hide,
-.tabs-item-hide > .tabs {
+.tabs-item-hide > .tabs,
+.tabs.tabs-item-hide {
   display: none;
 }
 
-.tabs-icon-top .tab-item,
-.tabs-icon-bottom .tab-item {
+.tabs-icon-top > .tabs .tab-item,
+.tabs-icon-top.tabs .tab-item,
+.tabs-icon-bottom > .tabs .tab-item,
+.tabs-icon-bottom.tabs .tab-item {
   font-size: $tabs-text-font-size-side-icon;
   line-height: $tabs-text-font-size;
 }
@@ -141,8 +144,10 @@
   font-size: $tabs-icon-size;
 }
 
-.tabs-icon-left .tab-item,
-.tabs-icon-right .tab-item {
+.tabs-icon-left.tabs .tab-item,
+.tabs-icon-left > .tabs .tab-item,
+.tabs-icon-right.tabs .tab-item,
+.tabs-icon-right > .tabs .tab-item {
   font-size: $tabs-text-font-size-side-icon;
 
   .icon {
@@ -156,15 +161,18 @@
   }
 }
 
-.tabs-icon-left .tab-item .icon {
+.tabs-icon-left > .tabs .tab-item .icon,
+.tabs-icon-left.tabs .tab-item .icon {
   padding-right: 3px;
 }
 
-.tabs-icon-right .tab-item .icon {
+.tabs-icon-right > .tabs .tab-item .icon,
+.tabs-icon-right.tabs .tab-item .icon {
   padding-left: 3px;
 }
 
-.tabs-icon-only .icon {
+.tabs-icon-only > .tabs .icon,
+.tabs-icon-only.tabs .icon {
   line-height: inherit;
 }
 
@@ -174,19 +182,21 @@
 
 .tab-item .badge {
   position: absolute;
-  padding: $tabs-badge-padding;
   top: 4%;
   right: 33%; // fallback
   right: calc(50% - 26px);
-  font-size: $tabs-badge-font-size;
+  padding: $tabs-badge-padding;
   height: auto;
+  font-size: $tabs-badge-font-size;
   line-height: $tabs-badge-font-size + 4;
 }
 
 /* Navigational tab */
 
 /* Active state for tab */
-.tab-item.tab-item-active {
+.tab-item.tab-item-active,
+.tab-item.active,
+.tab-item.activated {
   opacity: 1;
 
   &.tab-item-light {
@@ -225,4 +235,11 @@
   .icon:before {
     position: relative;
   }
+}
+
+.tab-item.disabled,
+.tab-item[disabled] {
+  opacity: .4;
+  cursor: default;
+  pointer-events: none;
 }
