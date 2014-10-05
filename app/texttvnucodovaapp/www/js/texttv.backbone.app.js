@@ -685,7 +685,17 @@ var MainView = Backbone.View.extend({
 												data.title,  // title?
 												data.screenshot, // image
 												null, // link
-												function(msg) { console.log(msg); }, function(msg) { console.log(msg); });
+												function(msg) {
+
+													// ok callback
+													console.log(msg);
+
+												}, function(msg) {
+
+													// err callback
+													console.log(msg); 
+
+												});
 
 				})
 				// api call not successful
@@ -763,7 +773,9 @@ var MainView = Backbone.View.extend({
 			var dataPageRange = $a.data("pagerange");
 			
 			// make sure it's a string because string functions will fail otherwise
-			dataPageRange = dataPageRange.toString();
+			if (typeof dataPageRange == "number") {
+				dataPageRange = dataPageRange.toString();
+			}
 
 			if (texttvapp.helpers.isValidPageRange(dataPageRange)) {
 
