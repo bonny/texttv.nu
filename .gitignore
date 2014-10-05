@@ -12,11 +12,7 @@ bin-release/
 texttv.sublime-workspace
 
 app/texttv.nu/platforms/ios/cordova/console.log
-
-app/texttv.nu/platforms/ios/cordova/console.log
-
 app/texttvnucodovaapp/platforms/ios/cordova/console.log
-
 app/texttvnucodovaapp/platforms/android/ant-build/
 
 *.apk

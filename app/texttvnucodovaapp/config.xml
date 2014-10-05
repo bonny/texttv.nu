@@ -26,9 +26,9 @@
 	<preference name="BackgroundColor" value="0xff0000ff"/>
 	<preference name="DisallowOverscroll" value="true" />
 
-	<preference name="StatusBarOverlaysWebView" value="true" /> 
-	<preference name="StatusBarBackgroundColor" value="#ff0000" />
-	<preference name="StatusBarStyle" value="lightcontent" />
+	<!-- <preference name="StatusBarOverlaysWebView" value="true" />  -->
+	<!-- <preference name="StatusBarBackgroundColor" value="#ff0000" /> -->
+	<!-- <preference name="StatusBarStyle" value="lightcontent" /> -->
 
  	<feature name="StatusBar">
 		<param name="ios-package" value="CDVStatusBar" onload="true" />

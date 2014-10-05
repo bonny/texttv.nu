@@ -529,4 +529,7 @@ when on device bar goes from 44px to 67px
 /*
 http://forum.ionicframework.com/t/how-to-show-the-statusbar-on-ios-8-like-ios-7/9937
 */
-/*.platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader)>*{margin-top:20px}*/
+/*
+.platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader)>*{margin-top:20px}
+*/
+

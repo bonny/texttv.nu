@@ -1027,6 +1027,8 @@ document.addEventListener("resume", onDeviceResume, false);
  */
 window.addEventListener("statusTap", function() {
 
+	console.log("statustapp!");
+
 	$elmToScroll = $(".swiper-slide-active");
 
 	// disable touch scroll to kill existing inertial movement
