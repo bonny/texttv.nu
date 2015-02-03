@@ -19,22 +19,6 @@
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
-    <name>TextTV.nu</name>
-    <description>
-		Lite bättre SVT Text TV.
-	</description>
-    <author email="kontakt@texttv.nu" href="http://texttv.nu">
-		TextTV.nu-teamet
-	</author>
-    <content src="index.html" />
-    <access origin="*" />
-    <preference name="auto-hide-splash-screen" value="false" />
-    <preference name="AutoHideSplashScreen" value="false" />
-    <preference name="FadeSplashScreen" value="false" />
-    <preference name="splashscreen" value="splash" />
-    <preference name="ShowSplashScreenSpinner" value="false" />
-    <preference name="BackgroundColor" value="0xff0000ff" />
-    <preference name="DisallowOverscroll" value="true" />
     <feature name="UniversalAnalytics">
         <param name="ios-package" value="UniversalAnalyticsPlugin" />
     </feature>
@@ -54,13 +38,33 @@
     <feature name="InAppBrowser">
         <param name="ios-package" value="CDVInAppBrowser" />
     </feature>
-    <feature name="SplashScreen">
-        <param name="ios-package" value="CDVSplashScreen" />
-        <param name="onload" value="true" />
-    </feature>
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarStyle" value="lightcontent" />
+    <feature name="SplashScreen">
+        <param name="ios-package" value="CDVSplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <splash src="res/screen/ios/Default@2x~iphone.png" />
+    <splash height="1334" src="res/screen/ios/Default-667h.png" width="750" />
+    <name>TextTV.nu</name>
+    <description>
+		Lite bättre SVT Text TV.
+	</description>
+    <author email="kontakt@texttv.nu" href="http://texttv.nu">
+		TextTV.nu-teamet
+	</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="auto-hide-splash-screen" value="false" />
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="FadeSplashScreen" value="false" />
+    <preference name="splashscreen" value="splash" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="BackgroundColor" value="0xff0000ff" />
+    <preference name="DisallowOverscroll" value="true" />
+    <icon src="res/icon.png" />
+    <preference name="SplashScreenDelay" value="10000" />
 </widget>

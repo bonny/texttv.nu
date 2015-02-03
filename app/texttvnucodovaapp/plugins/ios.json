@@ -79,10 +79,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"StatusBar\"><param name=\"ios-package\" onload=\"true\" value=\"CDVStatusBar\" /></feature>",
                             "count": 1
                         },
@@ -92,6 +88,10 @@
                         },
                         {
                             "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -118,10 +118,10 @@
         "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
-        "org.apache.cordova.splashscreen": {
+        "org.apache.cordova.statusbar": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
-        "org.apache.cordova.statusbar": {
+        "org.apache.cordova.splashscreen": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         }
     },
