@@ -10,14 +10,14 @@ texttvapp.helpers = {
 	 * Check if link is texttv-link, i.e. a link that looks like /nnn or /nnn-nnn
 	 */
 	isValidPageRange: function(pageRange) {
-		
+
 		if ( ! pageRange ) {
 			return false;
 		}
 
 		var matches = pageRange.match(/\d{3}(-\d{3})?/);
 		return (matches !== null);
-		
+
 	},
 
 	updateMostVisited: function() {
@@ -55,7 +55,7 @@ texttvapp.storage = new Lawnchair({
 
 	// Make sure "stats" storage exists, as empty object by default
 	storage.exists("stats", function(exists) {
-		
+
 		if (false === exists) {
 
 			storage.save({
@@ -68,7 +68,7 @@ texttvapp.storage = new Lawnchair({
 
 	// Make sure "favs" storage exists, as empty object by default
 	storage.exists("favs", function(exists) {
-		
+
 		if (false === exists) {
 
 			storage.save({
@@ -122,10 +122,10 @@ var SidebarView = Backbone.View.extend({
 
 		// If inappbrowser is not loaded = running in regular browser, then don't open in _blank
 		if (typeof cordova == "object") {
-		
+
 			// plugin loaded
 			e.preventDefault();
-			
+
 			if ("_system" == target) {
 
 				var ref = window.open(href, '_system', 'location=yes');
@@ -218,7 +218,7 @@ var SidebarView = Backbone.View.extend({
 		var $item = $(e.target).closest(".item");
 		var pageRange = $item.data("pagerange");
 		var initiatedBy = "click";
-	
+
 		// Check if click is from favs
 		if ( $item.closest(".FavsItems").length ) {
 			initiatedBy = "clickFav";
@@ -347,7 +347,7 @@ var TextTVPageModel = Backbone.Model.extend({
 		// If we have history then show back button
 		var $backbutton = $(".js-backButton");
 		if (
-			texttvapp.TextTVPagesHistory.length > 0 
+			texttvapp.TextTVPagesHistory.length > 0
 			// reset button if prev page is 100
 			// && 100 != texttvapp.TextTVPagesHistory.last().get("pageRange")
 			) {
@@ -504,7 +504,7 @@ var TextTVPagesCollection = Backbone.Collection.extend({
 			$homeFavsIcon.removeClass("ion-ios7-star-outline");
 		} else {
 			$homeFavsIcon.removeClass("ion-ios7-star");
-			$homeFavsIcon.addClass("ion-ios7-star-outline");			
+			$homeFavsIcon.addClass("ion-ios7-star-outline");
 		}
 
 
@@ -697,7 +697,7 @@ var MainView = Backbone.View.extend({
 
 													// err callback
 													console.log("err callback");
-													console.log(msg); 
+													console.log(msg);
 
 												});
 
@@ -772,10 +772,10 @@ var MainView = Backbone.View.extend({
 			pageRange = href;
 
 		} else {
-			
+
 			// else check if data page range exists
 			var dataPageRange = $a.data("pagerange");
-			
+
 			// make sure it's a string because string functions will fail otherwise
 			if (typeof dataPageRange == "number") {
 				dataPageRange = dataPageRange.toString();
@@ -826,9 +826,9 @@ var TextTVSwiper = {
 
 		this.swiper_container = $('.swiper-container');
 		this.swiper = this.swiper_container.swiper({
-			
+
 			mode:'horizontal',
-			
+
 			loop: false,
 
 			// Callback function, will be executed when you release the slider
@@ -869,7 +869,7 @@ var TextTVSwiper = {
 
 				var text = $(".placeholderPage--next");
 				console.log(text.length);
-				
+
 				text.css({
 					WebkitTransform: 'translateX(-'+newPos+'px)'
 				});
@@ -1077,7 +1077,7 @@ window.addEventListener('load', function() {
 	$(document).on("click", ".view--main.open-sidebar", function(e) {
 
 		var $target = $(e.target);
-		
+
 		// dont show/hide if clicked elm is .js-sidebarToggle, i.e. the icon that toggles the nav = inception!
 		if ( $target.is(".js-sidebarToggle") ) {
 			return true;
@@ -1092,4 +1092,3 @@ window.addEventListener('load', function() {
 	texttvapp.mainViewBar.loadHome();
 
 }, false);
-
