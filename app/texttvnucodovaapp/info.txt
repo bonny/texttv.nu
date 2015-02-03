@@ -1,0 +1,56 @@
+Node version: v0.10.35
+
+Cordova version: 0.21.13
+
+Config.xml file: 
+
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.mufflify.TextTVnu" version="2.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+	<name>TextTV.nu</name>
+	<description>
+		Lite bättre SVT Text TV.
+	</description>
+	<author email="kontakt@texttv.nu" href="http://texttv.nu">
+		TextTV.nu-teamet
+	</author>
+	<content src="index.html" />
+	<access origin="*" />
+
+	  <feature name="UniversalAnalytics">
+		<param name="ios-package" value="UniversalAnalyticsPlugin" />
+	  </feature>
+
+	<feature name="SplashScreen">
+		<param name="ios-package" value="CDVSplashScreen"/>
+		<param name="onload" value="true" />
+	</feature>
+	<preference name="auto-hide-splash-screen" value="false" />
+	<preference name="AutoHideSplashScreen" value="false" />
+	<preference name="FadeSplashScreen" value="false" />
+	<preference name="splashscreen" value="splash" />
+	<preference name="ShowSplashScreenSpinner" value="false" />
+	<preference name="BackgroundColor" value="0xff0000ff"/>
+	<preference name="DisallowOverscroll" value="true" />
+
+	<!-- <preference name="StatusBarOverlaysWebView" value="true" />  -->
+	<!-- <preference name="StatusBarBackgroundColor" value="#ff0000" /> -->
+	<!-- <preference name="StatusBarStyle" value="lightcontent" /> -->
+
+ 	<feature name="StatusBar">
+		<param name="ios-package" value="CDVStatusBar" onload="true" />
+	</feature>
+	<feature name="InAppBrowser">
+		<param name="ios-package" value="CDVInAppBrowser" />
+	</feature>
+</widget>
+
+
+Plugins: 
+
+com.danielcwilson.plugins.googleanalytics,com.phonegap.TapToScroll,nl.x-services.plugins.socialsharing,org.apache.cordova.console,org.apache.cordova.device,org.apache.cordova.inappbrowser,org.apache.cordova.splashscreen,org.apache.cordova.statusbar
+
+iOS platform:
+
+Xcode 6.1
+Build version 6A1052c
+

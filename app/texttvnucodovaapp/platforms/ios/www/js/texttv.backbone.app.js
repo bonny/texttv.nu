@@ -689,6 +689,8 @@ var MainView = Backbone.View.extend({
 
 													// ok callback
 													console.log("ok callback");
+													// false = nothing was shared
+													// true = something was shared
 													console.log(msg);
 
 												}, function(msg) {

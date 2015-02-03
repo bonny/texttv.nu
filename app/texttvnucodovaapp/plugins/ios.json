@@ -5,85 +5,15 @@
     },
     "config_munge": {
         "files": {
-            "config.xml": {
-                "parents": {
-                    "/*": [
-                        {
-                            "xml": "<feature name=\"TapToScroll\"><param name=\"ios-package\" value=\"TapToScroll\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"UniversalAnalytics\"><param name=\"ios-package\" value=\"UniversalAnalyticsPlugin\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"SocialSharing\"><param name=\"ios-package\" value=\"SocialSharing\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"StatusBar\"><param name=\"ios-package\" onload=\"true\" value=\"CDVStatusBar\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
-                            "count": 1
-                        }
-                    ]
-                }
-            },
             "framework": {
                 "parents": {
-                    "Social.framework": [
-                        {
-                            "xml": "true",
-                            "count": 1
-                        }
-                    ],
-                    "MessageUI.framework": [
-                        {
-                            "xml": "true",
-                            "count": 1
-                        }
-                    ],
-                    "CoreGraphics.framework": [
-                        {
-                            "xml": "false",
-                            "count": 4
-                        }
-                    ],
-                    "CoreData.framework": [
-                        {
-                            "xml": "false",
-                            "count": 1
-                        }
-                    ],
                     "SystemConfiguration.framework": [
                         {
                             "xml": "false",
                             "count": 1
                         }
                     ],
-                    "AdSupport.framework": [
+                    "CoreData.framework": [
                         {
                             "xml": "false",
                             "count": 1
@@ -100,31 +30,95 @@
                             "xml": "false",
                             "count": 1
                         }
+                    ],
+                    "Social.framework": [
+                        {
+                            "xml": "true",
+                            "count": 1
+                        }
+                    ],
+                    "MessageUI.framework": [
+                        {
+                            "xml": "true",
+                            "count": 1
+                        }
+                    ],
+                    "CoreGraphics.framework": [
+                        {
+                            "xml": "false",
+                            "count": 2
+                        }
+                    ]
+                }
+            },
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"UniversalAnalytics\"><param name=\"ios-package\" value=\"UniversalAnalyticsPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"TapToScroll\"><param name=\"ios-package\" value=\"TapToScroll\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SocialSharing\"><param name=\"ios-package\" value=\"SocialSharing\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"ios-package\" onload=\"true\" value=\"CDVStatusBar\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
+                            "count": 1
+                        }
                     ]
                 }
             }
         }
     },
     "installed_plugins": {
-        "com.phonegap.TapToScroll": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
         "com.danielcwilson.plugins.googleanalytics": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
+        "com.phonegap.TapToScroll": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "nl.x-services.plugins.socialsharing": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
         "org.apache.cordova.console": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "org.apache.cordova.splashscreen": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
-        "nl.x-services.plugins.socialsharing": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
-        "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "org.apache.cordova.statusbar": {

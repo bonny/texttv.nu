@@ -31,6 +31,14 @@
     if (self != nil) {
         _viewController = viewController;
         _commandQueue = _viewController.commandQueue;
+        
+        NSError* err = nil;
+        _callbackIdPattern = [NSRegularExpression regularExpressionWithPattern:@"[^A-Za-z0-9._-]" options:0 error:&err];
+        if (err != nil) {
+            // Couldn't initialize Regex
+            NSLog(@"Error: Couldn't initialize regex");
+            _callbackIdPattern = nil;
+        }
     }
     return self;
 }
@@ -94,11 +102,30 @@
     }
 }
 
+- (BOOL)isValidCallbackId:(NSString*)callbackId
+{
+    
+    if (callbackId == nil || _callbackIdPattern == nil) {
+        return NO;
+    }
+
+    // Disallow if too long or if any invalid characters were found.
+    if (([callbackId length] > 100) || [_callbackIdPattern firstMatchInString:callbackId options:0 range:NSMakeRange(0, [callbackId length])]) {
+        return NO;
+    }
+    return YES;
+}
+
 - (void)sendPluginResult:(CDVPluginResult*)result callbackId:(NSString*)callbackId
 {
     CDV_EXEC_LOG(@"Exec(%@): Sending result. Status=%@", callbackId, result.status);
     // This occurs when there is are no win/fail callbacks for the call.
     if ([@"INVALID" isEqualToString : callbackId]) {
+        return;
+    }
+    // This occurs when the callback id is malformed.
+    if (![self isValidCallbackId:callbackId]) {
+        NSLog(@"Invalid callback id received by sendPluginResult");
         return;
     }
     int status = [result.status intValue];
@@ -123,11 +150,6 @@
     } else {
         [self evalJsHelper2:js];
     }
-}
-
-- (BOOL)execute:(CDVInvokedUrlCommand*)command
-{
-    return [_commandQueue execute:command];
 }
 
 - (id)getCommandInstance:(NSString*)pluginName
