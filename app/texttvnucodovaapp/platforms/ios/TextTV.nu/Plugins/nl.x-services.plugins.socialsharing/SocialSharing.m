@@ -17,7 +17,10 @@
 }
 
 - (void)available:(CDVInvokedUrlCommand*)command {
-  BOOL avail = NSClassFromString(@"UIActivityViewController");
+  BOOL avail = NO;
+  if (NSClassFromString(@"UIActivityViewController")) {
+    avail = YES;
+  }
   CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsInt:avail];
   [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
@@ -49,18 +52,20 @@
   
   NSMutableArray *activityItems = [[NSMutableArray alloc] init];
   [activityItems addObject:message];
-
+  
   NSMutableArray *files = [[NSMutableArray alloc] init];
-  for (NSString* filename in filenames) {
-    NSObject *file = [self getImage:filename];
-    if (file == nil) {
-      file = [self getFile:filename];
+  if (filenames != (id)[NSNull null] && filenames.count > 0) {
+    for (NSString* filename in filenames) {
+      NSObject *file = [self getImage:filename];
+      if (file == nil) {
+        file = [self getFile:filename];
+      }
+      if (file != nil) {
+        [files addObject:file];
+      }
     }
-    if (file != nil) {
-      [files addObject:file];
-    }
+    [activityItems addObjectsFromArray:files];
   }
-  [activityItems addObjectsFromArray:files];
   
   if (urlString != (id)[NSNull null]) {
     [activityItems addObject:[NSURL URLWithString:urlString]];
@@ -167,6 +172,14 @@
 
 - (bool)isAvailableForSharing:(CDVInvokedUrlCommand*)command
                          type:(NSString *) type {
+  // isAvailableForServiceType returns true if you pass it a type that is not
+  // in the defined constants, this is probably a bug on apples part
+  if(!([type isEqualToString:SLServiceTypeFacebook]
+       || [type isEqualToString:SLServiceTypeTwitter]
+       || [type isEqualToString:SLServiceTypeTencentWeibo]
+       || [type isEqualToString:SLServiceTypeSinaWeibo])) {
+    return false;
+  }
   // wrapped in try-catch, because isAvailableForServiceType may crash if an invalid type is passed
   @try {
     return [SLComposeViewController isAvailableForServiceType:type];
@@ -218,6 +231,17 @@
 
 - (void)shareViaEmail:(CDVInvokedUrlCommand*)command {
   if ([self isEmailAvailable]) {
+    
+    if (TARGET_IPHONE_SIMULATOR && IsAtLeastiOSVersion(@"8.0")) {
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SocialSharing plugin"
+                                                      message:@"Sharing via email is not supported on the iOS 8 simulator."
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+      [alert show];
+      return;
+    }
+    
     self.globalMailComposer.mailComposeDelegate = self;
     
     if ([command.arguments objectAtIndex:0] != (id)[NSNull null]) {
@@ -249,17 +273,27 @@
         NSURL *file = [self getFile:path];
         NSData* data = [fileManager contentsAtPath:file.path];
         
+        NSString* fileName;
+        NSString* mimeType;
         NSString* basename = [self getBasenameFromAttachmentPath:path];
-        NSString* fileName = [basename pathComponents].lastObject;
-        NSString* mimeType = [self getMimeTypeFromFileExtension:[basename pathExtension]];
-        
+
+        if ([basename hasPrefix:@"data:"]) {
+          mimeType = (NSString*)[[[basename substringFromIndex:5] componentsSeparatedByString: @";"] objectAtIndex:0];
+          fileName = @"attachment.";
+          fileName = [fileName stringByAppendingString:(NSString*)[[mimeType componentsSeparatedByString: @"/"] lastObject]];
+          NSString *base64content = (NSString*)[[basename componentsSeparatedByString: @","] lastObject];
+          data = [NSData dataFromBase64String:base64content];
+        } else {
+          fileName = [basename pathComponents].lastObject;
+          mimeType = [self getMimeTypeFromFileExtension:[basename pathExtension]];
+        }
         [self.globalMailComposer addAttachmentData:data mimeType:mimeType fileName:fileName];
       }
     }
     
     // remember the command, because we need it in the didFinishWithResult method
     _command = command;
-    
+
     [self.commandDelegate runInBackground:^{
       [self.viewController presentViewController:self.globalMailComposer animated:YES completion:nil];
     }];
@@ -286,7 +320,10 @@
   CFStringRef ext = (CFStringRef)CFBridgingRetain(extension);
   CFStringRef type = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, ext, NULL);
   // Converting UTI to a mime type
-  return (NSString*)CFBridgingRelease(UTTypeCopyPreferredTagWithClass(type, kUTTagClassMIMEType));
+  NSString *result = (NSString*)CFBridgingRelease(UTTypeCopyPreferredTagWithClass(type, kUTTagClassMIMEType));
+  CFRelease(ext);
+  CFRelease(type);
+  return result;
 }
 
 /**
@@ -315,22 +352,30 @@
 
 - (void)shareViaSMS:(CDVInvokedUrlCommand*)command {
   if ([self canShareViaSMS]) {
+    NSDictionary* options = [command.arguments objectAtIndex:0];
+    NSString *phonenumbers = [command.arguments objectAtIndex:1];
+    NSString *message = [options objectForKey:@"message"];
+    NSString *subject = [options objectForKey:@"subject"];
+    NSString *image = [options objectForKey:@"image"];
+    
     MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
     picker.messageComposeDelegate = (id) self;
-    picker.body = [command.arguments objectAtIndex:0];
+    if (message != (id)[NSNull null]) {
+      picker.body = message;
+    }
+    if (subject != (id)[NSNull null]) {
+      [picker setSubject:subject];
+    }
+    if (image != nil && image != (id)[NSNull null]) {
+      BOOL canSendAttachments = [[MFMessageComposeViewController class] respondsToSelector:@selector(canSendAttachments)];
+      if (canSendAttachments) {
+        NSURL *file = [self getFile:image];
+        if (file != nil) {
+          [picker addAttachmentURL:file withAlternateFilename:nil];
+        }
+      }
+    }
     
-    // TODO this needs work
-    /*
-     BOOL canSendAttachments = [[MFMessageComposeViewController class] respondsToSelector:@selector(canSendAttachments)];
-     if (canSendAttachments) {
-     //        NSURL *theurl = [NSURL URLWithString:@"https://www.google.nl/images/srpr/logo4w.png"];
-     NSURL *theurl = [NSURL URLWithString:@"www/img/logo.png"];
-     BOOL attached = [picker addAttachmentURL:theurl withAlternateFilename:nil];
-     //        NSArray *arr = picker.attachments;
-     }
-     */
-    
-    NSString *phonenumbers = [command.arguments objectAtIndex:1];
     if (phonenumbers != (id)[NSNull null]) {
       [picker setRecipients:[phonenumbers componentsSeparatedByString:@","]];
     }

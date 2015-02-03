@@ -1,4 +1,6 @@
-cordova.define("nl.x-services.plugins.socialsharing.SocialSharing", function(require, exports, module) { function SocialSharing() {
+cordova.define("nl.x-services.plugins.socialsharing.SocialSharing", function(require, exports, module) { var cordova = require('cordova');
+
+function SocialSharing() {
 }
 
 // Override this method (after deviceready) to set the location where you want the iPad popup arrow to appear.
@@ -45,8 +47,12 @@ SocialSharing.prototype.shareViaWhatsApp = function (message, fileOrFileArray, u
   cordova.exec(successCallback, this._getErrorCallback(errorCallback, "shareViaWhatsApp"), "SocialSharing", "shareViaWhatsApp", [message, null, this._asArray(fileOrFileArray), url]);
 };
 
-SocialSharing.prototype.shareViaSMS = function (message, phonenumbers, successCallback, errorCallback) {
-  cordova.exec(successCallback, this._getErrorCallback(errorCallback, "shareViaSMS"), "SocialSharing", "shareViaSMS", [message, phonenumbers]);
+SocialSharing.prototype.shareViaSMS = function (options, phonenumbers, successCallback, errorCallback) {
+  var opts = options;
+  if (typeof options == "string") {
+    opts = {"message":options}; // for backward compatibility as the options param used to be the message
+  }
+  cordova.exec(successCallback, this._getErrorCallback(errorCallback, "shareViaSMS"), "SocialSharing", "shareViaSMS", [opts, phonenumbers]);
 };
 
 SocialSharing.prototype.shareViaEmail = function (message, subject, toArray, ccArray, bccArray, fileOrFileArray, successCallback, errorCallback) {
@@ -94,4 +100,5 @@ SocialSharing.install = function () {
 };
 
 cordova.addConstructor(SocialSharing.install);
+
 });
