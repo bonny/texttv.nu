@@ -533,3 +533,15 @@ http://forum.ionicframework.com/t/how-to-show-the-statusbar-on-ios-8-like-ios-7/
 .platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader)>*{margin-top:20px}
 */
 
+/*
+styles for iphone 5:
+make one page fit in portrait mode, make two pages fit in landscape
+*/
+@media only screen and (min-width: 375px) and (max-width: 414px) {
+
+	.root {
+		font-size: 20px;
+	}
+
+}
+

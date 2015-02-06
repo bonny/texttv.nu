@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		03415D32275648C8915D422F /* SocialSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = 612BBECEE0694BBB85157B88 /* SocialSharing.m */; };
 		0A309A64C2744F86A1B67B57 /* TapToScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0684C7A6274A66BD8C1320 /* TapToScroll.m */; };
