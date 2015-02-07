@@ -59,7 +59,7 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"TapToScroll\"><param name=\"ios-package\" value=\"TapToScroll\" /></feature>",
+                            "xml": "<feature name=\"SocialSharing\"><param name=\"ios-package\" value=\"SocialSharing\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
                         {
@@ -89,10 +89,6 @@
                         {
                             "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
                             "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"SocialSharing\"><param name=\"ios-package\" value=\"SocialSharing\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
                         }
                     ]
                 }
@@ -103,7 +99,7 @@
         "com.danielcwilson.plugins.googleanalytics": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
-        "com.phonegap.TapToScroll": {
+        "nl.x-services.plugins.socialsharing": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "org.apache.cordova.console": {
@@ -119,9 +115,6 @@
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "org.apache.cordova.statusbar": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
-        "nl.x-services.plugins.socialsharing": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         }
     },

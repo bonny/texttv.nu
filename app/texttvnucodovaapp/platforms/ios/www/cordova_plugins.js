@@ -8,10 +8,10 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/com.phonegap.TapToScroll/www/taptoscroll.js",
-        "id": "com.phonegap.TapToScroll.TapToScroll",
+        "file": "plugins/nl.x-services.plugins.socialsharing/www/SocialSharing.js",
+        "id": "nl.x-services.plugins.socialsharing.SocialSharing",
         "clobbers": [
-            "window.TapToScroll"
+            "window.plugins.socialsharing"
         ]
     },
     {
@@ -55,26 +55,18 @@ module.exports = [
         "clobbers": [
             "window.StatusBar"
         ]
-    },
-    {
-        "file": "plugins/nl.x-services.plugins.socialsharing/www/SocialSharing.js",
-        "id": "nl.x-services.plugins.socialsharing.SocialSharing",
-        "clobbers": [
-            "window.plugins.socialsharing"
-        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
     "com.danielcwilson.plugins.googleanalytics": "0.5.0",
-    "com.phonegap.TapToScroll": "0.1.0",
+    "nl.x-services.plugins.socialsharing": "4.3.13",
     "org.apache.cordova.console": "0.2.11",
-    "org.apache.cordova.device": "0.2.12",
+    "org.apache.cordova.device": "0.2.13",
     "org.apache.cordova.inappbrowser": "0.5.2",
     "org.apache.cordova.splashscreen": "0.3.5",
-    "org.apache.cordova.statusbar": "0.1.9",
-    "nl.x-services.plugins.socialsharing": "4.3.13"
+    "org.apache.cordova.statusbar": "0.1.9"
 }
 // BOTTOM OF METADATA
 });
