@@ -1,13 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/com.danielcwilson.plugins.googleanalytics/www/analytics.js",
-        "id": "com.danielcwilson.plugins.googleanalytics.UniversalAnalytics",
-        "clobbers": [
-            "analytics"
-        ]
-    },
-    {
         "file": "plugins/nl.x-services.plugins.socialsharing/www/SocialSharing.js",
         "id": "nl.x-services.plugins.socialsharing.SocialSharing",
         "clobbers": [
@@ -15,43 +8,51 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.console/www/console-via-logger.js",
-        "id": "org.apache.cordova.console.console",
+        "file": "plugins/cordova-plugin-google-analytics/www/analytics.js",
+        "id": "cordova-plugin-google-analytics.UniversalAnalytics",
+        "clobbers": [
+            "analytics"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-console/www/console-via-logger.js",
+        "id": "cordova-plugin-console.console",
         "clobbers": [
             "console"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.console/www/logger.js",
-        "id": "org.apache.cordova.console.logger",
+        "file": "plugins/cordova-plugin-console/www/logger.js",
+        "id": "cordova-plugin-console.logger",
         "clobbers": [
             "cordova.logger"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.device/www/device.js",
-        "id": "org.apache.cordova.device.device",
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "id": "cordova-plugin-device.device",
         "clobbers": [
             "device"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js",
-        "id": "org.apache.cordova.inappbrowser.inappbrowser",
+        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
         "clobbers": [
+            "cordova.InAppBrowser.open",
             "window.open"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
-        "id": "org.apache.cordova.splashscreen.SplashScreen",
+        "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+        "id": "cordova-plugin-splashscreen.SplashScreen",
         "clobbers": [
             "navigator.splashscreen"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.statusbar/www/statusbar.js",
-        "id": "org.apache.cordova.statusbar.statusbar",
+        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "id": "cordova-plugin-statusbar.statusbar",
         "clobbers": [
             "window.StatusBar"
         ]
@@ -60,13 +61,13 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "com.danielcwilson.plugins.googleanalytics": "0.5.0",
-    "nl.x-services.plugins.socialsharing": "4.3.13",
-    "org.apache.cordova.console": "0.2.11",
-    "org.apache.cordova.device": "0.2.13",
-    "org.apache.cordova.inappbrowser": "0.5.2",
-    "org.apache.cordova.splashscreen": "0.3.5",
-    "org.apache.cordova.statusbar": "0.1.9"
+    "nl.x-services.plugins.socialsharing": "4.3.18",
+    "cordova-plugin-google-analytics": "0.7.2",
+    "cordova-plugin-console": "1.0.0",
+    "cordova-plugin-device": "1.0.0",
+    "cordova-plugin-inappbrowser": "1.0.0",
+    "cordova-plugin-splashscreen": "2.0.0",
+    "cordova-plugin-statusbar": "1.0.0"
 }
 // BOTTOM OF METADATA
 });

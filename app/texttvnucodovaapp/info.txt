@@ -1,6 +1,6 @@
-Node version: v0.10.35
+Node version: v0.12.4
 
-Cordova version: 0.21.13
+Cordova version: 5.0.0
 
 Config.xml file: 
 
@@ -32,7 +32,7 @@ Config.xml file:
 	<preference name="BackgroundColor" value="0xff0000ff"/>
 	<preference name="DisallowOverscroll" value="true" />
 
-	<!-- <preference name="StatusBarOverlaysWebView" value="true" />  -->
+	<preference name="StatusBarOverlaysWebView" value="true" />
 	<!-- <preference name="StatusBarBackgroundColor" value="#ff0000" /> -->
 	<!-- <preference name="StatusBarStyle" value="lightcontent" /> -->
 
@@ -42,15 +42,46 @@ Config.xml file:
 	<feature name="InAppBrowser">
 		<param name="ios-package" value="CDVInAppBrowser" />
 	</feature>
+
+	<!-- <icon src="res/icon.png" /> -->
+
+	<platform name="ios">
+
+			<!-- icons -->
+			<icon src="res/ios/icon.png" width="57" height="57" />
+			<icon src="res/ios/icon-57.png" width="57" height="57" />
+			<icon src="res/ios/icon-72.png" width="72" height="72" />
+			<icon src="res/ios/icon-60@2x.png" width="120" height="120" />
+			<icon src="res/ios/icon-76@2x.png" width="152" height="152" />
+			<icon src="res/ios/icon-76.png" width="76" height="76" />
+
+			<!-- images are determined by width and height. The following are supported -->
+			<splash src="resources/splash/ios/Default~iphone.png" width="320" height="480"/>
+			<splash src="resources/splash/ios/Default@2x~iphone.png" width="640" height="960"/>
+			<splash src="resources/splash/ios/Default-Portrait~ipad.png" width="768" height="1024"/>
+			<splash src="resources/splash/ios/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
+			<splash src="resources/splash/ios/Default-Landscape~ipad.png" width="1024" height="768"/>
+			<splash src="resources/splash/ios/Default-Landscape@2x~ipad.png" width="2048" height="1536"/>
+			<splash src="resources/splash/ios/Default-568h@2x~iphone.png" width="640" height="1136"/>
+
+			<!-- iphone 6 -->
+			<splash src="resources/splash/ios/Default-667h.png" width="750" height="1334"/>
+
+			<splash src="resources/splash/ios/Default-736h.png" width="1242" height="2208"/>
+			<splash src="resources/splash/ios/Default-Landscape-736h.png" width="2208" height="1242"/>
+	</platform>
+
+	<preference name="SplashScreenDelay" value="0" /> -->
+
 </widget>
 
 
 Plugins: 
 
-com.danielcwilson.plugins.googleanalytics,com.phonegap.TapToScroll,nl.x-services.plugins.socialsharing,org.apache.cordova.console,org.apache.cordova.device,org.apache.cordova.inappbrowser,org.apache.cordova.splashscreen,org.apache.cordova.statusbar
+com.danielcwilson.plugins.googleanalytics,nl.x-services.plugins.socialsharing,org.apache.cordova.console,org.apache.cordova.device,org.apache.cordova.inappbrowser,org.apache.cordova.splashscreen,org.apache.cordova.statusbar
 
 iOS platform:
 
-Xcode 6.1
-Build version 6A1052c
+Xcode 6.3.2
+Build version 6D2105
 
