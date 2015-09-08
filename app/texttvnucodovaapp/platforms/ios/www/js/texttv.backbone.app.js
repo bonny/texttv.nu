@@ -167,11 +167,13 @@ var SidebarView = Backbone.View.extend({
 	// click on sidebar ikon
 	toggle: function() {
 
-		try {
-			var strOpenOrClose = this.model.get("isOpen") ? "Close" : "Open";
-			analytics.trackEvent('App', 'Sidebar', strOpenOrClose);
-		} catch(e) {
-			console.log(e);
+		if (window.analytics) {
+			try {
+				var strOpenOrClose = this.model.get("isOpen") ? "Close" : "Open";
+				analytics.trackEvent('App', 'Sidebar', strOpenOrClose);
+			} catch(e) {
+				console.log(e);
+			}
 		}
 
 		this.model.set("isOpen", !this.model.get("isOpen"));
@@ -472,17 +474,18 @@ var TextTVPagesCollection = Backbone.Collection.extend({
 	pageAdded: function(addedPage) {
 
 		// Let's track all pages
-		try {
+		if (window.analytics) {
+			try {
 
-			analytics.trackView("Load pageRange " + addedPage.get("pageRange"));
+				analytics.trackView("Load pageRange " + addedPage.get("pageRange"));
 
-			// Analytics kind of interaction used to load next pageRange
-			analytics.trackEvent('App', 'Nav initiation', addedPage.get("initiatedBy"));
+				// Analytics kind of interaction used to load next pageRange
+				analytics.trackEvent('App', 'Nav initiation', addedPage.get("initiatedBy"));
 
-		} catch (e) {
-			console.log(e);
+			} catch (e) {
+				console.log(e);
+			}
 		}
-
 
 		// Keep track of all pages that should be in history
 		// console.log(addedPage.get("initiatedBy"));

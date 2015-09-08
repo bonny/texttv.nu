@@ -1,11 +1,11 @@
 Node version: v0.12.4
 
-Cordova version: 5.0.0
+Cordova version: 5.1.1
 
 Config.xml file: 
 
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.mufflify.TextTVnu" version="2.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.mufflify.TextTVnu" version="2.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
 	<name>TextTV.nu</name>
 	<description>
 		Lite bättre SVT Text TV.
@@ -78,10 +78,10 @@ Config.xml file:
 
 Plugins: 
 
-com.danielcwilson.plugins.googleanalytics,nl.x-services.plugins.socialsharing,org.apache.cordova.console,org.apache.cordova.device,org.apache.cordova.inappbrowser,org.apache.cordova.splashscreen,org.apache.cordova.statusbar
+cordova-plugin-console,cordova-plugin-device,cordova-plugin-google-analytics,cordova-plugin-inappbrowser,cordova-plugin-splashscreen,cordova-plugin-statusbar,nl.x-services.plugins.socialsharing
 
 iOS platform:
 
-Xcode 6.3.2
-Build version 6D2105
+Xcode 6.4
+Build version 6E35b
 

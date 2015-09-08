@@ -22,3 +22,6 @@ app/texttvnucodovaapp/platforms/android/ant-build/
 app/index.php
 
 # /app/texttvnucodovaapp/platforms/ios/TextTV.nu/TextTV.nu-Info.plist
+app/texttvnucodovaapp/www/.tags1
+
+app/texttvnucodovaapp/www/.tags

@@ -27,11 +27,16 @@
 	border-color: none;
 	border: none;
 	/*border-radius: 5px;*/
+	border-right: 1px solid rgb(42, 43, 65);
 }
 .list--share .item .button:active {
 	color: rgba(238, 238, 238, .75);
 }
 
+.list--share .icon {
+	position: relative;
+	top: -2px;
+}
 /* add item behind share/reload-buttons and blur */
 /*	-webkit-filter: blur(3px); */
 /*
@@ -553,4 +558,3 @@ make one page fit in portrait mode, make two pages fit in landscape
 	}
 
 }
-

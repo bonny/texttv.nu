@@ -167,11 +167,13 @@ var SidebarView = Backbone.View.extend({
 	// click on sidebar ikon
 	toggle: function() {
 
-		try {
-			var strOpenOrClose = this.model.get("isOpen") ? "Close" : "Open";
-			analytics.trackEvent('App', 'Sidebar', strOpenOrClose);
-		} catch(e) {
-			console.log(e);
+		if (window.analytics) {
+			try {
+				var strOpenOrClose = this.model.get("isOpen") ? "Close" : "Open";
+				analytics.trackEvent('App', 'Sidebar', strOpenOrClose);
+			} catch(e) {
+				console.log(e);
+			}
 		}
 
 		this.model.set("isOpen", !this.model.get("isOpen"));
@@ -472,17 +474,18 @@ var TextTVPagesCollection = Backbone.Collection.extend({
 	pageAdded: function(addedPage) {
 
 		// Let's track all pages
-		try {
+		if (window.analytics) {
+			try {
 
-			analytics.trackView("Load pageRange " + addedPage.get("pageRange"));
+				analytics.trackView("Load pageRange " + addedPage.get("pageRange"));
 
-			// Analytics kind of interaction used to load next pageRange
-			analytics.trackEvent('App', 'Nav initiation', addedPage.get("initiatedBy"));
+				// Analytics kind of interaction used to load next pageRange
+				analytics.trackEvent('App', 'Nav initiation', addedPage.get("initiatedBy"));
 
-		} catch (e) {
-			console.log(e);
+			} catch (e) {
+				console.log(e);
+			}
 		}
-
 
 		// Keep track of all pages that should be in history
 		// console.log(addedPage.get("initiatedBy"));
@@ -626,6 +629,7 @@ var MainViewBar = Backbone.View.extend({
 var MainView = Backbone.View.extend({
 
 	el: "#MainView",
+	updateCheckInterval: 2000,
 
 	template: _.template( $("#MainViewTemplate").html() ),
 
@@ -649,6 +653,43 @@ var MainView = Backbone.View.extend({
 		// this.loadHome();
 		// load home/favs by trigger click in mainbar
 		//texttvapp.mainViewBar.loadHome();
+
+		// Start checking for updates of the current page
+		setInterval(this.checkForUpdate, this.updateCheckInterval);
+
+
+	},
+
+	/**
+	 * Check for newer update of the current pagerange
+	 */
+	checkForUpdate: function() {
+
+		console.log("check for update");
+
+		var currentSlide = TextTVSwiper.swiper.activeSlide();
+		if ( ! currentSlide )
+			return
+
+		var parentModel = currentSlide.parentModel;
+		if ( ! parentModel )
+			return
+
+		// 100 eller 100-102
+		var pageRange = parentModel.get("pageRange");
+
+		// Find highest update time among pagerange pages
+		var sourceData = parentModel.get("sourceData");
+		var pageWithMaxDate = _.max(sourceData, function(page) {
+			return page.date_updated_unix;
+		});
+
+		if ( _.isEmpty(pageWithMaxDate) )
+			return;
+
+		// http://texttv.nu/api/updated/100,300,700/1439310425
+		var apiEndpoint = "http://api.texttv.nu/api/updated/" + pageRange + "/" + pageWithMaxDate.date_updated_unix;
+		console.log("apiEndpoint", apiEndpoint);
 
 	},
 
