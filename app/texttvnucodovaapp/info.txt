@@ -1,11 +1,11 @@
-Node version: v0.12.4
+Node version: v4.2.1
 
-Cordova version: 5.1.1
+Cordova version: 5.3.3
 
 Config.xml file: 
 
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.mufflify.TextTVnu" version="2.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.mufflify.TextTVnu" version="2.71.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
 	<name>TextTV.nu</name>
 	<description>
 		Lite bättre SVT Text TV.
@@ -69,6 +69,9 @@ Config.xml file:
 
 			<splash src="resources/splash/ios/Default-736h.png" width="1242" height="2208"/>
 			<splash src="resources/splash/ios/Default-Landscape-736h.png" width="2208" height="1242"/>
+
+			<preference name="Orientation" value="all" />
+
 	</platform>
 
 	<preference name="SplashScreenDelay" value="0" /> -->
@@ -78,10 +81,10 @@ Config.xml file:
 
 Plugins: 
 
-cordova-plugin-console,cordova-plugin-device,cordova-plugin-google-analytics,cordova-plugin-inappbrowser,cordova-plugin-splashscreen,cordova-plugin-statusbar,nl.x-services.plugins.socialsharing
+cordova-plugin-admobpro,cordova-plugin-console,cordova-plugin-extension,cordova-plugin-google-analytics,cordova-plugin-inappbrowser,cordova-plugin-splashscreen,cordova-plugin-statusbar,nl.x-services.plugins.socialsharing
 
 iOS platform:
 
-Xcode 6.4
-Build version 6E35b
+Xcode 7.1
+Build version 7B91b
 

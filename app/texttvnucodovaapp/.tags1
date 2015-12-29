@@ -1,0 +1,70 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+isValidPageRange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	isValidPageRange: function(pageRange) {$/;"	function	line:12
+texttvapp.helpers.isValidPageRange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^texttvapp.helpers = {$/;"	method	line:7
+updateMostVisited	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	updateMostVisited: function() {$/;"	function	line:23
+texttvapp.helpers.updateMostVisited	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	},$/;"	method	line:21
+Sidebar	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var Sidebar = Backbone.Model.extend({$/;"	variable	line:87
+initialize	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	initialize: function() {$/;"	function	line:111
+openExternalLink	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	openExternalLink: function(e) {$/;"	function	line:117
+openOrClose	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	openOrClose: function() {$/;"	function	line:144
+close	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	close: function() {$/;"	function	line:163
+toggle	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	toggle: function() {$/;"	function	line:168
+render	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	render: function() {$/;"	function	line:183
+inputChange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	inputChange: function(e) {$/;"	function	line:190
+itemClick	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	itemClick: function(e) {$/;"	function	line:216
+SidebarView	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var SidebarView = Backbone.View.extend({$/;"	variable	line:101
+initialize	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	initialize: function() {$/;"	function	line:282
+addToSwiper	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	addToSwiper: function() {$/;"	function	line:302
+sourceDataChanged	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	sourceDataChanged: function() {$/;"	function	line:329
+addContentToSwiper	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	addContentToSwiper: function() {$/;"	function	line:342
+loadPageRange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	loadPageRange: function() {$/;"	function	line:376
+loadFailed	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	loadFailed: function() {$/;"	function	line:445
+TextTVPageModel	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var TextTVPageModel = Backbone.Model.extend({$/;"	variable	line:258
+initialize	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	initialize: function() {$/;"	function	line:461
+pageAdded	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	pageAdded: function(addedPage) {$/;"	function	line:465
+TextTVPagesClickCollection	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var TextTVPagesClickCollection = Backbone.Collection.extend({$/;"	variable	line:457
+initialize	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	initialize: function() {$/;"	function	line:477
+pageAdded	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	pageAdded: function(addedPage) {$/;"	function	line:481
+TextTVPagesCollection	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var TextTVPagesCollection = Backbone.Collection.extend({$/;"	variable	line:473
+MainModel	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var MainModel = Backbone.Model.extend({$/;"	variable	line:535
+backButton	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	backButton: function(e) {$/;"	function	line:566
+toggleSidebar	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	toggleSidebar: function() {$/;"	function	line:592
+loadHome	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	loadHome: function(e) {$/;"	function	line:599
+render	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	render: function() {$/;"	function	line:617
+initialize	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	initialize: function() {$/;"	function	line:624
+MainViewBar	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var MainViewBar = Backbone.View.extend({$/;"	variable	line:551
+initialize	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	initialize: function() {$/;"	function	line:653
+checkForUpdate	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	checkForUpdate: function() {$/;"	function	line:673
+sharePage	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	sharePage: function() {$/;"	function	line:729
+reloadPage	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	reloadPage: function() {$/;"	function	line:796
+loadHome	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	loadHome: function() {$/;"	function	line:821
+clickLinkInRoot	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	clickLinkInRoot: function(e) {$/;"	function	line:837
+render	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	render: function() {$/;"	function	line:881
+MainView	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var MainView = Backbone.View.extend({$/;"	variable	line:636
+TextTVSwiper.elms	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var TextTVSwiper = {$/;"	property	line:895
+initialize	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	initialize: function() {$/;"	function	line:899
+onSetWrapperTransform	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^			onSetWrapperTransform: function(swiper, transform) {$/;"	function	line:920
+onTouchEnd	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	onTouchEnd: function() {$/;"	function	line:968
+onSlideChangeStart	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	onSlideChangeStart: function() {$/;"	function	line:972
+onSlideChangeEnd	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	onSlideChangeEnd: function(swiper, direction) {$/;"	function	line:979
+activeSlide	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var activeSlide = TextTVSwiper.swiper.activeSlide();$/;"	variable	line:986
+prepareSliderAfterPageChange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	prepareSliderAfterPageChange: function() {$/;"	function	line:1005
+activeSlide	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var activeSlide = TextTVSwiper.swiper.activeSlide();$/;"	variable	line:1008
+activeSlideClone	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var activeSlideClone = activeSlide.clone();$/;"	variable	line:1009
+activeSlideIndex	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var activeSlideIndex = TextTVSwiper.swiper.activeIndex;$/;"	variable	line:1010
+parentModel	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var parentModel = activeSlide.parentModel;$/;"	variable	line:1011
+templateData.nextPageRange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var templateData = {$/;"	property	line:1022
+templateData.prevPageRange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^			nextPageRange: null,$/;"	property	line:1023
+slideBefore	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var slideBefore = TextTVSwiper.swiper.createSlide( TextTVSwiper.templatePrevPage(templateData) );$/;"	variable	line:1032
+slideAfter	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var slideAfter = TextTVSwiper.swiper.createSlide( TextTVSwiper.templateNextPage(templateData) );$/;"	variable	line:1038
+onDeviceReady	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^function onDeviceReady() {$/;"	function	line:1059
+onDeviceReady	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^function onDeviceReady() {$/;"	function	line:1059
+onDeviceResume	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^function onDeviceResume() {$/;"	function	line:1101
+onDeviceResume	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^function onDeviceResume() {$/;"	function	line:1101
+admobid.banner	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^    admobid = {$/;"	property	line:1165
+admobid.interstitial	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^        banner: 'ca-app-pub-1689239266452655\/6790998004', \/\/ or DFP format "\/6253334\/dfp_example_ad"$/;"	property	line:1166

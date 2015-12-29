@@ -1,5 +1,6 @@
 
 var texttvapp = texttvapp || {};
+var api_app = "texttvnu.ios1";
 
 /**
  * Add helpers
@@ -375,16 +376,24 @@ var TextTVPageModel = Backbone.Model.extend({
 	 */
 	loadPageRange: function() {
 
-		// Cache requests by adding timestamp that is rounded to nearest minute, downwards
+		// Cache requests by adding timestamp that is rounded to nearest minute + nearest 15 seconds
 		// so all requests within a minute can get cached by nginx
-		// Request URL will be like: http://texttv.nu/api/get/110-111/?cb=2014-3-2_19:7
+		// Request URL will be like: http://texttv.nu/api/get/110-111/?cb=2014-3-2_19:7:29:15
 		var cacheBusterTime = new Date();
 		var cacheBusterString = cacheBusterTime.getUTCFullYear() + "-" + cacheBusterTime.getUTCDay() + "-" + cacheBusterTime.getUTCDate() + "_" + cacheBusterTime.getUTCHours() + ":" + cacheBusterTime.getUTCMinutes();
+		var seconds = cacheBusterTime.getUTCSeconds();
+		var secondsInterval = 15;
+		seconds = seconds - ( seconds % secondsInterval );
+		cacheBusterString += cacheBusterString + ":" + seconds;
+
+		// Remove possible update available
+		$("body").removeClass("has-update-available");
 
 		var self = this;
 		var ajaxPromise = $.ajax({
 			dataType: "json",
 			url: "http://api.texttv.nu/api/get/" + this.get("pageRange") + "/?cb=" + cacheBusterString,
+			data: { app: api_app },
 			context: this,
 			cache: true,
 			timeout: 3000,
@@ -424,7 +433,7 @@ var TextTVPageModel = Backbone.Model.extend({
 			})
 
 			// when loading failes, due to network down, lag, etc.
-			.fail(function(r) {
+			.fail(function(jqXHR, textStatus, errorThrown) {
 
 				// Did NOT get remote data, something failed
 				this.loadFailed();
@@ -629,7 +638,7 @@ var MainViewBar = Backbone.View.extend({
 var MainView = Backbone.View.extend({
 
 	el: "#MainView",
-	updateCheckInterval: 2000,
+	updateCheckInterval: 5000,
 
 	template: _.template( $("#MainViewTemplate").html() ),
 
@@ -665,7 +674,7 @@ var MainView = Backbone.View.extend({
 	 */
 	checkForUpdate: function() {
 
-		console.log("check for update");
+		// console.log("check for update");
 
 		var currentSlide = TextTVSwiper.swiper.activeSlide();
 		if ( ! currentSlide )
@@ -689,7 +698,34 @@ var MainView = Backbone.View.extend({
 
 		// http://texttv.nu/api/updated/100,300,700/1439310425
 		var apiEndpoint = "http://api.texttv.nu/api/updated/" + pageRange + "/" + pageWithMaxDate.date_updated_unix;
-		console.log("apiEndpoint", apiEndpoint);
+
+		var ajaxPromise = $.ajax({
+			dataType: "json",
+			data: { app: api_app },
+			url: apiEndpoint,
+			context: this,
+			cache: false,
+			timeout: 1000,
+			//data: { slow_answer: 1 }, // enable this to test how it looks with slow network
+			//timeout: 1000, // enable this to test timeout/fail message
+		})
+			// when a page is done loading from server
+			.done(function(r) {
+
+				// console.log("Did check for update", r);
+				if (r && r.update_available) {
+					$("body").addClass("has-update-available");
+				}
+
+			})
+
+			// when loading failes, due to network down, lag, etc.
+			.fail(function(jqXHR, textStatus, errorThrown) {
+
+				// Did NOT get remote data, something failed
+				// console.log("Failed to check for update");
+
+			});
 
 	},
 
@@ -713,7 +749,7 @@ var MainView = Backbone.View.extend({
 			// http://digital.texttv.nu/api/share/2664651
 			var apiEndpoint = "http://api.texttv.nu/api/share/" + pageIDs;
 
-			$.getJSON(apiEndpoint)
+			$.getJSON(apiEndpoint, { app: api_app })
 				// api call successful
 				.done(function(data) {
 
@@ -779,7 +815,7 @@ var MainView = Backbone.View.extend({
 		try {
 			analytics.trackEvent('App', 'ReloadPage', parentModel.get("pageRange"));
 		} catch(e) {
-			console.log(e);
+			// console.log(e);
 		}
 
 	},
@@ -1050,6 +1086,18 @@ function onDeviceReady() {
 
 	navigator.splashscreen.hide();
 
+	// init admob
+	// it will display smart banner at top center, using the default options
+	if (window.AdMob) {
+
+		AdMob.createBanner({
+	    	adId: admobid.banner,
+	    	position: AdMob.AD_POSITION.BOTTOM_CENTER,
+	    	autoShow: true
+		});
+
+	}
+
 }
 document.addEventListener('deviceready', onDeviceReady, false);
 
@@ -1109,3 +1157,18 @@ window.addEventListener('load', function() {
 	texttvapp.mainViewBar.loadHome();
 
 }, false);
+
+/**
+ * Setup AdMob
+ */
+var admobid = {};
+if( /(android)/i.test(navigator.userAgent) ) { // for android
+    // not yet
+} else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) { // for ios
+    admobid = {
+        banner: 'ca-app-pub-1689239266452655/6790998004', // or DFP format "/6253334/dfp_example_ad"
+        interstitial: 'ca-app-pub-xxx/kkk'
+    };
+} else { // for windows phone
+    // not yet
+}

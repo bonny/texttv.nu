@@ -1,0 +1,431 @@
+head	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^<head>$/;"	function	line:4
+meta	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<meta charset="utf-8">$/;"	function	line:5
+title	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<title>TextTV.nu<\/title>$/;"	function	line:6
+meta	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">$/;"	function	line:7
+meta	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<meta name="format-detection" content="telephone=no" \/>$/;"	function	line:8
+link	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<link rel="dns-prefetch" href="http:\/\/texttv.nu\/">$/;"	function	line:9
+link	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<link rel="dns-prefetch" href="http:\/\/api.texttv.nu\/">$/;"	function	line:10
+style	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<style>$/;"	function	line:11
+link	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<link rel="stylesheet" href="js\/ionic\/release\/css\/ionic.css">$/;"	function	line:17
+link	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<link rel="stylesheet" href="bower_components\/swiper\/dist\/idangerous.swiper.css">$/;"	function	line:18
+link	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<link rel="stylesheet" href="css\/texttv-theme-black.css">$/;"	function	line:19
+link	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<link rel="stylesheet" href="bower_components\/animate.css\/animate.css">$/;"	function	line:20
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script src="bower_components\/jquery\/dist\/jquery.js"><\/script>$/;"	function	line:22
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script src="js\/jquery.ui.touch-punch.min.js"><\/script> -->$/;"	function	line:24
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script src="bower_components\/underscore\/underscore.js"><\/script>$/;"	function	line:25
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script src="bower_components\/underscore.string\/lib\/underscore.string.js"><\/script>$/;"	function	line:26
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script src="bower_components\/backbone\/backbone.js"><\/script>$/;"	function	line:27
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script src="bower_components\/fastclick\/lib\/fastclick.js"><\/script>$/;"	function	line:28
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script src="bower_components\/swiper\/dist\/idangerous.swiper.min.js"><\/script>$/;"	function	line:29
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script src="bower_components\/Sortable\/Sortable.js"><\/script>$/;"	function	line:30
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script src="js\/lawnchair-0.6.1.min.js"><\/script>$/;"	function	line:31
+body	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^<body class="">$/;"	function	line:36
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script id="LoadingTemplate" type="text\/html">$/;"	function	line:40
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^		<div class="loading-backdrop show-backdrop fade-in">$/;"	function	line:42
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<div class="loading">$/;"	function	line:43
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<div class="ion-loading-c"><\/div>$/;"	function	line:44
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^		<div class="ion-loading-c"><\/div>$/;"	function	line:51
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<div class="view view--main">$/;"	function	line:54
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^		<div id="MainViewBar"><\/div>$/;"	function	line:57
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^		<div id="MainView" class="content has-header"><\/div>$/;"	function	line:60
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script id="FavsTemplate" type="text\/html">$/;"	function	line:65
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<div class="item item-divider">$/;"	function	line:69
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<i class="icon ion-ios7-star"><\/i>$/;"	function	line:71
+ul	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<ul class="FavsItems" id="FavsItems">$/;"	function	line:100
+li	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^					<li class="item item-texttvpage" href="" data-pagerange="<%= page.pageRange %>">$/;"	function	line:102
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^					<i class="icon ion-ios7-close-outline FavsItem-remove"><\/i>$/;"	function	line:103
+span	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^						<span class="FavsItem-draggable">$/;"	function	line:106
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<div class="FavsItem-add">$/;"	function	line:111
+label	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<label class="item item-input">$/;"	function	line:112
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^					<i class="icon ion-document placeholder-icon"><\/i>$/;"	function	line:113
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script id="FavsItemTemplate" type="text\/html">$/;"	function	line:124
+li	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^		<li class="item item-texttvpage" href="" data-pagerange="<%= pageRange %>">$/;"	function	line:126
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^		<i class="icon ion-ios7-close-outline FavsItem-remove"><\/i>$/;"	function	line:127
+span	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<span class="FavsItem-draggable">$/;"	function	line:129
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script id="MostVisitedTemplate" type="text\/html">$/;"	function	line:135
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<div class="item item-divider">Mest besökta<\/div>$/;"	function	line:139
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<div class="MostVisitedPagesItems">$/;"	function	line:141
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^					<a class="item item-texttvpage" href="" data-pagerange="<%= page.pageRange %>">$/;"	function	line:143
+span	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^						<span class="item-note"><%= page.count %><\/span>$/;"	function	line:145
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script id="NextPageTemplate" type="text\/html">$/;"	function	line:155
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^		<div class="placeholderPage placeholderPage--next">$/;"	function	line:156
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<div class="placeholderPage-icon ion-document-text"><\/div>$/;"	function	line:157
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<div class="placeholderPage-text">$/;"	function	line:158
+p	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<p class="placeholderPage-pageRange"><%= obj.nextPageRange %><\/p>$/;"	function	line:159
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script id="PrevPageTemplate" type="text\/html">$/;"	function	line:165
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^		<div class="placeholderPage placeholderPage--prev">$/;"	function	line:166
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<div class="placeholderPage-icon ion-document-text"><\/div>$/;"	function	line:167
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<div class="placeholderPage-text">$/;"	function	line:168
+p	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<p class="placeholderPage-pageRange"><%= obj.prevPageRange %><\/p>$/;"	function	line:169
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script id="LoadingPageTemplate" type="text\/html">$/;"	function	line:176
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^		<div class="pageIsLoading">$/;"	function	line:177
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<div class="pageIsLoading-spinnerIcon ion-loading-c"><\/div>$/;"	function	line:178
+p	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<p class="pageIsLoading-text"><%= pageRange %><\/p>$/;"	function	line:179
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script id="LoadingPageTemplateFailed" type="text\/html">$/;"	function	line:184
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^		<div class="pageIsLoading pageIsLoading--failed">$/;"	function	line:185
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<div class="pageIsLoading-failIcon ion-alert-circled"><\/div>$/;"	function	line:186
+p	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<p class="pageIsLoading-text"><%= pageRange %><\/p>$/;"	function	line:187
+p	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<p class="pageIsLoading-text">Kunde inte läsa in sidan.$/;"	function	line:188
+p	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<p class="pageIsLoading-text"><a data-pagerange="<%= pageRange %>" href="#">Försök igen<\/a><\/p>$/;"	function	line:191
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script id="TextTVPageTemplate" type="text\/html">$/;"	function	line:196
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^		<div class="list list--share">$/;"	function	line:198
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<div class="item item-text">$/;"	function	line:200
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<div class="button-bar">$/;"	function	line:202
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^					<a class="button js-reloadPage ReloadButton">$/;"	function	line:204
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^						<i class="icon ion-ios7-reload"><\/i>$/;"	function	line:205
+span	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^						<span class="ReloadButton__reloadText">Ladda om<\/span>$/;"	function	line:206
+span	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^						<span class="ReloadButton__updateavailableText">Uppdatering finns<\/span>$/;"	function	line:207
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^					<a class="button js-sharePage hideIfNotCordova">$/;"	function	line:210
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^						<i class="icon ion-ios7-upload-outline"><\/i>$/;"	function	line:211
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script id="MainViewBarTemplate" type="text\/x-template">$/;"	function	line:232
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^		<div class="bar bar-header bar-positive">$/;"	function	line:234
+button	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<button class="button button-clear js-backButton button-back">$/;"	function	line:237
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^					<i class="icon ion-ios7-arrow-back"><\/i>$/;"	function	line:238
+span	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^					<span class="js-backButton-text"><\/span>$/;"	function	line:239
+h	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<h1 class="title">$/;"	function	line:243
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<a href="\/100" class="bar-header-titleLink">$/;"	function	line:244
+img	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^						<img src="img\/logo.png" alt="'" height="15">$/;"	function	line:247
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^					<i class="js-homeFavsIcon icon ion-ios7-star-outline"><\/i>$/;"	function	line:250
+button	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<button class="button button-clear icon ion-navicon js-sidebarToggle"><\/button>$/;"	function	line:256
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script id="MainViewTemplate" type="text\/x-template">$/;"	function	line:263
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^		<div class="swiper-container">$/;"	function	line:265
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<div class="swiper-wrapper">$/;"	function	line:266
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<div id="SidebarRight" class="menu menu-right">$/;"	function	line:272
+header	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^		<header class="bar bar-header bar-dark">$/;"	function	line:274
+h	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<h1 class="title">Sidor<\/h1>$/;"	function	line:275
+button	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<button class="button button-clear ion-close-circled js-sidebarToggle"><\/button>$/;"	function	line:276
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^		<div class="scroll-content has-header" scroll="true" overflow-scroll="false" has-header="true">$/;"	function	line:279
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<div class="list list--pages">$/;"	function	line:281
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<div class="item item-divider">Gå till sida<\/div>$/;"	function	line:283
+label	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<label class="item item-input">$/;"	function	line:284
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^					<i class="icon ion-document placeholder-icon"><\/i>$/;"	function	line:285
+input	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^					<input class="sidebar-input-page" type="number" pattern="\\d*" placeholder="T.ex. 200 eller 300">$/;"	function	line:286
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<div class="item item-input-inset">$/;"	function	line:290
+label	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^					<label class="item-input-wrapper">$/;"	function	line:291
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^						<i class="icon ion-document placeholder-icon"><\/i>$/;"	function	line:292
+input	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^						<input class="sidebar-input-page" type="number" pattern="\\d*" placeholder="Gå till sida">$/;"	function	line:293
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<div id="SidebarFavs"><\/div>$/;"	function	line:298
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<div id="SidebarMostVisisted"><\/div>$/;"	function	line:300
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<div class="item item-divider">Sidor<\/div>$/;"	function	line:302
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="100">Start <span class="item-note">100<\/span><\/a>$/;"	function	line:303
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="100-105">Nyheter <span class="item-note">100-105<\/span><\/a>$/;"	function	line:304
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="101-102">Inrikes <span class="item-note">101-102<\/span><\/a>$/;"	function	line:305
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="104-105">Utrikes <span class="item-note">104-105<\/span><\/a>$/;"	function	line:306
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="200">Ekonomi <span class="item-note">200<\/span><\/a>$/;"	function	line:307
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="300-301">Sport <span class="item-note">300-301<\/span><\/a>$/;"	function	line:308
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="376">Sportresultat <span class="item-note">376<\/span><\/a>$/;"	function	line:309
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="571">Sportresultat, V75 <span class="item-note">571<\/span><\/a>$/;"	function	line:310
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="400">Väder <span class="item-note">400<\/span><\/a>$/;"	function	line:311
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="500">Blandat <span class="item-note">500<\/span><\/a>$/;"	function	line:312
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="600">På TV <span class="item-note">600<\/span><\/a>$/;"	function	line:313
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="700">Innehåll <span class="item-note">700<\/span><\/a>$/;"	function	line:314
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="800">UR <span class="item-note">800<\/span><\/a>$/;"	function	line:315
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<div class="item item-divider">Om<\/div>$/;"	function	line:319
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<a class="item item-external-link" href="http:\/\/texttv.nu\/sida\/om-texttv-nu?utm_source=app&utm_medium=sidebar&utm_campaign=sidebar" target="_system">Om texttv.nu<\/a>$/;"	function	line:320
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<a class="item item-external-link" href="https:\/\/twitter.com\/texttv_nu" target="_system">Följ oss på Twitter<\/a>$/;"	function	line:325
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^			<a class="item" href="mailto:kontakt@texttv.nu">kontakt@texttv.nu<\/a>$/;"	function	line:326
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script src="cordova.js"><\/script>$/;"	function	line:332
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script src="js\/texttv.backbone.app.js?v3-maj-2014_3"><\/script>$/;"	function	line:333
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/platforms/ios/www/index.html	/^	<script src="js\/texttv.favs.js?v3-maj-2014_3"><\/script>$/;"	function	line:334
+head	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^<head>$/;"	function	line:4
+meta	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<meta charset="utf-8">$/;"	function	line:5
+title	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<title>TextTV.nu<\/title>$/;"	function	line:6
+meta	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">$/;"	function	line:7
+meta	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<meta name="format-detection" content="telephone=no" \/>$/;"	function	line:8
+link	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<link rel="dns-prefetch" href="http:\/\/texttv.nu\/">$/;"	function	line:9
+link	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<link rel="dns-prefetch" href="http:\/\/api.texttv.nu\/">$/;"	function	line:10
+style	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<style>$/;"	function	line:11
+link	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<link rel="stylesheet" href="js\/ionic\/release\/css\/ionic.css">$/;"	function	line:17
+link	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<link rel="stylesheet" href="bower_components\/swiper\/dist\/idangerous.swiper.css">$/;"	function	line:18
+link	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<link rel="stylesheet" href="css\/texttv-theme-black.css">$/;"	function	line:19
+link	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<link rel="stylesheet" href="bower_components\/animate.css\/animate.css">$/;"	function	line:20
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script src="bower_components\/jquery\/dist\/jquery.js"><\/script>$/;"	function	line:22
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script src="js\/jquery.ui.touch-punch.min.js"><\/script> -->$/;"	function	line:24
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script src="bower_components\/underscore\/underscore.js"><\/script>$/;"	function	line:25
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script src="bower_components\/underscore.string\/lib\/underscore.string.js"><\/script>$/;"	function	line:26
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script src="bower_components\/backbone\/backbone.js"><\/script>$/;"	function	line:27
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script src="bower_components\/fastclick\/lib\/fastclick.js"><\/script>$/;"	function	line:28
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script src="bower_components\/swiper\/dist\/idangerous.swiper.min.js"><\/script>$/;"	function	line:29
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script src="bower_components\/Sortable\/Sortable.js"><\/script>$/;"	function	line:30
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script src="js\/lawnchair-0.6.1.min.js"><\/script>$/;"	function	line:31
+body	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^<body class="">$/;"	function	line:36
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script id="LoadingTemplate" type="text\/html">$/;"	function	line:40
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^		<div class="loading-backdrop show-backdrop fade-in">$/;"	function	line:42
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<div class="loading">$/;"	function	line:43
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<div class="ion-loading-c"><\/div>$/;"	function	line:44
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^		<div class="ion-loading-c"><\/div>$/;"	function	line:51
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<div class="view view--main">$/;"	function	line:54
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^		<div id="MainViewBar"><\/div>$/;"	function	line:57
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^		<div id="MainView" class="content has-header"><\/div>$/;"	function	line:60
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script id="FavsTemplate" type="text\/html">$/;"	function	line:65
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<div class="item item-divider">$/;"	function	line:69
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<i class="icon ion-ios7-star"><\/i>$/;"	function	line:71
+ul	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<ul class="FavsItems" id="FavsItems">$/;"	function	line:100
+li	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^					<li class="item item-texttvpage" href="" data-pagerange="<%= page.pageRange %>">$/;"	function	line:102
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^					<i class="icon ion-ios7-close-outline FavsItem-remove"><\/i>$/;"	function	line:103
+span	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^						<span class="FavsItem-draggable">$/;"	function	line:106
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<div class="FavsItem-add">$/;"	function	line:111
+label	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<label class="item item-input">$/;"	function	line:112
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^					<i class="icon ion-document placeholder-icon"><\/i>$/;"	function	line:113
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script id="FavsItemTemplate" type="text\/html">$/;"	function	line:124
+li	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^		<li class="item item-texttvpage" href="" data-pagerange="<%= pageRange %>">$/;"	function	line:126
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^		<i class="icon ion-ios7-close-outline FavsItem-remove"><\/i>$/;"	function	line:127
+span	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<span class="FavsItem-draggable">$/;"	function	line:129
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script id="MostVisitedTemplate" type="text\/html">$/;"	function	line:135
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<div class="item item-divider">Mest besökta<\/div>$/;"	function	line:139
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<div class="MostVisitedPagesItems">$/;"	function	line:141
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^					<a class="item item-texttvpage" href="" data-pagerange="<%= page.pageRange %>">$/;"	function	line:143
+span	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^						<span class="item-note"><%= page.count %><\/span>$/;"	function	line:145
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script id="NextPageTemplate" type="text\/html">$/;"	function	line:155
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^		<div class="placeholderPage placeholderPage--next">$/;"	function	line:156
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<div class="placeholderPage-icon ion-document-text"><\/div>$/;"	function	line:157
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<div class="placeholderPage-text">$/;"	function	line:158
+p	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<p class="placeholderPage-pageRange"><%= obj.nextPageRange %><\/p>$/;"	function	line:159
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script id="PrevPageTemplate" type="text\/html">$/;"	function	line:165
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^		<div class="placeholderPage placeholderPage--prev">$/;"	function	line:166
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<div class="placeholderPage-icon ion-document-text"><\/div>$/;"	function	line:167
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<div class="placeholderPage-text">$/;"	function	line:168
+p	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<p class="placeholderPage-pageRange"><%= obj.prevPageRange %><\/p>$/;"	function	line:169
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script id="LoadingPageTemplate" type="text\/html">$/;"	function	line:176
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^		<div class="pageIsLoading">$/;"	function	line:177
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<div class="pageIsLoading-spinnerIcon ion-loading-c"><\/div>$/;"	function	line:178
+p	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<p class="pageIsLoading-text"><%= pageRange %><\/p>$/;"	function	line:179
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script id="LoadingPageTemplateFailed" type="text\/html">$/;"	function	line:184
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^		<div class="pageIsLoading pageIsLoading--failed">$/;"	function	line:185
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<div class="pageIsLoading-failIcon ion-alert-circled"><\/div>$/;"	function	line:186
+p	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<p class="pageIsLoading-text"><%= pageRange %><\/p>$/;"	function	line:187
+p	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<p class="pageIsLoading-text">Kunde inte läsa in sidan.$/;"	function	line:188
+p	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<p class="pageIsLoading-text"><a data-pagerange="<%= pageRange %>" href="#">Försök igen<\/a><\/p>$/;"	function	line:191
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script id="TextTVPageTemplate" type="text\/html">$/;"	function	line:196
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^		<div class="list list--share">$/;"	function	line:198
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<div class="item item-text">$/;"	function	line:200
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<div class="button-bar">$/;"	function	line:202
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^					<a class="button js-reloadPage ReloadButton">$/;"	function	line:204
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^						<i class="icon ion-ios7-reload"><\/i>$/;"	function	line:205
+span	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^						<span class="ReloadButton__reloadText">Ladda om<\/span>$/;"	function	line:206
+span	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^						<span class="ReloadButton__updateavailableText">Uppdatering finns<\/span>$/;"	function	line:207
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^					<a class="button js-sharePage hideIfNotCordova">$/;"	function	line:210
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^						<i class="icon ion-ios7-upload-outline"><\/i>$/;"	function	line:211
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script id="MainViewBarTemplate" type="text\/x-template">$/;"	function	line:232
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^		<div class="bar bar-header bar-positive">$/;"	function	line:234
+button	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<button class="button button-clear js-backButton button-back">$/;"	function	line:237
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^					<i class="icon ion-ios7-arrow-back"><\/i>$/;"	function	line:238
+span	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^					<span class="js-backButton-text"><\/span>$/;"	function	line:239
+h	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<h1 class="title">$/;"	function	line:243
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<a href="\/100" class="bar-header-titleLink">$/;"	function	line:244
+img	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^						<img src="img\/logo.png" alt="'" height="15">$/;"	function	line:247
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^					<i class="js-homeFavsIcon icon ion-ios7-star-outline"><\/i>$/;"	function	line:250
+button	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<button class="button button-clear icon ion-navicon js-sidebarToggle"><\/button>$/;"	function	line:256
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script id="MainViewTemplate" type="text\/x-template">$/;"	function	line:263
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^		<div class="swiper-container">$/;"	function	line:265
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<div class="swiper-wrapper">$/;"	function	line:266
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<div id="SidebarRight" class="menu menu-right">$/;"	function	line:272
+header	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^		<header class="bar bar-header bar-dark">$/;"	function	line:274
+h	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<h1 class="title">Sidor<\/h1>$/;"	function	line:275
+button	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<button class="button button-clear ion-close-circled js-sidebarToggle"><\/button>$/;"	function	line:276
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^		<div class="scroll-content has-header" scroll="true" overflow-scroll="false" has-header="true">$/;"	function	line:279
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<div class="list list--pages">$/;"	function	line:281
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<div class="item item-divider">Gå till sida<\/div>$/;"	function	line:283
+label	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<label class="item item-input">$/;"	function	line:284
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^					<i class="icon ion-document placeholder-icon"><\/i>$/;"	function	line:285
+input	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^					<input class="sidebar-input-page" type="number" pattern="\\d*" placeholder="T.ex. 200 eller 300">$/;"	function	line:286
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<div class="item item-input-inset">$/;"	function	line:290
+label	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^					<label class="item-input-wrapper">$/;"	function	line:291
+i	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^						<i class="icon ion-document placeholder-icon"><\/i>$/;"	function	line:292
+input	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^						<input class="sidebar-input-page" type="number" pattern="\\d*" placeholder="Gå till sida">$/;"	function	line:293
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<div id="SidebarFavs"><\/div>$/;"	function	line:298
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<div id="SidebarMostVisisted"><\/div>$/;"	function	line:300
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<div class="item item-divider">Sidor<\/div>$/;"	function	line:302
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="100">Start <span class="item-note">100<\/span><\/a>$/;"	function	line:303
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="100-105">Nyheter <span class="item-note">100-105<\/span><\/a>$/;"	function	line:304
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="101-102">Inrikes <span class="item-note">101-102<\/span><\/a>$/;"	function	line:305
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="104-105">Utrikes <span class="item-note">104-105<\/span><\/a>$/;"	function	line:306
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="200">Ekonomi <span class="item-note">200<\/span><\/a>$/;"	function	line:307
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="300-301">Sport <span class="item-note">300-301<\/span><\/a>$/;"	function	line:308
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="376">Sportresultat <span class="item-note">376<\/span><\/a>$/;"	function	line:309
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="571">Sportresultat, V75 <span class="item-note">571<\/span><\/a>$/;"	function	line:310
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="400">Väder <span class="item-note">400<\/span><\/a>$/;"	function	line:311
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="500">Blandat <span class="item-note">500<\/span><\/a>$/;"	function	line:312
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="600">På TV <span class="item-note">600<\/span><\/a>$/;"	function	line:313
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="700">Innehåll <span class="item-note">700<\/span><\/a>$/;"	function	line:314
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^				<a class="item item-texttvpage" href="" data-pagerange="800">UR <span class="item-note">800<\/span><\/a>$/;"	function	line:315
+div	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<div class="item item-divider">Om<\/div>$/;"	function	line:319
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<a class="item item-external-link" href="http:\/\/texttv.nu\/sida\/om-texttv-nu?utm_source=app&utm_medium=sidebar&utm_campaign=sidebar" target="_system">Om texttv.nu<\/a>$/;"	function	line:320
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<a class="item item-external-link" href="https:\/\/twitter.com\/texttv_nu" target="_system">Följ oss på Twitter<\/a>$/;"	function	line:325
+a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^			<a class="item" href="mailto:kontakt@texttv.nu">kontakt@texttv.nu<\/a>$/;"	function	line:326
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script src="cordova.js"><\/script>$/;"	function	line:332
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script src="js\/texttv.backbone.app.js?v3-maj-2014_3"><\/script>$/;"	function	line:333
+script	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/index.html	/^	<script src="js\/texttv.favs.js?v3-maj-2014_3"><\/script>$/;"	function	line:334
+.list--share	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.list--share {$/;"	function	line:6
+.list--share .item	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.list--share .item {$/;"	function	line:18
+.list--share .item .button	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.list--share .item .button {$/;"	function	line:25
+.list--share .item .button:active	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.list--share .item .button:active {$/;"	function	line:32
+.list--share .icon	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.list--share .icon {$/;"	function	line:36
+.list--share::before	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.list--share::before {$/;"	function	line:43
+.list--share .button	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.list--share .button {$/;"	function	line:56
+.has-update-available .ReloadButton	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.has-update-available .ReloadButton {$/;"	function	line:62
+.ReloadButton__updateavailableText	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.ReloadButton__updateavailableText {$/;"	function	line:66
+.has-update-available .ReloadButton__updateavailableText	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.has-update-available .ReloadButton__updateavailableText {$/;"	function	line:70
+.has-update-available .ReloadButton__reloadText	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.has-update-available .ReloadButton__reloadText {$/;"	function	line:73
+@font-face	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^@font-face {$/;"	function	line:79
+@font-face	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^@font-face {$/;"	function	line:86
+.bar-header-titleLink	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bar-header-titleLink {$/;"	function	line:97
+.bar-header-titleLink:active	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bar-header-titleLink:active {$/;"	function	line:104
+.pageIsLoading, .placeholderPage	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.pageIsLoading, .placeholderPage {$/;"	function	line:109
+.pageIsLoading-spinnerIcon	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.pageIsLoading-spinnerIcon,$/;"	function	line:114
+.pageIsLoading-failIcon	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.pageIsLoading-failIcon,$/;"	function	line:115
+.placeholderPage-icon	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.placeholderPage-icon {$/;"	function	line:116
+.pageIsLoading-text	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.pageIsLoading-text,$/;"	function	line:121
+.placeholderPage-text	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.placeholderPage-text {$/;"	function	line:122
+.pageIsLoading-text a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.pageIsLoading-text a {$/;"	function	line:129
+.placeholderPage-pageRange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.placeholderPage-pageRange {$/;"	function	line:133
+.swiper-wrapper	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.swiper-wrapper {$/;"	function	line:141
+.swiper-container	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.swiper-container {$/;"	function	line:144
+.swiper-container, .swiper-slide	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.swiper-container, .swiper-slide {$/;"	function	line:152
+.TextTVPage	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.TextTVPage {$/;"	function	line:166
+.root	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.root {$/;"	function	line:170
+@media only screen and (min-width : 768px)	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^@media only screen and (min-width : 768px) {$/;"	function	line:213
+.root	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^	.root {$/;"	function	line:215
+.root h1	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.root h1 {$/;"	function	line:221
+.toprow	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.toprow {$/;"	function	line:228
+.root	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.root,$/;"	function	line:233
+.W	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.W,$/;"	function	line:234
+.W a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.W a,$/;"	function	line:235
+.root a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.root a {$/;"	function	line:236
+.root a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.root a {$/;"	function	line:240
+.root a:focus	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.root a:focus,$/;"	function	line:242
+.bgW	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgW {$/;"	function	line:248
+.R	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.R {$/;"	function	line:253
+.bgR	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgR {$/;"	function	line:256
+.B	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.B,$/;"	function	line:260
+.B a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.B a { color: #1122CC }$/;"	function	line:261
+.Y	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.Y,$/;"	function	line:264
+.Y a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.Y a { color: #e2e200 }$/;"	function	line:265
+.bgY	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgY {$/;"	function	line:267
+.C	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.C,$/;"	function	line:273
+.C a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.C a {$/;"	function	line:274
+.bgC	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgC {$/;"	function	line:277
+.bgB	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgB,$/;"	function	line:281
+.bgB a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgB a {$/;"	function	line:282
+.DH	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.DH {$/;"	function	line:287
+.G	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.G,$/;"	function	line:294
+.G a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.G a {$/;"	function	line:295
+.bgG	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgG {$/;"	function	line:298
+.M	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.M {$/;"	function	line:303
+.bgM	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgM {$/;"	function	line:306
+.view--main	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.view--main {$/;"	function	line:311
+.view--main.open-sidebar	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.view--main.open-sidebar {$/;"	function	line:315
+.view--main .swiper-container	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.view--main .swiper-container {$/;"	function	line:320
+.view--main.open-sidebar .swiper-container	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.view--main.open-sidebar .swiper-container {$/;"	function	line:326
+#MainView	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#MainView {$/;"	function	line:335
+.menu	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.menu {$/;"	function	line:340
+.menu .scroll-content	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.menu .scroll-content {$/;"	function	line:343
+.content	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.content {$/;"	function	line:353
+.swiper-container	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.swiper-container {$/;"	function	line:356
+.platform-ios7.platform-cordova:not(.fullscreen) .swiper-container	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.platform-ios7.platform-cordova:not(.fullscreen) .swiper-container,$/;"	function	line:365
+.swiper-slide	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.swiper-slide {$/;"	function	line:371
+.menu-right .item-divider	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.menu-right .item-divider {$/;"	function	line:384
+.MostVisitedPagesItems .item	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.MostVisitedPagesItems .item,$/;"	function	line:392
+#SidebarMostVisisted	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#SidebarMostVisisted {$/;"	function	line:401
+.MostVisitedPagesItems .item-note	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.MostVisitedPagesItems .item-note {$/;"	function	line:405
+.FavsItems	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItems {$/;"	function	line:409
+.animate-enter-setup, .animate-leave-setup	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.animate-enter-setup, .animate-leave-setup {$/;"	function	line:415
+.animate-enter-setup	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.animate-enter-setup {$/;"	function	line:416
+.animate-enter-setup.animate-enter-start	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.animate-enter-setup.animate-enter-start {$/;"	function	line:417
+.animate-leave-setup.animate-leave-start	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.animate-leave-setup.animate-leave-start {$/;"	function	line:418
+.animate-leave-setup	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.animate-leave-setup{$/;"	function	line:419
+.button-back	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.button-back {$/;"	function	line:425
+.button-back--enabled	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.button-back--enabled {$/;"	function	line:435
+.button-back:active	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.button-back:active {$/;"	function	line:439
+#MainViewBar .button-clear:active	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#MainViewBar .button-clear:active {$/;"	function	line:444
+#SidebarRight .item:active	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#SidebarRight .item:active {$/;"	function	line:448
+body:not(.platform-cordova) .hideIfNotCordova	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^body:not(.platform-cordova) .hideIfNotCordova {$/;"	function	line:453
+.loading	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.loading {$/;"	function	line:457
+.FavsItem-draggable	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-draggable {$/;"	function	line:467
+.FavsItems .sortable-ghost	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItems .sortable-ghost {$/;"	function	line:478
+.FavsItemEdit	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItemEdit,$/;"	function	line:482
+.FavsItemEditDone	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItemEditDone {$/;"	function	line:483
+.FavsItem-remove	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-remove {$/;"	function	line:493
+.FavsItem-remove	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-remove,$/;"	function	line:505
+.FavsItem-draggable	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-draggable,$/;"	function	line:506
+.FavsItemEdit	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItemEdit,$/;"	function	line:507
+.FavsItemEditDone	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItemEditDone,$/;"	function	line:508
+.FavsItem-add	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-add {$/;"	function	line:509
+.FavsItem-remove	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-remove,$/;"	function	line:516
+.FavsItem-draggable	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-draggable,$/;"	function	line:517
+.FavsItemEditDone	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItemEditDone,$/;"	function	line:518
+.FavsItem-add	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-add {$/;"	function	line:525
+#SidebarFavs.is-editing .FavsItem-remove	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#SidebarFavs.is-editing .FavsItem-remove,$/;"	function	line:532
+#SidebarFavs.is-editing .FavsItem-draggable	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#SidebarFavs.is-editing .FavsItem-draggable,$/;"	function	line:533
+#SidebarFavs.is-editing .FavsItemEditDone	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#SidebarFavs.is-editing .FavsItemEditDone,$/;"	function	line:534
+#SidebarFavs.is-editing .FavsItem-add	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#SidebarFavs.is-editing .FavsItem-add {$/;"	function	line:541
+#SidebarFavs.is-editing .FavsItemEdit	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#SidebarFavs.is-editing .FavsItemEdit {$/;"	function	line:545
+.platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader)>*	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader)>*{margin-top:20px}$/;"	function	line:555
+@media only screen and (min-width: 375px) and (max-width: 414px)	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^@media only screen and (min-width: 375px) and (max-width: 414px) {$/;"	function	line:562
+.root	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^	.root {$/;"	function	line:564
+@media only screen and (min-width: 414px) and (max-width: 415px)	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^@media only screen and (min-width: 414px) and (max-width: 415px) {$/;"	function	line:571
+.root	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^	.root {$/;"	function	line:573
+isValidPageRange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	isValidPageRange: function(pageRange) {$/;"	function	line:12
+texttvapp.helpers.isValidPageRange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^texttvapp.helpers = {$/;"	method	line:7
+updateMostVisited	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	updateMostVisited: function() {$/;"	function	line:23
+texttvapp.helpers.updateMostVisited	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	},$/;"	method	line:21
+Sidebar	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var Sidebar = Backbone.Model.extend({$/;"	variable	line:87
+initialize	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	initialize: function() {$/;"	function	line:111
+openExternalLink	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	openExternalLink: function(e) {$/;"	function	line:117
+openOrClose	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	openOrClose: function() {$/;"	function	line:144
+close	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	close: function() {$/;"	function	line:163
+toggle	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	toggle: function() {$/;"	function	line:168
+render	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	render: function() {$/;"	function	line:183
+inputChange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	inputChange: function(e) {$/;"	function	line:190
+itemClick	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	itemClick: function(e) {$/;"	function	line:216
+SidebarView	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var SidebarView = Backbone.View.extend({$/;"	variable	line:101
+initialize	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	initialize: function() {$/;"	function	line:282
+addToSwiper	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	addToSwiper: function() {$/;"	function	line:302
+sourceDataChanged	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	sourceDataChanged: function() {$/;"	function	line:329
+addContentToSwiper	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	addContentToSwiper: function() {$/;"	function	line:342
+loadPageRange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	loadPageRange: function() {$/;"	function	line:376
+loadFailed	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	loadFailed: function() {$/;"	function	line:445
+TextTVPageModel	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var TextTVPageModel = Backbone.Model.extend({$/;"	variable	line:258
+initialize	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	initialize: function() {$/;"	function	line:461
+pageAdded	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	pageAdded: function(addedPage) {$/;"	function	line:465
+TextTVPagesClickCollection	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var TextTVPagesClickCollection = Backbone.Collection.extend({$/;"	variable	line:457
+initialize	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	initialize: function() {$/;"	function	line:477
+pageAdded	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	pageAdded: function(addedPage) {$/;"	function	line:481
+TextTVPagesCollection	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var TextTVPagesCollection = Backbone.Collection.extend({$/;"	variable	line:473
+MainModel	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var MainModel = Backbone.Model.extend({$/;"	variable	line:535
+backButton	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	backButton: function(e) {$/;"	function	line:566
+toggleSidebar	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	toggleSidebar: function() {$/;"	function	line:592
+loadHome	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	loadHome: function(e) {$/;"	function	line:599
+render	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	render: function() {$/;"	function	line:617
+initialize	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	initialize: function() {$/;"	function	line:624
+MainViewBar	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var MainViewBar = Backbone.View.extend({$/;"	variable	line:551
+initialize	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	initialize: function() {$/;"	function	line:653
+checkForUpdate	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	checkForUpdate: function() {$/;"	function	line:673
+sharePage	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	sharePage: function() {$/;"	function	line:729
+reloadPage	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	reloadPage: function() {$/;"	function	line:796
+loadHome	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	loadHome: function() {$/;"	function	line:821
+clickLinkInRoot	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	clickLinkInRoot: function(e) {$/;"	function	line:837
+render	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	render: function() {$/;"	function	line:881
+MainView	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var MainView = Backbone.View.extend({$/;"	variable	line:636
+TextTVSwiper.elms	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^var TextTVSwiper = {$/;"	property	line:895
+initialize	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	initialize: function() {$/;"	function	line:899
+onSetWrapperTransform	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^			onSetWrapperTransform: function(swiper, transform) {$/;"	function	line:920
+onTouchEnd	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	onTouchEnd: function() {$/;"	function	line:968
+onSlideChangeStart	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	onSlideChangeStart: function() {$/;"	function	line:972
+onSlideChangeEnd	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	onSlideChangeEnd: function(swiper, direction) {$/;"	function	line:979
+activeSlide	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var activeSlide = TextTVSwiper.swiper.activeSlide();$/;"	variable	line:986
+prepareSliderAfterPageChange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^	prepareSliderAfterPageChange: function() {$/;"	function	line:1005
+activeSlide	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var activeSlide = TextTVSwiper.swiper.activeSlide();$/;"	variable	line:1008
+activeSlideClone	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var activeSlideClone = activeSlide.clone();$/;"	variable	line:1009
+activeSlideIndex	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var activeSlideIndex = TextTVSwiper.swiper.activeIndex;$/;"	variable	line:1010
+parentModel	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var parentModel = activeSlide.parentModel;$/;"	variable	line:1011
+templateData.nextPageRange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var templateData = {$/;"	property	line:1022
+templateData.prevPageRange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^			nextPageRange: null,$/;"	property	line:1023
+slideBefore	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var slideBefore = TextTVSwiper.swiper.createSlide( TextTVSwiper.templatePrevPage(templateData) );$/;"	variable	line:1032
+slideAfter	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^		var slideAfter = TextTVSwiper.swiper.createSlide( TextTVSwiper.templateNextPage(templateData) );$/;"	variable	line:1038
+onDeviceReady	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^function onDeviceReady() {$/;"	function	line:1059
+onDeviceReady	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^function onDeviceReady() {$/;"	function	line:1059
+onDeviceResume	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^function onDeviceResume() {$/;"	function	line:1101
+onDeviceResume	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^function onDeviceResume() {$/;"	function	line:1101
+admobid.banner	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^    admobid = {$/;"	property	line:1165
+admobid.interstitial	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/js/texttv.backbone.app.js	/^        banner: 'ca-app-pub-1689239266452655\/6790998004', \/\/ or DFP format "\/6253334\/dfp_example_ad"$/;"	property	line:1166

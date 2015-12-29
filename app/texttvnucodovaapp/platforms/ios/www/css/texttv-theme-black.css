@@ -27,11 +27,16 @@
 	border-color: none;
 	border: none;
 	/*border-radius: 5px;*/
+	border-right: 1px solid rgb(100, 100, 100);
 }
 .list--share .item .button:active {
 	color: rgba(238, 238, 238, .75);
 }
 
+.list--share .icon {
+	position: relative;
+	top: -2px;
+}
 /* add item behind share/reload-buttons and blur */
 /*	-webkit-filter: blur(3px); */
 /*
@@ -52,6 +57,37 @@
 	background-color: transparent;
 	color: #eee;
 	border-color: #999;
+}
+
+.has-update-available .ReloadButton {
+	background: rgb(62, 148, 13) !important;
+}
+
+.ReloadButton__updateavailableText {
+	display: none;
+}
+
+.has-update-available .ReloadButton__updateavailableText {
+	display: inline-block;
+}
+.has-update-available .ReloadButton__reloadText {
+	display: none;
+}
+
+/* make text a bit smaller on smaller devices, or it will not fit */
+@media only screen
+	and (min-device-width : 320px)
+	and (max-device-width : 568px)
+	and (orientation : portrait) {
+
+	.has-update-available .ReloadButton .icon:before {
+		font-size: 18px;
+	}
+
+	.ReloadButton__updateavailableText {
+		font-size: .9em
+	}
+
 }
 
 /* This is the font that is the narrowest and monospace and feels good etc. */
@@ -183,6 +219,11 @@ T.ex. sida 200 blir icke centrerad..
 
 	padding-top: 1em;
 	padding-bottom: 1em;
+}
+
+/* more space below last root, because to close to ad otherwise */
+.root:last-of-type {
+	padding-bottom: 2em;
 }
 
 /*
@@ -526,6 +567,7 @@ when on device bar goes from 44px to 67px
 	opacity: 0;
 }
 
+
 /*
 http://forum.ionicframework.com/t/how-to-show-the-statusbar-on-ios-8-like-ios-7/9937
 */
@@ -553,4 +595,3 @@ make one page fit in portrait mode, make two pages fit in landscape
 	}
 
 }
-

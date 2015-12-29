@@ -45,7 +45,7 @@ var FavsView = Backbone.View.extend({
 	// can be used in console to clear favs
 	// in console: texttvapp.favsView.clearFavs();
 	clearFavs: function() {
-		
+
 		var favs = {
 			key: "favs",
 			pages: []
@@ -67,10 +67,13 @@ var FavsView = Backbone.View.extend({
 
 			// Make sure at least one page exists, so user has something to start with
 			if ( _.isEmpty(favs.pages) ) {
-				
+
 				favs.pages = [];
 				favs.pages.push({
 					pageRange: 100
+				});
+				favs.pages.push({
+					pageRange: 300
 				});
 			}
 
@@ -89,7 +92,7 @@ var FavsView = Backbone.View.extend({
 
 	// save favs when editing is done
 	endEdit: function() {
-	
+
 		this.$el.removeClass("is-editing");
 
 		var self = this;
@@ -108,7 +111,7 @@ var FavsView = Backbone.View.extend({
 		texttvapp.storage.save(favs, function(favs) {
 			// after favs saved
 			console.log("favs saved");
-			
+
 			// Reload to populate
 			self.loadFavs();
 
@@ -119,16 +122,16 @@ var FavsView = Backbone.View.extend({
 	},
 
 	inputChange: function(e) {
-		
+
 		var $target = $(e.target);
 		var pageRange = $target.val();
 
 		if ( texttvapp.helpers.isValidPageRange(pageRange)) {
-		
+
 			var newPageData = {
 				pageRange: pageRange
 			};
-			
+
 			this.$el.find(".FavsItems").append( this.template_single( newPageData ) );
 
 			$target.val("");
@@ -142,13 +145,13 @@ var FavsView = Backbone.View.extend({
 		var $target = $(e.target);
 		var $li = $target.closest("li");
 		var pageRange = $li.data("pagerange");
-		
+
 		if ( confirm("Ta bort "  + pageRange + " från favoriter?") ) {
 
 			$li.fadeOut("slow", function() {
 
 				$li.remove();
-				
+
 			});
 
 		}
@@ -159,11 +162,11 @@ var FavsView = Backbone.View.extend({
 	},
 
 	makeSortable : function() {
-	
+
 		var FavsItems = document.querySelector("#FavsItems");
 
 		if (FavsItems) {
-		
+
 			new Sortable(FavsItems, {
 				handle: ".FavsItem-draggable",
 				onUpdate: function (evt){
@@ -195,7 +198,7 @@ var FavsView = Backbone.View.extend({
 
 	render: function() {
 
-		var self = this;	
+		var self = this;
 		var favs = this.model.get("favs");
 		var pages = favs.pages;
 		var $elm = $("#SidebarFavs");
@@ -212,4 +215,3 @@ texttvapp.favsView = new FavsView({
 	el: "#SidebarFavs",
 	model: texttvapp.favs
 });
-
