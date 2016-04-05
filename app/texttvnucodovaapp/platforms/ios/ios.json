@@ -1,0 +1,172 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"SocialSharing\"><param name=\"ios-package\" value=\"SocialSharing\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"ios-package\" value=\"CDVStatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AdMob\"><param name=\"ios-package\" value=\"CDVAdMobPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"UniversalAnalytics\"><param name=\"ios-package\" value=\"UniversalAnalyticsPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "nl.x-services.plugins.socialsharing": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "cordova-plugin-admobpro": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "cordova-plugin-google-analytics": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "cordova-plugin-extension": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/nl.x-services.plugins.socialsharing/www/SocialSharing.js",
+            "id": "nl.x-services.plugins.socialsharing.SocialSharing",
+            "pluginId": "nl.x-services.plugins.socialsharing",
+            "clobbers": [
+                "window.plugins.socialsharing"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-console/www/console-via-logger.js",
+            "id": "cordova-plugin-console.console",
+            "pluginId": "cordova-plugin-console",
+            "clobbers": [
+                "console"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-console/www/logger.js",
+            "id": "cordova-plugin-console.logger",
+            "pluginId": "cordova-plugin-console",
+            "clobbers": [
+                "cordova.logger"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+            "id": "cordova-plugin-inappbrowser.inappbrowser",
+            "pluginId": "cordova-plugin-inappbrowser",
+            "clobbers": [
+                "cordova.InAppBrowser.open",
+                "window.open"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+            "id": "cordova-plugin-splashscreen.SplashScreen",
+            "pluginId": "cordova-plugin-splashscreen",
+            "clobbers": [
+                "navigator.splashscreen"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+            "id": "cordova-plugin-statusbar.statusbar",
+            "pluginId": "cordova-plugin-statusbar",
+            "clobbers": [
+                "window.StatusBar"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-admobpro/www/AdMob.js",
+            "id": "cordova-plugin-admobpro.AdMob",
+            "pluginId": "cordova-plugin-admobpro",
+            "clobbers": [
+                "window.AdMob"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-google-analytics/www/analytics.js",
+            "id": "cordova-plugin-google-analytics.UniversalAnalytics",
+            "pluginId": "cordova-plugin-google-analytics",
+            "clobbers": [
+                "analytics"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device/www/device.js",
+            "id": "cordova-plugin-device.device",
+            "pluginId": "cordova-plugin-device",
+            "clobbers": [
+                "device"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "nl.x-services.plugins.socialsharing": "4.3.18",
+        "cordova-plugin-console": "1.0.0",
+        "cordova-plugin-inappbrowser": "1.0.0",
+        "cordova-plugin-splashscreen": "2.0.0",
+        "cordova-plugin-statusbar": "1.0.0",
+        "cordova-plugin-admobpro": "2.9.2",
+        "cordova-plugin-google-analytics": "0.8.0",
+        "cordova-plugin-device": "1.0.1",
+        "cordova-plugin-extension": "1.1.4"
+    }
+}
