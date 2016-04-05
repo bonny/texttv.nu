@@ -59,6 +59,14 @@
 	border-color: #999;
 }
 
+.button-bar > .button.ReloadButton {
+	flex: 3;
+}
+
+.ShareButton {
+
+}
+
 .has-update-available .ReloadButton {
 	background: rgb(62, 148, 13) !important;
 }
