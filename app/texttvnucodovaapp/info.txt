@@ -1,4 +1,4 @@
-Node version: v4.2.1
+Node version: v5.8.0
 
 Cordova version: 5.3.3
 
@@ -81,10 +81,10 @@ Config.xml file:
 
 Plugins: 
 
-cordova-plugin-admobpro,cordova-plugin-console,cordova-plugin-extension,cordova-plugin-google-analytics,cordova-plugin-inappbrowser,cordova-plugin-splashscreen,cordova-plugin-statusbar,nl.x-services.plugins.socialsharing
+cordova-plugin-admobpro,cordova-plugin-console,cordova-plugin-device,cordova-plugin-extension,cordova-plugin-google-analytics,cordova-plugin-inappbrowser,cordova-plugin-splashscreen,cordova-plugin-statusbar,nl.x-services.plugins.socialsharing
 
 iOS platform:
 
-Xcode 7.1
-Build version 7B91b
+Xcode 7.3
+Build version 7D175
 
