@@ -1,4 +1,5 @@
-cordova.define("cordova-plugin-google-analytics.UniversalAnalytics", function(require, exports, module) { function UniversalAnalyticsPlugin() {}
+cordova.define("cordova-plugin-google-analytics.UniversalAnalytics", function(require, exports, module) {
+function UniversalAnalyticsPlugin() {}
 
 UniversalAnalyticsPlugin.prototype.startTrackerWithId = function(id, success, error) {
   cordova.exec(success, error, 'UniversalAnalytics', 'startTrackerWithId', [id]);
@@ -61,6 +62,11 @@ UniversalAnalyticsPlugin.prototype.addTransaction = function(transactionId, affi
 
 UniversalAnalyticsPlugin.prototype.addTransactionItem = function(transactionId, name ,sku, category, price, quantity, currencyCode, success, error) {
   cordova.exec(success, error, 'UniversalAnalytics', 'addTransactionItem', [transactionId, name ,sku, category, price, quantity, currencyCode]);
+};
+
+/* automatic uncaught exception tracking */
+UniversalAnalyticsPlugin.prototype.enableUncaughtExceptionReporting = function (enable, success, error) {
+  cordova.exec(success, error, 'UniversalAnalytics', 'enableUncaughtExceptionReporting', [enable]);
 };
 
 module.exports = new UniversalAnalyticsPlugin();

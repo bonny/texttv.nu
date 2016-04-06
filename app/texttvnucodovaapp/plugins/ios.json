@@ -201,10 +201,16 @@
         }
     },
     "installed_plugins": {
-        "nl.x-services.plugins.socialsharing": {
+        "cordova-plugin-admobpro": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "cordova-plugin-google-analytics": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "cordova-plugin-inappbrowser": {
@@ -216,13 +222,7 @@
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
-        "cordova-plugin-admobpro": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
-        "cordova-plugin-google-analytics": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
-        "cordova-plugin-device": {
+        "cordova-plugin-x-socialsharing": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         }
     },

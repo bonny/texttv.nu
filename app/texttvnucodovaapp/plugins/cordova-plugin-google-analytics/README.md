@@ -1,7 +1,7 @@
 google-analytics-plugin
 =======================
 
-Cordova (PhoneGap) 3.0+ Plugin to connect to Google's native Universal Analytics SDK 3.0
+Cordova (PhoneGap) 3.0+ Plugin to connect to Google's native Universal Analytics SDK 3.14
 
 Prerequisites:
 * A Cordova 3.0+ project for iOS and/or Android
@@ -14,10 +14,17 @@ This plugin follows the Cordova 3.0+ plugin spec, so it can be installed through
 cordova plugin add https://github.com/danwilson/google-analytics-plugin.git
 ```
 
-This plugin is also available on npm:
+This plugin is also available on npm if you are using Cordova 5.0+:
 ```bash
 cordova plugin add cordova-plugin-google-analytics
 ```
+
+... OR the Cordova Plugin Registry if you are using a version of Cordova before 5.0 (while it remains open, as it is planning to shut down soon due to the move to npm):
+```bash
+cordova plugin add com.danielcwilson.plugins.googleanalytics
+```
+
+*Important Note* If the latest versions (0.8.0+) of this plugin are not working for you with Android on Cordova 5.0+, please try the suggestions in [Issues 123](https://github.com/danwilson/google-analytics-plugin/issues/123#issuecomment-151145095). Google Play Services has been very confusing to integrate, but in recent months it has been simplified.  This plugin uses the new simpler way (including it as a framework instead of bundling it which can conflict with other plugins bundling it), but if you previously installed this plugin some old files might still be lingering.
 
 The plugin.xml file will add the Google Analytics SDK files for Android and/or iOS.  Follow [Google's steps](#sdk-files) if you need to update these later.  Also make sure to review the Google Analytics [terms](http://www.google.com/analytics/terms/us.html) and [SDK Policy](https://developers.google.com/analytics/devguides/collection/protocol/policy)
 
@@ -54,6 +61,9 @@ To set a UserId:
 To enable verbose logging:
 * `window.analytics.debugMode()`
 
+To enable/disable automatic reporting of uncaught exceptions
+* `window.analytics.enableUncaughtExceptionReporting(Enable, success, error)` where Enable is boolean
+
 #Installing Without the CLI <a name="nocli"></a>
 Copy the files manually into your project and add the following to your config.xml files:
 ```xml
@@ -84,4 +94,3 @@ var analyticsService = require('app/data/AnalyticsService');
 
 analyticsService.trackView('Home');
 ```
-

@@ -1,35 +1,46 @@
 <!---
- license: Licensed to the Apache Software Foundation (ASF) under one
-         or more contributor license agreements.  See the NOTICE file
-         distributed with this work for additional information
-         regarding copyright ownership.  The ASF licenses this file
-         to you under the Apache License, Version 2.0 (the
-         "License"); you may not use this file except in compliance
-         with the License.  You may obtain a copy of the License at
-
-           http://www.apache.org/licenses/LICENSE-2.0
-
-         Unless required by applicable law or agreed to in writing,
-         software distributed under the License is distributed on an
-         "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-         KIND, either express or implied.  See the License for the
-         specific language governing permissions and limitations
-         under the License.
+# license: Licensed to the Apache Software Foundation (ASF) under one
+#         or more contributor license agreements.  See the NOTICE file
+#         distributed with this work for additional information
+#         regarding copyright ownership.  The ASF licenses this file
+#         to you under the Apache License, Version 2.0 (the
+#         "License"); you may not use this file except in compliance
+#         with the License.  You may obtain a copy of the License at
+#
+#           http://www.apache.org/licenses/LICENSE-2.0
+#
+#         Unless required by applicable law or agreed to in writing,
+#         software distributed under the License is distributed on an
+#         "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#         KIND, either express or implied.  See the License for the
+#         specific language governing permissions and limitations
+#         under the License.
 -->
 
-# cordova-plugin-statusbar
+[![Build Status](https://travis-ci.org/apache/cordova-plugin-statusbar.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-statusbar)
 
-[![Build Status](https://travis-ci.org/apache/cordova-plugin-statusbar.svg)](https://travis-ci.org/apache/cordova-plugin-statusbar)
+# cordova-plugin-statusbar
 
 StatusBar
 ======
 
 > The `StatusBar` object provides some functions to customize the iOS and Android StatusBar.
 
+:warning: Report issues on the [Apache Cordova issue tracker](https://issues.apache.org/jira/issues/?jql=project%20%3D%20CB%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20AND%20resolution%20%3D%20Unresolved%20AND%20component%20%3D%20%22Plugin%20Statusbar%22%20ORDER%20BY%20priority%20DESC%2C%20summary%20ASC%2C%20updatedDate%20DESC)
+
 
 ## Installation
 
+This installation method requires cordova 5.0+
+
     cordova plugin add cordova-plugin-statusbar
+Older versions of cordova can still install via the __deprecated__ id
+
+    cordova plugin add org.apache.cordova.statusbar
+It is also possible to install via repo url directly ( unstable )
+
+    cordova plugin add https://github.com/apache/cordova-plugin-statusbar.git
+
 
 Preferences
 -----------
@@ -40,7 +51,7 @@ Preferences
 
         <preference name="StatusBarOverlaysWebView" value="true" />
 
-- __StatusBarBackgroundColor__ (color hex string, defaults to #000000). On iOS 7 and Android 5, set the background color of the statusbar by a hex string (#RRGGBB) at startup.
+- __StatusBarBackgroundColor__ (color hex string, no default value). On iOS 7, set the background color of the statusbar by a hex string (#RRGGBB) at startup. If this value is not set, the background color will be transparent.
 
         <preference name="StatusBarBackgroundColor" value="#000000" />
 
@@ -293,5 +304,3 @@ Supported Platforms
 - Windows Phone 7
 - Windows Phone 8
 - Windows Phone 8.1
-
-

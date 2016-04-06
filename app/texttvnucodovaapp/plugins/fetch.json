@@ -1,9 +1,16 @@
 {
-    "nl.x-services.plugins.socialsharing": {
+    "cordova-plugin-extension": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git",
-            "subdir": "."
+            "type": "registry",
+            "id": "cordova-plugin-extension"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "cordova-plugin-admobpro": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-admobpro"
         },
         "is_top_level": true,
         "variables": {}
@@ -20,6 +27,14 @@
         "source": {
             "type": "registry",
             "id": "cordova-plugin-device"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-google-analytics": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-google-analytics"
         },
         "is_top_level": true,
         "variables": {}
@@ -48,26 +63,10 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-admobpro": {
+    "cordova-plugin-x-socialsharing": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-admobpro"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-extension": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-extension"
-        },
-        "is_top_level": false,
-        "variables": {}
-    },
-    "cordova-plugin-google-analytics": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-google-analytics"
+            "id": "cordova-plugin-x-socialsharing"
         },
         "is_top_level": true,
         "variables": {}

@@ -13,7 +13,7 @@ Cordova / PhoneGap Plugin for Google Ads, including AdMob / DFP (doubleclick for
 7. [Usage](#usage)
 8. [API](#api)
 9. [Wiki and Docs](#wiki-and-docs)
-10. [Important Tips](#tips)
+10. [Important Tips & Warning](#tips)
 11. [Video Tutorial](#video-tutorial)
 12. [Screenshots](#screenshots)
 13. [Credits](#credits)
@@ -35,9 +35,10 @@ From May 2015, Cordova team announced the deprecation of Cordova registry, and s
 ## Features
 
 Platforms supported:
-- [x] Android, via SDK v7.8 (part of Google Play service platform)
-- [x] iOS, via SDK v7.4.1
-- [x] Windows Phone, via SDK v6.5.13
+- [x] Android, via SDK v8.4 (part of Google Play service, see [Release Notes](https://developers.google.com/admob/android/rel-notes))
+- [x] iOS, via SDK v7.7.0 (with bitcode support, see [Release Notes](https://developers.google.com/admob/ios/rel-notes))
+- [x] Windows Phone, via SDK v6.5.13 (see [Release Notes](https://developers.google.com/admob/wp/rel-notes))
+- [x] Amazon-FireOS, via Android SDK (part of Google Play service)
 
 Ad Types:
 - [x] Banner
@@ -115,9 +116,14 @@ If use other tools or online build services, see:
 * [x] Meteor ([How To ...](https://github.com/floatinghotpot/cordova-admob-pro/wiki/06.-How-To-Use-with-Meteor))
 * [x] Ionic/AngularJS ([In ng-cordova ...](https://github.com/driftyco/ng-cordova/blob/master/src/plugins/googleAds.js))
 
+What's difference of the 3 plugin IDs, which one shall I use ?
+* com.google.cordova.admob
+* cordova-plugin-admobpro
+* cordova-plugin-admob
+
+Read: [Difference of Plugin ID](https://github.com/floatinghotpot/cordova-admob-pro/wiki/Difference-of-Plugin-IDs)
+
 Notice:
-* The plugin id in old cordova registry is ```com.google.cordova.admob```, and now in npm is ```cordova-plugin-admobpro```, as Cordova team announce that the plugin registry is being migrated to npm, and recommended name rule is: cordova-plugin-xxx.
-* Read: [Difference of ```com.google.cordova.admob``` and ```cordova-plugin-admobpro```](https://github.com/floatinghotpot/cordova-admob-pro/wiki/Difference-of-Plugin-IDs)
 * If build locally using ```cordova-plugin-admobpro```, to avoid build error, you need install some extras in Android SDK manager (type ```android sdk``` to launch it):
 ![android extra](https://cloud.githubusercontent.com/assets/2339512/8176143/20533ec0-1429-11e5-8e17-a748373d5110.png)
 
@@ -130,7 +136,7 @@ Step 1: Create Ad Unit Id for your banner and interstitial, in [AdMob portal](ht
 ```javascript
 // select the right Ad Id according to platform
     var admobid = {};
-    if( /(android)/i.test(navigator.userAgent) ) { // for android
+    if( /(android)/i.test(navigator.userAgent) ) { // for android & amazon-fireos
 		admobid = {
 			banner: 'ca-app-pub-xxx/xxx', // or DFP format "/6253334/dfp_example_ad"
 			interstitial: 'ca-app-pub-xxx/yyy'
@@ -198,9 +204,13 @@ hideBanner();
 // use interstitial
 prepareInterstitial(adId/options, success, fail);
 showInterstitial();
+isInterstitialReady(function(ready){ if(ready){ } });
 
 // set default value for other methods
 setOptions(options, success, fail);
+
+// get user ad settings
+getAdSettings(function(inf){ inf.adId; inf.adTrackingEnabled; }, fail);
 ```
 
 Events:
@@ -230,6 +240,7 @@ API Reference:
 
 Other Documentations:
 * [ChangeLog](https://github.com/floatinghotpot/cordova-admob-pro/wiki/ChangeLog)
+* [Known issues & solutions/workarounds](https://github.com/floatinghotpot/cordova-admob-pro/wiki/Known-Issues-&-Solution---Workaround)
 * [FAQ](https://github.com/floatinghotpot/cordova-admob-pro/wiki/FAQ)
 * [Notice for Android Proguard](https://github.com/floatinghotpot/cordova-admob-pro/wiki/Notice-for-Android-Proguard)
 
@@ -242,32 +253,38 @@ Demo projects:
 
 Some important tips, FYI.
 
+![Recomended](https://github.com/floatinghotpot/cordova-admob-pro/raw/master/docs/good.png)
+
+- [x] Why Google AdMob is recommended ?
+
+Advertisement is main business and income source of Google, so clients are all around the world. Google is one of the most rialable partners for its high standard service.
+
+* High fill rate, nearly 100% all around world.
+* High quality Ad, bring high RPM.
+* Stable price, auto pay on time. Pay on every 20th next month.
+
 - [x] Strongly recommend Interstitial, more than 10 times profit than banner Ad. 
 
 Ad Format | Banner | Interstitial
 ---|-------|--------------
 Click Rate | < 1% | 3-15%
-RPM (revenue per 1000 impression) |  US$ 0.5~4 | US$ 10~100
-
-- [x] RPM top countries (recent stat data):
-* USA, US$ 10~100, much higher than others
-* South Korea
-* Japan 
-* Sweden 
-* Norway 
-* China 
-* United Kingdom
-* Finland 
+RPM (revenue per 1000 impression) |  US$ 0.5~4 | US$ 10~50
 
 - [x] Using SMART_BANNER to auto-fit the screen width, avoid using BANNER or FULL_BANNER (unless you are using DFP)
 
-- [x] Why Chooese Google AdMob ?
+![Warning](https://github.com/floatinghotpot/cordova-admob-pro/raw/master/docs/warning.png)
 
-Advertisement is main business and income source of Google, so the clients are all around the world. Google is one of the most realable partners for its high quality service.
+⚠：Remember Google's slogan: "Don't be evil". Invalid usage violating Google rules, may cause your AdMob account suspended ! 
 
-* High fill rate, nearly 100% all around world.
-* High quality Ad, bring high RPM.
-* Stable price, auto pay on time. Pay on every 20th next month.
+* AdMob publisher may NOT abuse or encourage abuse any Google products, including Google Play, YouTube or Bolgger, incuding allow user downloading YouTube video, or embed YouTube video in your own apps.
+
+* Publishers may NOT click their own ads or use any means to inflate impressions and/or clicks artificially, including manual methods. Testing your own ads by clicking on them is not allowed.
+
+⚠：请记住谷歌的口号：“不作恶”。任何违反合作规范、损害广告商和用户利益的行为，会导致你的 APP 被下架，甚至你的 AdMob 帐号被禁用！
+
+* AdMob发布商不得滥用或鼓励滥用任何Google产品，如Google Play、YouTube或Blogger。这包括规避任何Google产品的政策或条款或提供规避途径，例如允许用户下载YouTube视频等。不得刻意引诱用户点击广告，也不可以在自己的APP中点击广告（测试只能使用非正式的测试广告）。
+
+More details, please read [AdMob & AdSense policies](https://support.google.com/admob/answer/6128543?hl=en&ref_topic=2745287)
 
 ## Video Tutorial
 

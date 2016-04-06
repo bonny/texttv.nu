@@ -28,12 +28,18 @@
         <param name="ios-package" value="CDVGestureHandler" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="SocialSharing">
-        <param name="ios-package" value="SocialSharing" />
+    <feature name="AdMob">
+        <param name="ios-package" value="CDVAdMobPlugin" />
         <param name="onload" value="true" />
     </feature>
     <feature name="Console">
         <param name="ios-package" value="CDVLogger" />
+    </feature>
+    <feature name="Device">
+        <param name="ios-package" value="CDVDevice" />
+    </feature>
+    <feature name="UniversalAnalytics">
+        <param name="ios-package" value="UniversalAnalyticsPlugin" />
     </feature>
     <feature name="InAppBrowser">
         <param name="ios-package" value="CDVInAppBrowser" />
@@ -47,15 +53,9 @@
         <param name="onload" value="true" />
     </feature>
     <preference name="StatusBarStyle" value="lightcontent" />
-    <feature name="AdMob">
-        <param name="ios-package" value="CDVAdMobPlugin" />
+    <feature name="SocialSharing">
+        <param name="ios-package" value="SocialSharing" />
         <param name="onload" value="true" />
-    </feature>
-    <feature name="UniversalAnalytics">
-        <param name="ios-package" value="UniversalAnalyticsPlugin" />
-    </feature>
-    <feature name="Device">
-        <param name="ios-package" value="CDVDevice" />
     </feature>
     <icon height="57" src="res/ios/icon.png" width="57" />
     <icon height="57" src="res/ios/icon-57.png" width="57" />
