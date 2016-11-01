@@ -55,6 +55,7 @@ enum {
 #define ADTYPE_BANNER           @"banner"
 #define ADTYPE_INTERSTITIAL     @"interstitial"
 #define ADTYPE_NATIVE           @"native"
+#define ADTYPE_REWARDVIDEO      @"rewardvideo"
 
 @interface GenericAdPlugin : CDVPluginExt
 
@@ -72,6 +73,9 @@ enum {
 - (void)removeInterstitial:(CDVInvokedUrlCommand *)command;
 - (void)isInterstitialReady:(CDVInvokedUrlCommand*)command;
 
+- (void) prepareRewardVideoAd:(CDVInvokedUrlCommand *)command;
+- (void) showRewardVideoAd:(CDVInvokedUrlCommand *)command;
+
 @property (assign) BOOL testTraffic;
 @property (assign) BOOL licenseValidated;
 @property (assign) BOOL isTesting;
@@ -79,6 +83,7 @@ enum {
 
 @property (nonatomic, retain) NSString* bannerId;
 @property (nonatomic, retain) NSString* interstitialId;
+@property (nonatomic, retain) NSString* rewardVideoId;
 
 @property (assign) int adWidth;
 @property (assign) int adHeight;
@@ -93,11 +98,13 @@ enum {
 
 @property (assign) BOOL autoShowBanner;
 @property (assign) BOOL autoShowInterstitial;
+@property (assign) BOOL autoShowRewardVideo;
 
 @property (assign) int widthOfView;
 
 @property (nonatomic, retain) UIView *banner;
 @property (nonatomic, retain) NSObject *interstitial;
+@property (nonatomic, retain) NSObject *rewardvideo;
 
 @property (assign) BOOL bannerInited;
 @property (assign) BOOL bannerVisible;
@@ -123,6 +130,7 @@ enum {
 - (NSString*) __getProductShortName;
 - (NSString*) __getTestBannerId;
 - (NSString*) __getTestInterstitialId;
+- (NSString*) __getTestRewardVideoId;
 
 - (UIView*) __createAdView:(NSString*)adId;
 - (int) __getAdViewWidth:(UIView*)view;
@@ -136,6 +144,9 @@ enum {
 - (void) __loadInterstitial:(NSObject*)interstitial;
 - (void) __showInterstitial:(NSObject*)interstitial;
 - (void) __destroyInterstitial:(NSObject*)interstitial;
+
+- (NSObject*) __prepareRewardVideoAd:(NSString*)adId;
+- (BOOL) __showRewardVideoAd:(NSObject*)rewardvideo;
 
 - (void) fireAdEvent:(NSString*)event withType:(NSString*)adType;
 - (void) fireAdErrorEvent:(NSString*)event withCode:(int)errCode withMsg:(NSString*)errMsg withType:(NSString*)adType;

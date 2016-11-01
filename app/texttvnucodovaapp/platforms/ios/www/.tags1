@@ -1,0 +1,119 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+.list--share	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.list--share {$/;"	function	line:6
+.list--share .item	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.list--share .item {$/;"	function	line:18
+.list--share .item .button	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.list--share .item .button {$/;"	function	line:25
+.list--share .item .button:active	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.list--share .item .button:active {$/;"	function	line:32
+.list--share .icon	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.list--share .icon {$/;"	function	line:36
+.list--share::before	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.list--share::before {$/;"	function	line:43
+.list--share .button	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.list--share .button {$/;"	function	line:56
+.has-update-available .ReloadButton	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.has-update-available .ReloadButton {$/;"	function	line:62
+.ReloadButton__updateavailableText	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.ReloadButton__updateavailableText {$/;"	function	line:66
+.has-update-available .ReloadButton__updateavailableText	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.has-update-available .ReloadButton__updateavailableText {$/;"	function	line:70
+.has-update-available .ReloadButton__reloadText	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.has-update-available .ReloadButton__reloadText {$/;"	function	line:73
+and (orientation : portrait)	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^	and (orientation : portrait) {$/;"	function	line:81
+.has-update-available .ReloadButton .icon:before	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^	.has-update-available .ReloadButton .icon:before {$/;"	function	line:83
+.ReloadButton__updateavailableText	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^	.ReloadButton__updateavailableText {$/;"	function	line:87
+@font-face	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^@font-face {$/;"	function	line:94
+@font-face	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^@font-face {$/;"	function	line:101
+.bar-header-titleLink	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bar-header-titleLink {$/;"	function	line:112
+.bar-header-titleLink:active	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bar-header-titleLink:active {$/;"	function	line:119
+.pageIsLoading, .placeholderPage	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.pageIsLoading, .placeholderPage {$/;"	function	line:124
+.pageIsLoading-spinnerIcon	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.pageIsLoading-spinnerIcon,$/;"	function	line:129
+.pageIsLoading-failIcon	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.pageIsLoading-failIcon,$/;"	function	line:130
+.placeholderPage-icon	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.placeholderPage-icon {$/;"	function	line:131
+.pageIsLoading-text	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.pageIsLoading-text,$/;"	function	line:136
+.placeholderPage-text	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.placeholderPage-text {$/;"	function	line:137
+.pageIsLoading-text a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.pageIsLoading-text a {$/;"	function	line:144
+.placeholderPage-pageRange	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.placeholderPage-pageRange {$/;"	function	line:148
+.swiper-wrapper	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.swiper-wrapper {$/;"	function	line:156
+.swiper-container	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.swiper-container {$/;"	function	line:159
+.swiper-container, .swiper-slide	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.swiper-container, .swiper-slide {$/;"	function	line:167
+.TextTVPage	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.TextTVPage {$/;"	function	line:181
+.root	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.root {$/;"	function	line:185
+.root:last-of-type	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.root:last-of-type {$/;"	function	line:225
+@media only screen and (min-width : 768px)	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^@media only screen and (min-width : 768px) {$/;"	function	line:233
+.root	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^	.root {$/;"	function	line:235
+.root h1	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.root h1 {$/;"	function	line:241
+.toprow	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.toprow {$/;"	function	line:248
+.root	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.root,$/;"	function	line:253
+.W	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.W,$/;"	function	line:254
+.W a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.W a,$/;"	function	line:255
+.root a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.root a {$/;"	function	line:256
+.root a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.root a {$/;"	function	line:260
+.root a:focus	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.root a:focus,$/;"	function	line:262
+.bgW	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgW {$/;"	function	line:268
+.R	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.R {$/;"	function	line:273
+.bgR	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgR {$/;"	function	line:276
+.B	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.B,$/;"	function	line:280
+.B a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.B a { color: #1122CC }$/;"	function	line:281
+.Y	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.Y,$/;"	function	line:284
+.Y a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.Y a { color: #e2e200 }$/;"	function	line:285
+.bgY	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgY {$/;"	function	line:287
+.C	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.C,$/;"	function	line:293
+.C a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.C a {$/;"	function	line:294
+.bgC	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgC {$/;"	function	line:297
+.bgB	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgB,$/;"	function	line:301
+.bgB a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgB a {$/;"	function	line:302
+.DH	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.DH {$/;"	function	line:307
+.G	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.G,$/;"	function	line:314
+.G a	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.G a {$/;"	function	line:315
+.bgG	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgG {$/;"	function	line:318
+.M	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.M {$/;"	function	line:323
+.bgM	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.bgM {$/;"	function	line:326
+.view--main	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.view--main {$/;"	function	line:331
+.view--main.open-sidebar	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.view--main.open-sidebar {$/;"	function	line:335
+.view--main .swiper-container	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.view--main .swiper-container {$/;"	function	line:340
+.view--main.open-sidebar .swiper-container	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.view--main.open-sidebar .swiper-container {$/;"	function	line:346
+#MainView	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#MainView {$/;"	function	line:355
+.menu	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.menu {$/;"	function	line:360
+.menu .scroll-content	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.menu .scroll-content {$/;"	function	line:363
+.content	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.content {$/;"	function	line:373
+.swiper-container	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.swiper-container {$/;"	function	line:376
+.platform-ios7.platform-cordova:not(.fullscreen) .swiper-container	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.platform-ios7.platform-cordova:not(.fullscreen) .swiper-container,$/;"	function	line:385
+.swiper-slide	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.swiper-slide {$/;"	function	line:391
+.menu-right .item-divider	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.menu-right .item-divider {$/;"	function	line:404
+.MostVisitedPagesItems .item	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.MostVisitedPagesItems .item,$/;"	function	line:412
+#SidebarMostVisisted	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#SidebarMostVisisted {$/;"	function	line:421
+.MostVisitedPagesItems .item-note	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.MostVisitedPagesItems .item-note {$/;"	function	line:425
+.FavsItems	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItems {$/;"	function	line:429
+.animate-enter-setup, .animate-leave-setup	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.animate-enter-setup, .animate-leave-setup {$/;"	function	line:435
+.animate-enter-setup	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.animate-enter-setup {$/;"	function	line:436
+.animate-enter-setup.animate-enter-start	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.animate-enter-setup.animate-enter-start {$/;"	function	line:437
+.animate-leave-setup.animate-leave-start	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.animate-leave-setup.animate-leave-start {$/;"	function	line:438
+.animate-leave-setup	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.animate-leave-setup{$/;"	function	line:439
+.button-back	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.button-back {$/;"	function	line:445
+.button-back--enabled	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.button-back--enabled {$/;"	function	line:455
+.button-back:active	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.button-back:active {$/;"	function	line:459
+#MainViewBar .button-clear:active	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#MainViewBar .button-clear:active {$/;"	function	line:464
+#SidebarRight .item:active	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#SidebarRight .item:active {$/;"	function	line:468
+body:not(.platform-cordova) .hideIfNotCordova	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^body:not(.platform-cordova) .hideIfNotCordova {$/;"	function	line:473
+.loading	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.loading {$/;"	function	line:477
+.FavsItem-draggable	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-draggable {$/;"	function	line:487
+.FavsItems .sortable-ghost	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItems .sortable-ghost {$/;"	function	line:498
+.FavsItemEdit	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItemEdit,$/;"	function	line:502
+.FavsItemEditDone	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItemEditDone {$/;"	function	line:503
+.FavsItem-remove	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-remove {$/;"	function	line:513
+.FavsItem-remove	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-remove,$/;"	function	line:525
+.FavsItem-draggable	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-draggable,$/;"	function	line:526
+.FavsItemEdit	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItemEdit,$/;"	function	line:527
+.FavsItemEditDone	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItemEditDone,$/;"	function	line:528
+.FavsItem-add	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-add {$/;"	function	line:529
+.FavsItem-remove	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-remove,$/;"	function	line:536
+.FavsItem-draggable	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-draggable,$/;"	function	line:537
+.FavsItemEditDone	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItemEditDone,$/;"	function	line:538
+.FavsItem-add	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.FavsItem-add {$/;"	function	line:545
+#SidebarFavs.is-editing .FavsItem-remove	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#SidebarFavs.is-editing .FavsItem-remove,$/;"	function	line:552
+#SidebarFavs.is-editing .FavsItem-draggable	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#SidebarFavs.is-editing .FavsItem-draggable,$/;"	function	line:553
+#SidebarFavs.is-editing .FavsItemEditDone	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#SidebarFavs.is-editing .FavsItemEditDone,$/;"	function	line:554
+#SidebarFavs.is-editing .FavsItem-add	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#SidebarFavs.is-editing .FavsItem-add {$/;"	function	line:561
+#SidebarFavs.is-editing .FavsItemEdit	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^#SidebarFavs.is-editing .FavsItemEdit {$/;"	function	line:565
+.platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader)>*	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^.platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader)>*{margin-top:20px}$/;"	function	line:575
+@media only screen and (min-width: 375px) and (max-width: 414px)	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^@media only screen and (min-width: 375px) and (max-width: 414px) {$/;"	function	line:582
+.root	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^	.root {$/;"	function	line:584
+@media only screen and (min-width: 414px) and (max-width: 415px)	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^@media only screen and (min-width: 414px) and (max-width: 415px) {$/;"	function	line:591
+.root	/Users/bonny/Dropbox/Web/texttv.nu-GIT/app/texttvnucodovaapp/www/css/texttv-theme-black.css	/^	.root {$/;"	function	line:593
