@@ -19,6 +19,9 @@
  *
 */
 
+/* jshint jasmine: true */
+/* global MSApp */
+
 var cordova = require('cordova');
 var isWindows = cordova.platformId == 'windows';
 
@@ -183,13 +186,13 @@ exports.defineManualTests = function (contentEl, createActionButton) {
                 if (e.url != lastLoadStartURL) {
                     alert('Unexpected: ' + e.type + ' event.url != loadstart\'s event.url');
                 }
-                if (numExpectedRedirects === 0 && counts['loadstart'] !== 1) {
+                if (numExpectedRedirects === 0 && counts.loadstart !== 1) {
                     // Do allow a loaderror without a loadstart (e.g. in the case of an invalid URL).
-                    if (!(e.type == 'loaderror' && counts['loadstart'] === 0)) {
-                        alert('Unexpected: got multiple loadstart events. (' + counts['loadstart'] + ')');
+                    if (!(e.type == 'loaderror' && counts.loadstart === 0)) {
+                        alert('Unexpected: got multiple loadstart events. (' + counts.loadstart + ')');
                     }
-                } else if (numExpectedRedirects > 0 && counts['loadstart'] < (numExpectedRedirects + 1)) {
-                    alert('Unexpected: should have got at least ' + (numExpectedRedirects + 1) + ' loadstart events, but got ' + counts['loadstart']);
+                } else if (numExpectedRedirects > 0 && counts.loadstart < (numExpectedRedirects + 1)) {
+                    alert('Unexpected: should have got at least ' + (numExpectedRedirects + 1) + ' loadstart events, but got ' + counts.loadstart);
                 }
                 wasReset = true;
                 numExpectedRedirects = 0;
@@ -197,7 +200,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
             }
             // Verify that loadend / loaderror was called.
             if (e.type == 'exit') {
-                var numStopEvents = counts['loadstop'] + counts['loaderror'];
+                var numStopEvents = counts.loadstop + counts.loaderror;
                 if (numStopEvents === 0 && !wasReset) {
                     alert('Unexpected: browser closed without a loadstop or loaderror.');
                 } else if (numStopEvents > 1) {
@@ -435,16 +438,24 @@ exports.defineManualTests = function (contentEl, createActionButton) {
         '<p/> <div id="openAnchor2"></div>' +
         'Expected result: open successfully in InAppBrowser to the local page, scrolled to the beginning of the tall div with border.';
 
+    var hardwareback_tests = '<h1>HardwareBack</h1>' +
+        '<p/> <div id="openHardwareBackDefault"></div>' +
+        'Expected result: By default hardwareback is yes so pressing back button should navigate backwards in history then close InAppBrowser' +
+        '<p/> <div id="openHardwareBackYes"></div>' +
+        'Expected result: hardwareback=yes pressing back button should navigate backwards in history then close InAppBrowser' +
+        '<p/> <div id="openHardwareBackNo"></div>' +
+        'Expected result: hardwareback=no pressing back button should close InAppBrowser regardless history';
+
     // CB-7490 We need to wrap this code due to Windows security restrictions
     // see http://msdn.microsoft.com/en-us/library/windows/apps/hh465380.aspx#differences for details
     if (window.MSApp && window.MSApp.execUnsafeLocalFunction) {
         MSApp.execUnsafeLocalFunction(function() {
             contentEl.innerHTML = info_div + local_tests + white_listed_tests + non_white_listed_tests + page_with_redirects_tests + pdf_url_tests + invalid_url_tests +
-                css_js_injection_tests + open_hidden_tests + clearing_cache_tests + video_tag_tests + local_with_anchor_tag_tests;
+                css_js_injection_tests + open_hidden_tests + clearing_cache_tests + video_tag_tests + local_with_anchor_tag_tests + hardwareback_tests;
         });
     } else {
         contentEl.innerHTML = info_div + local_tests + white_listed_tests + non_white_listed_tests + page_with_redirects_tests + pdf_url_tests + invalid_url_tests +
-            css_js_injection_tests + open_hidden_tests + clearing_cache_tests + video_tag_tests + local_with_anchor_tag_tests;
+            css_js_injection_tests + open_hidden_tests + clearing_cache_tests + video_tag_tests + local_with_anchor_tag_tests + hardwareback_tests;
     }
 
     document.getElementById("user-agent").textContent = navigator.userAgent;
@@ -629,4 +640,15 @@ exports.defineManualTests = function (contentEl, createActionButton) {
     createActionButton('Anchor2', function () {
         doOpen(localhtml + '#anchor2', '_blank');
     }, 'openAnchor2');
+
+    // Hardwareback
+    createActionButton('no hardwareback (defaults to yes)', function () {
+        doOpen('http://cordova.apache.org', '_blank');
+    }, 'openHardwareBackDefault');
+    createActionButton('hardwareback=yes', function () {
+        doOpen('http://cordova.apache.org', '_blank', 'hardwareback=yes');
+    }, 'openHardwareBackYes');
+    createActionButton('hardwareback=no', function () {
+        doOpen('http://cordova.apache.org', '_blank', 'hardwareback=no');
+    }, 'openHardwareBackNo');
 };

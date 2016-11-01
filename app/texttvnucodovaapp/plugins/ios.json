@@ -13,9 +13,6 @@
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
@@ -30,6 +27,9 @@
         },
         "cordova-plugin-google-analytics": {
             "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
         }
     },
     "dependent_plugins": {

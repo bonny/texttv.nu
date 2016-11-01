@@ -25,15 +25,6 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-inappbrowser.inappbrowser",
-        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
-        "pluginId": "cordova-plugin-inappbrowser",
-        "clobbers": [
-            "cordova.InAppBrowser.open",
-            "window.open"
-        ]
-    },
-    {
         "id": "cordova-plugin-splashscreen.SplashScreen",
         "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
         "pluginId": "cordova-plugin-splashscreen",
@@ -73,6 +64,15 @@ module.exports = [
             "analytics",
             "ga"
         ]
+    },
+    {
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
+        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "pluginId": "cordova-plugin-inappbrowser",
+        "clobbers": [
+            "cordova.InAppBrowser.open",
+            "window.open"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -80,13 +80,13 @@ module.exports.metadata =
 {
     "cordova-plugin-console": "1.0.2",
     "cordova-plugin-device": "1.1.1",
-    "cordova-plugin-inappbrowser": "1.3.0",
     "cordova-plugin-splashscreen": "3.2.1",
     "cordova-plugin-statusbar": "2.1.2",
     "cordova-plugin-x-socialsharing": "5.0.11",
     "cordova-plugin-extension": "1.5.1",
     "cordova-plugin-admobpro": "2.20.1",
-    "cordova-plugin-google-analytics": "1.6.0"
+    "cordova-plugin-google-analytics": "1.6.0",
+    "cordova-plugin-inappbrowser": "1.5.0"
 };
 // BOTTOM OF METADATA
 });

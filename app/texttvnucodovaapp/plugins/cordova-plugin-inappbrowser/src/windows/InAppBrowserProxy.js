@@ -19,10 +19,8 @@
  *
 */
 
-/*jslint sloppy:true */
-/*global Windows:true, require, document, setTimeout, window, module */
-
-
+/* jslint sloppy:true */
+/* global Windows:true, setImmediate */
 
 var cordova = require('cordova'),
     urlutil = require('cordova/urlutil');
@@ -35,7 +33,8 @@ var browserWrap,
     forwardButton,
     closeButton,
     bodyOverflowStyle,
-    navigationEventsCallback;
+    navigationEventsCallback,
+    hardwareBackCallback;
 
 // x-ms-webview is available starting from Windows 8.1 (platformId is 'windows')
 // http://msdn.microsoft.com/en-us/library/windows/apps/dn301831.aspx
@@ -107,6 +106,8 @@ var IAB = {
                 document.body.style.msOverflowStyle = bodyOverflowStyle;
                 browserWrap = null;
                 popup = null;
+
+                document.removeEventListener("backbutton", hardwareBackCallback, false);
             }
         });
     },
@@ -175,8 +176,44 @@ var IAB = {
                 }
                 popup.style.borderWidth = "0px";
                 popup.style.width = "100%";
+                popup.style.marginBottom = "-3px";
 
                 browserWrap.appendChild(popup);
+
+                var closeHandler = function (e) {
+                    setTimeout(function () {
+                        IAB.close(navigationEventsCallback);
+                    }, 0);
+                };
+
+                if (features.indexOf("hardwareback=yes") > -1 || features.indexOf("hardwareback") === -1) {
+                    hardwareBackCallback = function () {
+                        if (browserWrap.style.display === 'none') {
+                            // NOTE: backbutton handlers have to throw an exception in order to prevent
+                            // returning 'true' inside cordova-js, which would mean that the event is handled by user.
+                            // Throwing an exception means that the default/system navigation behavior will take place,
+                            // which is to exit the app if the navigation stack is empty.
+                            throw 'Exit the app';
+                        }
+
+                        if (popup.canGoBack) {
+                            popup.goBack();
+                        } else {
+                            closeHandler();
+                        }
+                    };
+                } else if (features.indexOf("hardwareback=no") > -1) {
+                    hardwareBackCallback = function () {
+                        if (browserWrap.style.display === 'none') {
+                            // See comment above
+                            throw 'Exit the app';
+                        }
+
+                        closeHandler();
+                    };
+                }
+
+                document.addEventListener("backbutton", hardwareBackCallback, false);
 
                 if (features.indexOf("location=yes") !== -1 || features.indexOf("location") === -1) {
                     popup.style.height = "calc(100% - 70px)";
@@ -188,7 +225,7 @@ var IAB = {
                     };
 
                     navigationButtonsDivInner = document.createElement("div");
-                    navigationButtonsDivInner.className = "inappbrowser-app-bar-inner"
+                    navigationButtonsDivInner.className = "inappbrowser-app-bar-inner";
                     navigationButtonsDivInner.onclick = function (e) {
                         e.cancelBubble = true;
                     };
@@ -212,11 +249,7 @@ var IAB = {
                     closeButton = document.createElement("div");
                     closeButton.innerText = "close";
                     closeButton.className = "app-bar-action action-close";
-                    closeButton.addEventListener("click", function (e) {
-                        setTimeout(function () {
-                            IAB.close(navigationEventsCallback);
-                        }, 0);
-                    });
+                    closeButton.addEventListener("click", closeHandler);
 
                     if (!isWebViewAvailable) {
                         // iframe navigation is not yet supported
@@ -253,9 +286,11 @@ var IAB = {
             if (isWebViewAvailable && browserWrap && popup) {
                 var op = popup.invokeScriptAsync("eval", code);
                 op.oncomplete = function (e) {
-                    // return null if event target is unavailable by some reason
-                    var result = (e && e.target) ? [e.target.result] : [null];
-                    hasCallback && win(result);
+                    if (hasCallback) {
+                        // return null if event target is unavailable by some reason
+                        var result = (e && e.target) ? [e.target.result] : [null];
+                        win(result);
+                    }
                 };
                 op.onerror = function () { };
                 op.start();
@@ -278,8 +313,10 @@ var IAB = {
                     Windows.Storage.FileIO.readTextAsync(file).done(function (code) {
                         var op = popup.invokeScriptAsync("eval", code);
                         op.oncomplete = function(e) {
-                            var result = [e.target.result];
-                            hasCallback && win(result);
+                            if (hasCallback) {
+                                var result = [e.target.result];
+                                win(result);
+                            }
                         };
                         op.onerror = function () { };
                         op.start();
@@ -329,7 +366,9 @@ function injectCSS (webView, cssCode, callback) {
 
     var op = webView.invokeScriptAsync("eval", evalWrapper);
     op.oncomplete = function() {
-        callback && callback([]);
+        if (callback) {
+            callback([]);
+        }
     };
     op.onerror = function () { };
     op.start();
