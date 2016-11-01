@@ -168,10 +168,10 @@ var SidebarView = Backbone.View.extend({
 	// click on sidebar ikon
 	toggle: function() {
 
-		if (window.analytics) {
+		if (window.ga) {
 			try {
 				var strOpenOrClose = this.model.get("isOpen") ? "Close" : "Open";
-				analytics.trackEvent('App', 'Sidebar', strOpenOrClose);
+				window.ga.trackEvent('App', 'Sidebar', strOpenOrClose);
 			} catch(e) {
 				console.log(e);
 			}
@@ -483,13 +483,13 @@ var TextTVPagesCollection = Backbone.Collection.extend({
 	pageAdded: function(addedPage) {
 
 		// Let's track all pages
-		if (window.analytics) {
+		if (window.ga) {
 			try {
 
-				analytics.trackView("Load pageRange " + addedPage.get("pageRange"));
+				window.ga.trackView("Load pageRange " + addedPage.get("pageRange"));
 
 				// Analytics kind of interaction used to load next pageRange
-				analytics.trackEvent('App', 'Nav initiation', addedPage.get("initiatedBy"));
+				window.ga.trackEvent('App', 'Nav initiation', addedPage.get("initiatedBy"));
 
 			} catch (e) {
 				console.log(e);
@@ -743,7 +743,7 @@ var MainView = Backbone.View.extend({
 			var pageIDs = _.pluck(sourceData, "id").join(",");
 			var pageNums = _.pluck(sourceData, "num").join(",");
 
-			analytics.trackEvent('App', 'Share', pageNums);
+			window.ga.trackEvent('App', 'Share', pageNums);
 
 			// Call the texttv api to get permalink and screenshot
 			// http://digital.texttv.nu/api/share/2664651
@@ -813,7 +813,7 @@ var MainView = Backbone.View.extend({
 		}) );
 
 		try {
-			analytics.trackEvent('App', 'ReloadPage', parentModel.get("pageRange"));
+			window.ga.trackEvent('App', 'ReloadPage', parentModel.get("pageRange"));
 		} catch(e) {
 			// console.log(e);
 		}
@@ -1080,15 +1080,16 @@ function onDeviceReady() {
 	https://github.com/danwilson/google-analytics-plugin
 	To track a Screen (PageView):
 
-	analytics.trackView('Screen Title')
+	window.ga.trackView('Screen Title')
 	To track an Event:
 
-	analytics.trackEvent('Category', 'Action', 'Label', Value) Label and Value are optional, Value is numeric
+	window.ga.trackEvent('Category', 'Action', 'Label', Value) Label and Value are optional, Value is numeric
 	*/
 
 	// Init Google Analytics
-	analytics.startTrackerWithId("UA-181460-25");
-	analytics.trackView('Start app');
+	// window.ga.debugMode();
+	window.ga.startTrackerWithId("UA-181460-25");
+	window.ga.trackView('Start app');
 
 	// navigator.splashscreen.show();
 	var body = document.querySelector("body");
@@ -1137,7 +1138,7 @@ function onDeviceReady() {
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceResume() {
-	analytics.trackEvent('App', 'Resume');
+	window.ga.trackEvent('App', 'Resume');
 }
 document.addEventListener("resume", onDeviceResume, false);
 

@@ -86,7 +86,7 @@ var FavsView = Backbone.View.extend({
 	beginEdit: function() {
 		this.$el.addClass("is-editing");
 
-		analytics.trackEvent('App', 'Favs', "StartChange");
+		window.ga.trackEvent('App', 'Favs', "StartChange");
 
 	},
 
@@ -117,7 +117,7 @@ var FavsView = Backbone.View.extend({
 
 		});
 
-		analytics.trackEvent('App', 'Favs', "EndChange");
+		window.ga.trackEvent('App', 'Favs', "EndChange");
 
 	},
 
