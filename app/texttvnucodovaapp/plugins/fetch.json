@@ -7,14 +7,6 @@
         "is_top_level": false,
         "variables": {}
     },
-    "cordova-plugin-statusbar": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-statusbar"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-x-socialsharing": {
         "source": {
             "type": "registry",
@@ -67,6 +59,14 @@
         "source": {
             "type": "registry",
             "id": "cordova-plugin-splashscreen@4.0.0"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-statusbar": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-statusbar@2.2.0"
         },
         "is_top_level": true,
         "variables": {}

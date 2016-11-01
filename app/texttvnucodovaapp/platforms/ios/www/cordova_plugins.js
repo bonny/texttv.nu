@@ -1,14 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "id": "cordova-plugin-statusbar.statusbar",
-        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-        "pluginId": "cordova-plugin-statusbar",
-        "clobbers": [
-            "window.StatusBar"
-        ]
-    },
-    {
         "id": "cordova-plugin-x-socialsharing.SocialSharing",
         "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
         "pluginId": "cordova-plugin-x-socialsharing",
@@ -73,12 +65,19 @@ module.exports = [
         "clobbers": [
             "navigator.splashscreen"
         ]
+    },
+    {
+        "id": "cordova-plugin-statusbar.statusbar",
+        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "pluginId": "cordova-plugin-statusbar",
+        "clobbers": [
+            "window.StatusBar"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-statusbar": "2.1.2",
     "cordova-plugin-x-socialsharing": "5.0.11",
     "cordova-plugin-extension": "1.5.1",
     "cordova-plugin-admobpro": "2.20.1",
@@ -86,7 +85,8 @@ module.exports.metadata =
     "cordova-plugin-inappbrowser": "1.5.0",
     "cordova-plugin-console": "1.0.4",
     "cordova-plugin-device": "1.1.3",
-    "cordova-plugin-splashscreen": "4.0.0"
+    "cordova-plugin-splashscreen": "4.0.0",
+    "cordova-plugin-statusbar": "2.2.0"
 };
 // BOTTOM OF METADATA
 });
