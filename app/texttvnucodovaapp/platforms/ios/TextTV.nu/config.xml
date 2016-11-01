@@ -21,9 +21,6 @@
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
     </feature>
-    <feature name="UniversalAnalytics">
-        <param name="ios-package" value="UniversalAnalyticsPlugin" />
-    </feature>
     <feature name="InAppBrowser">
         <param name="ios-package" value="CDVInAppBrowser" />
     </feature>
@@ -102,4 +99,7 @@
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="SplashScreenDelay" value="0" />
     <preference name="Orientation" value="all" />
+    <feature name="UniversalAnalytics">
+        <param name="ios-package" value="UniversalAnalyticsPlugin" />
+    </feature>
 </widget>
