@@ -1,14 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "id": "cordova-plugin-device.device",
-        "file": "plugins/cordova-plugin-device/www/device.js",
-        "pluginId": "cordova-plugin-device",
-        "clobbers": [
-            "device"
-        ]
-    },
-    {
         "id": "cordova-plugin-splashscreen.SplashScreen",
         "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
         "pluginId": "cordova-plugin-splashscreen",
@@ -73,12 +65,19 @@ module.exports = [
         "clobbers": [
             "cordova.logger"
         ]
+    },
+    {
+        "id": "cordova-plugin-device.device",
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "pluginId": "cordova-plugin-device",
+        "clobbers": [
+            "device"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-device": "1.1.1",
     "cordova-plugin-splashscreen": "3.2.1",
     "cordova-plugin-statusbar": "2.1.2",
     "cordova-plugin-x-socialsharing": "5.0.11",
@@ -86,7 +85,8 @@ module.exports.metadata =
     "cordova-plugin-admobpro": "2.20.1",
     "cordova-plugin-google-analytics": "1.6.0",
     "cordova-plugin-inappbrowser": "1.5.0",
-    "cordova-plugin-console": "1.0.4"
+    "cordova-plugin-console": "1.0.4",
+    "cordova-plugin-device": "1.1.3"
 };
 // BOTTOM OF METADATA
 });
