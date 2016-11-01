@@ -381,7 +381,16 @@ make one page fit in portrait mode, make two pages fit in landscape
 	/*-webkit-overflow-scrolling: touch;*/
 }
 .content {
-	height: 100%;
+	/*
+	don't remember exactly, but without this the height is wrong after rotate and back again
+	and text is hidden by banner
+	ah! it's the size of the banner! :)
+
+	hm.. fix must only be applied after rotate however?!
+	height: calc(100% - 64px);
+	*/
+	height: 100% ;
+
 }
 .swiper-container {
 	position: absolute;

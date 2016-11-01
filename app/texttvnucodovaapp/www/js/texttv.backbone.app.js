@@ -966,6 +966,21 @@ var TextTVSwiper = {
 		this.templateNextPage = _.template( $("#NextPageTemplate").html() );
 		this.templatePrevPage = _.template( $("#PrevPageTemplate").html() );
 
+		// http://stackoverflow.com/questions/27892543/the-swiper-height-is-not-correctly-calculated-mobile-orientation-change
+		/*var self = this;
+		window.tmpSwiper = self;
+		$(window).resize(function() {
+			//setTimeout(function() {
+
+				console.log("reinit swiper", self)
+				//self.swiper.reInit() // or mySwiper.resizeFix()
+				self.swiper.reInit();
+				// self.swiper.resizeFix();
+
+			//}, 1000)
+		});
+		*/
+
 	},
 
 	onTouchEnd: function() {
@@ -1095,6 +1110,26 @@ function onDeviceReady() {
 	    	position: AdMob.AD_POSITION.BOTTOM_CENTER,
 	    	autoShow: true
 		});
+
+		// When screen rotates the height of the swiper is wrong
+		// solved by removing and adding banner
+		window.addEventListener('orientationchange', function() {
+
+			AdMob.removeBanner();
+
+			setTimeout(function() {
+
+				AdMob.createBanner({
+			    	adId: admobid.banner,
+			    	position: AdMob.AD_POSITION.BOTTOM_CENTER,
+			    	autoShow: true
+				});
+
+			}, 100);
+
+
+		});
+
 
 	}
 
