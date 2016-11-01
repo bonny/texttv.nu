@@ -7,9 +7,6 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
@@ -29,6 +26,9 @@
             "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
         },
         "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "cordova-plugin-console": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         }
     },
