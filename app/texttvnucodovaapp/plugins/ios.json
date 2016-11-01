@@ -7,9 +7,6 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-x-socialsharing": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
         "cordova-plugin-admobpro": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
@@ -29,6 +26,9 @@
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         },
         "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.mufflify.TextTVnu"
+        },
+        "cordova-plugin-x-socialsharing": {
             "PACKAGE_NAME": "com.mufflify.TextTVnu"
         }
     },
