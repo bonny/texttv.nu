@@ -1087,7 +1087,7 @@ function onDeviceReady() {
 	*/
 
 	// Init Google Analytics
-	window.ga.debugMode();
+	// window.ga.debugMode();
 	window.ga.startTrackerWithId("UA-181460-25");
 	window.ga.trackView('Start app');
 
