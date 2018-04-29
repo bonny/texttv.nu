@@ -1,40 +1,40 @@
 {
-    "prepare_queue": {
-        "installed": [],
-        "uninstalled": []
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-admobpro": {
+      "PACKAGE_NAME": "com.mufflify.TextTVnu"
     },
-    "config_munge": {
-        "files": {}
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.mufflify.TextTVnu"
     },
-    "installed_plugins": {
-        "cordova-plugin-admobpro": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
-        "cordova-plugin-google-analytics": {
-            "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-        },
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
-        "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
-        "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        },
-        "cordova-plugin-x-socialsharing": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        }
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.mufflify.TextTVnu"
     },
-    "dependent_plugins": {
-        "cordova-plugin-extension": {
-            "PACKAGE_NAME": "com.mufflify.TextTVnu"
-        }
+    "cordova-plugin-google-analytics": {
+      "PACKAGE_NAME": "com.mufflify.TextTVnu"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.mufflify.TextTVnu"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.mufflify.TextTVnu"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.mufflify.TextTVnu"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.mufflify.TextTVnu"
     }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-extension": {
+      "PACKAGE_NAME": "com.mufflify.TextTVnu"
+    }
+  }
 }

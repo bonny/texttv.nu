@@ -1,6 +1,4 @@
 {
-    "MessageUI.framework": 2,
-    "SystemConfiguration.framework": 2,
     "CFNetwork.framework": 1,
     "AdSupport.framework": 2,
     "AudioToolbox.framework": 1,
@@ -16,9 +14,11 @@
     "Foundation.framework": 1,
     "GLKit.framework": 1,
     "MediaPlayer.framework": 1,
+    "MessageUI.framework": 2,
     "OpenGLES.framework": 1,
     "SafariServices.framework": 1,
     "StoreKit.framework": 1,
+    "SystemConfiguration.framework": 2,
     "UIKit.framework": 1,
     "CoreData.framework": 1,
     "libz.dylib": 1,

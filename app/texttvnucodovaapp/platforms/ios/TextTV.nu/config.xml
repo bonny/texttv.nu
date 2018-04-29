@@ -3,6 +3,10 @@
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
+    <feature name="Console">
+        <param name="ios-package" value="CDVLogger" />
+        <param name="onload" value="true" />
+    </feature>
     <feature name="HandleOpenUrl">
         <param name="ios-package" value="CDVHandleOpenURL" />
         <param name="onload" value="true" />
@@ -19,17 +23,17 @@
         <param name="ios-package" value="CDVAdMobPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="UniversalAnalytics">
-        <param name="ios-package" value="UniversalAnalyticsPlugin" />
-    </feature>
-    <feature name="InAppBrowser">
-        <param name="ios-package" value="CDVInAppBrowser" />
-    </feature>
     <feature name="Console">
         <param name="ios-package" value="CDVLogger" />
     </feature>
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
+    </feature>
+    <feature name="UniversalAnalytics">
+        <param name="ios-package" value="UniversalAnalyticsPlugin" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
     </feature>
     <feature name="SplashScreen">
         <param name="ios-package" value="CDVSplashScreen" />

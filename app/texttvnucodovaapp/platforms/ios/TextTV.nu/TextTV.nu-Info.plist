@@ -5,7 +5,7 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>English</string>
     <key>CFBundleDisplayName</key>
-    <string>${PRODUCT_NAME}</string>
+    <string>TextTV.nu</string>
     <key>CFBundleExecutable</key>
     <string>${EXECUTABLE_NAME}</string>
     <key>CFBundleIcons</key>
@@ -28,21 +28,10 @@
     <string>2.80</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-      <key>NSAllowsArbitraryLoads</key>
-      <true/>
-    </dict>
     <key>NSMainNibFile</key>
     <string/>
     <key>NSMainNibFile~ipad</key>
     <string/>
-    <key>UIInterfaceOrientation</key>
-    <array>
-      <string>UIInterfaceOrientationPortrait</string>
-    </array>
-    <key>UIRequiresFullScreen</key>
-    <true/>
     <key>UISupportedInterfaceOrientations</key>
     <array>
       <string>UIInterfaceOrientationPortrait</string>
@@ -56,6 +45,17 @@
       <string>UIInterfaceOrientationPortraitUpsideDown</string>
       <string>UIInterfaceOrientationLandscapeLeft</string>
       <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UIRequiresFullScreen</key>
+    <true/>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+      <key>NSAllowsArbitraryLoads</key>
+      <true/>
+    </dict>
+    <key>UIInterfaceOrientation</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
     </array>
   </dict>
 </plist>
