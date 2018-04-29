@@ -7,13 +7,10 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-admobpro": {
-      "PACKAGE_NAME": "com.mufflify.TextTVnu"
-    },
-    "cordova-plugin-console": {
-      "PACKAGE_NAME": "com.mufflify.TextTVnu"
-    },
     "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.mufflify.TextTVnu"
+    },
+    "cordova-plugin-admobpro": {
       "PACKAGE_NAME": "com.mufflify.TextTVnu"
     },
     "cordova-plugin-google-analytics": {
@@ -34,6 +31,9 @@
   },
   "dependent_plugins": {
     "cordova-plugin-extension": {
+      "PACKAGE_NAME": "com.mufflify.TextTVnu"
+    },
+    "es6-promise-plugin": {
       "PACKAGE_NAME": "com.mufflify.TextTVnu"
     }
   }

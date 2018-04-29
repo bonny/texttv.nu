@@ -1,0 +1,31 @@
+{
+  "name": "com.mufflify.texttvnu",
+  "version": "2.80",
+  "displayName": "TextTV.nu",
+  "cordova": {
+    "platforms": [
+      "ios"
+    ],
+    "plugins": {
+      "cordova-plugin-device": {},
+      "cordova-plugin-admobpro": {},
+      "cordova-plugin-google-analytics": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-x-socialsharing": {}
+    }
+  },
+  "dependencies": {
+    "cordova-ios": "^4.5.4",
+    "cordova-plugin-admobpro": "^2.31.5",
+    "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-extension": "^1.5.4",
+    "cordova-plugin-google-analytics": "^1.8.3",
+    "cordova-plugin-inappbrowser": "^3.0.0",
+    "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-statusbar": "^2.4.2",
+    "cordova-plugin-x-socialsharing": "^5.4.0",
+    "es6-promise-plugin": "^4.2.2"
+  }
+}

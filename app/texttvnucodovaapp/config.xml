@@ -33,41 +33,40 @@
     <preference name="SplashScreenDelay" value="0" />
     <platform name="ios">
         <preference name="Orientation" value="all" />
-        <splash height="1136" src="resources/ios/splash/Default-568h@2x~iphone.png" width="640" />
-        <splash height="1334" src="resources/ios/splash/Default-667h.png" width="750" />
-        <splash height="2208" src="resources/ios/splash/Default-736h.png" width="1242" />
-        <splash height="1242" src="resources/ios/splash/Default-Landscape-736h.png" width="2208" />
-        <splash height="1536" src="resources/ios/splash/Default-Landscape@2x~ipad.png" width="2048" />
-        <splash height="768" src="resources/ios/splash/Default-Landscape~ipad.png" width="1024" />
-        <splash height="2048" src="resources/ios/splash/Default-Portrait@2x~ipad.png" width="1536" />
-        <splash height="1024" src="resources/ios/splash/Default-Portrait~ipad.png" width="768" />
-        <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
-        <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
-        <icon height="57" src="resources/ios/icon/icon.png" width="57" />
-        <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
-        <icon height="40" src="resources/ios/icon/icon-40.png" width="40" />
-        <icon height="80" src="resources/ios/icon/icon-40@2x.png" width="80" />
-        <icon height="50" src="resources/ios/icon/icon-50.png" width="50" />
-        <icon height="100" src="resources/ios/icon/icon-50@2x.png" width="100" />
-        <icon height="60" src="resources/ios/icon/icon-60.png" width="60" />
-        <icon height="120" src="resources/ios/icon/icon-60@2x.png" width="120" />
-        <icon height="180" src="resources/ios/icon/icon-60@3x.png" width="180" />
-        <icon height="72" src="resources/ios/icon/icon-72.png" width="72" />
-        <icon height="144" src="resources/ios/icon/icon-72@2x.png" width="144" />
-        <icon height="76" src="resources/ios/icon/icon-76.png" width="76" />
-        <icon height="152" src="resources/ios/icon/icon-76@2x.png" width="152" />
-        <icon height="29" src="resources/ios/icon/icon-small.png" width="29" />
-        <icon height="58" src="resources/ios/icon/icon-small@2x.png" width="58" />
-        <icon height="87" src="resources/ios/icon/icon-small@3x.png" width="87" />
+        <xsplash height="1136" src="resources/ios/splash/Default-568h@2x~iphone.png" width="640" />
+        <xsplash height="1334" src="resources/ios/splash/Default-667h.png" width="750" />
+        <xsplash height="2208" src="resources/ios/splash/Default-736h.png" width="1242" />
+        <xsplash height="1242" src="resources/ios/splash/Default-Landscape-736h.png" width="2208" />
+        <xsplash height="1536" src="resources/ios/splash/Default-Landscape@2x~ipad.png" width="2048" />
+        <xsplash height="768" src="resources/ios/splash/Default-Landscape~ipad.png" width="1024" />
+        <xsplash height="2048" src="resources/ios/splash/Default-Portrait@2x~ipad.png" width="1536" />
+        <xsplash height="1024" src="resources/ios/splash/Default-Portrait~ipad.png" width="768" />
+        <xsplash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
+        <xsplash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
+        <xicon height="57" src="resources/ios/icon/icon.png" width="57" />
+        <xicon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
+        <xicon height="40" src="resources/ios/icon/icon-40.png" width="40" />
+        <xicon height="80" src="resources/ios/icon/icon-40@2x.png" width="80" />
+        <xicon height="50" src="resources/ios/icon/icon-50.png" width="50" />
+        <xicon height="100" src="resources/ios/icon/icon-50@2x.png" width="100" />
+        <xicon height="60" src="resources/ios/icon/icon-60.png" width="60" />
+        <xicon height="120" src="resources/ios/icon/icon-60@2x.png" width="120" />
+        <xicon height="180" src="resources/ios/icon/icon-60@3x.png" width="180" />
+        <xicon height="72" src="resources/ios/icon/icon-72.png" width="72" />
+        <xicon height="144" src="resources/ios/icon/icon-72@2x.png" width="144" />
+        <xicon height="76" src="resources/ios/icon/icon-76.png" width="76" />
+        <xicon height="152" src="resources/ios/icon/icon-76@2x.png" width="152" />
+        <xicon height="29" src="resources/ios/icon/icon-small.png" width="29" />
+        <xicon height="58" src="resources/ios/icon/icon-small@2x.png" width="58" />
+        <xicon height="87" src="resources/ios/icon/icon-small@3x.png" width="87" />
     </platform>
-    <icon src="resources/ios/icon/icon-small@3x.png" />
-    <plugin name="cordova-plugin-admobpro" spec="~2.20.1" />
-    <plugin name="cordova-plugin-google-analytics" spec="~1.6.0" />
-    <plugin name="cordova-plugin-inappbrowser" spec="~1.5.0" />
-    <plugin name="cordova-plugin-console" spec="~1.0.4" />
-    <plugin name="cordova-plugin-device" spec="~1.1.3" />
-    <plugin name="cordova-plugin-splashscreen" spec="~4.0.0" />
-    <plugin name="cordova-plugin-statusbar" spec="~2.2.0" />
-    <plugin name="cordova-plugin-x-socialsharing" spec="~5.1.3" />
-    <engine name="ios" spec="~4.5.4" />
+    <xicon src="resources/ios/icon/icon-small@3x.png" />
+    <plugin name="cordova-plugin-device" spec="^2.0.2" />
+    <plugin name="cordova-plugin-admobpro" spec="^2.31.5" />
+    <plugin name="cordova-plugin-google-analytics" spec="^1.8.3" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
+    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
+    <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
+    <plugin name="cordova-plugin-x-socialsharing" spec="^5.4.0" />
+    <engine name="ios" spec="^4.5.4" />
 </widget>

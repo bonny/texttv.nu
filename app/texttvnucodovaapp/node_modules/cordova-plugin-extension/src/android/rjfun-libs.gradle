@@ -1,0 +1,4 @@
+dependencies {
+    // ... other dependencies
+    compile files('libs/cordova-generic-ad.jar')
+}

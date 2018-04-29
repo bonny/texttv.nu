@@ -15,6 +15,9 @@
 - (void) setAllowIDFACollection: (CDVInvokedUrlCommand*) command;
 - (void) setUserId: (CDVInvokedUrlCommand*)command;
 - (void) setAppVersion: (CDVInvokedUrlCommand*)command;
+- (void) getVar: (CDVInvokedUrlCommand*)command;
+- (void) setVar: (CDVInvokedUrlCommand*)command;
+- (void) dispatch: (CDVInvokedUrlCommand*)command;
 - (void) debugMode: (CDVInvokedUrlCommand*)command;
 - (void) setOptOut: (CDVInvokedUrlCommand*)command;
 - (void) enableUncaughtExceptionReporting: (CDVInvokedUrlCommand*)command;

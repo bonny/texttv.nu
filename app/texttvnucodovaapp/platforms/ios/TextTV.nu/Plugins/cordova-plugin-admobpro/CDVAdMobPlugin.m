@@ -17,7 +17,7 @@
 
 #define TEST_BANNER_ID           @"ca-app-pub-3940256099942544/4480807092"
 #define TEST_INTERSTITIALID      @"ca-app-pub-3940256099942544/4411468910"
-#define TEST_REWARDVIDEOID       @"ca-app-pub-3940256099942544/3995920692"
+#define TEST_REWARDVIDEOID       @"ca-app-pub-3940256099942544/1712485313"
 
 #define OPT_ADCOLONY        @"AdColony"
 #define OPT_ADCOLONY        @"AdColony"
@@ -84,6 +84,9 @@
 }
 - (NSString*) __getTestInterstitialId {
     return TEST_INTERSTITIALID;
+}
+- (NSString*) __getTestRewardVideoId {
+  return TEST_REWARDVIDEOID;
 }
 
 - (void) parseOptions:(NSDictionary *)options
@@ -226,6 +229,8 @@
         return kGADAdSizeLeaderboard;
     } else if ([str isEqualToString:@"SKYSCRAPER"]) {
         return kGADAdSizeSkyscraper;
+    } else if ([str isEqualToString:@"LARGE_BANNER"]) {
+        return kGADAdSizeLargeBanner;
     } else {
         return kGADAdSizeInvalid;
     }
