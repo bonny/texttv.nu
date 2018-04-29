@@ -1172,7 +1172,9 @@ window.addEventListener("statusTap", function() {
 window.addEventListener('load', function() {
 
 	// Add fastclick
-	FastClick.attach(document.body);
+	// Disabled 29 Apr 2018 because of issues with IOS 11.3:
+	// https://github.com/ftlabs/fastclick/issues/549
+	// FastClick.attach(document.body);
 
 	// when sidebar is open and tap on main view = close sidebar
 	$(document).on("click", ".view--main.open-sidebar", function(e) {
