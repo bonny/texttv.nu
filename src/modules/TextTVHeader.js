@@ -22,6 +22,8 @@ import {
 } from "@ionic/react";
 
 import React from "react";
+import { ReactComponent as Logo } from "../images/logo.svg";
+import logo from "../images/logo.svg";
 
 export const TextTVHeader = () => {
   return (
@@ -35,7 +37,10 @@ export const TextTVHeader = () => {
             <IonIcon slot="icon-only" name="menu" />
           </IonButton>
         </IonButtons>
-        <IonTitle>TextTV.nu</IonTitle>
+        <IonTitle>
+          <Logo className="texttv-logo" />
+          TextTV.nu
+        </IonTitle>
       </IonToolbar>
     </IonHeader>
   );
