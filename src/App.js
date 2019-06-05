@@ -20,15 +20,16 @@ import {
 import { TabHome } from "./tab-home";
 import { TabPopulart } from "./tab-populart";
 import { TabNyast } from "./tab-nyast";
+import "./App.css";
 import "./theme.css";
 
 function App() {
   return (
     <>
       <Router>
-        <Switch>
+        {/* <Switch>
           <Redirect exact={true} from="/" to="/hem" />
-        </Switch>
+        </Switch> */}
         <div id="app">
           <IonApp>
             <IonPage id="main">
@@ -36,7 +37,7 @@ function App() {
                 <IonTabs>
                   <IonRouterOutlet>
                     <Route
-                      path="/:tab(hem)"
+                      path="/"
                       component={TabHome}
                       exact={true}
                     />
@@ -52,7 +53,7 @@ function App() {
                     />
                   </IonRouterOutlet>
                   <IonTabBar slot="bottom">
-                    <IonTabButton tab="hem" href="/hem">
+                    <IonTabButton tab="hem" href="/">
                       <IonIcon name="home" />
                       <IonLabel>Hem</IonLabel>
                     </IonTabButton>
