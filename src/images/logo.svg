@@ -1,0 +1,11 @@
+<svg viewBox="0 0 350 350" 
+    xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+        <rect fill="#008EFF" width="350" height="350" rx="40"></rect>
+        <path fill="#0049FC" d="M76 75h50v50H76z"></path>
+        <path fill="#57C6EB" d="M151 75h50v50h-50z"></path>
+        <path fill="#E5DB2B" d="M151 150h50v50h-50z"></path>
+        <path fill="#F3A633" d="M151 225h50v50h-50z"></path>
+        <path fill="#80F200" d="M226 75h50v50h-50z"></path>
+    </g>
+</svg>
