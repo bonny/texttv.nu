@@ -1,0 +1,7 @@
+{
+  "name": "TextTV2019",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "react"
+}
