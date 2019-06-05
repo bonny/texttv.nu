@@ -1,8 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import fitty from "fitty";
 import "./texttv-page.css";
+import { FontSubscriber } from "react-with-async-fonts";
 
-export const TextTvPage = () => {
-  function createMarkup() {
+export const TextTvPage = props => {
+  const { pageNum } = props;
+  const [fontIsLoaded, setFontIsLoaded] = useState(false);
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `Title yo`;
+
+    // https://github.com/rikschennink/fitty
+    if (fontIsLoaded) {
+      console.log("run fitty because font is loaded", pageNum, fontIsLoaded);
+      fitty(".TextTVPage__inner", {
+        minSize: 2,
+        maxSize: 18
+      });
+
+      setTimeout(() => {
+        console.log("fitty.fitAll()	");
+        fitty.fitAll();
+      }, 1500);
+    }
+  }, [pageNum, fontIsLoaded]);
+
+  function createMarkup(fonts) {
+    console.log("createMarkup() fonts", fonts);
+
     return {
       __html: `<div class="root"><span class="toprow"> 100 SVT Text         Söndag 02 jun 2019
 </span><span class="B bgB"> </span><span class="B bgB">                                      </span>
@@ -33,13 +60,24 @@ export const TextTvPage = () => {
   }
 
   return (
-    <div className="TextTVPage">
-      <div className="TextTVPage__wrap">
-        <div
-          className="TextTVPage__inner"
-          dangerouslySetInnerHTML={createMarkup()}
-        />
-      </div>
-    </div>
+    <FontSubscriber>
+      {fonts => {
+        console.log("fonts", fonts);
+        if (fonts.ubuntuMono) {
+          setFontIsLoaded(true);
+        }
+
+        return (
+          <div className="TextTVPage">
+            <div className="TextTVPage__wrap">
+              <div
+                className="TextTVPage__inner"
+                dangerouslySetInnerHTML={createMarkup(fonts)}
+              />
+            </div>
+          </div>
+        );
+      }}
+    </FontSubscriber>
   );
 };

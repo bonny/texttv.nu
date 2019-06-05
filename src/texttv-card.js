@@ -14,18 +14,6 @@ export const TextTVCard = props => {
   const { size, pageNum } = props;
   const [actionSheetOpened, setActionSheetOpened] = useState(false);
 
-  // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
-    // Update the document title using the browser API
-    document.title = `Title yo`;
-
-    // https://github.com/rikschennink/fitty
-    fitty(".TextTVPage__inner", {
-      minSize: 2,
-      maxSize: 18
-    });
-  }, [pageNum]);
-
   const handleMoreActionsClick = e => {
     console.log("handleMoreActionsClick", e);
     setActionSheetOpened(true);
@@ -63,7 +51,7 @@ export const TextTVCard = props => {
       />
 
       <IonCard {...props} onClick={props.onCardClick}>
-        <TextTvPage />
+        <TextTvPage pageNum={pageNum} />
 
         {size === "large" && (
           <IonItem lines="none">
