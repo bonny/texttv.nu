@@ -10,8 +10,12 @@ import {
   IonTabButton,
   IonTabs,
   IonBadge,
-  IonSplitPane
+  IonSplitPane,
+  IonContent,
+  IonRefresher,
+  IonRefresherContent
 } from "@ionic/react";
+import { TextTVHeader } from "./modules/TextTVHeader";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { TabHome } from "./tab-home";
@@ -20,6 +24,25 @@ import { TabNyast } from "./tab-nyast";
 import "./App.css";
 import "./theme.css";
 import Menu from "./Menu";
+
+const Page_TextTVPage = props => {
+  console.log("Page_TextTVPage props", props);
+  const doRefresh = e => {
+    console.log("do refresh");
+  };
+
+  return (
+    <>
+      <TextTVHeader {...props} />
+
+      <IonContent>
+        <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
+          <IonRefresherContent />
+        </IonRefresher>
+      </IonContent>
+    </>
+  );
+};
 
 function App() {
   const [currentTab, setCurrentTab] = useState("hem");
@@ -41,6 +64,11 @@ function App() {
                 <Route exact path="/" render={() => <Redirect to="/hem" />} />
                 <IonTabs>
                   <IonRouterOutlet>
+                    <Route
+                      path="/:tab(hem|populart|nyast)/sida/:id"
+                      component={Page_TextTVPage}
+                    />
+                    <Route path="/sida/:id" component={Page_TextTVPage} />
                     <Route
                       path="/:tab(hem)"
                       // component={TabHome}
@@ -65,10 +93,10 @@ function App() {
                       <IonLabel>Hem</IonLabel>
                       {/* <IonBadge color="danger">6</IonBadge> */}
                     </IonTabButton>
-                    <IonTabButton tab="populart" href="/populart">
+                    {/* <IonTabButton tab="populart" href="/populart">
                       <IonIcon name="trending-up" />
                       <IonLabel>Populärt</IonLabel>
-                    </IonTabButton>
+                    </IonTabButton> */}
                     <IonTabButton tab="nyast" href="/nyast">
                       <IonIcon name="clock" />
                       <IonLabel>Nyast</IonLabel>

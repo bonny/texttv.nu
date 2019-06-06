@@ -88,11 +88,7 @@ const updatedSports = [
 
 const SenastUppdateradeLista = props => {
   {
-    console.log("SenastUppdateradeLista props", props);
-
     const { type, history } = props;
-    const pagesArray = type === "news" ? updatedNews : updatedSports;
-
     const [isLoading, setIsLoading] = useState(false);
     const [isLoadingError, setIsLoadingError] = useState(false);
     const [pages, setPages] = useState([]);
@@ -117,18 +113,20 @@ const SenastUppdateradeLista = props => {
       setIsLoadingError(false);
       setPages([]);
 
+      console.log(
+        "useEffect in SenastUppdateradeLista to fetch latest updated"
+      );
+
       fetch(endpoint.endpoint)
         .then(data => {
           return data.json();
         })
         .then(data => {
-          console.log("fetched then json data", data);
           setIsLoading(false);
           setPages(data.pages);
         })
         .catch(error => {
           // Network error or similar.
-          console.log("fetch catch", error, JSON.stringify(error));
           setIsLoadingError(true);
         });
     }, [type]);
@@ -143,9 +141,11 @@ const SenastUppdateradeLista = props => {
       return (
         <IonItem
           detail
-          href={link}
+          // href={link}
           onClick={e => {
             e.preventDefault();
+            console.log("push link", link);
+
             history.push(link);
           }}
           key={page.id}
