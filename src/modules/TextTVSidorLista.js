@@ -29,7 +29,7 @@ export default () => {
           <IonLabel>Sidor</IonLabel>
         </IonListHeader>
 
-        <IonItem>
+        <IonItem lines="inset">
           <IonLabel position="stacked">Gå till sida …</IonLabel>
           <IonInput placeholder="100, 200, 377, …" type="number" />
         </IonItem>
