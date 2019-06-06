@@ -1,6 +1,7 @@
 import { IonContent, IonRefresher, IonRefresherContent } from "@ionic/react";
 import React from "react";
 import { TextTVHeader } from "./modules/TextTVHeader";
+import SenastUppdaterat from "./modules/SenastUppdaterat";
 
 export const TabNyast = () => {
   // function onGotoPageChange(e) {
@@ -8,9 +9,9 @@ export const TabNyast = () => {
   // }
 
   const doRefresh = e => {
-    console.log("do refresh", e);
+    // console.log("do refresh", e);
     setTimeout(() => {
-      console.log("Async operation has ended");
+      // console.log("Async operation has ended");
       e.target.complete();
     }, 2000);
   };
@@ -23,7 +24,7 @@ export const TabNyast = () => {
         <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
           <IonRefresherContent />
         </IonRefresher>
-
+        <SenastUppdaterat />
       </IonContent>
     </>
   );

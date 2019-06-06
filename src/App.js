@@ -44,13 +44,7 @@ function App() {
                     <Route
                       path="/:tab(hem)"
                       // component={TabHome}
-                      render={props => (
-                        <TabHome
-                          {...props}
-                          currentTab={currentTab}
-                          prevTab={prevTab}
-                        />
-                      )}
+                      render={props => <TabHome {...props} />}
                       exact={true}
                     />
                     <Route
@@ -60,8 +54,9 @@ function App() {
                     />
                     <Route
                       path="/:tab(nyast)"
-                      component={TabNyast}
+                      // component={TabNyast}
                       exact={true}
+                      render={props => <TabNyast {...props} />}
                     />
                   </IonRouterOutlet>
                   <IonTabBar slot="bottom" onClick={handleTabsDidChange}>

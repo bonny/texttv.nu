@@ -10,7 +10,7 @@ export const TextTvPage = props => {
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
     // Update the document title using the browser API
-    document.title = `Title yo`;
+    // document.title = `Title yo`;
 
     // https://github.com/rikschennink/fitty
     if (fontIsLoaded) {
