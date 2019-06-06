@@ -3,7 +3,10 @@ import React from "react";
 import { TextTVHeader } from "./modules/TextTVHeader";
 import SenastUppdaterat from "./modules/SenastUppdaterat";
 
-export const TabNyast = () => {
+export const TabNyast = (props) => {
+  console.log('tabnyast props', props);
+  const {history} = props;
+  
   // function onGotoPageChange(e) {
   //   console.log("onGotoPageChange", e.target.value);
   // }
@@ -24,7 +27,7 @@ export const TabNyast = () => {
         <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
           <IonRefresherContent />
         </IonRefresher>
-        <SenastUppdaterat />
+        <SenastUppdaterat history={history} />
       </IonContent>
     </>
   );

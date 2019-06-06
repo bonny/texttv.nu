@@ -62,12 +62,12 @@ function App() {
                   <IonTabBar slot="bottom" onClick={handleTabsDidChange}>
                     <IonTabButton tab="hem" href="/hem">
                       <IonIcon name="home" />
-                      <IonLabel>Hem c:{currentTab}</IonLabel>
+                      <IonLabel>Hem</IonLabel>
                       {/* <IonBadge color="danger">6</IonBadge> */}
                     </IonTabButton>
                     <IonTabButton tab="populart" href="/populart">
                       <IonIcon name="trending-up" />
-                      <IonLabel>Populärt p:{prevTab}</IonLabel>
+                      <IonLabel>Populärt</IonLabel>
                     </IonTabButton>
                     <IonTabButton tab="nyast" href="/nyast">
                       <IonIcon name="clock" />

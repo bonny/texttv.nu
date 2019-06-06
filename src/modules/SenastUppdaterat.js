@@ -11,6 +11,8 @@ import {
   IonContent
 } from "@ionic/react";
 import React, { useState, useEffect } from "react";
+import Moment from "react-moment";
+import "moment/locale/sv";
 
 const updatedNews = [
   {
@@ -86,7 +88,9 @@ const updatedSports = [
 
 const SenastUppdateradeLista = props => {
   {
-    const { type } = props;
+    console.log("SenastUppdateradeLista props", props);
+
+    const { type, history } = props;
     const pagesArray = type === "news" ? updatedNews : updatedSports;
 
     const [isLoading, setIsLoading] = useState(false);
@@ -134,19 +138,32 @@ const SenastUppdateradeLista = props => {
 
       // No line on last item.
       const lines = index === arr.length - 1 ? "none" : "inset";
+      const link = `/sida/${page.page_num}`;
 
       return (
-        <IonItem detail href={`/sida/${page.page_num}`} key={page.id} lines={lines}>
+        <IonItem
+          detail
+          href={link}
+          onClick={e => {
+            e.preventDefault();
+            history.push(link);
+          }}
+          key={page.id}
+          lines={lines}
+        >
           {/* <IonThumbnail slot="start">
             <IonImg src={imgSrc} />
           </IonThumbnail> */}
           <IonLabel text-wrap>
+            <p>
+              <Moment unix format="HH:mm" locale="sv">
+                {page.date_added_unix}
+              </Moment>{" "}
+            </p>
+            <h1>{page.title}</h1>
             <h2>{page.title}</h2>
-            <p>{page.date_added}</p>
+            {/* (<Moment unix fromNow locale='sv'>{page.date_added_unix}</Moment>) */}
           </IonLabel>
-          <IonBadge slot="end" color="light">
-            {page.page_num}
-          </IonBadge>
         </IonItem>
       );
     });
@@ -161,12 +178,14 @@ const SenastUppdateradeLista = props => {
   }
 };
 
-export default () => {
+export default props => {
   const [selectedSegment, setSelectedSegment] = useState("news");
 
   const handleSegmentChange = e => {
     setSelectedSegment(e.detail.value);
   };
+
+  const { history } = props;
 
   return (
     <>
@@ -177,7 +196,7 @@ export default () => {
         </IonSegment>
       </IonToolbar>
 
-      <SenastUppdateradeLista type={selectedSegment} />
+      <SenastUppdateradeLista type={selectedSegment} history={history} />
     </>
   );
 };
