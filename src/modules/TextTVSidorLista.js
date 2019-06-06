@@ -31,12 +31,13 @@ export default () => {
 
         <IonItem>
           <IonLabel position="stacked">Gå till sida …</IonLabel>
-          <IonInput placeholder="100, 200, 377, …" />
+          <IonInput placeholder="100, 200, 377, …" type="number" />
         </IonItem>
 
-        {favorites.map(page => {
+        {favorites.map((page, index, arr) => {
+          const lines = index === arr.length - 1 ? "none" : "inset";
           return (
-            <IonItem detail href={`#${page.pages}`} key={page.pages}>
+            <IonItem detail href={`#${page.pages}`} key={page.pages} lines= {lines}>
               <IonLabel text-wrap>
                 <h2>{page.pages}</h2>
                 <p>{page.title}</p>

@@ -68,13 +68,13 @@ export const TabHome = props => {
             <p>Du kan ändra vilka sidor som ska visas här på hemskärmen.</p>
           </IonCardContent>
 
-          <IonItem>
+          <IonItem lines="none">
             <IonToolbar>
               <IonButtons slot="secondary">
-                <IonButton>Kanske senare</IonButton>
+                <IonButton size="small">Kanske senare</IonButton>
               </IonButtons>
               <IonButtons slot="primary">
-                <IonButton color="primary">Ändra</IonButton>
+                <IonButton color="primary" size="small">Ändra</IonButton>
               </IonButtons>
             </IonToolbar>
           </IonItem>
