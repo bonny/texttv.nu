@@ -151,9 +151,6 @@ const SenastUppdateradeLista = props => {
           key={page.id}
           lines={lines}
         >
-          {/* <IonThumbnail slot="start">
-            <IonImg src={imgSrc} />
-          </IonThumbnail> */}
           <IonLabel text-wrap>
             <p>
               <Moment unix format="HH:mm" locale="sv">
@@ -161,8 +158,6 @@ const SenastUppdateradeLista = props => {
               </Moment>{" "}
             </p>
             <h1>{page.title}</h1>
-            <h2>{page.title}</h2>
-            {/* (<Moment unix fromNow locale='sv'>{page.date_added_unix}</Moment>) */}
           </IonLabel>
         </IonItem>
       );
