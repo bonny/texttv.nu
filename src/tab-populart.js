@@ -1,22 +1,6 @@
-import {
-  IonButton,
-  IonButtons,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonContent,
-  IonIcon,
-  IonMenuButton,
-  IonSearchbar,
-  IonSegment,
-  IonSegmentButton,
-  IonTitle,
-  IonToolbar
-} from "@ionic/react";
+import { IonContent } from "@ionic/react";
 import React from "react";
-import { MestLästa } from "./modules/MestLasta";
+import MestLasta from "./modules/MestLasta";
 import { TextTVHeader } from "./modules/TextTVHeader";
 
 export const TabPopulart = () => {
@@ -24,7 +8,7 @@ export const TabPopulart = () => {
     <>
       <TextTVHeader />
       <IonContent>
-        <MestLästa />
+        <MestLasta />
       </IonContent>
     </>
   );

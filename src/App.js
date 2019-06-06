@@ -8,15 +8,11 @@ import {
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
-  IonTabs
+  IonTabs,
+  IonBadge
 } from "@ionic/react";
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
-} from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { TabHome } from "./tab-home";
 import { TabPopulart } from "./tab-populart";
 import { TabNyast } from "./tab-nyast";
@@ -24,21 +20,34 @@ import "./App.css";
 import "./theme.css";
 
 function App() {
+  const [currentTab, setCurrentTab] = useState("hem");
+  const [prevTab, setPrevTab] = useState();
+
+  const handleTabsDidChange = e => {
+    setPrevTab(currentTab);
+    setCurrentTab(e.currentTarget.selectedTab);
+  };
+
   return (
     <>
       <Router>
-        {/* <Switch>
-          <Redirect exact={true} from="/" to="/hem" />
-        </Switch> */}
-        <div id="app">
+        <div>
           <IonApp>
-            <IonPage id="main">
+            <IonPage>
               <IonPage>
+                <Route exact path="/" render={() => <Redirect to="/hem" />} />
                 <IonTabs>
                   <IonRouterOutlet>
                     <Route
-                      path="/"
-                      component={TabHome}
+                      path="/:tab(hem)"
+                      // component={TabHome}
+                      render={props => (
+                        <TabHome
+                          {...props}
+                          currentTab={currentTab}
+                          prevTab={prevTab}
+                        />
+                      )}
                       exact={true}
                     />
                     <Route
@@ -52,14 +61,15 @@ function App() {
                       exact={true}
                     />
                   </IonRouterOutlet>
-                  <IonTabBar slot="bottom">
-                    <IonTabButton tab="hem" href="/">
+                  <IonTabBar slot="bottom" onClick={handleTabsDidChange}>
+                    <IonTabButton tab="hem" href="/hem">
                       <IonIcon name="home" />
-                      <IonLabel>Hem</IonLabel>
+                      <IonLabel>Hem c:{currentTab}</IonLabel>
+                      {/* <IonBadge color="danger">6</IonBadge> */}
                     </IonTabButton>
                     <IonTabButton tab="populart" href="/populart">
                       <IonIcon name="trending-up" />
-                      <IonLabel>Populärt</IonLabel>
+                      <IonLabel>Populärt p:{prevTab}</IonLabel>
                     </IonTabButton>
                     <IonTabButton tab="nyast" href="/nyast">
                       <IonIcon name="clock" />

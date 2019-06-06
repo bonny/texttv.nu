@@ -14,21 +14,21 @@ export const TextTvPage = props => {
 
     // https://github.com/rikschennink/fitty
     if (fontIsLoaded) {
-      console.log("run fitty because font is loaded", pageNum, fontIsLoaded);
+      // console.log("run fitty because font is loaded", pageNum, fontIsLoaded);
       fitty(".TextTVPage__inner", {
         minSize: 2,
         maxSize: 18
       });
 
       setTimeout(() => {
-        console.log("fitty.fitAll()	");
+        // console.log("fitty.fitAll()	");
         fitty.fitAll();
       }, 1500);
     }
   }, [pageNum, fontIsLoaded]);
 
   function createMarkup(fonts) {
-    console.log("createMarkup() fonts", fonts);
+    // console.log("createMarkup() fonts", fonts);
 
     return {
       __html: `<div class="root"><span class="toprow"> 100 SVT Text         Söndag 02 jun 2019
@@ -62,7 +62,7 @@ export const TextTvPage = props => {
   return (
     <FontSubscriber>
       {fonts => {
-        console.log("fonts", fonts);
+        // console.log("fonts", fonts);
         if (fonts.ubuntuMono) {
           setFontIsLoaded(true);
         }

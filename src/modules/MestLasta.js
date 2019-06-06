@@ -1,25 +1,14 @@
 import {
-  IonBackButton,
   IonBadge,
-  IonButtons,
-  IonContent,
-  IonHeader,
-  IonIcon,
   IonImg,
-  IonInput,
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader,
-  IonRefresher,
-  IonRefresherContent,
   IonSegment,
   IonSegmentButton,
   IonThumbnail,
-  IonTitle,
   IonToolbar
 } from "@ionic/react";
-
 import React, { useState } from "react";
 
 const mostReadToday = [
@@ -93,7 +82,7 @@ const mostReadYesterday = [
   }
 ];
 
-const MestLästaLista = props => {
+const MestLastaLista = props => {
   {
     const { day } = props;
 
@@ -122,7 +111,7 @@ const MestLästaLista = props => {
   }
 };
 
-export const MestLästa = () => {
+export default () => {
   const [selectedSegment, setSelectedSegment] = useState("today");
 
   const handleSegmentChange = e => {
@@ -142,7 +131,7 @@ export const MestLästa = () => {
         {/* <IonListHeader>
         <IonLabel>Mest lästa</IonLabel>
       </IonListHeader> */}
-        <MestLästaLista day={selectedSegment} />
+        <MestLastaLista day={selectedSegment} />
       </IonList>
     </>
   );

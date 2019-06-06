@@ -1,34 +1,36 @@
 import {
-  IonButton,
-  IonButtons,
   IonCol,
   IonContent,
   IonGrid,
-  IonHeader,
-  IonIcon,
   IonLabel,
   IonListHeader,
   IonRefresher,
   IonRefresherContent,
   IonRow,
-  IonSearchbar,
-  IonSegment,
-  IonSegmentButton,
-  IonTitle,
-  IonToolbar,
   IonCard,
   IonCardHeader,
-  IonCardSubtitle,
   IonCardTitle,
+  IonCardSubtitle,
+  IonButton,
   IonCardContent,
-  IonItem
+  IonItem,
+  IonIcon,
+  IonToolbar,
+  IonButtons,
+  IonTitle
 } from "@ionic/react";
-import React from "react";
-import { TextTVLargeCard, TextTVThumbnailCard } from "./texttv-card";
+import React, { useEffect } from "react";
 import { TextTVHeader } from "./modules/TextTVHeader";
-import { TextTVFavoriterLista } from "./modules/TextTVFavoriterLista";
+import TextTVSidorLista from "./modules/TextTVSidorLista";
+import { TextTVLargeCard, TextTVThumbnailCard } from "./texttv-card";
 
-export const TabHome = () => {
+export const TabHome = props => {
+  // const { currentTab, prevTab } = props;
+
+  useEffect(e => {
+    // console.log("useEffect in TabHome", e);
+  });
+
   return (
     <>
       <TextTVHeader />
@@ -40,7 +42,45 @@ export const TabHome = () => {
 
         <TextTVLargeCard pageNum="100" />
 
+        <IonGrid>
+          {/* <IonRow>
+            <IonCol size="6">
+              <IonListHeader>
+                <IonLabel>Items</IonLabel>
+              </IonListHeader>
+            </IonCol>
+          </IonRow> */}
+          <IonRow>
+            <IonCol size="6">
+              <TextTVThumbnailCard pageNum="300" />
+            </IonCol>
+            <IonCol size="6">
+              <TextTVThumbnailCard pageNum="700" />
+            </IonCol>
+          </IonRow>
+        </IonGrid>
+
         <IonCard>
+          <IonCardHeader>
+            <IonCardTitle>Tips: Ändra startsidor</IonCardTitle>
+          </IonCardHeader>
+          <IonCardContent>
+            <p>Du kan ändra vilka sidor som ska visas här på hemskärmen.</p>
+          </IonCardContent>
+
+          <IonItem>
+            <IonToolbar>
+              <IonButtons slot="secondary">
+                <IonButton>Kanske senare</IonButton>
+              </IonButtons>
+              <IonButtons slot="primary">
+                <IonButton color="primary">Ändra</IonButton>
+              </IonButtons>
+            </IonToolbar>
+          </IonItem>
+        </IonCard>
+
+        {/* <IonCard>
           <IonCardHeader>
             <IonButton
               fill="clear"
@@ -57,48 +97,13 @@ export const TabHome = () => {
             Keep close to Nature's heart... and break clear away, once in
             awhile, and climb a mountain or spend a week in the woods. Wash your
             spirit clean.
+            <br />
+            <br />currentTab: {currentTab}
+            <br />prevTab: {prevTab}
           </IonCardContent>
-        </IonCard>
+        </IonCard> */}
 
-        <TextTVFavoriterLista />
-
-        <IonListHeader>
-          <IonLabel>Gå till sida</IonLabel>
-        </IonListHeader>
-        <IonToolbar>
-          <IonSearchbar
-            placeholder="100, 200, 377, ..."
-            searchIcon="document"
-            type="number"
-          />
-        </IonToolbar>
-
-        <IonGrid>
-          <IonRow>
-            <IonCol size="6">
-              <IonListHeader>
-                <IonLabel>Items</IonLabel>
-              </IonListHeader>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol size="6">
-              <TextTVThumbnailCard pageNum="101" />
-            </IonCol>
-            <IonCol size="6">
-              <TextTVThumbnailCard pageNum="102" />
-            </IonCol>
-            <IonCol size="6">
-              <TextTVThumbnailCard pageNum="103" />
-            </IonCol>
-            <IonCol size="6">
-              <TextTVThumbnailCard pageNum="104" />
-            </IonCol>
-            <IonCol size="6">
-              <TextTVThumbnailCard pageNum="105" />
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+        <TextTVSidorLista />
       </IonContent>
     </>
   );

@@ -6,8 +6,8 @@ import {
   IonLabel,
   IonActionSheet
 } from "@ionic/react";
-import fitty from "fitty";
-import React, { useEffect, useState } from "react";
+// import fitty from "fitty";
+import React, { useState } from "react";
 import { TextTvPage } from "./texttv-page.js";
 
 export const TextTVCard = props => {
@@ -67,7 +67,7 @@ export const TextTVCard = props => {
         {size === "thumbnail" && (
           <IonItem lines="none" detail>
             <IonLabel>
-              <h3>101-103</h3>
+              <h3>{pageNum}</h3>
             </IonLabel>
           </IonItem>
         )}
