@@ -28,10 +28,10 @@ export const TextTvPage = props => {
   // Load page from TextTV.nu
   useEffect(() => {
     async function fetchPageContents() {
-      const url = `http://api.texttv.nu/api/get/${pageNum}?app=texttvapp`;
+      const url = `https://api.texttv.nu/api/get/${pageNum}?app=texttvapp`;
       const response = await fetch(url);
       const pageData = await response.json();
-      console.log("pageData", pageData);
+      // console.log("pageData", pageData);
       setPageData(pageData);
     }
 
