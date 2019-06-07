@@ -21,7 +21,7 @@ import {
 } from "@ionic/react";
 import React, { useEffect } from "react";
 import { TextTVHeader } from "./modules/TextTVHeader";
-import TextTVSidorLista from "./modules/TextTVSidorLista";
+import { TextTVSidorLista } from "./modules/TextTVSidorLista";
 import { TextTVLargeCard, TextTVThumbnailCard } from "./texttv-card";
 
 export const TabHome = props => {
@@ -74,7 +74,9 @@ export const TabHome = props => {
                 <IonButton size="small">Kanske senare</IonButton>
               </IonButtons>
               <IonButtons slot="primary">
-                <IonButton color="primary" size="small">Ändra</IonButton>
+                <IonButton color="primary" size="small">
+                  Ändra
+                </IonButton>
               </IonButtons>
             </IonToolbar>
           </IonItem>
@@ -103,7 +105,7 @@ export const TabHome = props => {
           </IonCardContent>
         </IonCard> */}
 
-        <TextTVSidorLista />
+        <TextTVSidorLista {...props} />
       </IonContent>
     </>
   );

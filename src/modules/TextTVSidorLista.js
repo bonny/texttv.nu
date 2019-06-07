@@ -21,7 +21,14 @@ const favorites = [
   { title: "Innehåll", pages: "700" }
 ];
 
-export default () => {
+export const TextTVSidorLista = props => {
+  const handlePageNumInputChange = e => {
+    const pageNum = e.target.value;
+    if (pageNum.length === 3) {
+      props.history.push(`/sida/${pageNum}`);
+    }
+  };
+
   return (
     <>
       <IonList>
@@ -31,13 +38,25 @@ export default () => {
 
         <IonItem lines="inset">
           <IonLabel position="stacked">Gå till sida …</IonLabel>
-          <IonInput placeholder="100, 200, 377, …" type="number" />
+          <IonInput
+            placeholder="100, 200, 377, …"
+            type="number"
+            onIonChange={handlePageNumInputChange}
+          />
         </IonItem>
 
         {favorites.map((page, index, arr) => {
           const lines = index === arr.length - 1 ? "none" : "inset";
           return (
-            <IonItem detail href={`#${page.pages}`} key={page.pages} lines= {lines}>
+            <IonItem
+              detail
+              onClick={() => {
+                const url = `/sida/${page.pages}`;
+                props.history.push(url);
+              }}
+              key={page.pages}
+              lines={lines}
+            >
               <IonLabel text-wrap>
                 <h2>{page.pages}</h2>
                 <p>{page.title}</p>
