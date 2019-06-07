@@ -9,6 +9,7 @@
       "config": { "distDir": "build" }
     }
   ],
+  "regions": ["arn1"],
   "routes": [
     {
       "src": "/static/(.*)",
