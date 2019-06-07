@@ -6,43 +6,19 @@ import {
   IonLabel,
   IonPage,
   IonRouterOutlet,
+  IonSplitPane,
   IonTabBar,
   IonTabButton,
-  IonTabs,
-  IonBadge,
-  IonSplitPane,
-  IonContent,
-  IonRefresher,
-  IonRefresherContent
-} from "@ionic/react";
-import { TextTVHeader } from "./modules/TextTVHeader";
+  IonTabs} from "@ionic/react";
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import { TabHome } from "./tab-home";
-import { TabPopulart } from "./tab-populart";
-import { TabNyast } from "./tab-nyast";
+import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import "./App.css";
-import "./theme.css";
 import Menu from "./Menu";
-
-const Page_TextTVPage = props => {
-  console.log("Page_TextTVPage props", props);
-  const doRefresh = e => {
-    console.log("do refresh");
-  };
-
-  return (
-    <>
-      <TextTVHeader {...props} />
-
-      <IonContent>
-        <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
-          <IonRefresherContent />
-        </IonRefresher>
-      </IonContent>
-    </>
-  );
-};
+import { TabHome } from "./tab-home";
+import { TabNyast } from "./tab-nyast";
+import { TabPopulart } from "./tab-populart";
+import "./theme.css";
+import { Page_TextTVPage } from "./Page_TextTVPage";
 
 function App() {
   const [currentTab, setCurrentTab] = useState("hem");
@@ -56,7 +32,7 @@ function App() {
   return (
     <>
       <Router>
-        <div>
+        <div id="App">
           <IonApp>
             <IonSplitPane contentId="main">
               <Menu />
@@ -64,11 +40,11 @@ function App() {
                 <Route exact path="/" render={() => <Redirect to="/hem" />} />
                 <IonTabs>
                   <IonRouterOutlet>
-                    <Route
+                    {/* <Route
                       path="/:tab(hem|populart|nyast)/sida/:id"
                       component={Page_TextTVPage}
-                    />
-                    <Route path="/sida/:id" component={Page_TextTVPage} />
+                    /> */}
+                    <Route path="/sida/:pageNum" component={Page_TextTVPage} />
                     <Route
                       path="/:tab(hem)"
                       // component={TabHome}

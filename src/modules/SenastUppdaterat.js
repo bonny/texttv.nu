@@ -143,14 +143,17 @@ const SenastUppdateradeLista = props => {
           detail
           // href={link}
           onClick={e => {
-            e.preventDefault();
+            // e.preventDefault();
             console.log("push link", link);
 
-            history.push(link);
+            props.history.push(link);
           }}
           key={page.id}
           lines={lines}
         >
+          <IonThumbnail slot="start">
+            <IonImg src={imgSrc} />
+          </IonThumbnail>
           <IonLabel text-wrap>
             <p>
               <Moment unix format="HH:mm" locale="sv">
@@ -191,7 +194,7 @@ export default props => {
         </IonSegment>
       </IonToolbar>
 
-      <SenastUppdateradeLista type={selectedSegment} history={history} />
+      <SenastUppdateradeLista {...props} type={selectedSegment} />
     </>
   );
 };

@@ -6,12 +6,10 @@ import { FontSubscriber } from "react-with-async-fonts";
 export const TextTvPage = props => {
   const { pageNum } = props;
   const [fontIsLoaded, setFontIsLoaded] = useState(false);
+  const [pageData, setPageData] = useState([]);
 
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
-    // Update the document title using the browser API
-    // document.title = `Title yo`;
-
     // https://github.com/rikschennink/fitty
     if (fontIsLoaded) {
       // console.log("run fitty because font is loaded", pageNum, fontIsLoaded);
@@ -27,8 +25,29 @@ export const TextTvPage = props => {
     }
   }, [pageNum, fontIsLoaded]);
 
+  // Load page from TextTV.nu
+  useEffect(() => {
+    async function fetchPageContents() {
+      const url = `http://api.texttv.nu/api/get/${pageNum}?app=texttvapp`;
+      const response = await fetch(url);
+      const pageData = await response.json();
+      console.log("pageData", pageData);
+      setPageData(pageData);
+    }
+
+    fetchPageContents();
+  }, [pageNum]);
+
   function createMarkup(fonts) {
     // console.log("createMarkup() fonts", fonts);
+    let html = "";
+    pageData.forEach(page => {
+      html += page.content;
+    });
+
+    return {
+      __html: html
+    };
 
     return {
       __html: `<div class="root"><span class="toprow"> 100 SVT Text         Söndag 02 jun 2019

@@ -8,16 +8,27 @@ import {
   IonList,
   IonListHeader,
   IonIcon,
-  IonLabel
+  IonLabel,
+  IonButtons,
+  IonMenuButton,
+  IonMenuToggle,
+  IonButton
 } from "@ionic/react";
 import React from "react";
 
 export default () => {
   return (
-    <IonMenu side="start" menuId="mainMenu" contentId="main" type="overlay">
+    <IonMenu side="end" menuId="mainMenu" contentId="main" type="overlay">
       <IonHeader>
         <IonToolbar color="primary">
           <IonTitle>Menu</IonTitle>
+          <IonButtons slot="end">
+            <IonMenuToggle menu="mainMenu">
+              <IonButton>
+                <IonIcon slot="icon-only" name="close" />
+              </IonButton>
+            </IonMenuToggle>
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent>
