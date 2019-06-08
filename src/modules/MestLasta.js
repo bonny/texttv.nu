@@ -85,7 +85,6 @@ const mostReadYesterday = [
 const MestLastaLista = props => {
   {
     const { day } = props;
-
     const pagesArray = day === "today" ? mostReadToday : mostReadYesterday;
 
     return pagesArray.map((page, index, arr) => {
