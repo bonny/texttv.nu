@@ -1,17 +1,18 @@
 import {
+  IonActionSheet,
   IonButton,
-  IonCard,
   IonIcon,
   IonItem,
-  IonLabel,
-  IonActionSheet
+  IonLabel
 } from "@ionic/react";
 // import fitty from "fitty";
 import React, { useState } from "react";
 import { TextTvPage } from "./texttv-page.js";
+import Moment from "react-moment";
+import "moment/locale/sv";
 
 export const TextTVCard = props => {
-  const { size, pageNum } = props;
+  const { size, pageNum, button } = props;
   const [actionSheetOpened, setActionSheetOpened] = useState(false);
 
   const handleMoreActionsClick = e => {
@@ -50,11 +51,14 @@ export const TextTVCard = props => {
         ]}
       />
 
-      <TextTvPage pageNum={pageNum}>
+      <TextTvPage pageNum={pageNum} button={button}>
         {size === "large" && (
           <IonItem lines="none">
             <IonLabel>
-              <p>Uppdaterad idag 10.23</p>
+              <p>Uppdaterad idag 10.23. @TODO: få tag i sidans tid här</p>
+              {/* <Moment unix format="HH:mm" locale="sv">
+                {page.date_added_unix}
+              </Moment>{" "} */}
             </IonLabel>
             <IonButton fill="clear" slot="end" onClick={handleMoreActionsClick}>
               <IonIcon slot="icon-only" name="more" />
@@ -63,7 +67,7 @@ export const TextTVCard = props => {
         )}
 
         {size === "thumbnail" && (
-          <IonItem lines="none" detail>
+          <IonItem lines="none" button={button}>
             <IonLabel>
               <h3>{pageNum}</h3>
             </IonLabel>
@@ -87,7 +91,7 @@ export const TextTVThumbnailCard = props => {
     <TextTVCard
       {...props}
       size="thumbnail"
-      button={true}
+      button
       onCardClick={handleCardClick}
     />
   );

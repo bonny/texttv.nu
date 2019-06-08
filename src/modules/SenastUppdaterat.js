@@ -7,9 +7,9 @@ import {
   IonSkeletonText,
   IonToolbar
 } from "@ionic/react";
-import "moment/locale/sv";
 import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
+import "moment/locale/sv";
 
 const SenastUppdateradeLista = props => {
   {

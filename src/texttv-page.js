@@ -1,11 +1,11 @@
-import { IonButton, IonCard } from "@ionic/react";
-import React, { useEffect, useState } from "react";
+import { IonCard, IonSkeletonText } from "@ionic/react";
 import fitty from "fitty";
-import "./texttv-page.css";
+import React, { useEffect, useState } from "react";
 import { FontSubscriber } from "react-with-async-fonts";
+import "./texttv-page.css";
 
 export const TextTvPage = props => {
-  const { pageNum, children } = props;
+  const { pageNum, children, button } = props;
   const [fontIsLoaded, setFontIsLoaded] = useState(false);
   const [pageData, setPageData] = useState([]);
   const [pageIsLoaded, setPageIsLoaded] = useState(false);
@@ -14,8 +14,12 @@ export const TextTvPage = props => {
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
     // https://github.com/rikschennink/fitty
-    if (fontIsLoaded) {
-      console.log("run fitty because font is loaded", pageNum, fontIsLoaded);
+    if (fontIsLoaded && pageIsLoaded) {
+      console.log(
+        "run fitty because font and page is loaded",
+        pageNum,
+        fontIsLoaded
+      );
       fitty(".TextTVPage__inner", {
         minSize: 2,
         maxSize: 18
@@ -30,17 +34,18 @@ export const TextTvPage = props => {
 
   // Load page from TextTV.nu
   useEffect(() => {
-    setPageIsLoaded(false);
     setPageIsLoading(true);
+    setPageIsLoaded(false);
+    setPageData([]);
 
     async function fetchPageContents() {
       const url = `https://api.texttv.nu/api/get/${pageNum}?app=texttvapp`;
       const response = await fetch(url);
       const pageData = await response.json();
-      // console.log("pageData", pageData);
+
       setPageData(pageData);
-      setPageIsLoaded(true);
       setPageIsLoading(false);
+      setPageIsLoaded(true);
     }
 
     fetchPageContents();
@@ -55,7 +60,7 @@ export const TextTvPage = props => {
   // Wrap each page inside a card
   const html = pageData.map(page => {
     return (
-      <IonCard key={page.id}>
+      <IonCard key={page.id} button={button}>
         <div className="TextTVPage">
           <div className="TextTVPage__wrap">
             <div
@@ -69,19 +74,62 @@ export const TextTvPage = props => {
     );
   });
 
+  const skeletonWrapStyle = {
+    backgroundColor: "rgb(17, 30, 63)",
+    padding: "14px"
+  };
+
+  const getRandomWidth = (min = 85, max = 100) => {
+    const width = Math.random() * (max - min) + min + "%";
+    return width;
+  };
+
+  const SkeletonRow = () => {
+    const width = getRandomWidth();
+    const skeletonStyle = {
+      height: "16px",
+      backgroundColor: "rgba(100,100,100,.5)",
+      width: width
+    };
+
+    return <IonSkeletonText animated style={skeletonStyle} />;
+  };
+
+  const SkeletonItems = [...Array(10)].map((val, index) => {
+    return <SkeletonRow key={index} />;
+  });
+
+  const style = {
+    backgroundColor: "rgba(100,100,100,.5)",
+    height: "16px"
+  };
+
+  const skeletonPage = (
+    <>
+      <IonCard>
+        <div style={skeletonWrapStyle}>
+          <IonSkeletonText animated style={style} />
+          <IonSkeletonText animated style={style} />
+          <IonSkeletonText animated />
+          {SkeletonItems}
+          <IonSkeletonText animated />
+          <IonSkeletonText animated style={style} />
+        </div>
+      </IonCard>
+    </>
+  );
+
   return (
     <FontSubscriber>
       {fonts => {
-        // console.log("fonts", fonts);
         if (fonts.ubuntuMono) {
           setFontIsLoaded(true);
         }
 
         return (
           <>
-            {/* <IonCard {...props} onClick={props.onCardClick}> */}
+            {pageIsLoading && skeletonPage}
             {html}
-            {/* </IonCard> */}
           </>
         );
       }}

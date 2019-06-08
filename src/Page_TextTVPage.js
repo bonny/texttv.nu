@@ -55,7 +55,7 @@ export const Page_TextTVPage = props => {
         </IonRefresher>
 
         {/* <TextTvPage pageNum={match.params.pageNum} /> */}
-        <TextTVCard pageNum={match.params.pageNum} />
+        <TextTVCard pageNum={match.params.pageNum} size='large' />
       </IonContent>
     </>
   );
