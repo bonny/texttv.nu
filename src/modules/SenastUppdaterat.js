@@ -172,7 +172,7 @@ const SenastUppdateradeLista = props => {
     const SkeletonListItems = [...Array(10)].map((val, index) => {
       const pStyles = {
         height: "12px",
-        width: "100px"
+        width: "80px"
       };
       const H1Style = {
         height: "24px",

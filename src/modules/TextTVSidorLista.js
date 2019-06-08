@@ -3,7 +3,8 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader
+  IonListHeader,
+  IonMenuToggle
 } from "@ionic/react";
 import React from "react";
 
@@ -26,6 +27,8 @@ export const TextTVSidorLista = props => {
     const pageNum = e.target.value;
     if (pageNum.length === 3) {
       props.history.push(`/sida/${pageNum}`);
+      e.target.value = "";
+      document.querySelector("ion-menu-controller").close();
     }
   };
 
@@ -45,25 +48,27 @@ export const TextTVSidorLista = props => {
           />
         </IonItem>
 
-        {favorites.map((page, index, arr) => {
-          const lines = index === arr.length - 1 ? "none" : "inset";
-          return (
-            <IonItem
-              detail
-              onClick={() => {
-                const url = `/sida/${page.pages}`;
-                props.history.push(url);
-              }}
-              key={page.pages}
-              lines={lines}
-            >
-              <IonLabel text-wrap>
-                <h2>{page.title}</h2>
-                <p>{page.pages}</p>
-              </IonLabel>
-            </IonItem>
-          );
-        })}
+        <IonMenuToggle auto-hide="false">
+          {favorites.map((page, index, arr) => {
+            const lines = index === arr.length - 1 ? "none" : "inset";
+            return (
+              <IonItem
+                detail
+                onClick={() => {
+                  const url = `/sida/${page.pages}`;
+                  props.history.push(url);
+                }}
+                key={page.pages}
+                lines={lines}
+              >
+                <IonLabel text-wrap>
+                  <h2>{page.title}</h2>
+                  <p>{page.pages}</p>
+                </IonLabel>
+              </IonItem>
+            );
+          })}
+        </IonMenuToggle>
       </IonList>
     </>
   );

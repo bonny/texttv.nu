@@ -102,9 +102,7 @@ const Menu = props => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonMenuToggle auto-hide="false">
-          <TextTVSidorLista {...props} />
-        </IonMenuToggle>
+        <TextTVSidorLista {...props} />
 
         <IonList>
           <IonListHeader>Länkar</IonListHeader>
