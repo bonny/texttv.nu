@@ -89,7 +89,7 @@ const MestLastaLista = props => {
       const lines = index === arr.length - 1 ? "none" : "inset";
 
       return (
-        <IonItem detail href={`#${page.page}`} key={page.id} lines={lines}>
+        <IonItem button key={page.id} lines={lines}>
           <IonLabel text-wrap>
             <p>{page.page}</p>
             <h1>{page.title}</h1>

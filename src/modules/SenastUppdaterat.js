@@ -74,16 +74,13 @@ const SenastUppdateradeLista = props => {
 
       return (
         <IonItem
-          detail
+          button
           onClick={e => {
             history.push(link);
           }}
           key={page.id}
           lines={lines}
         >
-          {/* <IonThumbnail slot="start">
-            <IonImg src={imgSrc} />
-          </IonThumbnail> */}
           <IonLabel text-wrap>
             <p>
               <Moment unix format="HH:mm" locale="sv">

@@ -24,11 +24,11 @@
   padding: 10px;
 }
 
-.TextTVPage__wrap {
+/* .TextTVPage__wrap {
 }
 
 .TextTVPage__inner {
-}
+} */
 
 .TextTVPage pre,
 .TextTVPage ul,
@@ -93,9 +93,9 @@
   font-family: inherit;
   font-weight: 700;
 }
-.TextTVPage .bgB,
+/* .TextTVPage .bgB,
 .TextTVPage .bgB a span {
-}
+} */
 .TextTVPage .bgW,
 .TextTVPage .bgW a span {
   background-color: orange;
@@ -139,8 +139,8 @@
   background-color: #00f;
   color: #ddd;
 }
-.TextTVPage .DH {
-}
+/* .TextTVPage .DH {
+} */
 .TextTVPage .G,
 .TextTVPage .G a {
   color: #0f0;
