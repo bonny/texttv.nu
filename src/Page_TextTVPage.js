@@ -13,10 +13,11 @@ import {
 } from "@ionic/react";
 import React from "react";
 import { ReactComponent as Logo } from "./images/logo.svg";
-import { TextTvPage } from "./texttv-page.js";
+// import { TextTvPage } from "./texttv-page";
+import { TextTVCard } from "./texttv-card";
 
 export const Page_TextTVPage = props => {
-  console.log('Page_TextTVPage', props);
+  // console.log('Page_TextTVPage', props);
 
   const { match } = props;
   const doRefresh = e => {
@@ -53,7 +54,8 @@ export const Page_TextTVPage = props => {
           <IonRefresherContent />
         </IonRefresher>
 
-        <TextTvPage pageNum={match.params.pageNum} />
+        {/* <TextTvPage pageNum={match.params.pageNum} /> */}
+        <TextTVCard pageNum={match.params.pageNum} />
       </IonContent>
     </>
   );

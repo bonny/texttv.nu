@@ -50,9 +50,7 @@ export const TextTVCard = props => {
         ]}
       />
 
-      <IonCard {...props} onClick={props.onCardClick}>
-        <TextTvPage pageNum={pageNum} />
-
+      <TextTvPage pageNum={pageNum}>
         {size === "large" && (
           <IonItem lines="none">
             <IonLabel>
@@ -71,7 +69,7 @@ export const TextTVCard = props => {
             </IonLabel>
           </IonItem>
         )}
-      </IonCard>
+      </TextTvPage>
     </>
   );
 };
