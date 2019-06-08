@@ -7,9 +7,7 @@ export const TabNyast = props => {
   const { history } = props;
 
   const doRefresh = e => {
-    // console.log("do refresh", e);
     setTimeout(() => {
-      // console.log("Async operation has ended");
       e.target.complete();
     }, 2000);
   };

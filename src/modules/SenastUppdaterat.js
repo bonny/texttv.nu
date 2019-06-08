@@ -96,15 +96,18 @@ const SenastUppdateradeLista = props => {
     const endpoints = [
       {
         what: "news",
-        endpoint: "https://texttv.nu/api/last_updated/news?count=10"
+        endpoint: "https://texttv.nu/api/last_updated/news?count=20"
       },
       {
         what: "sports",
-        endpoint: "https://texttv.nu/api/last_updated/sport?count=10"
+        endpoint: "https://texttv.nu/api/last_updated/sport?count=20"
       }
     ];
 
+    // Fetch content for segment when segment type is changed.
     useEffect(() => {
+      let isUnmounted = false;
+
       let endpoint = endpoints.find(source => {
         return source.what === type;
       });
@@ -113,15 +116,16 @@ const SenastUppdateradeLista = props => {
       setIsLoadingError(false);
       setPages([]);
 
-      console.log(
-        "useEffect in SenastUppdateradeLista to fetch latest updated"
-      );
-
       fetch(endpoint.endpoint)
         .then(data => {
           return data.json();
         })
         .then(data => {
+          // Bail if component already unmounted.
+          if (isUnmounted) {
+            return;
+          }
+
           setIsLoading(false);
           setPages(data.pages);
         })
@@ -129,11 +133,13 @@ const SenastUppdateradeLista = props => {
           // Network error or similar.
           setIsLoadingError(true);
         });
+
+      return e => {
+        isUnmounted = true;
+      };
     }, [type]);
 
     const Pages = pages.map((page, index, arr) => {
-      const imgSrc = `https://texttv.nu/api/screenshot/${page.id}.jpg`;
-
       // No line on last item.
       const lines = index === arr.length - 1 ? "none" : "inset";
       const link = `/sida/${page.page_num}`;
@@ -141,19 +147,15 @@ const SenastUppdateradeLista = props => {
       return (
         <IonItem
           detail
-          // href={link}
           onClick={e => {
-            // e.preventDefault();
-            console.log("push link", link);
-
             props.history.push(link);
           }}
           key={page.id}
           lines={lines}
         >
-          <IonThumbnail slot="start">
+          {/* <IonThumbnail slot="start">
             <IonImg src={imgSrc} />
-          </IonThumbnail>
+          </IonThumbnail> */}
           <IonLabel text-wrap>
             <p>
               <Moment unix format="HH:mm" locale="sv">
