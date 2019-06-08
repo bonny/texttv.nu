@@ -1,11 +1,11 @@
-@font-face {
+/* @font-face {
   font-family: "iA Writer Mono";
   src: local("iA Writer Mono"),
     url("./fonts/iA Writer Mono/Webfonts/iAWriterMonoS-Regular.woff2")
       format("woff2");
   font-weight: normal;
   font-style: normal;
-}
+} */
 
 @font-face {
   font-family: "Ubuntu Mono";
@@ -16,7 +16,7 @@
 }
 
 .TextTVPage {
-  font-family: "Ubuntu Mono", "iA Writer Mono", monospace;
+  font-family: "Ubuntu Mono", monospace;
   background: rgb(17, 30, 63);
   font-size: 12px;
   text-align: center;
