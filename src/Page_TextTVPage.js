@@ -16,6 +16,8 @@ import { ReactComponent as Logo } from "./images/logo.svg";
 import { TextTvPage } from "./texttv-page.js";
 
 export const Page_TextTVPage = props => {
+  console.log('Page_TextTVPage', props);
+
   const { match } = props;
   const doRefresh = e => {
     console.log("do refresh");
