@@ -1,3 +1,5 @@
+import "./theme.css";
+import "./App.css";
 import "@ionic/core/css/core.css";
 import "@ionic/core/css/ionic.bundle.css";
 import {
@@ -12,12 +14,10 @@ import {
   IonTabs} from "@ionic/react";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
-import "./App.css";
 import Menu from "./Menu";
 import { TabHome } from "./tab-home";
 import { TabNyast } from "./tab-nyast";
 import { TabPopulart } from "./tab-populart";
-import "./theme.css";
 import { Page_TextTVPage } from "./Page_TextTVPage";
 
 function App() {

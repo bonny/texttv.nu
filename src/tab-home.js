@@ -105,7 +105,11 @@ export const TabHome = props => {
           </IonCardContent>
         </IonCard> */}
 
-        <TextTVSidorLista {...props} />
+        {/* Göm listan med sid-genvägar på bredare skärmar då 
+        genvägarna istället alltid är synliga i sidomenyn */}
+        <div className="ion-hide-lg-up">
+          <TextTVSidorLista {...props} />
+        </div>
       </IonContent>
     </>
   );
