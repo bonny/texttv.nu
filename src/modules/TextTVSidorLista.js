@@ -3,8 +3,7 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader,
-  IonMenuToggle
+  IonListHeader
 } from "@ionic/react";
 import React from "react";
 
@@ -53,7 +52,7 @@ export const TextTVSidorLista = props => {
           return (
             <IonItem
               detail
-              href='#'
+              href="#"
               onClick={() => {
                 const url = `/sida/${page.pages}`;
                 props.history.push(url);

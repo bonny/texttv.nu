@@ -1,16 +1,4 @@
-import {
-  IonBackButton,
-  IonButtons,
-  IonButton,
-  IonContent,
-  IonHeader,
-  IonMenuButton,
-  IonRefresher,
-  IonRefresherContent,
-  IonTitle,
-  IonToolbar,
-  IonIcon
-} from "@ionic/react";
+import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonMenuButton, IonRefresher, IonRefresherContent, IonTitle, IonToolbar } from "@ionic/react";
 import React from "react";
 import { ReactComponent as Logo } from "./images/logo.svg";
 import { TextTvPage } from "./texttv-page.js";

@@ -1,22 +1,7 @@
-import {
-  IonMenu,
-  IonItem,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonList,
-  IonListHeader,
-  IonIcon,
-  IonLabel,
-  IonButtons,
-  IonMenuButton,
-  IonMenuToggle,
-  IonButton
-} from "@ionic/react";
+import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonTitle, IonToolbar } from "@ionic/react";
 import React from "react";
-import { TextTVSidorLista } from "./modules/TextTVSidorLista";
 import { withRouter } from "react-router";
+import { TextTVSidorLista } from "./modules/TextTVSidorLista";
 
 const navItems = [
   {
@@ -85,8 +70,6 @@ const navItemsAlsoLike = [
 ];
 
 const Menu = props => {
-  console.log("menu props", props);
-
   return (
     <IonMenu side="end" menuId="mainMenu" contentId="main" type="overlay">
       <IonHeader>
@@ -142,3 +125,4 @@ const MenuWithRouter = withRouter(Menu);
 
 export default Menu;
 export { MenuWithRouter };
+

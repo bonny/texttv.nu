@@ -1,23 +1,18 @@
 import {
+  IonButton,
+  IonButtons,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
   IonCol,
   IonContent,
   IonGrid,
-  IonLabel,
-  IonListHeader,
+  IonItem,
   IonRefresher,
   IonRefresherContent,
   IonRow,
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardSubtitle,
-  IonButton,
-  IonCardContent,
-  IonItem,
-  IonIcon,
-  IonToolbar,
-  IonButtons,
-  IonTitle
+  IonToolbar
 } from "@ionic/react";
 import React, { useEffect } from "react";
 import { TextTVHeader } from "./modules/TextTVHeader";
@@ -43,13 +38,6 @@ export const TabHome = props => {
         <TextTVLargeCard pageNum="100" />
 
         <IonGrid>
-          {/* <IonRow>
-            <IonCol size="6">
-              <IonListHeader>
-                <IonLabel>Items</IonLabel>
-              </IonListHeader>
-            </IonCol>
-          </IonRow> */}
           <IonRow>
             <IonCol size="6">
               <TextTVThumbnailCard pageNum="300" />

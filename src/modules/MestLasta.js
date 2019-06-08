@@ -1,12 +1,9 @@
 import {
-  IonBadge,
-  IonImg,
   IonItem,
   IonLabel,
   IonList,
   IonSegment,
   IonSegmentButton,
-  IonThumbnail,
   IonToolbar
 } from "@ionic/react";
 import React, { useState } from "react";

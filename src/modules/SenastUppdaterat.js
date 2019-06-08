@@ -4,84 +4,12 @@ import {
   IonList,
   IonSegment,
   IonSegmentButton,
-  IonToolbar,
-  IonSkeletonText
+  IonSkeletonText,
+  IonToolbar
 } from "@ionic/react";
 import "moment/locale/sv";
 import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
-
-const updatedNews = [
-  {
-    title:
-      "Allvarlig olycka norr om Nässjöommarskola tycks bli en flopp | Man död i fyrhjulingsolycka",
-    page: 116,
-    id: 23371619
-  },
-  {
-    title: "Ingen kryssade sig förbi partitop",
-    page: 128,
-    id: 23374243
-  },
-  {
-    title: "Man död i fyrhjulingsolycka",
-    page: 111,
-    id: 23367686
-  },
-  {
-    title: "Filmstudior hotar lämna Georgia",
-    page: 107,
-    id: 23365449
-  },
-  {
-    title: "Flyget lika stor bov som bilar",
-    page: 112,
-    id: 23315050
-  },
-  {
-    title: "Man död i fyrhjulingsolycka",
-    page: 111,
-    id: 23317686
-  },
-  {
-    title: "Filmstudior hotar lämna Georgia",
-    page: 107,
-    id: 23362449
-  },
-  {
-    title: "Flyget lika stor bov som bilar",
-    page: 112,
-    id: 23361050
-  }
-];
-
-const updatedSports = [
-  {
-    title: "En sida som lästes mest igår. Typ jättemycket lästes den.",
-    page: 127,
-    id: 23371619
-  },
-  {
-    title: "En annan grej som lästes mycket igår",
-    page: 128,
-    id: 23374243
-  },
-  {
-    title: "Bla bla bla osv",
-    page: 111,
-    id: 23367686
-  },
-  {
-    title: "Culpa velit labore esse culpa ea cillum proident",
-    page: 107,
-    id: 23365449
-  },
-  {
-    title: "Laboris do qui eu esse pariatur sunt irure consequat",
-    page: 112,
-    id: 23315050
-  }
-];
 
 const SenastUppdateradeLista = props => {
   {
@@ -90,19 +18,19 @@ const SenastUppdateradeLista = props => {
     const [isLoadingError, setIsLoadingError] = useState(false);
     const [pages, setPages] = useState([]);
 
-    const endpoints = [
-      {
-        what: "news",
-        endpoint: "https://texttv.nu/api/last_updated/news?count=10"
-      },
-      {
-        what: "sports",
-        endpoint: "https://texttv.nu/api/last_updated/sport?count=10"
-      }
-    ];
-
     // Fetch content for segment when segment type is changed.
     useEffect(() => {
+      const endpoints = [
+        {
+          what: "news",
+          endpoint: "https://texttv.nu/api/last_updated/news?count=10"
+        },
+        {
+          what: "sports",
+          endpoint: "https://texttv.nu/api/last_updated/sport?count=10"
+        }
+      ];
+
       let isUnmounted = false;
 
       let endpoint = endpoints.find(source => {
@@ -148,7 +76,7 @@ const SenastUppdateradeLista = props => {
         <IonItem
           detail
           onClick={e => {
-            props.history.push(link);
+            history.push(link);
           }}
           key={page.id}
           lines={lines}
@@ -205,7 +133,6 @@ const SenastUppdateradeLista = props => {
 
 export default props => {
   const [selectedSegment, setSelectedSegment] = useState("news");
-  const { history } = props;
 
   const handleSegmentChange = e => {
     setSelectedSegment(e.detail.value);

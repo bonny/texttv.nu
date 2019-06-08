@@ -1,33 +1,23 @@
-import "./theme.css";
-import "./App.css";
 import "@ionic/core/css/core.css";
 import "@ionic/core/css/ionic.bundle.css";
-import {
-  IonApp,
-  IonIcon,
-  IonLabel,
-  IonPage,
-  IonRouterOutlet,
-  IonSplitPane,
-  IonTabBar,
-  IonTabButton,
-  IonTabs
-} from "@ionic/react";
-import React, { useState } from "react";
+import { IonApp, IonIcon, IonLabel, IonPage, IonRouterOutlet, IonSplitPane, IonTabBar, IonTabButton, IonTabs } from "@ionic/react";
+import React from "react";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
-import Menu, { MenuWithRouter } from "./Menu";
+import "./App.css";
+import { MenuWithRouter } from "./Menu";
+import { Page_TextTVPage } from "./Page_TextTVPage";
 import { TabHome } from "./tab-home";
 import { TabNyast } from "./tab-nyast";
 import { TabPopulart } from "./tab-populart";
-import { Page_TextTVPage } from "./Page_TextTVPage";
+import "./theme.css";
 
 function App(props) {
-  const [currentTab, setCurrentTab] = useState("hem");
-  const [prevTab, setPrevTab] = useState();
+  // const [currentTab, setCurrentTab] = useState("hem");
+  // const [prevTab, setPrevTab] = useState();
 
   const handleTabsDidChange = e => {
-    setPrevTab(currentTab);
-    setCurrentTab(e.currentTarget.selectedTab);
+    // setPrevTab(currentTab);
+    // setCurrentTab(e.currentTarget.selectedTab);
   };
 
   return (
