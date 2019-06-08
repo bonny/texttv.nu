@@ -37,7 +37,7 @@ export const TextTVSidorLista = props => {
         </IonListHeader>
 
         <IonItem lines="inset">
-          <IonLabel position="stacked">Gå till sida …</IonLabel>
+          <IonLabel position="stacked">Gå till sida</IonLabel>
           <IonInput
             placeholder="100, 200, 377, …"
             type="number"
@@ -58,8 +58,8 @@ export const TextTVSidorLista = props => {
               lines={lines}
             >
               <IonLabel text-wrap>
-                <h2>{page.pages}</h2>
-                <p>{page.title}</p>
+                <h2>{page.title}</h2>
+                <p>{page.pages}</p>
               </IonLabel>
             </IonItem>
           );

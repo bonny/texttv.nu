@@ -15,6 +15,7 @@ import {
   IonButton
 } from "@ionic/react";
 import React from "react";
+import { TextTVSidorLista } from "./modules/TextTVSidorLista";
 
 export default () => {
   return (
@@ -32,6 +33,7 @@ export default () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
+        <TextTVSidorLista />
         <IonList>
           <IonListHeader>Sidor</IonListHeader>
           <IonItem button>

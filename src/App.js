@@ -69,10 +69,10 @@ function App() {
                       <IonLabel>Hem</IonLabel>
                       {/* <IonBadge color="danger">6</IonBadge> */}
                     </IonTabButton>
-                    {/* <IonTabButton tab="populart" href="/populart">
+                    <IonTabButton tab="populart" href="/populart">
                       <IonIcon name="trending-up" />
-                      <IonLabel>Populärt</IonLabel>
-                    </IonTabButton> */}
+                      <IonLabel>Mest läst</IonLabel>
+                    </IonTabButton>
                     <IonTabButton tab="nyast" href="/nyast">
                       <IonIcon name="clock" />
                       <IonLabel>Nyast</IonLabel>

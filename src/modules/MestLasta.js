@@ -89,22 +89,15 @@ const MestLastaLista = props => {
     const pagesArray = day === "today" ? mostReadToday : mostReadYesterday;
 
     return pagesArray.map((page, index, arr) => {
-      const imgSrc = `https://texttv.nu/api/screenshot/${page.id}.jpg`;
-
       // No line on last item.
       const lines = index === arr.length - 1 ? "none" : "inset";
 
       return (
         <IonItem detail href={`#${page.page}`} key={page.id} lines={lines}>
-          <IonThumbnail slot="start">
-            <IonImg src={imgSrc} />
-          </IonThumbnail>
           <IonLabel text-wrap>
-            <h2>{page.title}</h2>
+            <p>{page.page}</p>
+            <h1>{page.title}</h1>
           </IonLabel>
-          <IonBadge slot="end" color="light">
-            {page.page}
-          </IonBadge>
         </IonItem>
       );
     });
@@ -122,15 +115,12 @@ export default () => {
     <>
       <IonToolbar>
         <IonSegment onIonChange={handleSegmentChange} value={selectedSegment}>
-          <IonSegmentButton value="today">Mest läst idag</IonSegmentButton>
-          <IonSegmentButton value="yesterday">Mest läst igår</IonSegmentButton>
+          <IonSegmentButton value="today">Idag</IonSegmentButton>
+          <IonSegmentButton value="yesterday">Igår</IonSegmentButton>
         </IonSegment>
       </IonToolbar>
 
       <IonList>
-        {/* <IonListHeader>
-        <IonLabel>Mest lästa</IonLabel>
-      </IonListHeader> */}
         <MestLastaLista day={selectedSegment} />
       </IonList>
     </>

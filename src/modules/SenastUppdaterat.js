@@ -161,6 +161,7 @@ const SenastUppdateradeLista = props => {
               <Moment unix format="HH:mm" locale="sv">
                 {page.date_added_unix}
               </Moment>{" "}
+              • {page.page_num}
             </p>
             <h1>{page.title}</h1>
           </IonLabel>
@@ -180,12 +181,11 @@ const SenastUppdateradeLista = props => {
 
 export default props => {
   const [selectedSegment, setSelectedSegment] = useState("news");
+  const { history } = props;
 
   const handleSegmentChange = e => {
     setSelectedSegment(e.detail.value);
   };
-
-  const { history } = props;
 
   return (
     <>
