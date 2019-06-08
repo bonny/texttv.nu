@@ -48,27 +48,27 @@ export const TextTVSidorLista = props => {
           />
         </IonItem>
 
-        <IonMenuToggle auto-hide="false">
-          {favorites.map((page, index, arr) => {
-            const lines = index === arr.length - 1 ? "none" : "inset";
-            return (
-              <IonItem
-                detail
-                onClick={() => {
-                  const url = `/sida/${page.pages}`;
-                  props.history.push(url);
-                }}
-                key={page.pages}
-                lines={lines}
-              >
-                <IonLabel text-wrap>
-                  <h2>{page.title}</h2>
-                  <p>{page.pages}</p>
-                </IonLabel>
-              </IonItem>
-            );
-          })}
-        </IonMenuToggle>
+        {favorites.map((page, index, arr) => {
+          const lines = index === arr.length - 1 ? "none" : "inset";
+          return (
+            <IonItem
+              detail
+              href='#'
+              onClick={() => {
+                const url = `/sida/${page.pages}`;
+                props.history.push(url);
+                document.querySelector("ion-menu-controller").close();
+              }}
+              key={page.pages}
+              lines={lines}
+            >
+              <IonLabel text-wrap>
+                <h2>{page.title}</h2>
+                <p>{page.pages}</p>
+              </IonLabel>
+            </IonItem>
+          );
+        })}
       </IonList>
     </>
   );
