@@ -11,16 +11,17 @@ import {
   IonSplitPane,
   IonTabBar,
   IonTabButton,
-  IonTabs} from "@ionic/react";
+  IonTabs
+} from "@ionic/react";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
-import Menu from "./Menu";
+import Menu, { MenuWithRouter } from "./Menu";
 import { TabHome } from "./tab-home";
 import { TabNyast } from "./tab-nyast";
 import { TabPopulart } from "./tab-populart";
 import { Page_TextTVPage } from "./Page_TextTVPage";
 
-function App() {
+function App(props) {
   const [currentTab, setCurrentTab] = useState("hem");
   const [prevTab, setPrevTab] = useState();
 
@@ -35,7 +36,7 @@ function App() {
         <div id="App">
           <IonApp>
             <IonSplitPane contentId="main">
-              <Menu />
+              <MenuWithRouter {...props} />
               <IonPage id="main">
                 <Route exact path="/" render={() => <Redirect to="/hem" />} />
                 <IonTabs>

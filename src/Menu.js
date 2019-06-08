@@ -16,6 +16,7 @@ import {
 } from "@ionic/react";
 import React from "react";
 import { TextTVSidorLista } from "./modules/TextTVSidorLista";
+import { withRouter } from "react-router";
 
 const navItems = [
   {
@@ -83,7 +84,9 @@ const navItemsAlsoLike = [
   }
 ];
 
-export default () => {
+const Menu = props => {
+  console.log("menu props", props);
+
   return (
     <IonMenu side="end" menuId="mainMenu" contentId="main" type="overlay">
       <IonHeader>
@@ -99,34 +102,45 @@ export default () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <TextTVSidorLista />
+        <IonMenuToggle auto-hide="false">
+          <TextTVSidorLista {...props} />
+        </IonMenuToggle>
 
         <IonList>
           <IonListHeader>Länkar</IonListHeader>
-          {navItems.map(item => {
-            const icon = item.icon ? item.icon : "document";
-            return (
-              <IonItem href={item.href}>
-                <IonIcon slot="start" name={icon} />
-                <IonLabel>{item.title}</IonLabel>
-              </IonItem>
-            );
-          })}
+          <IonMenuToggle auto-hide="false">
+            {navItems.map(item => {
+              const icon = item.icon ? item.icon : "document";
+              return (
+                <IonItem href={item.href} key={item.href}>
+                  <IonIcon slot="start" name={icon} />
+                  <IonLabel>{item.title}</IonLabel>
+                </IonItem>
+              );
+            })}
+          </IonMenuToggle>
         </IonList>
 
         <IonList>
           <IonListHeader>Vi på TextTV.nu gillar också...</IonListHeader>
-          {navItemsAlsoLike.map(item => {
-            const icon = item.icon ? item.icon : "document";
-            return (
-              <IonItem href={item.href}>
-                <IonIcon slot="start" name={icon} />
-                <IonLabel>{item.title}</IonLabel>
-              </IonItem>
-            );
-          })}
+          <IonMenuToggle>
+            {navItemsAlsoLike.map(item => {
+              const icon = item.icon ? item.icon : "document";
+              return (
+                <IonItem href={item.href} key={item.href}>
+                  <IonIcon slot="start" name={icon} />
+                  <IonLabel>{item.title}</IonLabel>
+                </IonItem>
+              );
+            })}
+          </IonMenuToggle>
         </IonList>
       </IonContent>
     </IonMenu>
   );
 };
+
+const MenuWithRouter = withRouter(Menu);
+
+export default Menu;
+export { MenuWithRouter };

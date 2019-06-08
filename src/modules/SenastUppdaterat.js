@@ -1,18 +1,15 @@
 import {
-  IonBadge,
-  IonImg,
   IonItem,
   IonLabel,
   IonList,
   IonSegment,
   IonSegmentButton,
-  IonThumbnail,
   IonToolbar,
-  IonContent
+  IonSkeletonText
 } from "@ionic/react";
-import React, { useState, useEffect } from "react";
-import Moment from "react-moment";
 import "moment/locale/sv";
+import React, { useEffect, useState } from "react";
+import Moment from "react-moment";
 
 const updatedNews = [
   {
@@ -96,11 +93,11 @@ const SenastUppdateradeLista = props => {
     const endpoints = [
       {
         what: "news",
-        endpoint: "https://texttv.nu/api/last_updated/news?count=20"
+        endpoint: "https://texttv.nu/api/last_updated/news?count=10"
       },
       {
         what: "sports",
-        endpoint: "https://texttv.nu/api/last_updated/sport?count=20"
+        endpoint: "https://texttv.nu/api/last_updated/sport?count=10"
       }
     ];
 
@@ -121,12 +118,14 @@ const SenastUppdateradeLista = props => {
           return data.json();
         })
         .then(data => {
+          setIsLoading(false);
+
           // Bail if component already unmounted.
           if (isUnmounted) {
+            // console.log("bail because unmounted");
             return;
           }
 
-          setIsLoading(false);
           setPages(data.pages);
         })
         .catch(error => {
@@ -135,6 +134,7 @@ const SenastUppdateradeLista = props => {
         });
 
       return e => {
+        // console.log("set is unmounted");
         isUnmounted = true;
       };
     }, [type]);
@@ -169,9 +169,33 @@ const SenastUppdateradeLista = props => {
       );
     });
 
+    const SkeletonListItems = [...Array(10)].map((val, index) => {
+      const pStyles = {
+        height: "12px",
+        width: "100px"
+      };
+      const H1Style = {
+        height: "24px",
+        width: Math.random() * (65 - 35) + 35 + "%"
+      };
+      return (
+        <IonItem key={index}>
+          <IonLabel text-wrap>
+            <p>
+              <IonSkeletonText animated style={pStyles} />
+            </p>
+            <h1>
+              <IonSkeletonText animated style={H1Style} />
+            </h1>
+          </IonLabel>
+        </IonItem>
+      );
+    });
+    const SkeletonList = <IonList>{SkeletonListItems}</IonList>;
+
     return (
       <>
-        {/* {isLoading && <p>Laddar ...</p>} */}
+        {isLoading && SkeletonList}
         {isLoadingError && <p>Det blev ett fel vid laddning ...</p>}
         {Pages && <IonList>{Pages}</IonList>}
       </>
