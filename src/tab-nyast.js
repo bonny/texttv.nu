@@ -18,11 +18,13 @@ import { ReactComponent as Logo } from "./images/logo.svg";
 export const TabNyast = props => {
   const { history } = props;
   const [selectedSegment, setSelectedSegment] = useState("news");
+  const [refreshTime, setRefreshTime] = useState(Math.floor(Date.now() / 1000));
 
   const doRefresh = e => {
+    setRefreshTime(Math.floor(Date.now() / 1000));
     setTimeout(() => {
       e.target.complete();
-    }, 2000);
+    }, 1000);
   };
 
   const handleSegmentChange = e => {
@@ -44,7 +46,11 @@ export const TabNyast = props => {
         <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
           <IonRefresherContent />
         </IonRefresher>
-        <SenastUppdaterat history={history} selectedSegment={selectedSegment} />
+        <SenastUppdaterat
+          history={history}
+          selectedSegment={selectedSegment}
+          refreshTime={refreshTime}
+        />
       </IonContent>
     </>
   );

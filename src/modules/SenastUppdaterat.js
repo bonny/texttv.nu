@@ -13,7 +13,7 @@ import "moment/locale/sv";
 
 const SenastUppdateradeLista = props => {
   {
-    const { type, history } = props;
+    const { type, history, refreshTime } = props;
     const [isLoading, setIsLoading] = useState(false);
     const [isLoadingError, setIsLoadingError] = useState(false);
     const [pages, setPages] = useState([]);
@@ -65,7 +65,7 @@ const SenastUppdateradeLista = props => {
         // console.log("set is unmounted");
         isUnmounted = true;
       };
-    }, [type]);
+    }, [type, refreshTime]);
 
     const Pages = pages.map((page, index, arr) => {
       // No line on last item.
@@ -129,11 +129,15 @@ const SenastUppdateradeLista = props => {
 };
 
 export default props => {
-  const {selectedSegment} = props;
+  const { selectedSegment, refreshTime } = props;
 
   return (
     <>
-      <SenastUppdateradeLista {...props} type={selectedSegment} />
+      <SenastUppdateradeLista
+        {...props}
+        type={selectedSegment}
+        refreshTime={refreshTime}
+      />
     </>
   );
 };
