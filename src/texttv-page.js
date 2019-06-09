@@ -12,7 +12,7 @@ function createMarkupForPage(page) {
 }
 
 export const TextTvPage = props => {
-  const { pageNum, children, button } = props;
+  const { pageNum, children, button, history } = props;
   const [componentIsUnloaded, setComponentIsUnloaded] = useState(false);
   const [fontIsLoaded, setFontIsLoaded] = useState(false);
   const [pageData, setPageData] = useState([]);
@@ -40,9 +40,20 @@ export const TextTvPage = props => {
   //   }
   // }, [pageNum, fontIsLoaded, pageIsLoaded]);
 
- 
+  const handleClick = e => {
+    e.preventDefault();
+    const target = e.target;
+    if (target.nodeName === "A") {
+      // This is a link.
+      // href is '/100', '/101-102', etc.
+      const href = target.getAttribute("href");
+      console.log("handle link click", href);
+      history.push(`/sida${href}`);
+    }
+  };
+
   // Load page from TextTV.nu when pageNum is changed
-  
+
   useEffect(() => {
     console.log("texttv-page useEffect");
 
@@ -60,7 +71,7 @@ export const TextTvPage = props => {
         setPageData(pageData);
         setPageIsLoading(false);
         setPageIsLoaded(true);
-      }, 3000);
+      }, 2000);
     }
 
     fetchPageContents();
@@ -79,6 +90,7 @@ export const TextTvPage = props => {
           <div className="TextTVPage__wrap">
             <div
               className="TextTVPage__inner"
+              onClick={handleClick}
               dangerouslySetInnerHTML={createMarkupForPage(page)}
             />
           </div>

@@ -18,7 +18,7 @@ import { TextTVCard } from "./texttv-card";
 export const Page_TextTVPage = props => {
   // console.log('Page_TextTVPage', props);
 
-  const { match } = props;
+  const { match, history } = props;
   const doRefresh = e => {
     console.log("do refresh");
   };
@@ -53,8 +53,7 @@ export const Page_TextTVPage = props => {
           <IonRefresherContent />
         </IonRefresher>
 
-        {/* <TextTvPage pageNum={match.params.pageNum} /> */}
-        <TextTVCard pageNum={match.params.pageNum} size='large' />
+        <TextTVCard pageNum={match.params.pageNum} history={history} size='large' />
       </IonContent>
     </>
   );

@@ -12,7 +12,7 @@ import Moment from "react-moment";
 import "moment/locale/sv";
 
 export const TextTVCard = props => {
-  const { size, pageNum, button } = props;
+  const { size, pageNum, button, history } = props;
   const [actionSheetOpened, setActionSheetOpened] = useState(false);
 
   const handleMoreActionsClick = e => {
@@ -51,7 +51,7 @@ export const TextTVCard = props => {
         ]}
       />
 
-      <TextTvPage pageNum={pageNum} button={button}>
+      <TextTvPage pageNum={pageNum} button={button} history={history}>
         {size === "large" && (
           <IonItem lines="none">
             <IonLabel>

@@ -20,7 +20,7 @@ import { TextTVSidorLista } from "./modules/TextTVSidorLista";
 import { TextTVLargeCard, TextTVThumbnailCard } from "./texttv-card";
 
 export const TabHome = props => {
-  // const { currentTab, prevTab } = props;
+  const { history } = props;
 
   useEffect(e => {
     // console.log("useEffect in TabHome", e);
@@ -35,9 +35,9 @@ export const TabHome = props => {
           <IonRefresherContent />
         </IonRefresher>
 
-        <TextTVLargeCard pageNum="100" />
-        <TextTVLargeCard pageNum="300" />
-        <TextTVLargeCard pageNum="700" />
+        <TextTVLargeCard pageNum="100" history={history} />
+        <TextTVLargeCard pageNum="300" history={history} />
+        <TextTVLargeCard pageNum="700" history={history} />
 
         {/* <IonGrid>
           <IonRow>

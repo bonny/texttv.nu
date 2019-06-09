@@ -41,10 +41,6 @@ function App(props) {
                 <Route exact path="/" render={() => <Redirect to="/hem" />} />
                 <IonTabs>
                   <IonRouterOutlet>
-                    {/* <Route
-                      path="/:tab(hem|populart|nyast)/sida/:id"
-                      component={Page_TextTVPage}
-                    /> */}
                     <Route path="/sida/:pageNum" component={Page_TextTVPage} />
                     <Route path="/:tab(hem)" component={TabHome} exact={true} />
                     <Route
@@ -58,7 +54,7 @@ function App(props) {
                       exact={true}
                     />
                   </IonRouterOutlet>
-                  <IonTabBar slot="bottom" onClick={handleTabsDidChange}>
+                  <IonTabBar slot="bottom">
                     <IonTabButton tab="hem" href="/hem">
                       <IonIcon name="home" />
                       <IonLabel>Hem</IonLabel>

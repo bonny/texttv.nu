@@ -52,11 +52,13 @@ export function SkeletonTextTVPage() {
           <SkeletonRowWhite />
           <SkeletonRowWhite />
           <SkeletonRowWhite />
+          <IonSkeletonText animated style={{ ...skeletonStyle, opacity: 0 }} />
           <SkeletonRowYellow />
           <SkeletonRowYellow />
           <SkeletonRowYellow />
           <SkeletonRowYellow />
           <SkeletonRowYellow />
+          <IonSkeletonText animated style={{ ...skeletonStyle, opacity: 0 }} />
           <SkeletonRowWhite />
           <SkeletonRowWhite />
           <SkeletonRowWhite />
