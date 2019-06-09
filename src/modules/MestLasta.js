@@ -100,22 +100,11 @@ const MestLastaLista = props => {
   }
 };
 
-export default () => {
-  const [selectedSegment, setSelectedSegment] = useState("today");
-
-  const handleSegmentChange = e => {
-    setSelectedSegment(e.detail.value);
-  };
+export default props => {
+  const { selectedSegment } = props;
 
   return (
     <>
-      <IonToolbar>
-        <IonSegment onIonChange={handleSegmentChange} value={selectedSegment}>
-          <IonSegmentButton value="today">Idag</IonSegmentButton>
-          <IonSegmentButton value="yesterday">Igår</IonSegmentButton>
-        </IonSegment>
-      </IonToolbar>
-
       <IonList>
         <MestLastaLista day={selectedSegment} />
       </IonList>
