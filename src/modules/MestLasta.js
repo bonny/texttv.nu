@@ -1,12 +1,5 @@
-import {
-  IonItem,
-  IonLabel,
-  IonList,
-  IonSegment,
-  IonSegmentButton,
-  IonToolbar
-} from "@ionic/react";
-import React, { useState } from "react";
+import { IonItem, IonLabel, IonList } from "@ionic/react";
+import React from "react";
 
 const mostReadToday = [
   {

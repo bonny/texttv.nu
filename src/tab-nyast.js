@@ -2,18 +2,13 @@ import {
   IonContent,
   IonRefresher,
   IonRefresherContent,
-  IonButtons,
-  IonHeader,
-  IonMenuButton,
-  IonTitle,
   IonToolbar,
   IonSegment,
   IonSegmentButton
 } from "@ionic/react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { TextTVHeader } from "./modules/TextTVHeader";
 import SenastUppdaterat from "./modules/SenastUppdaterat";
-import { ReactComponent as Logo } from "./images/logo.svg";
 
 export const TabNyast = props => {
   const { history } = props;

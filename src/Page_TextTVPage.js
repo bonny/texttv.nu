@@ -13,7 +13,6 @@ import {
 } from "@ionic/react";
 import React from "react";
 import { ReactComponent as Logo } from "./images/logo.svg";
-// import { TextTvPage } from "./texttv-page";
 import { TextTVCard } from "./texttv-card";
 
 export const Page_TextTVPage = props => {

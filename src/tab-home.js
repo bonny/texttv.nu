@@ -36,8 +36,10 @@ export const TabHome = props => {
         </IonRefresher>
 
         <TextTVLargeCard pageNum="100" />
+        <TextTVLargeCard pageNum="300" />
+        <TextTVLargeCard pageNum="700" />
 
-        <IonGrid>
+        {/* <IonGrid>
           <IonRow>
             <IonCol size="6">
               <TextTVThumbnailCard pageNum="300" />
@@ -46,7 +48,7 @@ export const TabHome = props => {
               <TextTVThumbnailCard pageNum="700" />
             </IonCol>
           </IonRow>
-        </IonGrid>
+        </IonGrid> */}
 
         <IonCard>
           <IonCardHeader>

@@ -1,6 +1,16 @@
 import "@ionic/core/css/core.css";
 import "@ionic/core/css/ionic.bundle.css";
-import { IonApp, IonIcon, IonLabel, IonPage, IonRouterOutlet, IonSplitPane, IonTabBar, IonTabButton, IonTabs } from "@ionic/react";
+import {
+  IonApp,
+  IonIcon,
+  IonLabel,
+  IonPage,
+  IonRouterOutlet,
+  IonSplitPane,
+  IonTabBar,
+  IonTabButton,
+  IonTabs
+} from "@ionic/react";
 import React from "react";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import "./App.css";
@@ -36,12 +46,7 @@ function App(props) {
                       component={Page_TextTVPage}
                     /> */}
                     <Route path="/sida/:pageNum" component={Page_TextTVPage} />
-                    <Route
-                      path="/:tab(hem)"
-                      // component={TabHome}
-                      render={props => <TabHome {...props} />}
-                      exact={true}
-                    />
+                    <Route path="/:tab(hem)" component={TabHome} exact={true} />
                     <Route
                       path="/:tab(populart)"
                       component={TabPopulart}
@@ -49,9 +54,8 @@ function App(props) {
                     />
                     <Route
                       path="/:tab(nyast)"
-                      // component={TabNyast}
+                      component={TabNyast}
                       exact={true}
-                      render={props => <TabNyast {...props} />}
                     />
                   </IonRouterOutlet>
                   <IonTabBar slot="bottom" onClick={handleTabsDidChange}>
