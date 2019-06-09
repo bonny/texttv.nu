@@ -129,21 +129,10 @@ const SenastUppdateradeLista = props => {
 };
 
 export default props => {
-  const [selectedSegment, setSelectedSegment] = useState("news");
-
-  const handleSegmentChange = e => {
-    setSelectedSegment(e.detail.value);
-  };
+  const {selectedSegment} = props;
 
   return (
     <>
-      <IonToolbar>
-        <IonSegment onIonChange={handleSegmentChange} value={selectedSegment}>
-          <IonSegmentButton value="news">Nyheter</IonSegmentButton>
-          <IonSegmentButton value="sports">Sport</IonSegmentButton>
-        </IonSegment>
-      </IonToolbar>
-
       <SenastUppdateradeLista {...props} type={selectedSegment} />
     </>
   );

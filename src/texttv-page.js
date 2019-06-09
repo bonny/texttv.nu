@@ -1,7 +1,7 @@
 import { IonCard } from "@ionic/react";
 import fitty from "fitty";
 import React, { useEffect, useState } from "react";
-import { FontSubscriber } from "react-with-async-fonts";
+// import { FontSubscriber } from "react-with-async-fonts";
 import "./texttv-page.css";
 import { SkeletonTextTVPage } from "./SkeletonTextTVPage";
 

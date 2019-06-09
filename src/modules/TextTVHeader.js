@@ -20,6 +20,7 @@ export const TextTVHeader = props => {
           TextTV.nu
         </IonTitle>
       </IonToolbar>
+      {props.children}
     </IonHeader>
   );
 };
