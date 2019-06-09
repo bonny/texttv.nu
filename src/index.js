@@ -3,12 +3,12 @@ import ReactDOM from "react-dom";
 import App from "./App";
 // import "./index.css";
 import * as serviceWorker from "./serviceWorker";
-import { FontObserver } from "react-with-async-fonts";
+// import { FontObserver } from "react-with-async-fonts";
 
 ReactDOM.render(
-  <FontObserver ubuntuMono="Ubuntu Mono">
-    <App />
-  </FontObserver>,
+  // <FontObserver ubuntuMono="Ubuntu Mono">
+  <App />,
+  // </FontObserver>
   document.getElementById("root")
 );
 

@@ -1,11 +1,13 @@
-import { IonCard, IonSkeletonText } from "@ionic/react";
+import { IonCard } from "@ionic/react";
 import fitty from "fitty";
 import React, { useEffect, useState } from "react";
 import { FontSubscriber } from "react-with-async-fonts";
 import "./texttv-page.css";
+import { SkeletonTextTVPage } from "./SkeletonTextTVPage";
 
 export const TextTvPage = props => {
   const { pageNum, children, button } = props;
+  const [componentIsUnloaded, setComponentIsUnloaded] = useState(false);
   const [fontIsLoaded, setFontIsLoaded] = useState(false);
   const [pageData, setPageData] = useState([]);
   const [pageIsLoaded, setPageIsLoaded] = useState(false);
@@ -43,12 +45,20 @@ export const TextTvPage = props => {
       const response = await fetch(url);
       const pageData = await response.json();
 
-      setPageData(pageData);
-      setPageIsLoading(false);
-      setPageIsLoaded(true);
+      // Vänta lite med att sätta ny sidata pga felsökning och test osv.
+      setTimeout(() => {
+        setPageData(pageData);
+        setPageIsLoading(false);
+        setPageIsLoaded(true);
+      }, 3000);
     }
 
     fetchPageContents();
+
+    return () => {
+      console.log("setComponentIsUnloaded");
+      setComponentIsUnloaded(true);
+    };
   }, [pageNum]);
 
   function createMarkupForPage(page) {
@@ -74,65 +84,13 @@ export const TextTvPage = props => {
     );
   });
 
-  const skeletonWrapStyle = {
-    backgroundColor: "rgb(17, 30, 63)",
-    padding: "14px"
-  };
-
-  const getRandomWidth = (min = 85, max = 100) => {
-    const width = Math.random() * (max - min) + min + "%";
-    return width;
-  };
-
-  const SkeletonRow = () => {
-    const width = getRandomWidth();
-    const skeletonStyle = {
-      height: "16px",
-      backgroundColor: "rgba(100,100,100,.5)",
-      width: width
-    };
-
-    return <IonSkeletonText animated style={skeletonStyle} />;
-  };
-
-  const SkeletonItems = [...Array(10)].map((val, index) => {
-    return <SkeletonRow key={index} />;
-  });
-
-  const style = {
-    backgroundColor: "rgba(100,100,100,.5)",
-    height: "16px"
-  };
-
-  const skeletonPage = (
-    <>
-      <IonCard>
-        <div style={skeletonWrapStyle}>
-          <IonSkeletonText animated style={style} />
-          <IonSkeletonText animated style={style} />
-          <IonSkeletonText animated />
-          {SkeletonItems}
-          <IonSkeletonText animated />
-          <IonSkeletonText animated style={style} />
-        </div>
-      </IonCard>
-    </>
-  );
+  console.log("page html", pageNum, html);
 
   return (
-    <FontSubscriber>
-      {fonts => {
-        if (fonts.ubuntuMono) {
-          setFontIsLoaded(true);
-        }
-
-        return (
-          <>
-            {pageIsLoading && skeletonPage}
-            {html}
-          </>
-        );
-      }}
-    </FontSubscriber>
+    <>
+      {pageIsLoading && <SkeletonTextTVPage />}
+      {pageIsLoaded && html}
+    </>
   );
 };
+
