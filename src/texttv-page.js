@@ -104,7 +104,7 @@ export const TextTvPage = props => {
 
   return (
     <>
-      <p>Refresh time: {refreshTime}</p>
+      <p>Refresh time: {refreshTime}, page: {pageNum}</p>
       {pageIsLoading && <SkeletonTextTVPage />}
       {pageIsLoaded && html}
     </>
