@@ -19,13 +19,13 @@
   font-family: "Ubuntu Mono", monospace;
   background: rgb(17, 30, 63);
   color: #ddd;
-  font-size: 6px;
+  font-size: 4vw;
   text-align: center;
   line-height: 1;
   padding: 10px;
 }
 
-@media only screen and (min-width: 250px) {
+/* @media only screen and (min-width: 250px) {
   .TextTVPage {
     font-size: 10px;
   }
@@ -47,7 +47,14 @@
   .TextTVPage {
     font-size: 18px;
   }
+} */
+
+@media only screen and (min-width: 540px) {
+  .TextTVPage {
+    font-size: 18px;
+  }
 }
+
 
 /* .TextTVPage__wrap {
 }
