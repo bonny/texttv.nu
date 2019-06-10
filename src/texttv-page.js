@@ -83,10 +83,11 @@ export const TextTvPage = props => {
   }, [pageNum]);
 
   // Wrap each page inside a card
-  const html = pageData.map(page => {
+  const pagesHtml = pageData.map(page => {
     return (
-      <IonCard key={page.id} button={button}>
-        <div className="TextTVPage">
+      <>
+        {/* <IonCard key={page.id} button={button}> */}
+        <div className="TextTVPage" key={page.id}>
           <div className="TextTVPage__wrap">
             <div
               className="TextTVPage__inner"
@@ -96,7 +97,8 @@ export const TextTvPage = props => {
           </div>
         </div>
         {children}
-      </IonCard>
+        {/* </IonCard> */}
+      </>
     );
   });
 
@@ -104,9 +106,10 @@ export const TextTvPage = props => {
 
   return (
     <>
-      <p>Refresh time: {refreshTime}, page: {pageNum}</p>
-      {pageIsLoading && <SkeletonTextTVPage />}
-      {pageIsLoaded && html}
+      {pageIsLoading ? <SkeletonTextTVPage /> : pagesHtml}
+      <p>
+        Refresh time: {refreshTime}, page: {pageNum}
+      </p>
     </>
   );
 };
