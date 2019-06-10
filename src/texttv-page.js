@@ -12,13 +12,12 @@ function createMarkupForPage(page) {
 }
 
 export const TextTvPage = props => {
-  const { pageNum, children, button, history } = props;
+  const { pageNum, children, button, history, refreshTime } = props;
   const [componentIsUnloaded, setComponentIsUnloaded] = useState(false);
   const [fontIsLoaded, setFontIsLoaded] = useState(false);
   const [pageData, setPageData] = useState([]);
   const [pageIsLoaded, setPageIsLoaded] = useState(false);
   const [pageIsLoading, setPageIsLoading] = useState(false);
-  const refreshTime = Math.floor(Date.now() / 1000);
 
   // useEffect(() => {
   //   // https://github.com/rikschennink/fitty
@@ -52,8 +51,7 @@ export const TextTvPage = props => {
     }
   };
 
-  // Load page from TextTV.nu when pageNum is changed
-
+  // Load page from TextTV.nu when pageNum or refreshTime is changed
   useEffect(() => {
     console.log("texttv-page useEffect");
 
@@ -71,7 +69,7 @@ export const TextTvPage = props => {
         setPageData(pageData);
         setPageIsLoading(false);
         setPageIsLoaded(true);
-      }, 2000);
+      }, 1500);
     }
 
     fetchPageContents();
@@ -80,25 +78,21 @@ export const TextTvPage = props => {
       console.log("texttv page setComponentIsUnloaded");
       setComponentIsUnloaded(true);
     };
-  }, [pageNum]);
+  }, [pageNum, refreshTime]);
 
   // Wrap each page inside a card
   const pagesHtml = pageData.map(page => {
     return (
-      <>
-        {/* <IonCard key={page.id} button={button}> */}
-        <div className="TextTVPage" key={page.id}>
-          <div className="TextTVPage__wrap">
-            <div
-              className="TextTVPage__inner"
-              onClick={handleClick}
-              dangerouslySetInnerHTML={createMarkupForPage(page)}
-            />
-          </div>
+      <div className="TextTVPage" key={page.id}>
+        <div className="TextTVPage__wrap">
+          <div
+            className="TextTVPage__inner"
+            onClick={handleClick}
+            dangerouslySetInnerHTML={createMarkupForPage(page)}
+          />
         </div>
         {children}
-        {/* </IonCard> */}
-      </>
+      </div>
     );
   });
 

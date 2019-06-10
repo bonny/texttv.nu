@@ -12,60 +12,16 @@ import Moment from "react-moment";
 import "moment/locale/sv";
 
 export const TextTVCard = props => {
-  const { size, pageNum, button, history } = props;
-  const [actionSheetOpened, setActionSheetOpened] = useState(false);
-
-  const handleMoreActionsClick = e => {
-    console.log("handleMoreActionsClick", e);
-    setActionSheetOpened(true);
-  };
+  const { size, pageNum, button, history, refreshTime } = props;
 
   return (
     <>
-      <IonActionSheet
-        isOpen={actionSheetOpened}
-        onDidDismiss={() => setActionSheetOpened(false)}
-        buttons={[
-          {
-            text: "Share",
-            icon: "share",
-            handler: () => {
-              // console.log("Share clicked");
-            }
-          },
-          {
-            text: "Favorite",
-            icon: "heart",
-            handler: () => {
-              // console.log("Favorite clicked");
-            }
-          },
-          {
-            text: "Cancel",
-            icon: "close",
-            role: "cancel",
-            handler: () => {
-              // console.log("Cancel clicked");
-            }
-          }
-        ]}
-      />
-
-      <TextTvPage pageNum={pageNum} button={button} history={history}>
-        {size === "large" && (
-          <IonItem lines="none">
-            <IonLabel>
-              <p>Uppdaterad idag 10.23. @TODO: få tag i sidans tid här</p>
-              {/* <Moment unix format="HH:mm" locale="sv">
-                {page.date_added_unix}
-              </Moment>{" "} */}
-            </IonLabel>
-            <IonButton fill="clear" slot="end" onClick={handleMoreActionsClick}>
-              <IonIcon slot="icon-only" name="more" />
-            </IonButton>
-          </IonItem>
-        )}
-
+      <TextTvPage
+        pageNum={pageNum}
+        button={button}
+        history={history}
+        refreshTime={refreshTime}
+      >
         {size === "thumbnail" && (
           <IonItem lines="none" button={button}>
             <IonLabel>
@@ -79,10 +35,12 @@ export const TextTVCard = props => {
 };
 
 export const TextTVLargeCard = props => {
-  return <TextTVCard {...props} size="large" />;
+  const { refreshTime } = props;
+  return <TextTVCard {...props} size="large" refreshTime={refreshTime} />;
 };
 
 export const TextTVThumbnailCard = props => {
+  const { refreshTime } = props;
   const handleCardClick = e => {
     e.preventDefault();
     console.log("handle click", e);
@@ -93,6 +51,7 @@ export const TextTVThumbnailCard = props => {
       size="thumbnail"
       button
       onCardClick={handleCardClick}
+      refreshTime={refreshTime}
     />
   );
 };
