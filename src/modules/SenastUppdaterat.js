@@ -80,7 +80,7 @@ const SenastUppdateradeLista = props => {
               </Moment>{" "}
               • {page.page_num}
             </p>
-            <h1>{page.title}</h1>
+            <h2>{page.title}</h2>
           </IonLabel>
         </IonItem>
       );
