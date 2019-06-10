@@ -23,11 +23,15 @@ export const Page_TextTVPage = props => {
   // console.log('Page_TextTVPage', props);
   const { match, history } = props;
   const pageNum = match.params.pageNum;
-  
+
   const doRefresh = e => {
     console.log("do refresh");
     setRefreshTime(Math.floor(Date.now() / 1000));
     e.target.complete();
+  };
+
+  const handleRefreshClick = e => {
+    setRefreshTime(Math.floor(Date.now() / 1000));
   };
 
   const handleTestClick = e => {
@@ -54,12 +58,6 @@ export const Page_TextTVPage = props => {
             <IonBackButton />
           </IonButtons>
           <IonButtons slot="end">
-            <IonButton fill="clear" slot="end" onClick={handleMoreActionsClick}>
-              <IonIcon slot="icon-only" name="more" />
-            </IonButton>
-            <IonButton fill="clear" slot="end" onClick={handleMoreActionsClick}>
-              <IonIcon slot="icon-only" name="share" />
-            </IonButton>
             <IonMenuButton menu="mainMenu" />
           </IonButtons>
           <IonTitle>
@@ -68,19 +66,16 @@ export const Page_TextTVPage = props => {
           </IonTitle>
         </IonToolbar>
 
-        <IonToolbar color="primary">
+        <IonToolbar color="secondary">
           <IonTitle>
-            <small>{pageNum} | Uppdaterad 10.23</small>
-            {/* <Moment unix format="HH:mm" locale="sv">
-                {page.date_added_unix}
-              </Moment> */}
+            <small>{pageNum}</small>
           </IonTitle>
           <IonButtons slot="end">
             <IonButton fill="clear" slot="end" onClick={handleMoreActionsClick}>
-              <IonIcon slot="icon-only" name="more" />
+              <IonIcon size="small" slot="icon-only" name="share" />
             </IonButton>
-            <IonButton fill="clear" slot="end" onClick={handleMoreActionsClick}>
-              <IonIcon slot="icon-only" name="share" />
+            <IonButton fill="clear" slot="end" onClick={handleRefreshClick}>
+              <IonIcon size="small" slot="icon-only" name="refresh" />
             </IonButton>
           </IonButtons>
         </IonToolbar>
