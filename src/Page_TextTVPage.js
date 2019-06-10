@@ -68,7 +68,7 @@ export const Page_TextTVPage = props => {
 
         <IonToolbar color="secondary">
           <IonTitle>
-            <small>{pageNum}</small>
+            {/* <small>{pageNum}</small> */}
           </IonTitle>
           <IonButtons slot="end">
             <IonButton fill="clear" slot="end" onClick={handleMoreActionsClick}>
