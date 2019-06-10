@@ -4,14 +4,23 @@ import React from "react";
 export function SkeletonTextTVPage() {
   const skeletonWrapStyle = {
     backgroundColor: "rgb(17, 30, 63)",
-    padding: "14px"
+    padding: "14px",
+    display: "flex",
+    justifyContent: "center"
   };
+
+  const skeletonInnerWrapStyle = {
+    maxWidth: "440px",
+    flex: 1
+  };
+
   const skeletonStyle = {
     height: "14px",
     backgroundColor: "#ddd",
     width: "100%",
     opacity: 0.25
   };
+
   const SkeletonRowYellow = () => (
     <IonSkeletonText
       animated
@@ -21,6 +30,7 @@ export function SkeletonTextTVPage() {
       }}
     />
   );
+
   const SkeletonRowWhite = () => (
     <IonSkeletonText
       animated
@@ -29,6 +39,7 @@ export function SkeletonTextTVPage() {
       }}
     />
   );
+
   const SkeletonRowBlue = () => (
     <IonSkeletonText
       animated
@@ -40,8 +51,9 @@ export function SkeletonTextTVPage() {
   );
   const skeletonPage = (
     <>
-      <IonCard>
-        <div style={skeletonWrapStyle}>
+      {/* <IonCard> */}
+      <div style={skeletonWrapStyle}>
+        <div style={skeletonInnerWrapStyle}>
           <SkeletonRowWhite />
           <SkeletonRowBlue />
           <IonSkeletonText animated style={{ ...skeletonStyle, opacity: 0 }} />
@@ -67,7 +79,8 @@ export function SkeletonTextTVPage() {
           <IonSkeletonText animated style={{ ...skeletonStyle, opacity: 0 }} />
           <SkeletonRowBlue />
         </div>
-      </IonCard>
+      </div>
+      {/* </IonCard> */}
     </>
   );
   return skeletonPage;
