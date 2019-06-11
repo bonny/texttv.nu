@@ -6,3 +6,8 @@ Här bygger vi [iOS appen](https://itunes.apple.com/se/app/texttv.nu/id607998045
 [Android-appen för SVT Text TV](https://play.google.com/store/apps/details?id=com.mufflify.TextTVnu&hl=sv) är också rätt så baserad på denna kod också.
 
 Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka in förbättringsförslag.
+
+## Ny app 2019
+
+För att fira att SVT Text TV fyllt 40 år så håller vi (långsamt...) på att ta fram en ny app. Du kan tjyvkika på den här:
+https://texttvnu.now.sh
