@@ -16,13 +16,14 @@ import {
   IonCardSubtitle
 } from "@ionic/react";
 import React, { useState } from "react";
-import { ReactComponent as Logo } from "./images/logo.svg";
 import { TextTVCard } from "./texttv-card";
 
 export const Page_TextTVPage = props => {
   // console.log('Page_TextTVPage', props);
   const { match, history } = props;
   const pageNum = match.params.pageNum;
+  const [actionSheetOpened, setActionSheetOpened] = useState(false);
+  const [refreshTime, setRefreshTime] = useState(Math.floor(Date.now() / 1000));
 
   const doRefresh = e => {
     console.log("do refresh");
@@ -44,9 +45,6 @@ export const Page_TextTVPage = props => {
     setActionSheetOpened(true);
   };
 
-  const [actionSheetOpened, setActionSheetOpened] = useState(false);
-  const [refreshTime, setRefreshTime] = useState(Math.floor(Date.now() / 1000));
-
   return (
     <>
       <IonHeader>
@@ -58,26 +56,15 @@ export const Page_TextTVPage = props => {
             <IonBackButton />
           </IonButtons>
           <IonButtons slot="end">
-            <IonMenuButton menu="mainMenu" />
-          </IonButtons>
-          <IonTitle>
-            {/* <Logo className="texttv-logo" /> */}
-            {pageNum}
-          </IonTitle>
-        </IonToolbar>
-
-        <IonToolbar color="secondary">
-          <IonTitle>
-            {/* <small>{pageNum}</small> */}
-          </IonTitle>
-          <IonButtons slot="end">
             <IonButton fill="clear" slot="end" onClick={handleMoreActionsClick}>
               <IonIcon size="small" slot="icon-only" name="share" />
             </IonButton>
             <IonButton fill="clear" slot="end" onClick={handleRefreshClick}>
               <IonIcon size="small" slot="icon-only" name="refresh" />
             </IonButton>
+            <IonMenuButton menu="mainMenu" />
           </IonButtons>
+          <IonTitle>{pageNum}</IonTitle>
         </IonToolbar>
       </IonHeader>
 
