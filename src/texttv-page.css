@@ -25,7 +25,7 @@
 
 .TextTVPage {
   font-family: "Ubuntu Mono", monospace;
-  background: rgb(17, 30, 63);
+  background: var(--text-tv-background);
   color: #ddd;
   font-size: 4.9vw;
   text-align: center;

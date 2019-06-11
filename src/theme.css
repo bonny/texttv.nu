@@ -2,8 +2,19 @@
   --ion-background-color:#111D12;
 } */
 
+/*
+THeming
+https://ionicframework.com/docs/theming/advanced
+*/
+
 :root {
   /* --ion-background-color: #d1eaff; */
+  --text-tv-background: rgb(17, 30, 63);
+  /* --ion-text-color: #fff;
+  --ion-text-color-rgb: 255, 255, 255;
+  --ion-font-family: "Ubuntu Mono"; */
+
+  /* --ion-background-color: var(--text-tv-background); */
 
   --ion-color-primary: #0066b5;
   --ion-color-primary-rgb: 0, 102, 181;
