@@ -14,30 +14,9 @@ function createMarkupForPage(page) {
 export const TextTvPage = props => {
   const { pageNum, children, button, history, refreshTime } = props;
   const [componentIsUnloaded, setComponentIsUnloaded] = useState(false);
-  const [fontIsLoaded, setFontIsLoaded] = useState(false);
   const [pageData, setPageData] = useState([]);
   const [pageIsLoaded, setPageIsLoaded] = useState(false);
   const [pageIsLoading, setPageIsLoading] = useState(false);
-
-  // useEffect(() => {
-  //   // https://github.com/rikschennink/fitty
-  //   if (fontIsLoaded && pageIsLoaded) {
-  //     console.log(
-  //       "run fitty because font and page is loaded",
-  //       pageNum,
-  //       fontIsLoaded
-  //     );
-  //     fitty(".TextTVPage__inner", {
-  //       minSize: 2,
-  //       maxSize: 18
-  //     });
-
-  //     // setTimeout(() => {
-  //     //   console.log("fitty.fitAll()	");
-  //     //   fitty.fitAll();
-  //     // }, 1500);
-  //   }
-  // }, [pageNum, fontIsLoaded, pageIsLoaded]);
 
   const handleClick = e => {
     e.preventDefault();
