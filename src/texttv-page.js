@@ -44,8 +44,14 @@ export const TextTvPage = props => {
     const target = e.target;
     if (target.nodeName === "A") {
       // This is a link.
-      // href is '/100', '/101-102', etc.
-      const href = target.getAttribute("href");
+      // href is '/100', '/101-102', '150,163'
+      let href = target.getAttribute("href");
+      
+      // Make sure string begins with "/".
+      if (!href.startsWith("/")) {
+        href = `/${href}`;
+      }
+
       console.log("handle link click", href);
       history.push(`/sida${href}`);
     }
