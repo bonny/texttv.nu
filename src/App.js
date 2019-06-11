@@ -100,7 +100,7 @@ function App(props) {
                       exact={true}
                     />
                   </IonRouterOutlet>
-                  <IonTabBar slot="bottom">
+                  <IonTabBar slot="bottom" color="primary">
                     <IonTabButton tab="hem" href="/hem">
                       <IonIcon name="home" />
                       <IonLabel>Hem</IonLabel>
