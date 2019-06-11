@@ -1,7 +1,15 @@
-import { IonItem, IonLabel, IonList, IonSkeletonText } from "@ionic/react";
+import {
+  IonItem,
+  IonLabel,
+  IonList,
+  IonSkeletonText,
+  IonThumbnail,
+  IonIcon
+} from "@ionic/react";
 import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
 import "moment/locale/sv";
+import { ReactComponent as ArticleIcon } from "../images/article.svg";
 
 const SenastUppdateradeLista = props => {
   {
@@ -15,11 +23,11 @@ const SenastUppdateradeLista = props => {
       const endpoints = [
         {
           what: "news",
-          endpoint: "https://texttv.nu/api/last_updated/news?count=10"
+          endpoint: "https://texttv.nu/api/last_updated/news?count=15"
         },
         {
           what: "sports",
-          endpoint: "https://texttv.nu/api/last_updated/sport?count=10"
+          endpoint: "https://texttv.nu/api/last_updated/sport?count=15"
         }
       ];
 
@@ -74,13 +82,16 @@ const SenastUppdateradeLista = props => {
           lines={lines}
         >
           <IonLabel text-wrap>
-            <p>
-              <Moment unix format="HH:mm" locale="sv">
-                {page.date_added_unix}
-              </Moment>{" "}
-              • {page.page_num}
-            </p>
+            <p>{page.page_num}</p>
             <h2>{page.title}</h2>
+            <p>
+              <Moment unix fromNow locale="sv">
+                {page.date_added_unix}
+              </Moment>
+              {/* <Moment unix format="HH:mm" locale="sv">
+                {page.date_added_unix}
+              </Moment> */}
+            </p>
           </IonLabel>
         </IonItem>
       );
