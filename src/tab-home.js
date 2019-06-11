@@ -12,7 +12,8 @@ import {
   IonRefresher,
   IonRefresherContent,
   IonRow,
-  IonToolbar
+  IonToolbar,
+  IonToast
 } from "@ionic/react";
 import React, { useEffect } from "react";
 import { TextTVHeader } from "./modules/TextTVHeader";
@@ -100,6 +101,37 @@ export const TabHome = props => {
         <div className="ion-hide-lg-up">
           <TextTVSidorLista {...props} />
         </div>
+
+        <IonToast
+          isOpen={true}
+          // onDidDismiss={() => this.setState(() => ({ showToast1: false }))}
+          message="Your settings have been saved."
+          duration={200}
+        />
+
+        <IonToast
+          isOpen={true}
+          // onDidDismiss={() => this.setState(() => ({ showToast2: false }))}
+          message="Click to Close"
+          position="top"
+          buttons={[
+            {
+              side: "start",
+              icon: "star",
+              text: "Favorite",
+              handler: () => {
+                console.log("Favorite clicked");
+              }
+            },
+            {
+              text: "Done",
+              role: "cancel",
+              handler: () => {
+                console.log("Cancel clicked");
+              }
+            }
+          ]}
+        />
       </IonContent>
     </>
   );
