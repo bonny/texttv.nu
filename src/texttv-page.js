@@ -46,7 +46,7 @@ export const TextTvPage = props => {
       // This is a link.
       // href is '/100', '/101-102', '150,163'
       let href = target.getAttribute("href");
-      
+
       // Make sure string begins with "/".
       if (!href.startsWith("/")) {
         href = `/${href}`;
@@ -104,12 +104,5 @@ export const TextTvPage = props => {
 
   // console.log("page html", pageNum, html);
 
-  return (
-    <>
-      {pageIsLoading ? <SkeletonTextTVPage /> : pagesHtml}
-      <p>
-        Refresh time: {refreshTime}, page: {pageNum}
-      </p>
-    </>
-  );
+  return <>{pageIsLoading ? <SkeletonTextTVPage /> : pagesHtml}</>;
 };
