@@ -18,7 +18,8 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import "./App.css";
 import { MenuWithRouter } from "./Menu";
-import { Page_TextTVPage } from "./Page_TextTVPage";
+import PageTextTV from "./pages/page-TextTV.js";
+import TextTVPage from "./modules/TextTVPage";
 import { TabHome } from "./tab-home";
 import { TabNyast } from "./tab-nyast";
 import { TabPopulart } from "./tab-populart";
@@ -62,6 +63,7 @@ const PageTest = props => {
           }
         ]}
       />
+      <TextTVPage pageNum="100-103" />
     </IonContent>
   );
 };
@@ -86,7 +88,7 @@ function App(props) {
                 <Route exact path="/" render={() => <Redirect to="/hem" />} />
                 <IonTabs>
                   <IonRouterOutlet>
-                    <Route path="/sida/:pageNum" component={Page_TextTVPage} />
+                    <Route path="/sida/:pageNum" component={PageTextTV} />
                     <Route path="/test" component={PageTest} />
                     <Route path="/:tab(hem)" component={TabHome} exact={true} />
                     <Route

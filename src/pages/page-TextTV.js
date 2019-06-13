@@ -16,33 +16,70 @@ import {
   IonCardSubtitle
 } from "@ionic/react";
 import React, { useState } from "react";
-import { TextTVCard } from "./texttv-card";
+import TextTVPage from "../modules/TextTVPage";
 
-export const Page_TextTVPage = props => {
-  // console.log('Page_TextTVPage', props);
+export default props => {
   const { match, history } = props;
   const pageNum = match.params.pageNum;
   const [actionSheetOpened, setActionSheetOpened] = useState(false);
   const [refreshTime, setRefreshTime] = useState(Math.floor(Date.now() / 1000));
 
-  const doRefresh = e => {
-    console.log("do refresh");
+  /**
+   * Update the refresh time to the current time.
+   */
+  const updateRefreshTime = () => {
     setRefreshTime(Math.floor(Date.now() / 1000));
+  };
+
+  const handlePullToRefresh = e => {
+    updateRefreshTime();
     e.target.complete();
   };
 
   const handleRefreshClick = e => {
-    setRefreshTime(Math.floor(Date.now() / 1000));
+    updateRefreshTime();
   };
 
   const handleTestClick = e => {
-    console.log("handle test click", props.history);
     props.history.goBack();
   };
 
   const handleMoreActionsClick = e => {
     console.log("handleMoreActionsClick", e);
     setActionSheetOpened(true);
+  };
+
+  const ActionSheet = () => {
+    return (
+      <IonActionSheet
+        isOpen={actionSheetOpened}
+        onDidDismiss={() => setActionSheetOpened(false)}
+        buttons={[
+          {
+            text: "Share",
+            icon: "share",
+            handler: () => {
+              // console.log("Share clicked");
+            }
+          },
+          {
+            text: "Favorite",
+            icon: "heart",
+            handler: () => {
+              // console.log("Favorite clicked");
+            }
+          },
+          {
+            text: "Cancel",
+            icon: "close",
+            role: "cancel",
+            handler: () => {
+              // console.log("Cancel clicked");
+            }
+          }
+        ]}
+      />
+    );
   };
 
   return (
@@ -62,52 +99,24 @@ export const Page_TextTVPage = props => {
             <IonButton fill="clear" slot="end" onClick={handleRefreshClick}>
               <IonIcon size="small" slot="icon-only" name="refresh" />
             </IonButton>
-            <IonMenuButton menu="mainMenu" />
           </IonButtons>
           <IonTitle>{pageNum}</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent>
-        <IonActionSheet
-          isOpen={actionSheetOpened}
-          onDidDismiss={() => setActionSheetOpened(false)}
-          buttons={[
-            {
-              text: "Share",
-              icon: "share",
-              handler: () => {
-                // console.log("Share clicked");
-              }
-            },
-            {
-              text: "Favorite",
-              icon: "heart",
-              handler: () => {
-                // console.log("Favorite clicked");
-              }
-            },
-            {
-              text: "Cancel",
-              icon: "close",
-              role: "cancel",
-              handler: () => {
-                // console.log("Cancel clicked");
-              }
-            }
-          ]}
-        />
-
-        <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
+        <IonRefresher slot="fixed" onIonRefresh={handlePullToRefresh}>
           <IonRefresherContent />
         </IonRefresher>
 
-        <TextTVCard
+        <TextTVPage
           pageNum={pageNum}
           history={history}
           refreshTime={refreshTime}
           size="large"
         />
+
+        <ActionSheet />
       </IonContent>
     </>
   );

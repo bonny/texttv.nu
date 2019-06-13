@@ -23,13 +23,13 @@ export const TextTVHeader = props => {
         </IonTitle>
         <IonButtons slot="end">
           <IonButtons slot="end">
-            <IonButton fill="clear" slot="end" onClick={handleMoreActionsClick}>
+            {/* <IonButton fill="clear" slot="end" onClick={handleMoreActionsClick}>
               <IonIcon size="small" slot="icon-only" name="share" />
             </IonButton>
             <IonButton fill="clear" slot="end" onClick={handleRefreshClick}>
               <IonIcon size="small" slot="icon-only" name="refresh" />
             </IonButton>
-            <IonMenuButton menu="mainMenu" />
+            <IonMenuButton menu="mainMenu" /> */}
           </IonButtons>
         </IonButtons>
       </IonToolbar>

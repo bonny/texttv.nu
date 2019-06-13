@@ -18,7 +18,7 @@ import {
 import React, { useState, useEffect } from "react";
 import { TextTVHeader } from "./modules/TextTVHeader";
 import { TextTVSidorLista } from "./modules/TextTVSidorLista";
-import { TextTVLargeCard, TextTVThumbnailCard } from "./texttv-card";
+import TextTVPage from "./modules/TextTVPage.jsx";
 
 export const TabHome = props => {
   const { history } = props;
@@ -47,20 +47,9 @@ export const TabHome = props => {
           <IonRefresherContent onIonRefresh={doRefresh} />
         </IonRefresher>
 
-        <TextTVLargeCard pageNum="100" history={history} />
-        <TextTVLargeCard pageNum="300" history={history} />
-        <TextTVLargeCard pageNum="700" history={history} />
-
-        {/* <IonGrid>
-          <IonRow>
-            <IonCol size="6">
-              <TextTVThumbnailCard pageNum="300" />
-            </IonCol>
-            <IonCol size="6">
-              <TextTVThumbnailCard pageNum="700" />
-            </IonCol>
-          </IonRow>
-        </IonGrid> */}
+        <TextTVPage pageNum="100" history={history} />
+        <TextTVPage pageNum="300" history={history} />
+        <TextTVPage pageNum="700" history={history} />
 
         <IonCard>
           <IonCardHeader>

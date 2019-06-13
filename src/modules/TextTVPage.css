@@ -10,7 +10,7 @@
 @font-face {
   font-family: "Ubuntu Mono";
   src: local("Ubuntu Mono"),
-    url("./fonts/ubuntu-font-family-0.83/UbuntuMono-R.ttf") format("truetype");
+    url("../fonts/ubuntu-font-family-0.83/UbuntuMono-R.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -18,7 +18,7 @@
 @font-face {
   font-family: "Ubuntu Mono";
   src: local("Ubuntu Mono"),
-    url("./fonts/ubuntu-font-family-0.83/UbuntuMono-B.ttf") format("truetype");
+    url("../fonts/ubuntu-font-family-0.83/UbuntuMono-B.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
@@ -31,6 +31,11 @@
   text-align: center;
   line-height: 1;
   padding: 10px 10px 10px 0;
+}
+
+/* Lite mindre storlek på desktop så vi får plats med scrollbar */
+.plt-desktop .TextTVPage {
+  font-size: 4.7vw;
 }
 
 /* @media only screen and (min-width: 250px) {
