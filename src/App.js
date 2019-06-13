@@ -114,6 +114,10 @@ function App(props) {
                       <IonLabel>Hem</IonLabel>
                       {/* <IonBadge color="danger">6</IonBadge> */}
                     </IonTabButton>
+                    <IonTabButton tab="sidor" href="/sidor">
+                      <IonIcon name="document" />
+                      <IonLabel>Sidor</IonLabel>
+                    </IonTabButton>
                     <IonTabButton tab="populart" href="/populart">
                       <IonIcon name="trending-up" />
                       <IonLabel>Mest läst</IonLabel>
