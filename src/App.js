@@ -90,7 +90,13 @@ function App(props) {
                   <IonRouterOutlet>
                     <Route path="/sida/:pageNum" component={PageTextTV} />
                     <Route path="/test" component={PageTest} />
-                    <Route path="/:tab(hem)" component={TabHome} exact={true} />
+                    <Route
+                      path="/:tab(hem)"
+                      render={(props) => {
+                        return <PageTextTV pageNum="100,300,700" {...props} />;
+                      }}
+                      exact={true}
+                    />
                     <Route
                       path="/:tab(populart)"
                       component={TabPopulart}

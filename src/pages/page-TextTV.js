@@ -20,7 +20,7 @@ import TextTVPage from "../modules/TextTVPage";
 
 export default props => {
   const { match, history } = props;
-  const pageNum = match.params.pageNum;
+  const pageNum = props.pageNum || match.params.pageNum;
   const [actionSheetOpened, setActionSheetOpened] = useState(false);
   const [refreshTime, setRefreshTime] = useState(Math.floor(Date.now() / 1000));
 
