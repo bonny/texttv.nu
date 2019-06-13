@@ -11,7 +11,7 @@ import React from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
 
 export const TextTVHeader = props => {
-  const { handleMoreActionsClick, handleRefreshClick } = props;
+  // const { handleMoreActionsClick, handleRefreshClick } = props;
   //typeof callback === "function"
 
   return (

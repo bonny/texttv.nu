@@ -49,39 +49,6 @@ export default props => {
     setActionSheetOpened(true);
   };
 
-  const ActionSheet = () => {
-    return (
-      <IonActionSheet
-        isOpen={actionSheetOpened}
-        onDidDismiss={() => setActionSheetOpened(false)}
-        buttons={[
-          {
-            text: "Share",
-            icon: "share",
-            handler: () => {
-              // console.log("Share clicked");
-            }
-          },
-          {
-            text: "Favorite",
-            icon: "heart",
-            handler: () => {
-              // console.log("Favorite clicked");
-            }
-          },
-          {
-            text: "Cancel",
-            icon: "close",
-            role: "cancel",
-            handler: () => {
-              // console.log("Cancel clicked");
-            }
-          }
-        ]}
-      />
-    );
-  };
-
   return (
     <>
       <IonHeader>
@@ -116,7 +83,34 @@ export default props => {
           size="large"
         />
 
-        <ActionSheet />
+        <IonActionSheet
+          isOpen={actionSheetOpened}
+          onDidDismiss={() => setActionSheetOpened(false)}
+          buttons={[
+            {
+              text: "Share",
+              icon: "share",
+              handler: () => {
+                // console.log("Share clicked");
+              }
+            },
+            {
+              text: "Favorite",
+              icon: "heart",
+              handler: () => {
+                // console.log("Favorite clicked");
+              }
+            },
+            {
+              text: "Cancel",
+              icon: "close",
+              role: "cancel",
+              handler: () => {
+                // console.log("Cancel clicked");
+              }
+            }
+          ]}
+        />
       </IonContent>
     </>
   );
