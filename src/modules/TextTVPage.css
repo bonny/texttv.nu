@@ -33,11 +33,6 @@
   padding: 10px 10px 10px 0;
 }
 
-/* Lite mindre storlek på desktop så vi får plats med scrollbar */
-.plt-desktop .TextTVPage {
-  font-size: 4.7vw;
-}
-
 /* @media only screen and (min-width: 250px) {
   .TextTVPage {
     font-size: 10px;
@@ -60,6 +55,10 @@
   .TextTVPage {
     font-size: 18px;
   }
+} */
+/* Lite mindre storlek på desktop så vi får plats med scrollbar */
+/* .plt-desktop .TextTVPage {
+  font-size: 4.7vw;
 } */
 
 @media only screen and (min-width: 540px) {
