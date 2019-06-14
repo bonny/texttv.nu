@@ -52,8 +52,8 @@ export default props => {
       // Vänta lite med att sätta ny sidata pga felsökning och test osv.
       setTimeout(() => {
         setPageData(pageData);
-        // setPageIsLoading(false);
-        // setPageIsLoaded(true);
+        setPageIsLoading(false);
+        setPageIsLoaded(true);
       }, 1000);
     }
 
