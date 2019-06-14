@@ -16,9 +16,9 @@ import {
   IonToast
 } from "@ionic/react";
 import React, { useState, useEffect } from "react";
-import { TextTVHeader } from "./modules/TextTVHeader";
-import { TextTVSidorLista } from "./modules/TextTVSidorLista";
-import TextTVPage from "./modules/TextTVPage.jsx";
+import { TextTVHeader } from "../modules/TextTVHeader";
+import { TextTVSidorLista } from "../modules/TextTVSidorLista";
+import TextTVPage from "../modules/TextTVPage.jsx";
 
 export const TabHome = props => {
   const { history } = props;

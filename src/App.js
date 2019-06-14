@@ -20,9 +20,10 @@ import "./App.css";
 import { MenuWithRouter } from "./Menu";
 import PageTextTV from "./pages/page-TextTV.js";
 import TextTVPage from "./modules/TextTVPage";
-import { TabHome } from "./tab-home";
-import { TabNyast } from "./tab-nyast";
-import { TabPopulart } from "./tab-populart";
+// import { TabHome } from "./tab-home";
+import TabNyast from "./pages/tab-nyast";
+import TabPopulart from "./pages/tab-populart";
+import TabSidor from "./pages/tab-sidor";
 import "./theme.css";
 
 const PageTest = props => {
@@ -100,6 +101,11 @@ function App(props) {
                     <Route
                       path="/:tab(populart)"
                       component={TabPopulart}
+                      exact={true}
+                    />
+                    <Route
+                      path="/:tab(sidor)"
+                      component={TabSidor}
                       exact={true}
                     />
                     <Route

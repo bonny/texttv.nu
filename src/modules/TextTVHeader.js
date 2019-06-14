@@ -10,7 +10,7 @@ import {
 import React from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
 
-export const TextTVHeader = props => {
+export default props => {
   // const { handleMoreActionsClick, handleRefreshClick } = props;
   //typeof callback === "function"
 

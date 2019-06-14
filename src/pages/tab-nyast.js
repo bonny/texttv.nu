@@ -8,10 +8,10 @@ import {
   IonToast
 } from "@ionic/react";
 import React, { useState } from "react";
-import { TextTVHeader } from "./modules/TextTVHeader";
-import SenastUppdaterat from "./modules/SenastUppdaterat";
+import TextTVHeader from "../modules/TextTVHeader";
+import SenastUppdaterat from "../modules/SenastUppdaterat";
 
-export const TabNyast = props => {
+export default props => {
   const { history } = props;
   const [selectedSegment, setSelectedSegment] = useState("news");
   const [refreshTime, setRefreshTime] = useState(Math.floor(Date.now() / 1000));

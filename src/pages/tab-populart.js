@@ -7,10 +7,10 @@ import {
   IonSegmentButton
 } from "@ionic/react";
 import React, { useState } from "react";
-import MestLasta from "./modules/MestLasta";
-import { TextTVHeader } from "./modules/TextTVHeader";
+import MestLasta from "../modules/MestLasta";
+import TextTVHeader from "../modules/TextTVHeader";
 
-export const TabPopulart = () => {
+export default (props) => {
   const [selectedSegment, setSelectedSegment] = useState("today");
 
   const handleSegmentChange = e => {

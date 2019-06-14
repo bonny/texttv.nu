@@ -33,10 +33,12 @@ export default props => {
 
   const handlePullToRefresh = e => {
     updateRefreshTime();
-    e.target.complete();
+    setTimeout(() => {
+      e.target.complete();
+    }, 750);
   };
 
-  const handleRefreshClick = e => {
+  const handleRefreshBtnClick = e => {
     updateRefreshTime();
   };
 
@@ -63,7 +65,7 @@ export default props => {
             <IonButton fill="clear" slot="end" onClick={handleMoreActionsClick}>
               <IonIcon size="small" slot="icon-only" name="share" />
             </IonButton>
-            <IonButton fill="clear" slot="end" onClick={handleRefreshClick}>
+            <IonButton fill="clear" slot="end" onClick={handleRefreshBtnClick}>
               <IonIcon size="small" slot="icon-only" name="refresh" />
             </IonButton>
           </IonButtons>
@@ -71,9 +73,19 @@ export default props => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent>
-        <IonRefresher slot="fixed" onIonRefresh={handlePullToRefresh}>
-          <IonRefresherContent />
+      <IonContent color="dark">
+        <IonRefresher
+          slot="fixed"
+          onIonRefresh={handlePullToRefresh}
+          pullFactor="0.8"
+          pullMin="60"
+          pullMax="120"
+        >
+          <IonRefresherContent
+            refreshingSpinner="lines-small"
+            pullingText="Dra och släpp för att ladda om"
+            refreshingText='Laddar om…'
+          />
         </IonRefresher>
 
         <TextTVPage
