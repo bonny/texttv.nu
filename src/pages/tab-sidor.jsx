@@ -1,13 +1,14 @@
 import React from "react";
 import { IonContent } from "@ionic/react";
 import TextTVHeader from "../modules/TextTVHeader";
+import TextTVSidorLista from "../modules/TextTVSidorLista";
 
 export default props => {
   return (
     <>
       <TextTVHeader />
-      <IonContent color="dark" padding>
-        <p>Hejsan</p>
+      <IonContent color="dark">
+        <TextTVSidorLista {...props} showHeader={false} />
       </IonContent>
     </>
   );

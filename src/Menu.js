@@ -1,7 +1,7 @@
 import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonTitle, IonToolbar } from "@ionic/react";
 import React from "react";
 import { withRouter } from "react-router";
-import { TextTVSidorLista } from "./modules/TextTVSidorLista";
+import TextTVSidorLista from "./modules/TextTVSidorLista";
 
 const navItems = [
   {

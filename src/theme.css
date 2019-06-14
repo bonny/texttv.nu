@@ -60,7 +60,7 @@ https://ionicframework.com/docs/theming/advanced
 
   /* --ion-color-dark: #222428; */
   --ion-color-dark: var(--text-tv-background);
-  --ion-color-dark-rgb: 34, 34, 34;
+  --ion-color-dark-rgb: 17, 30, 63;
   --ion-color-dark-contrast: #ffffff;
   --ion-color-dark-contrast-rgb: 255, 255, 255;
   --ion-color-dark-shade: #1e2023;
@@ -91,3 +91,9 @@ ion-segment-button {
   --padding-start: 5px;
 } */
 
+/**
+ * Bug fix for ion list on page Sidor: white default bg bleeds through at the top.
+ */
+ion-list[color="dark"] {
+  background: var(--ion-color-dark);
+}

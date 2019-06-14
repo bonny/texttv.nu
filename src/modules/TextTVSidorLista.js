@@ -21,8 +21,10 @@ const favorites = [
   { title: "Innehåll", pages: "700" }
 ];
 
-export const TextTVSidorLista = props => {
-  const { history } = props;
+export default props => {
+  const { history, showHeader = true } = props;
+
+  console.log("showHeader", showHeader);
 
   const handlePageNumInputChange = e => {
     const pageNum = e.target.value;
@@ -35,12 +37,14 @@ export const TextTVSidorLista = props => {
 
   return (
     <>
-      <IonList>
-        <IonListHeader>
-          <IonLabel>Sidor</IonLabel>
-        </IonListHeader>
+      <IonList color="dark">
+        {showHeader && (
+          <IonListHeader color="dark">
+            <IonLabel>Sidor</IonLabel>
+          </IonListHeader>
+        )}
 
-        <IonItem lines="inset">
+        <IonItem lines="inset" color="dark">
           <IonLabel position="stacked">Gå till sida</IonLabel>
           <IonInput
             placeholder="100, 200, 377, …"
@@ -51,16 +55,19 @@ export const TextTVSidorLista = props => {
 
         {favorites.map((page, index, arr) => {
           const lines = index === arr.length - 1 ? "none" : "inset";
+          const url = `/sida/${page.pages}`;
           return (
             <IonItem
               button
+              // href={url}
+              routerDirection="forward"
               onClick={() => {
-                const url = `/sida/${page.pages}`;
                 document.querySelector("ion-menu-controller").close();
                 history.push(url);
               }}
               key={page.pages}
               lines={lines}
+              color="dark"
             >
               <IonLabel text-wrap>
                 <h2>{page.title}</h2>
