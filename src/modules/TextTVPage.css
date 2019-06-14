@@ -23,7 +23,8 @@
   font-style: normal;
 }
 
-.TextTVPage {
+.TextTVPage,
+.TextTVSkeletonPage {
   font-family: "Ubuntu Mono", monospace;
   background: var(--text-tv-background);
   color: #ddd;
@@ -32,6 +33,7 @@
   line-height: 1;
   padding: 10px 10px 10px 0;
 }
+
 
 /* @media only screen and (min-width: 250px) {
   .TextTVPage {
@@ -62,9 +64,18 @@
 } */
 
 @media only screen and (min-width: 540px) {
-  .TextTVPage {
+  .TextTVPage,
+  .TextTVSkeletonPage {
     font-size: 22px;
   }
+}
+
+.TextTVSkeletonPage {
+  white-space: pre;
+}
+
+ion-skeleton-text {
+  /* outline: 1px solid red; */
 }
 
 /* .TextTVPage__wrap {
