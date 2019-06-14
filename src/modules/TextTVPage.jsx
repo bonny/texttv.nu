@@ -81,5 +81,5 @@ export default props => {
     );
   });
 
-return <>{pageIsLoading && <SkeletonTextTVPage />} {!pagesHtml}</>;
+return <>{pageIsLoading && <SkeletonTextTVPage />} {pagesHtml}</>;
 };
