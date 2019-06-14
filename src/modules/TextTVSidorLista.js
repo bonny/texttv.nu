@@ -45,9 +45,11 @@ export default props => {
         )}
 
         <IonItem lines="inset" color="dark">
-          <IonLabel position="stacked">Gå till sida</IonLabel>
+          <IonLabel position="stacked">
+            <h2>Gå till sida</h2>
+          </IonLabel>
           <IonInput
-            placeholder="100, 200, 377, …"
+            placeholder="Skriv in sida 100, 200, 377 …"
             type="number"
             onIonChange={handlePageNumInputChange}
           />

@@ -82,7 +82,7 @@ const MestLastaLista = props => {
       const lines = index === arr.length - 1 ? "none" : "inset";
 
       return (
-        <IonItem button key={page.id} lines={lines}>
+        <IonItem button key={page.id} lines={lines} color="dark">
           <IonLabel text-wrap>
             <p>{page.page}</p>
             <h1>{page.title}</h1>
@@ -98,7 +98,7 @@ export default props => {
 
   return (
     <>
-      <IonList>
+      <IonList color="dark">
         <MestLastaLista day={selectedSegment} />
       </IonList>
     </>

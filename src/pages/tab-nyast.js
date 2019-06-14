@@ -30,7 +30,7 @@ export default props => {
   return (
     <>
       <TextTVHeader {...props}>
-        <IonToolbar>
+        <IonToolbar color="primary">
           <IonSegment onIonChange={handleSegmentChange} value={selectedSegment}>
             <IonSegmentButton value="news">Nyheter</IonSegmentButton>
             <IonSegmentButton value="sports">Sport</IonSegmentButton>
@@ -38,7 +38,7 @@ export default props => {
         </IonToolbar>
       </TextTVHeader>
 
-      <IonContent>
+      <IonContent color='dark'>
         <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
           <IonRefresherContent />
         </IonRefresher>

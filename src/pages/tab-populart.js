@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import MestLasta from "../modules/MestLasta";
 import TextTVHeader from "../modules/TextTVHeader";
 
-export default (props) => {
+export default props => {
   const [selectedSegment, setSelectedSegment] = useState("today");
 
   const handleSegmentChange = e => {
@@ -20,14 +20,14 @@ export default (props) => {
   return (
     <>
       <TextTVHeader>
-        <IonToolbar>
+        <IonToolbar color="primary">
           <IonSegment onIonChange={handleSegmentChange} value={selectedSegment}>
             <IonSegmentButton value="today">Idag</IonSegmentButton>
             <IonSegmentButton value="yesterday">Igår</IonSegmentButton>
           </IonSegment>
         </IonToolbar>
       </TextTVHeader>
-      <IonContent>
+      <IonContent color="dark">
         <IonRefresher slot="fixed">
           <IonRefresherContent />
         </IonRefresher>

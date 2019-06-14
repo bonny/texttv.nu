@@ -80,6 +80,7 @@ const SenastUppdateradeLista = props => {
           }}
           key={page.id}
           lines={lines}
+          color='dark'
         >
           <IonLabel text-wrap>
             <p>{page.page_num}</p>
@@ -119,13 +120,13 @@ const SenastUppdateradeLista = props => {
         </IonItem>
       );
     });
-    const SkeletonList = <IonList>{SkeletonListItems}</IonList>;
+    const SkeletonList = <IonList color='dark'>{SkeletonListItems}</IonList>;
 
     return (
       <>
         {isLoading && SkeletonList}
         {isLoadingError && <p>Det blev ett fel vid laddning ...</p>}
-        {Pages && <IonList>{Pages}</IonList>}
+        {Pages && <IonList color='dark'>{Pages}</IonList>}
       </>
     );
   }
