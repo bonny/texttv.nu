@@ -38,9 +38,9 @@ export default props => {
     updateRefreshTime();
   };
 
-  const handleTestClick = e => {
-    props.history.goBack();
-  };
+  // const handleTestClick = e => {
+  //   props.history.goBack();
+  // };
 
   const handleMoreActionsClick = e => {
     console.log("handleMoreActionsClick", e);
@@ -52,10 +52,10 @@ export default props => {
       <IonHeader>
         <IonToolbar color="primary">
           <IonButtons slot="start">
-            <IonButton onClick={handleTestClick}>
+            {/* <IonButton onClick={handleTestClick}>
               <IonIcon slot="icon-only" name="arrow-back" />
-            </IonButton>
-            <IonBackButton />
+            </IonButton> */}
+            <IonBackButton text='' />
           </IonButtons>
           <IonButtons slot="end">
             <IonButton fill="clear" slot="end" onClick={handleMoreActionsClick}>
