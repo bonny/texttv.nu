@@ -9,9 +9,15 @@ https://ionicframework.com/docs/theming/advanced
 
 :root {
   --text-tv-background: rgb(17, 30, 63);
+  --text-tv-color: #eee;
+  --text-tv-color-rgb: 238, 238, 238;
+  --text-tv-font-family: "Ubuntu Mono", Courier, monospace;
+
   --ion-background-color: var(--text-tv-background);
-  --ion-text-color: #eee;
-  --ion-text-color-rgb: 238, 238, 238;
+  --ion-text-color: var(--text-tv-color);
+  --ion-text-color-rgb: var(--text-tv-color-rgb);
+  --ion-font-family: var(--text-tv-font-family);
+
   /* --ion-text-color: #fff;
   --ion-text-color-rgb: 255, 255, 255;
   --ion-font-family: "Ubuntu Mono"; */
