@@ -12,6 +12,8 @@ https://ionicframework.com/docs/theming/advanced
   --text-tv-color: #eee;
   --text-tv-color-rgb: 238, 238, 238;
   --text-tv-font-family: "Ubuntu Mono", Courier, monospace;
+  --text-tv-font-size: 4.9vw;
+  --text-tv-color-yellow: #e2e200;
 
   --ion-background-color: var(--text-tv-background);
   --ion-text-color: var(--text-tv-color);
@@ -104,4 +106,18 @@ ion-segment-button {
  */
 ion-list[color="dark"] {
   background: var(--ion-color-dark);
+}
+
+.MomentTime {
+  display: inline-block;
+}
+
+.MomentTime::first-letter {
+  text-transform: uppercase;
+}
+
+.ListHeadline {
+  color: var(--text-tv-color-yellow) !important;
+  font-size: var(--text-tv-font-size) !important;
+  font-weight: bold !important;
 }
