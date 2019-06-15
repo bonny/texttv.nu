@@ -1,15 +1,7 @@
-import {
-  IonItem,
-  IonLabel,
-  IonList,
-  IonSkeletonText,
-  IonThumbnail,
-  IonIcon
-} from "@ionic/react";
+import { IonItem, IonLabel, IonList, IonSkeletonText } from "@ionic/react";
+import "moment/locale/sv";
 import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
-import "moment/locale/sv";
-import { ReactComponent as ArticleIcon } from "../images/article.svg";
 
 const SenastUppdateradeLista = props => {
   {

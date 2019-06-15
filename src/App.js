@@ -73,10 +73,10 @@ function App(props) {
   // const [currentTab, setCurrentTab] = useState("hem");
   // const [prevTab, setPrevTab] = useState();
 
-  const handleTabsDidChange = e => {
-    // setPrevTab(currentTab);
-    // setCurrentTab(e.currentTarget.selectedTab);
-  };
+  // const handleTabsDidChange = e => {
+  //   // setPrevTab(currentTab);
+  //   // setCurrentTab(e.currentTarget.selectedTab);
+  // };
 
   return (
     <>

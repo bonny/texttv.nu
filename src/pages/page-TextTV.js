@@ -1,19 +1,15 @@
 import {
+  IonActionSheet,
+  IonBackButton,
   IonButton,
   IonButtons,
   IonContent,
   IonHeader,
   IonIcon,
-  IonMenuButton,
   IonRefresher,
   IonRefresherContent,
   IonTitle,
-  IonToolbar,
-  IonBackButton,
-  IonItem,
-  IonLabel,
-  IonActionSheet,
-  IonCardSubtitle
+  IonToolbar
 } from "@ionic/react";
 import React, { useState } from "react";
 import TextTVPage from "../modules/TextTVPage";
@@ -84,7 +80,7 @@ export default props => {
           <IonRefresherContent
             refreshingSpinner="lines-small"
             pullingText="Dra och släpp för att ladda om"
-            refreshingText='Laddar om…'
+            refreshingText="Laddar om…"
           />
         </IonRefresher>
 

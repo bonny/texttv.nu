@@ -8,8 +8,10 @@ https://ionicframework.com/docs/theming/advanced
 */
 
 :root {
-  /* --ion-background-color: #d1eaff; */
   --text-tv-background: rgb(17, 30, 63);
+  --ion-background-color: var(--text-tv-background);
+  --ion-text-color: #eee;
+  --ion-text-color-rgb: 238, 238, 238;
   /* --ion-text-color: #fff;
   --ion-text-color-rgb: 255, 255, 255;
   --ion-font-family: "Ubuntu Mono"; */

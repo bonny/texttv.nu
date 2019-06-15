@@ -1,9 +1,7 @@
-import { IonCard } from "@ionic/react";
-import fitty from "fitty";
 import React, { useEffect, useState } from "react";
+import { SkeletonTextTVPage } from "../SkeletonTextTVPage";
 // import { FontSubscriber } from "react-with-async-fonts";
 import "./TextTVPage.css";
-import { SkeletonTextTVPage } from "../SkeletonTextTVPage";
 
 function createMarkupForPage(page) {
   return {
@@ -12,7 +10,7 @@ function createMarkupForPage(page) {
 }
 
 export default props => {
-  const { pageNum, children, button, history, refreshTime } = props;
+  const { pageNum, children, history, refreshTime } = props;
   const [componentIsUnloaded, setComponentIsUnloaded] = useState(false);
   const [pageData, setPageData] = useState([]);
   const [pageIsLoaded, setPageIsLoaded] = useState(false);
@@ -81,5 +79,9 @@ export default props => {
     );
   });
 
-return <>{pageIsLoading && <SkeletonTextTVPage />} {pagesHtml}</>;
+  return (
+    <>
+      {pageIsLoading && <SkeletonTextTVPage />} {pagesHtml}
+    </>
+  );
 };

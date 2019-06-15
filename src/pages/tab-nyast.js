@@ -4,8 +4,7 @@ import {
   IonRefresherContent,
   IonToolbar,
   IonSegment,
-  IonSegmentButton,
-  IonToast
+  IonSegmentButton
 } from "@ionic/react";
 import React, { useState } from "react";
 import TextTVHeader from "../modules/TextTVHeader";
