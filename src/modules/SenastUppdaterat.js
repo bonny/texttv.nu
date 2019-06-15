@@ -67,6 +67,7 @@ const SenastUppdateradeLista = props => {
       return (
         <IonItem
           button
+          detail
           onClick={e => {
             history.push(link);
           }}
@@ -75,12 +76,12 @@ const SenastUppdateradeLista = props => {
           color='dark'
         >
           <IonLabel text-wrap>
-            <p>{page.page_num}</p>
             <h2>{page.title}</h2>
             <p>
               <Moment unix fromNow locale="sv">
                 {page.date_added_unix}
               </Moment>
+              – sid {page.page_num}
               {/* <Moment unix format="HH:mm" locale="sv">
                 {page.date_added_unix}
               </Moment> */}
@@ -112,6 +113,7 @@ const SenastUppdateradeLista = props => {
         </IonItem>
       );
     });
+
     const SkeletonList = <IonList color='dark'>{SkeletonListItems}</IonList>;
 
     return (
