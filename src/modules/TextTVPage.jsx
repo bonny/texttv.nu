@@ -11,9 +11,9 @@ function createMarkupForPage(page) {
 
 export default props => {
   const { pageNum, children, history, refreshTime } = props;
-  const [componentIsUnloaded, setComponentIsUnloaded] = useState(false);
+  // const [componentIsUnloaded, setComponentIsUnloaded] = useState(false);
   const [pageData, setPageData] = useState([]);
-  const [pageIsLoaded, setPageIsLoaded] = useState(false);
+  // const [pageIsLoaded, setPageIsLoaded] = useState(false);
   const [pageIsLoading, setPageIsLoading] = useState(false);
 
   const handleClick = e => {
@@ -40,7 +40,7 @@ export default props => {
 
     setPageData([]);
     setPageIsLoading(true);
-    setPageIsLoaded(false);
+    // setPageIsLoaded(false);
 
     async function fetchPageContents() {
       const url = `https://api.texttv.nu/api/get/${pageNum}?app=texttvapp`;
@@ -51,7 +51,7 @@ export default props => {
       setTimeout(() => {
         setPageData(pageData);
         setPageIsLoading(false);
-        setPageIsLoaded(true);
+        // setPageIsLoaded(true);
       }, 1000);
     }
 
@@ -59,7 +59,7 @@ export default props => {
 
     return () => {
       console.log("texttv page setComponentIsUnloaded");
-      setComponentIsUnloaded(true);
+      // setComponentIsUnloaded(true);
     };
   }, [pageNum, refreshTime]);
 
