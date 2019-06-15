@@ -81,7 +81,6 @@ const SenastUppdateradeLista = props => {
               <Moment unix fromNow locale="sv" className="MomentTime">
                 {page.date_added_unix}
               </Moment>
-              {/* – sid {page.page_num} */}
             </p>
           </IonLabel>
         </IonItem>

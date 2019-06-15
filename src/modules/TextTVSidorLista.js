@@ -3,7 +3,9 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader
+  IonListHeader,
+  IonSearchbar,
+  IonToolbar
 } from "@ionic/react";
 import React from "react";
 
@@ -24,8 +26,6 @@ const favorites = [
 export default props => {
   const { history, showHeader = true } = props;
 
-  console.log("showHeader", showHeader);
-
   const handlePageNumInputChange = e => {
     const pageNum = e.target.value;
     if (pageNum.length === 3) {
@@ -37,12 +37,62 @@ export default props => {
 
   return (
     <>
+      <IonToolbar color="primary">
+        <IonSearchbar
+          color="primary"
+          placeholder="Skriv in sida 100, 200, 377 …"
+          onIonChange={handlePageNumInputChange}
+          showCancelButton={false}
+          clearIcon={false}
+          // searchIcon="document"
+        />
+      </IonToolbar>
+      <IonToolbar color="dark">
+        <IonSearchbar
+          color="dark"
+          placeholder="Skriv in sida 100, 200, 377 …"
+          onIonChange={handlePageNumInputChange}
+          showCancelButton={false}
+          animated
+          clearIcon={false}
+          // searchIcon="document"
+        />
+      </IonToolbar>
+      <IonSearchbar
+        color="dark"
+        placeholder="Skriv in sida 100, 200, 377 …"
+        onIonChange={handlePageNumInputChange}
+        showCancelButton={false}
+        animated
+        clearIcon={false}
+        // searchIcon="document"
+      />
       <IonList color="dark">
+        <IonSearchbar
+          color="dark"
+          placeholder="Skriv in sida 100, 200, 377 …"
+          onIonChange={handlePageNumInputChange}
+          showCancelButton={false}
+          animated
+          clearIcon={false}
+          // searchIcon="document"
+        />
+
         {showHeader && (
           <IonListHeader color="dark">
             <IonLabel>Sidor</IonLabel>
           </IonListHeader>
         )}
+
+        <IonSearchbar
+          color="dark"
+          placeholder="Skriv in sida 100, 200, 377 …"
+          onIonChange={handlePageNumInputChange}
+          showCancelButton={false}
+          animated
+          clearIcon={false}
+          // searchIcon="document"
+        />
 
         <IonItem lines="inset" color="dark">
           <IonLabel position="stacked">
@@ -61,8 +111,7 @@ export default props => {
           return (
             <IonItem
               button
-              // href={url}
-              routerDirection="forward"
+              detail
               onClick={() => {
                 document.querySelector("ion-menu-controller").close();
                 history.push(url);
@@ -72,7 +121,7 @@ export default props => {
               color="dark"
             >
               <IonLabel text-wrap>
-                <h2>{page.title}</h2>
+                <h2 className="ListHeadline">{page.title}</h2>
                 <p>{page.pages}</p>
               </IonLabel>
             </IonItem>

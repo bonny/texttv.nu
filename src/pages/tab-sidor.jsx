@@ -8,7 +8,7 @@ export default props => {
     <>
       <TextTVHeader title="Sidor" />
       <IonContent color="dark">
-        <TextTVSidorLista {...props} showHeader={false} />
+        <TextTVSidorLista {...props} showHeader={true} />
       </IonContent>
     </>
   );
