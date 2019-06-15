@@ -6,7 +6,7 @@ import TextTVSidorLista from "../modules/TextTVSidorLista";
 export default props => {
   return (
     <>
-      <TextTVHeader />
+      <TextTVHeader title="Sidor" />
       <IonContent color="dark">
         <TextTVSidorLista {...props} showHeader={false} />
       </IonContent>

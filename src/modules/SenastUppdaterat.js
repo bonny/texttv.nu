@@ -108,7 +108,7 @@ const SenastUppdateradeLista = props => {
         width: Math.random() * (65 - 35) + 35 + "%"
       };
       return (
-        <IonItem key={index}>
+        <IonItem key={index} color="dark">
           <IonLabel text-wrap>
             <p>
               <IonSkeletonText animated style={pStyles} />

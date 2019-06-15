@@ -14,12 +14,14 @@ export default props => {
   // const { handleMoreActionsClick, handleRefreshClick } = props;
   //typeof callback === "function"
 
+  const { title = "TextTV.nu" } = props;
+
   return (
     <IonHeader>
       <IonToolbar color="primary">
         <IonTitle>
           <Logo className="texttv-logo" />
-          TextTV.nu
+          {title}
         </IonTitle>
         <IonButtons slot="end">
           <IonButtons slot="end">

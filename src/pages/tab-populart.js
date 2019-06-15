@@ -19,7 +19,7 @@ export default props => {
 
   return (
     <>
-      <TextTVHeader>
+      <TextTVHeader title="Populärt">
         <IonToolbar color="primary">
           <IonSegment onIonChange={handleSegmentChange} value={selectedSegment}>
             <IonSegmentButton value="today">Idag</IonSegmentButton>
