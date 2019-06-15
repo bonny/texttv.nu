@@ -117,7 +117,7 @@ export default props => {
               color="dark"
             >
               <IonLabel text-wrap>
-                <h2 className="ListHeadline">{page.title}</h2>
+                <h2 className="ListHeadlineSidor">{page.title}</h2>
                 <p>{page.pages}</p>
               </IonLabel>
             </IonItem>

@@ -13,6 +13,7 @@ https://ionicframework.com/docs/theming/advanced
   --text-tv-color-rgb: 238, 238, 238;
   --text-tv-font-family: "Ubuntu Mono", Courier, monospace;
   --text-tv-font-size: 4.9vw;
+  --text-tv-color-white: var(--text-tv-color);
   --text-tv-color-yellow: #e2e200;
 
   --ion-background-color: var(--text-tv-background);
@@ -120,4 +121,9 @@ ion-list[color="dark"] {
   color: var(--text-tv-color-yellow) !important;
   font-size: var(--text-tv-font-size) !important;
   font-weight: bold !important;
+}
+.ListHeadlineSidor {
+  color: var(--text-tv-color-white) !important;
+  font-size: var(--text-tv-font-size) !important;
+  /* font-weight: bold !important; */
 }
