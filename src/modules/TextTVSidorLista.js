@@ -53,7 +53,6 @@ export default props => {
           placeholder="Skriv in sida 100, 200, 377 …"
           onIonChange={handlePageNumInputChange}
           showCancelButton={false}
-          animated
           clearIcon={false}
           // searchIcon="document"
         />
@@ -63,7 +62,6 @@ export default props => {
         placeholder="Skriv in sida 100, 200, 377 …"
         onIonChange={handlePageNumInputChange}
         showCancelButton={false}
-        animated
         clearIcon={false}
         // searchIcon="document"
       />
@@ -73,7 +71,6 @@ export default props => {
           placeholder="Skriv in sida 100, 200, 377 …"
           onIonChange={handlePageNumInputChange}
           showCancelButton={false}
-          animated
           clearIcon={false}
           // searchIcon="document"
         />
@@ -89,7 +86,6 @@ export default props => {
           placeholder="Skriv in sida 100, 200, 377 …"
           onIonChange={handlePageNumInputChange}
           showCancelButton={false}
-          animated
           clearIcon={false}
           // searchIcon="document"
         />
