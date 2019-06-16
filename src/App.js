@@ -94,7 +94,7 @@ function App(props) {
                     <Route
                       path="/:tab(hem)"
                       render={props => {
-                        return <PageTextTV pageNum="100,300,700" {...props} />;
+                        return <PageTextTV {...props} pageNum="100,300,700" title="TextTV.nu" />;
                       }}
                       exact={true}
                     />

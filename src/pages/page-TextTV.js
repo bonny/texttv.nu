@@ -13,12 +13,15 @@ import {
 } from "@ionic/react";
 import React, { useState } from "react";
 import TextTVPage from "../modules/TextTVPage";
+import { ReactComponent as Logo } from "../images/logo.svg";
 
-export default props => {
-  const { match, history } = props;
+const PageTextTV = props => {
+  const { match, history, title } = props;
   const pageNum = props.pageNum || match.params.pageNum;
   const [actionSheetOpened, setActionSheetOpened] = useState(false);
   const [refreshTime, setRefreshTime] = useState(Math.floor(Date.now() / 1000));
+
+  let pageTitle = title || pageNum;
 
   /**
    * Update the refresh time to the current time.
@@ -55,7 +58,9 @@ export default props => {
             {/* <IonButton onClick={handleTestClick}>
               <IonIcon slot="icon-only" name="arrow-back" />
             </IonButton> */}
-            <IonBackButton text='' />
+            <IonBackButton
+            // text=''
+            />
           </IonButtons>
           <IonButtons slot="end">
             <IonButton fill="clear" slot="end" onClick={handleMoreActionsClick}>
@@ -65,7 +70,10 @@ export default props => {
               <IonIcon size="small" slot="icon-only" name="refresh" />
             </IonButton>
           </IonButtons>
-          <IonTitle>{pageNum}</IonTitle>
+          <IonTitle>
+            <Logo className="texttv-logo" />
+            {pageTitle}
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -123,3 +131,5 @@ export default props => {
     </>
   );
 };
+
+export default PageTextTV;
