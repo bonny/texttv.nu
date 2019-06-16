@@ -1,4 +1,18 @@
-import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonTitle, IonToolbar } from "@ionic/react";
+import {
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
+  IonMenu,
+  IonMenuToggle,
+  IonTitle,
+  IonToolbar
+} from "@ionic/react";
 import React from "react";
 import { withRouter } from "react-router";
 import TextTVSidorLista from "./modules/TextTVSidorLista";
@@ -88,7 +102,7 @@ const Menu = props => {
         <TextTVSidorLista {...props} />
 
         <IonList>
-          <IonListHeader>Länkar</IonListHeader>
+          <IonListHeader color="dark">Länkar</IonListHeader>
           <IonMenuToggle auto-hide="false">
             {navItems.map(item => {
               const icon = item.icon ? item.icon : "document";
@@ -103,7 +117,9 @@ const Menu = props => {
         </IonList>
 
         <IonList>
-          <IonListHeader>Vi på TextTV.nu gillar också...</IonListHeader>
+          <IonListHeader color="dark">
+            Vi på TextTV.nu gillar också...
+          </IonListHeader>
           <IonMenuToggle>
             {navItemsAlsoLike.map(item => {
               const icon = item.icon ? item.icon : "document";
@@ -125,4 +141,3 @@ const MenuWithRouter = withRouter(Menu);
 
 export default Menu;
 export { MenuWithRouter };
-
