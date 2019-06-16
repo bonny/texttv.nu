@@ -25,6 +25,7 @@ export default props => {
             onIonChange={handlePageNumInputChange}
             showCancelButton={false}
             clearIcon={false}
+            type="number"
             // searchIcon="document"
           />
         </IonToolbar>
