@@ -47,11 +47,11 @@ export default props => {
       const pageData = await response.json();
 
       // Vänta lite med att sätta ny sidata pga felsökning och test osv.
-      setTimeout(() => {
+      // setTimeout(() => {
         setPageData(pageData);
         setPageIsLoading(false);
         // setPageIsLoaded(true);
-      }, 1000);
+      // }, 1000);
     }
 
     fetchPageContents();

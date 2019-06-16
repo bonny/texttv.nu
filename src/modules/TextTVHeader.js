@@ -6,7 +6,7 @@ export default props => {
   // const { handleMoreActionsClick, handleRefreshClick } = props;
   //typeof callback === "function"
 
-  const { title = "TextTV.nu" } = props;
+  const { title = "TextTV.nu", buttonsEnd } = props;
 
   return (
     <IonHeader>
@@ -24,6 +24,7 @@ export default props => {
               <IonIcon size="small" slot="icon-only" name="refresh" />
             </IonButton>
             <IonMenuButton menu="mainMenu" /> */}
+            {buttonsEnd}
           </IonButtons>
         </IonButtons>
       </IonToolbar>

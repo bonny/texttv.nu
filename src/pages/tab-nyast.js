@@ -4,7 +4,10 @@ import {
   IonRefresherContent,
   IonToolbar,
   IonSegment,
-  IonSegmentButton
+  IonSegmentButton,
+  IonButtons,
+  IonButton,
+  IonIcon
 } from "@ionic/react";
 import React, { useState } from "react";
 import TextTVHeader from "../modules/TextTVHeader";
@@ -17,28 +20,55 @@ export default props => {
 
   const doRefresh = e => {
     setRefreshTime(Math.floor(Date.now() / 1000));
+  };
+
+  const handleIonRefresh = e => {
+    doRefresh();
     setTimeout(() => {
       e.target.complete();
     }, 1000);
   };
 
   const handleSegmentChange = e => {
+    console.log("handleSegmentChange", e);
     setSelectedSegment(e.detail.value);
+  };
+
+  const handleSegmentClick = e => {
+    console.log("handleSegmentClick", e);
+  };
+
+  const handleRefreshBtnClick = e => {
+    doRefresh();
   };
 
   return (
     <>
-      <TextTVHeader {...props} title="Nyast">
+      <TextTVHeader
+        {...props}
+        title="Nyast"
+        buttonsEnd={
+          <IonButtons slot="end">
+            <IonButton fill="clear" slot="end" onClick={handleRefreshBtnClick}>
+              <IonIcon size="small" slot="icon-only" name="refresh" />
+            </IonButton>
+          </IonButtons>
+        }
+      >
         <IonToolbar color="primary">
-          <IonSegment onIonChange={handleSegmentChange} value={selectedSegment}>
+          <IonSegment
+            onIonChange={handleSegmentChange}
+            onClick={handleSegmentClick}
+            value={selectedSegment}
+          >
             <IonSegmentButton value="news">Nyheter</IonSegmentButton>
             <IonSegmentButton value="sports">Sport</IonSegmentButton>
           </IonSegment>
         </IonToolbar>
       </TextTVHeader>
 
-      <IonContent color='dark'>
-        <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
+      <IonContent color="dark">
+        <IonRefresher slot="fixed" onIonRefresh={handleIonRefresh}>
           <IonRefresherContent />
         </IonRefresher>
         <SenastUppdaterat
