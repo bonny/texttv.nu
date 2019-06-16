@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SkeletonTextTVPage } from "../SkeletonTextTVPage";
 // import { FontSubscriber } from "react-with-async-fonts";
-import "./TextTVPage.css";
 
 function createMarkupForPage(page) {
   return {

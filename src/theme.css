@@ -102,28 +102,3 @@ ion-segment-button {
   --padding-start: 5px;
 } */
 
-/**
- * Bug fix for ion list on page Sidor: white default bg bleeds through at the top.
- */
-ion-list[color="dark"] {
-  background: var(--ion-color-dark);
-}
-
-.MomentTime {
-  display: inline-block;
-}
-
-.MomentTime::first-letter {
-  text-transform: uppercase;
-}
-
-.ListHeadline {
-  color: var(--text-tv-color-yellow) !important;
-  font-size: var(--text-tv-font-size) !important;
-  font-weight: bold !important;
-}
-.ListHeadlineSidor {
-  color: var(--text-tv-color-white) !important;
-  font-size: var(--text-tv-font-size) !important;
-  /* font-weight: bold !important; */
-}

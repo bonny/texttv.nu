@@ -25,6 +25,7 @@ import TabNyast from "./pages/tab-nyast";
 import TabPopulart from "./pages/tab-populart";
 import TabSidor from "./pages/tab-sidor";
 import "./theme.css";
+import "./modules/TextTVPage.css";
 
 const PageTest = props => {
   const [isOpen, setIsOpen] = useState(false);
@@ -93,7 +94,7 @@ function App(props) {
                     <Route path="/test" component={PageTest} />
                     <Route
                       path="/:tab(hem)"
-                      render={(props) => {
+                      render={props => {
                         return <PageTextTV pageNum="100,300,700" {...props} />;
                       }}
                       exact={true}

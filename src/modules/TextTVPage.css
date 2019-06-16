@@ -66,13 +66,6 @@
   font-size: 4.7vw;
 } */
 
-@media only screen and (min-width: 540px) {
-  .TextTVPage,
-  .TextTVSkeletonPage {
-    font-size: 22px;
-  }
-}
-
 .TextTVSkeletonPage {
   white-space: pre;
 }
@@ -206,4 +199,39 @@ ion-skeleton-text {
 .TextTVPage .bgY a {
   background-color: #e2e200;
   color: #12c;
+}
+
+/**
+ * Bug fix for ion list on page Sidor: white default bg bleeds through at the top.
+ */
+ ion-list[color="dark"] {
+  background: var(--ion-color-dark);
+}
+
+.MomentTime {
+  display: inline-block;
+}
+
+.MomentTime::first-letter {
+  text-transform: uppercase;
+}
+
+.ListHeadline {
+  color: var(--text-tv-color-yellow) !important;
+  font-size: var(--text-tv-font-size) !important;
+  font-weight: bold !important;
+}
+.ListHeadlineSidor {
+  color: var(--text-tv-color-white) !important;
+  font-size: var(--text-tv-font-size) !important;
+  /* font-weight: bold !important; */
+}
+
+@media only screen and (min-width: 540px) {
+  .TextTVPage,
+  .TextTVSkeletonPage,
+  .ListHeadline,
+  .ListHeadlineSidor {
+    font-size: 22px !important;
+  }
 }
