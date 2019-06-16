@@ -16,7 +16,6 @@ import {
 } from "@ionic/react";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
-import "./App.css";
 import { MenuWithRouter } from "./Menu";
 import PageTextTV from "./pages/page-TextTV.js";
 import TextTVPage from "./modules/TextTVPage";
@@ -25,7 +24,7 @@ import TabNyast from "./pages/tab-nyast";
 import TabPopulart from "./pages/tab-populart";
 import TabSidor from "./pages/tab-sidor";
 import "./theme.css";
-import "./modules/TextTVPage.css";
+import "./app.css";
 
 const PageTest = props => {
   const [isOpen, setIsOpen] = useState(false);
