@@ -10,4 +10,5 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 ## Ny app 2019
 
 För att fira att SVT Text TV fyllt 40 år så håller vi (långsamt...) på att ta fram en ny app. Du kan tjyvkika på den här:
-https://texttvnu.now.sh
+
+https://app.texttv.nu/
