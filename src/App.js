@@ -24,7 +24,7 @@ import TabNyast from "./pages/tab-nyast";
 import TabPopulart from "./pages/tab-populart";
 import TabSidor from "./pages/tab-sidor";
 import "./theme.css";
-import "./app.css";
+import "./App.css";
 
 const PageTest = props => {
   const [isOpen, setIsOpen] = useState(false);
