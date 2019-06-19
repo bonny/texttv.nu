@@ -15,6 +15,7 @@ https://ionicframework.com/docs/theming/advanced
   --text-tv-font-size: 4.9vw;
   --text-tv-color-white: var(--text-tv-color);
   --text-tv-color-yellow: #e2e200;
+  --text-tv-color-cyan: #00c8ee;
 
   --ion-background-color: var(--text-tv-background);
   --ion-text-color: var(--text-tv-color);
