@@ -118,9 +118,9 @@ const Menu = props => {
 
         <IonList>
           <IonListHeader color="dark">
-            Vi på TextTV.nu gillar också...
+            Vi på TextTV.nu gillar också
           </IonListHeader>
-          <IonMenuToggle>
+          <IonMenuToggle auto-hide={false}>
             {navItemsAlsoLike.map(item => {
               const icon = item.icon ? item.icon : "document";
               return (
