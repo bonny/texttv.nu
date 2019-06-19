@@ -8,7 +8,6 @@ import {
   IonRow,
   IonItem,
   IonLabel
-  
 } from "@ionic/react";
 import TextTVHeader from "../modules/TextTVHeader";
 import TextTVSidorLista from "../modules/TextTVSidorLista";
@@ -25,41 +24,55 @@ export default props => {
     }
   };
 
-  const OneItem = (props) => {
-    const {lines = 'inset', title, pages} = props;
+  const OneItem = props => {
+    const { lines = "inset", title, pages } = props;
     const url = `/sida/${pages}`;
     return (
       <IonItem
-      button
-      detail
-      onClick={() => {
-        document.querySelector("ion-menu-controller").close();
-        history.push(url);
-      }}
-      lines={lines}
-      color="dark"
-    >
-      <IonLabel text-wrap>
-        <h2 className="ListHeadlineSidor">{title}</h2>
-        <p>{pages}</p>
-      </IonLabel>
-    </IonItem>
-    )};
+        button
+        detail
+        onClick={() => {
+          document.querySelector("ion-menu-controller").close();
+          history.push(url);
+        }}
+        lines={lines}
+        color="dark"
+      >
+        <IonLabel text-wrap>
+          <h2 className="ListHeadlineSidor">{title}</h2>
+          <p>{pages}</p>
+        </IonLabel>
+      </IonItem>
+    );
+  };
 
-    const OneHeadlineItem = (props) => {
-      const itemStyles = {
-        color: 'var(--text-tv-color-cyan)',
-      }
-      const {title} = props;
-      return (
-        <IonCol size="12">
+  const OneHeadlineItem = props => {
+    const itemStyles = {
+      color: "var(--text-tv-color-cyan)"
+    };
+    const { title } = props;
+    return (
+      <IonCol size="12">
         <IonItem lines="none" style={itemStyles}>
-<IonLabel>{title}</IonLabel>
-</IonItem>
-        </IonCol>
+          <IonLabel>{title}</IonLabel>
+        </IonItem>
+      </IonCol>
+    );
+  };
 
-      );
-    }
+  const OneHeadlineItem2 = props => {
+    const itemStyles = {
+      color: "var(--text-tv-color-cyan)"
+    };
+    const { title } = props;
+    return (
+      <IonCol size="12">
+        <IonItem lines="none" style={itemStyles}>
+          <IonLabel>{title}</IonLabel>
+        </IonItem>
+      </IonCol>
+    );
+  };
 
   return (
     <>
@@ -77,43 +90,89 @@ export default props => {
         </IonToolbar>
       </TextTVHeader>
       <IonContent color="dark">
-
         <IonGrid no-padding>
-
-        <IonRow>
-        <OneHeadlineItem title="Start"/>
-            <IonCol size="6"><OneItem title="Nyheter" pages="100" /></IonCol>
-            <IonCol size="6"><OneItem title="Översikt" pages="700" /></IonCol>
+          <IonRow>
+            <OneHeadlineItem title="Start" />
+            <IonCol size="6">
+              <OneItem title="Nyheter" pages="100" />
+            </IonCol>
+            <IonCol size="6">
+              <OneItem title="Översikt" pages="700" />
+            </IonCol>
           </IonRow>
 
           <IonRow>
-            <OneHeadlineItem title="Nyheter"/>
-            <IonCol size="6"><OneItem title="Inrikes" pages="101-103" /></IonCol>
-            <IonCol size="6"><OneItem title="Utrikes" pages="104-105" /></IonCol>
+            <OneHeadlineItem title="Nyheter" />
+            <IonCol size="6">
+              <OneItem title="Inrikes" pages="101-103" />
+            </IonCol>
+            <IonCol size="6">
+              <OneItem title="Utrikes" pages="104-105" />
+            </IonCol>
           </IonRow>
 
           <IonRow>
-
-          <OneHeadlineItem title="Sport"/>
-                      <IonCol size="6"><OneItem title="Nyheter" pages="300-302" /></IonCol>
-            <IonCol size="6"><OneItem title="Resultatbörs" pages="330" /></IonCol>
-            <IonCol size="6"><OneItem title="Målservice" pages="376-395" /></IonCol>
-            <IonCol size="6"><OneItem title="Sport i SVT" pages="379" /></IonCol>
+            <OneHeadlineItem title="Sport" />
+            <IonCol size="6">
+              <OneItem title="Nyheter" pages="300-302" />
+            </IonCol>
+            <IonCol size="6">
+              <OneItem title="Resultatbörs" pages="330" />
+            </IonCol>
+            <IonCol size="6">
+              <OneItem title="Målservice" pages="376-395" />
+            </IonCol>
+            <IonCol size="6">
+              <OneItem title="Sport i SVT" pages="379" />
+            </IonCol>
           </IonRow>
           <IonRow>
-          <OneHeadlineItem title="Ekonomi"/>
+            <OneHeadlineItem title="Ekonomi" />
 
-            <IonCol size="6"><OneItem title="Innehåll" pages="200-201" /></IonCol>
-            <IonCol size="6"><OneItem title="Börsen" pages="202" /></IonCol>
+            <IonCol size="6">
+              <OneItem title="Innehåll" pages="200-201" />
+            </IonCol>
+            <IonCol size="6">
+              <OneItem title="Börsen" pages="202" />
+            </IonCol>
           </IonRow>
           <IonRow>
-          <OneHeadlineItem title="TV"/>
+            <OneHeadlineItem title="TV" />
 
-            <IonCol size="6"><OneItem title="Tablåer" pages="600" /></IonCol>
-            <IonCol size="6"><OneItem title="Programguiden" pages="650" /></IonCol>
-            <IonCol size="6"><OneItem title="Dagens programsidor" pages="624" /></IonCol>
+            <IonCol size="6">
+              <OneItem title="Tablåer" pages="600" />
+            </IonCol>
+            <IonCol size="6">
+              <OneItem title="Programguiden" pages="650" />
+            </IonCol>
+            <IonCol size="6">
+              <OneItem title="Dagens programsidor" pages="624" />
+            </IonCol>
           </IonRow>
         </IonGrid>
+
+        <OneHeadlineItem2 title="Hem" />
+        <OneItem title="Nyheter" pages="100" />
+        <OneItem title="Översikt" pages="700" />
+        
+        <OneHeadlineItem2 title="Nyheter" />
+        <OneItem title="Inrikesnyheter" pages="101-103" />
+        <OneItem title="Utrikesnyheter" pages="104-105" />
+        
+        <OneHeadlineItem2 title="Sport" />
+        <OneItem title="Sportnyheter" pages="300-302" />
+        <OneItem title="Resultatbörs" pages="330" />
+        <OneItem title="Målservice" pages="376-395" />
+        <OneItem title="Sport i SVT" pages="379" />
+        
+        <OneHeadlineItem2 title="Ekonomi" />
+        <OneItem title="Innehåll" pages="200-201" />
+        <OneItem title="Börsen" pages="202" />
+        
+        <OneHeadlineItem2 title="TV" />
+        <OneItem title="Tablåer" pages="600" />
+        <OneItem title="Programguiden" pages="650" />
+        <OneItem title="Dagens programsidor" pages="624" />
 
         <TextTVSidorLista {...props} showHeader={false} />
       </IonContent>
