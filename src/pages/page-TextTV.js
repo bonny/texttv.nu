@@ -42,6 +42,15 @@ const PageTextTV = props => {
     updateRefreshTime();
   };
 
+  const handlePageNumInputChange = e => {
+    const pageNum = e.target.value;
+    if (pageNum.length === 3) {
+      history.push(`/sida/${pageNum}`);
+      e.target.value = "";
+      document.querySelector("ion-menu-controller").close();
+    }
+  };
+
   // const handleTestClick = e => {
   //   props.history.goBack();
   // };
@@ -55,12 +64,6 @@ const PageTextTV = props => {
     <>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonSearchbar
-            color="primary"
-            placeholder="Gå till sida"
-            type="number"
-            searchIcon="document"
-          />
           <IonButtons slot="start">
             {/* <IonButton onClick={handleTestClick}>
               <IonIcon slot="icon-only" name="arrow-back" />
@@ -77,10 +80,19 @@ const PageTextTV = props => {
               <IonIcon size="small" slot="icon-only" name="refresh" />
             </IonButton>
           </IonButtons>
-          {/* <IonTitle>
+          <IonTitle>
             <Logo className="texttv-logo" />
             {pageTitle}
-          </IonTitle> */}
+          </IonTitle>
+        </IonToolbar>
+        <IonToolbar color="primary">
+          <IonSearchbar
+            color="primary"
+            placeholder="Gå till sida"
+            type="number"
+            searchIcon="document"
+            onIonChange={handlePageNumInputChange}
+          />
         </IonToolbar>
       </IonHeader>
 
