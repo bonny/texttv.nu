@@ -69,6 +69,10 @@ const PageTest = props => {
   );
 };
 
+const Startsida = props => {
+  return <PageTextTV {...props} pageNum="100,300,700" title="TextTV.nu" headerStyle="HEADER_STYLE_STARTPAGE" />;
+};
+
 function App(props) {
   // const [currentTab, setCurrentTab] = useState("hem");
   // const [prevTab, setPrevTab] = useState();
@@ -94,7 +98,7 @@ function App(props) {
                     <Route
                       path="/:tab(hem)"
                       render={props => {
-                        return <PageTextTV {...props} pageNum="100,300,700" title="TextTV.nu" />;
+                        return <Startsida {...props} />;
                       }}
                       exact={true}
                     />

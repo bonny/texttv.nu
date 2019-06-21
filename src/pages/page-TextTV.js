@@ -17,7 +17,7 @@ import TextTVPage from "../modules/TextTVPage";
 import { ReactComponent as Logo } from "../images/logo.svg";
 
 const PageTextTV = props => {
-  const { match, history, title } = props;
+  const { match, history, title, headerStyle = "HEADER_STYLE_DEFAULT" } = props;
   const pageNum = props.pageNum || match.params.pageNum;
   const [actionSheetOpened, setActionSheetOpened] = useState(false);
   const [refreshTime, setRefreshTime] = useState(Math.floor(Date.now() / 1000));
@@ -60,49 +60,95 @@ const PageTextTV = props => {
     setActionSheetOpened(true);
   };
 
+  const Header = props => {
+    return (
+      <>
+        {headerStyle === "HEADER_STYLE_DEFAULT" && (
+          <IonHeader>
+            <IonToolbar color="primary">
+              <IonButtons slot="start">
+                <IonBackButton text="" />
+              </IonButtons>
+              <IonSearchbar
+                color="primary"
+                placeholder="Gå till sida"
+                type="number"
+                searchIcon="document"
+                onIonChange={handlePageNumInputChange}
+              />
+              <IonButtons slot="end">
+                <IonButton
+                  fill="clear"
+                  slot="end"
+                  onClick={handleMoreActionsClick}
+                >
+                  <IonIcon size="small" slot="icon-only" name="share" />
+                </IonButton>
+                <IonButton
+                  fill="clear"
+                  slot="end"
+                  onClick={handleRefreshBtnClick}
+                >
+                  <IonIcon size="small" slot="icon-only" name="refresh" />
+                </IonButton>
+              </IonButtons>
+            </IonToolbar>
+          </IonHeader>
+        )}
+
+        {headerStyle === "HEADER_STYLE_STARTPAGE" && (
+          <IonHeader>
+            <IonToolbar color="primary">
+              <IonButtons slot="start">
+                <IonBackButton text="" />
+              </IonButtons>
+              <IonButtons slot="end">
+                <IonButton
+                  fill="clear"
+                  slot="end"
+                  onClick={handleMoreActionsClick}
+                >
+                  <IonIcon size="small" slot="icon-only" name="share" />
+                </IonButton>
+                <IonButton
+                  fill="clear"
+                  slot="end"
+                  onClick={handleRefreshBtnClick}
+                >
+                  <IonIcon size="small" slot="icon-only" name="refresh" />
+                </IonButton>
+              </IonButtons>
+              <IonTitle>
+                <Logo className="texttv-logo" />
+                {pageTitle}
+              </IonTitle>
+            </IonToolbar>
+            <IonToolbar color="primary">
+              <IonSearchbar
+                color="primary"
+                placeholder="Gå till sida"
+                type="number"
+                searchIcon="document"
+                onIonChange={handlePageNumInputChange}
+              />
+            </IonToolbar>
+          </IonHeader>
+        )}
+      </>
+    );
+  };
+
   return (
     <>
-      <IonHeader>
-        <IonToolbar color="primary">
-          <IonButtons slot="start">
-            {/* <IonButton onClick={handleTestClick}>
-              <IonIcon slot="icon-only" name="arrow-back" />
-            </IonButton> */}
-            <IonBackButton
-            // text=''
-            />
-          </IonButtons>
-          <IonButtons slot="end">
-            <IonButton fill="clear" slot="end" onClick={handleMoreActionsClick}>
-              <IonIcon size="small" slot="icon-only" name="share" />
-            </IonButton>
-            <IonButton fill="clear" slot="end" onClick={handleRefreshBtnClick}>
-              <IonIcon size="small" slot="icon-only" name="refresh" />
-            </IonButton>
-          </IonButtons>
-          <IonTitle>
-            <Logo className="texttv-logo" />
-            {pageTitle}
-          </IonTitle>
-        </IonToolbar>
-        <IonToolbar color="primary">
-          <IonSearchbar
-            color="primary"
-            placeholder="Gå till sida"
-            type="number"
-            searchIcon="document"
-            onIonChange={handlePageNumInputChange}
-          />
-        </IonToolbar>
-      </IonHeader>
+      <Header {...props} />
 
       <IonContent color="dark">
         <IonRefresher
           slot="fixed"
           onIonRefresh={handlePullToRefresh}
-          pullFactor="0.8"
+          pullFactor="0.6"
           pullMin="60"
-          pullMax="120"
+          pullMax="240"
         >
           <IonRefresherContent
             refreshingSpinner="lines-small"
