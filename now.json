@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "texttv-3-app",
-  "alias": "texttvnu",
+  "alias": "app.texttv.nu",
   "builds": [
     {
       "src": "package.json",
