@@ -1,14 +1,5 @@
+import { IonCol, IonContent, IonItem, IonLabel, IonSearchbar, IonToolbar } from "@ionic/react";
 import React from "react";
-import {
-  IonContent,
-  IonToolbar,
-  IonSearchbar,
-  IonGrid,
-  IonCol,
-  IonRow,
-  IonItem,
-  IonLabel
-} from "@ionic/react";
 import TextTVHeader from "../modules/TextTVHeader";
 import TextTVSidorLista from "../modules/TextTVSidorLista";
 

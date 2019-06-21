@@ -1,4 +1,4 @@
-import { IonButtons, IonHeader, IonTitle, IonToolbar } from "@ionic/react";
+import { IonButtons, IonHeader, IonTitle, IonToolbar, IonSearchbar } from "@ionic/react";
 import React from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
 

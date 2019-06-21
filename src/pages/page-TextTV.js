@@ -9,7 +9,8 @@ import {
   IonRefresher,
   IonRefresherContent,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonSearchbar
 } from "@ionic/react";
 import React, { useState } from "react";
 import TextTVPage from "../modules/TextTVPage";
@@ -54,6 +55,12 @@ const PageTextTV = props => {
     <>
       <IonHeader>
         <IonToolbar color="primary">
+          <IonSearchbar
+            color="primary"
+            placeholder="Gå till sida"
+            type="number"
+            searchIcon="document"
+          />
           <IonButtons slot="start">
             {/* <IonButton onClick={handleTestClick}>
               <IonIcon slot="icon-only" name="arrow-back" />
@@ -70,10 +77,10 @@ const PageTextTV = props => {
               <IonIcon size="small" slot="icon-only" name="refresh" />
             </IonButton>
           </IonButtons>
-          <IonTitle>
+          {/* <IonTitle>
             <Logo className="texttv-logo" />
             {pageTitle}
-          </IonTitle>
+          </IonTitle> */}
         </IonToolbar>
       </IonHeader>
 
