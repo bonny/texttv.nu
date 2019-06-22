@@ -8,7 +8,7 @@ import TextTVPage from "../modules/TextTVPage";
 import Header from "../modules/Header";
 
 const PageTextTV = props => {
-  const { match, history, title, headerStyle = "HEADER_STYLE_DEFAULT" } = props;
+  const { match, history, title, headerStyle = "HEADER_STYLE_DEFAULT", children } = props;
   const pageNum = props.pageNum || match.params.pageNum;
   const [actionSheetOpened, setActionSheetOpened] = useState(false);
   const [refreshTime, setRefreshTime] = useState(Math.floor(Date.now() / 1000));
@@ -115,7 +115,10 @@ const PageTextTV = props => {
               }
             }
           ]}
-        />
+          
+          />
+          
+          {children}
       </IonContent>
     </>
   );

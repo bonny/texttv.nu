@@ -12,7 +12,11 @@ import {
   IonTabs,
   IonToast,
   IonButton,
-  IonContent
+  IonContent,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardSubtitle
 } from "@ionic/react";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
@@ -23,6 +27,7 @@ import TextTVPage from "./modules/TextTVPage";
 import TabNyast from "./pages/tab-nyast";
 import TabPopulart from "./pages/tab-populart";
 import TabSidor from "./pages/tab-sidor";
+import SenastUppdaterat from "./modules/SenastUppdaterat";
 import "./theme.css";
 import "./App.css";
 
@@ -71,12 +76,23 @@ const PageTest = props => {
 
 const Startsida = props => {
   return (
-    <PageTextTV
-      {...props}
-      pageNum="100,300,700"
-      title="TextTV.nu"
-      headerStyle="HEADER_STYLE_STARTPAGE"
-    />
+    <>
+      <PageTextTV
+        {...props}
+        pageNum="100,300,700"
+        title="TextTV.nu"
+        headerStyle="HEADER_STYLE_STARTPAGE"
+      >
+
+        
+        <h2 className="ion-padding-start ion-padding-top ion-padding-end">Senaste nyheterna</h2>
+        <SenastUppdaterat {...props} type="news" count="5" />
+        
+        <h2 className="ion-padding-start ion-padding-top ion-padding-end">Senaste sportnyheterna</h2>
+        <SenastUppdaterat {...props} type="news" count="5" />
+
+      </PageTextTV>
+    </>
   );
 };
 

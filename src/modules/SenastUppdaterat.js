@@ -1,11 +1,11 @@
-import { IonItem, IonLabel, IonList, IonSkeletonText } from "@ionic/react";
+import { IonItem, IonLabel, IonList, IonSkeletonText, IonListHeader } from "@ionic/react";
 import "moment/locale/sv";
 import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
 
 const SenastUppdateradeLista = props => {
   {
-    const { type, history, refreshTime } = props;
+    const { type = "news", history, refreshTime, count = 15 } = props;
     const [isLoading, setIsLoading] = useState(false);
     const [isLoadingError, setIsLoadingError] = useState(false);
     const [pages, setPages] = useState([]);
@@ -15,11 +15,11 @@ const SenastUppdateradeLista = props => {
       const endpoints = [
         {
           what: "news",
-          endpoint: "https://texttv.nu/api/last_updated/news?count=15"
+          endpoint: `https://texttv.nu/api/last_updated/news?count=${count}`
         },
         {
           what: "sports",
-          endpoint: "https://texttv.nu/api/last_updated/sport?count=15"
+          endpoint: `https://texttv.nu/api/last_updated/sport?count=${count}`
         }
       ];
 
@@ -116,7 +116,13 @@ const SenastUppdateradeLista = props => {
       <>
         {isLoading && SkeletonList}
         {isLoadingError && <p>Det blev ett fel vid laddning ...</p>}
-        {Pages && <IonList color="dark">{Pages}</IonList>}
+        {Pages && 
+          <IonList color="dark">
+            {/* <IonListHeader>
+              <IonLabel>Nyligen uppdaterat</IonLabel>
+            </IonListHeader> */}
+            {Pages}
+        </IonList>}
       </>
     );
   }
