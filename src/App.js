@@ -13,10 +13,10 @@ import {
   IonToast,
   IonButton,
   IonContent,
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardSubtitle
+  // IonCard,
+  // IonCardHeader,
+  // IonCardTitle,
+  // IonCardSubtitle
 } from "@ionic/react";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
@@ -83,14 +83,15 @@ const Startsida = props => {
         title="TextTV.nu"
         headerStyle="HEADER_STYLE_STARTPAGE"
       >
-
-        
-        <h2 className="ion-padding-start ion-padding-top ion-padding-end">Senaste nyheterna</h2>
-        <SenastUppdaterat {...props} type="news" count="5" />
-        
-        <h2 className="ion-padding-start ion-padding-top ion-padding-end">Senaste sportnyheterna</h2>
+        <h2 className="ion-padding-start ion-padding-top ion-padding-end">
+          Senaste nyheterna
+        </h2>
         <SenastUppdaterat {...props} type="news" count="5" />
 
+        <h2 className="ion-padding-start ion-padding-top ion-padding-end">
+          Senaste sportnyheterna
+        </h2>
+        <SenastUppdaterat {...props} type="news" count="5" />
       </PageTextTV>
     </>
   );
@@ -144,23 +145,23 @@ function App(props) {
 
                   <IonTabBar slot="bottom" color="primary">
                     <IonTabButton tab="hem" href="/hem">
-                      <IonIcon name="home" />
+                      <IonIcon name="home" mode="md" />
                       <IonLabel>Hem</IonLabel>
                       {/* <IonBadge color="danger">6</IonBadge> */}
                     </IonTabButton>
 
                     <IonTabButton tab="sidor" href="/sidor">
-                      <IonIcon name="list-box" />
+                      <IonIcon name="list-box" mode="md" />
                       <IonLabel>Sidor</IonLabel>
                     </IonTabButton>
 
                     <IonTabButton tab="populart" href="/populart">
-                      <IonIcon name="trending-up" />
+                      <IonIcon name="trending-up" mode="md" />
                       <IonLabel>Mest läst</IonLabel>
                     </IonTabButton>
 
                     <IonTabButton tab="nyast" href="/nyast">
-                      <IonIcon name="clock" />
+                      <IonIcon name="clock" mode="md" />
                       <IonLabel>Nyast</IonLabel>
                     </IonTabButton>
                   </IonTabBar>

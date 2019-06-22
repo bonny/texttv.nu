@@ -2,13 +2,20 @@ import {
   IonActionSheet,
   IonContent,
   IonRefresher,
-  IonRefresherContent} from "@ionic/react";
+  IonRefresherContent
+} from "@ionic/react";
 import React, { useState } from "react";
 import TextTVPage from "../modules/TextTVPage";
 import Header from "../modules/Header";
 
 const PageTextTV = props => {
-  const { match, history, title, headerStyle = "HEADER_STYLE_DEFAULT", children } = props;
+  const {
+    match,
+    history,
+    title,
+    headerStyle = "HEADER_STYLE_DEFAULT",
+    children
+  } = props;
   const pageNum = props.pageNum || match.params.pageNum;
   const [actionSheetOpened, setActionSheetOpened] = useState(false);
   const [refreshTime, setRefreshTime] = useState(Math.floor(Date.now() / 1000));
@@ -33,14 +40,14 @@ const PageTextTV = props => {
     updateRefreshTime();
   };
 
-  const handlePageNumInputChange = e => {
-    const pageNum = e.target.value;
-    if (pageNum.length === 3) {
-      history.push(`/sida/${pageNum}`);
-      e.target.value = "";
-      document.querySelector("ion-menu-controller").close();
-    }
-  };
+  // const handlePageNumInputChange = e => {
+  //   const pageNum = e.target.value;
+  //   if (pageNum.length === 3) {
+  //     history.push(`/sida/${pageNum}`);
+  //     e.target.value = "";
+  //     document.querySelector("ion-menu-controller").close();
+  //   }
+  // };
 
   // const handleTestClick = e => {
   //   props.history.goBack();
@@ -61,7 +68,6 @@ const PageTextTV = props => {
         {...props}
         pageTitle={pageTitle}
         headerStyle={headerStyle}
-        handlePageNumInputChange={handlePageNumInputChange}
         handleMoreActionsClick={handleMoreActionsClick}
         handleRefreshBtnClick={handleRefreshBtnClick}
       />
@@ -115,10 +121,9 @@ const PageTextTV = props => {
               }
             }
           ]}
-          
-          />
-          
-          {children}
+        />
+
+        {children}
       </IonContent>
     </>
   );

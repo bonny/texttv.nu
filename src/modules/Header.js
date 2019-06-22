@@ -5,16 +5,16 @@ import {
   IonHeader,
   IonIcon,
   IonTitle,
-  IonToolbar,
-  IonSearchbar
+  IonToolbar
 } from "@ionic/react";
 import React from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
+import TextTVSearchBar from "./TextTVSearchBar";
 
 const Header = props => {
   const {
+    history,
     headerStyle,
-    handlePageNumInputChange,
     handleMoreActionsClick,
     handleRefreshBtnClick,
     pageTitle
@@ -27,14 +27,8 @@ const Header = props => {
             <IonButtons slot="start">
               <IonBackButton text="" />
             </IonButtons>
-            <IonSearchbar
-              color="secondary"
-              placeholder="Gå till…"
-              type="number"
-              onIonChange={handlePageNumInputChange}
-              showCancelButton={false}
-              clearIcon={false}  
-            />
+            <TextTVSearchBar history={history} />
+
             <IonButtons slot="end">
               <IonButton
                 fill="clear"
@@ -83,14 +77,7 @@ const Header = props => {
             </IonTitle>
           </IonToolbar>
           <IonToolbar color="primary">
-            <IonSearchbar
-              color="secondary"
-              placeholder="Gå till…"
-              type="number"
-              onIonChange={handlePageNumInputChange}
-              showCancelButton={false}
-              clearIcon={false}  
-            />
+            <TextTVSearchBar history={history} />
           </IonToolbar>
         </IonHeader>
       )}

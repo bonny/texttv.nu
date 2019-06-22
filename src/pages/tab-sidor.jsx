@@ -1,19 +1,20 @@
-import { IonContent, IonSearchbar, IonToolbar } from "@ionic/react";
+import { IonContent, IonToolbar } from "@ionic/react";
 import React from "react";
 import TextTVHeader from "../modules/TextTVHeader";
 import TextTVSidorLista from "../modules/TextTVSidorLista";
+import TextTVSearchBar from "../modules/TextTVSearchBar";
 
 export default props => {
   const { history } = props;
 
-  const handlePageNumInputChange = e => {
-    const pageNum = e.target.value;
-    if (pageNum.length === 3) {
-      history.push(`/sida/${pageNum}`);
-      e.target.value = "";
-      document.querySelector("ion-menu-controller").close();
-    }
-  };
+  // const handlePageNumInputChange = e => {
+  //   const pageNum = e.target.value;
+  //   if (pageNum.length === 3) {
+  //     history.push(`/sida/${pageNum}`);
+  //     e.target.value = "";
+  //     document.querySelector("ion-menu-controller").close();
+  //   }
+  // };
 
   // const OneItem = props => {
   //   const { lines = "inset", title, pages } = props;
@@ -69,14 +70,7 @@ export default props => {
     <>
       <TextTVHeader title="Sidor">
         <IonToolbar color="primary">
-          <IonSearchbar
-            color="secondary"
-            placeholder="Gå till…"
-            onIonChange={handlePageNumInputChange}
-            showCancelButton={false}
-            clearIcon={false}
-            type="number"
-          />
+          <TextTVSearchBar history={history} />
         </IonToolbar>
       </TextTVHeader>
       <IonContent color="dark">

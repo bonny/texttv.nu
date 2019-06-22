@@ -1,4 +1,4 @@
-import { IonItem, IonLabel, IonList, IonSkeletonText, IonListHeader } from "@ionic/react";
+import { IonItem, IonLabel, IonList, IonSkeletonText } from "@ionic/react";
 import "moment/locale/sv";
 import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
@@ -57,7 +57,7 @@ const SenastUppdateradeLista = props => {
         // console.log("set is unmounted");
         isUnmounted = true;
       };
-    }, [type, refreshTime]);
+    }, [type, count, refreshTime]);
 
     const Pages = pages.map((page, index, arr) => {
       // No line on last item.
