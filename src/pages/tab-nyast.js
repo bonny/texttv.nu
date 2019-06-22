@@ -50,7 +50,7 @@ export default props => {
         buttonsEnd={
           <IonButtons slot="end">
             <IonButton fill="clear" slot="end" onClick={handleRefreshBtnClick}>
-              <IonIcon size="small" slot="icon-only" name="refresh" />
+              <IonIcon slot="icon-only" name="refresh" mode="md" />
             </IonButton>
           </IonButtons>
         }

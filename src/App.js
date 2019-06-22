@@ -70,7 +70,14 @@ const PageTest = props => {
 };
 
 const Startsida = props => {
-  return <PageTextTV {...props} pageNum="100,300,700" title="TextTV.nu" headerStyle="HEADER_STYLE_STARTPAGE" />;
+  return (
+    <PageTextTV
+      {...props}
+      pageNum="100,300,700"
+      title="TextTV.nu"
+      headerStyle="HEADER_STYLE_STARTPAGE"
+    />
+  );
 };
 
 function App(props) {
@@ -118,20 +125,24 @@ function App(props) {
                       exact={true}
                     />
                   </IonRouterOutlet>
+
                   <IonTabBar slot="bottom" color="primary">
                     <IonTabButton tab="hem" href="/hem">
                       <IonIcon name="home" />
                       <IonLabel>Hem</IonLabel>
                       {/* <IonBadge color="danger">6</IonBadge> */}
                     </IonTabButton>
+
                     <IonTabButton tab="sidor" href="/sidor">
-                      <IonIcon name="document" />
+                      <IonIcon name="list-box" />
                       <IonLabel>Sidor</IonLabel>
                     </IonTabButton>
+
                     <IonTabButton tab="populart" href="/populart">
                       <IonIcon name="trending-up" />
                       <IonLabel>Mest läst</IonLabel>
                     </IonTabButton>
+
                     <IonTabButton tab="nyast" href="/nyast">
                       <IonIcon name="clock" />
                       <IonLabel>Nyast</IonLabel>

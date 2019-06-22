@@ -51,9 +51,9 @@ const PageTextTV = props => {
     setActionSheetOpened(true);
   };
 
-  const HeaderMemoed = React.memo(props => {
-    return <Header {...props} />;
-  });
+  // const HeaderMemoed = React.memo(props => {
+  //   return <Header {...props} />;
+  // });
 
   return (
     <>

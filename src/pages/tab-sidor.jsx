@@ -1,4 +1,4 @@
-import { IonCol, IonContent, IonItem, IonLabel, IonSearchbar, IonToolbar } from "@ionic/react";
+import { IonContent, IonSearchbar, IonToolbar } from "@ionic/react";
 import React from "react";
 import TextTVHeader from "../modules/TextTVHeader";
 import TextTVSidorLista from "../modules/TextTVSidorLista";
@@ -15,68 +15,67 @@ export default props => {
     }
   };
 
-  const OneItem = props => {
-    const { lines = "inset", title, pages } = props;
-    const url = `/sida/${pages}`;
-    return (
-      <IonItem
-        button
-        detail
-        onClick={() => {
-          document.querySelector("ion-menu-controller").close();
-          history.push(url);
-        }}
-        lines={lines}
-        color="dark"
-      >
-        <IonLabel text-wrap>
-          <h2 className="ListHeadlineSidor">{title}</h2>
-          <p>{pages}</p>
-        </IonLabel>
-      </IonItem>
-    );
-  };
+  // const OneItem = props => {
+  //   const { lines = "inset", title, pages } = props;
+  //   const url = `/sida/${pages}`;
+  //   return (
+  //     <IonItem
+  //       button
+  //       detail
+  //       onClick={() => {
+  //         document.querySelector("ion-menu-controller").close();
+  //         history.push(url);
+  //       }}
+  //       lines={lines}
+  //       color="dark"
+  //     >
+  //       <IonLabel text-wrap>
+  //         <h2 className="ListHeadlineSidor">{title}</h2>
+  //         <p>{pages}</p>
+  //       </IonLabel>
+  //     </IonItem>
+  //   );
+  // };
 
-  const OneHeadlineItem = props => {
-    const itemStyles = {
-      color: "var(--text-tv-color-cyan)"
-    };
-    const { title } = props;
-    return (
-      <IonCol size="12">
-        <IonItem lines="none" style={itemStyles}>
-          <IonLabel>{title}</IonLabel>
-        </IonItem>
-      </IonCol>
-    );
-  };
+  // const OneHeadlineItem = props => {
+  //   const itemStyles = {
+  //     color: "var(--text-tv-color-cyan)"
+  //   };
+  //   const { title } = props;
+  //   return (
+  //     <IonCol size="12">
+  //       <IonItem lines="none" style={itemStyles}>
+  //         <IonLabel>{title}</IonLabel>
+  //       </IonItem>
+  //     </IonCol>
+  //   );
+  // };
 
-  const OneHeadlineItem2 = props => {
-    const itemStyles = {
-      color: "var(--text-tv-color-cyan)"
-    };
-    const { title } = props;
-    return (
-      <IonCol size="12">
-        <IonItem lines="none" style={itemStyles}>
-          <IonLabel>{title}</IonLabel>
-        </IonItem>
-      </IonCol>
-    );
-  };
+  // const OneHeadlineItem2 = props => {
+  //   const itemStyles = {
+  //     color: "var(--text-tv-color-cyan)"
+  //   };
+  //   const { title } = props;
+  //   return (
+  //     <IonCol size="12">
+  //       <IonItem lines="none" style={itemStyles}>
+  //         <IonLabel>{title}</IonLabel>
+  //       </IonItem>
+  //     </IonCol>
+  //   );
+  // };
 
   return (
     <>
       <TextTVHeader title="Sidor">
         <IonToolbar color="primary">
           <IonSearchbar
-            color="primary"
-            placeholder='Gå till "100", "200", "377" …'
+            color="secondary"
+            placeholder="Gå till…"
             onIonChange={handlePageNumInputChange}
             showCancelButton={false}
             clearIcon={false}
             type="number"
-            // searchIcon="document"
           />
         </IonToolbar>
       </TextTVHeader>
