@@ -2,6 +2,7 @@ import { IonList } from "@ionic/react";
 import React, { useState, useEffect } from "react";
 import SkeletonList from "./SkeletonList";
 import PagesListing from "./PagesListing";
+import dayjs from "dayjs";
 
 const MestLastaLista = props => {
   {
@@ -13,8 +14,30 @@ const MestLastaLista = props => {
     // Fetch content for segment when segment day is changed.
     useEffect(() => {
       let isUnmounted = false;
+      // let dateYmd;
+      // let dateToday = new Date();
+      // let dateYesterday = new Date();
+      // dateYesterday.setDate(dateToday.getDate() - 1);
 
-      const endpoint = `https://texttv.nu/api/most_read/news?count=${count}`;
+      // let dayjsToday = dayjs(dateToday);
+      // let dayjsYesterday = dayjs(dateToday);
+      let dateYMD;
+      let todayYMD = dayjs().format("YYYY-MM-DD");
+      let yesterdayYMD = dayjs()
+        .subtract(1, "day")
+        .format("YYYY-MM-DD");
+
+      switch (day) {
+        case "yesterday":
+          dateYMD = yesterdayYMD;
+          break;
+        case "today":
+        default:
+          dateYMD = todayYMD;
+          break;
+      }
+
+      const endpoint = `https://texttv.nu/api/most_read/news?count=${count}&date=${dateYMD}`;
 
       setIsLoading(true);
       setIsLoadingError(false);
