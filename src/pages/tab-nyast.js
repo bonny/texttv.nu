@@ -1,7 +1,5 @@
 import {
   IonContent,
-  IonRefresher,
-  IonRefresherContent,
   IonToolbar,
   IonSegment,
   IonSegmentButton,
@@ -12,6 +10,7 @@ import {
 import React, { useState } from "react";
 import TextTVHeader from "../modules/TextTVHeader";
 import SenastUppdaterat from "../modules/SenastUppdaterat";
+import TextTVRefresher from "./TextTVRefresher";
 
 export default props => {
   const { history } = props;
@@ -22,11 +21,11 @@ export default props => {
     setRefreshTime(Math.floor(Date.now() / 1000));
   };
 
-  const handleIonRefresh = e => {
+  const handlePullToRefresh = e => {
     doRefresh();
     setTimeout(() => {
       e.target.complete();
-    }, 1000);
+    }, 500);
   };
 
   const handleSegmentChange = e => {
@@ -68,9 +67,8 @@ export default props => {
       </TextTVHeader>
 
       <IonContent color="dark">
-        <IonRefresher slot="fixed" onIonRefresh={handleIonRefresh}>
-          <IonRefresherContent />
-        </IonRefresher>
+        <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
+
         <SenastUppdaterat
           history={history}
           selectedSegment={selectedSegment}

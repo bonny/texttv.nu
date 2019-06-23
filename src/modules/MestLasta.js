@@ -1,8 +1,7 @@
-import { IonItem, IonLabel, IonList } from "@ionic/react";
-import "moment/locale/sv";
-import Moment from "react-moment";
+import { IonList } from "@ionic/react";
 import React, { useState, useEffect } from "react";
 import SkeletonList from "./SkeletonList";
+import PagesListing from "./PagesListing";
 
 const MestLastaLista = props => {
   {
@@ -30,7 +29,6 @@ const MestLastaLista = props => {
 
           // Bail if component already unmounted.
           if (isUnmounted) {
-            // console.log("bail because unmounted");
             return;
           }
 
@@ -46,33 +44,7 @@ const MestLastaLista = props => {
       };
     }, [day, count, refreshTime]);
 
-    const Pages = pages.map((page, index, arr) => {
-      // No line on last item.
-      const lines = index === arr.length - 1 ? "none" : "inset";
-      const link = `/sida/${page.page_num}`;
-
-      return (
-        <IonItem
-          button
-          detail
-          onClick={e => {
-            history.push(link);
-          }}
-          key={page.id}
-          lines={lines}
-          color="dark"
-        >
-          <IonLabel text-wrap>
-            <h2 className="ListHeadline">{page.title}</h2>
-            <p>
-              <Moment unix fromNow locale="sv" className="MomentTime">
-                {page.date_added_unix}
-              </Moment>
-            </p>
-          </IonLabel>
-        </IonItem>
-      );
-    });
+    const Pages = <PagesListing pages={pages} history={history} />;
 
     return (
       <>

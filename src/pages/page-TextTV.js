@@ -1,12 +1,10 @@
 import {
   IonActionSheet,
-  IonContent,
-  IonRefresher,
-  IonRefresherContent
-} from "@ionic/react";
+  IonContent} from "@ionic/react";
 import React, { useState } from "react";
 import TextTVPage from "../modules/TextTVPage";
 import Header from "../modules/Header";
+import TextTVRefresher from "./TextTVRefresher";
 
 const PageTextTV = props => {
   const {
@@ -73,19 +71,7 @@ const PageTextTV = props => {
       />
 
       <IonContent color="dark">
-        <IonRefresher
-          slot="fixed"
-          onIonRefresh={handlePullToRefresh}
-          pullFactor="0.6"
-          pullMin="60"
-          pullMax="240"
-        >
-          <IonRefresherContent
-            refreshingSpinner="lines-small"
-            pullingText="Dra och släpp för att ladda om"
-            refreshingText="Laddar om…"
-          />
-        </IonRefresher>
+        <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
         <TextTVPage
           pageNum={pageNum}
