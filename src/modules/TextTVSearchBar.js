@@ -1,17 +1,17 @@
 import { IonSearchbar } from "@ionic/react";
-import React, { useState } from "react";
+import React from "react";
 
 const TextTVSearchBar = props => {
   const { history } = props;
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   const handlePageNumInputChange = e => {
     const pageNum = e.target.value;
     if (pageNum.length === 3) {
-      setIsLoading(true);
+      // setIsLoading(true);
       history.push(`/sida/${pageNum}`);
       document.querySelector("ion-menu-controller").close();
-      // e.target.value = "";
+      e.target.value = "";
     }
   };
 
@@ -27,7 +27,6 @@ const TextTVSearchBar = props => {
         clearIcon={false}
         onIonChange={handlePageNumInputChange}
         debounce="100"
-        disabled={isLoading}
       />
     </>
   );
