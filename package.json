@@ -5,6 +5,7 @@
   "dependencies": {
     "@ionic/react": "0.0.6-3",
     "cordova-ios": "5.0.1",
+    "dayjs": "^1.8.14",
     "fitty": "^2.2.6",
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",
