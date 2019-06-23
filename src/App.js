@@ -86,12 +86,12 @@ const Startsida = props => {
         <h2 className="ion-padding-start ion-padding-top ion-padding-end">
           Senaste nyheterna
         </h2>
-        <SenastUppdaterat {...props} type="news" count="5" />
+        <SenastUppdaterat {...props} selectedSegment="news" count="5" />
 
         <h2 className="ion-padding-start ion-padding-top ion-padding-end">
           Senaste sportnyheterna
         </h2>
-        <SenastUppdaterat {...props} type="news" count="5" />
+        <SenastUppdaterat {...props} selectedSegment="sports" count="5" />
       </PageTextTV>
     </>
   );
