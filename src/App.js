@@ -155,15 +155,16 @@ function App(props) {
                       <IonLabel>Sidor</IonLabel>
                     </IonTabButton>
 
+                    <IonTabButton tab="nyast" href="/nyast">
+                      <IonIcon name="clock" mode="md" />
+                      <IonLabel>Nyast</IonLabel>
+                    </IonTabButton>
+
                     <IonTabButton tab="populart" href="/populart">
                       <IonIcon name="trending-up" mode="md" />
                       <IonLabel>Mest läst</IonLabel>
                     </IonTabButton>
 
-                    <IonTabButton tab="nyast" href="/nyast">
-                      <IonIcon name="clock" mode="md" />
-                      <IonLabel>Nyast</IonLabel>
-                    </IonTabButton>
                   </IonTabBar>
                 </IonTabs>
               </IonPage>

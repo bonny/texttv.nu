@@ -1,7 +1,7 @@
 import { IonItem, IonLabel, IonList, IonSkeletonText } from "@ionic/react";
 import "moment/locale/sv";
-import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
+import React, { useEffect, useState } from "react";
 
 const SenastUppdateradeLista = props => {
   {
@@ -116,13 +116,14 @@ const SenastUppdateradeLista = props => {
       <>
         {isLoading && SkeletonList}
         {isLoadingError && <p>Det blev ett fel vid laddning ...</p>}
-        {Pages && 
+        {Pages && (
           <IonList color="dark">
             {/* <IonListHeader>
               <IonLabel>Nyligen uppdaterat</IonLabel>
             </IonListHeader> */}
             {Pages}
-        </IonList>}
+          </IonList>
+        )}
       </>
     );
   }

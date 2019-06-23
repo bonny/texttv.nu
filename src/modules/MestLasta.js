@@ -1,106 +1,98 @@
 import { IonItem, IonLabel, IonList } from "@ionic/react";
-import React from "react";
-
-const mostReadToday = [
-  {
-    title: "Sommarskola tycks bli en flopp | Man död i fyrhjulingsolycka",
-    page: 127,
-    id: 23371619
-  },
-  {
-    title: "Ingen kryssade sig förbi partitop",
-    page: 128,
-    id: 23374243
-  },
-  {
-    title: "Man död i fyrhjulingsolycka",
-    page: 111,
-    id: 23367686
-  },
-  {
-    title: "Filmstudior hotar lämna Georgia",
-    page: 107,
-    id: 23365449
-  },
-  {
-    title: "Flyget lika stor bov som bilar",
-    page: 112,
-    id: 23315050
-  },
-  {
-    title: "Man död i fyrhjulingsolycka",
-    page: 111,
-    id: 23317686
-  },
-  {
-    title: "Filmstudior hotar lämna Georgia",
-    page: 107,
-    id: 23362449
-  },
-  {
-    title: "Flyget lika stor bov som bilar",
-    page: 112,
-    id: 23361050
-  }
-];
-
-const mostReadYesterday = [
-  {
-    title: "En sida som lästes mest igår. Typ jättemycket lästes den.",
-    page: 127,
-    id: 23371619
-  },
-  {
-    title: "En annan grej som lästes mycket igår",
-    page: 128,
-    id: 23374243
-  },
-  {
-    title: "Bla bla bla osv",
-    page: 111,
-    id: 23367686
-  },
-  {
-    title: "Culpa velit labore esse culpa ea cillum proident",
-    page: 107,
-    id: 23365449
-  },
-  {
-    title: "Laboris do qui eu esse pariatur sunt irure consequat",
-    page: 112,
-    id: 23315050
-  }
-];
+import "moment/locale/sv";
+import Moment from "react-moment";
+import React, { useState, useEffect } from "react";
 
 const MestLastaLista = props => {
   {
-    const { day } = props;
-    const pagesArray = day === "today" ? mostReadToday : mostReadYesterday;
+    const { history, day = "today", refreshTime, count = 15 } = props;
+    const [isLoading, setIsLoading] = useState(false);
+    const [isLoadingError, setIsLoadingError] = useState(false);
+    const [pages, setPages] = useState([]);
 
-    return pagesArray.map((page, index, arr) => {
+    // Fetch content for segment when segment day is changed.
+    useEffect(() => {
+      let isUnmounted = false;
+
+      const endpoint = `https://texttv.nu/api/most_read/news?count=${count}`;
+
+      setIsLoading(true);
+      setIsLoadingError(false);
+      setPages([]);
+
+      fetch(endpoint)
+        .then(data => {
+          return data.json();
+        })
+        .then(data => {
+          setIsLoading(false);
+
+          // Bail if component already unmounted.
+          if (isUnmounted) {
+            // console.log("bail because unmounted");
+            return;
+          }
+
+          setPages(data.pages);
+        })
+        .catch(error => {
+          // Network error or similar.
+          setIsLoadingError(true);
+        });
+
+      return e => {
+        isUnmounted = true;
+      };
+    }, [day, count, refreshTime]);
+
+    const Pages = pages.map((page, index, arr) => {
       // No line on last item.
       const lines = index === arr.length - 1 ? "none" : "inset";
+      const link = `/sida/${page.page_num}`;
 
       return (
-        <IonItem button key={page.id} lines={lines} color="dark">
+        <IonItem
+          button
+          detail
+          onClick={e => {
+            history.push(link);
+          }}
+          key={page.id}
+          lines={lines}
+          color="dark"
+        >
           <IonLabel text-wrap>
-            <p>{page.page}</p>
-            <h1>{page.title}</h1>
+            <h2 className="ListHeadline">{page.title}</h2>
+            <p>
+              <Moment unix fromNow locale="sv" className="MomentTime">
+                {page.date_added_unix}
+              </Moment>
+            </p>
           </IonLabel>
         </IonItem>
       );
     });
+
+    return (
+      <>
+        {isLoading && <p>Hämtar...</p>}
+        {isLoadingError && <p>Det blev ett fel vid laddning ...</p>}
+        {Pages && <IonList color="dark">{Pages}</IonList>}
+      </>
+    );
   }
 };
 
 export default props => {
-  const { selectedSegment } = props;
+  const { selectedSegment, refreshTime } = props;
 
   return (
     <>
-      <IonList color="dark">
-        <MestLastaLista day={selectedSegment} />
-      </IonList>
+      <MestLastaLista
+        {...props}
+        day={selectedSegment}
+        refreshTime={refreshTime}
+      />
     </>
   );
 };
