@@ -1,7 +1,8 @@
-import { IonItem, IonLabel, IonList, IonSkeletonText } from "@ionic/react";
+import { IonItem, IonLabel, IonList } from "@ionic/react";
 import "moment/locale/sv";
 import Moment from "react-moment";
 import React, { useEffect, useState } from "react";
+import SkeletonList from "./SkeletonList";
 
 const SenastUppdateradeLista = props => {
   {
@@ -86,31 +87,6 @@ const SenastUppdateradeLista = props => {
         </IonItem>
       );
     });
-
-    const SkeletonListItems = [...Array(10)].map((val, index) => {
-      const pStyles = {
-        height: "12px",
-        width: "80px"
-      };
-      const H1Style = {
-        height: "24px",
-        width: Math.random() * (65 - 35) + 35 + "%"
-      };
-      return (
-        <IonItem key={index} color="dark">
-          <IonLabel text-wrap>
-            <p>
-              <IonSkeletonText animated style={pStyles} />
-            </p>
-            <h1>
-              <IonSkeletonText animated style={H1Style} />
-            </h1>
-          </IonLabel>
-        </IonItem>
-      );
-    });
-
-    const SkeletonList = <IonList color="dark">{SkeletonListItems}</IonList>;
 
     return (
       <>

@@ -2,6 +2,7 @@ import { IonItem, IonLabel, IonList } from "@ionic/react";
 import "moment/locale/sv";
 import Moment from "react-moment";
 import React, { useState, useEffect } from "react";
+import SkeletonList from "./SkeletonList";
 
 const MestLastaLista = props => {
   {
@@ -75,7 +76,7 @@ const MestLastaLista = props => {
 
     return (
       <>
-        {isLoading && <p>Hämtar...</p>}
+        {isLoading && SkeletonList}
         {isLoadingError && <p>Det blev ett fel vid laddning ...</p>}
         {Pages && <IonList color="dark">{Pages}</IonList>}
       </>
