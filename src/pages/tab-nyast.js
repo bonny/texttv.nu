@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import TextTVHeader from "../modules/TextTVHeader";
 import SenastUppdaterat from "../modules/SenastUppdaterat";
-import TextTVRefresher from "./TextTVRefresher";
+import TextTVRefresher from "../modules/TextTVRefresher";
 
 export default props => {
   const { history } = props;
@@ -40,6 +40,18 @@ export default props => {
   const handleRefreshBtnClick = e => {
     doRefresh();
   };
+
+  let pageTitle;
+  switch (selectedSegment) {
+    case "sports":
+      pageTitle = "Nyaste sportsidorna";
+      break;
+    case "news":
+      pageTitle = "Nyaste nyhetssidorna";
+      break;
+    default:
+      pageTitle = "Nyaste sidorna";
+  }
 
   return (
     <>

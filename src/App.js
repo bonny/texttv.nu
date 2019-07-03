@@ -27,9 +27,9 @@ import TextTVPage from "./modules/TextTVPage";
 import TabNyast from "./pages/tab-nyast";
 import TabPopulart from "./pages/tab-populart";
 import TabSidor from "./pages/tab-sidor";
-import SenastUppdaterat from "./modules/SenastUppdaterat";
 import "./theme.css";
 import "./App.css";
+import Startsida from "./pages/tab-startsida";
 
 const PageTest = props => {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,29 +71,6 @@ const PageTest = props => {
       />
       <TextTVPage pageNum="100-103" />
     </IonContent>
-  );
-};
-
-const Startsida = props => {
-  return (
-    <>
-      <PageTextTV
-        {...props}
-        pageNum="100,300,700"
-        title="TextTV.nu"
-        headerStyle="HEADER_STYLE_STARTPAGE"
-      >
-        <h2 className="ion-padding-start ion-padding-top ion-padding-end">
-          Senaste nyheterna
-        </h2>
-        <SenastUppdaterat {...props} selectedSegment="news" count="5" />
-
-        <h2 className="ion-padding-start ion-padding-top ion-padding-end">
-          Senaste sportnyheterna
-        </h2>
-        <SenastUppdaterat {...props} selectedSegment="sports" count="5" />
-      </PageTextTV>
-    </>
   );
 };
 

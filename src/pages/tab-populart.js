@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import MestLasta from "../modules/MestLasta";
 import TextTVHeader from "../modules/TextTVHeader";
-import TextTVRefresher from "./TextTVRefresher";
+import TextTVRefresher from "../modules/TextTVRefresher";
 
 export default props => {
   const { history } = props;

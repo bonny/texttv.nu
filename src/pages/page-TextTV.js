@@ -1,10 +1,8 @@
-import {
-  IonActionSheet,
-  IonContent} from "@ionic/react";
+import { IonActionSheet, IonContent } from "@ionic/react";
 import React, { useState } from "react";
 import TextTVPage from "../modules/TextTVPage";
 import Header from "../modules/Header";
-import TextTVRefresher from "./TextTVRefresher";
+import TextTVRefresher from "../modules/TextTVRefresher";
 
 const PageTextTV = props => {
   const {
