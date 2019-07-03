@@ -85,7 +85,7 @@ const navItemsAlsoLike = [
 
 const Menu = props => {
   return (
-    <IonMenu side="end" menuId="mainMenu" contentId="main" type="overlay">
+    <IonMenu side="start" menuId="mainMenu" contentId="main" type="overlay">
       <IonHeader>
         <IonToolbar color="primary">
           <IonTitle>Menu</IonTitle>
