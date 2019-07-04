@@ -74,7 +74,7 @@ export default props => {
     fetchPageContents();
 
     return () => {
-      console.log("texttv page setComponentIsUnloaded");
+      console.log("texttv page setComponentIsUnloaded", pageNum, pageId);
       // setComponentIsUnloaded(true);
     };
   }, [pageNum, pageId, refreshTime]);
