@@ -7,6 +7,8 @@ import {
   IonTitle,
   IonToolbar
 } from "@ionic/react";
+import { share, refresh } from "ionicons/icons";
+
 import React from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
 import TextTVSearchBar from "./TextTVSearchBar";
@@ -19,14 +21,19 @@ const Header = props => {
     handleRefreshBtnClick,
     pageTitle
   } = props;
+
+  // const backButtonDefaultHref = `/${match.params.tab}`;
+  const backButtonDefaultHref = `/sida/100?default`;
+
   return (
     <>
       {headerStyle === "HEADER_STYLE_DEFAULT" && (
         <IonHeader>
           <IonToolbar color="primary">
             <IonButtons slot="start">
-              <IonBackButton text="" />
+              <IonBackButton defaultHref={backButtonDefaultHref} />
             </IonButtons>
+
             <TextTVSearchBar history={history} />
 
             <IonButtons slot="end">
@@ -35,14 +42,14 @@ const Header = props => {
                 slot="end"
                 onClick={handleMoreActionsClick}
               >
-                <IonIcon slot="icon-only" name="share" />
+                <IonIcon slot="icon-only" icon={share} />
               </IonButton>
               <IonButton
                 fill="clear"
                 slot="end"
                 onClick={handleRefreshBtnClick}
               >
-                <IonIcon slot="icon-only" name="refresh" />
+                <IonIcon slot="icon-only" icon={refresh} />
               </IonButton>
             </IonButtons>
           </IonToolbar>
@@ -61,14 +68,14 @@ const Header = props => {
                 slot="end"
                 onClick={handleMoreActionsClick}
               >
-                <IonIcon slot="icon-only" name="share" mode="md" />
+                <IonIcon slot="icon-only" icon={share} mode="md" />
               </IonButton>
               <IonButton
                 fill="clear"
                 slot="end"
                 onClick={handleRefreshBtnClick}
               >
-                <IonIcon slot="icon-only" name="refresh" mode="md" />
+                <IonIcon slot="icon-only" icon={refresh} mode="md" />
               </IonButton>
             </IonButtons>
             <IonTitle>

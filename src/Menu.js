@@ -13,6 +13,16 @@ import {
   IonTitle,
   IonToolbar
 } from "@ionic/react";
+import {
+  close,
+  document,
+  logoFacebook,
+  informationCircleOutline,
+  logoTwitter,
+  alert,
+  help,
+  paper
+} from "ionicons/icons";
 import React from "react";
 import { withRouter } from "react-router";
 import TextTVSidorLista from "./modules/TextTVSidorLista";
@@ -21,42 +31,42 @@ const navItems = [
   {
     title: "Best of SVT Text",
     href: "http://bestofsvttext.eskapism.se",
-    icon: "document"
+    icon: document
   },
   {
     title: "TextTV.nu på Facebook",
     href: "https://www.facebook.com/texttv.nu/",
-    icon: "logo-facebook"
+    icon: logoFacebook
   },
   {
     title: "Utvecklingsblogg",
     href: "https://texttv.nu/blogg",
-    icon: "information-circle-outline"
+    icon: informationCircleOutline
   },
   {
     title: "TextTV.nu på Twitter",
     href: "https://twitter.com/texttv_nu",
-    icon: "logo-twitter"
+    icon: logoTwitter
   },
   {
     title: "@text_tv_sport",
     href: "https://twitter.com/text_tv_sport",
-    icon: "logo-twitter"
+    icon: logoTwitter
   },
   {
     title: "@text_tv_nyheter",
     href: "https://twitter.com/text_tv_nyheter",
-    icon: "logo-twitter"
+    icon: logoTwitter
   },
   {
     title: "Omnämnt av Polisen",
     href: "https://texttv.nu/sida/polisen",
-    icon: "alert"
+    icon: alert
   },
   {
     title: "Om TextTV.nu",
     href: "https://texttv.nu/sida/om-texttv-nu",
-    icon: "help"
+    icon: help
   }
 ];
 
@@ -64,22 +74,22 @@ const navItemsAlsoLike = [
   {
     title: "SVT Nyheter",
     href: "https://www.svt.se/",
-    icon: "paper"
+    icon: paper
   },
   {
     title: "SVT Nyheter på Twitter",
     href: "https://twitter.com/svtnyheter",
-    icon: "logo-twitter"
+    icon: logoTwitter
   },
   {
     title: "SVT Sport på Twitter",
     href: "https://twitter.com/SVTSport",
-    icon: "logo-twitter"
+    icon: logoTwitter
   },
   {
     title: "❤️ 377",
     href: "https://twitter.com/svt377",
-    icon: "logo-twitter"
+    icon: logoTwitter
   }
 ];
 
@@ -92,7 +102,7 @@ const Menu = props => {
           <IonButtons slot="end">
             <IonMenuToggle menu="mainMenu">
               <IonButton>
-                <IonIcon slot="icon-only" name="close" />
+                <IonIcon slot="icon-only" icon={close} />
               </IonButton>
             </IonMenuToggle>
           </IonButtons>
@@ -105,10 +115,10 @@ const Menu = props => {
           <IonListHeader color="dark">Länkar</IonListHeader>
           <IonMenuToggle auto-hide="false">
             {navItems.map(item => {
-              const icon = item.icon ? item.icon : "document";
+              const icon = item.icon ? item.icon : document;
               return (
                 <IonItem href={item.href} key={item.href}>
-                  <IonIcon slot="start" name={icon} />
+                  <IonIcon slot="start" icon={icon} />
                   <IonLabel>{item.title}</IonLabel>
                 </IonItem>
               );
@@ -122,10 +132,10 @@ const Menu = props => {
           </IonListHeader>
           <IonMenuToggle auto-hide={false}>
             {navItemsAlsoLike.map(item => {
-              const icon = item.icon ? item.icon : "document";
+              const icon = item.icon ? item.icon : document;
               return (
                 <IonItem href={item.href} key={item.href}>
-                  <IonIcon slot="start" name={icon} />
+                  <IonIcon slot="start" icon={icon} />
                   <IonLabel>{item.title}</IonLabel>
                 </IonItem>
               );

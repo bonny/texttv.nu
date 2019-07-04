@@ -7,6 +7,8 @@ import {
   IonButton,
   IonIcon
 } from "@ionic/react";
+import { refresh } from "ionicons/icons";
+
 import React, { useState } from "react";
 import TextTVHeader from "../modules/TextTVHeader";
 import SenastUppdaterat from "../modules/SenastUppdaterat";
@@ -61,7 +63,7 @@ export default props => {
         buttonsEnd={
           <IonButtons slot="end">
             <IonButton fill="clear" slot="end" onClick={handleRefreshBtnClick}>
-              <IonIcon slot="icon-only" name="refresh" mode="md" />
+              <IonIcon slot="icon-only" icon={refresh} mode="md" />
             </IonButton>
           </IonButtons>
         }
