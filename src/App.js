@@ -93,13 +93,13 @@ function App(props) {
   // };
 
   return (
-    <>
-      <IonApp>
-        <IonReactRouter>
-          <IonSplitPane contentId="main">
-            <MenuWithRouter {...props} />
-            <IonPage id="main">
-              <Route exact path="/" render={() => <Redirect to="/hem" />} />
+    <IonApp>
+      <IonReactRouter>
+        <Route exact path="/" render={() => <Redirect to="/hem" />} />
+        <IonSplitPane contentId="main">
+          <MenuWithRouter {...props} />
+          <IonPage id="main">
+            <IonPage>
               <IonTabs>
                 <IonRouterOutlet>
                   <Route path="/sida/:pageNum" component={PageTextTV} />
@@ -160,10 +160,10 @@ function App(props) {
                 </IonTabBar>
               </IonTabs>
             </IonPage>
-          </IonSplitPane>
-        </IonReactRouter>
-      </IonApp>
-    </>
+          </IonPage>
+        </IonSplitPane>
+      </IonReactRouter>
+    </IonApp>
   );
 }
 
