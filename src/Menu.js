@@ -88,7 +88,7 @@ const Menu = props => {
     <IonMenu side="start" menuId="mainMenu" contentId="main" type="overlay">
       <IonHeader>
         <IonToolbar color="primary">
-          <IonTitle>Menu</IonTitle>
+          <IonTitle>Meny</IonTitle>
           <IonButtons slot="end">
             <IonMenuToggle menu="mainMenu">
               <IonButton>
@@ -99,7 +99,7 @@ const Menu = props => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <TextTVSidorLista {...props} />
+        <TextTVSidorLista {...props} showHeader={false} />
 
         <IonList>
           <IonListHeader color="dark">Länkar</IonListHeader>
