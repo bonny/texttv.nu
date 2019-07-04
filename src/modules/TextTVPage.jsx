@@ -10,7 +10,7 @@ function createMarkupForPage(page) {
 
 export default props => {
   const { pageNum, pageId, children, history, refreshTime } = props;
-  
+
   // const [componentIsUnloaded, setComponentIsUnloaded] = useState(false);
   const [pageData, setPageData] = useState([]);
   // const [pageIsLoaded, setPageIsLoaded] = useState(false);
