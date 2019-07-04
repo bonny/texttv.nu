@@ -12,7 +12,9 @@ const PageTextTV = props => {
     headerStyle = "HEADER_STYLE_DEFAULT",
     children
   } = props;
+
   const pageNum = props.pageNum || match.params.pageNum;
+  const pageId = props.pageId || match.params.pageId;
   const [actionSheetOpened, setActionSheetOpened] = useState(false);
   const [refreshTime, setRefreshTime] = useState(Math.floor(Date.now() / 1000));
 
@@ -73,6 +75,7 @@ const PageTextTV = props => {
 
         <TextTVPage
           pageNum={pageNum}
+          pageId={pageId}
           history={history}
           refreshTime={refreshTime}
           size="large"

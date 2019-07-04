@@ -9,7 +9,8 @@ function createMarkupForPage(page) {
 }
 
 export default props => {
-  const { pageNum, children, history, refreshTime } = props;
+  const { pageNum, pageId, children, history, refreshTime } = props;
+  
   // const [componentIsUnloaded, setComponentIsUnloaded] = useState(false);
   const [pageData, setPageData] = useState([]);
   // const [pageIsLoaded, setPageIsLoaded] = useState(false);
@@ -17,7 +18,9 @@ export default props => {
 
   const handleClick = e => {
     e.preventDefault();
+
     const target = e.target;
+
     if (target.nodeName === "A") {
       // This is a link.
       // href is '/100', '/101-102', '150,163'
@@ -30,6 +33,11 @@ export default props => {
 
       console.log("handle link click", href);
       history.push(`/sida${href}`);
+    } else {
+      // https://franciscohodge.com/2018/01/14/find-closest-element-click-coordinates-javascript-coding-question/
+      // https://developer.mozilla.org/en-US/docs/Web/API/DocumentOrShadowRoot/elementFromPoint
+      // https://stackoverflow.com/questions/7322490/finding-element-nearest-to-clicked-point
+      console.log("handle page click outside link (find nearest link)", e);
     }
   };
 
@@ -42,15 +50,24 @@ export default props => {
     // setPageIsLoaded(false);
 
     async function fetchPageContents() {
-      const url = `https://api.texttv.nu/api/get/${pageNum}?app=texttvapp`;
+      // Hämta senaste sidan om bara pageNum,
+      // hämta arkiv-sida om pageId
+      let url;
+
+      if (pageId) {
+        url = `https://api.texttv.nu/api/getid/${pageId}/${pageNum}?app=texttvapp`;
+      } else {
+        url = `https://api.texttv.nu/api/get/${pageNum}?app=texttvapp`;
+      }
+
       const response = await fetch(url);
       const pageData = await response.json();
 
       // Vänta lite med att sätta ny sidata pga felsökning och test osv.
       // setTimeout(() => {
-        setPageData(pageData);
-        setPageIsLoading(false);
-        // setPageIsLoaded(true);
+      setPageData(pageData);
+      setPageIsLoading(false);
+      // setPageIsLoaded(true);
       // }, 1000);
     }
 
@@ -60,7 +77,7 @@ export default props => {
       console.log("texttv page setComponentIsUnloaded");
       // setComponentIsUnloaded(true);
     };
-  }, [pageNum, refreshTime]);
+  }, [pageNum, pageId, refreshTime]);
 
   // Wrap each page inside a card
   const pagesHtml = pageData.map(page => {

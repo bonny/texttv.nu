@@ -4,12 +4,22 @@ import "moment/locale/sv";
 import Moment from "react-moment";
 
 const PagesListing = props => {
-  const { pages, history } = props;
+  // linkto = pagenum | pageid
+  const { pages, history, linkTo = "pagenum" } = props;
 
   return pages.map((page, index, arr) => {
     // No line on last item.
     const lines = index === arr.length - 1 ? "none" : "inset";
-    const link = `/sida/${page.page_num}`;
+    let link;
+
+    switch (linkTo) {
+      case "pageid":
+        link = `/arkivsida/${page.page_num}/${page.id}`;
+        break;
+      case "pagenum":
+      default:
+        link = `/sida/${page.page_num}`;
+    }
 
     return (
       <IonItem

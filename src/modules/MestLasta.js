@@ -14,13 +14,6 @@ const MestLastaLista = props => {
     // Fetch content for segment when segment day is changed.
     useEffect(() => {
       let isUnmounted = false;
-      // let dateYmd;
-      // let dateToday = new Date();
-      // let dateYesterday = new Date();
-      // dateYesterday.setDate(dateToday.getDate() - 1);
-
-      // let dayjsToday = dayjs(dateToday);
-      // let dayjsYesterday = dayjs(dateToday);
       let dateYMD;
       let todayYMD = dayjs().format("YYYY-MM-DD");
       let yesterdayYMD = dayjs()
@@ -67,7 +60,7 @@ const MestLastaLista = props => {
       };
     }, [day, count, refreshTime]);
 
-    const Pages = <PagesListing pages={pages} history={history} />;
+    const Pages = <PagesListing pages={pages} history={history} linkTo="pageid" />;
 
     return (
       <>

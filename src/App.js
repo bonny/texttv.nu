@@ -95,6 +95,7 @@ function App(props) {
                 <IonTabs>
                   <IonRouterOutlet>
                     <Route path="/sida/:pageNum" component={PageTextTV} />
+                    <Route path="/arkivsida/:pageNum/:pageId/" component={PageTextTV} />
                     <Route path="/test" component={PageTest} />
                     <Route
                       path="/:tab(hem)"
@@ -104,7 +105,7 @@ function App(props) {
                       exact={true}
                     />
                     <Route
-                      path="/:tab(populart)"
+                      path="/:tab(mest-last)"
                       component={TabPopulart}
                       exact={true}
                     />
@@ -137,7 +138,7 @@ function App(props) {
                       <IonLabel>Nyast</IonLabel>
                     </IonTabButton>
 
-                    <IonTabButton tab="populart" href="/populart">
+                    <IonTabButton tab="populart" href="/mest-last">
                       <IonIcon name="trending-up" mode="md" />
                       <IonLabel>Mest läst</IonLabel>
                     </IonTabButton>

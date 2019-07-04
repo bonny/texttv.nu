@@ -41,17 +41,17 @@ export default props => {
     doRefresh();
   };
 
-  let pageTitle;
-  switch (selectedSegment) {
-    case "sports":
-      pageTitle = "Nyaste sportsidorna";
-      break;
-    case "news":
-      pageTitle = "Nyaste nyhetssidorna";
-      break;
-    default:
-      pageTitle = "Nyaste sidorna";
-  }
+  // let pageTitle;
+  // switch (selectedSegment) {
+  //   case "sports":
+  //     pageTitle = "Nyaste sportsidorna";
+  //     break;
+  //   case "news":
+  //     pageTitle = "Nyaste nyhetssidorna";
+  //     break;
+  //   default:
+  //     pageTitle = "Nyaste sidorna";
+  // }
 
   return (
     <>
