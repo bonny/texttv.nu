@@ -12,7 +12,7 @@ import {
   IonTabs,
   IonToast,
   IonButton,
-  IonContent,
+  IonContent
   // IonCard,
   // IonCardHeader,
   // IonCardTitle,
@@ -95,7 +95,10 @@ function App(props) {
                 <IonTabs>
                   <IonRouterOutlet>
                     <Route path="/sida/:pageNum" component={PageTextTV} />
-                    <Route path="/arkivsida/:pageNum/:pageId/" component={PageTextTV} />
+                    <Route
+                      path="/arkivsida/:pageNum/:pageId/"
+                      component={PageTextTV}
+                    />
                     <Route path="/test" component={PageTest} />
                     <Route
                       path="/:tab(hem)"
@@ -128,7 +131,11 @@ function App(props) {
                       {/* <IonBadge color="danger">6</IonBadge> */}
                     </IonTabButton>
 
-                    <IonTabButton tab="sidor" href="/sidor">
+                    <IonTabButton
+                      tab="sidor"
+                      href="/sidor"
+                      className="ion-hide-lg-up"
+                    >
                       <IonIcon name="list-box" mode="md" />
                       <IonLabel>Sidor</IonLabel>
                     </IonTabButton>
@@ -142,7 +149,6 @@ function App(props) {
                       <IonIcon name="trending-up" mode="md" />
                       <IonLabel>Mest läst</IonLabel>
                     </IonTabButton>
-
                   </IonTabBar>
                 </IonTabs>
               </IonPage>
