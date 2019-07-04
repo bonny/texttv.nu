@@ -103,3 +103,6 @@ ion-segment-button {
   --padding-start: 5px;
 } */
 
+ion-tab-bar[color="dark"] {
+  border-color: rgb(61, 84, 102);
+}

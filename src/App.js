@@ -132,7 +132,7 @@ function App(props) {
                   />
                 </IonRouterOutlet>
 
-                <IonTabBar slot="bottom" color="primary">
+                <IonTabBar slot="bottom" color="dark">
                   <IonTabButton tab="hem" href="/hem">
                     <IonIcon icon={home} mode="md" />
                     <IonLabel>Hem</IonLabel>
