@@ -10,28 +10,16 @@ import {
   IonSplitPane,
   IonTabBar,
   IonTabButton,
-  IonTabs,
-  IonToast,
-  IonButton,
-  IonContent
-  // IonCard,
+  IonTabs // IonCard,
   // IonCardHeader,
   // IonCardTitle,
   // IonCardSubtitle
 } from "@ionic/react";
-import {
-  home,
-  listBox,
-  clock,
-  trendingUp,
-  refresh,
-  close
-} from "ionicons/icons";
-import React, { useState } from "react";
+import { home, listBox, clock, trendingUp } from "ionicons/icons";
+import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import { MenuWithRouter } from "./Menu";
 import PageTextTV from "./pages/page-TextTV.js";
-import TextTVPage from "./modules/TextTVPage";
 // import { TabHome } from "./tab-home";
 import TabNyast from "./pages/tab-nyast";
 import TabPopulart from "./pages/tab-populart";
@@ -39,49 +27,7 @@ import TabSidor from "./pages/tab-sidor";
 import "./theme.css";
 import "./App.css";
 import Startsida from "./pages/tab-startsida";
-
-const PageTest = props => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClick = props => {
-    setIsOpen(true);
-  };
-
-  return (
-    <IonContent>
-      <IonButton onClick={handleClick}>Toast</IonButton>
-      <IonToast
-        isOpen={isOpen}
-        onDidDismiss={() => setIsOpen(false)}
-        message="En uppdatering av sidan finns"
-        position="bottom"
-        duration="3000"
-        translucent={true}
-        buttons={[
-          {
-            side: "end",
-            icon: refresh,
-            text: "Ladda om",
-            role: "primary",
-            handler: () => {
-              console.log("Favorite clicked");
-            }
-          },
-          {
-            side: "end",
-            icon: close,
-            text: "",
-            role: "cancel",
-            handler: () => {
-              console.log("Cancel clicked");
-            }
-          }
-        ]}
-      />
-      <TextTVPage pageNum="100-103" />
-    </IonContent>
-  );
-};
+import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
 
 function App(props) {
   // const [currentTab, setCurrentTab] = useState("hem");
@@ -108,6 +54,8 @@ function App(props) {
                     component={PageTextTV}
                   />
                   <Route path="/test" component={PageTest} />
+                  <Route path="/testar" component={PageTestar} exact={true} />
+                  <Route path="/testar/undersida/:undersida/" component={PageTestarUndersida} />
                   <Route
                     path="/:tab(hem)"
                     render={props => {
