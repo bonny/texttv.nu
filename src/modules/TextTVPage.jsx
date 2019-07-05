@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { SkeletonTextTVPage } from "../SkeletonTextTVPage";
 // import { FontSubscriber } from "react-with-async-fonts";
 
+// const debug = false;
+
 function createMarkupForPage(page) {
   return {
     __html: page.content
@@ -14,34 +16,34 @@ function isValidHit(el) {
   return el && el.nodeName === "A";
 }
 
-function drawDot(parent, x, y) {
-  // console.log(parent, x, y);
-  var dot = document.createElement("b");
-  dot.setAttribute("style", "top: " + y + "px; left: " + x + "px;");
-  //    dot.style.top = y + 'px';
-  //    dot.style.left = x + 'px';
-  parent.appendChild(dot);
-}
+// function drawDot(parent, x, y) {
+//   // console.log(parent, x, y);
+//   var dot = document.createElement("b");
+//   dot.setAttribute("style", "top: " + y + "px; left: " + x + "px;");
+//   //    dot.style.top = y + 'px';
+//   //    dot.style.left = x + 'px';
+//   parent.appendChild(dot);
+// }
 
 function hitTest(x, y) {
-  const debug = false;
   var element,
     hit = document.elementFromPoint(x, y);
+
   if (isValidHit(hit)) {
     element = hit;
   }
 
   var i = 0;
 
-  if (debug) {
-    var dotParent = document.createElement("div");
-    dotParent.classList.add("dot-container");
-  }
+  // if (debug) {
+  //   var dotParent = document.createElement("div");
+  //   dotParent.classList.add("dot-container");
+  // }
 
   while (!element) {
     i = i + 3;
 
-    if (i > 30) {
+    if (i > 40) {
       // console.log("seat belt!");
       break;
     }
@@ -75,26 +77,39 @@ function hitTest(x, y) {
       );
     }
 
-    points.some(function(coordinates) {
-      var hit = document.elementFromPoint.apply(document, coordinates);
-      if (debug) {
-        drawDot(dotParent, coordinates[0], coordinates[1]);
-      }
-      if (isValidHit(hit)) {
-        element = hit;
-        return true;
-      }
-      return false;
-    });
+    var foundPoints = points.find(pointsSome);
+    if (foundPoints) {
+      // console.log("foundPoints", foundPoints);
+      element = document.elementFromPoint.apply(document, foundPoints);
+    }
+
+    // if (elem) {
+    //   element = hit;
+    // }
   }
 
-  if (debug) {
-    var section = document.querySelector("ion-app");
-    if (dotParent && section) section.appendChild(dotParent);
-  }
+  // if (debug) {
+  //   var section = document.querySelector("ion-app");
+  //   if (dotParent && section) section.appendChild(dotParent);
+  // }
 
   return element;
 }
+
+const pointsSome = function(coordinates) {
+  var hit = document.elementFromPoint.apply(document, coordinates);
+  // if (debug) {
+  //   drawDot(dotParent, coordinates[0], coordinates[1]);
+  // }
+  if (isValidHit(hit)) {
+    //element = hit;
+    // console.log("valid hit", hit);
+
+    return hit;
+  }
+
+  return false;
+};
 
 const getNearestLink = e => {
   // console.log("getNearestLink");
