@@ -8,6 +8,92 @@ function createMarkupForPage(page) {
   };
 }
 
+function isValidHit(el) {
+  // console.log("isValidHit", el.nodeName);
+  //return el && el.webkitMatchesSelector("aside");
+  return el && el.nodeName === "A";
+}
+
+// function drawDot(parent, x, y) {
+//   // console.log(parent, x, y);
+//   var dot = document.createElement("b");
+//   dot.setAttribute("style", "top: " + y + "px; left: " + x + "px;");
+//   //    dot.style.top = y + 'px';
+//   //    dot.style.left = x + 'px';
+//   parent.appendChild(dot);
+// }
+
+function hitTest(x, y) {
+  var element,
+    hit = document.elementFromPoint(x, y);
+  if (isValidHit(hit)) {
+    element = hit;
+  }
+
+  var i = 0;
+  // var dotParent = document.createElement("div");
+  // dotParent.classList.add("dot-container");
+  while (!element) {
+    i = i + 7;
+
+    if (i > 40) {
+      console.log("seat belt!");
+      break;
+    }
+
+    var increment = i / Math.sqrt(2);
+    var points = [
+      [x - increment, y - increment],
+      [x + increment, y - increment],
+      [x + increment, y + increment],
+      [x - increment, y + increment]
+    ];
+
+    // Threshold until we start testing for direct horizontal and vertical coordinates.
+    if (i > 40) {
+      points.push([x, y - i], [x + i, y], [x, y + i], [x - i, y]);
+    }
+
+    // Threshold until we start testing for direct horizontal and vertical coordinates.
+    if (i > 100) {
+      var increment = Math.floor(i / (2 * Math.sqrt(2)));
+      points.push(
+        [x - i, y - increment],
+        [x - increment, y - i],
+        [x + increment, y - i],
+        [x + i, y - increment],
+        [x + i, y + increment],
+        [x + increment, y + i],
+        [x - increment, y + i],
+        [x - i, y + increment]
+      );
+    }
+
+    points.some(function(coordinates) {
+      var hit = document.elementFromPoint.apply(document, coordinates);
+      // drawDot(dotParent, coordinates[0], coordinates[1]);
+      if (isValidHit(hit)) {
+        element = hit;
+        return true;
+      }
+    });
+  }
+
+  // var section = document.querySelector("ion-app");
+  // if (dotParent && section) section.appendChild(dotParent);
+
+  return element;
+}
+
+const getNearestLink = e => {
+  console.log("getNearestLink");
+  console.log("clientXY", e.clientX, e.clientY);
+  // console.log("pageXY", e.pageX, e.pageY);
+  const nearestLink = hitTest(e.clientX, e.clientY);
+  //console.log("nearestLink", nearestLink);
+  return nearestLink;
+};
+
 export default props => {
   const { pageNum, pageId, children, history, refreshTime } = props;
 
@@ -20,11 +106,14 @@ export default props => {
     e.preventDefault();
 
     const target = e.target;
+    const link = getNearestLink(e);
+    //console.log('link', link);
+    //return;
 
-    if (target.nodeName === "A") {
+    if (link.nodeName === "A") {
       // This is a link.
       // href is '/100', '/101-102', '150,163'
-      let href = target.getAttribute("href");
+      let href = link.getAttribute("href");
 
       // Make sure string begins with "/".
       if (!href.startsWith("/")) {
@@ -37,7 +126,8 @@ export default props => {
       // https://franciscohodge.com/2018/01/14/find-closest-element-click-coordinates-javascript-coding-question/
       // https://developer.mozilla.org/en-US/docs/Web/API/DocumentOrShadowRoot/elementFromPoint
       // https://stackoverflow.com/questions/7322490/finding-element-nearest-to-clicked-point
-      console.log("handle page click outside link (find nearest link)", e);
+      // console.log("handle page click outside link (find nearest link)", e);
+      // getNearestLink(e);
     }
   };
 

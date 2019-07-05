@@ -1,30 +1,17 @@
 import {
-  IonToast,
+  IonBackButton,
   IonButton,
+  IonButtons,
   IonContent,
   IonHeader,
-  IonCardHeader,
-  IonTitle,
   IonPage,
-  IonTabs,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonLabel,
-  IonToolbar,
-  IonButtons,
-  IonBackButton
-
-  // IonCard,
-  // IonCardHeader,
-  // IonCardTitle,
-  // IonCardSubtitle
+  IonTitle,
+  IonToast,
+  IonToolbar
 } from "@ionic/react";
-import { refresh, close } from "ionicons/icons";
+import { close, refresh } from "ionicons/icons";
 import React, { useState } from "react";
-import { Redirect, Route } from "react-router-dom";
 import TextTVPage from "../modules/TextTVPage";
-import Header from "../modules/Header";
 
 export const PageTest = props => {
   const [isOpen, setIsOpen] = useState(false);
