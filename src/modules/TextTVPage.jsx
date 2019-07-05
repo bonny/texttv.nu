@@ -14,14 +14,14 @@ function isValidHit(el) {
   return el && el.nodeName === "A";
 }
 
-// function drawDot(parent, x, y) {
-//   // console.log(parent, x, y);
-//   var dot = document.createElement("b");
-//   dot.setAttribute("style", "top: " + y + "px; left: " + x + "px;");
-//   //    dot.style.top = y + 'px';
-//   //    dot.style.left = x + 'px';
-//   parent.appendChild(dot);
-// }
+function drawDot(parent, x, y) {
+  // console.log(parent, x, y);
+  var dot = document.createElement("b");
+  dot.setAttribute("style", "top: " + y + "px; left: " + x + "px;");
+  //    dot.style.top = y + 'px';
+  //    dot.style.left = x + 'px';
+  parent.appendChild(dot);
+}
 
 function hitTest(x, y) {
   var element,
@@ -31,17 +31,19 @@ function hitTest(x, y) {
   }
 
   var i = 0;
-  // var dotParent = document.createElement("div");
-  // dotParent.classList.add("dot-container");
-  while (!element) {
-    i = i + 7;
+  var dotParent = document.createElement("div");
+  dotParent.classList.add("dot-container");
 
-    if (i > 40) {
-      console.log("seat belt!");
+  while (!element) {
+    i = i + 3;
+
+    if (i > 30) {
+      // console.log("seat belt!");
       break;
     }
 
     var increment = i / Math.sqrt(2);
+    // increment = i;
     var points = [
       [x - increment, y - increment],
       [x + increment, y - increment],
@@ -50,12 +52,12 @@ function hitTest(x, y) {
     ];
 
     // Threshold until we start testing for direct horizontal and vertical coordinates.
-    if (i > 40) {
+    if (i > 5) {
       points.push([x, y - i], [x + i, y], [x, y + i], [x - i, y]);
     }
 
     // Threshold until we start testing for direct horizontal and vertical coordinates.
-    if (i > 100) {
+    if (i > 10) {
       var increment = Math.floor(i / (2 * Math.sqrt(2)));
       points.push(
         [x - i, y - increment],
@@ -71,7 +73,7 @@ function hitTest(x, y) {
 
     points.some(function(coordinates) {
       var hit = document.elementFromPoint.apply(document, coordinates);
-      // drawDot(dotParent, coordinates[0], coordinates[1]);
+      drawDot(dotParent, coordinates[0], coordinates[1]);
       if (isValidHit(hit)) {
         element = hit;
         return true;
@@ -79,15 +81,15 @@ function hitTest(x, y) {
     });
   }
 
-  // var section = document.querySelector("ion-app");
-  // if (dotParent && section) section.appendChild(dotParent);
+  var section = document.querySelector("ion-app");
+  if (dotParent && section) section.appendChild(dotParent);
 
   return element;
 }
 
 const getNearestLink = e => {
-  console.log("getNearestLink");
-  console.log("clientXY", e.clientX, e.clientY);
+  // console.log("getNearestLink");
+  // console.log("clientXY", e.clientX, e.clientY);
   // console.log("pageXY", e.pageX, e.pageY);
   const nearestLink = hitTest(e.clientX, e.clientY);
   //console.log("nearestLink", nearestLink);
@@ -107,10 +109,8 @@ export default props => {
 
     const target = e.target;
     const link = getNearestLink(e);
-    //console.log('link', link);
-    //return;
-
-    if (link.nodeName === "A") {
+    
+    if (link && link.nodeName === "A") {
       // This is a link.
       // href is '/100', '/101-102', '150,163'
       let href = link.getAttribute("href");
@@ -120,15 +120,15 @@ export default props => {
         href = `/${href}`;
       }
 
-      console.log("handle link click", href);
+      // console.log("handle link click", href);
       history.push(`/sida${href}`);
-    } else {
+    } // else {
       // https://franciscohodge.com/2018/01/14/find-closest-element-click-coordinates-javascript-coding-question/
       // https://developer.mozilla.org/en-US/docs/Web/API/DocumentOrShadowRoot/elementFromPoint
       // https://stackoverflow.com/questions/7322490/finding-element-nearest-to-clicked-point
       // console.log("handle page click outside link (find nearest link)", e);
       // getNearestLink(e);
-    }
+    // }
   };
 
   // Load page from TextTV.nu when pageNum or refreshTime is changed
