@@ -24,6 +24,7 @@ function drawDot(parent, x, y) {
 }
 
 function hitTest(x, y) {
+  const debug = false;
   var element,
     hit = document.elementFromPoint(x, y);
   if (isValidHit(hit)) {
@@ -31,8 +32,11 @@ function hitTest(x, y) {
   }
 
   var i = 0;
-  var dotParent = document.createElement("div");
-  dotParent.classList.add("dot-container");
+
+  if (debug) {
+    var dotParent = document.createElement("div");
+    dotParent.classList.add("dot-container");
+  }
 
   while (!element) {
     i = i + 3;
@@ -58,7 +62,7 @@ function hitTest(x, y) {
 
     // Threshold until we start testing for direct horizontal and vertical coordinates.
     if (i > 10) {
-      var increment = Math.floor(i / (2 * Math.sqrt(2)));
+      increment = Math.floor(i / (2 * Math.sqrt(2)));
       points.push(
         [x - i, y - increment],
         [x - increment, y - i],
@@ -73,16 +77,21 @@ function hitTest(x, y) {
 
     points.some(function(coordinates) {
       var hit = document.elementFromPoint.apply(document, coordinates);
-      drawDot(dotParent, coordinates[0], coordinates[1]);
+      if (debug) {
+        drawDot(dotParent, coordinates[0], coordinates[1]);
+      }
       if (isValidHit(hit)) {
         element = hit;
         return true;
       }
+      return false;
     });
   }
 
-  var section = document.querySelector("ion-app");
-  if (dotParent && section) section.appendChild(dotParent);
+  if (debug) {
+    var section = document.querySelector("ion-app");
+    if (dotParent && section) section.appendChild(dotParent);
+  }
 
   return element;
 }
@@ -107,9 +116,9 @@ export default props => {
   const handleClick = e => {
     e.preventDefault();
 
-    const target = e.target;
+    // const target = e.target;
     const link = getNearestLink(e);
-    
+
     if (link && link.nodeName === "A") {
       // This is a link.
       // href is '/100', '/101-102', '150,163'
@@ -123,11 +132,11 @@ export default props => {
       // console.log("handle link click", href);
       history.push(`/sida${href}`);
     } // else {
-      // https://franciscohodge.com/2018/01/14/find-closest-element-click-coordinates-javascript-coding-question/
-      // https://developer.mozilla.org/en-US/docs/Web/API/DocumentOrShadowRoot/elementFromPoint
-      // https://stackoverflow.com/questions/7322490/finding-element-nearest-to-clicked-point
-      // console.log("handle page click outside link (find nearest link)", e);
-      // getNearestLink(e);
+    // https://franciscohodge.com/2018/01/14/find-closest-element-click-coordinates-javascript-coding-question/
+    // https://developer.mozilla.org/en-US/docs/Web/API/DocumentOrShadowRoot/elementFromPoint
+    // https://stackoverflow.com/questions/7322490/finding-element-nearest-to-clicked-point
+    // console.log("handle page click outside link (find nearest link)", e);
+    // getNearestLink(e);
     // }
   };
 
