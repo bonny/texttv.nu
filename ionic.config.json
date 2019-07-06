@@ -1,7 +1,9 @@
 {
   "name": "TextTV2019",
   "integrations": {
-    "cordova": {},
+    "cordova": {
+      "enabled": false
+    },
     "capacitor": {}
   },
   "type": "react"

@@ -1,3 +1,5 @@
+// import { Capacitor } from "@capacitor/core";
+import { Plugins } from "@capacitor/core";
 import "@ionic/core/css/core.css";
 import "@ionic/core/css/ionic.bundle.css";
 import {
@@ -29,6 +31,10 @@ import "./App.css";
 import Startsida from "./pages/tab-startsida";
 import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
 
+const { SplashScreen } = Plugins;
+
+SplashScreen.hide();
+
 function App(props) {
   // const [currentTab, setCurrentTab] = useState("hem");
   // const [prevTab, setPrevTab] = useState();
@@ -55,7 +61,10 @@ function App(props) {
                   />
                   <Route path="/test" component={PageTest} />
                   <Route path="/testar" component={PageTestar} exact={true} />
-                  <Route path="/testar/undersida/:undersida/" component={PageTestarUndersida} />
+                  <Route
+                    path="/testar/undersida/:undersida/"
+                    component={PageTestarUndersida}
+                  />
                   <Route
                     path="/:tab(hem)"
                     render={props => {

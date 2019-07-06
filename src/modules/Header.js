@@ -42,14 +42,14 @@ const Header = props => {
                 slot="end"
                 onClick={handleMoreActionsClick}
               >
-                <IonIcon slot="icon-only" icon={share} />
+                <IonIcon slot="icon-only" icon={share} mode="md" />
               </IonButton>
               <IonButton
                 fill="clear"
                 slot="end"
                 onClick={handleRefreshBtnClick}
               >
-                <IonIcon slot="icon-only" icon={refresh} />
+                <IonIcon slot="icon-only" icon={refresh} mode="md" />
               </IonButton>
             </IonButtons>
           </IonToolbar>
