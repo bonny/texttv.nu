@@ -121,3 +121,7 @@ b {
   height: 1px;
   background-color: green;
 }
+
+.TextTVPage {
+  user-select: auto;
+}
