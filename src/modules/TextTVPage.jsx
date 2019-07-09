@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { SkeletonTextTVPage } from "../SkeletonTextTVPage";
+// import { SkeletonTextTVPage } from "../SkeletonTextTVPage";
 // import { FontSubscriber } from "react-with-async-fonts";
 
 // const debug = false;
@@ -204,7 +204,7 @@ export default props => {
     return () => {
       // console.log("texttv page setComponentIsCleanUped", pageNum, pageId);
       // setComponentIsCleanUped(true);
-      console.log(pageNum, 'cleanup');
+      console.log(pageNum, "cleanup");
       // setPageData([]);
     };
   }, [pageNum, pageId, refreshTime]);
@@ -225,10 +225,5 @@ export default props => {
     );
   });
 
-  return (
-    <>
-      <p>PageNum: {pageNum}</p>
-      {pageIsLoading && <SkeletonTextTVPage />} {pagesHtml}
-    </>
-  );
+  return <>{pagesHtml}</>;
 };

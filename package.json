@@ -7,6 +7,8 @@
     "@capacitor/core": "1.1.0",
     "@capacitor/ios": "^1.1.0",
     "@ionic/react": "0.0.6",
+    "animate.css": "^3.7.2",
+    "classnames": "^2.2.6",
     "cordova-ios": "5.0.1",
     "dayjs": "^1.8.14",
     "fitty": "^2.2.6",

@@ -1,3 +1,5 @@
+/* @import "~animate.css/animate.css"; */
+
 /* ion-content{
   --ion-background-color:#111D12;
 } */
@@ -122,6 +124,21 @@ b {
   background-color: green;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 4px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .TextTVPage {
   user-select: auto;
+  animation-duration: .15s;
+  animation-fill-mode: both;
+  animation-name: fadeInUp;
 }
