@@ -1,7 +1,7 @@
 import { IonSkeletonText } from "@ionic/react";
 import React from "react";
 
-let fortyChars = ' '.repeat(40);
+let fortyChars = " ".repeat(40);
 
 let html = `<span class="toprow">${fortyChars}</span>
 <span>${fortyChars}</span>
@@ -28,8 +28,6 @@ let html = `<span class="toprow">${fortyChars}</span>
 <span>${fortyChars}</span>
 <span>${fortyChars}</span>
 `;
-
-
 
 export function SkeletonTextTVPage() {
   // const skeletonWrapStyle = {
@@ -115,32 +113,32 @@ export function SkeletonTextTVPage() {
   // );
 
   const skeletonTextStyle = {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
     top: 0,
     bottom: 0,
-    backgroundColor: 'rgba(255,255,255,0.1)'
-  }
+    backgroundColor: "rgb(17,30,63)",
+    maxWidth: "20em",
+    margin: "0 auto"
+  };
 
   const skeletonPage2 = (
     <div className="TextTVPage TextTVPage--skeleton">
-    <div className="TextTVPage__wrap">
-      <div
-        className="TextTVPage__inner"
-      >
-        <IonSkeletonText animated style={skeletonTextStyle}></IonSkeletonText>
-        <div className="root" dangerouslySetInnerHTML={createMarkup()}></div>
+      <div className="TextTVPage__wrap">
+        <div className="TextTVPage__inner">
+          <IonSkeletonText animated style={skeletonTextStyle} />
+          <div className="root" dangerouslySetInnerHTML={createMarkup()} />
+        </div>
       </div>
     </div>
-  </div>
-  )
+  );
 
-function createMarkup() {
-  return {
-    __html: html
-  };
-}
+  function createMarkup() {
+    return {
+      __html: html
+    };
+  }
 
   return skeletonPage2;
 }
