@@ -15,7 +15,9 @@
 
         ## Hitta uppdatering till sida
         // hitta ID på sidan som har högst id och kolla den
-        // http://texttv.nu/api/updated/100,300,700/1439310425
+		// http://texttv.nu/api/updated/100,300,700/1439310425
+		// kod körs var femte sekund i existerande app
+		// https://github.com/bonny/texttv.nu/blob/master/app/texttvnucodovaapp/www/js/texttv.backbone.app.js#L675
 		var apiEndpoint = "http://api.texttv.nu/api/updated/" + pageRange + "/" + pageWithMaxDate.date_updated_unix;
 
 		---
