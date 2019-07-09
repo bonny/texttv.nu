@@ -123,7 +123,7 @@ const getNearestLink = e => {
 export default props => {
   const { pageNum, pageId, children, history, refreshTime } = props;
 
-  // const [componentIsUnloaded, setComponentIsUnloaded] = useState(false);
+  // const [componentIsCleanUped, setComponentIsCleanUped] = useState(false);
   const [pageData, setPageData] = useState([]);
   // const [pageIsLoaded, setPageIsLoaded] = useState(false);
   const [pageIsLoading, setPageIsLoading] = useState(false);
@@ -157,7 +157,8 @@ export default props => {
 
   // Load page from TextTV.nu when pageNum or refreshTime is changed
   useEffect(() => {
-    console.log("texttv-page useEffect");
+    console.log("texttv-page useEffect, before fetch", pageNum, pageId);
+    // console.log("isComponentCleaned", componentIsCleanUped);
 
     setPageData([]);
     setPageIsLoading(true);
@@ -168,10 +169,16 @@ export default props => {
       // hämta arkiv-sida om pageId
       let url;
 
+      // Set to seconds integer to fake a slow answer.
+      const slowAnswer = false;
+      let slowAnswerQueryString = slowAnswer
+        ? `&slow_answer=${slowAnswer}`
+        : "";
+
       if (pageId) {
-        url = `https://api.texttv.nu/api/getid/${pageId}/${pageNum}?app=texttvapp`;
+        url = `https://api.texttv.nu/api/getid/${pageId}/${pageNum}?app=texttvapp${slowAnswerQueryString}`;
       } else {
-        url = `https://api.texttv.nu/api/get/${pageNum}?app=texttvapp`;
+        url = `https://api.texttv.nu/api/get/${pageNum}?app=texttvapp${slowAnswerQueryString}`;
       }
 
       const response = await fetch(url);
@@ -179,17 +186,26 @@ export default props => {
 
       // Vänta lite med att sätta ny sidata pga felsökning och test osv.
       // setTimeout(() => {
+      console.log("texttv-page useEffect, after fetch", pageNum, pageId);
       setPageData(pageData);
       setPageIsLoading(false);
       // setPageIsLoaded(true);
       // }, 1000);
+      console.log(
+        "texttv-page useEffect, after fetch and set page data done",
+        pageNum,
+        pageId
+      );
     }
 
     fetchPageContents();
 
+    // Cleanup when component is moved out of screen.
     return () => {
-      console.log("texttv page setComponentIsUnloaded", pageNum, pageId);
-      // setComponentIsUnloaded(true);
+      // console.log("texttv page setComponentIsCleanUped", pageNum, pageId);
+      // setComponentIsCleanUped(true);
+      console.log(pageNum, 'cleanup');
+      // setPageData([]);
     };
   }, [pageNum, pageId, refreshTime]);
 
@@ -211,6 +227,7 @@ export default props => {
 
   return (
     <>
+      <p>PageNum: {pageNum}</p>
       {pageIsLoading && <SkeletonTextTVPage />} {pagesHtml}
     </>
   );
