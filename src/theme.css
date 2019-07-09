@@ -127,7 +127,7 @@ b {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translate3d(0, 4px, 0);
+    transform: translate3d(0, 10px, 0);
   }
 
   to {
@@ -138,7 +138,7 @@ b {
 
 .TextTVPage {
   user-select: auto;
-  animation-duration: .15s;
+  animation-duration: .25s;
   animation-fill-mode: both;
   animation-name: fadeInUp;
 }
