@@ -136,9 +136,28 @@ b {
   }
 }
 
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 10px, 0);
+  }
+}
+
 .TextTVPage {
   user-select: auto;
-  animation-duration: .25s;
+  animation-duration: 0.25s;
   animation-fill-mode: both;
   animation-name: fadeInUp;
+}
+
+/* Skeleton-sidan tonas in om laddningen tar mer än några sekunder */
+.TextTVPage--skeleton {
+  animation-name: fadeInDown;
+  animation-delay: 1.5s;
+  animation-duration: .5s;
 }
