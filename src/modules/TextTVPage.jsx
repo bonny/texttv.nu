@@ -1,5 +1,10 @@
+/**
+ * En text-tv-sida.
+ * Visas två sidor på en sida så används denna modul två gånger.
+ */
 import React, { useEffect, useState } from "react";
 import { SkeletonTextTVPage } from "./SkeletonTextTVPage";
+// import { close, refresh } from "ionicons/icons";
 // import { FontSubscriber } from "react-with-async-fonts";
 
 // const debug = false;
@@ -125,6 +130,7 @@ export default props => {
 
   // const [componentIsCleanUped, setComponentIsCleanUped] = useState(false);
   const [pageData, setPageData] = useState([]);
+  
   // const [pageIsLoaded, setPageIsLoaded] = useState(false);
   const [pageIsLoading, setPageIsLoading] = useState(true);
 
@@ -209,18 +215,7 @@ export default props => {
     };
   }, [pageNum, pageId, refreshTime]);
 
-  // Leta efter uppdateringar av sidan
-  useEffect(() => {
-    const checkForUpdateInterval = 2500;
-    const checkForUpdate = pageNum => {
-      console.log("checking for updates");
-      
-    };
-
-    setInterval(checkForUpdate, checkForUpdateInterval);
-  }, [pageNum]);
-
-  // Wrap each page inside a card
+  // Wrap each page.
   const pagesHtml = pageData.map(page => {
     return (
       <div className="TextTVPage" key={page.id}>

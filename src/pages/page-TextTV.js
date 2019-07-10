@@ -1,5 +1,8 @@
-import { IonActionSheet, IonContent } from "@ionic/react";
-import React, { useState } from "react";
+/**
+ * Visar en sida med en eller flera text-tv-sidor.
+ */
+import { IonActionSheet, IonContent, IonToast } from "@ionic/react";
+import React, { useState, useEffect } from "react";
 import TextTVPage from "../modules/TextTVPage";
 import Header from "../modules/Header";
 import TextTVRefresher from "../modules/TextTVRefresher";
@@ -17,6 +20,7 @@ const PageTextTV = props => {
   const pageId = props.pageId || match.params.pageId;
   const [actionSheetOpened, setActionSheetOpened] = useState(false);
   const [refreshTime, setRefreshTime] = useState(Math.floor(Date.now() / 1000));
+  const [pageUpdatedToastVisible, setPageUpdatedToastVisible] = useState(false);
 
   let pageTitle = title || pageNum;
 
@@ -59,6 +63,18 @@ const PageTextTV = props => {
   // const HeaderMemoed = React.memo(props => {
   //   return <Header {...props} />;
   // });
+
+  // Leta efter uppdateringar av sidan eller sidorna.
+  useEffect(() => {
+    const checkForUpdateInterval = 2500;
+    const checkForUpdate = pageNum => {
+      console.log("checking for updates");
+      setPageUpdatedToastVisible(true);
+    };
+
+    setInterval(checkForUpdate, checkForUpdateInterval);
+  }, [pageNum]);
+
 
   return (
     <>
@@ -111,6 +127,38 @@ const PageTextTV = props => {
         />
 
         {children}
+
+        <IonToast
+          isOpen={pageUpdatedToastVisible}
+          onDidDismiss={() => {
+            // console.log("on did dismiss");
+          }}
+          position="top"
+          header={`Sid ${pageNum}`}
+          message={`En nyare version av sidan finns.`}
+          cssClass="TextTVPage_UpdatedToast"
+          showCloseButton={true}
+          closeButtonText="✕"
+          color="dark"
+          buttons={[
+            {
+              side: "end",
+              text: "Ladda om",
+              role: "confirm",
+              handler: () => {
+                console.log("refresh clicked");
+                updateRefreshTime();
+              }
+            }
+            // {
+            //   text: "Ok",
+            //   role: "cancel",
+            //   handler: () => {
+            //     console.log("Cancel clicked");
+            //   }
+            // }
+          ]}
+        />
       </IonContent>
     </>
   );

@@ -159,5 +159,9 @@ b {
 .TextTVPage--skeleton {
   animation-name: fadeInDown;
   animation-delay: 1.5s;
-  animation-duration: .5s;
+  animation-duration: 0.5s;
+}
+
+.TextTVPage_UpdatedToast {
+  top: 4em;
 }
