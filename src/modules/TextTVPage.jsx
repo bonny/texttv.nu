@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import { SkeletonTextTVPage } from "../SkeletonTextTVPage";
+import { SkeletonTextTVPage } from "./SkeletonTextTVPage";
 // import { FontSubscriber } from "react-with-async-fonts";
 
 // const debug = false;
@@ -126,7 +126,7 @@ export default props => {
   // const [componentIsCleanUped, setComponentIsCleanUped] = useState(false);
   const [pageData, setPageData] = useState([]);
   // const [pageIsLoaded, setPageIsLoaded] = useState(false);
-  const [pageIsLoading, setPageIsLoading] = useState(false);
+  const [pageIsLoading, setPageIsLoading] = useState(true);
 
   const handleClick = e => {
     e.preventDefault();
@@ -225,5 +225,9 @@ export default props => {
     );
   });
 
-  return <>{pagesHtml}</>;
+  return (
+    <>
+      {pageIsLoading && <SkeletonTextTVPage pageNum={pageNum} />} {pagesHtml}
+    </>
+  );
 };
