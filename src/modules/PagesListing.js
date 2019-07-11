@@ -11,7 +11,6 @@ const ListItem = props => {
       button
       detail
       onClick={e => {
-        console.log("pushed link", link, history);
         history.push(link);
       }}
       lines={lines}
