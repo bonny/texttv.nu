@@ -6,12 +6,14 @@ const TextTVSearchBar = props => {
   // const [isLoading, setIsLoading] = useState(false);
 
   const handlePageNumInputChange = e => {
-    const pageNum = e.target.value;
+    const target = e.target;
+    const pageNum = target.value;
     if (pageNum.length === 3) {
       // setIsLoading(true);
       history.push(`/sida/${pageNum}`);
       document.querySelector("ion-menu-controller").close();
-      e.target.value = "";
+      target.value = "";
+      target.blur();
     }
   };
 
