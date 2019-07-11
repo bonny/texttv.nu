@@ -29,7 +29,7 @@ const Header = props => {
     <>
       {headerStyle === "HEADER_STYLE_DEFAULT" && (
         <IonHeader>
-          <IonToolbar color="primary">
+          <IonToolbar color="dark" mode="md">
             <IonButtons slot="start">
               <IonBackButton defaultHref={backButtonDefaultHref} />
             </IonButtons>
@@ -58,7 +58,7 @@ const Header = props => {
 
       {headerStyle === "HEADER_STYLE_STARTPAGE" && (
         <IonHeader>
-          <IonToolbar color="primary" mode="md">
+          <IonToolbar color="dark" mode="md">
             {/* <IonButtons slot="start">
           <IonBackButton text="" />
         </IonButtons> */}
@@ -83,7 +83,7 @@ const Header = props => {
               {pageTitle}
             </IonTitle>
           </IonToolbar>
-          <IonToolbar color="primary">
+          <IonToolbar color="dark">
             <TextTVSearchBar history={history} />
           </IonToolbar>
         </IonHeader>

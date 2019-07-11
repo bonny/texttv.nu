@@ -42,27 +42,10 @@ const PageTextTV = props => {
     updateRefreshTime();
   };
 
-  // const handlePageNumInputChange = e => {
-  //   const pageNum = e.target.value;
-  //   if (pageNum.length === 3) {
-  //     history.push(`/sida/${pageNum}`);
-  //     e.target.value = "";
-  //     document.querySelector("ion-menu-controller").close();
-  //   }
-  // };
-
-  // const handleTestClick = e => {
-  //   props.history.goBack();
-  // };
-
   const handleMoreActionsClick = e => {
     console.log("handleMoreActionsClick", e);
     setActionSheetOpened(true);
   };
-
-  // const HeaderMemoed = React.memo(props => {
-  //   return <Header {...props} />;
-  // });
 
   // Leta efter uppdateringar av sidan eller sidorna.
   useEffect(() => {
