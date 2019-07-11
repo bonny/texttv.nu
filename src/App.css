@@ -31,7 +31,7 @@
   font-size: 4.9vw;
   text-align: center;
   line-height: 1;
-  padding: 10px 10px 10px 0;
+  padding: 10px 10px 40px 0;
 }
 
 .TextTVPage--skeleton .TextTVPage__inner {
@@ -68,10 +68,6 @@
 
 .TextTVSkeletonPage {
   white-space: pre;
-}
-
-ion-skeleton-text {
-  /* outline: 1px solid red; */
 }
 
 /* .TextTVPage__wrap {
