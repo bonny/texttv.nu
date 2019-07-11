@@ -1,6 +1,5 @@
 /**
  * En text-tv-sida.
- * Visas två sidor på en sida så används denna modul två gånger.
  */
 import React, { useEffect, useState } from "react";
 import { SkeletonTextTVPage } from "./SkeletonTextTVPage";
