@@ -66,10 +66,9 @@ const PageTextTV = props => {
 
   // Leta efter uppdateringar av sidan eller sidorna.
   useEffect(() => {
-    const checkForUpdateInterval = 5000;
+    const checkForUpdateInterval = 10000;
+    let intervalId;
     const checkForUpdate = async () => {
-      console.log("checking for updates for pageNum", pageNum);
-
       // hitta ID på sidan som har högst id och kolla den
       // http://texttv.nu/api/updated/100,300,700/1439310425
       // kod körs var femte sekund i existerande app
@@ -83,11 +82,14 @@ const PageTextTV = props => {
       if (responseJson.is_ok && responseJson.update_available) {
         setPageUpdatedToastVisible(true);
       }
-      console.log("responseJson", responseJson);
-
     };
 
-    setInterval(checkForUpdate, checkForUpdateInterval);
+    intervalId = setInterval(checkForUpdate, checkForUpdateInterval);
+
+    // Sluta leta efter uppdateringar vid cleanup.
+    return () => {
+      clearInterval(intervalId);
+    };
   }, [pageNum, refreshTime]);
 
   return (
