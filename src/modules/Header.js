@@ -58,10 +58,31 @@ const Header = props => {
 
       {headerStyle === "HEADER_STYLE_STARTPAGE" && (
         <IonHeader>
-          <IonToolbar color="dark" mode="md">
-            {/* <IonButtons slot="start">
-          <IonBackButton text="" />
-        </IonButtons> */}
+          <IonToolbar color="primary" mode="md">
+            <IonTitle>
+              <Logo className="texttv-logo" />
+              {pageTitle}
+            </IonTitle>
+
+            {/* <IonButtons slot="end">
+              <IonButton
+                fill="clear"
+                slot="end"
+                onClick={handleMoreActionsClick}
+              >
+                <IonIcon slot="icon-only" icon={share} mode="md" />
+              </IonButton>
+              <IonButton
+                fill="clear"
+                slot="end"
+                onClick={handleRefreshBtnClick}
+              >
+                <IonIcon slot="icon-only" icon={refresh} mode="md" />
+              </IonButton> 
+            </IonButtons>*/}
+          </IonToolbar>
+          <IonToolbar color="dark">
+            <TextTVSearchBar history={history} />
             <IonButtons slot="end">
               <IonButton
                 fill="clear"
@@ -78,13 +99,6 @@ const Header = props => {
                 <IonIcon slot="icon-only" icon={refresh} mode="md" />
               </IonButton>
             </IonButtons>
-            <IonTitle>
-              <Logo className="texttv-logo" />
-              {pageTitle}
-            </IonTitle>
-          </IonToolbar>
-          <IonToolbar color="dark">
-            <TextTVSearchBar history={history} />
           </IonToolbar>
         </IonHeader>
       )}
