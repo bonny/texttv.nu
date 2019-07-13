@@ -61,7 +61,7 @@ const PageTextTV = props => {
 
       const response = await fetch(url);
       const responseJson = await response.json();
-      setPageUpdatedToastVisible(true);
+      // setPageUpdatedToastVisible(true);
       if (responseJson.is_ok && responseJson.update_available) {
         setPageUpdatedToastVisible(true);
       }
@@ -137,7 +137,7 @@ const PageTextTV = props => {
           // header={`Sid ${pageNum}`}
           message={`En nyare version av sidan finns.`}
           cssClass="TextTVPage_UpdatedToast"
-          // showCloseButton={true}
+          showCloseButton={false}
           // closeButtonText="✕"
           color="dark"
           buttons={[
@@ -147,15 +147,19 @@ const PageTextTV = props => {
               role: "confirm",
               handler: () => {
                 console.log("refresh clicked");
+                setPageUpdatedToastVisible(false);
                 updateRefreshTime();
               }
             },
             {
               side: "end",
               text: "✕",
-              role: "cancel",
+              role: "confirm",
               handler: () => {
-                console.log("close clicked");
+                // Göm toast.
+                // För hur länge? För alltid? För alltid för denna sida? Bara för denna uppdatering?
+                console.log("close toast clicked");
+                setPageUpdatedToastVisible(false);
                 // updateRefreshTime();
               }
             }
