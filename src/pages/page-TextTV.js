@@ -133,7 +133,7 @@ const PageTextTV = props => {
             // console.log("on did dismiss");
           }}
           position="top"
-          header={`Sid ${pageNum}`}
+          // header={`Sid ${pageNum}`}
           message={`En nyare version av sidan finns.`}
           cssClass="TextTVPage_UpdatedToast"
           showCloseButton={true}
