@@ -6,7 +6,7 @@
     "@capacitor/android": "^1.1.0",
     "@capacitor/core": "1.1.0",
     "@capacitor/ios": "^1.1.0",
-    "@ionic/react": "0.0.7-2",
+    "@ionic/react": "0.0.7",
     "animate.css": "^3.7.2",
     "classnames": "^2.2.6",
     "cordova-ios": "5.0.1",
