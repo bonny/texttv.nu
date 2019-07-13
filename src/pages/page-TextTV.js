@@ -49,7 +49,7 @@ const PageTextTV = props => {
 
   // Leta efter uppdateringar av sidan eller sidorna.
   useEffect(() => {
-    const checkForUpdateInterval = 10000;
+    const checkForUpdateInterval = 5000;
     let intervalId;
     const checkForUpdate = async () => {
       // hitta ID på sidan som har högst id och kolla den
@@ -61,7 +61,7 @@ const PageTextTV = props => {
 
       const response = await fetch(url);
       const responseJson = await response.json();
-
+      setPageUpdatedToastVisible(true);
       if (responseJson.is_ok && responseJson.update_available) {
         setPageUpdatedToastVisible(true);
       }
@@ -132,7 +132,8 @@ const PageTextTV = props => {
           onDidDismiss={() => {
             // console.log("on did dismiss");
           }}
-          position="top"
+          position="bottom"
+          translucent={true}
           // header={`Sid ${pageNum}`}
           message={`En nyare version av sidan finns.`}
           cssClass="TextTVPage_UpdatedToast"
