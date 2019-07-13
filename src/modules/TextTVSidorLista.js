@@ -27,17 +27,6 @@ export default props => {
           </IonListHeader>
         )}
 
-        {/* <IonItem lines="inset" color="dark">
-          <IonLabel position="stacked">
-            <h2>Gå till sida</h2>
-          </IonLabel>
-          <IonInput
-            placeholder="Skriv in sida 100, 200, 377 …"
-            type="number"
-            // onIonChange={handlePageNumInputChange}
-          />
-        </IonItem> */}
-
         {favorites.map((page, index, arr) => {
           const lines = index === arr.length - 1 ? "none" : "inset";
           const url = `/sida/${page.pages}`;
