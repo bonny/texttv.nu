@@ -136,8 +136,8 @@ const PageTextTV = props => {
           // header={`Sid ${pageNum}`}
           message={`En nyare version av sidan finns.`}
           cssClass="TextTVPage_UpdatedToast"
-          showCloseButton={true}
-          closeButtonText="✕"
+          // showCloseButton={true}
+          // closeButtonText="✕"
           color="dark"
           buttons={[
             {
@@ -147,6 +147,15 @@ const PageTextTV = props => {
               handler: () => {
                 console.log("refresh clicked");
                 updateRefreshTime();
+              }
+            },
+            {
+              side: "end",
+              text: "✕",
+              role: "cancel",
+              handler: () => {
+                console.log("close clicked");
+                // updateRefreshTime();
               }
             }
             // {
