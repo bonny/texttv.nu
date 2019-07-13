@@ -10,10 +10,10 @@ const TextTVSearchBar = props => {
     const pageNum = target.value;
     if (pageNum.length === 3) {
       // setIsLoading(true);
-      history.push(`/sida/${pageNum}`);
-      document.querySelector("ion-menu-controller").close();
-      target.value = "";
       target.blur();
+      target.value = "";
+      document.querySelector("ion-menu-controller").close();
+      history.push(`/sida/${pageNum}`);
     }
   };
 
