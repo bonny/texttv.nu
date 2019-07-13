@@ -1,5 +1,6 @@
 import { IonSkeletonText } from "@ionic/react";
 import React from "react";
+import { getPageRangeInfo } from "../functions";
 
 let fortyChars = " ".repeat(40);
 
@@ -29,46 +30,10 @@ let html = `<span class="toprow">${fortyChars}</span>
 <span>${fortyChars}</span>
 `;
 
-/**
- * Returnerar antalet sidor som pageRange innehåller,
- * dvs om man skickar in 100 så returneras 1,
- * skickar man in 100-102 så får man 3,
- * skickar man in 100-102,103-104 så får man 5.
- *
- * @param mixed pageRange int eller string med sidnummer/sidintervall.
- * @return int Antal sidor som pageRange innehåller
- */
-function getPageCount(pageRange) {
-  // Sidorna separeras med komma.
-  let pageNums = pageRange.split(",");
-
-  // Ta bort mellanslag först och sist i varje element.
-  pageNums = pageNums.map(string => string.trim());
-
-  // Räkna ut.
-  let pageCount = pageNums.reduce((acc, currentVal) => {
-    let numberParts = currentVal.split("-");
-    if (numberParts.length === 1) {
-      // Bara en enkel siffra, t.ex. "100", så öka med 1.
-      acc++;
-    } else if (numberParts.length === 2) {
-      // Intervall, t.ex. "101-102".
-      const intervalCount =
-        parseInt(numberParts[1]) - parseInt(numberParts[0]) + 1;
-      acc = acc + intervalCount;
-    }
-
-    return acc;
-  }, 0);
-
-  return pageCount;
-}
-
 export function SkeletonTextTVPage(props) {
   const { pageNum } = props;
-  // console.log("SkeletonTextTVPage, pageNum", pageNum);
-  // console.log("SkeletonTextTVPage, getPageCount", getPageCount(pageNum));
-  const pageCount = getPageCount(pageNum);
+  const pageRangeInfo = getPageRangeInfo(pageNum);
+  const pageCount = pageRangeInfo.count;
 
   const skeletonTextStyle = {
     position: "absolute",

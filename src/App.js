@@ -30,10 +30,29 @@ import "./theme.css";
 import "./App.css";
 import Startsida from "./pages/tab-startsida";
 import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
+import { getPageRangeInfo } from "./functions";
 
 const { SplashScreen } = Plugins;
 
 SplashScreen.hide();
+
+/**
+ * Komponent som alltid renderas, i.e. catch all component i React Router.
+ * Används för att visa sidor /100 /100,101, /100-104,377 osv, dvs utan "sida"-prefix
+ *
+ * @param object props
+ */
+const PageCatchAll = props => {
+  const { pageNum } = props.match.params;
+  const pageRangeInfo = getPageRangeInfo(pageNum);
+  console.log("PageCatchAll", pageNum);
+
+  if (pageRangeInfo.allValid) {
+    return <PageTextTV {...props} />;
+  } else {
+    return null;
+  }
+};
 
 function App(props) {
   // const [currentTab, setCurrentTab] = useState("hem");
@@ -54,11 +73,6 @@ function App(props) {
             <IonPage>
               <IonTabs>
                 <IonRouterOutlet>
-                  <Route path="/sida/:pageNum" component={PageTextTV} />
-                  <Route
-                    path="/arkivsida/:pageNum/:pageId/"
-                    component={PageTextTV}
-                  />
                   <Route path="/test" component={PageTest} />
                   <Route path="/testar" component={PageTestar} exact={true} />
                   <Route
@@ -87,6 +101,13 @@ function App(props) {
                     component={TabNyast}
                     exact={true}
                   />
+                  <Route
+                    path="/arkivsida/:pageNum/:pageId/"
+                    component={PageTextTV}
+                  />
+                  <Route path="/sida/:pageNum" component={PageTextTV} />
+                  <Route path="/:pageNum([0-9]{3}.*)" component={PageCatchAll} />
+                  {/* <Route path="/:pageNum([0-9]{3}-[0-9]{3})+" component={PageCatchAll} /> */}
                 </IonRouterOutlet>
 
                 <IonTabBar slot="bottom" color="dark">
