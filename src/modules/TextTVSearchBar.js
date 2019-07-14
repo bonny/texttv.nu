@@ -13,7 +13,7 @@ const TextTVSearchBar = props => {
       target.blur();
       target.value = "";
       document.querySelector("ion-menu-controller").close();
-      history.push(`/sida/${pageNum}`);
+      history.push(`/sidor/${pageNum}`);
     }
   };
 

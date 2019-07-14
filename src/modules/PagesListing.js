@@ -43,7 +43,7 @@ const PagesListing = props => {
         break;
       case "pagenum":
       default:
-        link = `/sida/${page.page_num}`;
+        link = `/sidor/${page.page_num}`;
     }
 
     return (

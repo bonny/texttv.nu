@@ -29,7 +29,7 @@ export default props => {
 
         {favorites.map((page, index, arr) => {
           const lines = index === arr.length - 1 ? "none" : "inset";
-          const url = `/sida/${page.pages}`;
+          const url = `/sidor/${page.pages}`;
           return (
             <IonItem
               button

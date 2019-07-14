@@ -48,7 +48,9 @@ const PageCatchAll = props => {
   console.log("PageCatchAll", pageNum);
 
   if (pageRangeInfo.allValid) {
-    return <PageTextTV {...props} />;
+    // Skicka vidare till sida
+    return <Redirect to={`/sidor/${pageNum}`} />;
+    // return <PageTextTV {...props} />;
   } else {
     return null;
   }
@@ -105,8 +107,11 @@ function App(props) {
                     path="/arkivsida/:pageNum/:pageId/"
                     component={PageTextTV}
                   />
-                  <Route path="/sida/:pageNum" component={PageTextTV} />
-                  <Route path="/:pageNum([0-9]{3}.*)" component={PageCatchAll} />
+                  <Route path="/sidor/:pageNum" component={PageTextTV} />
+                  <Route
+                    path="/:pageNum([0-9]{3}.*)"
+                    component={PageCatchAll}
+                  />
                   {/* <Route path="/:pageNum([0-9]{3}-[0-9]{3})+" component={PageCatchAll} /> */}
                 </IonRouterOutlet>
 

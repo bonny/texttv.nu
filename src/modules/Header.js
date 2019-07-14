@@ -23,7 +23,7 @@ const Header = props => {
   } = props;
 
   // const backButtonDefaultHref = `/${match.params.tab}`;
-  const backButtonDefaultHref = `/sida/100?default`;
+  const backButtonDefaultHref = `/sidor/100?default`;
 
   return (
     <>

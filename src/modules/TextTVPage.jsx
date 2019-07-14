@@ -150,7 +150,7 @@ export default props => {
       }
 
       // console.log("handle link click", href);
-      history.push(`/sida${href}`);
+      history.push(`/sidor${href}`);
     } // else {
     // https://franciscohodge.com/2018/01/14/find-closest-element-click-coordinates-javascript-coding-question/
     // https://developer.mozilla.org/en-US/docs/Web/API/DocumentOrShadowRoot/elementFromPoint
