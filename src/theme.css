@@ -105,9 +105,17 @@ ion-segment-button {
   --padding-start: 5px;
 } */
 
+/* 
+Border på tab bar är lite väl mörk som default.
+Används istället ca den färg Twitter har på sitt mörka läge.
+*/
 ion-tab-bar[color="dark"] {
   border-color: rgb(61, 84, 102);
 }
+
+/* ion-header {
+  border-color: red;
+} */
 
 /* Debug for link hit detection */
 .dot-container {

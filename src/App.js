@@ -17,7 +17,15 @@ import {
   // IonCardTitle,
   // IonCardSubtitle
 } from "@ionic/react";
-import { home, listBox, clock, trendingUp } from "ionicons/icons";
+import {
+  home,
+  listBox,
+  clock,
+  trendingUp,
+  eye,
+  flame,
+  glasses
+} from "ionicons/icons";
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import { MenuWithRouter } from "./Menu";
@@ -138,6 +146,18 @@ function App(props) {
 
                   <IonTabButton tab="populart" href="/mest-last">
                     <IonIcon icon={trendingUp} mode="md" />
+                    <IonLabel>Mest läst</IonLabel>
+                  </IonTabButton>
+                  <IonTabButton tab="populart" href="/mest-last">
+                    <IonIcon icon={eye} mode="md" />
+                    <IonLabel>Mest läst</IonLabel>
+                  </IonTabButton>
+                  <IonTabButton tab="populart" href="/mest-last">
+                    <IonIcon icon={flame} mode="md" />
+                    <IonLabel>Mest läst</IonLabel>
+                  </IonTabButton>
+                  <IonTabButton tab="populart" href="/mest-last">
+                    <IonIcon icon={glasses} mode="md" />
                     <IonLabel>Mest läst</IonLabel>
                   </IonTabButton>
                 </IonTabBar>
