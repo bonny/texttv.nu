@@ -173,3 +173,7 @@ b {
 .TextTVPage_UpdatedToast {
   top: -4em;
 }
+
+.u-max-width-texttvpage {
+  max-width: 20em;
+}

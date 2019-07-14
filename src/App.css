@@ -24,7 +24,8 @@
 }
 
 .TextTVPage,
-.TextTVSkeletonPage {
+.TextTVSkeletonPage,
+.u-max-width-texttvpage {
   font-family: "Ubuntu Mono", monospace;
   background: var(--text-tv-background);
   color: #ddd;
@@ -235,7 +236,8 @@ ion-list[color="dark"] {
   .TextTVPage,
   .TextTVSkeletonPage,
   .ListHeadline,
-  .ListHeadlineSidor {
+  .ListHeadlineSidor,
+  .u-max-width-texttvpage {
     font-size: 22px !important;
   }
 }
