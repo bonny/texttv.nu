@@ -13,32 +13,20 @@ import {
   IonTabBar,
   IonTabButton,
   IonTabs // IonCard,
-  // IonCardHeader,
-  // IonCardTitle,
-  // IonCardSubtitle
 } from "@ionic/react";
-import {
-  home,
-  listBox,
-  clock,
-  trendingUp,
-  eye,
-  flame,
-  glasses
-} from "ionicons/icons";
+import { clock, eye, home, listBox } from "ionicons/icons";
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
+import "./App.css";
+import { getPageRangeInfo } from "./functions";
 import { MenuWithRouter } from "./Menu";
 import PageTextTV from "./pages/page-TextTV.js";
-// import { TabHome } from "./tab-home";
+import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
 import TabNyast from "./pages/tab-nyast";
 import TabPopulart from "./pages/tab-populart";
 import TabSidor from "./pages/tab-sidor";
-import "./theme.css";
-import "./App.css";
 import Startsida from "./pages/tab-startsida";
-import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
-import { getPageRangeInfo } from "./functions";
+import "./theme.css";
 
 const { SplashScreen } = Plugins;
 
@@ -145,19 +133,7 @@ function App(props) {
                   </IonTabButton>
 
                   <IonTabButton tab="populart" href="/mest-last">
-                    <IonIcon icon={trendingUp} mode="md" />
-                    <IonLabel>Mest läst</IonLabel>
-                  </IonTabButton>
-                  <IonTabButton tab="populart" href="/mest-last">
                     <IonIcon icon={eye} mode="md" />
-                    <IonLabel>Mest läst</IonLabel>
-                  </IonTabButton>
-                  <IonTabButton tab="populart" href="/mest-last">
-                    <IonIcon icon={flame} mode="md" />
-                    <IonLabel>Mest läst</IonLabel>
-                  </IonTabButton>
-                  <IonTabButton tab="populart" href="/mest-last">
-                    <IonIcon icon={glasses} mode="md" />
                     <IonLabel>Mest läst</IonLabel>
                   </IonTabButton>
                 </IonTabBar>
