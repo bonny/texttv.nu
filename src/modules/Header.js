@@ -29,6 +29,13 @@ const Header = props => {
     <>
       {headerStyle === "HEADER_STYLE_DEFAULT" && (
         <IonHeader>
+          <IonToolbar color="primary" mode="md" className="ion-hide-md-down">
+            <IonTitle>
+              <Logo className="texttv-logo" />
+              TextTV.nu
+            </IonTitle>
+          </IonToolbar>
+
           <IonToolbar color="dark" mode="md">
             <IonButtons slot="start">
               <IonBackButton defaultHref={backButtonDefaultHref} />
