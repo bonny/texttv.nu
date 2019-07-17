@@ -12,6 +12,7 @@ const SenastUppdateradeLista = props => {
 
     // Fetch content for segment when segment type is changed.
     useEffect(() => {
+      console.log("refreshTime", refreshTime);
       const endpoints = [
         {
           what: "news",
@@ -77,14 +78,14 @@ const SenastUppdateradeLista = props => {
 };
 
 export default props => {
-  const { selectedSegment, refreshTime } = props;
+  const { selectedSegment, refreshTime, ...rest } = props;
 
   return (
     <>
       <SenastUppdateradeLista
-        {...props}
         type={selectedSegment}
         refreshTime={refreshTime}
+        {...rest}
       />
     </>
   );

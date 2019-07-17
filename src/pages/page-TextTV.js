@@ -13,8 +13,11 @@ const PageTextTV = props => {
     history,
     title,
     headerStyle = "HEADER_STYLE_DEFAULT",
-    children
+    children,
+    refreshTime: passedRefreshTime
   } = props;
+
+  console.log("PageTextTV");
 
   const pageNum = props.pageNum || match.params.pageNum;
   const pageId = props.pageId || match.params.pageId;
@@ -47,9 +50,39 @@ const PageTextTV = props => {
     setActionSheetOpened(true);
   };
 
+  // Om refreshTime som skickas med är mer än vår
+  // egna refreshTime så uppdaterar vi vår egna
+  // för att få en uppdatering.
+  useEffect(() => {
+    if (passedRefreshTime > refreshTime) {
+      console.log("yo passedRefreshTime > refreshTime");
+      scrollToTop();
+      updateRefreshTime();
+    }
+  }, [passedRefreshTime, refreshTime]);
+
+  const scrollToTop = () => {
+    const currentIonPage = [
+      ...document.querySelectorAll(
+        ".ion-page#main .ion-page:not(.ion-page-hidden)"
+      )
+    ].find(e => true);
+
+    const currentIonPageContent = [
+      ...document.querySelectorAll(
+        ".ion-page#main .ion-page:not(.ion-page-hidden) ion-content"
+      )
+    ].find(e => true);
+
+    if (currentIonPageContent) {
+      console.log("currentIonPageContent", currentIonPageContent);
+      currentIonPageContent.scrollToTop(0);
+    }
+  };
+
   // Leta efter uppdateringar av sidan eller sidorna.
   useEffect(() => {
-    const checkForUpdateInterval = 5000;
+    const checkForUpdateInterval = 10000;
     let intervalId;
     const checkForUpdate = async () => {
       // hitta ID på sidan som har högst id och kolla den

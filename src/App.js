@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 // import { Capacitor } from "@capacitor/core";
 import { Plugins } from "@capacitor/core";
 import "@ionic/core/css/core.css";
@@ -15,10 +16,9 @@ import {
   IonTabs // IonCard,
 } from "@ionic/react";
 import { clock, eye, home, listBox } from "ionicons/icons";
-import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import "./App.css";
-import { getPageRangeInfo } from "./functions";
+import { getPageRangeInfo, getCacheBustTimeString } from "./functions";
 import { MenuWithRouter } from "./Menu";
 import PageTextTV from "./pages/page-TextTV.js";
 import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
@@ -27,6 +27,7 @@ import TabPopulart from "./pages/tab-populart";
 import TabSidor from "./pages/tab-sidor";
 import Startsida from "./pages/tab-startsida";
 import "./theme.css";
+import TabContext from "./TabContext";
 
 const { SplashScreen } = Plugins;
 
@@ -46,7 +47,6 @@ const PageCatchAll = props => {
   if (pageRangeInfo.allValid) {
     // Skicka vidare till sida
     return <Redirect to={`/sidor/${pageNum}`} />;
-    // return <PageTextTV {...props} />;
   } else {
     return null;
   }
@@ -61,14 +61,44 @@ function App(props) {
   //   // setCurrentTab(e.currentTarget.selectedTab);
   // };
 
+  const handleTabClick = e => {
+    const target = e.currentTarget;
+    const tab = target.getAttribute("tab");
+    const cacheBustTimeString = getCacheBustTimeString(2);
+
+    setTabsinfo({
+      ...tabsinfo,
+      lastClickedName: tab,
+      lastClickedTime: cacheBustTimeString,
+      tabs: {
+        ...tabsinfo.tabs,
+        [tab]: {
+          mame: tab,
+          lastClickedTime: cacheBustTimeString
+        }
+      }
+    });
+  };
+
+  const [tabsinfo, setTabsinfo] = useState({
+    lastClickedTime: null,
+    lastClickedName: null,
+    tabs: {
+      hem: {},
+      sidor: {},
+      nyast: {},
+      populart: {}
+    }
+  });
+
   return (
-    <IonApp>
-      <IonReactRouter>
-        <Route exact path="/" render={() => <Redirect to="/hem" />} />
-        <IonSplitPane contentId="main">
-          <MenuWithRouter {...props} />
-          <IonPage id="main">
-            <IonPage>
+    <TabContext.Provider value={tabsinfo}>
+      <IonApp>
+        <IonReactRouter>
+          <Route exact path="/" render={() => <Redirect to="/hem" />} />
+          <IonSplitPane contentId="main">
+            <MenuWithRouter {...props} />
+            <IonPage id="main">
               <IonTabs>
                 <IonRouterOutlet>
                   <Route path="/test" component={PageTest} />
@@ -80,6 +110,9 @@ function App(props) {
                   <Route
                     path="/:tab(hem)"
                     render={props => {
+                      // console.log("route hem", props);
+                      // console.log("route hem tabsinfo", tabsinfo);
+                      // TODO: skicka ner clicktiden, inte route rendertid
                       return <Startsida {...props} />;
                     }}
                     exact={true}
@@ -112,37 +145,45 @@ function App(props) {
                 </IonRouterOutlet>
 
                 <IonTabBar slot="bottom" color="dark">
-                  <IonTabButton tab="hem" href="/hem">
+                  <IonTabButton tab="hem" href="/hem" onClick={handleTabClick}>
                     <IonIcon icon={home} mode="md" />
                     <IonLabel>Hem</IonLabel>
-                    {/* <IonBadge color="danger">6</IonBadge> */}
                   </IonTabButton>
 
                   <IonTabButton
                     tab="sidor"
                     href="/sidor"
                     className="ion-hide-lg-up"
+                    onClick={handleTabClick}
                   >
                     <IonIcon icon={listBox} mode="md" />
                     <IonLabel>Sidor</IonLabel>
                   </IonTabButton>
 
-                  <IonTabButton tab="nyast" href="/nyast">
+                  <IonTabButton
+                    tab="nyast"
+                    href="/nyast"
+                    onClick={handleTabClick}
+                  >
                     <IonIcon icon={clock} mode="md" />
                     <IonLabel>Nyast</IonLabel>
                   </IonTabButton>
 
-                  <IonTabButton tab="populart" href="/mest-last">
+                  <IonTabButton
+                    tab="populart"
+                    href="/mest-last"
+                    onClick={handleTabClick}
+                  >
                     <IonIcon icon={eye} mode="md" />
                     <IonLabel>Mest läst</IonLabel>
                   </IonTabButton>
                 </IonTabBar>
               </IonTabs>
             </IonPage>
-          </IonPage>
-        </IonSplitPane>
-      </IonReactRouter>
-    </IonApp>
+          </IonSplitPane>
+        </IonReactRouter>
+      </IonApp>
+    </TabContext.Provider>
   );
 }
 

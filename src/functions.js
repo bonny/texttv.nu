@@ -66,4 +66,26 @@ function getPageRangeInfo(pageRange) {
   return pageRangeInfo;
 }
 
-export { getPageRangeInfo };
+function getCacheBustTimeString(secondsInterval = 15) {
+  var cacheBusterTime = new Date();
+
+  var cacheBusterString =
+    cacheBusterTime.getUTCFullYear() +
+    "-" +
+    cacheBusterTime.getUTCDay() +
+    "-" +
+    cacheBusterTime.getUTCDate() +
+    "_" +
+    cacheBusterTime.getUTCHours() +
+    ":" +
+    cacheBusterTime.getUTCMinutes();
+
+  var seconds = cacheBusterTime.getUTCSeconds();
+
+  seconds = seconds - (seconds % secondsInterval);
+  cacheBusterString += cacheBusterString + ":" + seconds;
+
+  return cacheBusterString;
+}
+
+export { getPageRangeInfo, getCacheBustTimeString };
