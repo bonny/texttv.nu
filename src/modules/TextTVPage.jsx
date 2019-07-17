@@ -129,7 +129,7 @@ export default props => {
 
   // const [componentIsCleanUped, setComponentIsCleanUped] = useState(false);
   const [pageData, setPageData] = useState([]);
-  
+
   // const [pageIsLoaded, setPageIsLoaded] = useState(false);
   const [pageIsLoading, setPageIsLoading] = useState(true);
 
@@ -149,7 +149,14 @@ export default props => {
         href = `/${href}`;
       }
 
-      // console.log("handle link click", href);
+      // Göm ev synliga toasts.
+      document
+        .querySelectorAll("ion-toast.TextTVPage_UpdatedToast")
+        .forEach(elm => {
+          elm.dismiss();
+        });
+
+      // Gå till sida 🎉.
       history.push(`/sidor${href}`);
     } // else {
     // https://franciscohodge.com/2018/01/14/find-closest-element-click-coordinates-javascript-coding-question/
@@ -179,6 +186,8 @@ export default props => {
       let slowAnswerQueryString = slowAnswer
         ? `&slow_answer=${slowAnswer}`
         : "";
+      
+      // TODO: ?cb= to group cache api requests
 
       if (pageId) {
         url = `https://api.texttv.nu/api/getid/${pageId}/${pageNum}?app=texttvapp${slowAnswerQueryString}`;
