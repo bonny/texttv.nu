@@ -65,16 +65,19 @@ function App(props) {
     const target = e.currentTarget;
     const tab = target.getAttribute("tab");
     const cacheBustTimeString = getCacheBustTimeString(2);
+    const timestamp = Math.floor(Date.now() / 1000);
 
     setTabsinfo({
       ...tabsinfo,
       lastClickedName: tab,
-      lastClickedTime: cacheBustTimeString,
+      lastClickedTime: timestamp,
+      lastClickedTimeCacheBusterString: cacheBustTimeString,
       tabs: {
         ...tabsinfo.tabs,
         [tab]: {
           mame: tab,
-          lastClickedTime: cacheBustTimeString
+          lastClickedTime: timestamp,
+          lastClickedTimeCacheBusterString: cacheBustTimeString
         }
       }
     });
