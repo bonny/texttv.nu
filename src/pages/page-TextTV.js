@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import TextTVPage from "../modules/TextTVPage";
 import Header from "../modules/Header";
 import TextTVRefresher from "../modules/TextTVRefresher";
+import { getUnixtime, getCurrentIonPageContent } from "../functions";
 
 const PageTextTV = props => {
   const {
@@ -14,24 +15,31 @@ const PageTextTV = props => {
     title,
     headerStyle = "HEADER_STYLE_DEFAULT",
     children,
-    refreshTime: passedRefreshTime
+    refreshTime: passedRefreshTime,
+    // Custom function att köra om refresh-knappen tryckts på.
+    onRefresh
   } = props;
 
-  console.log("PageTextTV");
-
+  
   const pageNum = props.pageNum || match.params.pageNum;
   const pageId = props.pageId || match.params.pageId;
   const [actionSheetOpened, setActionSheetOpened] = useState(false);
-  const [refreshTime, setRefreshTime] = useState(Math.floor(Date.now() / 1000));
+  const [refreshTime, setRefreshTime] = useState(getUnixtime());
   const [pageUpdatedToastVisible, setPageUpdatedToastVisible] = useState(false);
 
   let pageTitle = title || pageNum;
+  
+  console.log("PageTextTV for pageNum", pageNum);
 
   /**
    * Update the refresh time to the current time.
    */
   const updateRefreshTime = () => {
-    setRefreshTime(Math.floor(Date.now() / 1000));
+    setRefreshTime(getUnixtime());
+    if (onRefresh) {
+      console.log("call onRefresh in updateRefreshTime", onRefresh);
+      onRefresh();
+    }
   };
 
   const handlePullToRefresh = e => {
@@ -46,7 +54,7 @@ const PageTextTV = props => {
   };
 
   const handleMoreActionsClick = e => {
-    console.log("handleMoreActionsClick", e);
+    // console.log("handleMoreActionsClick", e);
     setActionSheetOpened(true);
   };
 
@@ -54,29 +62,29 @@ const PageTextTV = props => {
   // egna refreshTime så uppdaterar vi vår egna
   // för att få en uppdatering.
   useEffect(() => {
+    const localUpdateRefreshTime = () => {
+      setRefreshTime(getUnixtime());
+      if (onRefresh) {
+        // console.log("call onRefresh in useEffect", onRefresh);
+        onRefresh();
+      }
+    };
+
     if (passedRefreshTime > refreshTime) {
-      console.log("yo passedRefreshTime > refreshTime");
+      console.log(
+        "page-texttv passedRefreshTime > refreshTime",
+        passedRefreshTime,
+        refreshTime
+      );
       scrollToTop();
-      updateRefreshTime();
+      localUpdateRefreshTime();
     }
-  }, [passedRefreshTime, refreshTime]);
+  }, [passedRefreshTime, refreshTime, onRefresh]);
 
   const scrollToTop = () => {
-    const currentIonPage = [
-      ...document.querySelectorAll(
-        ".ion-page#main .ion-page:not(.ion-page-hidden)"
-      )
-    ].find(e => true);
-
-    const currentIonPageContent = [
-      ...document.querySelectorAll(
-        ".ion-page#main .ion-page:not(.ion-page-hidden) ion-content"
-      )
-    ].find(e => true);
-
+    let currentIonPageContent = getCurrentIonPageContent();
     if (currentIonPageContent) {
-      console.log("currentIonPageContent", currentIonPageContent);
-      currentIonPageContent.scrollToTop(0);
+      currentIonPageContent.scrollToTop(750);
     }
   };
 

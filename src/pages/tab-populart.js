@@ -12,14 +12,15 @@ import React, { useState } from "react";
 import MestLasta from "../modules/MestLasta";
 import TextTVHeader from "../modules/TextTVHeader";
 import TextTVRefresher from "../modules/TextTVRefresher";
+import { getUnixtime } from "../functions";
 
 export default props => {
   const { history } = props;
   const [selectedSegment, setSelectedSegment] = useState("today");
-  const [refreshTime, setRefreshTime] = useState(Math.floor(Date.now() / 1000));
+  const [refreshTime, setRefreshTime] = useState(getUnixtime());
 
   const doRefresh = e => {
-    setRefreshTime(Math.floor(Date.now() / 1000));
+    setRefreshTime(getUnixtime());
   };
 
   const handlePullToRefresh = e => {

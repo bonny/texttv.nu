@@ -3,6 +3,7 @@ import { IonGrid, IonRow, IonCol } from "@ionic/react";
 import PageTextTV from "./page-TextTV.js";
 import SenastUppdaterat from "../modules/SenastUppdaterat";
 import TabContext from "../TabContext";
+import { getUnixtime } from "../functions";
 
 const Startsida = props => {
   const tabsinfo = useContext(TabContext);
@@ -11,7 +12,7 @@ const Startsida = props => {
   const [
     latestUpdatedPagesRefreshTime,
     setLatestUpdatedPagesRefreshTime
-  ] = useState(Math.floor(Date.now() / 1000));
+  ] = useState(getUnixtime());
 
   useEffect(() => {
     console.log("startsida, tabinfos context", tabsinfo);
@@ -21,8 +22,13 @@ const Startsida = props => {
   useEffect(() => {
     console.log("startsida, tabinfos context only hem", tabsinfoHem);
     // Uppdatera mest läst.
-    setLatestUpdatedPagesRefreshTime(Math.floor(Date.now() / 1000));
+    setLatestUpdatedPagesRefreshTime(getUnixtime());
   }, [tabsinfoHem]);
+
+  const handlePageTextTVRefresh = e => {
+    console.log("handlePageTextTVRefresh", e);
+    setLatestUpdatedPagesRefreshTime(getUnixtime());
+  };
 
   return (
     <>
@@ -32,6 +38,7 @@ const Startsida = props => {
         title="TextTV.nu"
         headerStyle="HEADER_STYLE_STARTPAGE"
         refreshTime={latestUpdatedPagesRefreshTime}
+        onRefresh={handlePageTextTVRefresh}
       >
         <IonGrid no-padding>
           <IonRow className="ion-justify-content-center">

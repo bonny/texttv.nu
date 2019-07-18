@@ -88,4 +88,48 @@ function getCacheBustTimeString(secondsInterval = 15) {
   return cacheBusterString;
 }
 
-export { getPageRangeInfo, getCacheBustTimeString };
+/**
+ * Hämta unixtid, dvs antal sekunder sedan
+ * Jan 01 1970.
+ 
+ * @return int Antal sekunder
+ */
+function getUnixtime() {
+  return Math.floor(Date.now() / 1000);
+}
+
+/**
+ * Hämta aktuella sidan, dvs den .ion-page som inte är dold.
+ *
+ * @return Element
+ */
+function getCurrentIonPage() {
+  const currentIonPage = [
+    ...document.querySelectorAll(
+      ".ion-page#main .ion-page:not(.ion-page-hidden)"
+    )
+  ].find(e => true);
+  return currentIonPage;
+}
+
+/**
+ * Hämtar den aktuella sidan IonPageContent-elment,
+ * dvs elementet man kan scrolla som innehåller innehållet.
+ */
+function getCurrentIonPageContent() {
+  const currentIonPageContent = [
+    ...document.querySelectorAll(
+      ".ion-page#main .ion-page:not(.ion-page-hidden) ion-content"
+    )
+  ].find(e => true);
+
+  return currentIonPageContent;
+}
+
+export {
+  getPageRangeInfo,
+  getCacheBustTimeString,
+  getUnixtime,
+  getCurrentIonPage,
+  getCurrentIonPageContent
+};

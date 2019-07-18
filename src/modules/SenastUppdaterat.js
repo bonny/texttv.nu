@@ -12,7 +12,7 @@ const SenastUppdateradeLista = props => {
 
     // Fetch content for segment when segment type is changed.
     useEffect(() => {
-      console.log("refreshTime", refreshTime);
+      console.log("SenastUppdateradeLista refreshTime", refreshTime, type);
       const endpoints = [
         {
           what: "news",

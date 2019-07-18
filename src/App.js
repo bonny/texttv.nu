@@ -28,6 +28,7 @@ import TabSidor from "./pages/tab-sidor";
 import Startsida from "./pages/tab-startsida";
 import "./theme.css";
 import TabContext from "./TabContext";
+import { getUnixtime } from "./functions";
 
 const { SplashScreen } = Plugins;
 
@@ -65,7 +66,7 @@ function App(props) {
     const target = e.currentTarget;
     const tab = target.getAttribute("tab");
     const cacheBustTimeString = getCacheBustTimeString(2);
-    const timestamp = Math.floor(Date.now() / 1000);
+    const timestamp = getUnixtime();
 
     setTabsinfo({
       ...tabsinfo,

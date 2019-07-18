@@ -8,19 +8,19 @@ import {
   IonIcon
 } from "@ionic/react";
 import { refresh } from "ionicons/icons";
-
 import React, { useState } from "react";
 import TextTVHeader from "../modules/TextTVHeader";
 import SenastUppdaterat from "../modules/SenastUppdaterat";
 import TextTVRefresher from "../modules/TextTVRefresher";
+import { getUnixtime } from "../functions";
 
 export default props => {
   const { history } = props;
   const [selectedSegment, setSelectedSegment] = useState("news");
-  const [refreshTime, setRefreshTime] = useState(Math.floor(Date.now() / 1000));
+  const [refreshTime, setRefreshTime] = useState(getUnixtime());
 
   const doRefresh = e => {
-    setRefreshTime(Math.floor(Date.now() / 1000));
+    setRefreshTime(getUnixtime());
   };
 
   const handlePullToRefresh = e => {

@@ -34,7 +34,6 @@ export const TabHome = props => {
 
   const doRefresh = e => {
     console.log("do refresh");
-    // setRefreshTime(Math.floor(Date.now() / 1000));
     e.target.complete();
   };
 
