@@ -19,8 +19,14 @@ const MestLastaLista = props => {
       let yesterdayYMD = dayjs()
         .subtract(1, "day")
         .format("YYYY-MM-DD");
+      let dayBeforeYesterdayYMD = dayjs()
+        .subtract(2, "day")
+        .format("YYYY-MM-DD");
 
       switch (day) {
+        case "dayBeforeYesterday":
+          dateYMD = dayBeforeYesterdayYMD;
+          break;
         case "yesterday":
           dateYMD = yesterdayYMD;
           break;
@@ -60,7 +66,9 @@ const MestLastaLista = props => {
       };
     }, [day, count, refreshTime]);
 
-    const Pages = <PagesListing pages={pages} history={history} linkTo="pageid" />;
+    const Pages = (
+      <PagesListing pages={pages} history={history} linkTo="pageid" />
+    );
 
     return (
       <>

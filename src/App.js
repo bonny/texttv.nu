@@ -23,7 +23,7 @@ import { MenuWithRouter } from "./Menu";
 import PageTextTV from "./pages/page-TextTV.js";
 import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
 import TabNyast from "./pages/tab-nyast";
-import TabPopulart from "./pages/tab-populart";
+import TabPopulart from "./pages/tab-mest-last";
 import TabSidor from "./pages/tab-sidor";
 import Startsida from "./pages/tab-startsida";
 import "./theme.css";

@@ -57,9 +57,11 @@ export default props => {
             onIonChange={handleSegmentChange}
             onClick={handleSegmentClick}
             value={selectedSegment}
+            scrollable
           >
             <IonSegmentButton value="today">Idag</IonSegmentButton>
             <IonSegmentButton value="yesterday">Igår</IonSegmentButton>
+            <IonSegmentButton value="dayBeforeYesterday">I förrgår</IonSegmentButton>
           </IonSegment>
         </IonToolbar>
       </TextTVHeader>
