@@ -10,7 +10,7 @@ export default props => {
   return (
     <>
       <TextTVHeader title="Sidor">
-        <IonToolbar color="primary">
+        <IonToolbar color="dark">
           <TextTVSearchBar history={history} />
         </IonToolbar>
       </TextTVHeader>
