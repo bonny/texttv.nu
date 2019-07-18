@@ -62,17 +62,30 @@ function App(props) {
   //   // setCurrentTab(e.currentTarget.selectedTab);
   // };
 
+  /**
+   * När en tab klickas på så sätter vi tidpunkt för klicket
+   * i state tabsinfo. Denna info används sedan i context TabContext
+   *
+   */
   const handleTabClick = e => {
     const target = e.currentTarget;
     const tab = target.getAttribute("tab");
     const cacheBustTimeString = getCacheBustTimeString(2);
     const timestamp = getUnixtime();
 
+    // Determine new and old tab.
+
     setTabsinfo({
       ...tabsinfo,
-      lastClickedName: tab,
-      lastClickedTime: timestamp,
-      lastClickedTimeCacheBusterString: cacheBustTimeString,
+      lastClicked: {
+        name: tab,
+        time: timestamp,
+        timeCacheBusterString: cacheBustTimeString
+      },
+      prevClicked: {
+        name: tabsinfo.lastClicked.name,
+        time: tabsinfo.lastClicked.time
+      },
       tabs: {
         ...tabsinfo.tabs,
         [tab]: {
@@ -84,16 +97,24 @@ function App(props) {
     });
   };
 
-  const [tabsinfo, setTabsinfo] = useState({
-    lastClickedTime: null,
-    lastClickedName: null,
+  const detfaultTabinfoState = {
+    lastClicked: {
+      name: null,
+      time: null
+    },
+    prevClicked: {
+      name: null,
+      time: null
+    },
     tabs: {
       hem: {},
       sidor: {},
       nyast: {},
       populart: {}
     }
-  });
+  };
+
+  const [tabsinfo, setTabsinfo] = useState(detfaultTabinfoState);
 
   return (
     <TabContext.Provider value={tabsinfo}>
