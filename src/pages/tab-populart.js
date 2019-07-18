@@ -1,18 +1,14 @@
 import {
   IonContent,
-  IonToolbar,
   IonSegment,
   IonSegmentButton,
-  IonButtons,
-  IonButton,
-  IonIcon
+  IonToolbar
 } from "@ionic/react";
-import { refresh } from "ionicons/icons";
 import React, { useState } from "react";
+import { getUnixtime } from "../functions";
 import MestLasta from "../modules/MestLasta";
 import TextTVHeader from "../modules/TextTVHeader";
 import TextTVRefresher from "../modules/TextTVRefresher";
-import { getUnixtime } from "../functions";
 
 export default props => {
   const { history } = props;
@@ -39,22 +35,22 @@ export default props => {
     console.log("handleSegmentClick", e);
   };
 
-  const handleRefreshBtnClick = e => {
-    doRefresh();
-  };
+  // const handleRefreshBtnClick = e => {
+  //   doRefresh();
+  // };
 
   return (
     <>
       <TextTVHeader
         {...props}
         title="Mest läst"
-        buttonsEnd={
-          <IonButtons slot="end">
-            <IonButton fill="clear" slot="end" onClick={handleRefreshBtnClick}>
-              <IonIcon slot="icon-only" icon={refresh} mode="md" />
-            </IonButton>
-          </IonButtons>
-        }
+        // buttonsEnd={
+        //   <IonButtons slot="end">
+        //     <IonButton fill="clear" slot="end" onClick={handleRefreshBtnClick}>
+        //       <IonIcon slot="icon-only" icon={refresh} mode="md" />
+        //     </IonButton>
+        //   </IonButtons>
+        // }
       >
         <IonToolbar color="primary">
           <IonSegment
