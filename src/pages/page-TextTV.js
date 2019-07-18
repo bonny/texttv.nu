@@ -97,8 +97,9 @@ const PageTextTV = props => {
       // http://texttv.nu/api/updated/100,300,700/1439310425
       // kod körs var femte sekund i existerande app
       // https://github.com/bonny/texttv.nu/blob/master/app/texttvnucodovaapp/www/js/texttv.backbone.app.js#L675
+      // TODO: refreshTime blir för unik, använd cachebust eller riktigt timestamp från sida.
       var url = `https://api.texttv.nu/api/updated/${pageNum}/${refreshTime}`;
-      console.log("checkForUpdate url", url);
+      // console.log("checkForUpdate url", url);
 
       const response = await fetch(url);
       const responseJson = await response.json();

@@ -74,9 +74,12 @@ function App(props) {
     const timestamp = getUnixtime();
 
     // Determine new and old tab.
+    const isNewTab = tabsinfo.lastClicked.name !== tab;
 
     setTabsinfo({
       ...tabsinfo,
+      isNewTab: isNewTab,
+      isSameTab: !isNewTab,
       lastClicked: {
         name: tab,
         time: timestamp,
@@ -106,6 +109,8 @@ function App(props) {
       name: null,
       time: null
     },
+    isNewTab: undefined,
+    isSameTab: undefined,
     tabs: {
       hem: {},
       sidor: {},

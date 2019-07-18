@@ -3,27 +3,71 @@ import { IonGrid, IonRow, IonCol } from "@ionic/react";
 import PageTextTV from "./page-TextTV.js";
 import SenastUppdaterat from "../modules/SenastUppdaterat";
 import TabContext from "../TabContext";
-import { getUnixtime } from "../functions";
+import { getUnixtime, getCurrentIonPageContent } from "../functions";
 
 const Startsida = props => {
   const tabsinfo = useContext(TabContext);
   const tabsinfoHem = tabsinfo.tabs.hem;
-
   const [
     latestUpdatedPagesRefreshTime,
     setLatestUpdatedPagesRefreshTime
   ] = useState(getUnixtime());
+  const [ionPageContent, setIonPageContent] = useState();
+  const [ionPageScrollElement, setIonPageScrollElement] = useState();
 
   useEffect(() => {
-    console.log("startsida, tabinfos context", tabsinfo);
+    console.log("startsida, tabsinfo", tabsinfo);
   }, [tabsinfo]);
 
-  // Klick på hem-fliken har skett. Scrolla upp och uppdatera.
+  /**
+   * Hämta och sätt ion page content och dess scroll element.
+   * Behövs bara göras vid mount.
+   */
   useEffect(() => {
-    console.log("startsida, tabinfos context only hem", tabsinfoHem);
-    // Uppdatera mest läst.
-    setLatestUpdatedPagesRefreshTime(getUnixtime());
-  }, [tabsinfoHem]);
+    const currentIonPageContent = getCurrentIonPageContent();
+    if (currentIonPageContent) {
+      setIonPageContent(currentIonPageContent);
+      currentIonPageContent.getScrollElement().then(elm => {
+        setIonPageScrollElement(elm);
+      });
+    }
+  }, []);
+
+  // Scrolla till toppen om vi klickar på denna sidan tab igen
+  // och vi är inte längst uppe redan
+  // Dvs. klickad tab = hem men vi är inte scrollade längst upp.
+  useEffect(() => {
+    if (!ionPageScrollElement) {
+      return;
+    }
+
+    const scrollTop = ionPageScrollElement.scrollTop;
+    console.log(
+      "startsida, useEffect to scroll to top",
+      //tabsinfoHem,
+      scrollTop,
+      ionPageContent
+    );
+
+    if (scrollTop > 0) {
+      ionPageContent.scrollToTop(500);
+    }
+  }, [ionPageScrollElement, ionPageContent, tabsinfoHem]);
+
+  // useEffect(() => {
+  //   console.log(
+  //     "startsida, tabsIsSameTab = sant + tabsinfoHem har uppdaterats",
+  //     tabsIsNewTab,
+  //     tabsinfoHem
+  //   );
+  // }, [tabsIsNewTab, tabsinfoHem]);
+
+  // Klick på hem-fliken har skett. Scrolla upp och uppdatera.
+  // useEffect(() => {
+  //   console.log("startsida, tabinfos context only hem", tabsinfoHem);
+  //   // Uppdatera mest läst.
+  //   setLatestUpdatedPagesRefreshTime(getUnixtime());
+  // }, [tabsinfoHem]);
 
   const handlePageTextTVRefresh = e => {
     console.log("handlePageTextTVRefresh", e);
