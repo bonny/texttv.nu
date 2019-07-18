@@ -50,7 +50,11 @@ const Startsida = props => {
     );
 
     if (scrollTop > 0) {
+      // Scrolla upp och vi har scrollat ner.
       ionPageContent.scrollToTop(500);
+    } else {
+      // Ladda om om vi är längst uppe.
+      setLatestUpdatedPagesRefreshTime(getUnixtime());
     }
   }, [ionPageScrollElement, ionPageContent, tabsinfoHem]);
 
