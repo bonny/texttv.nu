@@ -20,15 +20,14 @@ const PageTextTV = props => {
     onRefresh
   } = props;
 
-  
   const pageNum = props.pageNum || match.params.pageNum;
   const pageId = props.pageId || match.params.pageId;
   const [actionSheetOpened, setActionSheetOpened] = useState(false);
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
   const [pageUpdatedToastVisible, setPageUpdatedToastVisible] = useState(false);
 
-  let pageTitle = title || pageNum;
-  
+  let pageTitle = title || `${pageNum} - SVT Text TV`;
+
   // console.log("PageTextTV for pageNum", pageNum);
 
   /**
@@ -116,6 +115,11 @@ const PageTextTV = props => {
       clearInterval(intervalId);
     };
   }, [pageNum, refreshTime]);
+
+  // Uppdatera dokument-titel.
+  useEffect(() => {
+    document.title = pageTitle;
+  }, [pageTitle]);
 
   return (
     <>

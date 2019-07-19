@@ -74,6 +74,11 @@ const Startsida = props => {
     setLatestUpdatedPagesRefreshTime(getUnixtime());
   };
 
+  // Uppdatera dokument-titel.
+  useEffect(() => {
+    document.title = `Hem - SVT Text TV`;
+  }, [latestUpdatedPagesRefreshTime]);
+
   return (
     <>
       <PageTextTV
