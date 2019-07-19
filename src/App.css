@@ -29,7 +29,7 @@
   font-family: "Ubuntu Mono", monospace;
   background: var(--text-tv-background);
   color: #ddd;
-  font-size: 4.9vw;
+  font-size: 4.8vw;
   text-align: center;
   line-height: 1;
   padding: 10px 10px 40px 0;
@@ -241,3 +241,33 @@ ion-list[color="dark"] {
     font-size: 22px !important;
   }
 }
+
+/* Styles for slide over */
+/* http://www.mobilexweb.com/blog/ios9-safari-for-web-developers */
+/* iPad Air or iPad Mini */
+/* @media only screen and (device-width: 768px) and (width: 320px) {
+  .TextTVPage,
+  .TextTVSkeletonPage,
+  .ListHeadline,
+  .ListHeadlineSidor,
+  .u-max-width-texttvpage {
+    outline: 2px solid red;
+  }
+} */
+
+/* iPad Pro */
+/* @media only screen and (device-width: 1024px) and (width: 320px) {
+  .TextTVPage,
+  .TextTVSkeletonPage,
+  .ListHeadline,
+  .ListHeadlineSidor,
+  .u-max-width-texttvpage {
+    outline: 2px solid green;
+    background: pink;
+    font-size: 14px !important;
+  }
+} */
+
+/*
+Styles for Split View
+*/
