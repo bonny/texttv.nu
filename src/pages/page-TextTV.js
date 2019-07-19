@@ -7,6 +7,8 @@ import TextTVPage from "../modules/TextTVPage";
 import Header from "../modules/Header";
 import TextTVRefresher from "../modules/TextTVRefresher";
 import { getUnixtime, getCurrentIonPageContent } from "../functions";
+import { Plugins } from "@capacitor/core";
+const { Share } = Plugins;
 
 const PageTextTV = props => {
   const {
@@ -52,9 +54,21 @@ const PageTextTV = props => {
     updateRefreshTime();
   };
 
-  const handleMoreActionsClick = e => {
+  const handleMoreActionsClick = async e => {
     // console.log("handleMoreActionsClick", e);
-    setActionSheetOpened(true);
+    // setActionSheetOpened(true);
+    // pageNum
+    // var apiEndpoint = "https://api.texttv.nu/api/share/" + pageIDs;
+    // TODO: need to get pageID
+    // pass data up from the texttvpage.
+
+    let shareRet = await Share.share({
+      title: "See cool stuff",
+      text: "Really awesome thing you need to see right meow",
+      url: "http://ionicframework.com/",
+      dialogTitle: "Share with buddies"
+    });
+    console.log("shareRet", shareRet);
   };
 
   // Om refreshTime som skickas med är mer än vår
