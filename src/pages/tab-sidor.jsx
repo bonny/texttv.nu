@@ -4,7 +4,7 @@ import TextTVHeader from "../modules/TextTVHeader";
 import TextTVSearchBar from "../modules/TextTVSearchBar";
 import TextTVSidorLista from "../modules/TextTVSidorLista";
 import TabContext from "../TabContext";
-import { getCurrentIonPageContent } from "../functions";
+import { getAndSetIonPageContentAndIonPageScrollElement } from "../functions";
 
 export default props => {
   const { history } = props;
@@ -15,8 +15,7 @@ export default props => {
 
   // Uppdatera dokument-titel.
   useEffect(() => {
-    document.title = `Sidor - SVT Text TV`;
-    console.log("tabsinfo på tab sidor", tabsinfoSidor);
+    document.title = `Sidor - Genvägar till vanliga text-tv-sidor`;
   }, [tabsinfoSidor]);
 
   /**
@@ -24,38 +23,15 @@ export default props => {
    * Behövs bara göras vid mount.
    */
   useEffect(() => {
-    const currentIonPageContent = getCurrentIonPageContent();
-    if (currentIonPageContent) {
-      setIonPageContent(currentIonPageContent);
-      currentIonPageContent.getScrollElement().then(elm => {
-        setIonPageScrollElement(elm);
-      });
-    }
+    getAndSetIonPageContentAndIonPageScrollElement(
+      setIonPageContent,
+      setIonPageScrollElement
+    );
   }, []);
 
-  // Scrolla till toppen om vi klickar på denna sidan tab igen
-  // och vi är inte längst uppe redan
-  // Dvs. klickad tab = hem men vi är inte scrollade längst upp.
+  // Scrolla till toppen om vi klickar på denna sidan tab igen.
   useEffect(() => {
-    if (!ionPageScrollElement) {
-      return;
-    }
-
-    const scrollTop = ionPageScrollElement.scrollTop;
-    // console.log(
-    //   "startsida, useEffect to scroll to top",
-    //   //tabsinfoHem,
-    //   scrollTop,
-    //   ionPageContent
-    // );
-
-    if (scrollTop > 0) {
-      // Scrolla upp och vi har scrollat ner.
-      ionPageContent.scrollToTop(500);
-    } else {
-      // Ladda om om vi är längst uppe.
-      // setLatestUpdatedPagesRefreshTime(getUnixtime());
-    }
+    ionPageScrollElement && ionPageContent.scrollToTop(500);
   }, [ionPageScrollElement, ionPageContent, tabsinfoSidor]);
 
   return (

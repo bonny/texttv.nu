@@ -126,10 +126,28 @@ function getCurrentIonPageContent() {
   return currentIonPageContent;
 }
 
+/**
+ * Hämta och sätt ion page content och dess scroll element.
+ * Behövs bara göras vid mount.
+ */
+function getAndSetIonPageContentAndIonPageScrollElement(
+  setIonPageContent,
+  setIonPageScrollElement
+) {
+  const currentIonPageContent = getCurrentIonPageContent();
+  if (currentIonPageContent) {
+    setIonPageContent(currentIonPageContent);
+    currentIonPageContent.getScrollElement().then(elm => {
+      setIonPageScrollElement(elm);
+    });
+  }
+}
+
 export {
   getPageRangeInfo,
   getCacheBustTimeString,
   getUnixtime,
   getCurrentIonPage,
-  getCurrentIonPageContent
+  getCurrentIonPageContent,
+  getAndSetIonPageContentAndIonPageScrollElement
 };

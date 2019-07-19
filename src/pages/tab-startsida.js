@@ -3,7 +3,10 @@ import { IonGrid, IonRow, IonCol } from "@ionic/react";
 import PageTextTV from "./page-TextTV.js";
 import SenastUppdaterat from "../modules/SenastUppdaterat";
 import TabContext from "../TabContext";
-import { getUnixtime, getCurrentIonPageContent } from "../functions";
+import {
+  getUnixtime,
+  getAndSetIonPageContentAndIonPageScrollElement
+} from "../functions";
 
 const Startsida = props => {
   const tabsinfo = useContext(TabContext);
@@ -20,13 +23,10 @@ const Startsida = props => {
    * Behövs bara göras vid mount.
    */
   useEffect(() => {
-    const currentIonPageContent = getCurrentIonPageContent();
-    if (currentIonPageContent) {
-      setIonPageContent(currentIonPageContent);
-      currentIonPageContent.getScrollElement().then(elm => {
-        setIonPageScrollElement(elm);
-      });
-    }
+    getAndSetIonPageContentAndIonPageScrollElement(
+      setIonPageContent,
+      setIonPageScrollElement
+    );
   }, []);
 
   // Scrolla till toppen om vi klickar på denna sidan tab igen
@@ -37,15 +37,7 @@ const Startsida = props => {
       return;
     }
 
-    const scrollTop = ionPageScrollElement.scrollTop;
-    // console.log(
-    //   "startsida, useEffect to scroll to top",
-    //   //tabsinfoHem,
-    //   scrollTop,
-    //   ionPageContent
-    // );
-
-    if (scrollTop > 0) {
+    if (ionPageScrollElement.scrollTop > 0) {
       // Scrolla upp och vi har scrollat ner.
       ionPageContent.scrollToTop(500);
     } else {
@@ -53,21 +45,6 @@ const Startsida = props => {
       setLatestUpdatedPagesRefreshTime(getUnixtime());
     }
   }, [ionPageScrollElement, ionPageContent, tabsinfoHem]);
-
-  // useEffect(() => {
-  //   console.log(
-  //     "startsida, tabsIsSameTab = sant + tabsinfoHem har uppdaterats",
-  //     tabsIsNewTab,
-  //     tabsinfoHem
-  //   );
-  // }, [tabsIsNewTab, tabsinfoHem]);
-
-  // Klick på hem-fliken har skett. Scrolla upp och uppdatera.
-  // useEffect(() => {
-  //   console.log("startsida, tabinfos context only hem", tabsinfoHem);
-  //   // Uppdatera mest läst.
-  //   setLatestUpdatedPagesRefreshTime(getUnixtime());
-  // }, [tabsinfoHem]);
 
   const handlePageTextTVRefresh = e => {
     // console.log("handlePageTextTVRefresh", e);
