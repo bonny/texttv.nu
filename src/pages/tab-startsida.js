@@ -15,10 +15,6 @@ const Startsida = props => {
   const [ionPageContent, setIonPageContent] = useState();
   const [ionPageScrollElement, setIonPageScrollElement] = useState();
 
-  useEffect(() => {
-    console.log("startsida, tabsinfo", tabsinfo);
-  }, [tabsinfo]);
-
   /**
    * Hämta och sätt ion page content och dess scroll element.
    * Behövs bara göras vid mount.
@@ -42,12 +38,12 @@ const Startsida = props => {
     }
 
     const scrollTop = ionPageScrollElement.scrollTop;
-    console.log(
-      "startsida, useEffect to scroll to top",
-      //tabsinfoHem,
-      scrollTop,
-      ionPageContent
-    );
+    // console.log(
+    //   "startsida, useEffect to scroll to top",
+    //   //tabsinfoHem,
+    //   scrollTop,
+    //   ionPageContent
+    // );
 
     if (scrollTop > 0) {
       // Scrolla upp och vi har scrollat ner.
@@ -74,7 +70,7 @@ const Startsida = props => {
   // }, [tabsinfoHem]);
 
   const handlePageTextTVRefresh = e => {
-    console.log("handlePageTextTVRefresh", e);
+    // console.log("handlePageTextTVRefresh", e);
     setLatestUpdatedPagesRefreshTime(getUnixtime());
   };
 

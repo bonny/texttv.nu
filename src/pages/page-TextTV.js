@@ -29,7 +29,7 @@ const PageTextTV = props => {
 
   let pageTitle = title || pageNum;
   
-  console.log("PageTextTV for pageNum", pageNum);
+  // console.log("PageTextTV for pageNum", pageNum);
 
   /**
    * Update the refresh time to the current time.
@@ -37,7 +37,7 @@ const PageTextTV = props => {
   const updateRefreshTime = () => {
     setRefreshTime(getUnixtime());
     if (onRefresh) {
-      console.log("call onRefresh in updateRefreshTime", onRefresh);
+      // console.log("call onRefresh in updateRefreshTime", onRefresh);
       onRefresh();
     }
   };
