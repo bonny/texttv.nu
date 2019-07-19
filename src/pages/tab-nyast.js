@@ -23,6 +23,24 @@ export default props => {
   const tabsinfo = useContext(TabContext);
   const tabsinfoNyast = tabsinfo.tabs.nyast;
 
+  // Uppdatera dokument-titel.
+  useEffect(() => {
+    let pageTitle;
+    
+    switch (selectedSegment) {
+      case "sports":
+        pageTitle = "Nyaste sportsidorna";
+        break;
+      case "news":
+        pageTitle = "Nyaste nyhetssidorna";
+        break;
+      default:
+        pageTitle = "Nyaste sidorna";
+    }
+
+    document.title = pageTitle;
+  }, [selectedSegment, tabsinfoNyast]);
+
   const doRefresh = e => {
     setRefreshTime(getUnixtime());
   };
@@ -72,22 +90,6 @@ export default props => {
       doRefresh();
     }
   }, [ionPageScrollElement, ionPageContent, tabsinfoNyast]);
-
-  // const handleRefreshBtnClick = e => {
-  //   doRefresh();
-  // };
-
-  // let pageTitle;
-  // switch (selectedSegment) {
-  //   case "sports":
-  //     pageTitle = "Nyaste sportsidorna";
-  //     break;
-  //   case "news":
-  //     pageTitle = "Nyaste nyhetssidorna";
-  //     break;
-  //   default:
-  //     pageTitle = "Nyaste sidorna";
-  // }
 
   return (
     <>

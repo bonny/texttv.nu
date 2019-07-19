@@ -23,6 +23,24 @@ export default props => {
   const tabsinfo = useContext(TabContext);
   const tabsinfoPopulart = tabsinfo.tabs.populart;
 
+  // Uppdatera dokument-titel.
+  useEffect(() => {
+    let pageTitle;
+    switch (selectedSegment) {
+      case "today":
+      default:
+        pageTitle = `Mest läst idag - de mest lästa Text-TV-sidorna idag`;
+        break;
+      case "yesterday":
+        pageTitle = `Mest läst igår - de mest lästa Text-TV-sidorna igår`;
+        break;
+      case "dayBeforeYesterday":
+        pageTitle = `Mest läst i förrgår - de mest lästa Text-TV-sidorna i förrgår`;
+        break;
+    }
+    document.title = pageTitle;
+  }, [selectedSegment, tabsinfoPopulart]);
+
   const doRefresh = e => {
     setRefreshTime(getUnixtime());
   };
