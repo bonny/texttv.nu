@@ -116,7 +116,7 @@ function getCurrentIonPage() {
  * Hämtar den aktuella sidan IonPageContent-elment,
  * dvs elementet man kan scrolla som innehåller innehållet.
  */
-function getCurrentIonPageContent() {
+function getCurrentIonPageContentElm() {
   const currentIonPageContent = [
     ...document.querySelectorAll(
       ".ion-page#main .ion-page:not(.ion-page-hidden) ion-content"
@@ -126,20 +126,27 @@ function getCurrentIonPageContent() {
   return currentIonPageContent;
 }
 
+function getCurrentIonPageScrollElm() {
+  const pageElm = getCurrentIonPageContentElm();
+  const scrollElm = pageElm.shadowRoot.querySelector(
+    ".inner-scroll"
+  );
+  return scrollElm;
+}
+
 /**
  * Hämta och sätt ion page content och dess scroll element.
- * Behövs bara göras vid mount.
  */
 function getAndSetIonPageContentAndIonPageScrollElement(
   setIonPageContent,
   setIonPageScrollElement
 ) {
-  const currentIonPageContent = getCurrentIonPageContent();
+  const currentIonPageContent = getCurrentIonPageContentElm();
   if (currentIonPageContent) {
     setIonPageContent(currentIonPageContent);
-    currentIonPageContent.getScrollElement().then(elm => {
-      setIonPageScrollElement(elm);
-    });
+
+    const scrollElm = getCurrentIonPageScrollElm();
+    setIonPageScrollElement(scrollElm);
   }
 }
 
@@ -148,6 +155,7 @@ export {
   getCacheBustTimeString,
   getUnixtime,
   getCurrentIonPage,
-  getCurrentIonPageContent,
+  getCurrentIonPageContentElm,
+  getCurrentIonPageScrollElm,
   getAndSetIonPageContentAndIonPageScrollElement
 };

@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 import TextTVPage from "../modules/TextTVPage";
 import Header from "../modules/Header";
 import TextTVRefresher from "../modules/TextTVRefresher";
-import { getUnixtime, getCurrentIonPageContent } from "../functions";
+import { getUnixtime, getCurrentIonPageContentElm } from "../functions";
 import { Plugins } from "@capacitor/core";
 const { Share } = Plugins;
 
@@ -95,7 +95,7 @@ const PageTextTV = props => {
   }, [passedRefreshTime, refreshTime, onRefresh]);
 
   const scrollToTop = () => {
-    let currentIonPageContent = getCurrentIonPageContent();
+    let currentIonPageContent = getCurrentIonPageContentElm();
     if (currentIonPageContent) {
       currentIonPageContent.scrollToTop(750);
     }

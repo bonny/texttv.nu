@@ -6,7 +6,8 @@ import {
 } from "@ionic/react";
 import React, { useContext, useEffect, useState } from "react";
 import {
-  getAndSetIonPageContentAndIonPageScrollElement,
+  getCurrentIonPageContentElm,
+  getCurrentIonPageScrollElm,
   getUnixtime
 } from "../functions";
 import SenastUppdaterat from "../modules/SenastUppdaterat";
@@ -18,15 +19,13 @@ export default props => {
   const { history } = props;
   const [selectedSegment, setSelectedSegment] = useState("news");
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
-  const [ionPageContent, setIonPageContent] = useState();
-  const [ionPageScrollElement, setIonPageScrollElement] = useState();
   const tabsinfo = useContext(TabContext);
   const tabsinfoNyast = tabsinfo.tabs.nyast;
 
   // Uppdatera dokument-titel.
   useEffect(() => {
     let pageTitle;
-    
+
     switch (selectedSegment) {
       case "sports":
         pageTitle = "Nyaste sportsidorna";
@@ -61,35 +60,29 @@ export default props => {
   //   console.log("handleSegmentClick", e);
   // };
 
-  /**
-   * Hämta och sätt ion page content och dess scroll element.
-   * Behövs bara göras vid mount.
-   */
-  useEffect(() => {
-    getAndSetIonPageContentAndIonPageScrollElement(
-      setIonPageContent,
-      setIonPageScrollElement
-    );
-  }, []);
-
   // Scrolla till toppen om vi klickar på denna sidan tab igen
   // och vi är inte längst uppe redan
   // Dvs. klickad tab = hem men vi är inte scrollade längst upp.
   useEffect(() => {
-    if (!ionPageScrollElement) {
-      return;
-    }
+    const scrollToTopOrRefresh = () => {
+      const ionPageContent = getCurrentIonPageContentElm();
+      const ionPageScrollElement = getCurrentIonPageScrollElm();
 
-    console.log(ionPageScrollElement, ionPageScrollElement.scrollTop);
+      if (!ionPageScrollElement) {
+        return;
+      }
 
-    if (ionPageScrollElement.scrollTop > 0) {
-      // Scrolla upp och vi har scrollat ner.
-      ionPageContent.scrollToTop(500);
-    } else {
-      // Ladda om om vi är längst uppe.
-      doRefresh();
-    }
-  }, [ionPageScrollElement, ionPageContent, tabsinfoNyast]);
+      if (ionPageScrollElement.scrollTop > 0) {
+        // Scrolla upp och vi har scrollat ner.
+        ionPageContent.scrollToTop(500);
+      } else {
+        // Ladda om om vi är längst uppe.
+        doRefresh();
+      }
+    };
+
+    scrollToTopOrRefresh();
+  }, [tabsinfoNyast]);
 
   return (
     <>
