@@ -158,7 +158,7 @@ b {
 
 .TextTVPage {
   user-select: auto;
-  animation-duration: 0.5s;
+  animation-duration: 0.25s;
   animation-fill-mode: both;
   animation-name: fadeInUp;
 }
@@ -167,7 +167,7 @@ b {
 .TextTVPage--skeleton {
   animation-name: fadeInDown;
   animation-delay: 1.25s;
-  animation-duration: 0.5s;
+  animation-duration: 0.25s;
 }
 
 .TextTVPage_UpdatedToast {
