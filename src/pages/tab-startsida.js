@@ -5,7 +5,8 @@ import SenastUppdaterat from "../modules/SenastUppdaterat";
 import TabContext from "../TabContext";
 import {
   getUnixtime,
-  getAndSetIonPageContentAndIonPageScrollElement
+  getCurrentIonPageContentElm,
+  getCurrentIonPageScrollElm
 } from "../functions";
 
 const Startsida = props => {
@@ -15,24 +16,14 @@ const Startsida = props => {
     latestUpdatedPagesRefreshTime,
     setLatestUpdatedPagesRefreshTime
   ] = useState(getUnixtime());
-  const [ionPageContent, setIonPageContent] = useState();
-  const [ionPageScrollElement, setIonPageScrollElement] = useState();
-
-  /**
-   * Hämta och sätt ion page content och dess scroll element.
-   * Behövs bara göras vid mount.
-   */
-  useEffect(() => {
-    getAndSetIonPageContentAndIonPageScrollElement(
-      setIonPageContent,
-      setIonPageScrollElement
-    );
-  }, []);
 
   // Scrolla till toppen om vi klickar på denna sidan tab igen
   // och vi är inte längst uppe redan
   // Dvs. klickad tab = hem men vi är inte scrollade längst upp.
   useEffect(() => {
+    const ionPageContent = getCurrentIonPageContentElm();
+    const ionPageScrollElement = getCurrentIonPageScrollElm();
+
     if (!ionPageScrollElement) {
       return;
     }
@@ -44,7 +35,7 @@ const Startsida = props => {
       // Ladda om om vi är längst uppe.
       setLatestUpdatedPagesRefreshTime(getUnixtime());
     }
-  }, [ionPageScrollElement, ionPageContent, tabsinfoHem]);
+  }, [tabsinfoHem]);
 
   const handlePageTextTVRefresh = e => {
     // console.log("handlePageTextTVRefresh", e);
