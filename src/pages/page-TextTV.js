@@ -27,6 +27,7 @@ const PageTextTV = props => {
   const [actionSheetOpened, setActionSheetOpened] = useState(false);
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
   const [pageUpdatedToastVisible, setPageUpdatedToastVisible] = useState(false);
+  const [pageData, setPageData] = useState([]);
 
   let pageTitle = title || `${pageNum} - SVT Text TV`;
 
@@ -60,15 +61,46 @@ const PageTextTV = props => {
     // pageNum
     // var apiEndpoint = "https://api.texttv.nu/api/share/" + pageIDs;
     // TODO: need to get pageID
-    // pass data up from the texttvpage.
+    // pass data up from the texttvpage, using function/callback?
 
-    let shareRet = await Share.share({
-      title: "See cool stuff",
-      text: "Really awesome thing you need to see right meow",
-      url: "http://ionicframework.com/",
-      dialogTitle: "Share with buddies"
+    // Hämta alla sidorn IDn
+    let pageIdsString = "";
+    pageData.forEach(page => {
+      pageIdsString = pageIdsString + `,${page.id}`;
     });
-    console.log("shareRet", shareRet);
+    // Bort med första kommatecknet.
+    pageIdsString = pageIdsString.replace(/^,/, "");
+
+    // let shareRet = Share.share({
+    //   title: "title",
+    //   text: "text",
+    //   url: "https://texttv.nu/",
+    //   dialogTitle: "Dela sida"
+    // });
+
+    const apiEndpoint = "https://api.texttv.nu/api/share/" + pageIdsString;
+    fetch(apiEndpoint)
+      .then(data => {
+        return data.json();
+      })
+      .then(data => {
+        console.log("share data", data);
+
+        let shareRet = Share.share({
+          title: data.title,
+          text: data.title,
+          url: data.permalink,
+          dialogTitle: "Dela sida"
+        })
+          .then(res => {
+            // Ok share.
+            console.log("shareRes", res);
+          })
+          .catch(err => {
+            // Fail share.
+            console.log("error", err);
+          });
+      });
   };
 
   // Om refreshTime som skickas med är mer än vår
@@ -135,6 +167,11 @@ const PageTextTV = props => {
     document.title = pageTitle;
   }, [pageTitle]);
 
+  const handlePageUpdate = data => {
+    console.log("handlePageUpdate", data);
+    setPageData(data);
+  };
+
   return (
     <>
       <Header
@@ -154,6 +191,7 @@ const PageTextTV = props => {
           history={history}
           refreshTime={refreshTime}
           size="large"
+          onPageUpdate={handlePageUpdate}
         />
 
         <IonActionSheet

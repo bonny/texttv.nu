@@ -125,7 +125,14 @@ const getNearestLink = e => {
 };
 
 export default props => {
-  const { pageNum, pageId, children, history, refreshTime } = props;
+  const {
+    pageNum,
+    pageId,
+    children,
+    history,
+    refreshTime,
+    onPageUpdate
+  } = props;
 
   // const [componentIsCleanUped, setComponentIsCleanUped] = useState(false);
   const [pageData, setPageData] = useState([]);
@@ -186,7 +193,7 @@ export default props => {
       let slowAnswerQueryString = slowAnswer
         ? `&slow_answer=${slowAnswer}`
         : "";
-      
+
       // TODO: ?cb= to group cache api requests
 
       if (pageId) {
@@ -222,6 +229,25 @@ export default props => {
       // setPageData([]);
     };
   }, [pageNum, pageId, refreshTime]);
+
+  // const memoizedOnPageUpdate = useCallback(() => {
+  //   console.log("useCallback");
+  //   if (onPageUpdate) {
+  //     onPageUpdate({ pageData });
+  //   }
+  // }, [pageData, onPageUpdate]);
+
+  useEffect(() => {
+    console.log("useEffect when pageData changes");
+    if (onPageUpdate) {
+      console.log(typeof onPageUpdate);
+      onPageUpdate(pageData);
+    }
+    // Kör funktion från props, om någon.
+    // if (memoizedOnPageUpdate) {
+    //   memoizedOnPageUpdate({ pageData });
+    // }
+  }, [pageData, onPageUpdate]);
 
   // Wrap each page.
   const pagesHtml = pageData.map(page => {
