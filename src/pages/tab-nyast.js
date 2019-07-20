@@ -52,9 +52,17 @@ export default props => {
   };
 
   const handleSegmentChange = e => {
-    // console.log("handleSegmentChange", e);
     setSelectedSegment(e.detail.value);
   };
+
+  /**
+   * Scrolla upp när flik byts, annars börjar man nya fliken ev. nedscrollad
+   * vilket är lite irri.
+   */
+  useEffect(() => {
+    const ionPageContent = getCurrentIonPageContentElm();
+    ionPageContent.scrollToTop();
+  }, [selectedSegment]);
 
   // const handleSegmentClick = e => {
   //   console.log("handleSegmentClick", e);

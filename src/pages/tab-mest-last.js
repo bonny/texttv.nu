@@ -52,13 +52,21 @@ export default props => {
   };
 
   const handleSegmentChange = e => {
-    // console.log("handleSegmentChange", e);
     setSelectedSegment(e.detail.value);
   };
 
-  const handleSegmentClick = e => {
-    // console.log("handleSegmentClick", e);
-  };
+  // const handleSegmentClick = e => {
+  //   // console.log("handleSegmentClick", e);
+  // };
+
+    /**
+   * Scrolla upp när flik byts, annars börjar man nya fliken ev. nedscrollad
+   * vilket är lite irri.
+   */
+  useEffect(() => {
+    const ionPageContent = getCurrentIonPageContentElm();
+    ionPageContent.scrollToTop();
+  }, [selectedSegment]);
 
   // Scrolla till toppen om vi klickar på denna sidan tab igen
   // och vi är inte längst uppe redan
@@ -90,7 +98,7 @@ export default props => {
         <IonToolbar color="primary">
           <IonSegment
             onIonChange={handleSegmentChange}
-            onClick={handleSegmentClick}
+            // onClick={handleSegmentClick}
             value={selectedSegment}
           >
             <IonSegmentButton value="today">Idag</IonSegmentButton>
