@@ -4,15 +4,14 @@ import {
   IonButtons,
   IonHeader,
   IonIcon,
-  IonTitle,
-  IonToolbar,
-  IonPopover,
-  IonList,
-  IonListHeader,
   IonItem,
-  IonLabel
+  IonLabel,
+  IonList,
+  IonPopover,
+  IonTitle,
+  IonToolbar
 } from "@ionic/react";
-import { share, refresh, more, copy, clipboard, link } from "ionicons/icons";
+import { copy, link, more, refresh, share } from "ionicons/icons";
 import React, { useState } from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
 import TextTVSearchBar from "./TextTVSearchBar";
@@ -23,14 +22,23 @@ const Header = props => {
     headerStyle,
     handleMoreActionsClick,
     handleRefreshBtnClick,
-    pageTitle
+    pageTitle,
+    onCopyToClipboard
   } = props;
 
   // const backButtonDefaultHref = `/${match.params.tab}`;
   const backButtonDefaultHref = `/hem?default`;
-
   const [showPopover, setShowPopover] = useState(false);
   const [popoverEvent, setPopoverEvent] = useState();
+
+  const hidePopover = () => {
+    setShowPopover(false);
+  };
+
+  const handleCopyToClipboard = () => {
+    onCopyToClipboard();
+    hidePopover();
+  };
 
   return (
     <>
@@ -137,8 +145,7 @@ const Header = props => {
         event={popoverEvent}
       >
         <IonList>
-          {/* <IonListHeader>Ionic</IonListHeader> */}
-          <IonItem button>
+          <IonItem button onClick={handleCopyToClipboard}>
             <IonIcon slot="start" icon={copy} mode="md" />
             Kopiera text
           </IonItem>

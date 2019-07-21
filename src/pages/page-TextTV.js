@@ -1,24 +1,19 @@
 /**
  * Visar en sida med en eller flera text-tv-sidor.
  */
-import { Plugins } from "@capacitor/core";
 import { IonActionSheet, IonContent, IonToast } from "@ionic/react";
 import React, { useEffect, useState } from "react";
-import { getCurrentIonPageContentElm, getUnixtime } from "../functions";
+import {
+  getCurrentIonPageContentElm,
+  getUnixtime,
+  getPageRangeInfo
+} from "../functions";
+
 import Header from "../modules/Header";
 import TextTVPage from "../modules/TextTVPage";
 import TextTVRefresher from "../modules/TextTVRefresher";
+import { Plugins } from "@capacitor/core";
 const { Clipboard, Share } = Plugins;
-
-// Clipboard.write({
-//   string: "Hello, Moto"
-// });
-
-// Clipboard.read({
-//   type: "string"
-// }).then(str => {
-//   console.log("Got string from clipboard:", str.value);
-// });
 
 const PageTextTV = props => {
   const {
@@ -175,6 +170,43 @@ Delad vid https://texttv.nu/
     setPageData(data);
   };
 
+  function stripHtml(html) {
+    // Create a new div element
+    var temporalDivElement = document.createElement("div");
+    // Set the HTML content with the providen
+    temporalDivElement.innerHTML = html;
+    // Retrieve the text property of the element (cross-browser support)
+    return temporalDivElement.textContent || temporalDivElement.innerText || "";
+  }
+
+  const handleCopyToClipboard = () => {
+    const pageRangeInfo = getPageRangeInfo(pageNum);
+
+    let text = "";
+    if (pageRangeInfo.count > 1) {
+      text = text + `Text TV sidorna ${pageNum}.`;
+    } else {
+      text = text + `Text TV sidan ${pageNum}.`;
+    }
+
+    text = text + "\nDelat via https://texttv.nu.\n\n";
+
+    pageData.forEach(page => {
+      page.content.forEach(val => {
+        text = text + val;
+      });
+    });
+
+    text = stripHtml(text);
+
+    Clipboard.write({
+      string: text
+    });
+
+    //console.log("headerElm", headerElm);
+    //headerElm.hidePopover();
+  };
+
   return (
     <>
       <Header
@@ -182,6 +214,7 @@ Delad vid https://texttv.nu/
         pageTitle={pageTitle}
         headerStyle={headerStyle}
         handleMoreActionsClick={handleMoreActionsClick}
+        onCopyToClipboard={handleCopyToClipboard}
         handleRefreshBtnClick={handleRefreshBtnClick}
       />
 
