@@ -108,6 +108,7 @@
 }
 .TextTVPage .root {
   white-space: pre;
+  word-wrap: initial;
 }
 .TextTVPage .root .toprow {
   color: #ddd;
