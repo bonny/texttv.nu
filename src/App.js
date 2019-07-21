@@ -140,9 +140,6 @@ function App(props) {
                   <Route
                     path="/:tab(hem)"
                     render={props => {
-                      // console.log("route hem", props);
-                      // console.log("route hem tabsinfo", tabsinfo);
-                      // TODO: skicka ner clicktiden, inte route rendertid
                       return <Startsida {...props} />;
                     }}
                     exact={true}

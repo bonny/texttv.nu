@@ -1,14 +1,24 @@
 /**
  * Visar en sida med en eller flera text-tv-sidor.
  */
-import { IonActionSheet, IonContent, IonToast } from "@ionic/react";
-import React, { useState, useEffect } from "react";
-import TextTVPage from "../modules/TextTVPage";
-import Header from "../modules/Header";
-import TextTVRefresher from "../modules/TextTVRefresher";
-import { getUnixtime, getCurrentIonPageContentElm } from "../functions";
 import { Plugins } from "@capacitor/core";
-const { Share } = Plugins;
+import { IonActionSheet, IonContent, IonToast } from "@ionic/react";
+import React, { useEffect, useState } from "react";
+import { getCurrentIonPageContentElm, getUnixtime } from "../functions";
+import Header from "../modules/Header";
+import TextTVPage from "../modules/TextTVPage";
+import TextTVRefresher from "../modules/TextTVRefresher";
+const { Clipboard, Share } = Plugins;
+
+// Clipboard.write({
+//   string: "Hello, Moto"
+// });
+
+// Clipboard.read({
+//   type: "string"
+// }).then(str => {
+//   console.log("Got string from clipboard:", str.value);
+// });
 
 const PageTextTV = props => {
   const {
@@ -56,25 +66,14 @@ const PageTextTV = props => {
   };
 
   const handleMoreActionsClick = async e => {
-    // console.log("handleMoreActionsClick", e);
-    // setActionSheetOpened(true);
-    // pageNum
-    // var apiEndpoint = "https://api.texttv.nu/api/share/" + pageIDs;
-    // TODO: need to get pageID
-    // pass data up from the texttvpage, using function/callback?
-
     // Hämta alla sidorn IDn
     let pageIdsString = "";
     pageData.forEach(page => {
       pageIdsString = pageIdsString + `,${page.id}`;
     });
+
     // Bort med första kommatecknet.
     pageIdsString = pageIdsString.replace(/^,/, "");
-
-    // Pinga denna efter delning för att meddela sajten att sidan delats.
-    // I vanliga fall används denna för att hämta delningsinfo, men 
-    // det blir ett promise för mycket för att Safari ska godkänna delning.
-    const apiEndpoint = "https://api.texttv.nu/api/share/" + pageIdsString;
 
     // Permalänk.
     const permalink = `https://www.texttv.nu/${pageNum}/arkiv/sida/${pageIdsString}`;
@@ -94,6 +93,11 @@ Delad vid https://texttv.nu/
     sharePromise
       .then(data => {
         console.log("Delning verkar gått fint. Härligt!", data);
+        // Pinga denna efter delning för att meddela sajten att sidan delats.
+        // I vanliga fall används denna för att hämta delningsinfo, men
+        // det blir ett promise för mycket för att Safari ska godkänna delning.
+        const apiEndpoint = "https://api.texttv.nu/api/share/" + pageIdsString;
+
         fetch(apiEndpoint);
         // TODO: Pixeltrack x2.
       })
@@ -167,7 +171,7 @@ Delad vid https://texttv.nu/
   }, [pageTitle]);
 
   const handlePageUpdate = data => {
-    console.log("handlePageUpdate", data);
+    // console.log("handlePageUpdate", data);
     setPageData(data);
   };
 

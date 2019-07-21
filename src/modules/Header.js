@@ -5,11 +5,15 @@ import {
   IonHeader,
   IonIcon,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonPopover,
+  IonList,
+  IonListHeader,
+  IonItem,
+  IonLabel
 } from "@ionic/react";
-import { share, refresh } from "ionicons/icons";
-
-import React from "react";
+import { share, refresh, more, copy, clipboard, link } from "ionicons/icons";
+import React, { useState } from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
 import TextTVSearchBar from "./TextTVSearchBar";
 
@@ -24,6 +28,9 @@ const Header = props => {
 
   // const backButtonDefaultHref = `/${match.params.tab}`;
   const backButtonDefaultHref = `/hem?default`;
+
+  const [showPopover, setShowPopover] = useState(false);
+  const [popoverEvent, setPopoverEvent] = useState();
 
   return (
     <>
@@ -48,19 +55,30 @@ const Header = props => {
             <TextTVSearchBar history={history} />
 
             <IonButtons slot="end">
-              <IonButton
+              {/* <IonButton
                 fill="clear"
                 slot="end"
                 onClick={handleMoreActionsClick}
               >
                 <IonIcon slot="icon-only" icon={share} mode="md" />
-              </IonButton>
+              </IonButton> */}
               <IonButton
                 fill="clear"
                 slot="end"
                 onClick={handleRefreshBtnClick}
               >
                 <IonIcon slot="icon-only" icon={refresh} mode="md" />
+              </IonButton>
+              <IonButton
+                fill="clear"
+                slot="end"
+                onClick={e => {
+                  e.persist();
+                  setPopoverEvent(e);
+                  setShowPopover(true);
+                }}
+              >
+                <IonIcon slot="icon-only" icon={more} mode="md" />
               </IonButton>
             </IonButtons>
           </IonToolbar>
@@ -113,6 +131,35 @@ const Header = props => {
           </IonToolbar>
         </IonHeader>
       )}
+      <IonPopover
+        isOpen={showPopover}
+        onDidDismiss={e => setShowPopover(false)}
+        event={popoverEvent}
+      >
+        <IonList>
+          {/* <IonListHeader>Ionic</IonListHeader> */}
+          <IonItem button>
+            <IonIcon slot="start" icon={copy} mode="md" />
+            Kopiera text
+          </IonItem>
+          <IonItem button>
+            <IonIcon slot="start" icon={link} mode="md" />
+            Kopiera permalänk
+          </IonItem>
+          <IonItem button>
+            <IonIcon slot="start" icon={share} mode="md" />
+            <IonLabel>Dela...</IonLabel>
+          </IonItem>
+          {/* <IonItem
+            button
+            slot="start"
+            onClick={handleRefreshBtnClick}
+          >
+            <IonIcon slot="start" icon={refresh} mode="md" />
+            <IonLabel>Ladda om</IonLabel>
+          </IonItem> */}
+        </IonList>
+      </IonPopover>
     </>
   );
 };
