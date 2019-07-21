@@ -230,17 +230,10 @@ export default props => {
     };
   }, [pageNum, pageId, refreshTime]);
 
-  // const memoizedOnPageUpdate = useCallback(() => {
-  //   console.log("useCallback");
-  //   if (onPageUpdate) {
-  //     onPageUpdate({ pageData });
-  //   }
-  // }, [pageData, onPageUpdate]);
-
   useEffect(() => {
-    console.log("useEffect when pageData changes");
+    // console.log("useEffect when pageData changes");
     if (onPageUpdate) {
-      console.log(typeof onPageUpdate);
+      // console.log(typeof onPageUpdate);
       onPageUpdate(pageData);
     }
     // Kör funktion från props, om någon.

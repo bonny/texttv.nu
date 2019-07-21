@@ -71,35 +71,34 @@ const PageTextTV = props => {
     // Bort med första kommatecknet.
     pageIdsString = pageIdsString.replace(/^,/, "");
 
-    // let shareRet = Share.share({
-    //   title: "title",
-    //   text: "text",
-    //   url: "https://texttv.nu/",
-    //   dialogTitle: "Dela sida"
-    // });
-
+    // Pinga denna efter delning för att meddela sajten att sidan delats.
+    // I vanliga fall används denna för att hämta delningsinfo, men 
+    // det blir ett promise för mycket för att Safari ska godkänna delning.
     const apiEndpoint = "https://api.texttv.nu/api/share/" + pageIdsString;
-    fetch(apiEndpoint)
-      .then(data => {
-        return data.json();
-      })
-      .then(data => {
-        console.log("share data", data);
 
-        let shareRet = Share.share({
-          title: data.title,
-          text: data.title,
-          url: data.permalink,
-          dialogTitle: "Dela sida"
-        })
-          .then(res => {
-            // Ok share.
-            console.log("shareRes", res);
-          })
-          .catch(err => {
-            // Fail share.
-            console.log("error", err);
-          });
+    // Permalänk.
+    const permalink = `https://www.texttv.nu/${pageNum}/arkiv/sida/${pageIdsString}`;
+
+    // Titel + ev. text från första sidan.
+    const firstPage = pageData[0];
+
+    const sharePromise = Share.share({
+      title: `Text TV ${firstPage.num}: ${firstPage.title}`,
+      text: `${firstPage.title}
+Delad vid https://texttv.nu/
+`,
+      url: permalink,
+      dialogTitle: "Dela sida"
+    });
+
+    sharePromise
+      .then(data => {
+        console.log("Delning verkar gått fint. Härligt!", data);
+        fetch(apiEndpoint);
+        // TODO: Pixeltrack x2.
+      })
+      .catch(err => {
+        console.log("Delning gick fel pga orsak", err);
       });
   };
 
