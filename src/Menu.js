@@ -97,7 +97,7 @@ const Menu = props => {
   return (
     <IonMenu side="start" menuId="mainMenu" contentId="main" type="overlay">
       <IonHeader>
-        <IonToolbar color="primary">
+        <IonToolbar color="primary" mode="md">
           <IonTitle>Meny</IonTitle>
           <IonButtons slot="end">
             <IonMenuToggle menu="mainMenu">
