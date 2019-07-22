@@ -140,6 +140,7 @@ export default props => {
   // const [pageIsLoaded, setPageIsLoaded] = useState(false);
   const [pageIsLoading, setPageIsLoading] = useState(true);
 
+  // Leta upp närmaste länk, om någon, vid klick nånstans på sidan.
   const handleClick = e => {
     e.preventDefault();
 
@@ -174,12 +175,15 @@ export default props => {
     // }
   };
 
-  // Load page from TextTV.nu when pageNum or refreshTime is changed
+  /**
+   * Ladda in sida från API när pageNum eller refreshTime ändras.
+   */
   useEffect(() => {
-    // console.log("texttv-page useEffect, before fetch", pageNum, pageId);
-    // console.log("isComponentCleaned", componentIsCleanUped);
+    console.log("texttv-page useEffect, before fetch", pageNum, pageId);
 
-    setPageData([]);
+    // TODO: när ny sida laddas ska vi tömma pagedata då?
+    // setPageData([]);
+
     setPageIsLoading(true);
     // setPageIsLoaded(false);
 
@@ -265,7 +269,8 @@ export default props => {
 
   return (
     <>
-      {pageIsLoading && <SkeletonTextTVPage pageNum={pageNum} />} {pagesHtml}
+      {/* {pageIsLoading && <SkeletonTextTVPage pageNum={pageNum} />} */}
+      {pagesHtml}
     </>
   );
 };
