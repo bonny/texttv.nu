@@ -23,7 +23,8 @@ const Header = props => {
     handleMoreActionsClick,
     handleRefreshBtnClick,
     pageTitle,
-    onCopyToClipboard
+    onCopyTextToClipboard,
+    onCopyLinkToClipboard
   } = props;
 
   // const backButtonDefaultHref = `/${match.params.tab}`;
@@ -35,8 +36,13 @@ const Header = props => {
     setShowPopover(false);
   };
 
-  const handleCopyToClipboard = () => {
-    onCopyToClipboard();
+  const handleCopyTextToClipboard = () => {
+    onCopyTextToClipboard();
+    hidePopover();
+  };
+
+  const handleCopyLinkToClipboard = () => {
+    onCopyLinkToClipboard();
     hidePopover();
   };
 
@@ -145,13 +151,13 @@ const Header = props => {
         event={popoverEvent}
       >
         <IonList>
-          <IonItem button onClick={handleCopyToClipboard}>
+          <IonItem button onClick={handleCopyTextToClipboard}>
             <IonIcon slot="start" icon={copy} mode="md" />
             Kopiera text
           </IonItem>
-          <IonItem button>
+          <IonItem button onClick={handleCopyLinkToClipboard}>
             <IonIcon slot="start" icon={link} mode="md" />
-            Kopiera permalänk
+            Kopiera länk
           </IonItem>
           <IonItem button>
             <IonIcon slot="start" icon={share} mode="md" />

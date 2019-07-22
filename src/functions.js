@@ -150,6 +150,24 @@ function getAndSetIonPageContentAndIonPageScrollElement(
   }
 }
 
+  /**
+   * Ta bort taggar från html.
+   * Funktion från
+   * https://ourcodeworld.com/articles/read/376/how-to-strip-html-from-a-string-extract-only-text-content-in-javascript
+   *
+   * @param string html
+   * @return string Strängen som ren text
+   */
+
+  function stripHtml(html) {
+    // Create a new div element
+    var temporalDivElement = document.createElement("div");
+    // Set the HTML content with the providen
+    temporalDivElement.innerHTML = html;
+    // Retrieve the text property of the element (cross-browser support)
+    return temporalDivElement.textContent || temporalDivElement.innerText || "";
+  }
+
 export {
   getPageRangeInfo,
   getCacheBustTimeString,
@@ -157,5 +175,6 @@ export {
   getCurrentIonPage,
   getCurrentIonPageContentElm,
   getCurrentIonPageScrollElm,
-  getAndSetIonPageContentAndIonPageScrollElement
+  getAndSetIonPageContentAndIonPageScrollElement,
+  stripHtml
 };

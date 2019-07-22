@@ -6,7 +6,8 @@ import React, { useEffect, useState } from "react";
 import {
   getCurrentIonPageContentElm,
   getUnixtime,
-  getPageRangeInfo
+  getPageRangeInfo,
+  stripHtml
 } from "../functions";
 
 import Header from "../modules/Header";
@@ -170,16 +171,7 @@ Delad vid https://texttv.nu/
     setPageData(data);
   };
 
-  function stripHtml(html) {
-    // Create a new div element
-    var temporalDivElement = document.createElement("div");
-    // Set the HTML content with the providen
-    temporalDivElement.innerHTML = html;
-    // Retrieve the text property of the element (cross-browser support)
-    return temporalDivElement.textContent || temporalDivElement.innerText || "";
-  }
-
-  const handleCopyToClipboard = () => {
+  const handleCopyTextToClipboard = () => {
     const pageRangeInfo = getPageRangeInfo(pageNum);
 
     let text = "";
@@ -189,9 +181,14 @@ Delad vid https://texttv.nu/
       text = text + `Text TV sidan ${pageNum}.`;
     }
 
-    text = text + "\nDelat via https://texttv.nu.\n\n";
+    text = text + "\nDelat via https://texttv.nu.\n";
 
-    pageData.forEach(page => {
+    pageData.forEach((page, idx) => {
+      // Lägg till separator mellan sidor.
+      //if (idx > 0) {
+        text = text + "\n----------------------------------------\n\n";
+      //}
+
       page.content.forEach(val => {
         text = text + val;
       });
@@ -202,9 +199,27 @@ Delad vid https://texttv.nu/
     Clipboard.write({
       string: text
     });
+  };
 
-    //console.log("headerElm", headerElm);
-    //headerElm.hidePopover();
+  const handleCopyLinkToClipboard = () => {
+    // const pageRangeInfo = getPageRangeInfo(pageNum);
+
+    let pageIdsString = "";
+    pageData.forEach(page => {
+      pageIdsString = pageIdsString + `,${page.id}`;
+    });
+
+    pageIdsString = pageIdsString.replace(/^,/, "");
+
+    const shareDate = new Date();
+    const formattedDate = `${shareDate.getFullYear()}-${shareDate.getMonth() +
+      1}-${shareDate.getDate()}`;
+
+    const permalink = `https://texttv.nu/${pageNum}/arkiv/${formattedDate}/${pageIdsString}/`;
+
+    Clipboard.write({
+      string: permalink
+    });
   };
 
   return (
@@ -214,7 +229,8 @@ Delad vid https://texttv.nu/
         pageTitle={pageTitle}
         headerStyle={headerStyle}
         handleMoreActionsClick={handleMoreActionsClick}
-        onCopyToClipboard={handleCopyToClipboard}
+        onCopyTextToClipboard={handleCopyTextToClipboard}
+        onCopyLinkToClipboard={handleCopyLinkToClipboard}
         handleRefreshBtnClick={handleRefreshBtnClick}
       />
 

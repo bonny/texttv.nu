@@ -202,21 +202,26 @@ export default props => {
         url = `https://api.texttv.nu/api/get/${pageNum}?app=texttvapp${slowAnswerQueryString}`;
       }
 
-      const response = await fetch(url);
-      const pageData = await response.json();
-
-      // Vänta lite med att sätta ny sidata pga felsökning och test osv.
-      // setTimeout(() => {
-      // console.log("texttv-page useEffect, after fetch", pageNum, pageId);
-      setPageData(pageData);
-      setPageIsLoading(false);
-      // setPageIsLoaded(true);
-      // }, 1000);
-      // console.log(
-      //   "texttv-page useEffect, after fetch and set page data done",
-      //   pageNum,
-      //   pageId
-      // );
+      const response = fetch(url);
+      response
+        .then(async responseDatas => {
+          const pageData = await responseDatas.json();
+          // Vänta lite med att sätta ny sidata pga felsökning och test osv.
+          // setTimeout(() => {
+          // console.log("texttv-page useEffect, after fetch", pageNum, pageId);
+          setPageData(pageData);
+          setPageIsLoading(false);
+          // setPageIsLoaded(true);
+          // }, 1000);
+          // console.log(
+          //   "texttv-page useEffect, after fetch and set page data done",
+          //   pageNum,
+          //   pageId
+          // );
+        })
+        .catch(fetchErr => {
+          console.log("Fel vid hämtning av sida:", fetchErr);
+        });
     }
 
     fetchPageContents();
