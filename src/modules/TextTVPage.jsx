@@ -1,128 +1,16 @@
 /**
  * En text-tv-sida.
  */
-import React, { useEffect, useState } from "react";
-import { SkeletonTextTVPage } from "./SkeletonTextTVPage";
-// import { close, refresh } from "ionicons/icons";
-// import { FontSubscriber } from "react-with-async-fonts";
+import React, { useEffect, useState, useRef } from "react";
+import { createMarkupForPage, getNearestLink } from "../functions";
 
-// const debug = false;
-
-function createMarkupForPage(page) {
-  return {
-    __html: page.content
-  };
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
 }
-
-function isValidHit(el) {
-  // console.log("isValidHit", el.nodeName);
-  //return el && el.webkitMatchesSelector("aside");
-  return el && el.nodeName === "A";
-}
-
-// function drawDot(parent, x, y) {
-//   // console.log(parent, x, y);
-//   var dot = document.createElement("b");
-//   dot.setAttribute("style", "top: " + y + "px; left: " + x + "px;");
-//   //    dot.style.top = y + 'px';
-//   //    dot.style.left = x + 'px';
-//   parent.appendChild(dot);
-// }
-
-function hitTest(x, y) {
-  var element,
-    hit = document.elementFromPoint(x, y);
-
-  if (isValidHit(hit)) {
-    element = hit;
-  }
-
-  var i = 0;
-
-  // if (debug) {
-  //   var dotParent = document.createElement("div");
-  //   dotParent.classList.add("dot-container");
-  // }
-
-  while (!element) {
-    i = i + 3;
-
-    if (i > 40) {
-      // console.log("seat belt!");
-      break;
-    }
-
-    var increment = i / Math.sqrt(2);
-    // increment = i;
-    var points = [
-      [x - increment, y - increment],
-      [x + increment, y - increment],
-      [x + increment, y + increment],
-      [x - increment, y + increment]
-    ];
-
-    // Threshold until we start testing for direct horizontal and vertical coordinates.
-    if (i > 5) {
-      points.push([x, y - i], [x + i, y], [x, y + i], [x - i, y]);
-    }
-
-    // Threshold until we start testing for direct horizontal and vertical coordinates.
-    if (i > 10) {
-      increment = Math.floor(i / (2 * Math.sqrt(2)));
-      points.push(
-        [x - i, y - increment],
-        [x - increment, y - i],
-        [x + increment, y - i],
-        [x + i, y - increment],
-        [x + i, y + increment],
-        [x + increment, y + i],
-        [x - increment, y + i],
-        [x - i, y + increment]
-      );
-    }
-
-    var foundPoints = points.find(pointsSome);
-    if (foundPoints) {
-      // console.log("foundPoints", foundPoints);
-      element = document.elementFromPoint.apply(document, foundPoints);
-    }
-
-    // if (elem) {
-    //   element = hit;
-    // }
-  }
-
-  // if (debug) {
-  //   var section = document.querySelector("ion-app");
-  //   if (dotParent && section) section.appendChild(dotParent);
-  // }
-
-  return element;
-}
-
-const pointsSome = function(coordinates) {
-  var hit = document.elementFromPoint.apply(document, coordinates);
-  // if (debug) {
-  //   drawDot(dotParent, coordinates[0], coordinates[1]);
-  // }
-  if (isValidHit(hit)) {
-    //element = hit;
-    // console.log("valid hit", hit);
-
-    return hit;
-  }
-
-  return false;
-};
-
-const getNearestLink = e => {
-  // console.log("getNearestLink");
-  // console.log("clientXY", e.clientX, e.clientY);
-  // console.log("pageXY", e.pageX, e.pageY);
-  const nearestLink = hitTest(e.clientX, e.clientY);
-  //console.log("nearestLink", nearestLink);
-  return nearestLink;
-};
 
 export default props => {
   const {
@@ -136,6 +24,9 @@ export default props => {
 
   // const [componentIsCleanUped, setComponentIsCleanUped] = useState(false);
   const [pageData, setPageData] = useState([]);
+  const prevPageData = usePrevious(pageData);
+  const prevPageNum = usePrevious(pageNum);
+  const pageRef = useRef();
 
   // const [pageIsLoaded, setPageIsLoaded] = useState(false);
   const [pageIsLoading, setPageIsLoading] = useState(true);
@@ -179,10 +70,21 @@ export default props => {
    * Ladda in sida från API när pageNum eller refreshTime ändras.
    */
   useEffect(() => {
-    console.log("texttv-page useEffect, before fetch", pageNum, pageId);
+    console.log("texttv-page useEffect, before fetch", pageNum, refreshTime);
+    if (prevPageNum) {
+      // console.log("prev pageData", prevPageData[0].num);
+      console.log("prev prevPageNum", prevPageNum);
+    }
 
     // TODO: när ny sida laddas ska vi tömma pagedata då?
+    // Om samma sida = behåll data pga vill inte få en sida
+    // som blinkar till eller så och sen inte har fått nåt nytt innehåll.
+    // Om ny sida: nån effekt.
     // setPageData([]);
+    if (prevPageNum !== pageNum) {
+      console.log("-----------------new page range---------");
+      setPageData([]);
+    }
 
     setPageIsLoading(true);
     // setPageIsLoaded(false);
@@ -237,6 +139,7 @@ export default props => {
       // console.log(pageNum, "cleanup");
       // setPageData([]);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNum, pageId, refreshTime]);
 
   useEffect(() => {
@@ -252,9 +155,15 @@ export default props => {
   }, [pageData, onPageUpdate]);
 
   // Wrap each page.
-  const pagesHtml = pageData.map(page => {
+  const pagesHtml = pageData.length ? pageData.map(page => {
     return (
-      <div className="TextTVPage" key={page.id}>
+      <div
+        className="TextTVPage"
+        key={page.id}
+        data-page-num={pageNum}
+        data-page-id={pageId}
+        ref={pageRef}
+      >
         <div className="TextTVPage__wrap">
           <div
             className="TextTVPage__inner"
@@ -265,11 +174,12 @@ export default props => {
         {children}
       </div>
     );
-  });
+  }) : null;
 
   return (
     <>
       {/* {pageIsLoading && <SkeletonTextTVPage pageNum={pageNum} />} */}
+      <div>{pageNum}</div>
       {pagesHtml}
     </>
   );

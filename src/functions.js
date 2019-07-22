@@ -128,9 +128,7 @@ function getCurrentIonPageContentElm() {
 
 function getCurrentIonPageScrollElm() {
   const pageElm = getCurrentIonPageContentElm();
-  const scrollElm = pageElm.shadowRoot.querySelector(
-    ".inner-scroll"
-  );
+  const scrollElm = pageElm.shadowRoot.querySelector(".inner-scroll");
   return scrollElm;
 }
 
@@ -150,23 +148,140 @@ function getAndSetIonPageContentAndIonPageScrollElement(
   }
 }
 
-  /**
-   * Ta bort taggar från html.
-   * Funktion från
-   * https://ourcodeworld.com/articles/read/376/how-to-strip-html-from-a-string-extract-only-text-content-in-javascript
-   *
-   * @param string html
-   * @return string Strängen som ren text
-   */
+/**
+ * Ta bort taggar från html.
+ * Funktion från
+ * https://ourcodeworld.com/articles/read/376/how-to-strip-html-from-a-string-extract-only-text-content-in-javascript
+ *
+ * @param string html
+ * @return string Strängen som ren text
+ */
 
-  function stripHtml(html) {
-    // Create a new div element
-    var temporalDivElement = document.createElement("div");
-    // Set the HTML content with the providen
-    temporalDivElement.innerHTML = html;
-    // Retrieve the text property of the element (cross-browser support)
-    return temporalDivElement.textContent || temporalDivElement.innerText || "";
+function stripHtml(html) {
+  // Create a new div element
+  var temporalDivElement = document.createElement("div");
+  // Set the HTML content with the providen
+  temporalDivElement.innerHTML = html;
+  // Retrieve the text property of the element (cross-browser support)
+  return temporalDivElement.textContent || temporalDivElement.innerText || "";
+}
+
+function createMarkupForPage(page) {
+  return {
+    __html: page.content
+  };
+}
+
+function isValidHit(el) {
+  // console.log("isValidHit", el.nodeName);
+  //return el && el.webkitMatchesSelector("aside");
+  return el && el.nodeName === "A";
+}
+
+// function drawDot(parent, x, y) {
+//   // console.log(parent, x, y);
+//   var dot = document.createElement("b");
+//   dot.setAttribute("style", "top: " + y + "px; left: " + x + "px;");
+//   //    dot.style.top = y + 'px';
+//   //    dot.style.left = x + 'px';
+//   parent.appendChild(dot);
+// }
+
+function hitTest(x, y) {
+  var element,
+    hit = document.elementFromPoint(x, y);
+
+  if (isValidHit(hit)) {
+    element = hit;
   }
+
+  var i = 0;
+
+  // if (debug) {
+  //   var dotParent = document.createElement("div");
+  //   dotParent.classList.add("dot-container");
+  // }
+
+  while (!element) {
+    i = i + 3;
+
+    if (i > 40) {
+      // console.log("seat belt!");
+      break;
+    }
+
+    var increment = i / Math.sqrt(2);
+    // increment = i;
+    var points = [
+      [x - increment, y - increment],
+      [x + increment, y - increment],
+      [x + increment, y + increment],
+      [x - increment, y + increment]
+    ];
+
+    // Threshold until we start testing for direct horizontal and vertical coordinates.
+    if (i > 5) {
+      points.push([x, y - i], [x + i, y], [x, y + i], [x - i, y]);
+    }
+
+    // Threshold until we start testing for direct horizontal and vertical coordinates.
+    if (i > 10) {
+      increment = Math.floor(i / (2 * Math.sqrt(2)));
+      points.push(
+        [x - i, y - increment],
+        [x - increment, y - i],
+        [x + increment, y - i],
+        [x + i, y - increment],
+        [x + i, y + increment],
+        [x + increment, y + i],
+        [x - increment, y + i],
+        [x - i, y + increment]
+      );
+    }
+
+    var foundPoints = points.find(pointsSome);
+    if (foundPoints) {
+      // console.log("foundPoints", foundPoints);
+      element = document.elementFromPoint.apply(document, foundPoints);
+    }
+
+    // if (elem) {
+    //   element = hit;
+    // }
+  }
+
+  // if (debug) {
+  //   var section = document.querySelector("ion-app");
+  //   if (dotParent && section) section.appendChild(dotParent);
+  // }
+
+  return element;
+}
+
+const pointsSome = function(coordinates) {
+  var hit = document.elementFromPoint.apply(document, coordinates);
+  // if (debug) {
+  //   drawDot(dotParent, coordinates[0], coordinates[1]);
+  // }
+  if (isValidHit(hit)) {
+    //element = hit;
+    // console.log("valid hit", hit);
+
+    return hit;
+  }
+
+  return false;
+};
+
+const getNearestLink = e => {
+  // console.log("getNearestLink");
+  // console.log("clientXY", e.clientX, e.clientY);
+  // console.log("pageXY", e.pageX, e.pageY);
+  const nearestLink = hitTest(e.clientX, e.clientY);
+  //console.log("nearestLink", nearestLink);
+  return nearestLink;
+};
+
 
 export {
   getPageRangeInfo,
@@ -176,5 +291,11 @@ export {
   getCurrentIonPageContentElm,
   getCurrentIonPageScrollElm,
   getAndSetIonPageContentAndIonPageScrollElement,
-  stripHtml
+  stripHtml,
+  pointsSome,
+  getNearestLink,
+  isValidHit,
+  hitTest,
+  createMarkupForPage
+
 };
