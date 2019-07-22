@@ -1,19 +1,19 @@
 /**
  * Visar en sida med en eller flera text-tv-sidor.
  */
-import { IonActionSheet, IonContent, IonToast } from "@ionic/react";
+import { Plugins } from "@capacitor/core";
+import { IonContent, IonToast } from "@ionic/react";
 import React, { useEffect, useState } from "react";
 import {
   getCurrentIonPageContentElm,
-  getUnixtime,
   getPageRangeInfo,
+  getUnixtime,
   stripHtml
 } from "../functions";
-
 import Header from "../modules/Header";
 import TextTVPage from "../modules/TextTVPage";
 import TextTVRefresher from "../modules/TextTVRefresher";
-import { Plugins } from "@capacitor/core";
+
 const { Clipboard, Share } = Plugins;
 
 const PageTextTV = props => {
@@ -30,7 +30,6 @@ const PageTextTV = props => {
 
   const pageNum = props.pageNum || match.params.pageNum;
   const pageId = props.pageId || match.params.pageId;
-  const [actionSheetOpened, setActionSheetOpened] = useState(false);
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
   const [pageUpdatedToastVisible, setPageUpdatedToastVisible] = useState(false);
   const [pageData, setPageData] = useState([]);
@@ -132,7 +131,8 @@ Delad vid https://texttv.nu/
     }
   };
 
-  // Leta efter uppdateringar av sidan eller sidorna.
+  // Leta efter uppdateringar av sidan eller sidorna
+  // när pageNum eller refreshTime ändrats.
   useEffect(() => {
     const checkForUpdateInterval = 10000;
     let intervalId;
@@ -186,7 +186,7 @@ Delad vid https://texttv.nu/
     pageData.forEach((page, idx) => {
       // Lägg till separator mellan sidor.
       //if (idx > 0) {
-        text = text + "\n----------------------------------------\n\n";
+      text = text + "\n----------------------------------------\n\n";
       //}
 
       page.content.forEach(val => {
@@ -202,8 +202,6 @@ Delad vid https://texttv.nu/
   };
 
   const handleCopyLinkToClipboard = () => {
-    // const pageRangeInfo = getPageRangeInfo(pageNum);
-
     let pageIdsString = "";
     pageData.forEach(page => {
       pageIdsString = pageIdsString + `,${page.id}`;
@@ -244,35 +242,6 @@ Delad vid https://texttv.nu/
           refreshTime={refreshTime}
           size="large"
           onPageUpdate={handlePageUpdate}
-        />
-
-        <IonActionSheet
-          isOpen={actionSheetOpened}
-          onDidDismiss={() => setActionSheetOpened(false)}
-          buttons={[
-            {
-              text: "Share",
-              icon: "share",
-              handler: () => {
-                // console.log("Share clicked");
-              }
-            },
-            {
-              text: "Favorite",
-              icon: "heart",
-              handler: () => {
-                // console.log("Favorite clicked");
-              }
-            },
-            {
-              text: "Cancel",
-              icon: "close",
-              role: "cancel",
-              handler: () => {
-                // console.log("Cancel clicked");
-              }
-            }
-          ]}
         />
 
         {children}
