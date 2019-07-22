@@ -160,7 +160,7 @@ b {
   user-select: auto;
   animation-duration: 0.25s;
   animation-fill-mode: both;
-  animation-name: fadeInUp;
+  /* animation-name: fadeInUp; */
 }
 
 /* Skeleton-sidan tonas in om laddningen tar mer än några sekunder */
