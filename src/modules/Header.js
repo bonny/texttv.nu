@@ -63,7 +63,6 @@ const Header = props => {
   };
 
   /**
-   *
    * headerStyle:
    * HEADER_STYLE_DEFAULT = utseende som används på sidor, med tillbaka-knapp
    * HEADER_STYLE_STARTPAGE = utseende för startsidan, utan tillbaka-knapp
