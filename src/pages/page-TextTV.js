@@ -61,7 +61,7 @@ const PageTextTV = props => {
     updateRefreshTime();
   };
 
-  const handleMoreActionsClick = async e => {
+  const handleShare = async e => {
     // Hämta alla sidorn IDn
     let pageIdsString = "";
     pageData.forEach(page => {
@@ -228,7 +228,7 @@ Delad vid https://texttv.nu/
         {...props}
         pageTitle={pageTitle}
         headerStyle={headerStyle}
-        handleMoreActionsClick={handleMoreActionsClick}
+        onShare={handleShare}
         onCopyTextToClipboard={handleCopyTextToClipboard}
         onCopyLinkToClipboard={handleCopyLinkToClipboard}
         handleRefreshBtnClick={handleRefreshBtnClick}
