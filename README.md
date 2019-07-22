@@ -22,3 +22,5 @@ https://app.texttv.nu/
 - Tydligare gränssnitt med lättare tillgång till startsida, vanliga sidor, senast uppdaterade sidorna och de mest lästa sidorna.
 - Sökruta/gå till sida-ruta alltid tillgänglig.
 - App som fungerar både i mobila webbläsaren (PWA) och som egen app i appstore.
+- Texten till en eller flera sidor går att kopiera direkt till urklipp
+- Direktlänk/permalänk till en eller flera sidor går att kopiera till urklipp.
