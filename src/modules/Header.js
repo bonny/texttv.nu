@@ -23,7 +23,6 @@ const Header = props => {
     headerStyle,
     onShare,
     handleRefreshBtnClick,
-    pageTitle,
     onCopyTextToClipboard,
     onCopyLinkToClipboard
   } = props;
@@ -78,7 +77,7 @@ const Header = props => {
         <IonToolbar color="primary" mode="md">
           <IonTitle>
             <Logo className="texttv-logo" />
-            {pageTitle}
+            TextTV.nu
           </IonTitle>
         </IonToolbar>
 
