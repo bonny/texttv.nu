@@ -1,8 +1,9 @@
 /**
  * En text-tv-sida.
  */
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
 import { createMarkupForPage, getNearestLink } from "../functions";
+import classNames from "classnames";
 
 function usePrevious(value) {
   const ref = useRef();
@@ -26,10 +27,12 @@ export default props => {
   const [pageData, setPageData] = useState([]);
   const prevPageData = usePrevious(pageData);
   const prevPageNum = usePrevious(pageNum);
-  const pageRef = useRef();
 
   // const [pageIsLoaded, setPageIsLoaded] = useState(false);
   const [pageIsLoading, setPageIsLoading] = useState(true);
+  const [pageIsLoadingNewPageRange, setPageIsLoadingNewPageRange] = useState(
+    true
+  );
 
   // Leta upp närmaste länk, om någon, vid klick nånstans på sidan.
   const handleClick = e => {
@@ -66,25 +69,30 @@ export default props => {
     // }
   };
 
+  // TODO: när ny sida laddas ska vi tömma pagedata då?
+  // Om samma sida = behåll data pga vill inte få en sida
+  // som blinkar till eller så och sen inte har fått nåt nytt innehåll.
+  // Om ny sida: nån effekt.
+  // setPageData([]);
+  // Använd useLayoutEffect istället för useEffect pga den senare gör att man hinner
+  // se det gamla innehållet först.
+  useLayoutEffect(() => {
+    if (pageNum !== prevPageNum) {
+      console.log(
+        "texttv-page useEffect when prevPageNum is different from pageNum",
+        prevPageNum,
+        "->",
+        pageNum
+      );
+      console.log("----- new page range, empty page data before fetch -----");
+      setPageData([]);
+    }
+  }, [pageNum, pageId, refreshTime, prevPageNum]);
   /**
    * Ladda in sida från API när pageNum eller refreshTime ändras.
    */
   useEffect(() => {
     console.log("texttv-page useEffect, before fetch", pageNum, refreshTime);
-    if (prevPageNum) {
-      // console.log("prev pageData", prevPageData[0].num);
-      console.log("prev prevPageNum", prevPageNum);
-    }
-
-    // TODO: när ny sida laddas ska vi tömma pagedata då?
-    // Om samma sida = behåll data pga vill inte få en sida
-    // som blinkar till eller så och sen inte har fått nåt nytt innehåll.
-    // Om ny sida: nån effekt.
-    // setPageData([]);
-    if (prevPageNum !== pageNum) {
-      console.log("-----------------new page range---------");
-      setPageData([]);
-    }
 
     setPageIsLoading(true);
     // setPageIsLoaded(false);
@@ -139,11 +147,10 @@ export default props => {
       // console.log(pageNum, "cleanup");
       // setPageData([]);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNum, pageId, refreshTime]);
 
   useEffect(() => {
-    // console.log("useEffect when pageData changes");
+    // console.log("useEffect when pageData changes for pageNum", pageNum);
     if (onPageUpdate) {
       // console.log(typeof onPageUpdate);
       onPageUpdate(pageData);
@@ -152,17 +159,23 @@ export default props => {
     // if (memoizedOnPageUpdate) {
     //   memoizedOnPageUpdate({ pageData });
     // }
-  }, [pageData, onPageUpdate]);
+  }, [pageNum, pageData, onPageUpdate]);
+
+  const classes = classNames({
+    "TextTVPage--isLoadingNewPageRange": pageIsLoadingNewPageRange,
+    TextTVPage: true
+  });
+
+  console.log("classes", classes);
 
   // Wrap each page.
-  const pagesHtml = pageData.length ? pageData.map(page => {
+  const pagesHtml = pageData.map(page => {
     return (
       <div
-        className="TextTVPage"
+        className={classes}
         key={page.id}
         data-page-num={pageNum}
         data-page-id={pageId}
-        ref={pageRef}
       >
         <div className="TextTVPage__wrap">
           <div
@@ -174,12 +187,13 @@ export default props => {
         {children}
       </div>
     );
-  }) : null;
+  });
 
   return (
     <>
       {/* {pageIsLoading && <SkeletonTextTVPage pageNum={pageNum} />} */}
       <div>{pageNum}</div>
+      <div>pageData.length: {pageData.length}</div>
       {pagesHtml}
     </>
   );

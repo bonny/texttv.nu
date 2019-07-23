@@ -134,8 +134,20 @@ b {
 
 @keyframes fadeInUp {
   from {
-    opacity: .5;
+    opacity: .75;
     transform: translate3d(0, 8px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: .75;
+    transform: translate3d(8px, 0, 0);
   }
 
   to {
@@ -168,6 +180,13 @@ b {
   animation-name: fadeInDown;
   animation-delay: 1.25s;
   animation-duration: 0.25s;
+}
+
+.TextTVPage--isLoadingNewPageRange {
+  user-select: auto;
+  animation-duration: 0.25s;
+  animation-fill-mode: both;
+  animation-name: fadeInUp;
 }
 
 .TextTVPage_UpdatedToast {
