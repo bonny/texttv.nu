@@ -128,6 +128,9 @@ function getCurrentIonPageContentElm() {
 
 function getCurrentIonPageScrollElm() {
   const pageElm = getCurrentIonPageContentElm();
+  if (!pageElm || ! pageElm.shadowRoot) {
+    return null;
+  }
   const scrollElm = pageElm.shadowRoot.querySelector(".inner-scroll");
   return scrollElm;
 }
