@@ -34,16 +34,23 @@ const PageTextTV = props => {
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
   const [pageUpdatedToastVisible, setPageUpdatedToastVisible] = useState(false);
   const [pageData, setPageData] = useState([]);
+  const [swipeData, setSwipeData] = useState({});
 
   const swipeConfig = {
-    delta: 20,
+    delta: 10,
     onSwiping: eventData => {
       const dir = eventData.dir;
       if (dir === "Left" || dir === "Right") {
         console.log("onSwiping left or right", eventData);
+        setSwipeData({
+          dir,
+          deltaX: eventData.deltaX
+        });
+      } else {
+        setSwipeData({});
       }
     },
-    onSwiped: eventData => {
+    xonSwiped: eventData => {
       const dir = eventData.dir;
       if (dir === "Left" || dir === "Right") {
         const firstPage = pageData[0];
@@ -249,6 +256,22 @@ Delad via https://texttv.nu/`,
     });
   };
 
+  let debugcontainerstyles = {};
+  if (swipeData) {
+    let deltaXForTransform = swipeData.deltaX * -1;
+    const absoluteX = Math.abs(deltaXForTransform);
+    // Begränsa rörelse till max n i sidled.
+    const maxDeltaMove = 50;
+    if (absoluteX > maxDeltaMove) {
+      deltaXForTransform =
+        deltaXForTransform > 0 ? maxDeltaMove : -maxDeltaMove;
+    }
+    debugcontainerstyles = {
+      transform: `translateX(${deltaXForTransform}px)`,
+      outline: "2px solid red"
+    };
+  }
+
   return (
     <>
       <Header
@@ -263,6 +286,14 @@ Delad via https://texttv.nu/`,
 
       <IonContent color="dark">
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
+
+        <div style={debugcontainerstyles}>
+          <hr />
+          dir: {swipeData.dir}
+          <hr />
+          deltaX: {swipeData.deltaX}
+          <hr />
+        </div>
 
         <div {...swipeHandlers}>
           <TextTVPage
