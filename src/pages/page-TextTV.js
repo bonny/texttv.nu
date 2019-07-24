@@ -17,6 +17,10 @@ import { useSwipeable } from "react-swipeable";
 
 const { Clipboard, Share } = Plugins;
 
+const normalizeBetweenTwoRanges = (val, minVal, maxVal, newMin, newMax) => {
+  return newMin + (val - minVal) * (newMax - newMin) / (maxVal - minVal);
+};
+
 const PageTextTV = props => {
   const {
     match,
@@ -289,8 +293,8 @@ Delad via https://texttv.nu/`,
   };
 
   let debugcontainerstyles = {};
+  const deltaXForTransform = swipeData.deltaXForTransform;
   if (swipeData && swipeData.doMove) {
-    const deltaXForTransform = swipeData.deltaXForTransform;
     debugcontainerstyles = {
       transform: `translateX(${deltaXForTransform}px)`
     };
@@ -299,11 +303,17 @@ Delad via https://texttv.nu/`,
   let firstPage;
   let pageNextNum;
   let pagePrevNum;
+  let normalizedDelta;
+  let TextTVNextPrevSwipeNavStyles;
 
-  if (pageData && pageData.length) {
+  if (pageData && pageData.length && deltaXForTransform) {
     firstPage = pageData[0];
     pageNextNum = firstPage.next_page;
     pagePrevNum = firstPage.prev_page;
+    normalizedDelta = normalizeBetweenTwoRanges(deltaXForTransform, 0, maxDeltaMove, 0, 1);
+    TextTVNextPrevSwipeNavStyles = {
+      opacity: Math.abs(normalizedDelta)
+    }
   }
 
   return (
@@ -322,20 +332,21 @@ Delad via https://texttv.nu/`,
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
         {pagePrevNum && (
-          <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev">
-            Föregående: {pagePrevNum}
+          <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev" style={TextTVNextPrevSwipeNavStyles}>
+            « {pagePrevNum}
           </div>
         )}
         {pageNextNum && (
-          <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--next">
-            Nästa: {pageNextNum}
+          <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--next" style={TextTVNextPrevSwipeNavStyles}>
+            {pageNextNum} »
           </div>
         )}
+        {/* {normalizedDelta && <p>normalizedDelta: {normalizedDelta}</p>} */}
 
         <div {...swipeHandlers}>
           <div style={debugcontainerstyles}>
-            dir: {swipeData.dir}
-            deltaX: {swipeData.deltaX}
+            {/* dir: {swipeData.dir}
+            deltaX: {swipeData.deltaX} */}
             <TextTVPage
               pageNum={pageNum}
               pageId={pageId}
