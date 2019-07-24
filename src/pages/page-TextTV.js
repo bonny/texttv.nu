@@ -79,8 +79,7 @@ const PageTextTV = props => {
     const sharePromise = Share.share({
       title: `Text TV ${firstPage.num}: ${firstPage.title}`,
       text: `${firstPage.title}
-Delad via https://texttv.nu/
-`,
+Delad via https://texttv.nu/`,
       url: permalink,
       dialogTitle: "Dela sida"
     });
@@ -246,18 +245,15 @@ Delad via https://texttv.nu/
 
         {children}
 
+        {/* Toast med meddelande om att uppdatering av sidan finns. */}
         <IonToast
           isOpen={pageUpdatedToastVisible}
-          onDidDismiss={() => {
-            // console.log("on did dismiss");
-          }}
+          onDidDismiss={() => {}}
           position="bottom"
           translucent={true}
-          // header={`Sid ${pageNum}`}
-          message={`En nyare version av sidan finns.`}
+          message={`En nyare version av sidan ${pageNum} finns.`}
           cssClass="TextTVPage_UpdatedToast"
           showCloseButton={false}
-          // closeButtonText="✕"
           color="dark"
           buttons={[
             {
@@ -265,7 +261,7 @@ Delad via https://texttv.nu/
               text: "Ladda om",
               role: "confirm",
               handler: () => {
-                console.log("refresh clicked");
+                // console.log("refresh clicked");
                 setPageUpdatedToastVisible(false);
                 updateRefreshTime();
               }
@@ -277,7 +273,7 @@ Delad via https://texttv.nu/
               handler: () => {
                 // Göm toast.
                 // För hur länge? För alltid? För alltid för denna sida? Bara för denna uppdatering?
-                console.log("close toast clicked");
+                // console.log("close toast clicked");
                 setPageUpdatedToastVisible(false);
                 // updateRefreshTime();
               }

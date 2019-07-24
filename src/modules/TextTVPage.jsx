@@ -25,16 +25,17 @@ export default props => {
 
   // const [componentIsCleanUped, setComponentIsCleanUped] = useState(false);
   const [pageData, setPageData] = useState([]);
-  const prevPageData = usePrevious(pageData);
+  //const prevPageData = usePrevious(pageData);
   const prevPageNum = usePrevious(pageNum);
 
   // const [pageIsLoaded, setPageIsLoaded] = useState(false);
-  const [pageIsLoading, setPageIsLoading] = useState(true);
+  //const [pageIsLoading, setPageIsLoading] = useState(true);
   const [pageIsLoadingNewPageRange, setPageIsLoadingNewPageRange] = useState(
     true
   );
 
-  // Leta upp närmaste länk, om någon, vid klick nånstans på sidan.
+  // Leta upp närmaste länk, om någon, vid klick nånstans på sidan,
+  // och gå till den länken.
   const handleClick = e => {
     e.preventDefault();
 
@@ -86,6 +87,7 @@ export default props => {
       );
       console.log("----- new page range, empty page data before fetch -----");
       setPageData([]);
+      setPageIsLoadingNewPageRange(true);
     }
   }, [pageNum, pageId, refreshTime, prevPageNum]);
   /**
@@ -94,7 +96,7 @@ export default props => {
   useEffect(() => {
     console.log("texttv-page useEffect, before fetch", pageNum, refreshTime);
 
-    setPageIsLoading(true);
+    // setPageIsLoading(true);
     // setPageIsLoaded(false);
 
     async function fetchPageContents() {
@@ -124,7 +126,7 @@ export default props => {
           // setTimeout(() => {
           // console.log("texttv-page useEffect, after fetch", pageNum, pageId);
           setPageData(pageData);
-          setPageIsLoading(false);
+          //setPageIsLoading(false);
           // setPageIsLoaded(true);
           // }, 1000);
           // console.log(
