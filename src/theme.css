@@ -134,7 +134,7 @@ b {
 
 @keyframes fadeInUp {
   from {
-    opacity: .75;
+    opacity: 0.75;
     transform: translate3d(0, 8px, 0);
   }
 
@@ -146,7 +146,7 @@ b {
 
 @keyframes fadeInRight {
   from {
-    opacity: .75;
+    opacity: 0.75;
     transform: translate3d(8px, 0, 0);
   }
 
@@ -158,7 +158,7 @@ b {
 
 @keyframes fadeInDown {
   from {
-    opacity: .5;
+    opacity: 0.5;
     transform: translate3d(0, 0, 0);
   }
 
@@ -195,4 +195,20 @@ b {
 
 .u-max-width-texttvpage {
   max-width: 20em;
+}
+
+.TextTVNextPrevSwipeNav {
+  background: #666;
+  max-width: 100px;
+  position: fixed;
+  top: 50%;
+  z-index: 10;
+}
+
+.TextTVNextPrevSwipeNav--prev {
+  
+}
+
+.TextTVNextPrevSwipeNav--next {
+  right: 0;
 }

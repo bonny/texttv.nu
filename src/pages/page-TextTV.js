@@ -38,7 +38,7 @@ const PageTextTV = props => {
     doMove: false
   });
 
-  const maxDeltaMove = 50;
+  const maxDeltaMove = 100;
   const swipeConfig = {
     delta: 10,
     onSwiping: eventData => {
@@ -292,9 +292,18 @@ Delad via https://texttv.nu/`,
   if (swipeData && swipeData.doMove) {
     const deltaXForTransform = swipeData.deltaXForTransform;
     debugcontainerstyles = {
-      transform: `translateX(${deltaXForTransform}px)`,
-      outline: "2px solid red"
+      transform: `translateX(${deltaXForTransform}px)`
     };
+  }
+
+  let firstPage;
+  let pageNextNum;
+  let pagePrevNum;
+
+  if (pageData && pageData.length) {
+    firstPage = pageData[0];
+    pageNextNum = firstPage.next_page;
+    pagePrevNum = firstPage.prev_page;
   }
 
   return (
@@ -312,13 +321,21 @@ Delad via https://texttv.nu/`,
       <IonContent color="dark">
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
+        {pagePrevNum && (
+          <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev">
+            Föregående: {pagePrevNum}
+          </div>
+        )}
+        {pageNextNum && (
+          <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--next">
+            Nästa: {pageNextNum}
+          </div>
+        )}
+
         <div {...swipeHandlers}>
           <div style={debugcontainerstyles}>
-            <hr />
             dir: {swipeData.dir}
-            <hr />
             deltaX: {swipeData.deltaX}
-            <hr />
             <TextTVPage
               pageNum={pageNum}
               pageId={pageId}
