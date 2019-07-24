@@ -13,6 +13,7 @@ import {
 import Header from "../modules/Header";
 import TextTVPage from "../modules/TextTVPage";
 import TextTVRefresher from "../modules/TextTVRefresher";
+import { useSwipeable } from "react-swipeable";
 
 const { Clipboard, Share } = Plugins;
 
@@ -33,6 +34,35 @@ const PageTextTV = props => {
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
   const [pageUpdatedToastVisible, setPageUpdatedToastVisible] = useState(false);
   const [pageData, setPageData] = useState([]);
+
+  const swipeConfig = {
+    delta: 20,
+    onSwiping: eventData => {
+      const dir = eventData.dir;
+      if (dir === "Left" || dir === "Right") {
+        console.log("onSwiping left or right", eventData);
+      }
+    },
+    onSwiped: eventData => {
+      const dir = eventData.dir;
+      if (dir === "Left" || dir === "Right") {
+        const firstPage = pageData[0];
+        const prevPage = firstPage.prev_page;
+        const nextPage = firstPage.next_page;
+        console.log("swiped left or right", eventData);
+        console.log("prev and next pageNum", prevPage, nextPage);
+
+        if (dir === "Left") {
+          console.log("Gå till nästa sida, dvs. ", nextPage);
+          history.push(`/sidor/${nextPage}`);
+        } else if (dir === "Right") {
+          console.log("Gå till föregående sida, dvs. ", prevPage);
+          history.push(`/sidor/${prevPage}`);
+        }
+      }
+    }
+  };
+  const swipeHandlers = useSwipeable(swipeConfig);
 
   let pageTitle = title || `${pageNum} - SVT Text TV`;
 
@@ -234,14 +264,16 @@ Delad via https://texttv.nu/`,
       <IonContent color="dark">
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
-        <TextTVPage
-          pageNum={pageNum}
-          pageId={pageId}
-          history={history}
-          refreshTime={refreshTime}
-          size="large"
-          onPageUpdate={handlePageUpdate}
-        />
+        <div {...swipeHandlers}>
+          <TextTVPage
+            pageNum={pageNum}
+            pageId={pageId}
+            history={history}
+            refreshTime={refreshTime}
+            size="large"
+            onPageUpdate={handlePageUpdate}
+          />
+        </div>
 
         {children}
 
