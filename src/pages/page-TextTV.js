@@ -34,37 +34,69 @@ const PageTextTV = props => {
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
   const [pageUpdatedToastVisible, setPageUpdatedToastVisible] = useState(false);
   const [pageData, setPageData] = useState([]);
-  const [swipeData, setSwipeData] = useState({});
+  const [swipeData, setSwipeData] = useState({
+    doMove: false
+  });
 
+  const maxDeltaMove = 50;
   const swipeConfig = {
     delta: 10,
     onSwiping: eventData => {
       const dir = eventData.dir;
       if (dir === "Left" || dir === "Right") {
         console.log("onSwiping left or right", eventData);
+        const absoluteDeltaX = Math.abs(eventData.deltaX);
+        let deltaXForTransform = eventData.deltaX * -1;
+        // Begränsa rörelse till max n i sidled och
+        // är vi över den så går vi till sidan.
+        if (absoluteDeltaX > maxDeltaMove) {
+          deltaXForTransform =
+            deltaXForTransform > 0 ? maxDeltaMove : -maxDeltaMove;
+        }
+
         setSwipeData({
-          dir,
+          doMove: true,
+          deltaXForTransform: deltaXForTransform,
+          absoluteDeltaX: absoluteDeltaX,
+          dir: dir,
           deltaX: eventData.deltaX
         });
       } else {
-        setSwipeData({});
+        setSwipeData({
+          doMove: false
+        });
       }
     },
-    xonSwiped: eventData => {
+    onSwiped: eventData => {
       const dir = eventData.dir;
       if (dir === "Left" || dir === "Right") {
+        const absoluteDeltaX = Math.abs(eventData.deltaX);
         const firstPage = pageData[0];
         const prevPage = firstPage.prev_page;
         const nextPage = firstPage.next_page;
-        console.log("swiped left or right", eventData);
-        console.log("prev and next pageNum", prevPage, nextPage);
 
-        if (dir === "Left") {
-          console.log("Gå till nästa sida, dvs. ", nextPage);
-          history.push(`/sidor/${nextPage}`);
-        } else if (dir === "Right") {
-          console.log("Gå till föregående sida, dvs. ", prevPage);
-          history.push(`/sidor/${prevPage}`);
+        // Om vi släppte swipen och var mer än deltaMax = gå till sida.
+        if (absoluteDeltaX > maxDeltaMove) {
+          console.log("swiped left or right and more than deltamax", eventData);
+          console.log("prev and next pageNum", prevPage, nextPage);
+
+          setSwipeData({
+            doMove: false
+          });
+
+          if (dir === "Left") {
+            console.log("Gå till nästa sida, dvs. ", nextPage);
+            history.push(`/sidor/${nextPage}`);
+          } else if (dir === "Right") {
+            console.log("Gå till föregående sida, dvs. ", prevPage);
+            history.push(`/sidor/${prevPage}`);
+          }
+        } else {
+          // Om vi släppte men inte var mer än maxdelta = återgå till standard,
+          // dvs. ångra svepning som påbörjats.
+          setSwipeData({
+            doMove: false
+          });
         }
       }
     }
@@ -257,15 +289,8 @@ Delad via https://texttv.nu/`,
   };
 
   let debugcontainerstyles = {};
-  if (swipeData) {
-    let deltaXForTransform = swipeData.deltaX * -1;
-    const absoluteX = Math.abs(deltaXForTransform);
-    // Begränsa rörelse till max n i sidled.
-    const maxDeltaMove = 50;
-    if (absoluteX > maxDeltaMove) {
-      deltaXForTransform =
-        deltaXForTransform > 0 ? maxDeltaMove : -maxDeltaMove;
-    }
+  if (swipeData && swipeData.doMove) {
+    const deltaXForTransform = swipeData.deltaXForTransform;
     debugcontainerstyles = {
       transform: `translateX(${deltaXForTransform}px)`,
       outline: "2px solid red"
@@ -287,23 +312,22 @@ Delad via https://texttv.nu/`,
       <IonContent color="dark">
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
-        <div style={debugcontainerstyles}>
-          <hr />
-          dir: {swipeData.dir}
-          <hr />
-          deltaX: {swipeData.deltaX}
-          <hr />
-        </div>
-
         <div {...swipeHandlers}>
-          <TextTVPage
-            pageNum={pageNum}
-            pageId={pageId}
-            history={history}
-            refreshTime={refreshTime}
-            size="large"
-            onPageUpdate={handlePageUpdate}
-          />
+          <div style={debugcontainerstyles}>
+            <hr />
+            dir: {swipeData.dir}
+            <hr />
+            deltaX: {swipeData.deltaX}
+            <hr />
+            <TextTVPage
+              pageNum={pageNum}
+              pageId={pageId}
+              history={history}
+              refreshTime={refreshTime}
+              size="large"
+              onPageUpdate={handlePageUpdate}
+            />
+          </div>
         </div>
 
         {children}
