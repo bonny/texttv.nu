@@ -48,7 +48,7 @@ const PageTextTV = props => {
     doMove: false
   });
 
-  const maxDeltaNormalMove = 50;
+  const maxDeltaNormalMove = 60;
   const swipeConfig = {
     delta: 10,
     onSwiping: eventData => {
@@ -322,8 +322,10 @@ Delad via https://texttv.nu/`,
   let pagePrevNum;
   let normalizedDelta;
   let TextTVNextPrevSwipeNavStyles;
+  let swipeDirection = swipeData.dir;
 
   if (pageData && pageData.length && deltaXForTransform) {
+    // console.log("swipeData", swipeData);
     firstPage = pageData[0];
     pageNextNum = firstPage.next_page;
     pagePrevNum = firstPage.prev_page;
@@ -354,7 +356,7 @@ Delad via https://texttv.nu/`,
       <IonContent color="dark">
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
-        {pagePrevNum && (
+        {pagePrevNum && swipeDirection === "Right" && (
           <div
             className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev"
             style={TextTVNextPrevSwipeNavStyles}
@@ -362,7 +364,7 @@ Delad via https://texttv.nu/`,
             « {pagePrevNum}
           </div>
         )}
-        {pageNextNum && (
+        {pageNextNum && swipeDirection === "Left" && (
           <div
             className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--next"
             style={TextTVNextPrevSwipeNavStyles}
