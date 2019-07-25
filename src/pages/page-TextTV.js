@@ -49,8 +49,8 @@ const PageTextTV = props => {
     doMove: false
   });
 
-  const maxDeltaMove = 75;
-  const maxDeltaMoveAbove = 25;
+  const maxDeltaMove = 125;
+  const maxDeltaMoveNormalizedReversed = 0.7;
   const swipeConfig = {
     delta: 10,
     onSwiping: eventData => {
@@ -58,63 +58,116 @@ const PageTextTV = props => {
       if (dir === "Left" || dir === "Right") {
         // console.log("onSwiping left or right", eventData);
         const absoluteDeltaX = Math.abs(eventData.deltaX);
+
+        // The number of pixels to move the page.
         let deltaXForTransform = eventData.deltaX * -1;
+
+        // DeltaX som värde mellan 0 och 1.
+        // 0 = precis i början då vi precis börjat flytta i sidled,
+        // 1 = max flytt i sidled, dvs vi har nått maxDeltaMove pixlar
+        let deltaXNormalized = normalizeBetweenTwoRanges(
+          absoluteDeltaX,
+          0,
+          maxDeltaMove,
+          0,
+          1
+        );
+
+        if (deltaXNormalized > 1) {
+          // deltaXNormalized = 1;
+        }
+
+        const deltaXNormalizedWithEasing = easing.easeInCirc(deltaXNormalized);
+        let deltaXNormalizedWithEasingReversed = 1 - deltaXNormalizedWithEasing;
+
+        console.log(
+          "maxDeltaMoveNormalized check",
+          maxDeltaMoveNormalizedReversed,
+          deltaXNormalized,
+          maxDeltaMoveNormalizedReversed >= deltaXNormalizedWithEasingReversed
+        );
+        if (
+          maxDeltaMoveNormalizedReversed >= deltaXNormalizedWithEasingReversed
+        ) {
+          deltaXNormalizedWithEasingReversed = maxDeltaMoveNormalizedReversed;
+        }
+
+        const absoluteDeltaXWithEasing =
+          absoluteDeltaX * deltaXNormalizedWithEasingReversed;
+
+        console.log("\n----\nabsoluteDeltaX", absoluteDeltaX);
+        console.log("deltaXNormalized", deltaXNormalized);
+        console.log("deltaXNormalizedWithEasing", deltaXNormalizedWithEasing);
+        console.log(
+          "deltaXNormalizedWithEasingReversed",
+          deltaXNormalizedWithEasingReversed
+        );
+        console.log("deltaXForTransform", deltaXForTransform);
+        console.log("absoluteDeltaXWithEasing", absoluteDeltaXWithEasing);
+
+        deltaXForTransform = absoluteDeltaXWithEasing;
+        console.log("deltaXForTransform after easing", deltaXForTransform);
+
+        console.log(
+          "maxDeltaMove - deltaXForTransform",
+          maxDeltaMove - deltaXForTransform
+        );
+        console.log(
+          "maxDeltaMove - absoluteDeltaX",
+          maxDeltaMove - absoluteDeltaX
+        );
+
         // Begränsa rörelse till max n i sidled och
         // är vi över den å släpper så går vi till sidan.
         if (absoluteDeltaX > maxDeltaMove) {
-          const numberOfPixelsAboveMax = absoluteDeltaX - maxDeltaMove;
-          const numberOfPixelsUntilMaxAbove =
-            maxDeltaMoveAbove - numberOfPixelsAboveMax;
+          // const numberOfPixelsAboveMax = absoluteDeltaX - maxDeltaMove;
+          // const numberOfPixelsUntilMaxAbove =
+          //   maxDeltaMoveAbove - numberOfPixelsAboveMax;
           // const numberOfPixelsAboveMaxEased = easing.easeOutCubic(
           //   numberOfPixelsAboveMax
           // );
           // y = y1 + (y2 - y1) * easeInOut(t);
-
-          console.log("numberOfPixelsAboveMax", numberOfPixelsAboveMax);
+          //console.log("numberOfPixelsAboveMax", numberOfPixelsAboveMax);
           // console.log(
           //   "numberOfPixelsAboveMaxEased",
           //   numberOfPixelsAboveMaxEased
           // );
-          console.log(
-            "numberOfPixelsUntilMaxAbove",
-            numberOfPixelsUntilMaxAbove
-          );
-
+          // console.log(
+          //   "numberOfPixelsUntilMaxAbove",
+          //   numberOfPixelsUntilMaxAbove
+          // );
           // Normalisera antal pixel från max till ovan max.
-          const numberAboveMaxNormalized = normalizeBetweenTwoRanges(
-            numberOfPixelsAboveMax,
-            0,
-            maxDeltaMove + maxDeltaMoveAbove,
-            0,
-            1
-          );
-          console.log("numberAboveMaxNormalized", numberAboveMaxNormalized);
-
+          // let numberAboveMaxNormalized = normalizeBetweenTwoRanges(
+          //   numberOfPixelsAboveMax,
+          //   0,
+          //   maxDeltaMove + maxDeltaMoveAbove,
+          //   0,
+          //   1
+          // );
+          // if (numberAboveMaxNormalized > 1) {
+          //   numberAboveMaxNormalized = 1;
+          // }
+          // console.log("numberAboveMaxNormalized", numberAboveMaxNormalized);
           // Easing på normaliserade värdet
-          const numberAboveMaxNormalizedEased = easing.easeOutQuart(
-            numberAboveMaxNormalized
-          );
-          console.log(
-            "numberAboveMaxNormalizedEased",
-            numberAboveMaxNormalizedEased
-          );
-
+          // const numberAboveMaxNormalizedEased = easing.easeOutQuart(
+          //   numberAboveMaxNormalized
+          // );
+          // console.log(
+          //   "numberAboveMaxNormalizedEased",
+          //   numberAboveMaxNormalizedEased
+          // );
           // Värde att modifera flyttningen.
-          let moveModifierNum = 0;
-
-          if (numberOfPixelsUntilMaxAbove < 0) {
-            moveModifierNum =
-              numberAboveMaxNormalized *
-              numberAboveMaxNormalized *
-              numberOfPixelsAboveMax;
-          }
-          console.log("moveModifierNum", moveModifierNum);
-
-          deltaXForTransform =
-            deltaXForTransform > 0
-              ? maxDeltaMove + moveModifierNum
-              : -maxDeltaMove - moveModifierNum;
+          // let moveModifierNum = 0;
+          // if (numberOfPixelsUntilMaxAbove < 0) {
+          //   moveModifierNum =
+          //     numberAboveMaxNormalized *
+          //     numberAboveMaxNormalized *
+          //     numberOfPixelsAboveMax;
+          // }
+          // console.log("moveModifierNum", moveModifierNum);
         }
+        // deltaXForTransform =
+        //   deltaXForTransform > 0 ? maxDeltaMove : -maxDeltaMove;
 
         setSwipeData({
           doMove: true,

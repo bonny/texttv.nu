@@ -168,7 +168,7 @@ export default props => {
     TextTVPage: true
   });
 
-  console.log("classes", classes);
+  // console.log("classes", classes);
 
   // Wrap each page.
   const pagesHtml = pageData.map(page => {
