@@ -128,7 +128,7 @@ function getCurrentIonPageContentElm() {
 
 function getCurrentIonPageScrollElm() {
   const pageElm = getCurrentIonPageContentElm();
-  if (!pageElm || ! pageElm.shadowRoot) {
+  if (!pageElm || !pageElm.shadowRoot) {
     return null;
   }
   const scrollElm = pageElm.shadowRoot.querySelector(".inner-scroll");
@@ -285,6 +285,13 @@ const getNearestLink = e => {
   return nearestLink;
 };
 
+/**
+ * Function from
+ * https://stackoverflow.com/questions/39776819/function-to-normalize-any-number-from-0-1
+ */
+const normalizeBetweenTwoRanges = (val, minVal, maxVal, newMin, newMax) => {
+  return newMin + ((val - minVal) * (newMax - newMin)) / (maxVal - minVal);
+};
 
 export {
   getPageRangeInfo,
@@ -299,6 +306,6 @@ export {
   getNearestLink,
   isValidHit,
   hitTest,
-  createMarkupForPage
-
+  createMarkupForPage,
+  normalizeBetweenTwoRanges
 };

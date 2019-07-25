@@ -3,12 +3,13 @@
  */
 import { Plugins } from "@capacitor/core";
 import { IonContent, IonToast } from "@ionic/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   getCurrentIonPageContentElm,
   getPageRangeInfo,
   getUnixtime,
-  stripHtml
+  stripHtml,
+  normalizeBetweenTwoRanges
 } from "../functions";
 import Header from "../modules/Header";
 import TextTVPage from "../modules/TextTVPage";
@@ -18,14 +19,6 @@ import { useSwipeable } from "react-swipeable";
 // import easing from "../easing.js";
 
 const { Clipboard, Share } = Plugins;
-
-/**
- * Function from
- * https://stackoverflow.com/questions/39776819/function-to-normalize-any-number-from-0-1
- */
-const normalizeBetweenTwoRanges = (val, minVal, maxVal, newMin, newMax) => {
-  return newMin + ((val - minVal) * (newMax - newMin)) / (maxVal - minVal);
-};
 
 const PageTextTV = props => {
   const {
@@ -48,7 +41,9 @@ const PageTextTV = props => {
     doMove: false
   });
 
-  const maxDeltaNormalMove = 60;
+  const contentRef = useRef();
+
+  const maxDeltaNormalMove = 80;
   const swipeConfig = {
     delta: 10,
     onSwiping: eventData => {
@@ -231,8 +226,22 @@ Delad via https://texttv.nu/`,
       // kod körs var femte sekund i existerande app
       // https://github.com/bonny/texttv.nu/blob/master/app/texttvnucodovaapp/www/js/texttv.backbone.app.js#L675
       // TODO: refreshTime blir för unik, använd cachebust eller riktigt timestamp från sida.
+
       var url = `https://api.texttv.nu/api/updated/${pageNum}/${refreshTime}`;
-      // console.log("checkForUpdate url", url);
+
+      // Men kolla bara om den här sidan är sidan som faktiskt är den aktiva.
+      const closestIonPage = contentRef.current.closest(".ion-page");
+      const isHiddenPage = closestIonPage.matches(".ion-page-hidden");
+
+      if (isHiddenPage) {
+        console.log(
+          `${pageNum} är inte synlig, så kollar inte efter uppdatering`
+        );
+      } else {
+        console.log(
+          `${pageNum} är synlig, så jag efter uppdatering av sidan, via url ${url}`
+        );
+      }
 
       const response = await fetch(url);
       const responseJson = await response.json();
@@ -353,7 +362,7 @@ Delad via https://texttv.nu/`,
         handleRefreshBtnClick={handleRefreshBtnClick}
       />
 
-      <IonContent color="dark">
+      <IonContent color="dark" ref={contentRef}>
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
         {pagePrevNum && swipeDirection === "Right" && (
