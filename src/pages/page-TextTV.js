@@ -15,10 +15,17 @@ import TextTVPage from "../modules/TextTVPage";
 import TextTVRefresher from "../modules/TextTVRefresher";
 import { useSwipeable } from "react-swipeable";
 
+import easing from "../easing.js";
+// console.log("easing", easing);
+
 const { Clipboard, Share } = Plugins;
 
+/**
+ * Function from
+ * https://stackoverflow.com/questions/39776819/function-to-normalize-any-number-from-0-1
+ */
 const normalizeBetweenTwoRanges = (val, minVal, maxVal, newMin, newMax) => {
-  return newMin + (val - minVal) * (newMax - newMin) / (maxVal - minVal);
+  return newMin + ((val - minVal) * (newMax - newMin)) / (maxVal - minVal);
 };
 
 const PageTextTV = props => {
@@ -42,20 +49,71 @@ const PageTextTV = props => {
     doMove: false
   });
 
-  const maxDeltaMove = 100;
+  const maxDeltaMove = 75;
+  const maxDeltaMoveAbove = 25;
   const swipeConfig = {
     delta: 10,
     onSwiping: eventData => {
       const dir = eventData.dir;
       if (dir === "Left" || dir === "Right") {
-        console.log("onSwiping left or right", eventData);
+        // console.log("onSwiping left or right", eventData);
         const absoluteDeltaX = Math.abs(eventData.deltaX);
         let deltaXForTransform = eventData.deltaX * -1;
         // Begränsa rörelse till max n i sidled och
-        // är vi över den så går vi till sidan.
+        // är vi över den å släpper så går vi till sidan.
         if (absoluteDeltaX > maxDeltaMove) {
+          const numberOfPixelsAboveMax = absoluteDeltaX - maxDeltaMove;
+          const numberOfPixelsUntilMaxAbove =
+            maxDeltaMoveAbove - numberOfPixelsAboveMax;
+          // const numberOfPixelsAboveMaxEased = easing.easeOutCubic(
+          //   numberOfPixelsAboveMax
+          // );
+          // y = y1 + (y2 - y1) * easeInOut(t);
+
+          console.log("numberOfPixelsAboveMax", numberOfPixelsAboveMax);
+          // console.log(
+          //   "numberOfPixelsAboveMaxEased",
+          //   numberOfPixelsAboveMaxEased
+          // );
+          console.log(
+            "numberOfPixelsUntilMaxAbove",
+            numberOfPixelsUntilMaxAbove
+          );
+
+          // Normalisera antal pixel från max till ovan max.
+          const numberAboveMaxNormalized = normalizeBetweenTwoRanges(
+            numberOfPixelsAboveMax,
+            0,
+            maxDeltaMove + maxDeltaMoveAbove,
+            0,
+            1
+          );
+          console.log("numberAboveMaxNormalized", numberAboveMaxNormalized);
+
+          // Easing på normaliserade värdet
+          const numberAboveMaxNormalizedEased = easing.easeOutQuart(
+            numberAboveMaxNormalized
+          );
+          console.log(
+            "numberAboveMaxNormalizedEased",
+            numberAboveMaxNormalizedEased
+          );
+
+          // Värde att modifera flyttningen.
+          let moveModifierNum = 0;
+
+          if (numberOfPixelsUntilMaxAbove < 0) {
+            moveModifierNum =
+              numberAboveMaxNormalized *
+              numberAboveMaxNormalized *
+              numberOfPixelsAboveMax;
+          }
+          console.log("moveModifierNum", moveModifierNum);
+
           deltaXForTransform =
-            deltaXForTransform > 0 ? maxDeltaMove : -maxDeltaMove;
+            deltaXForTransform > 0
+              ? maxDeltaMove + moveModifierNum
+              : -maxDeltaMove - moveModifierNum;
         }
 
         setSwipeData({
@@ -81,18 +139,18 @@ const PageTextTV = props => {
 
         // Om vi släppte swipen och var mer än deltaMax = gå till sida.
         if (absoluteDeltaX > maxDeltaMove) {
-          console.log("swiped left or right and more than deltamax", eventData);
-          console.log("prev and next pageNum", prevPage, nextPage);
+          // console.log("swiped left or right and more than deltamax", eventData);
+          // console.log("prev and next pageNum", prevPage, nextPage);
 
           setSwipeData({
             doMove: false
           });
 
           if (dir === "Left") {
-            console.log("Gå till nästa sida, dvs. ", nextPage);
+            // console.log("Gå till nästa sida, dvs. ", nextPage);
             history.push(`/sidor/${nextPage}`);
           } else if (dir === "Right") {
-            console.log("Gå till föregående sida, dvs. ", prevPage);
+            // console.log("Gå till föregående sida, dvs. ", prevPage);
             history.push(`/sidor/${prevPage}`);
           }
         } else {
@@ -310,10 +368,16 @@ Delad via https://texttv.nu/`,
     firstPage = pageData[0];
     pageNextNum = firstPage.next_page;
     pagePrevNum = firstPage.prev_page;
-    normalizedDelta = normalizeBetweenTwoRanges(deltaXForTransform, 0, maxDeltaMove, 0, 1);
+    normalizedDelta = normalizeBetweenTwoRanges(
+      deltaXForTransform,
+      0,
+      maxDeltaMove,
+      0,
+      1
+    );
     TextTVNextPrevSwipeNavStyles = {
       opacity: Math.abs(normalizedDelta)
-    }
+    };
   }
 
   return (
@@ -332,12 +396,18 @@ Delad via https://texttv.nu/`,
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
         {pagePrevNum && (
-          <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev" style={TextTVNextPrevSwipeNavStyles}>
+          <div
+            className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev"
+            style={TextTVNextPrevSwipeNavStyles}
+          >
             « {pagePrevNum}
           </div>
         )}
         {pageNextNum && (
-          <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--next" style={TextTVNextPrevSwipeNavStyles}>
+          <div
+            className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--next"
+            style={TextTVNextPrevSwipeNavStyles}
+          >
             {pageNextNum} »
           </div>
         )}

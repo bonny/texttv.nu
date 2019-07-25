@@ -198,12 +198,12 @@ b {
 }
 
 .TextTVNextPrevSwipeNav {
-  background: #666;
+  /* background: #666; */
   max-width: 100px;
   position: fixed;
   top: 50%;
   z-index: 10;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .TextTVNextPrevSwipeNav--prev {
