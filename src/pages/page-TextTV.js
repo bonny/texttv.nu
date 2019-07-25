@@ -15,8 +15,7 @@ import TextTVPage from "../modules/TextTVPage";
 import TextTVRefresher from "../modules/TextTVRefresher";
 import { useSwipeable } from "react-swipeable";
 
-import easing from "../easing.js";
-// console.log("easing", easing);
+// import easing from "../easing.js";
 
 const { Clipboard, Share } = Plugins;
 
@@ -49,8 +48,7 @@ const PageTextTV = props => {
     doMove: false
   });
 
-  const maxDeltaMove = 125;
-  const maxDeltaMoveNormalizedReversed = 0.7;
+  const maxDeltaNormalMove = 50;
   const swipeConfig = {
     delta: 10,
     onSwiping: eventData => {
@@ -62,112 +60,20 @@ const PageTextTV = props => {
         // The number of pixels to move the page.
         let deltaXForTransform = eventData.deltaX * -1;
 
-        // DeltaX som värde mellan 0 och 1.
-        // 0 = precis i början då vi precis börjat flytta i sidled,
-        // 1 = max flytt i sidled, dvs vi har nått maxDeltaMove pixlar
-        let deltaXNormalized = normalizeBetweenTwoRanges(
-          absoluteDeltaX,
-          0,
-          maxDeltaMove,
-          0,
-          1
-        );
+        // Gör rörelser "segare" när vi kommit över en gräns.
+        if (absoluteDeltaX > maxDeltaNormalMove) {
+          const numberOfXMoreThanNormal = absoluteDeltaX - maxDeltaNormalMove;
 
-        if (deltaXNormalized > 1) {
-          // deltaXNormalized = 1;
+          // Make this number increase in smaller and smaller steps.
+          let numberOfXToAdd = numberOfXMoreThanNormal;
+          numberOfXToAdd = numberOfXToAdd * 0.15;
+
+          if (dir === "Left") {
+            deltaXForTransform = -maxDeltaNormalMove - numberOfXToAdd;
+          } else {
+            deltaXForTransform = maxDeltaNormalMove + numberOfXToAdd;
+          }
         }
-
-        const deltaXNormalizedWithEasing = easing.easeInCirc(deltaXNormalized);
-        let deltaXNormalizedWithEasingReversed = 1 - deltaXNormalizedWithEasing;
-
-        console.log(
-          "maxDeltaMoveNormalized check",
-          maxDeltaMoveNormalizedReversed,
-          deltaXNormalized,
-          maxDeltaMoveNormalizedReversed >= deltaXNormalizedWithEasingReversed
-        );
-        if (
-          maxDeltaMoveNormalizedReversed >= deltaXNormalizedWithEasingReversed
-        ) {
-          deltaXNormalizedWithEasingReversed = maxDeltaMoveNormalizedReversed;
-        }
-
-        const absoluteDeltaXWithEasing =
-          absoluteDeltaX * deltaXNormalizedWithEasingReversed;
-
-        console.log("\n----\nabsoluteDeltaX", absoluteDeltaX);
-        console.log("deltaXNormalized", deltaXNormalized);
-        console.log("deltaXNormalizedWithEasing", deltaXNormalizedWithEasing);
-        console.log(
-          "deltaXNormalizedWithEasingReversed",
-          deltaXNormalizedWithEasingReversed
-        );
-        console.log("deltaXForTransform", deltaXForTransform);
-        console.log("absoluteDeltaXWithEasing", absoluteDeltaXWithEasing);
-
-        deltaXForTransform = absoluteDeltaXWithEasing;
-        console.log("deltaXForTransform after easing", deltaXForTransform);
-
-        console.log(
-          "maxDeltaMove - deltaXForTransform",
-          maxDeltaMove - deltaXForTransform
-        );
-        console.log(
-          "maxDeltaMove - absoluteDeltaX",
-          maxDeltaMove - absoluteDeltaX
-        );
-
-        // Begränsa rörelse till max n i sidled och
-        // är vi över den å släpper så går vi till sidan.
-        if (absoluteDeltaX > maxDeltaMove) {
-          // const numberOfPixelsAboveMax = absoluteDeltaX - maxDeltaMove;
-          // const numberOfPixelsUntilMaxAbove =
-          //   maxDeltaMoveAbove - numberOfPixelsAboveMax;
-          // const numberOfPixelsAboveMaxEased = easing.easeOutCubic(
-          //   numberOfPixelsAboveMax
-          // );
-          // y = y1 + (y2 - y1) * easeInOut(t);
-          //console.log("numberOfPixelsAboveMax", numberOfPixelsAboveMax);
-          // console.log(
-          //   "numberOfPixelsAboveMaxEased",
-          //   numberOfPixelsAboveMaxEased
-          // );
-          // console.log(
-          //   "numberOfPixelsUntilMaxAbove",
-          //   numberOfPixelsUntilMaxAbove
-          // );
-          // Normalisera antal pixel från max till ovan max.
-          // let numberAboveMaxNormalized = normalizeBetweenTwoRanges(
-          //   numberOfPixelsAboveMax,
-          //   0,
-          //   maxDeltaMove + maxDeltaMoveAbove,
-          //   0,
-          //   1
-          // );
-          // if (numberAboveMaxNormalized > 1) {
-          //   numberAboveMaxNormalized = 1;
-          // }
-          // console.log("numberAboveMaxNormalized", numberAboveMaxNormalized);
-          // Easing på normaliserade värdet
-          // const numberAboveMaxNormalizedEased = easing.easeOutQuart(
-          //   numberAboveMaxNormalized
-          // );
-          // console.log(
-          //   "numberAboveMaxNormalizedEased",
-          //   numberAboveMaxNormalizedEased
-          // );
-          // Värde att modifera flyttningen.
-          // let moveModifierNum = 0;
-          // if (numberOfPixelsUntilMaxAbove < 0) {
-          //   moveModifierNum =
-          //     numberAboveMaxNormalized *
-          //     numberAboveMaxNormalized *
-          //     numberOfPixelsAboveMax;
-          // }
-          // console.log("moveModifierNum", moveModifierNum);
-        }
-        // deltaXForTransform =
-        //   deltaXForTransform > 0 ? maxDeltaMove : -maxDeltaMove;
 
         setSwipeData({
           doMove: true,
@@ -191,7 +97,7 @@ const PageTextTV = props => {
         const nextPage = firstPage.next_page;
 
         // Om vi släppte swipen och var mer än deltaMax = gå till sida.
-        if (absoluteDeltaX > maxDeltaMove) {
+        if (absoluteDeltaX > maxDeltaNormalMove) {
           // console.log("swiped left or right and more than deltamax", eventData);
           // console.log("prev and next pageNum", prevPage, nextPage);
 
@@ -424,7 +330,7 @@ Delad via https://texttv.nu/`,
     normalizedDelta = normalizeBetweenTwoRanges(
       deltaXForTransform,
       0,
-      maxDeltaMove,
+      maxDeltaNormalMove,
       0,
       1
     );
