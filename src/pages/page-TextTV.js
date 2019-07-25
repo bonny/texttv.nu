@@ -164,7 +164,8 @@ const PageTextTV = props => {
     const sharePromise = Share.share({
       title: `Text TV ${firstPage.num}: ${firstPage.title}`,
       text: `${firstPage.title}
-Delad via https://texttv.nu/`,
+Delad via https://texttv.nu/
+`,
       url: permalink,
       dialogTitle: "Dela sida"
     });
