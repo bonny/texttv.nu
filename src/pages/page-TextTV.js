@@ -40,6 +40,9 @@ const PageTextTV = props => {
   const [swipeData, setSwipeData] = useState({
     doMove: false
   });
+  const [didDismissPageUpdateToast, setDidDismissPageUpdateToast] = useState(
+    false
+  );
 
   const contentRef = useRef();
 
@@ -219,7 +222,7 @@ Delad via https://texttv.nu/
   // Leta efter uppdateringar av sidan eller sidorna
   // när pageNum eller refreshTime ändrats.
   useEffect(() => {
-    const checkForUpdateInterval = 10000;
+    const checkForUpdateInterval = 5000;
     let intervalId;
     const checkForUpdate = async () => {
       // hitta ID på sidan som har högst id och kolla den
@@ -230,45 +233,77 @@ Delad via https://texttv.nu/
 
       var url = `https://api.texttv.nu/api/updated/${pageNum}/${refreshTime}`;
 
-      // Men kolla bara om den här sidan är sidan som faktiskt är den aktiva.
       const closestIonPage = contentRef.current.closest(".ion-page");
       const isHiddenPage = closestIonPage.matches(".ion-page-hidden");
+      let doCheckForUpdate = true;
 
+      // Men kolla bara om den här sidan är sidan som faktiskt är den aktiva.
+      // Kolla inte heller efter uppdatering om toast för uppdatering
+      // har visats för denna sida redan.
       if (isHiddenPage) {
         console.log(
           `${pageNum} är inte synlig, så kollar inte efter uppdatering`
         );
+        doCheckForUpdate = false;
+      } else if (didDismissPageUpdateToast) {
+        console.log(
+          `${pageNum} har redan kollats efter uppdatering och användare tryckte på cancel i toast, så kollar inte mer efter uppdatering`
+        );
+        doCheckForUpdate = false;
       } else {
         console.log(
-          `${pageNum} är synlig, så jag efter uppdatering av sidan, via url ${url}`
+          `${pageNum} är synlig, så letar efter uppdatering av sidan, via url ${url}`
         );
+      }
+
+      if (!doCheckForUpdate) {
+        return;
       }
 
       const response = await fetch(url);
       const responseJson = await response.json();
-      // setPageUpdatedToastVisible(true);
-      if (responseJson.is_ok && responseJson.update_available) {
+
+      // Sätt denna till true för att fejka att
+      // det alltid finns en uppdatering av sida.
+      const fakeUpdateAvailable = false;
+
+      if (
+        fakeUpdateAvailable ||
+        (responseJson.is_ok && responseJson.update_available)
+      ) {
         setPageUpdatedToastVisible(true);
       }
     };
 
     intervalId = setInterval(checkForUpdate, checkForUpdateInterval);
+    console.log("intervalId", intervalId);
 
     // Sluta leta efter uppdateringar vid cleanup.
     return () => {
       clearInterval(intervalId);
     };
-  }, [pageNum, refreshTime]);
+  }, [pageNum, refreshTime, didDismissPageUpdateToast]);
 
   // Uppdatera dokument-titel.
   useEffect(() => {
     document.title = pageTitle;
   }, [pageTitle]);
 
+  /**
+   * Hämtar upp state från en texttv sida, så
+   * vi här kommer åt sidans id osv.
+   */
   const handlePageUpdate = data => {
     // console.log("handlePageUpdate", data);
     setPageData(data);
   };
+
+  /**
+   * När ny sida laddas in så nollställer vi att man gömt uppdaterings-toast.
+   */
+  useEffect(() => {
+    setDidDismissPageUpdateToast(false);
+  }, [pageNum]);
 
   const handleCopyTextToClipboard = () => {
     const pageRangeInfo = getPageRangeInfo(pageNum);
@@ -407,14 +442,14 @@ Delad via https://texttv.nu/
           onDidDismiss={() => {}}
           position="bottom"
           translucent={true}
-          message={`En nyare version av sidan ${pageNum} finns.`}
+          message={`En nyare version av sidan finns.`}
           cssClass="TextTVPage_UpdatedToast"
           showCloseButton={false}
           color="dark"
           buttons={[
             {
               side: "end",
-              text: "Ladda om",
+              text: "Uppdatera",
               role: "confirm",
               handler: () => {
                 // console.log("refresh clicked");
@@ -431,6 +466,7 @@ Delad via https://texttv.nu/
                 // För hur länge? För alltid? För alltid för denna sida? Bara för denna uppdatering?
                 // console.log("close toast clicked");
                 setPageUpdatedToastVisible(false);
+                setDidDismissPageUpdateToast(true);
                 // updateRefreshTime();
               }
             }
