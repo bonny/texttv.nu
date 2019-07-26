@@ -68,7 +68,7 @@ const Header = props => {
    */
   const backButton =
     headerStyle === "HEADER_STYLE_STARTPAGE" ? null : (
-      <IonBackButton defaultHref={backButtonDefaultHref} />
+      <IonBackButton defaultHref={backButtonDefaultHref} text='' />
     );
 
   return (
