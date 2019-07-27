@@ -146,7 +146,7 @@ function App(props) {
                     exact={true}
                   />
                   <Route
-                    path="/:tab(mest-last)"
+                    path="/:tab(arkiv)"
                     component={TabPopulart}
                     exact={true}
                   />
@@ -161,10 +161,13 @@ function App(props) {
                     exact={true}
                   />
                   <Route
-                    path="/arkivsida/:pageNum/:pageId/"
+                    path="/arkiv/:pageNum/:pageId/"
                     component={PageTextTV}
                   />
                   <Route path="/sidor/:pageNum" component={PageTextTV} />
+                  <Route path="/hem/:pageNum" component={PageTextTV} />
+                  <Route path="/nyast/:pageNum" component={PageTextTV} />
+                  <Route path="/arkiv/:pageNum" component={PageTextTV} />
                   <Route
                     path="/:pageNum([0-9]{3}.*)"
                     component={PageCatchAll}
@@ -199,7 +202,7 @@ function App(props) {
 
                   <IonTabButton
                     tab="populart"
-                    href="/mest-last"
+                    href="/arkiv"
                     onClick={handleTabClick}
                   >
                     <IonIcon icon={eye} mode="md" />

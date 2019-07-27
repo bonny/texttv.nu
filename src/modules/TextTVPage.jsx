@@ -59,8 +59,29 @@ export default props => {
           elm.dismiss();
         });
 
+      // Om sökväg är t.ex "/sidor/100" så ger detta "sidor".
+      const firstPathName = history.location.pathname
+        .split("/")
+        .filter(e => e)
+        .find(e => true);
+
       // Gå till sida 🎉.
-      history.push(`/sidor${href}`);
+      let pathPrefix;
+      switch (firstPathName) {
+        case "hem":
+          pathPrefix = "hem";
+          break;
+        case "sidor":
+        default:
+          pathPrefix = "sidor";
+      }
+      console.log(
+        "go to link, history pathname",
+        history.location.pathname,
+        history.location,
+        firstPathName
+      );
+      history.push(`/${pathPrefix}${href}`);
     } // else {
     // https://franciscohodge.com/2018/01/14/find-closest-element-click-coordinates-javascript-coding-question/
     // https://developer.mozilla.org/en-US/docs/Web/API/DocumentOrShadowRoot/elementFromPoint

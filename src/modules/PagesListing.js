@@ -31,6 +31,23 @@ const ListItem = props => {
 const PagesListing = props => {
   // linkto = pagenum | pageid
   const { pages, history, linkTo = "pagenum" } = props;
+  // Om sökväg är t.ex "/sidor/100" så ger detta "sidor".
+  const firstPathName = history.location.pathname
+    .split("/")
+    .filter(e => e)
+    .find(e => true);
+
+  let linkprefix = "";
+  switch (firstPathName) {
+    case "nyast":
+      linkprefix = "nyast";
+      break;
+    case "arkiv":
+      linkprefix = "arkiv";
+      break;
+    default:
+      linkprefix = "sidor";
+  }
 
   return pages.map((page, index, arr) => {
     // No line on last item.
@@ -39,11 +56,11 @@ const PagesListing = props => {
 
     switch (linkTo) {
       case "pageid":
-        link = `/arkivsida/${page.page_num}/${page.id}`;
+        link = `/arkiv/${page.page_num}/${page.id}`;
         break;
       case "pagenum":
       default:
-        link = `/sidor/${page.page_num}`;
+        link = `/${linkprefix}/${page.page_num}`;
     }
 
     return (
