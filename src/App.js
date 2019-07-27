@@ -94,7 +94,8 @@ function App(props) {
         [tab]: {
           mame: tab,
           lastClickedTime: timestamp,
-          lastClickedTimeCacheBusterString: cacheBustTimeString
+          lastClickedTimeCacheBusterString: cacheBustTimeString,
+          isNewTab: isNewTab,
         }
       }
     });
