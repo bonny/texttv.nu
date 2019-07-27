@@ -12,6 +12,7 @@ import {
 const Startsida = props => {
   const tabsinfo = useContext(TabContext);
   const tabsinfoHem = tabsinfo.tabs.hem;
+
   const [
     latestUpdatedPagesRefreshTime,
     setLatestUpdatedPagesRefreshTime
@@ -24,15 +25,27 @@ const Startsida = props => {
     const ionPageContent = getCurrentIonPageContentElm();
     const ionPageScrollElement = getCurrentIonPageScrollElm();
 
+    console.log(
+      "useEffect pga tabsinfoHem ändrats",
+      tabsinfoHem,
+      tabsinfoHem.isNewTab
+    );
+
     if (!ionPageScrollElement) {
       return;
     }
 
-    if (ionPageScrollElement.scrollTop > 0) {
-      // Scrolla upp och vi har scrollat ner.
+    if (tabsinfoHem.isNewTab) {
+      // Vi kommer till denna flik från en annan flik.
+      // Låt aktuellt innehåll + scrollpos vara.
+    } else if (ionPageScrollElement.scrollTop > 0) {
+      // Vi är redan på vår flik och har scrollat ner en bit,
+      // så scrolla upp och vi har scrollat ner.
+      console.log("scrolla upp pga vi inte är längst upp");
       ionPageContent.scrollToTop(500);
     } else {
       // Ladda om om vi är längst uppe.
+      console.log("ladda om pga är redan längst upp");
       setLatestUpdatedPagesRefreshTime(getUnixtime());
     }
   }, [tabsinfoHem]);
