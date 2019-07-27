@@ -11,7 +11,7 @@ import {
   IonTitle,
   IonToolbar
 } from "@ionic/react";
-import { copy, link, more, refresh, share } from "ionicons/icons";
+import { copy, link, more, refresh, share, open } from "ionicons/icons";
 import React, { useState, useContext } from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
 import TextTVSearchBar from "./TextTVSearchBar";
@@ -24,7 +24,8 @@ const Header = props => {
     onShare,
     handleRefreshBtnClick,
     onCopyTextToClipboard,
-    onCopyLinkToClipboard
+    onCopyLinkToClipboard,
+    onOpenLinkInBrowser
   } = props;
 
   // const backButtonDefaultHref = `/${match.params.tab}`;
@@ -55,6 +56,11 @@ const Header = props => {
     onCopyLinkToClipboard();
     hidePopover();
   };
+
+  const handleOpenLink = () => {
+    onOpenLinkInBrowser();
+    hidePopover();
+  }
 
   const handleShareClick = () => {
     onShare();
@@ -118,6 +124,10 @@ const Header = props => {
           <IonItem button onClick={handleCopyLinkToClipboard}>
             <IonIcon slot="start" icon={link} mode="md" />
             Kopiera länk
+          </IonItem>
+          <IonItem button onClick={handleOpenLink}>
+            <IonIcon slot="start" icon={open} mode="md" />
+            Öppna i webbläsare
           </IonItem>
           {showShare && (
             <IonItem button onclick={handleShareClick}>

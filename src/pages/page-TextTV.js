@@ -355,6 +355,10 @@ Delad via https://texttv.nu/
       string: permalink
     });
   };
+  
+  const handleOpenLinkInBrowser = () => {
+    console.log('onOpenLinkInBrowser');
+  }
 
   let debugcontainerstyles = {};
   const deltaXForTransform = swipeData.deltaXForTransform;
@@ -397,6 +401,7 @@ Delad via https://texttv.nu/
         onShare={handleShare}
         onCopyTextToClipboard={handleCopyTextToClipboard}
         onCopyLinkToClipboard={handleCopyLinkToClipboard}
+        onOpenLinkInBrowser={handleOpenLinkInBrowser}
         handleRefreshBtnClick={handleRefreshBtnClick}
       />
 
