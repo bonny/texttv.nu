@@ -358,6 +358,17 @@ Delad via https://texttv.nu/
   
   const handleOpenLinkInBrowser = () => {
     console.log('onOpenLinkInBrowser');
+    let pageIdsString = "";
+    pageData.forEach(page => {
+      pageIdsString = pageIdsString + `,${page.id}`;
+    });
+
+    // Bort med första kommatecknet.
+    pageIdsString = pageIdsString.replace(/^,/, "");
+
+    // Permalänk.
+    const permalink = `https://www.texttv.nu/${pageNum}/arkiv/sida/${pageIdsString}`;
+    window.open(permalink);
   }
 
   let debugcontainerstyles = {};
