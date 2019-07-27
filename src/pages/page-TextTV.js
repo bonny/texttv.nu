@@ -2,19 +2,20 @@
  * Visar en sida med en eller flera text-tv-sidor.
  */
 import { Plugins } from "@capacitor/core";
-import { IonContent, IonToast } from "@ionic/react";
-import React, { useEffect, useState, useRef } from "react";
+import { IonContent, IonIcon, IonToast } from "@ionic/react";
+import { arrowDropleftCircle, arrowDroprightCircle } from "ionicons/icons";
+import React, { useEffect, useRef, useState } from "react";
+import { useSwipeable } from "react-swipeable";
 import {
   getCurrentIonPageContentElm,
   getPageRangeInfo,
   getUnixtime,
-  stripHtml,
-  normalizeBetweenTwoRanges
+  normalizeBetweenTwoRanges,
+  stripHtml
 } from "../functions";
 import Header from "../modules/Header";
 import TextTVPage from "../modules/TextTVPage";
 import TextTVRefresher from "../modules/TextTVRefresher";
-import { useSwipeable } from "react-swipeable";
 
 // import easing from "../easing.js";
 
@@ -52,6 +53,7 @@ const PageTextTV = props => {
     onSwiping: eventData => {
       const dir = eventData.dir;
       if (dir === "Left" || dir === "Right") {
+        // console.log("onSwiping", eventData);
         // console.log("onSwiping left or right", eventData);
         const absoluteDeltaX = Math.abs(eventData.deltaX);
 
@@ -406,7 +408,8 @@ Delad via https://texttv.nu/
             className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev"
             style={TextTVNextPrevSwipeNavStyles}
           >
-            « {pagePrevNum}
+            <IonIcon className="TextTVNextPrevSwipeNav__icon" icon={arrowDropleftCircle} />
+            <span className="TextTVNextPrevSwipeNav__number">{pagePrevNum}</span>
           </div>
         )}
         {pageNextNum && swipeDirection === "Left" && (
@@ -414,7 +417,8 @@ Delad via https://texttv.nu/
             className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--next"
             style={TextTVNextPrevSwipeNavStyles}
           >
-            {pageNextNum} »
+            <span className="TextTVNextPrevSwipeNav__number">{pageNextNum}</span>
+            <IonIcon className="TextTVNextPrevSwipeNav__icon"icon={arrowDroprightCircle} />
           </div>
         )}
         {/* {normalizedDelta && <p>normalizedDelta: {normalizedDelta}</p>} */}

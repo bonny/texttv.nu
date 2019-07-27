@@ -199,11 +199,27 @@ b {
 
 .TextTVNextPrevSwipeNav {
   /* background: #666; */
+  line-height: 1;
   max-width: 100px;
   position: fixed;
   top: 50%;
   z-index: 10;
   font-size: 1.5rem;
+  padding: 5px;
+}
+
+.TextTVNextPrevSwipeNav__icon,
+.TextTVNextPrevSwipeNav__number {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.TextTVNextPrevSwipeNav--prev .TextTVNextPrevSwipeNav__number {
+  margin-left: 0.25rem;
+}
+
+.TextTVNextPrevSwipeNav--next .TextTVNextPrevSwipeNav__number {
+  margin-right: 0.25rem;
 }
 
 .TextTVNextPrevSwipeNav--prev {
