@@ -72,7 +72,7 @@ function getCacheBustTimeString(secondsInterval = 15) {
   var cacheBusterString =
     cacheBusterTime.getUTCFullYear() +
     "-" +
-    cacheBusterTime.getUTCDay() +
+    (cacheBusterTime.getUTCDay() + 1) +
     "-" +
     cacheBusterTime.getUTCDate() +
     "_" +
@@ -83,7 +83,7 @@ function getCacheBustTimeString(secondsInterval = 15) {
   var seconds = cacheBusterTime.getUTCSeconds();
 
   seconds = seconds - (seconds % secondsInterval);
-  cacheBusterString += cacheBusterString + ":" + seconds;
+  cacheBusterString += ":" + seconds;
 
   return cacheBusterString;
 }
