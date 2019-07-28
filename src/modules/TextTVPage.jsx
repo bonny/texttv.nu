@@ -2,7 +2,11 @@
  * En text-tv-sida.
  */
 import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
-import { createMarkupForPage, getNearestLink } from "../functions";
+import {
+  createMarkupForPage,
+  getNearestLink,
+  getCacheBustTimeString
+} from "../functions";
 import classNames from "classnames";
 
 function usePrevious(value) {
@@ -132,11 +136,13 @@ export default props => {
         : "";
 
       // TODO: ?cb= to group cache api requests
+      // Gruppera API-anrop genom cachebuster-sträng.
+      const cacheBustTimeString = getCacheBustTimeString(15);
 
       if (pageId) {
-        url = `https://api.texttv.nu/api/getid/${pageId}/${pageNum}?app=texttvapp${slowAnswerQueryString}`;
+        url = `https://api.texttv.nu/api/getid/${pageId}/${pageNum}?cb=${cacheBustTimeString}app=texttvapp${slowAnswerQueryString}`;
       } else {
-        url = `https://api.texttv.nu/api/get/${pageNum}?app=texttvapp${slowAnswerQueryString}`;
+        url = `https://api.texttv.nu/api/get/${pageNum}?cb=${cacheBustTimeString}&app=texttvapp${slowAnswerQueryString}`;
       }
 
       const response = fetch(url);
