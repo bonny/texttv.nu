@@ -95,7 +95,7 @@ function App(props) {
           mame: tab,
           lastClickedTime: timestamp,
           lastClickedTimeCacheBusterString: cacheBustTimeString,
-          isNewTab: isNewTab,
+          isNewTab: isNewTab
         }
       }
     });
@@ -145,33 +145,64 @@ function App(props) {
                     }}
                     exact={true}
                   />
+                  <Route path="/:tab(hem)/:pageNum" component={PageTextTV} />
+
                   <Route
                     path="/:tab(arkiv)"
                     component={TabPopulart}
                     exact={true}
                   />
+                  <Route path="/:tab(arkiv)/:pageNum" component={PageTextTV} />
+                  <Route
+                    path="/:tab(arkiv)/:pageNum/:pageId/"
+                    component={PageTextTV}
+                  />
+
                   <Route
                     path="/:tab(sidor)"
                     component={TabSidor}
                     exact={true}
                   />
+                  <Route path="/:tab(sidor)/:pageNum" component={PageTextTV} />
+
                   <Route
                     path="/:tab(nyast)"
                     component={TabNyast}
                     exact={true}
                   />
-                  <Route
-                    path="/arkiv/:pageNum/:pageId/"
-                    component={PageTextTV}
-                  />
-                  <Route path="/sidor/:pageNum" component={PageTextTV} />
-                  <Route path="/hem/:pageNum" component={PageTextTV} />
-                  <Route path="/nyast/:pageNum" component={PageTextTV} />
-                  <Route path="/arkiv/:pageNum" component={PageTextTV} />
+                  <Route path="/:tab(nyast)/:pageNum" component={PageTextTV} />
+
+                  {/* 
+                  Fallback för url som är sidnummer direkt, t.ex. "/100".
+                  Bra om man t.ex. hijackar url och skriver sida där manuellt.
+                  */}
                   <Route
                     path="/:pageNum([0-9]{3}.*)"
                     component={PageCatchAll}
                   />
+
+                  {/* From docs example */}
+                  <Route
+                    path="/:tab(sessions)"
+                    // component={SessionsPage}
+                    exact={true}
+                  />
+                  <Route
+                    path="/:tab(sessions)/:id"
+                    // component={SessionDetail}
+                  />
+                  <Route
+                    path="/:tab(speakers)"
+                    // component={SpeakerList}
+                    exact={true}
+                  />
+                  {/* // From docs example */}
+                  {/* 
+                   If the navigated URL were "/sessions", it would match the first route and add a URL parameter named "tab" with the value of "sessions" to the resulting match object passed into SessionsPage.
+
+                    When a user navigates to a session detail page ("/sessions/1" for instance), the second route adds a URL parameter named "tab" with a value of "sessions". When IonRouterOutlet sees that both pages are in the same "sessions" tab, it provides an animated page transition to the new view. If a user navigates to a new tab ("speakers" in this case), IonRouterOutlet knows not to provide the animation
+                   */}
+
                   {/* <Route path="/:pageNum([0-9]{3}-[0-9]{3})+" component={PageCatchAll} /> */}
                 </IonRouterOutlet>
 
