@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { IonReactRouter } from "@ionic/react-router";
 // import { Capacitor } from "@capacitor/core";
 import { Plugins } from "@capacitor/core";
 import "@ionic/core/css/core.css";
@@ -8,7 +9,6 @@ import {
   IonIcon,
   IonLabel,
   IonPage,
-  IonReactRouter,
   IonRouterOutlet,
   IonSplitPane,
   IonTabBar,
