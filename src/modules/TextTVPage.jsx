@@ -79,12 +79,14 @@ export default props => {
         default:
           pathPrefix = "sidor";
       }
+
       console.log(
         "go to link, history pathname",
         history.location.pathname,
         history.location,
         firstPathName
       );
+
       history.push(`/${pathPrefix}${href}`);
     } // else {
     // https://franciscohodge.com/2018/01/14/find-closest-element-click-coordinates-javascript-coding-question/
