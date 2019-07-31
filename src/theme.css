@@ -183,10 +183,10 @@ b {
 }
 
 .TextTVPage--isLoadingNewPageRange {
-  user-select: auto;
+  /* user-select: auto;
   animation-duration: 0.25s;
   animation-fill-mode: both;
-  animation-name: fadeInUp;
+  animation-name: fadeInUp; */
 }
 
 .TextTVPage_UpdatedToast {
