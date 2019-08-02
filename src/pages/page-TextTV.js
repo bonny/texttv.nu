@@ -355,9 +355,9 @@ Delad via https://texttv.nu/
       string: permalink
     });
   };
-  
+
   const handleOpenLinkInBrowser = () => {
-    console.log('onOpenLinkInBrowser');
+    console.log("onOpenLinkInBrowser");
     let pageIdsString = "";
     pageData.forEach(page => {
       pageIdsString = pageIdsString + `,${page.id}`;
@@ -369,15 +369,7 @@ Delad via https://texttv.nu/
     // Permalänk.
     const permalink = `https://www.texttv.nu/${pageNum}/arkiv/sida/${pageIdsString}`;
     window.open(permalink);
-  }
-
-  let debugcontainerstyles = {};
-  const deltaXForTransform = swipeData.deltaXForTransform;
-  if (swipeData && swipeData.doMove) {
-    debugcontainerstyles = {
-      transform: `translateX(${deltaXForTransform}px)`
-    };
-  }
+  };
 
   let firstPage;
   let pageNextNum;
@@ -385,6 +377,7 @@ Delad via https://texttv.nu/
   let normalizedDelta;
   let TextTVNextPrevSwipeNavStyles;
   let swipeDirection = swipeData.dir;
+  const deltaXForTransform = swipeData.deltaXForTransform;
 
   if (pageData && pageData.length && deltaXForTransform) {
     // console.log("swipeData", swipeData);
@@ -400,6 +393,15 @@ Delad via https://texttv.nu/
     );
     TextTVNextPrevSwipeNavStyles = {
       opacity: Math.abs(normalizedDelta)
+    };
+  }
+
+  let swipecontainerStyles = {};
+
+  if (swipeData && swipeData.doMove) {
+    swipecontainerStyles = {
+      transform: `translateX(${deltaXForTransform}px)`,
+      opacity: 1 - (Math.abs(normalizedDelta)/3)
     };
   }
 
@@ -424,8 +426,13 @@ Delad via https://texttv.nu/
             className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev"
             style={TextTVNextPrevSwipeNavStyles}
           >
-            <IonIcon className="TextTVNextPrevSwipeNav__icon" icon={arrowDropleftCircle} />
-            <span className="TextTVNextPrevSwipeNav__number">{pagePrevNum}</span>
+            <IonIcon
+              className="TextTVNextPrevSwipeNav__icon"
+              icon={arrowDropleftCircle}
+            />
+            <span className="TextTVNextPrevSwipeNav__number">
+              {pagePrevNum}
+            </span>
           </div>
         )}
         {pageNextNum && swipeDirection === "Left" && (
@@ -433,14 +440,19 @@ Delad via https://texttv.nu/
             className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--next"
             style={TextTVNextPrevSwipeNavStyles}
           >
-            <span className="TextTVNextPrevSwipeNav__number">{pageNextNum}</span>
-            <IonIcon className="TextTVNextPrevSwipeNav__icon"icon={arrowDroprightCircle} />
+            <span className="TextTVNextPrevSwipeNav__number">
+              {pageNextNum}
+            </span>
+            <IonIcon
+              className="TextTVNextPrevSwipeNav__icon"
+              icon={arrowDroprightCircle}
+            />
           </div>
         )}
         {/* {normalizedDelta && <p>normalizedDelta: {normalizedDelta}</p>} */}
 
         <div {...swipeHandlers}>
-          <div style={debugcontainerstyles}>
+          <div style={swipecontainerStyles}>
             {/* dir: {swipeData.dir}
             deltaX: {swipeData.deltaX} */}
             <TextTVPage
