@@ -152,10 +152,15 @@ function App(props) {
                     component={TabPopulart}
                     exact={true}
                   />
-                  <Route path="/:tab(arkiv)/:pageNum" component={PageTextTV} />
+                  <Route
+                    path="/:tab(arkiv)/:pageNum"
+                    component={PageTextTV}
+                    exact={true}
+                  />
                   <Route
                     path="/:tab(arkiv)/:pageNum/:pageId/"
                     component={PageTextTV}
+                    exact={true}
                   />
 
                   <Route
