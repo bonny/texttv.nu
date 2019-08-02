@@ -121,7 +121,7 @@ export default props => {
    * Ladda in sida från API när pageNum eller refreshTime ändras.
    */
   useEffect(() => {
-    console.log("texttv-page useEffect, before fetch", pageNum, refreshTime);
+    console.log("texttv-page useEffect, before fetch", pageNum, pageId, refreshTime);
 
     // setPageIsLoading(true);
     // setPageIsLoaded(false);
