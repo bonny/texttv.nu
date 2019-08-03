@@ -72,8 +72,8 @@ const Startsida = props => {
       >
         <IonGrid no-padding>
           <IonRow className="ion-justify-content-center">
-            <IonCol className="u-max-width-texttvpage">
-              <h2 className="ion-padding-start ion-padding-end ion-text-left">
+            <IonCol className="u-max-width-texttvpage ion-no-padding">
+              <h2 className="ion-padding-start ion-padding-end ion-text-left ion-no-margin">
                 Senaste nyheterna
               </h2>
               <SenastUppdaterat
@@ -83,7 +83,7 @@ const Startsida = props => {
                 count="5"
               />
 
-              <h2 className="ion-padding-start ion-padding-top ion-padding-end ion-text-left">
+              <h2 className="ion-padding-start xion-padding-top ion-padding-end ion-text-left ion-no-margin">
                 Senaste sportnyheterna
               </h2>
               <SenastUppdaterat
