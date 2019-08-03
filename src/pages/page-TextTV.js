@@ -267,7 +267,7 @@ Delad via https://texttv.nu/
 
       // Sätt denna till true för att fejka att
       // det alltid finns en uppdatering av sida.
-      const fakeUpdateAvailable = true;
+      const fakeUpdateAvailable = false;
 
       // Kolla att sidan vi letat efter fortfarande är sidan som vi visar.
       // Användaren kan vara snabb så precis när en letning görs så byter de sida
