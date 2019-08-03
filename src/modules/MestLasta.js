@@ -1,13 +1,13 @@
 import { IonList } from "@ionic/react";
-import React, { useState, useEffect } from "react";
-import SkeletonList from "./SkeletonList";
-import PagesListing from "./PagesListing";
 import dayjs from "dayjs";
+import React, { useEffect, useState } from "react";
+import PagesListing from "./PagesListing";
+import SkeletonList from "./SkeletonList";
 
 const MestLastaLista = props => {
   {
     const { history, day = "today", refreshTime, count = 15 } = props;
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [isLoadingError, setIsLoadingError] = useState(false);
     const [pages, setPages] = useState([]);
 
@@ -47,13 +47,13 @@ const MestLastaLista = props => {
           return data.json();
         })
         .then(data => {
-          setIsLoading(false);
-
           // Bail if component already unmounted.
           if (isUnmounted) {
+            setIsLoading(false);
             return;
           }
 
+          setIsLoading(false);
           setPages(data.pages);
         })
         .catch(error => {
@@ -70,10 +70,23 @@ const MestLastaLista = props => {
       <PagesListing pages={pages} history={history} linkTo="pageid" />
     );
 
+    let Knastext = null;
+
+    if (isLoadingError || (!isLoading && pages.length === 0)) {
+      Knastext = (
+        <div className="ion-padding">
+          <p>
+            Hm, det gick inte att hämta de mest lästa sidorna. Försök igen om en
+            liten stund.
+          </p>
+        </div>
+      );
+    }
+
     return (
       <>
         {isLoading && SkeletonList}
-        {isLoadingError && <p>Det blev ett fel vid laddning ...</p>}
+        {Knastext}
         {Pages && <IonList color="dark">{Pages}</IonList>}
       </>
     );
