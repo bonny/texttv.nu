@@ -47,7 +47,7 @@ export default props => {
               key={page.pages}
               lines={lines}
               style={{
-                "--border-color": "#666"
+                "--border-color": "#444"
               }}
               // color="dark"
             >
@@ -55,7 +55,15 @@ export default props => {
                 <h2 className="ListHeadlineSidor">{page.title}</h2>
                 {/* <p>{page.pages}</p> */}
               </IonLabel>
-              <IonNote slot="end">{page.pages}</IonNote>
+              <IonNote
+                slot="end"
+                mode="ios"
+                style={{
+                  fontSize: "var(--text-tv-font-size)"
+                }}
+              >
+                {page.pages}
+              </IonNote>
             </IonItem>
           );
         })}
