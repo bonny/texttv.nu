@@ -9,7 +9,8 @@ import {
   IonList,
   IonPopover,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonToast
 } from "@ionic/react";
 import { copy, link, more, refresh, share, open } from "ionicons/icons";
 import React, { useState, useContext } from "react";
@@ -33,6 +34,10 @@ const Header = props => {
   const [showPopover, setShowPopover] = useState(false);
   const [popoverEvent, setPopoverEvent] = useState();
   const ionicContext = useContext(IonicContext);
+  const [actionPerformedToastOpened, setActionPerformedToastOpened] = useState(
+    false
+  );
+  const [actionPerformedMessage, setActionPerformedMessage] = useState("");
 
   // Visa endast share-knappen om denna variabel är true.
   // Vi sätter den till false för t.ex. chrome desktop där web share inte finns ännu.
@@ -49,18 +54,22 @@ const Header = props => {
 
   const handleCopyTextToClipboard = () => {
     onCopyTextToClipboard();
+    setActionPerformedMessage("Sidans text kopierades till urklipp");
+    setActionPerformedToastOpened(true);
     hidePopover();
   };
 
   const handleCopyLinkToClipboard = () => {
     onCopyLinkToClipboard();
+    setActionPerformedMessage("En länk till sidan kopierades till urklipp");
+    setActionPerformedToastOpened(true);
     hidePopover();
   };
 
   const handleOpenLink = () => {
     onOpenLinkInBrowser();
     hidePopover();
-  }
+  };
 
   const handleShareClick = () => {
     onShare();
@@ -74,7 +83,7 @@ const Header = props => {
    */
   const backButton =
     headerStyle === "HEADER_STYLE_STARTPAGE" ? null : (
-      <IonBackButton defaultHref={backButtonDefaultHref} text='' />
+      <IonBackButton defaultHref={backButtonDefaultHref} text="" />
     );
 
   return (
@@ -137,6 +146,35 @@ const Header = props => {
           )}
         </IonList>
       </IonPopover>
+
+      <IonToast
+        color="medium"
+        isOpen={actionPerformedToastOpened}
+        onDidDismiss={() => {
+          setActionPerformedToastOpened(false);
+        }}
+        message={actionPerformedMessage}
+        position="top"
+        duration="2500"
+        // cssClass="TextTVPage_UpdatedToast"
+        // buttons={[
+        //   {
+        //     side: "start",
+        //     icon: "star",
+        //     text: "Favorite",
+        //     handler: () => {
+        //       console.log("Favorite clicked");
+        //     }
+        //   },
+        //   {
+        //     text: "Done",
+        //     role: "cancel",
+        //     handler: () => {
+        //       console.log("Cancel clicked");
+        //     }
+        //   }
+        // ]}
+      />
     </>
   );
 };

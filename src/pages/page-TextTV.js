@@ -484,11 +484,11 @@ Delad via https://texttv.nu/
           isOpen={pageUpdatedToastVisible}
           onDidDismiss={() => {}}
           position="bottom"
-          translucent={true}
-          message={`En nyare version av sidan finns.`}
+          translucent={false}
+          message="En nyare version av sidan finns."
           cssClass="TextTVPage_UpdatedToast"
           showCloseButton={false}
-          color="dark"
+          color="medium"
           buttons={[
             {
               side: "end",
