@@ -267,7 +267,18 @@ Delad via https://texttv.nu/
 
       // Sätt denna till true för att fejka att
       // det alltid finns en uppdatering av sida.
-      const fakeUpdateAvailable = false;
+      const fakeUpdateAvailable = true;
+
+      // Kolla att sidan vi letat efter fortfarande är sidan som vi visar.
+      // Användaren kan vara snabb så precis när en letning görs så byter de sida
+      // och då kan en uppdatering som finns gälla föregående sida.
+      const isHiddenPageAfterFetch = closestIonPage.matches(".ion-page-hidden");
+      if (isHiddenPageAfterFetch) {
+        console.log(
+          "sidan som har en uppdatering är inte längre den aktiva, så visa inte toast"
+        );
+        return;
+      }
 
       if (
         fakeUpdateAvailable ||
@@ -401,7 +412,7 @@ Delad via https://texttv.nu/
   if (swipeData && swipeData.doMove) {
     swipecontainerStyles = {
       transform: `translateX(${deltaXForTransform}px)`,
-      opacity: 1 - (Math.abs(normalizedDelta)/3)
+      opacity: 1 - Math.abs(normalizedDelta) / 3
     };
   }
 
