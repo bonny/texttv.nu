@@ -57,6 +57,7 @@ export default props => {
       }
 
       // Göm ev synliga toasts.
+      // TODO: göm toast via state och inte via query selector + api method
       document
         .querySelectorAll("ion-toast.TextTVPage_UpdatedToast")
         .forEach(elm => {
@@ -97,11 +98,6 @@ export default props => {
     // }
   };
 
-  // TODO: när ny sida laddas ska vi tömma pagedata då?
-  // Om samma sida = behåll data pga vill inte få en sida
-  // som blinkar till eller så och sen inte har fått nåt nytt innehåll.
-  // Om ny sida: nån effekt.
-  // setPageData([]);
   // Använd useLayoutEffect istället för useEffect pga den senare gör att man hinner
   // se det gamla innehållet först.
   useLayoutEffect(() => {
@@ -121,7 +117,12 @@ export default props => {
    * Ladda in sida från API när pageNum eller refreshTime ändras.
    */
   useEffect(() => {
-    console.log("texttv-page useEffect, before fetch", pageNum, pageId, refreshTime);
+    console.log(
+      "texttv-page useEffect, before fetch",
+      pageNum,
+      pageId,
+      refreshTime
+    );
 
     // setPageIsLoading(true);
     // setPageIsLoaded(false);
@@ -137,7 +138,6 @@ export default props => {
         ? `&slow_answer=${slowAnswer}`
         : "";
 
-      // TODO: ?cb= to group cache api requests
       // Gruppera API-anrop genom cachebuster-sträng.
       const cacheBustTimeString = getCacheBustTimeString(15);
 
