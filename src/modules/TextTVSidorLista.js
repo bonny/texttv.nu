@@ -1,4 +1,10 @@
-import { IonItem, IonLabel, IonList, IonListHeader } from "@ionic/react";
+import {
+  IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
+  IonNote
+} from "@ionic/react";
 import React from "react";
 
 const favorites = [
@@ -40,12 +46,16 @@ export default props => {
               }}
               key={page.pages}
               lines={lines}
-              color="dark"
+              style={{
+                "--border-color": "#666"
+              }}
+              // color="dark"
             >
               <IonLabel text-wrap>
                 <h2 className="ListHeadlineSidor">{page.title}</h2>
-                <p>{page.pages}</p>
+                {/* <p>{page.pages}</p> */}
               </IonLabel>
+              <IonNote slot="end">{page.pages}</IonNote>
             </IonItem>
           );
         })}
