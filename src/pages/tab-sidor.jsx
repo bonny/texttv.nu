@@ -29,11 +29,11 @@ export default props => {
   return (
     <>
       <TextTVHeader title="Sidor">
-        <IonToolbar color="dark">
+        <IonToolbar>
           <TextTVSearchBar history={history} />
         </IonToolbar>
       </TextTVHeader>
-      <IonContent color="dark">
+      <IonContent>
         <TextTVSidorLista {...props} showHeader={false} />
       </IonContent>
     </>

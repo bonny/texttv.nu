@@ -87,7 +87,7 @@ const MestLastaLista = props => {
       <>
         {isLoading && SkeletonList}
         {Knastext}
-        {Pages && <IonList color="dark">{Pages}</IonList>}
+        {Pages && <IonList>{Pages}</IonList>}
       </>
     );
   }

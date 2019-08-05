@@ -11,7 +11,7 @@ const SkeletonListItems = [...Array(10)].map((val, index) => {
     width: Math.random() * (75 - 35) + 35 + "%"
   };
   return (
-    <IonItem key={index} color="dark">
+    <IonItem key={index}>
       <IonLabel text-wrap>
         <p>
           <IonSkeletonText animated style={pStyles} />
@@ -24,6 +24,6 @@ const SkeletonListItems = [...Array(10)].map((val, index) => {
   );
 });
 
-const SkeletonList = <IonList color="dark">{SkeletonListItems}</IonList>;
+const SkeletonList = <IonList>{SkeletonListItems}</IonList>;
 
 export default SkeletonList;

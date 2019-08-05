@@ -110,7 +110,7 @@ export default props => {
         </IonToolbar>
       </TextTVHeader>
 
-      <IonContent color="dark">
+      <IonContent>
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
         <MestLasta

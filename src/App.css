@@ -29,10 +29,15 @@
   font-family: "Ubuntu Mono", monospace;
   background: var(--text-tv-background);
   color: #ddd;
-  font-size: 4.8vw;
   text-align: center;
   line-height: 1;
   padding: 10px 10px 40px 0;
+}
+.TextTVPage,
+.TextTVSkeletonPage,
+.u-max-width-texttvpage,
+.ListPageNum {
+  font-size: var(--text-tv-font-size);
 }
 
 .TextTVPage--skeleton .TextTVPage__inner {
@@ -199,13 +204,6 @@
   color: #12c;
 }
 
-/**
- * Bug fix for ion list on page Sidor: white default bg bleeds through at the top.
- */
-ion-list[color="dark"] {
-  background: var(--ion-color-dark);
-}
-
 .MomentTime {
   display: inline-block;
 }
@@ -238,7 +236,8 @@ ion-list[color="dark"] {
   .TextTVSkeletonPage,
   .ListHeadline,
   .ListHeadlineSidor,
-  .u-max-width-texttvpage {
+  .u-max-width-texttvpage,
+  .ListPageNum {
     font-size: 22px !important;
   }
 }

@@ -211,7 +211,7 @@ function App(props) {
                   {/* <Route path="/:pageNum([0-9]{3}-[0-9]{3})+" component={PageCatchAll} /> */}
                 </IonRouterOutlet>
 
-                <IonTabBar slot="bottom" color="dark">
+                <IonTabBar slot="bottom">
                   <IonTabButton tab="hem" href="/hem" onClick={handleTabClick}>
                     <IonIcon icon={home} mode="md" />
                     <IonLabel>Hem</IonLabel>

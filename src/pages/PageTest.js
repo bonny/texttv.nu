@@ -66,7 +66,7 @@ export const PageTestar = props => {
 
   return (
     <IonPage>
-      <IonHeader color="dark">
+      <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
             <IonBackButton defaultHref="/testar/defaultHref" />
@@ -98,7 +98,7 @@ export const PageTestarUndersida = props => {
 
   return (
     <IonPage>
-      <IonHeader color="dark">
+      <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
             <IonBackButton defaultHref="/testar/defaultHref" />

@@ -26,9 +26,9 @@ export default props => {
 
   return (
     <>
-      <IonList color="dark">
+      <IonList>
         {showHeader && (
-          <IonListHeader color="dark">
+          <IonListHeader>
             <IonLabel>Sidor</IonLabel>
           </IonListHeader>
         )}
@@ -46,22 +46,12 @@ export default props => {
               }}
               key={page.pages}
               lines={lines}
-              style={{
-                "--border-color": "#444"
-              }}
-              // color="dark"
             >
               <IonLabel text-wrap>
                 <h2 className="ListHeadlineSidor">{page.title}</h2>
                 {/* <p>{page.pages}</p> */}
               </IonLabel>
-              <IonNote
-                slot="end"
-                mode="ios"
-                style={{
-                  fontSize: "var(--text-tv-font-size)"
-                }}
-              >
+              <IonNote slot="end" mode="ios" className="ListPageNum">
                 {page.pages}
               </IonNote>
             </IonItem>

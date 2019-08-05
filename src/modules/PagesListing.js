@@ -14,7 +14,6 @@ const ListItem = props => {
         history.push(link);
       }}
       lines={lines}
-      color="dark"
     >
       <IonLabel text-wrap>
         <h2 className="ListHeadline">{page.title}</h2>

@@ -61,7 +61,7 @@ const Header = props => {
 
   const handleCopyLinkToClipboard = () => {
     onCopyLinkToClipboard();
-    setActionPerformedMessage("En länk till sidan kopierades till urklipp");
+    setActionPerformedMessage("Sidans länk kopierades till urklipp");
     setActionPerformedToastOpened(true);
     hidePopover();
   };
@@ -96,7 +96,7 @@ const Header = props => {
           </IonTitle>
         </IonToolbar>
 
-        <IonToolbar color="dark" mode="md">
+        <IonToolbar mode="md">
           <IonButtons slot="start">{backButton}</IonButtons>
 
           <TextTVSearchBar history={history} />
@@ -148,15 +148,15 @@ const Header = props => {
       </IonPopover>
 
       <IonToast
-        color="medium"
+        color="success"
         isOpen={actionPerformedToastOpened}
         onDidDismiss={() => {
           setActionPerformedToastOpened(false);
         }}
         message={actionPerformedMessage}
-        position="top"
+        position="bottom"
         duration="2500"
-        // cssClass="TextTVPage_UpdatedToast"
+        cssClass="TextTVPage_Toast"
         // buttons={[
         //   {
         //     side: "start",

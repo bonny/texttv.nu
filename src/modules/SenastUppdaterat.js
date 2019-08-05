@@ -65,7 +65,7 @@ const SenastUppdateradeLista = props => {
         {isLoading && SkeletonList}
         {isLoadingError && <p>Det blev ett fel vid laddning ...</p>}
         {Pages && (
-          <IonList color="dark">
+          <IonList>
             {/* <IonListHeader>
               <IonLabel>Nyligen uppdaterat</IonLabel>
             </IonListHeader> */}

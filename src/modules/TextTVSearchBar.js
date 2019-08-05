@@ -24,7 +24,6 @@ const TextTVSearchBar = props => {
   return (
     <>
       <IonSearchbar
-        color="dark"
         placeholder="Gå till…"
         type="number"
         showCancelButton={false}

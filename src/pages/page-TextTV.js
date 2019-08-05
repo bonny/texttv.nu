@@ -429,7 +429,7 @@ Delad via https://texttv.nu/
         handleRefreshBtnClick={handleRefreshBtnClick}
       />
 
-      <IonContent color="dark" ref={contentRef}>
+      <IonContent ref={contentRef}>
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
         {pagePrevNum && swipeDirection === "Right" && (
@@ -486,7 +486,7 @@ Delad via https://texttv.nu/
           position="bottom"
           translucent={false}
           message="En nyare version av sidan finns."
-          cssClass="TextTVPage_UpdatedToast"
+          cssClass="TextTVPage_Toast TextTVPage_UpdatedToast"
           showCloseButton={false}
           color="medium"
           buttons={[

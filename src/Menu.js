@@ -112,7 +112,7 @@ const Menu = props => {
         <TextTVSidorLista {...props} showHeader={false} />
 
         <IonList>
-          <IonListHeader color="dark">Länkar</IonListHeader>
+          <IonListHeader>Länkar</IonListHeader>
           <IonMenuToggle auto-hide="false">
             {navItems.map(item => {
               const icon = item.icon ? item.icon : document;
@@ -127,9 +127,7 @@ const Menu = props => {
         </IonList>
 
         <IonList>
-          <IonListHeader color="dark">
-            Vi på TextTV.nu gillar också
-          </IonListHeader>
+          <IonListHeader>Vi på TextTV.nu gillar också</IonListHeader>
           <IonMenuToggle auto-hide={false}>
             {navItemsAlsoLike.map(item => {
               const icon = item.icon ? item.icon : document;
