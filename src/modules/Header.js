@@ -148,7 +148,7 @@ const Header = props => {
       </IonPopover>
 
       <IonToast
-        color="success"
+        xcolor="success"
         isOpen={actionPerformedToastOpened}
         onDidDismiss={() => {
           setActionPerformedToastOpened(false);
@@ -157,23 +157,6 @@ const Header = props => {
         position="bottom"
         duration="2500"
         cssClass="TextTVPage_Toast"
-        // buttons={[
-        //   {
-        //     side: "start",
-        //     icon: "star",
-        //     text: "Favorite",
-        //     handler: () => {
-        //       console.log("Favorite clicked");
-        //     }
-        //   },
-        //   {
-        //     text: "Done",
-        //     role: "cancel",
-        //     handler: () => {
-        //       console.log("Cancel clicked");
-        //     }
-        //   }
-        // ]}
       />
     </>
   );

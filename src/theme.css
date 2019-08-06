@@ -214,6 +214,11 @@ b {
 
 .TextTVPage_Toast {
   top: -4em;
+  --background: #313235;
+  --color: var(--text-tv-color);
+  --border-style: solid;
+  --border-width: 1px;
+  --border-color: #4a4a4a;
 }
 
 .u-max-width-texttvpage {
