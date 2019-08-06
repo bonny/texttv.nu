@@ -2,12 +2,12 @@ import { IonContent, IonToolbar } from "@ionic/react";
 import React, { useContext, useEffect } from "react";
 import TextTVHeader from "../modules/TextTVHeader";
 import TextTVSearchBar from "../modules/TextTVSearchBar";
-import TextTVSidorLista from "../modules/TextTVSidorLista";
 import TabContext from "../TabContext";
 import {
   getCurrentIonPageContentElm,
   getCurrentIonPageScrollElm
 } from "../functions";
+import MenuItems from "../modules/MenuItems";
 
 export default props => {
   const { history } = props;
@@ -19,7 +19,7 @@ export default props => {
     document.title = `Sidor - Genvägar till vanliga text-tv-sidor`;
   }, [tabsinfoSidor]);
 
-  // Scrolla till toppen om vi klickar på denna sidan tab igen.
+  // Scrolla till toppen om vi klickar på denna sidans tab igen.
   useEffect(() => {
     const ionPageContent = getCurrentIonPageContentElm();
     const ionPageScrollElement = getCurrentIonPageScrollElm();
@@ -34,7 +34,8 @@ export default props => {
         </IonToolbar>
       </TextTVHeader>
       <IonContent>
-        <TextTVSidorLista {...props} showHeader={false} />
+        {/* <TextTVSidorLista {...props} showHeader={false} /> */}
+        <MenuItems />
       </IonContent>
     </>
   );
