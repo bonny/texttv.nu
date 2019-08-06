@@ -19,7 +19,11 @@ https://app.texttv.nu/
 - Ny design.
 - Större klickyta, bra t.ex. för små mobiler där det kan vara svårt att pricka sidnummret.
 - Tillbaka-knapp fungerar på Android.
-- Tydligare gränssnitt med lättare tillgång till startsida, vanliga sidor, senast uppdaterade sidorna och de mest lästa sidorna.
+- Tydligare gränssnitt med lättare tillgång till 
+  - startsida
+  - vanliga sidor
+  - senast uppdaterade sidorna
+  - mest lästa och delade sidorna för idag, igår och i förrgår
 - Sökruta/gå till sida-ruta alltid tillgänglig.
 - App som fungerar både i mobila webbläsaren (PWA) och som egen app i appstore.
 - Texten till en eller flera sidor går att kopiera direkt till urklipp
