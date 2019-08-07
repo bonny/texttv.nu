@@ -30,7 +30,7 @@ const Menu = props => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <MenuItems />
+        <MenuItems {...props} />
       </IonContent>
     </IonMenu>
   );

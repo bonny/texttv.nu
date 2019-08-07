@@ -21,7 +21,7 @@ const favorites = [
   { title: "Innehåll", pages: "700" }
 ];
 
-export default props => {
+const TextTVSidorLista = props => {
   const { history, showHeader = true } = props;
 
   return (
@@ -61,3 +61,5 @@ export default props => {
     </>
   );
 };
+
+export default TextTVSidorLista;

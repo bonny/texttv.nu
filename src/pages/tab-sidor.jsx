@@ -35,7 +35,7 @@ export default props => {
       </TextTVHeader>
       <IonContent>
         {/* <TextTVSidorLista {...props} showHeader={false} /> */}
-        <MenuItems />
+        <MenuItems {...props} />
       </IonContent>
     </>
   );
