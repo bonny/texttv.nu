@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IonReactRouter } from "@ionic/react-router";
 // import { Capacitor } from "@capacitor/core";
 import { Plugins } from "@capacitor/core";
@@ -29,10 +29,15 @@ import Startsida from "./pages/tab-startsida";
 import "./theme.css";
 import TabContext from "./TabContext";
 import { getUnixtime } from "./functions";
+// import { AdSize, AdPosition } from "capacitor-admob";
 
 const { SplashScreen } = Plugins;
+const { AdMob } = Plugins;
 
 SplashScreen.hide();
+
+console.log("AdMob", AdMob);
+AdMob.initialize("ca-app-pub-1689239266452655~1859283602");
 
 /**
  * Komponent som alltid renderas, i.e. catch all component i React Router.
@@ -121,6 +126,31 @@ function App(props) {
   };
 
   const [tabsinfo, setTabsinfo] = useState(detfaultTabinfoState);
+
+  const options = {
+    // TODO: use real AD-id
+    //adId: "ca-app-pub-1689239266452655/3336016805",
+
+    // google test ad
+    // https://developers.google.com/admob/android/test-ads#sample_ad_units
+    adId: "ca-app-pub-3940256099942544/6300978111",
+    adSize: "SMART_BANNER",
+    position: "BOTTOM_CENTER",
+    hasTabBar: true, // make it true if you have TabBar Layout.
+    tabBarHeight: 56 // you can assign custom margin in pixel default is 56
+  };
+
+  useEffect(() => {
+    console.log("admob show banner");
+    AdMob.showBanner(options).then(
+      value => {
+        console.log("admob ok", value); // true
+      },
+      error => {
+        console.error("admob error", error); // show error
+      }
+    );
+  }, [options]);
 
   return (
     <TabContext.Provider value={tabsinfo}>

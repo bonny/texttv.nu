@@ -9,6 +9,7 @@
     "@ionic/react": "0.0.9",
     "@ionic/react-router": "0.0.9",
     "animate.css": "^3.7.2",
+    "capacitor-admob": "0.0.9",
     "classnames": "^2.2.6",
     "cordova-ios": "5.0.1",
     "dayjs": "^1.8.15",
