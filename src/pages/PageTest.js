@@ -26,8 +26,8 @@ export const PageTest = props => {
         onDidDismiss={() => setIsOpen(false)}
         message="En uppdatering av sidan finns"
         position="bottom"
-        duration="3000"
-        translucent={true}
+        duration="0"
+        className="TextTVPage_Toast"
         buttons={[
           {
             side: "end",
