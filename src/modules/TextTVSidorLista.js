@@ -51,7 +51,12 @@ const TextTVSidorLista = props => {
                 <h2 className="ListHeadlineSidor">{page.title}</h2>
                 {/* <p>{page.pages}</p> */}
               </IonLabel>
-              <IonNote slot="end" mode="ios" className="ListPageNum">
+              <IonNote
+                slot="end"
+                mode="ios"
+                className="ListPageNum"
+                color="medium"
+              >
                 {page.pages}
               </IonNote>
             </IonItem>
