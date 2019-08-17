@@ -18,6 +18,7 @@ import {
 import { clock, eye, home, listBox } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
 import "./App.css";
+import { getCacheBustTimeString } from "./functions";
 import { MenuWithRouter } from "./modules/SideMenu";
 import PageTextTV from "./pages/page-TextTV.js";
 import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
@@ -33,35 +34,23 @@ import PageCatchAll from "./PageCatchAll";
 
 const { SplashScreen } = Plugins;
 // const { AdMob } = Plugins;
-// const analytics = new Analytics();
-
-SplashScreen.hide();
+const analytics = new Analytics();
 
 // console.log("Analytics", Analytics, analytics);
 // analytics.setScreen({ name: "myScreen" });
-
 // console.log("AdMob", AdMob);
-
 // AdMob.initialize("ca-app-pub-1689239266452655~1859283602");
 
-/**
- * Komponent som alltid renderas, i.e. catch all component i React Router.
- * Används för att visa sidor /100 /100,101, /100-104,377 osv, dvs utan "sida"-prefix
- *
- * @param object props
- */
-const PageCatchAll = props => {
-  const { pageNum } = props.match.params;
-  const pageRangeInfo = getPageRangeInfo(pageNum);
-  console.log("PageCatchAll", pageNum);
+SplashScreen.hide();
 
-  if (pageRangeInfo.allValid) {
-    // Skicka vidare till sida
-    return <Redirect to={`/sidor/${pageNum}`} />;
-  } else {
-    return null;
-  }
-};
+analytics.logEvent({
+  name: "share",
+  params: { content_type: "page", item_id: "110" }
+});
+
+analytics.setScreen({
+  name: "Hem"
+});
 
 function App(props) {
   // const [currentTab, setCurrentTab] = useState("hem");
@@ -236,14 +225,6 @@ function App(props) {
                     // component={SpeakerList}
                     exact={true}
                   />
-                  {/* // From docs example */}
-                  {/* 
-                   If the navigated URL were "/sessions", it would match the first route and add a URL parameter named "tab" with the value of "sessions" to the resulting match object passed into SessionsPage.
-
-                    When a user navigates to a session detail page ("/sessions/1" for instance), the second route adds a URL parameter named "tab" with a value of "sessions". When IonRouterOutlet sees that both pages are in the same "sessions" tab, it provides an animated page transition to the new view. If a user navigates to a new tab ("speakers" in this case), IonRouterOutlet knows not to provide the animation
-                   */}
-
-                  {/* <Route path="/:pageNum([0-9]{3}-[0-9]{3})+" component={PageCatchAll} /> */}
                 </IonRouterOutlet>
 
                 <IonTabBar slot="bottom">
