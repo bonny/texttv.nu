@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "30223179902",
+    "firebase_url": "https://teletext-a4d17.firebaseio.com",
+    "project_id": "teletext-a4d17",
+    "storage_bucket": "teletext-a4d17.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30223179902:android:ca3ee52727dd7256",
+        "android_client_info": {
+          "package_name": "com.mufflify.TextTVnu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "30223179902-bkmsu16p5bd5du7el83il5vpcqkkltal.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe3_vEfxAFck_NfmqJpNrtcs00IwqrTvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "30223179902-4ik1e42ed7alujli0dsu2l9m9udtsn33.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "30223179902-kms7el00gajqpo2ihf9g53843q7ult6o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mufflify.brottsplatskartan",
+                "app_store_id": "607998045"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
