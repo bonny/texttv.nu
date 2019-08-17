@@ -38,7 +38,11 @@ const analytics = new Analytics();
 // console.log("Analytics", Analytics, analytics);
 // analytics.setScreen({ name: "myScreen" });
 // console.log("AdMob", AdMob);
-AdMob.initialize("ca-app-pub-1689239266452655~1859283602");
+try {
+  AdMob.initialize("ca-app-pub-1689239266452655~1859283602");
+} catch (e) {
+  console.log("got error when trying to init admob", e);
+}
 
 SplashScreen.hide();
 
