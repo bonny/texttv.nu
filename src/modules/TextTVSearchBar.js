@@ -26,7 +26,7 @@ const TextTVSearchBar = props => {
       <IonSearchbar
         placeholder="Gå till…"
         type="number"
-        showCancelButton={false}
+        showCancelButton='never'
         clearIcon={false}
         onIonChange={handlePageNumInputChange}
         debounce="100"
