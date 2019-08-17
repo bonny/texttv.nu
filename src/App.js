@@ -139,14 +139,18 @@ function App(props) {
 
   useEffect(() => {
     console.log("admob show banner");
-    AdMob.showBanner(options).then(
-      value => {
-        console.log("admob show banner ok", value); // true
-      },
-      error => {
-        console.error("admob show banner error", error); // show error
-      }
-    );
+    try {
+      AdMob.showBanner(options).then(
+        value => {
+          console.log("admob show banner ok", value); // true
+        },
+        error => {
+          console.error("admob show banner error", error); // show error
+        }
+      );
+    } catch (e) {
+      console.log("admob got error when trying to show banner");
+    }
   }, [options]);
 
   return (
