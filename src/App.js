@@ -29,15 +29,20 @@ import Startsida from "./pages/tab-startsida";
 import "./theme.css";
 import TabContext from "./TabContext";
 import { getUnixtime } from "./functions";
-// import { AdSize, AdPosition } from "capacitor-admob";
+import { Analytics } from "capacitor-analytics";
 
 const { SplashScreen } = Plugins;
-const { AdMob } = Plugins;
+// const { AdMob } = Plugins;
+// const analytics = new Analytics();
 
 SplashScreen.hide();
 
-console.log("AdMob", AdMob);
-AdMob.initialize("ca-app-pub-1689239266452655~1859283602");
+// console.log("Analytics", Analytics, analytics);
+// analytics.setScreen({ name: "myScreen" });
+
+// console.log("AdMob", AdMob);
+
+// AdMob.initialize("ca-app-pub-1689239266452655~1859283602");
 
 /**
  * Komponent som alltid renderas, i.e. catch all component i React Router.
@@ -140,17 +145,17 @@ function App(props) {
     tabBarHeight: 56 // you can assign custom margin in pixel default is 56
   };
 
-  useEffect(() => {
-    console.log("admob show banner");
-    AdMob.showBanner(options).then(
-      value => {
-        console.log("admob ok", value); // true
-      },
-      error => {
-        console.error("admob error", error); // show error
-      }
-    );
-  }, [options]);
+  // useEffect(() => {
+  //   console.log("admob show banner");
+  //   AdMob.showBanner(options).then(
+  //     value => {
+  //       console.log("admob ok", value); // true
+  //     },
+  //     error => {
+  //       console.error("admob error", error); // show error
+  //     }
+  //   );
+  // }, [options]);
 
   return (
     <TabContext.Provider value={tabsinfo}>
