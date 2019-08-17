@@ -13,7 +13,6 @@
     "classnames": "^2.2.6",
     "cordova-ios": "5.0.1",
     "dayjs": "^1.8.15",
-    "fitty": "^2.2.6",
     "ionicons": "^4.6.2",
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",
