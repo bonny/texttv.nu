@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { IonReactRouter } from "@ionic/react-router";
-// import { Capacitor } from "@capacitor/core";
 import { Plugins } from "@capacitor/core";
 import "@ionic/core/css/core.css";
 import "@ionic/core/css/ionic.bundle.css";
@@ -13,7 +12,7 @@ import {
   IonSplitPane,
   IonTabBar,
   IonTabButton,
-  IonTabs // IonCard,
+  IonTabs
 } from "@ionic/react";
 import { clock, eye, home, listBox } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
@@ -33,13 +32,13 @@ import { Analytics } from "capacitor-analytics";
 import PageCatchAll from "./PageCatchAll";
 
 const { SplashScreen } = Plugins;
-// const { AdMob } = Plugins;
+const { AdMob } = Plugins;
 const analytics = new Analytics();
 
 // console.log("Analytics", Analytics, analytics);
 // analytics.setScreen({ name: "myScreen" });
 // console.log("AdMob", AdMob);
-// AdMob.initialize("ca-app-pub-1689239266452655~1859283602");
+AdMob.initialize("ca-app-pub-1689239266452655~1859283602");
 
 SplashScreen.hide();
 
@@ -134,17 +133,17 @@ function App(props) {
     tabBarHeight: 56 // you can assign custom margin in pixel default is 56
   };
 
-  // useEffect(() => {
-  //   console.log("admob show banner");
-  //   AdMob.showBanner(options).then(
-  //     value => {
-  //       console.log("admob ok", value); // true
-  //     },
-  //     error => {
-  //       console.error("admob error", error); // show error
-  //     }
-  //   );
-  // }, [options]);
+  useEffect(() => {
+    console.log("admob show banner");
+    AdMob.showBanner(options).then(
+      value => {
+        console.log("admob show banner ok", value); // true
+      },
+      error => {
+        console.error("admob show banner error", error); // show error
+      }
+    );
+  }, [options]);
 
   return (
     <TabContext.Provider value={tabsinfo}>
