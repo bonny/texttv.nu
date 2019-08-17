@@ -5,7 +5,8 @@ import "moment/locale/sv";
 import Moment from "react-moment";
 
 const ListItem = props => {
-  const { link, page, lines, history } = props;
+  const { link, page, history } = props;
+
   return (
     <IonItem
       button
@@ -13,11 +14,11 @@ const ListItem = props => {
       onClick={e => {
         history.push(link);
       }}
-      lines={lines}
+      lines="none"
     >
-      <IonLabel text-wrap>
+      <IonLabel text-wrap color="medium">
         <h2 className="ListHeadline">{page.title}</h2>
-        <p>
+        <p className="ListText">
           <Moment unix fromNow locale="sv" className="MomentTime">
             {page.date_added_unix}
           </Moment>
@@ -50,7 +51,7 @@ const PagesListing = props => {
 
   return pages.map((page, index, arr) => {
     // No line on last item.
-    const lines = index === arr.length - 1 ? "none" : "inset";
+    // const lines = index === arr.length - 1 ? "none" : "inset";
     let link;
 
     switch (linkTo) {
@@ -67,7 +68,7 @@ const PagesListing = props => {
         {...props}
         link={link}
         page={page}
-        lines={lines}
+        // lines={lines}
         key={page.id}
         passedHistory={history}
       />
