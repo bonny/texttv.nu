@@ -19,7 +19,7 @@ import { clock, eye, home, listBox } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
 import "./App.css";
 import { getPageRangeInfo, getCacheBustTimeString } from "./functions";
-import { MenuWithRouter } from "./Menu";
+import { MenuWithRouter } from "./modules/SideMenu";
 import PageTextTV from "./pages/page-TextTV.js";
 import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
 import TabNyast from "./pages/tab-nyast";
