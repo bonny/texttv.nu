@@ -126,8 +126,6 @@ const PageTextTV = props => {
 
   let pageTitle = title || `${pageNum} - SVT Text TV`;
 
-  // console.log("PageTextTV for pageNum", pageNum);
-
   /**
    * Update the refresh time to the current time.
    */
