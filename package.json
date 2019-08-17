@@ -7,7 +7,7 @@
     "@capacitor/core": "1.1.1",
     "@capacitor/ios": "^1.1.1",
     "@ionic/react": "^4.8.0-rc.0",
-    "@ionic/react-router": "0.0.9",
+    "@ionic/react-router": "^4.8.0-rc.0",
     "animate.css": "^3.7.2",
     "capacitor-admob": "0.0.9",
     "classnames": "^2.2.6",
