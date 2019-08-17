@@ -3,8 +3,7 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader,
-  IonMenuToggle
+  IonListHeader
 } from "@ionic/react";
 import {
   alert,
@@ -101,20 +100,16 @@ const MenuItems = props => {
 
       <IonList>
         <IonListHeader>Externa länkar om texttv.nu</IonListHeader>
-        <IonMenuToggle auto-hide="false">
-          {navItems.map(item => {
-            return <MenuItem item={item} key={item.href} />;
-          })}
-        </IonMenuToggle>
+        {navItems.map(item => {
+          return <MenuItem item={item} key={item.href} />;
+        })}
       </IonList>
 
       <IonList>
         <IonListHeader>Vi på TextTV.nu gillar också</IonListHeader>
-        <IonMenuToggle auto-hide={false}>
-          {navItemsAlsoLike.map(item => {
-            return <MenuItem item={item} key={item.href} />;
-          })}
-        </IonMenuToggle>
+        {navItemsAlsoLike.map(item => {
+          return <MenuItem item={item} key={item.href} />;
+        })}
       </IonList>
     </>
   );
