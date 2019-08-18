@@ -16,9 +16,9 @@ import {
 import Header from "../modules/Header";
 import TextTVPage from "../modules/TextTVPage";
 import TextTVRefresher from "../modules/TextTVRefresher";
+import { Analytics } from "capacitor-analytics";
 
-// import easing from "../easing.js";
-
+const analytics = new Analytics();
 const { Clipboard, Share } = Plugins;
 
 const PageTextTV = props => {
@@ -148,8 +148,11 @@ const PageTextTV = props => {
     updateRefreshTime();
   };
 
+  /**
+   * Dela sida mha enhetens egna dela-funktion.
+   */
   const handleShare = async e => {
-    // Hämta alla sidorn IDn
+    // Hämta alla sidorn IDn.
     let pageIdsString = "";
     pageData.forEach(page => {
       pageIdsString = pageIdsString + `,${page.id}`;
@@ -183,6 +186,17 @@ Delad via https://texttv.nu/
 
         fetch(apiEndpoint);
         // TODO: Pixeltrack x2.
+
+        try {
+          analytics.logEvent({
+            name: "share",
+            params: {
+              content_type: "page",
+              item_id: pageIdsString,
+              page_nums: pageNum
+            }
+          });
+        } catch (e) {}
       })
       .catch(err => {
         console.log("Delning gick fel pga orsak", err);
@@ -319,6 +333,13 @@ Delad via https://texttv.nu/
   const handleCopyTextToClipboard = () => {
     const pageRangeInfo = getPageRangeInfo(pageNum);
 
+    let pageIdsString = "";
+    pageData.forEach(page => {
+      pageIdsString = pageIdsString + `,${page.id}`;
+    });
+
+    pageIdsString = pageIdsString.replace(/^,/, "");
+
     let text = "";
     if (pageRangeInfo.count > 1) {
       text = text + `Text TV sidorna ${pageNum}.`;
@@ -344,6 +365,17 @@ Delad via https://texttv.nu/
     Clipboard.write({
       string: text
     });
+
+    try {
+      analytics.logEvent({
+        name: "share",
+        params: {
+          content_type: "text to clipboard",
+          item_id: pageIdsString,
+          page_nums: pageNum
+        }
+      });
+    } catch (e) {}
   };
 
   const handleCopyLinkToClipboard = () => {
@@ -363,10 +395,20 @@ Delad via https://texttv.nu/
     Clipboard.write({
       string: permalink
     });
+
+    try {
+      analytics.logEvent({
+        name: "share",
+        params: {
+          content_type: "link to clipboard",
+          item_id: pageIdsString,
+          page_nums: pageNum
+        }
+      });
+    } catch (e) {}
   };
 
   const handleOpenLinkInBrowser = () => {
-    console.log("onOpenLinkInBrowser");
     let pageIdsString = "";
     pageData.forEach(page => {
       pageIdsString = pageIdsString + `,${page.id}`;
@@ -378,6 +420,17 @@ Delad via https://texttv.nu/
     // Permalänk.
     const permalink = `https://www.texttv.nu/${pageNum}/arkiv/sida/${pageIdsString}`;
     window.open(permalink);
+
+    try {
+      analytics.logEvent({
+        name: "share",
+        params: {
+          content_type: "link to browser",
+          item_id: pageIdsString,
+          page_nums: pageNum
+        }
+      });
+    } catch (e) {}
   };
 
   let firstPage;

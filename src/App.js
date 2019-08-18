@@ -35,9 +35,6 @@ const { SplashScreen } = Plugins;
 const { AdMob } = Plugins;
 const analytics = new Analytics();
 
-// console.log("Analytics", Analytics, analytics);
-// analytics.setScreen({ name: "myScreen" });
-// console.log("AdMob", AdMob);
 try {
   AdMob.initialize("ca-app-pub-1689239266452655~1859283602");
 } catch (e) {
@@ -46,37 +43,28 @@ try {
 
 SplashScreen.hide();
 
-analytics.logEvent({
-  name: "share",
-  params: { content_type: "page", item_id: "110" }
-});
-
-analytics.setScreen({
-  name: "Hem"
-});
-
 function App(props) {
-  // const [currentTab, setCurrentTab] = useState("hem");
-  // const [prevTab, setPrevTab] = useState();
-
-  // const handleTabsDidChange = e => {
-  //   // setPrevTab(currentTab);
-  //   // setCurrentTab(e.currentTarget.selectedTab);
-  // };
-
   /**
    * När en tab klickas på så sätter vi tidpunkt för klicket
    * i state tabsinfo. Denna info används sedan i context TabContext
-   *
    */
   const handleTabClick = e => {
     const target = e.currentTarget;
-    const tab = target.getAttribute("tab");
+
+    // "tab-button-nyast", "tab-button-sidor", ...
+    const tab = target.getAttribute("id").replace("tab-button-", "");
     const cacheBustTimeString = getCacheBustTimeString(2);
     const timestamp = getUnixtime();
-
-    // Determine new and old tab.
     const isNewTab = tabsinfo.lastClicked.name !== tab;
+
+    // Skicka statistik när man går till ny flik.
+    if (isNewTab) {
+      try {
+        analytics.setScreen({
+          name: tab
+        });
+      } catch (e) {}
+    }
 
     setTabsinfo({
       ...tabsinfo,
@@ -94,7 +82,7 @@ function App(props) {
       tabs: {
         ...tabsinfo.tabs,
         [tab]: {
-          mame: tab,
+          name: tab,
           lastClickedTime: timestamp,
           lastClickedTimeCacheBusterString: cacheBustTimeString,
           isNewTab: isNewTab
