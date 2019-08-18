@@ -255,19 +255,19 @@ Delad via https://texttv.nu/
       // Kolla inte heller efter uppdatering om toast för uppdatering
       // har visats för denna sida redan.
       if (isHiddenPage) {
-        console.log(
-          `${pageNum} är inte synlig, så kollar inte efter uppdatering`
-        );
+        // console.log(
+        //   `${pageNum} är inte synlig, så kollar inte efter uppdatering`
+        // );
         doCheckForUpdate = false;
       } else if (didDismissPageUpdateToast) {
-        console.log(
-          `${pageNum} har redan kollats efter uppdatering och användare tryckte på cancel i toast, så kollar inte mer efter uppdatering`
-        );
+        // console.log(
+        //   `${pageNum} har redan kollats efter uppdatering och användare tryckte på cancel i toast, så kollar inte mer efter uppdatering`
+        // );
         doCheckForUpdate = false;
       } else {
-        console.log(
-          `${pageNum} är synlig, så letar efter uppdatering av sidan, via url ${url}`
-        );
+        // console.log(
+        //   `${pageNum} är synlig, så letar efter uppdatering av sidan, via url ${url}`
+        // );
       }
 
       if (!doCheckForUpdate) {
