@@ -5,7 +5,8 @@ import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
 import {
   createMarkupForPage,
   getNearestLink,
-  getCacheBustTimeString
+  getCacheBustTimeString,
+  hidePageUpdatedToasts
 } from "../functions";
 import classNames from "classnames";
 
@@ -58,11 +59,7 @@ export default props => {
 
       // Göm ev synliga toasts.
       // TODO: göm toast via state och inte via query selector + api method
-      document
-        .querySelectorAll("ion-toast.TextTVPage_UpdatedToast")
-        .forEach(elm => {
-          elm.dismiss();
-        });
+      hidePageUpdatedToasts();
 
       // Om sökväg är t.ex "/sidor/100" så ger detta "sidor".
       const firstPathName = history.location.pathname

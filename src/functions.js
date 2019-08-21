@@ -293,6 +293,17 @@ const normalizeBetweenTwoRanges = (val, minVal, maxVal, newMin, newMax) => {
   return newMin + ((val - minVal) * (newMax - newMin)) / (maxVal - minVal);
 };
 
+/**
+ * Gömmer eventuella synliga toasts gällande siduppdateringar.
+ */
+function hidePageUpdatedToasts() {
+  document
+    .querySelectorAll("ion-toast.TextTVPage_UpdatedToast")
+    .forEach(elm => {
+      elm.dismiss();
+    });
+}
+
 export {
   getPageRangeInfo,
   getCacheBustTimeString,
@@ -307,5 +318,6 @@ export {
   isValidHit,
   hitTest,
   createMarkupForPage,
-  normalizeBetweenTwoRanges
+  normalizeBetweenTwoRanges,
+  hidePageUpdatedToasts
 };
