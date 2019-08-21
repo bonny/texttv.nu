@@ -10,7 +10,8 @@ import {
   IonPopover,
   IonTitle,
   IonToast,
-  IonToolbar
+  IonToolbar,
+  isPlatform
 } from "@ionic/react";
 import { copy, link, more, open, refresh, share } from "ionicons/icons";
 import React, { useState } from "react";
@@ -44,9 +45,9 @@ const Header = props => {
   // Om desktop kolla om web share stöds.
   // TODO: ionic react verkar ha bug pga isPlatform exporteras inte,
   // fixa detta igen när dom fixat det.
-  // if (isPlatform("desktop") && navigator.share === undefined) {
-  //   showShare = false;
-  // }
+  if (isPlatform("desktop") && navigator.share === undefined) {
+    showShare = false;
+  }
 
   const hidePopover = () => {
     setShowPopover(false);
@@ -148,7 +149,6 @@ const Header = props => {
       </IonPopover>
 
       <IonToast
-        xcolor="success"
         isOpen={actionPerformedToastOpened}
         onDidDismiss={() => {
           setActionPerformedToastOpened(false);
