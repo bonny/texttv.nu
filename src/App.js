@@ -112,7 +112,7 @@ function App(props) {
 
   const [tabsinfo, setTabsinfo] = useState(detfaultTabinfoState);
 
-  const options = {
+  const adMobAdOptions = {
     // TODO: use real AD-id
     //adId: "ca-app-pub-1689239266452655/3336016805",
 
@@ -122,13 +122,14 @@ function App(props) {
     adSize: "SMART_BANNER",
     position: "BOTTOM_CENTER",
     hasTabBar: true, // make it true if you have TabBar Layout.
-    tabBarHeight: 56 // you can assign custom margin in pixel default is 56
+    tabBarHeight: 56, // you can assign custom margin in pixel default is 56
+    margin: 60
   };
 
   useEffect(() => {
-    console.log("admob show banner");
+    console.log("useEffect admob show banner");
     try {
-      AdMob.showBanner(options).then(
+      AdMob.showBanner(adMobAdOptions).then(
         value => {
           console.log("admob show banner ok", value); // true
         },
@@ -136,10 +137,15 @@ function App(props) {
           console.error("admob show banner error", error); // show error
         }
       );
+
+      // Subscibe Banner Event Listener
+      AdMob.addListener("onAdLoaded", info => {
+        console.log("Banner Ad Loaded", info);
+      });
     } catch (e) {
       console.log("admob got error when trying to show banner");
     }
-  }, [options]);
+  }, [adMobAdOptions]);
 
   return (
     <TabContext.Provider value={tabsinfo}>

@@ -2,5 +2,8 @@
 include ':capacitor-android'
 project(':capacitor-android').projectDir = new File('../node_modules/@capacitor/android/capacitor')
 
+include ':rdlabo-capacitor-admob'
+project(':rdlabo-capacitor-admob').projectDir = new File('../node_modules/@rdlabo/capacitor-admob/android/@rdlabo/capacitor-admob')
+
 include ':capacitor-analytics'
 project(':capacitor-analytics').projectDir = new File('../node_modules/capacitor-analytics/android')

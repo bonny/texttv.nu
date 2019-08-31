@@ -7,7 +7,6 @@ import com.getcapacitor.Plugin;
 
 import java.util.ArrayList;
 
-import app.xplatform.capacitor.plugins.AdMob;
 import io.stewan.capacitor.analytics.AnalyticsPlugin;
 
 public class MainActivity extends BridgeActivity {
@@ -21,7 +20,7 @@ public class MainActivity extends BridgeActivity {
       // Ex: add(TotallyAwesomePlugin.class);
 
       // Add AdMob as a Capacitor Plugin
-      add(AdMob.class);
+      add(jp.rdlabo.capacitor.plugin.admob.AdMob.class);
 
       // Add Capacitor Firebase analytics plugin
       add(AnalyticsPlugin.class);
