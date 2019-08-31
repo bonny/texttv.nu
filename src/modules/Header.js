@@ -43,8 +43,6 @@ const Header = props => {
   let showShare = true;
 
   // Om desktop kolla om web share stöds.
-  // TODO: ionic react verkar ha bug pga isPlatform exporteras inte,
-  // fixa detta igen när dom fixat det.
   if (isPlatform("desktop") && navigator.share === undefined) {
     showShare = false;
   }

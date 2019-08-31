@@ -12,7 +12,8 @@ import {
   IonSplitPane,
   IonTabBar,
   IonTabButton,
-  IonTabs
+  IonTabs,
+  isPlatform
 } from "@ionic/react";
 import { clock, eye, home, listBox } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
@@ -63,7 +64,7 @@ function App(props) {
         analytics.setScreen({
           name: tab
         });
-      } catch (e) {}
+      } catch (e) { }
     }
 
     setTabsinfo({
@@ -112,6 +113,21 @@ function App(props) {
 
   const [tabsinfo, setTabsinfo] = useState(detfaultTabinfoState);
 
+  // Avgör höjd på flikarna/tabbarn, dvs. hur många pixlar ska
+  // annonsen flyttas upp för att inte vara iväg för flikarna.
+  let tabHeight;
+
+  if (isPlatform('android')) {
+    // On Android the tab height is 50px.
+    tabHeight = "56";
+  } else if (isPlatform('ios')) {
+    // On IOS the tab height is 56 px.
+    tabHeight = "50";
+  } else {
+    // Fall tillbaka på 50.
+    tabHeight = "50";
+  }
+
   const adMobAdOptions = {
     // TODO: use real AD-id
     //adId: "ca-app-pub-1689239266452655/3336016805",
@@ -121,9 +137,9 @@ function App(props) {
     adId: "ca-app-pub-3940256099942544/6300978111",
     adSize: "SMART_BANNER",
     position: "BOTTOM_CENTER",
-    hasTabBar: true, // make it true if you have TabBar Layout.
-    tabBarHeight: 56, // you can assign custom margin in pixel default is 56
-    margin: 60
+    // hasTabBar: true, // make it true if you have TabBar Layout.
+    // tabBarHeight: 56, // you can assign custom margin in pixel default is 56
+    margin: tabHeight // RdLabo AdMob requires this to be a string (let adMargin = call.getString("margin") ?? "0"))
   };
 
   useEffect(() => {
@@ -219,7 +235,7 @@ function App(props) {
                   />
                   <Route
                     path="/:tab(sessions)/:id"
-                    // component={SessionDetail}
+                  // component={SessionDetail}
                   />
                   <Route
                     path="/:tab(speakers)"
