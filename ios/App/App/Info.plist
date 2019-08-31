@@ -75,5 +75,9 @@
 	<true/>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-1689239266452655~1859283602</string>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 </dict>
 </plist>
