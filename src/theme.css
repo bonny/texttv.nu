@@ -261,3 +261,9 @@ b {
 
 .TextTVNextPrevSwipeNav--prev {
 }
+
+/* Gör plats för annonser (klicka på dom!) */
+.plt-ios ion-content,
+.plt-android ion-content {
+  --offset-bottom: -50px !important;
+}
