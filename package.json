@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@capacitor/android": "^1.2.0",
-    "@capacitor/core": "1.1.1",
+    "@capacitor/core": "^1.2.0",
     "@capacitor/ios": "^1.2.0",
     "@ionic/react": "^4.9.0-rc.2",
     "@ionic/react-router": "^4.9.0-rc.2",
@@ -13,7 +13,7 @@
     "capacitor-analytics": "0.0.4",
     "classnames": "^2.2.6",
     "cordova-ios": "5.0.1",
-    "dayjs": "^1.8.15",
+    "dayjs": "^1.8.16",
     "ionicons": "^4.6.3",
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",
