@@ -115,22 +115,39 @@ function getCurrentIonPage() {
 /**
  * Hämtar den aktuella sidan IonPageContent-elment,
  * dvs elementet man kan scrolla som innehåller innehållet.
+ * Finns inte elementet eller om det inte ä redo (hydrated)
+ * så retuneras false.
  */
 function getCurrentIonPageContentElm() {
   const currentIonPageContent = [
     ...document.querySelectorAll(
-      //".ion-page#main .ion-page:not(.ion-page-hidden) ion-content"
       "#mainContent .ion-page:not(.ion-page-hidden) ion-content"
     )
   ].find(e => true);
 
+  // Baila om inget element alls hittades.
+  if (!currentIonPageContent) {
+    return false;
+  }
+
+  // BAila om elementet inte är redo.
+  if (
+    currentIonPageContent &&
+    !currentIonPageContent.classList.contains("hydrated")
+  ) {
+    return false;
+  }
+
   return currentIonPageContent;
 }
 
+/**
+ * Hämta element som är elementet som scrollar.
+ */
 function getCurrentIonPageScrollElm() {
   const pageElm = getCurrentIonPageContentElm();
   if (!pageElm || !pageElm.shadowRoot) {
-    return null;
+    return false;
   }
   const scrollElm = pageElm.shadowRoot.querySelector(".inner-scroll");
   return scrollElm;
