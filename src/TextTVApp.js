@@ -16,7 +16,6 @@ import {
 } from "@ionic/react";
 import { clock, eye, home, listBox } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
-import "./App.css";
 import { getCacheBustTimeString } from "./functions";
 import { MenuWithRouter } from "./modules/SideMenu";
 import PageTextTV from "./pages/page-TextTV.js";
@@ -25,14 +24,14 @@ import TabNyast from "./pages/tab-nyast";
 import TabPopulart from "./pages/tab-mest-last";
 import TabSidor from "./pages/tab-sidor";
 import Startsida from "./pages/tab-startsida";
-import "./theme.css";
 import TabContext from "./TabContext";
 import { getUnixtime } from "./functions";
 import { Analytics } from "capacitor-analytics";
 import PageCatchAll from "./PageCatchAll";
+import "./App.css";
+import "./theme.css";
 
-const { SplashScreen } = Plugins;
-const { AdMob } = Plugins;
+const { SplashScreen, AdMob, App } = Plugins;
 const analytics = new Analytics();
 
 try {
@@ -49,7 +48,20 @@ try {
 
 SplashScreen.hide();
 
-function App(props) {
+App.addListener("appStateChange", state => {
+  // state.isActive contains the active state
+  console.log("App state changed. Is active?", state.isActive);
+});
+
+App.addListener("appRestoredResult", data => {
+  console.log("Restored state:", data);
+});
+
+App.addListener("backButton", data => {
+  console.log("Backbutton:", data);
+});
+
+function TextTVApp(props) {
   /**
    * När en tab klickas på så sätter vi tidpunkt för klicket
    * i state tabsinfo. Denna info används sedan i context TabContext
@@ -268,4 +280,4 @@ function App(props) {
   );
 }
 
-export default App;
+export default TextTVApp;
