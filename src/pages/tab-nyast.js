@@ -62,6 +62,7 @@ export default props => {
    */
   useEffect(() => {
     const ionPageContent = getCurrentIonPageContentElm();
+    console.log("ionPageContent", ionPageContent, ionPageContent && ionPageContent.classList);
     ionPageContent && ionPageContent.scrollToTop();
   }, [selectedSegment]);
 
@@ -77,7 +78,7 @@ export default props => {
       const ionPageContent = getCurrentIonPageContentElm();
       const ionPageScrollElement = getCurrentIonPageScrollElm();
 
-      if (!ionPageScrollElement) {
+      if (!ionPageScrollElement || !ionPageContent) {
         return;
       }
 
