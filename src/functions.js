@@ -119,7 +119,8 @@ function getCurrentIonPage() {
 function getCurrentIonPageContentElm() {
   const currentIonPageContent = [
     ...document.querySelectorAll(
-      ".ion-page#main .ion-page:not(.ion-page-hidden) ion-content"
+      //".ion-page#main .ion-page:not(.ion-page-hidden) ion-content"
+      "#mainContent .ion-page:not(.ion-page-hidden) ion-content"
     )
   ].find(e => true);
 

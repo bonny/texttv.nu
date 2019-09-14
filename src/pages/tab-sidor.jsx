@@ -1,4 +1,4 @@
-import { IonContent, IonToolbar } from "@ionic/react";
+import { IonPage, IonContent, IonToolbar } from "@ionic/react";
 import React, { useContext, useEffect } from "react";
 import TextTVHeader from "../modules/TextTVHeader";
 import TextTVSearchBar from "../modules/TextTVSearchBar";
@@ -27,7 +27,7 @@ export default props => {
   }, [tabsinfoSidor]);
 
   return (
-    <>
+    <IonPage>
       <TextTVHeader title="Sidor">
         <IonToolbar mode="md">
           <TextTVSearchBar history={history} />
@@ -37,6 +37,6 @@ export default props => {
         {/* <TextTVSidorLista {...props} showHeader={false} /> */}
         <MenuItems {...props} />
       </IonContent>
-    </>
+    </IonPage>
   );
 };

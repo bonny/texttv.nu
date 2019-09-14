@@ -7,7 +7,6 @@ import {
   IonApp,
   IonIcon,
   IonLabel,
-  IonPage,
   IonRouterOutlet,
   IonSplitPane,
   IonTabBar,
@@ -37,9 +36,15 @@ const { AdMob } = Plugins;
 const analytics = new Analytics();
 
 try {
-  AdMob.initialize("ca-app-pub-1689239266452655~1859283602");
+  AdMob.initialize("ca-app-pub-1689239266452655~1859283602")
+    .then(() => {
+      // console.log("AdMob init ok");
+    })
+    .catch(e => {
+      // console.log("AdMob init catch", e);
+    });
 } catch (e) {
-  console.log("got error when trying to init admob", e);
+  // console.log("got error when trying to init admob", e);
 }
 
 SplashScreen.hide();
@@ -64,7 +69,7 @@ function App(props) {
         analytics.setScreen({
           name: tab
         });
-      } catch (e) { }
+      } catch (e) {}
     }
 
     setTabsinfo({
@@ -117,10 +122,10 @@ function App(props) {
   // annonsen flyttas upp för att inte vara iväg för flikarna.
   let tabHeight;
 
-  if (isPlatform('android')) {
+  if (isPlatform("android")) {
     // On Android the tab height is 50px.
     tabHeight = "56";
-  } else if (isPlatform('ios')) {
+  } else if (isPlatform("ios")) {
     // On IOS the tab height is 56 px.
     tabHeight = "50";
   } else {
@@ -143,23 +148,27 @@ function App(props) {
   };
 
   useEffect(() => {
-    console.log("useEffect admob show banner");
+    // console.log("useEffect admob show banner");
     try {
       AdMob.showBanner(adMobAdOptions).then(
         value => {
-          console.log("admob show banner ok", value); // true
+          // console.log("admob show banner ok", value); // true
         },
         error => {
-          console.error("admob show banner error", error); // show error
+          // console.error("admob show banner error", error); // show error
         }
       );
 
       // Subscibe Banner Event Listener
       AdMob.addListener("onAdLoaded", info => {
-        console.log("Banner Ad Loaded", info);
-      });
+        // console.log("Banner Ad Loaded", info);
+      })
+        .then()
+        .catch(e => {
+          // console.log("AdMob onAdLoaded catch error", e);
+        });
     } catch (e) {
-      console.log("admob got error when trying to show banner");
+      // console.log("admob got error when trying to show banner");
     }
   }, [adMobAdOptions]);
 
@@ -168,11 +177,11 @@ function App(props) {
       <IonApp>
         <IonReactRouter>
           <Route exact path="/" render={() => <Redirect to="/hem" />} />
-          <IonSplitPane contentId="main">
+          <IonSplitPane contentId="mainContent">
             <MenuWithRouter {...props} />
-            <IonPage id="main">
+            <div id="mainContent">
               <IonTabs>
-                <IonRouterOutlet>
+                <IonRouterOutlet id="routerOutletElm">
                   <Route path="/test" component={PageTest} />
                   <Route path="/testar" component={PageTestar} exact={true} />
                   <Route
@@ -180,43 +189,31 @@ function App(props) {
                     component={PageTestarUndersida}
                   />
                   <Route
-                    path="/:tab(hem)"
+                    path="/hem"
                     render={props => {
                       return <Startsida {...props} />;
                     }}
                     exact={true}
                   />
-                  <Route path="/:tab(hem)/:pageNum" component={PageTextTV} />
+                  <Route path="/hem/:pageNum" component={PageTextTV} />
 
+                  <Route path="/arkiv" component={TabPopulart} exact={true} />
                   <Route
-                    path="/:tab(arkiv)"
-                    component={TabPopulart}
-                    exact={true}
-                  />
-                  <Route
-                    path="/:tab(arkiv)/:pageNum"
+                    path="/arkiv/:pageNum"
                     component={PageTextTV}
                     exact={true}
                   />
                   <Route
-                    path="/:tab(arkiv)/:pageNum/:pageId/"
+                    path="/arkiv/:pageNum/:pageId/"
                     component={PageTextTV}
                     exact={true}
                   />
 
-                  <Route
-                    path="/:tab(sidor)"
-                    component={TabSidor}
-                    exact={true}
-                  />
-                  <Route path="/:tab(sidor)/:pageNum" component={PageTextTV} />
+                  <Route path="/sidor" component={TabSidor} exact={true} />
+                  <Route path="/:sidor/:pageNum" component={PageTextTV} />
 
-                  <Route
-                    path="/:tab(nyast)"
-                    component={TabNyast}
-                    exact={true}
-                  />
-                  <Route path="/:tab(nyast)/:pageNum" component={PageTextTV} />
+                  <Route path="/nyast" component={TabNyast} exact={true} />
+                  <Route path="/nyast/:pageNum" component={PageTextTV} />
 
                   {/* 
                   Fallback för url som är sidnummer direkt, t.ex. "/100".
@@ -225,22 +222,6 @@ function App(props) {
                   <Route
                     path="/:pageNum([0-9]{3}.*)"
                     component={PageCatchAll}
-                  />
-
-                  {/* From docs example */}
-                  <Route
-                    path="/:tab(sessions)"
-                    // component={SessionsPage}
-                    exact={true}
-                  />
-                  <Route
-                    path="/:tab(sessions)/:id"
-                  // component={SessionDetail}
-                  />
-                  <Route
-                    path="/:tab(speakers)"
-                    // component={SpeakerList}
-                    exact={true}
                   />
                 </IonRouterOutlet>
 
@@ -279,7 +260,7 @@ function App(props) {
                   </IonTabButton>
                 </IonTabBar>
               </IonTabs>
-            </IonPage>
+            </div>
           </IonSplitPane>
         </IonReactRouter>
       </IonApp>

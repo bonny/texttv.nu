@@ -61,42 +61,40 @@ const Startsida = props => {
   }, [latestUpdatedPagesRefreshTime]);
 
   return (
-    <>
-      <PageTextTV
-        {...props}
-        pageNum="100,300,700"
-        title="TextTV.nu"
-        headerStyle="HEADER_STYLE_STARTPAGE"
-        refreshTime={latestUpdatedPagesRefreshTime}
-        onRefresh={handlePageTextTVRefresh}
-      >
-        <IonGrid no-padding>
-          <IonRow className="ion-justify-content-center">
-            <IonCol className="u-max-width-texttvpage ion-no-padding">
-              <h2 className="ion-padding-start ion-padding-end ion-text-left ion-no-margin">
-                Senaste nyheterna
-              </h2>
-              <SenastUppdaterat
-                {...props}
-                refreshTime={latestUpdatedPagesRefreshTime}
-                selectedSegment="news"
-                count="5"
-              />
+    <PageTextTV
+      {...props}
+      pageNum="100,300,700"
+      title="TextTV.nu"
+      headerStyle="HEADER_STYLE_STARTPAGE"
+      refreshTime={latestUpdatedPagesRefreshTime}
+      onRefresh={handlePageTextTVRefresh}
+    >
+      <IonGrid no-padding>
+        <IonRow className="ion-justify-content-center">
+          <IonCol className="u-max-width-texttvpage ion-no-padding">
+            <h2 className="ion-padding-start ion-padding-end ion-text-left ion-no-margin">
+              Senaste nyheterna
+            </h2>
+            <SenastUppdaterat
+              {...props}
+              refreshTime={latestUpdatedPagesRefreshTime}
+              selectedSegment="news"
+              count="5"
+            />
 
-              <h2 className="ion-padding-start xion-padding-top ion-padding-end ion-text-left ion-no-margin">
-                Senaste sportnyheterna
-              </h2>
-              <SenastUppdaterat
-                {...props}
-                refreshTime={latestUpdatedPagesRefreshTime}
-                selectedSegment="sports"
-                count="5"
-              />
-            </IonCol>
-          </IonRow>
-        </IonGrid>
-      </PageTextTV>
-    </>
+            <h2 className="ion-padding-start xion-padding-top ion-padding-end ion-text-left ion-no-margin">
+              Senaste sportnyheterna
+            </h2>
+            <SenastUppdaterat
+              {...props}
+              refreshTime={latestUpdatedPagesRefreshTime}
+              selectedSegment="sports"
+              count="5"
+            />
+          </IonCol>
+        </IonRow>
+      </IonGrid>
+    </PageTextTV>
   );
 };
 

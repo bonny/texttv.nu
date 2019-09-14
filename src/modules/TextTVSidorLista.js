@@ -28,7 +28,7 @@ const TextTVSidorLista = props => {
               button
               detail
               onClick={() => {
-                document.querySelector("ion-menu-controller").close();
+                // document.querySelector("ion-menu-controller").close();
                 history.push(url);
               }}
               key={page.pages}

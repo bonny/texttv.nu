@@ -1,17 +1,15 @@
 import {
+  IonPage,
   IonButton,
   IonButtons,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonCardTitle,
-  IonCol,
   IonContent,
-  IonGrid,
   IonItem,
   IonRefresher,
   IonRefresherContent,
-  IonRow,
   IonToolbar,
   IonToast
 } from "@ionic/react";
@@ -38,7 +36,7 @@ export const TabHome = props => {
   };
 
   return (
-    <>
+    <IonPage>
       <TextTVHeader />
 
       <IonContent>
@@ -108,6 +106,6 @@ export const TabHome = props => {
           duration={1000}
         />
       </IonContent>
-    </>
+    </IonPage>
   );
 };

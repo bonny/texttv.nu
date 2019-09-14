@@ -1,4 +1,5 @@
 import {
+  IonPage,
   IonContent,
   IonSegment,
   IonSegmentButton,
@@ -65,7 +66,7 @@ export default props => {
    */
   useEffect(() => {
     const ionPageContent = getCurrentIonPageContentElm();
-    ionPageContent.scrollToTop();
+    ionPageContent && ionPageContent.scrollToTop();
   }, [selectedSegment]);
 
   // Scrolla till toppen om vi klickar på denna sidan tab igen
@@ -93,7 +94,7 @@ export default props => {
   }, [tabsinfoPopulart]);
 
   return (
-    <>
+    <IonPage>
       <TextTVHeader {...props} title="Mest läst">
         <IonToolbar color="primary">
           <IonSegment
@@ -119,6 +120,6 @@ export default props => {
           refreshTime={refreshTime}
         />
       </IonContent>
-    </>
+    </IonPage>
   );
 };

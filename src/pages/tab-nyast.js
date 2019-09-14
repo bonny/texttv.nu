@@ -1,4 +1,5 @@
 import {
+  IonPage,
   IonContent,
   IonSegment,
   IonSegmentButton,
@@ -61,7 +62,7 @@ export default props => {
    */
   useEffect(() => {
     const ionPageContent = getCurrentIonPageContentElm();
-    ionPageContent.scrollToTop();
+    ionPageContent && ionPageContent.scrollToTop();
   }, [selectedSegment]);
 
   // const handleSegmentClick = e => {
@@ -93,7 +94,7 @@ export default props => {
   }, [tabsinfoNyast]);
 
   return (
-    <>
+    <IonPage>
       <TextTVHeader {...props} title="Nyast">
         <IonToolbar color="primary">
           <IonSegment
@@ -116,6 +117,6 @@ export default props => {
           refreshTime={refreshTime}
         />
       </IonContent>
-    </>
+    </IonPage>
   );
 };

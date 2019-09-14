@@ -2,7 +2,7 @@
  * Visar en sida med en eller flera text-tv-sidor.
  */
 import { Plugins } from "@capacitor/core";
-import { IonContent, IonIcon, IonToast } from "@ionic/react";
+import { IonPage, IonContent, IonIcon, IonToast } from "@ionic/react";
 import { arrowDropleftCircle, arrowDroprightCircle } from "ionicons/icons";
 import React, { useEffect, useRef, useState } from "react";
 import { useSwipeable } from "react-swipeable";
@@ -468,7 +468,7 @@ Delad via https://texttv.nu/
   }
 
   return (
-    <>
+    <IonPage>
       <Header
         {...props}
         pageTitle={pageTitle}
@@ -573,7 +573,7 @@ Delad via https://texttv.nu/
           ]}
         />
       </IonContent>
-    </>
+    </IonPage>
   );
 };
 

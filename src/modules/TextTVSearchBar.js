@@ -10,7 +10,7 @@ const TextTVSearchBar = props => {
 
     if (pageNum.length === 3) {
       target.value = "";
-      document.querySelector("ion-menu-controller").close();
+      // document.querySelector("ion-menu-controller").close();
       history.push(`/sidor/${pageNum}`);
 
       e.target.getInputElement().then(elm => {

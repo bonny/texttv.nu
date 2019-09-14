@@ -101,24 +101,25 @@ export default props => {
     if (pageNum !== prevPageNum) {
       console.log(
         "texttv-page useEffect when prevPageNum is different from pageNum",
-        prevPageNum,
+        `prevPageNum: ${prevPageNum}`,
         "->",
-        pageNum
+        `pageNum: ${pageNum}`
       );
       console.log("----- new page range, empty page data before fetch -----");
       setPageData([]);
       setPageIsLoadingNewPageRange(true);
     }
   }, [pageNum, pageId, refreshTime, prevPageNum]);
+
   /**
    * Ladda in sida från API när pageNum eller refreshTime ändras.
    */
   useEffect(() => {
     console.log(
       "texttv-page useEffect, before fetch",
-      pageNum,
-      pageId,
-      refreshTime
+      `pageNum: ${pageNum}`,
+      `pageId: ${pageId}`,
+      `refreshTime: ${refreshTime}`
     );
 
     // setPageIsLoading(true);
@@ -151,6 +152,7 @@ export default props => {
           // Vänta lite med att sätta ny sidata pga felsökning och test osv.
           // setTimeout(() => {
           // console.log("texttv-page useEffect, after fetch", pageNum, pageId);
+          console.log('will setPageData with new pageData', pageData);
           setPageData(pageData);
           //setPageIsLoading(false);
           // setPageIsLoaded(true);
