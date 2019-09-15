@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IonReactRouter } from "@ionic/react-router";
+import { withRouter } from "react-router";
 import { Plugins } from "@capacitor/core";
 import "@ionic/core/css/core.css";
 import "@ionic/core/css/ionic.bundle.css";
@@ -14,6 +15,7 @@ import {
   IonTabs,
   isPlatform
 } from "@ionic/react";
+
 import { clock, eye, home, listBox } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
 import { getCacheBustTimeString } from "./functions";
@@ -184,6 +186,20 @@ function TextTVApp(props) {
     }
   }, [adMobAdOptions]);
 
+  const Test = props => {
+    console.log("Test", props);
+    return (
+      <div
+        onClick={e => {
+          props.history.push('/arkiv')
+        }}
+      >
+        Hejsan
+      </div>
+    );
+  };
+  const TestWithRouter = withRouter(Test);
+
   return (
     <TabContext.Provider value={tabsinfo}>
       <IonApp>
@@ -267,6 +283,12 @@ function TextTVApp(props) {
                     href="/arkiv"
                     onClick={handleTabClick}
                   >
+                    {/* <TestWithRouter
+                      onClick={props => {
+                        console.log("click testwithrouter", this, props);
+                        props.history.push("/sidor/101");
+                      }}
+                    /> */}
                     <IonIcon icon={eye} mode="md" />
                     <IonLabel>Mest läst</IonLabel>
                   </IonTabButton>
