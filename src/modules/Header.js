@@ -130,18 +130,18 @@ const Header = props => {
         <IonList>
           <IonItem button onClick={handleCopyTextToClipboard}>
             <IonIcon slot="start" icon={copy} mode="md" />
-            Kopiera text
+            <IonLabel>Kopiera text</IonLabel>
           </IonItem>
           <IonItem button onClick={handleCopyLinkToClipboard}>
             <IonIcon slot="start" icon={link} mode="md" />
-            Kopiera länk
+            <IonLabel>Kopiera länk</IonLabel>
           </IonItem>
           <IonItem button onClick={handleOpenLink}>
             <IonIcon slot="start" icon={open} mode="md" />
-            Öppna i webbläsare
+            <IonLabel>Öppna i webbläsare</IonLabel>
           </IonItem>
           {showShare && (
-            <IonItem button onclick={handleShareClick}>
+            <IonItem button onClick={handleShareClick}>
               <IonIcon slot="start" icon={share} mode="md" />
               <IonLabel>Dela...</IonLabel>
             </IonItem>
