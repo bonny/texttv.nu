@@ -25,11 +25,11 @@ const Startsida = props => {
     const ionPageContent = getCurrentIonPageContentElm();
     const ionPageScrollElement = getCurrentIonPageScrollElm();
 
-    console.log(
-      "useEffect pga tabsinfoHem ändrats",
-      tabsinfoHem,
-      tabsinfoHem.isNewTab
-    );
+    // console.log(
+    //   "useEffect pga tabsinfoHem ändrats",
+    //   tabsinfoHem,
+    //   tabsinfoHem.isNewTab
+    // );
 
     if (!ionPageScrollElement) {
       return;

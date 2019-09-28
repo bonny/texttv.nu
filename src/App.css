@@ -223,6 +223,11 @@
   /* font-weight: bold !important; */
 }
 
+.texttv-header-title-link {
+  color: var(--ion-color-contrast);
+  text-decoration: none;
+}
+
 .texttv-logo {
   display: inline-block;
   width: 28px;

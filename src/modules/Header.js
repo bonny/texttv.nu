@@ -13,6 +13,7 @@ import {
   IonToolbar,
   isPlatform
 } from "@ionic/react";
+import { Link } from "react-router-dom";
 import { copy, link, more, open, refresh, share } from "ionicons/icons";
 import React, { useState } from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
@@ -89,9 +90,11 @@ const Header = props => {
     <>
       <IonHeader>
         <IonToolbar color="primary" mode="md">
-          <IonTitle>
-            <Logo className="texttv-logo" />
-            TextTV.nu
+          <IonTitle className="texttv-header-title">
+            <Link to="/hem" className="texttv-header-title-link">
+              <Logo className="texttv-logo" />
+              TextTV.nu
+            </Link>
           </IonTitle>
         </IonToolbar>
 
