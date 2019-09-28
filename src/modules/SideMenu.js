@@ -14,7 +14,7 @@ const Menu = props => {
     <IonMenu
       side="start"
       menuId="mainMenu"
-      contentId="mainContent"
+      contentId="menuContent"
       type="overlay"
       swipeGesture={false}
     >

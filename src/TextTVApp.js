@@ -14,9 +14,7 @@ import {
   IonTabButton,
   IonTabs,
   isPlatform
-  // NavContext
 } from "@ionic/react";
-
 import { clock, eye, home, listBox } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
 import { getCacheBustTimeString } from "./functions";

@@ -6,7 +6,8 @@ import {
   createMarkupForPage,
   getNearestLink,
   getCacheBustTimeString,
-  hidePageUpdatedToasts
+  hidePageUpdatedToasts,
+  sendStats
 } from "../functions";
 import SkeletonTextTVPage from "../modules/SkeletonTextTVPage";
 import classNames from "classnames";
@@ -100,13 +101,6 @@ export default props => {
   // se det gamla innehållet först.
   useLayoutEffect(() => {
     if (pageNum !== prevPageNum) {
-      // console.log(
-      //   "texttv-page useEffect when prevPageNum is different from pageNum",
-      //   `prevPageNum: ${prevPageNum}`,
-      //   "->",
-      //   `pageNum: ${pageNum}`
-      // );
-      // console.log("----- new page range, empty page data before fetch -----");
       setPageData([]);
       setPageIsLoadingNewPageRange(true);
     }
@@ -116,13 +110,6 @@ export default props => {
    * Ladda in sida från API när pageNum eller refreshTime ändras.
    */
   useEffect(() => {
-    console.log(
-      "texttv-page useEffect, before fetch",
-      `pageNum: ${pageNum}`,
-      `pageId: ${pageId}`,
-      `refreshTime: ${refreshTime}`
-    );
-
     setPageIsLoading(true);
     setPageIsLoaded(false);
 
@@ -154,14 +141,7 @@ export default props => {
           setPageData(pageData);
           setPageIsLoading(false);
           setPageIsLoaded(true);
-
-          let pageIdsString = "";
-          pageData.forEach(page => {
-            pageIdsString = pageIdsString + `,${page.id}`;
-          });
-          pageIdsString = pageIdsString.replace(/^,/, "");
-
-          fetch(`https://api.texttv.nu/api/page/${pageIdsString}/view`);
+          sendStats(pageData, "view");
         })
         .catch(fetchErr => {
           console.log("Fel vid hämtning av sida:", fetchErr);
@@ -171,24 +151,19 @@ export default props => {
     fetchPageContents();
   }, [pageNum, pageId, refreshTime]);
 
+  /**
+   * Kör uppdaterad-funktion från props.
+   */
   useEffect(() => {
-    // console.log("useEffect when pageData changes for pageNum", pageNum);
     if (onPageUpdate) {
-      // console.log(typeof onPageUpdate);
       onPageUpdate(pageData);
     }
-    // Kör funktion från props, om någon.
-    // if (memoizedOnPageUpdate) {
-    //   memoizedOnPageUpdate({ pageData });
-    // }
   }, [pageNum, pageData, onPageUpdate]);
 
   const classes = classNames({
     "TextTVPage--isLoadingNewPageRange": pageIsLoadingNewPageRange,
     TextTVPage: true
   });
-
-  // console.log("classes", classes);
 
   // Wrap each page.
   const pagesHtml = pageData.map(page => {
@@ -213,7 +188,6 @@ export default props => {
 
   return (
     <>
-      <div>{pageNum}</div>
       {pageIsLoading && <SkeletonTextTVPage pageNum={pageNum} />}
       {pagesHtml}
     </>

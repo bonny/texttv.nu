@@ -3,6 +3,29 @@
  */
 
 /**
+ * Pinga texttv.nu:s api med info
+ * om att en sida har tittats på eller delats
+ * eller liknande. Används för att skapa sidor
+ * med mest de mest lästa sidorna.
+ *
+ * @param string mixed pageIds Kommaseparerad lista med sididn eller array med pagedata att skapa sträng från.
+ */
+function sendStats(pageIDsOrPageData, type) {
+  let pageIdsString = "";
+  if (typeof pageIDsOrPageData === "string") {
+    pageIdsString = pageIDsOrPageData;
+  } else if (typeof pageIDsOrPageData === "object") {
+    pageIDsOrPageData.forEach(page => {
+      pageIdsString = pageIdsString + `,${page.id}`;
+    });
+    pageIdsString = pageIdsString.replace(/^,/, "");
+  }
+
+  console.log("sendStats pageIdsString", pageIdsString, type);
+  fetch(`https://api.texttv.nu/api/page/${pageIdsString}/${type}`);
+}
+
+/**
  * Returnerar information om en pangeRange:
  * - antalet sidor som pageRange innehåller
  * - om det är en giltig pagerange
@@ -337,5 +360,6 @@ export {
   hitTest,
   createMarkupForPage,
   normalizeBetweenTwoRanges,
-  hidePageUpdatedToasts
+  hidePageUpdatedToasts,
+  sendStats
 };
