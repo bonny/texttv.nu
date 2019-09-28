@@ -18,7 +18,7 @@ function sendStats(pageIDsOrPageData, type) {
     pageIdsString = getPageIdsFromPageData(pageIDsOrPageData);
   }
 
-  console.log("sendStats pageIdsString", pageIdsString, type);
+
   const randomNumber = Math.random();
   fetch(
     `https://api.texttv.nu/api/page/${pageIdsString}/${type}?random=${randomNumber}`
