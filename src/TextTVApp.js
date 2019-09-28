@@ -14,6 +14,7 @@ import {
   IonTabButton,
   IonTabs,
   isPlatform
+  // NavContext
 } from "@ionic/react";
 
 import { clock, eye, home, listBox } from "ionicons/icons";
@@ -50,20 +51,39 @@ try {
 
 SplashScreen.hide();
 
-App.addListener("appStateChange", state => {
-  // state.isActive contains the active state
-  console.log("App state changed. Is active?", state.isActive);
-});
+/**
+ * Komponent som lägger till lyssnare för tillbaka-knapp på Android.
+ * @param {*} props
+ */
+const BackButtonListeners = props => {
+  const { history } = props;
 
-App.addListener("appRestoredResult", data => {
-  console.log("Restored state:", data);
-});
+  useEffect(() => {
+    App.addListener("appStateChange", state => {
+      // state.isActive contains the active state
+      // @TODO:
+      console.log("App state changed. Is active?", state.isActive);
+    });
 
-App.addListener("backButton", data => {
-  console.log("Backbutton:", data);
-});
+    App.addListener("appRestoredResult", data => {
+      console.log("Restored state:", data);
+    });
+
+    App.addListener("backButton", data => {
+      console.log("Backbutton:", data);
+      // @TODO: Kolla att detta fungerar på Android.
+      history.goBack();
+    });
+  }, [props, history]);
+
+  return null;
+};
+
+const BackButtonListenerWithRouter = withRouter(BackButtonListeners);
 
 function TextTVApp(props) {
+  // const navcontext = useContext(NavContext);
+
   /**
    * När en tab klickas på så sätter vi tidpunkt för klicket
    * i state tabsinfo. Denna info används sedan i context TabContext
@@ -186,29 +206,30 @@ function TextTVApp(props) {
     }
   }, [adMobAdOptions]);
 
-  const Test = props => {
-    console.log("Test", props);
-    return (
-      <div
-        onClick={e => {
-          props.history.push('/arkiv')
-        }}
-      >
-        Hejsan
-      </div>
-    );
-  };
-  const TestWithRouter = withRouter(Test);
+  // const Test = props => {
+  //   console.log("Test", props);
+  //   return (
+  //     <div
+  //       onClick={e => {
+  //         props.history.push("/arkiv");
+  //       }}
+  //     >
+  //       Hejsan
+  //     </div>
+  //   );
+  // };
+  // // const TestWithRouter = withRouter(Test);
 
   return (
     <TabContext.Provider value={tabsinfo}>
       <IonApp>
         <IonReactRouter>
+          <BackButtonListenerWithRouter {...props} />
           <Route exact path="/" render={() => <Redirect to="/hem" />} />
           <IonSplitPane contentId="mainContent">
             <MenuWithRouter {...props} />
             <div id="mainContent">
-              <IonTabs>
+              <IonTabs id="mainTabs">
                 <IonRouterOutlet id="routerOutletElm">
                   <Route path="/test" component={PageTest} />
                   <Route path="/testar" component={PageTestar} exact={true} />
@@ -282,6 +303,18 @@ function TextTVApp(props) {
                     tab="populart"
                     href="/arkiv"
                     onClick={handleTabClick}
+                    // onClick={props => {
+                    //   console.log(
+                    //     "navcontext",
+                    //     navcontext,
+                    //     navcontext.navigate
+                    //   );
+
+                    //   navcontext.navigate("/sidor/123");
+                    //   // return (React.createElement(IonTabBarUnwrapped, Object.assign({}, props, { navigate: props.navigate || ((path, direction) => {
+                    //         context.navigate(path, direction);
+                    //     }), currentPath: props.currentPath || context.currentPath }), props.children));
+                    // }}
                   >
                     {/* <TestWithRouter
                       onClick={props => {

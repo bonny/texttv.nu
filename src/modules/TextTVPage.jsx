@@ -99,13 +99,13 @@ export default props => {
   // se det gamla innehållet först.
   useLayoutEffect(() => {
     if (pageNum !== prevPageNum) {
-      console.log(
-        "texttv-page useEffect when prevPageNum is different from pageNum",
-        `prevPageNum: ${prevPageNum}`,
-        "->",
-        `pageNum: ${pageNum}`
-      );
-      console.log("----- new page range, empty page data before fetch -----");
+      // console.log(
+      //   "texttv-page useEffect when prevPageNum is different from pageNum",
+      //   `prevPageNum: ${prevPageNum}`,
+      //   "->",
+      //   `pageNum: ${pageNum}`
+      // );
+      // console.log("----- new page range, empty page data before fetch -----");
       setPageData([]);
       setPageIsLoadingNewPageRange(true);
     }
@@ -162,6 +162,14 @@ export default props => {
           //   pageNum,
           //   pageId
           // );
+          let pageIdsString = "";
+          pageData.forEach(page => {
+            pageIdsString = pageIdsString + `,${page.id}`;
+          });
+          pageIdsString = pageIdsString.replace(/^,/, "");
+          
+          // console.log("xxxx", pageIdsString);
+          fetch(`https://api.texttv.nu/api/page/${pageIdsString}/view`);
         })
         .catch(fetchErr => {
           console.log("Fel vid hämtning av sida:", fetchErr);

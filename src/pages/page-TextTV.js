@@ -185,7 +185,9 @@ Delad via https://texttv.nu/
         const apiEndpoint = "https://api.texttv.nu/api/share/" + pageIdsString;
 
         fetch(apiEndpoint);
-        // TODO: Pixeltrack x2.
+        
+        // Pinga nya endpoint också.
+        fetch(`https://api.texttv.nu/api/page/${pageIdsString}/share`);
 
         try {
           analytics.logEvent({
@@ -301,7 +303,7 @@ Delad via https://texttv.nu/
     };
 
     intervalId = setInterval(checkForUpdate, checkForUpdateInterval);
-    console.log("intervalId", intervalId);
+    // console.log("intervalId", intervalId);
 
     // Sluta leta efter uppdateringar vid cleanup.
     return () => {
@@ -366,6 +368,8 @@ Delad via https://texttv.nu/
       string: text
     });
 
+    fetch(`https://api.texttv.nu/api/page/${pageIdsString}/share`);
+
     try {
       analytics.logEvent({
         name: "share",
@@ -396,6 +400,8 @@ Delad via https://texttv.nu/
       string: permalink
     });
 
+    fetch(`https://api.texttv.nu/api/page/${pageIdsString}/copyToClipboard`);
+
     try {
       analytics.logEvent({
         name: "share",
@@ -420,6 +426,8 @@ Delad via https://texttv.nu/
     // Permalänk.
     const permalink = `https://www.texttv.nu/${pageNum}/arkiv/sida/${pageIdsString}`;
     window.open(permalink);
+
+    fetch(`https://api.texttv.nu/api/page/${pageIdsString}/openInBrowser`);
 
     try {
       analytics.logEvent({
