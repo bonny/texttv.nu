@@ -8,21 +8,39 @@
  * eller liknande. Används för att skapa sidor
  * med mest de mest lästa sidorna.
  *
- * @param string mixed pageIds Kommaseparerad lista med sididn eller array med pagedata att skapa sträng från.
+ * @param {string} mixed pageIds Kommaseparerad lista med sididn eller array med pagedata att skapa sträng från.
  */
 function sendStats(pageIDsOrPageData, type) {
   let pageIdsString = "";
   if (typeof pageIDsOrPageData === "string") {
     pageIdsString = pageIDsOrPageData;
   } else if (typeof pageIDsOrPageData === "object") {
-    pageIDsOrPageData.forEach(page => {
-      pageIdsString = pageIdsString + `,${page.id}`;
-    });
-    pageIdsString = pageIdsString.replace(/^,/, "");
+    pageIdsString = getPageIdsFromPageData(pageIDsOrPageData);
   }
 
   console.log("sendStats pageIdsString", pageIdsString, type);
-  fetch(`https://api.texttv.nu/api/page/${pageIdsString}/${type}`);
+  const randomNumber = Math.random();
+  fetch(
+    `https://api.texttv.nu/api/page/${pageIdsString}/${type}?random=${randomNumber}`
+  );
+}
+
+/**
+ * Gör en kommaseparerad sträng med alla sid-ids.
+ *
+ * @param {object} pageData.
+ * @return {string} Kommaseparerad lista.
+ */
+function getPageIdsFromPageData(pageData) {
+  let pageIdsString = "";
+
+  pageData.forEach(page => {
+    pageIdsString = pageIdsString + `,${page.id}`;
+  });
+
+  pageIdsString = pageIdsString.replace(/^,/, "");
+
+  return pageIdsString;
 }
 
 /**
@@ -361,5 +379,6 @@ export {
   createMarkupForPage,
   normalizeBetweenTwoRanges,
   hidePageUpdatedToasts,
-  sendStats
+  sendStats,
+  getPageIdsFromPageData
 };

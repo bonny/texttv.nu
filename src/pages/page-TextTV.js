@@ -11,7 +11,9 @@ import {
   getPageRangeInfo,
   getUnixtime,
   normalizeBetweenTwoRanges,
-  stripHtml
+  stripHtml,
+  getPageIdsFromPageData,
+  sendStats
 } from "../functions";
 import Header from "../modules/Header";
 import TextTVPage from "../modules/TextTVPage";
@@ -152,14 +154,7 @@ const PageTextTV = props => {
    * Dela sida mha enhetens egna dela-funktion.
    */
   const handleShare = async e => {
-    // Hämta alla sidorn IDn.
-    let pageIdsString = "";
-    pageData.forEach(page => {
-      pageIdsString = pageIdsString + `,${page.id}`;
-    });
-
-    // Bort med första kommatecknet.
-    pageIdsString = pageIdsString.replace(/^,/, "");
+    const pageIdsString = getPageIdsFromPageData(pageData);
 
     // Permalänk.
     const permalink = `https://www.texttv.nu/${pageNum}/arkiv/sida/${pageIdsString}`;
@@ -178,16 +173,7 @@ Delad via https://texttv.nu/
 
     sharePromise
       .then(data => {
-        console.log("Delning verkar gått fint. Härligt!", data);
-        // Pinga denna efter delning för att meddela sajten att sidan delats.
-        // I vanliga fall används denna för att hämta delningsinfo, men
-        // det blir ett promise för mycket för att Safari ska godkänna delning.
-        const apiEndpoint = "https://api.texttv.nu/api/share/" + pageIdsString;
-
-        fetch(apiEndpoint);
-        
-        // Pinga nya endpoint också.
-        fetch(`https://api.texttv.nu/api/page/${pageIdsString}/share`);
+        sendStats(pageData, "share");
 
         try {
           analytics.logEvent({
@@ -334,13 +320,7 @@ Delad via https://texttv.nu/
 
   const handleCopyTextToClipboard = () => {
     const pageRangeInfo = getPageRangeInfo(pageNum);
-
-    let pageIdsString = "";
-    pageData.forEach(page => {
-      pageIdsString = pageIdsString + `,${page.id}`;
-    });
-
-    pageIdsString = pageIdsString.replace(/^,/, "");
+    const pageIdsString = getPageIdsFromPageData(pageData);
 
     let text = "";
     if (pageRangeInfo.count > 1) {
@@ -368,7 +348,7 @@ Delad via https://texttv.nu/
       string: text
     });
 
-    fetch(`https://api.texttv.nu/api/page/${pageIdsString}/share`);
+    sendStats(pageData, "copyTextToClipboard");
 
     try {
       analytics.logEvent({
@@ -383,12 +363,7 @@ Delad via https://texttv.nu/
   };
 
   const handleCopyLinkToClipboard = () => {
-    let pageIdsString = "";
-    pageData.forEach(page => {
-      pageIdsString = pageIdsString + `,${page.id}`;
-    });
-
-    pageIdsString = pageIdsString.replace(/^,/, "");
+    const pageIdsString = getPageIdsFromPageData(pageData);
 
     const shareDate = new Date();
     const formattedDate = `${shareDate.getFullYear()}-${shareDate.getMonth() +
@@ -400,7 +375,7 @@ Delad via https://texttv.nu/
       string: permalink
     });
 
-    fetch(`https://api.texttv.nu/api/page/${pageIdsString}/copyToClipboard`);
+    sendStats(pageData, "copyLinkToClipboard");
 
     try {
       analytics.logEvent({
@@ -415,19 +390,12 @@ Delad via https://texttv.nu/
   };
 
   const handleOpenLinkInBrowser = () => {
-    let pageIdsString = "";
-    pageData.forEach(page => {
-      pageIdsString = pageIdsString + `,${page.id}`;
-    });
+    const pageIdsString = getPageIdsFromPageData(pageData);
 
-    // Bort med första kommatecknet.
-    pageIdsString = pageIdsString.replace(/^,/, "");
-
-    // Permalänk.
     const permalink = `https://www.texttv.nu/${pageNum}/arkiv/sida/${pageIdsString}`;
     window.open(permalink);
 
-    fetch(`https://api.texttv.nu/api/page/${pageIdsString}/openInBrowser`);
+    sendStats(pageData, "openLinkInBrowser");
 
     try {
       analytics.logEvent({

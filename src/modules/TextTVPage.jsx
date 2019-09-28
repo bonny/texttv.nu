@@ -35,7 +35,7 @@ export default props => {
   //const prevPageData = usePrevious(pageData);
   const prevPageNum = usePrevious(pageNum);
 
-  const [pageIsLoaded, setPageIsLoaded] = useState(false);
+  // const [pageIsLoaded, setPageIsLoaded] = useState(false);
   const [pageIsLoading, setPageIsLoading] = useState(true);
   const [pageIsLoadingNewPageRange, setPageIsLoadingNewPageRange] = useState(
     true
@@ -111,7 +111,7 @@ export default props => {
    */
   useEffect(() => {
     setPageIsLoading(true);
-    setPageIsLoaded(false);
+    // setPageIsLoaded(false);
 
     async function fetchPageContents() {
       // Hämta senaste sidan om bara pageNum,
@@ -140,7 +140,7 @@ export default props => {
 
           setPageData(pageData);
           setPageIsLoading(false);
-          setPageIsLoaded(true);
+          // setPageIsLoaded(true);
           sendStats(pageData, "view");
         })
         .catch(fetchErr => {
