@@ -1,4 +1,13 @@
-import { alert, document, help, informationCircleOutline, logoFacebook, logoTwitter, paper } from "ionicons/icons";
+import {
+  alert,
+  document,
+  help,
+  informationCircleOutline,
+  logoFacebook,
+  logoTwitter,
+  paper
+} from "ionicons/icons";
+
 export const navItems = [
   {
     title: "Best of SVT Text",
@@ -41,6 +50,7 @@ export const navItems = [
     icon: help
   }
 ];
+
 export const navItemsAlsoLike = [
   {
     title: "SVT Nyheter",

@@ -8,6 +8,7 @@ import {
   getCacheBustTimeString,
   hidePageUpdatedToasts
 } from "../functions";
+import SkeletonTextTVPage from "../modules/SkeletonTextTVPage";
 import classNames from "classnames";
 
 function usePrevious(value) {
@@ -33,8 +34,8 @@ export default props => {
   //const prevPageData = usePrevious(pageData);
   const prevPageNum = usePrevious(pageNum);
 
-  // const [pageIsLoaded, setPageIsLoaded] = useState(false);
-  //const [pageIsLoading, setPageIsLoading] = useState(true);
+  const [pageIsLoaded, setPageIsLoaded] = useState(false);
+  const [pageIsLoading, setPageIsLoading] = useState(true);
   const [pageIsLoadingNewPageRange, setPageIsLoadingNewPageRange] = useState(
     true
   );
@@ -78,12 +79,12 @@ export default props => {
           pathPrefix = "sidor";
       }
 
-      console.log(
-        "go to link, history pathname",
-        history.location.pathname,
-        history.location,
-        firstPathName
-      );
+      // console.log(
+      //   "go to link, history pathname",
+      //   history.location.pathname,
+      //   history.location,
+      //   firstPathName
+      // );
 
       history.push(`/${pathPrefix}${href}`);
     } // else {
@@ -122,8 +123,8 @@ export default props => {
       `refreshTime: ${refreshTime}`
     );
 
-    // setPageIsLoading(true);
-    // setPageIsLoaded(false);
+    setPageIsLoading(true);
+    setPageIsLoaded(false);
 
     async function fetchPageContents() {
       // Hämta senaste sidan om bara pageNum,
@@ -149,26 +150,17 @@ export default props => {
       response
         .then(async responseDatas => {
           const pageData = await responseDatas.json();
-          // Vänta lite med att sätta ny sidata pga felsökning och test osv.
-          // setTimeout(() => {
-          // console.log("texttv-page useEffect, after fetch", pageNum, pageId);
-          // console.log('will setPageData with new pageData', pageData);
+
           setPageData(pageData);
-          //setPageIsLoading(false);
-          // setPageIsLoaded(true);
-          // }, 1000);
-          // console.log(
-          //   "texttv-page useEffect, after fetch and set page data done",
-          //   pageNum,
-          //   pageId
-          // );
+          setPageIsLoading(false);
+          setPageIsLoaded(true);
+
           let pageIdsString = "";
           pageData.forEach(page => {
             pageIdsString = pageIdsString + `,${page.id}`;
           });
           pageIdsString = pageIdsString.replace(/^,/, "");
-          
-          // console.log("xxxx", pageIdsString);
+
           fetch(`https://api.texttv.nu/api/page/${pageIdsString}/view`);
         })
         .catch(fetchErr => {
@@ -177,14 +169,6 @@ export default props => {
     }
 
     fetchPageContents();
-
-    // Cleanup when component is moved out of screen.
-    return () => {
-      // console.log("texttv page setComponentIsCleanUped", pageNum, pageId);
-      // setComponentIsCleanUped(true);
-      // console.log(pageNum, "cleanup");
-      // setPageData([]);
-    };
   }, [pageNum, pageId, refreshTime]);
 
   useEffect(() => {
@@ -229,9 +213,8 @@ export default props => {
 
   return (
     <>
-      {/* {pageIsLoading && <SkeletonTextTVPage pageNum={pageNum} />} */}
-      {/* <div>{pageNum}</div>
-      <div>pageData.length: {pageData.length}</div> */}
+      <div>{pageNum}</div>
+      {pageIsLoading && <SkeletonTextTVPage pageNum={pageNum} />}
       {pagesHtml}
     </>
   );

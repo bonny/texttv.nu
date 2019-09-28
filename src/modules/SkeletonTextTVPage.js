@@ -30,7 +30,7 @@ let html = `<span class="toprow">${fortyChars}</span>
 <span>${fortyChars}</span>
 `;
 
-export function SkeletonTextTVPage(props) {
+export default function SkeletonTextTVPage(props) {
   const { pageNum } = props;
   const pageRangeInfo = getPageRangeInfo(pageNum);
   const pageCount = pageRangeInfo.count;
