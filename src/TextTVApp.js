@@ -60,15 +60,15 @@ const BackButtonListeners = props => {
     App.addListener("appStateChange", state => {
       // state.isActive contains the active state
       // @TODO:
-      console.log("App state changed. Is active?", state.isActive);
+      // console.log("App state changed. Is active?", state.isActive);
     });
 
     App.addListener("appRestoredResult", data => {
-      console.log("Restored state:", data);
+      // console.log("Restored state:", data);
     });
 
     App.addListener("backButton", data => {
-      console.log("Backbutton:", data);
+      // console.log("Backbutton:", data);
       // @TODO: Kolla att detta fungerar på Android.
       history.goBack();
     });
@@ -80,8 +80,6 @@ const BackButtonListeners = props => {
 const BackButtonListenerWithRouter = withRouter(BackButtonListeners);
 
 function TextTVApp(props) {
-  // const navcontext = useContext(NavContext);
-
   /**
    * När en tab klickas på så sätter vi tidpunkt för klicket
    * i state tabsinfo. Denna info används sedan i context TabContext
