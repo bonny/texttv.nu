@@ -212,16 +212,6 @@ b {
   animation-name: fadeInUp; */
 }
 
-.TextTVPage_Toast {
-  top: -4em;
-  --background: #313235;
-  --color: var(--text-tv-color);
-  --button-color: #88b3f6;
-  --border-style: solid;
-  --border-width: 1px;
-  --border-color: #4a4a4a;
-}
-
 .u-max-width-texttvpage {
   max-width: 20em;
 }
@@ -266,4 +256,23 @@ b {
 .plt-ios ion-content,
 .plt-android ion-content {
   --offset-bottom: -50px !important;
+}
+
+/* 
+Positionera toast ovanför tabbar.
+*/
+.TextTVPage_Toast {
+  top: -4em;
+  --background: #313235;
+  --color: var(--text-tv-color);
+  --button-color: #88b3f6;
+  --border-style: solid;
+  --border-width: 1px;
+  --border-color: #4a4a4a;
+}
+
+/* Visas annonser ska toast upp ovanför annonser också */
+.plt-ios .TextTVPage_Toast,
+.plt-android .TextTVPage_Toast {
+  top: -8em;  
 }
