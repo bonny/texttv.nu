@@ -2,6 +2,144 @@
  * Hjälpare.
  */
 
+import { Plugins, Share } from "@capacitor/core";
+import { Analytics } from "capacitor-analytics";
+
+const { Clipboard } = Plugins;
+const analytics = new Analytics();
+
+const handleCopyTextToClipboard = (pageData, pageNum) => {
+  const pageRangeInfo = getPageRangeInfo(pageNum);
+  const pageIdsString = getPageIdsFromPageData(pageData);
+
+  let text = "";
+  if (pageRangeInfo.count > 1) {
+    text = text + `Text TV sidorna ${pageNum}.`;
+  } else {
+    text = text + `Text TV sidan ${pageNum}.`;
+  }
+
+  text = text + "\nDelat via https://texttv.nu.\n";
+
+  pageData.forEach((page, idx) => {
+    // Lägg till separator mellan sidor.
+    //if (idx > 0) {
+    text = text + "\n----------------------------------------\n\n";
+    //}
+
+    page.content.forEach(val => {
+      text = text + val;
+    });
+  });
+
+  text = stripHtml(text);
+
+  Clipboard.write({
+    string: text
+  });
+
+  sendStats(pageData, "copyTextToClipboard");
+
+  try {
+    analytics.logEvent({
+      name: "share",
+      params: {
+        content_type: "text to clipboard",
+        item_id: pageIdsString,
+        page_nums: pageNum
+      }
+    });
+  } catch (e) {}
+};
+
+const handleCopyLinkToClipboard = (pageData, pageNum) => {
+  const pageIdsString = getPageIdsFromPageData(pageData);
+
+  const shareDate = new Date();
+  const formattedDate = `${shareDate.getFullYear()}-${shareDate.getMonth() +
+    1}-${shareDate.getDate()}`;
+
+  const permalink = `https://texttv.nu/${pageNum}/arkiv/${formattedDate}/${pageIdsString}/`;
+
+  Clipboard.write({
+    string: permalink
+  });
+
+  sendStats(pageData, "copyLinkToClipboard");
+
+  try {
+    analytics.logEvent({
+      name: "share",
+      params: {
+        content_type: "link to clipboard",
+        item_id: pageIdsString,
+        page_nums: pageNum
+      }
+    });
+  } catch (e) {}
+};
+
+const handleOpenLinkInBrowser = (pageData, pageNum) => {
+  const pageIdsString = getPageIdsFromPageData(pageData);
+
+  const permalink = `https://www.texttv.nu/${pageNum}/arkiv/sida/${pageIdsString}`;
+  window.open(permalink);
+
+  sendStats(pageData, "openLinkInBrowser");
+
+  try {
+    analytics.logEvent({
+      name: "share",
+      params: {
+        content_type: "link to browser",
+        item_id: pageIdsString,
+        page_nums: pageNum
+      }
+    });
+  } catch (e) {}
+};
+
+/**
+ * Dela sida mha enhetens egna dela-funktion.
+ */
+const handleShare = async (e, pageData, pageNum) => {
+  const pageIdsString = getPageIdsFromPageData(pageData);
+
+  // Permalänk.
+  const permalink = `https://www.texttv.nu/${pageNum}/arkiv/sida/${pageIdsString}`;
+
+  // Titel + ev. text från första sidan.
+  const firstPage = pageData[0];
+
+  const sharePromise = Share.share({
+    title: `Text TV ${firstPage.num}: ${firstPage.title}`,
+    text: `${firstPage.title}
+Delad via https://texttv.nu/
+`,
+    url: permalink,
+    dialogTitle: "Dela sida"
+  });
+
+  sharePromise
+    .then(data => {
+      sendStats(pageData, "share");
+
+      try {
+        analytics.logEvent({
+          name: "share",
+          params: {
+            content_type: "page",
+            item_id: pageIdsString,
+            page_nums: pageNum
+          }
+        });
+      } catch (e) {}
+    })
+    .catch(err => {
+      console.log("Delning gick fel pga orsak", err);
+    });
+};
+
 /**
  * Pinga texttv.nu:s api med info
  * om att en sida har tittats på eller delats
@@ -379,5 +517,9 @@ export {
   normalizeBetweenTwoRanges,
   hidePageUpdatedToasts,
   sendStats,
-  getPageIdsFromPageData
+  getPageIdsFromPageData,
+  handleCopyLinkToClipboard,
+  handleCopyTextToClipboard,
+  handleOpenLinkInBrowser,
+  handleShare
 };

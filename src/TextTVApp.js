@@ -233,13 +233,7 @@ function TextTVApp(props) {
                     path="/testar/undersida/:undersida/"
                     component={PageTestarUndersida}
                   />
-                  <Route
-                    path="/hem"
-                    render={props => {
-                      return <Startsida {...props} />;
-                    }}
-                    exact={true}
-                  />
+                  <Route path="/hem" component={Startsida} exact={true} />
                   <Route path="/hem/:pageNum" component={PageTextTV} />
 
                   <Route path="/arkiv" component={TabPopulart} exact={true} />

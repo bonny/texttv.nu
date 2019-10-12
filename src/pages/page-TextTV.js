@@ -1,27 +1,32 @@
 /**
- * Visar en sida med en eller flera text-tv-sidor.
+ * IonPage-sida som visar en sida med en eller flera text-tv-sidor.
  */
-import { Plugins } from "@capacitor/core";
-import { IonPage, IonContent, IonIcon, IonToast } from "@ionic/react";
+
+ import {
+  IonPage,
+  IonContent,
+  IonIcon,
+  IonToast,
+  useIonViewDidEnter,
+  useIonViewDidLeave,
+  useIonViewWillEnter,
+  useIonViewWillLeave
+} from "@ionic/react";
 import { arrowDropleftCircle, arrowDroprightCircle } from "ionicons/icons";
 import React, { useEffect, useRef, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import {
   getCurrentIonPageContentElm,
-  getPageRangeInfo,
   getUnixtime,
   normalizeBetweenTwoRanges,
-  stripHtml,
-  getPageIdsFromPageData,
-  sendStats
+  handleCopyLinkToClipboard,
+  handleCopyTextToClipboard,
+  handleOpenLinkInBrowser,
+  handleShare
 } from "../functions";
 import Header from "../modules/Header";
 import TextTVPage from "../modules/TextTVPage";
 import TextTVRefresher from "../modules/TextTVRefresher";
-import { Analytics } from "capacitor-analytics";
-
-const analytics = new Analytics();
-const { Clipboard, Share } = Plugins;
 
 const PageTextTV = props => {
   const {
@@ -48,6 +53,7 @@ const PageTextTV = props => {
   );
 
   const contentRef = useRef();
+  const pageRef = useRef();
 
   const maxDeltaNormalMove = 80;
   const swipeConfig = {
@@ -124,6 +130,7 @@ const PageTextTV = props => {
       }
     }
   };
+
   const swipeHandlers = useSwipeable(swipeConfig);
 
   let pageTitle = title || `${pageNum} - SVT Text TV`;
@@ -148,47 +155,6 @@ const PageTextTV = props => {
 
   const handleRefreshBtnClick = e => {
     updateRefreshTime();
-  };
-
-  /**
-   * Dela sida mha enhetens egna dela-funktion.
-   */
-  const handleShare = async e => {
-    const pageIdsString = getPageIdsFromPageData(pageData);
-
-    // Permalänk.
-    const permalink = `https://www.texttv.nu/${pageNum}/arkiv/sida/${pageIdsString}`;
-
-    // Titel + ev. text från första sidan.
-    const firstPage = pageData[0];
-
-    const sharePromise = Share.share({
-      title: `Text TV ${firstPage.num}: ${firstPage.title}`,
-      text: `${firstPage.title}
-Delad via https://texttv.nu/
-`,
-      url: permalink,
-      dialogTitle: "Dela sida"
-    });
-
-    sharePromise
-      .then(data => {
-        sendStats(pageData, "share");
-
-        try {
-          analytics.logEvent({
-            name: "share",
-            params: {
-              content_type: "page",
-              item_id: pageIdsString,
-              page_nums: pageNum
-            }
-          });
-        } catch (e) {}
-      })
-      .catch(err => {
-        console.log("Delning gick fel pga orsak", err);
-      });
   };
 
   // Om refreshTime som skickas med är mer än vår
@@ -318,97 +284,6 @@ Delad via https://texttv.nu/
     setDidDismissPageUpdateToast(false);
   }, [pageNum]);
 
-  const handleCopyTextToClipboard = () => {
-    const pageRangeInfo = getPageRangeInfo(pageNum);
-    const pageIdsString = getPageIdsFromPageData(pageData);
-
-    let text = "";
-    if (pageRangeInfo.count > 1) {
-      text = text + `Text TV sidorna ${pageNum}.`;
-    } else {
-      text = text + `Text TV sidan ${pageNum}.`;
-    }
-
-    text = text + "\nDelat via https://texttv.nu.\n";
-
-    pageData.forEach((page, idx) => {
-      // Lägg till separator mellan sidor.
-      //if (idx > 0) {
-      text = text + "\n----------------------------------------\n\n";
-      //}
-
-      page.content.forEach(val => {
-        text = text + val;
-      });
-    });
-
-    text = stripHtml(text);
-
-    Clipboard.write({
-      string: text
-    });
-
-    sendStats(pageData, "copyTextToClipboard");
-
-    try {
-      analytics.logEvent({
-        name: "share",
-        params: {
-          content_type: "text to clipboard",
-          item_id: pageIdsString,
-          page_nums: pageNum
-        }
-      });
-    } catch (e) {}
-  };
-
-  const handleCopyLinkToClipboard = () => {
-    const pageIdsString = getPageIdsFromPageData(pageData);
-
-    const shareDate = new Date();
-    const formattedDate = `${shareDate.getFullYear()}-${shareDate.getMonth() +
-      1}-${shareDate.getDate()}`;
-
-    const permalink = `https://texttv.nu/${pageNum}/arkiv/${formattedDate}/${pageIdsString}/`;
-
-    Clipboard.write({
-      string: permalink
-    });
-
-    sendStats(pageData, "copyLinkToClipboard");
-
-    try {
-      analytics.logEvent({
-        name: "share",
-        params: {
-          content_type: "link to clipboard",
-          item_id: pageIdsString,
-          page_nums: pageNum
-        }
-      });
-    } catch (e) {}
-  };
-
-  const handleOpenLinkInBrowser = () => {
-    const pageIdsString = getPageIdsFromPageData(pageData);
-
-    const permalink = `https://www.texttv.nu/${pageNum}/arkiv/sida/${pageIdsString}`;
-    window.open(permalink);
-
-    sendStats(pageData, "openLinkInBrowser");
-
-    try {
-      analytics.logEvent({
-        name: "share",
-        params: {
-          content_type: "link to browser",
-          item_id: pageIdsString,
-          page_nums: pageNum
-        }
-      });
-    } catch (e) {}
-  };
-
   let firstPage;
   let pageNextNum;
   let pagePrevNum;
@@ -443,16 +318,41 @@ Delad via https://texttv.nu/
     };
   }
 
+  useIonViewDidEnter(e => {
+    console.log("ionViewDidEnter event fired");
+    console.log("pageRef", pageRef);
+  });
+
+  useIonViewDidLeave(() => {
+    console.log("ionViewDidLeave event fired");
+  });
+
+  useIonViewWillEnter(() => {
+    console.log("ionViewWillEnter event fired");
+  });
+
+  useIonViewWillLeave(() => {
+    console.log("ionViewWillLeave event fired");
+  });
+
   return (
-    <IonPage>
+    <IonPage ref={pageRef}>
       <Header
         {...props}
         pageTitle={pageTitle}
         headerStyle={headerStyle}
-        onShare={handleShare}
-        onCopyTextToClipboard={handleCopyTextToClipboard}
-        onCopyLinkToClipboard={handleCopyLinkToClipboard}
-        onOpenLinkInBrowser={handleOpenLinkInBrowser}
+        onShare={e => {
+          handleShare(e, pageData);
+        }}
+        onCopyTextToClipboard={() => {
+          handleCopyTextToClipboard(pageData, pageNum);
+        }}
+        onCopyLinkToClipboard={() => {
+          handleCopyLinkToClipboard(pageData, pageNum);
+        }}
+        onOpenLinkInBrowser={() => {
+          handleOpenLinkInBrowser(pageData, pageNum);
+        }}
         handleRefreshBtnClick={handleRefreshBtnClick}
       />
 
