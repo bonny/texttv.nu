@@ -2,7 +2,7 @@
  * IonPage-sida som visar en sida med en eller flera text-tv-sidor.
  */
 
- import {
+import {
   IonPage,
   IonContent,
   IonIcon,
@@ -54,8 +54,10 @@ const PageTextTV = props => {
 
   const contentRef = useRef();
   const pageRef = useRef();
-
   const maxDeltaNormalMove = 80;
+  
+  let pageTitle = title || `${pageNum} - SVT Text TV`;
+
   const swipeConfig = {
     delta: 10,
     onSwiping: eventData => {
@@ -132,8 +134,6 @@ const PageTextTV = props => {
   };
 
   const swipeHandlers = useSwipeable(swipeConfig);
-
-  let pageTitle = title || `${pageNum} - SVT Text TV`;
 
   /**
    * Update the refresh time to the current time.
@@ -255,7 +255,6 @@ const PageTextTV = props => {
     };
 
     intervalId = setInterval(checkForUpdate, checkForUpdateInterval);
-    // console.log("intervalId", intervalId);
 
     // Sluta leta efter uppdateringar vid cleanup.
     return () => {

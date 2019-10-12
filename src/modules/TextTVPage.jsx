@@ -1,5 +1,6 @@
 /**
- * En text-tv-sida.
+ * En text-tv-sida som visas i en IonPage.
+ * Visas i en befintlig sida alltså.
  */
 import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
 import {
@@ -87,7 +88,8 @@ export default props => {
       //   firstPathName
       // );
 
-      history.push(`/${pathPrefix}${href}`);
+      const timestamp = Date.now();
+      history.push(`/${pathPrefix}${href}?date=${timestamp}`);
     } // else {
     // https://franciscohodge.com/2018/01/14/find-closest-element-click-coordinates-javascript-coding-question/
     // https://developer.mozilla.org/en-US/docs/Web/API/DocumentOrShadowRoot/elementFromPoint
