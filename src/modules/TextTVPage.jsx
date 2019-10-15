@@ -191,7 +191,7 @@ export default props => {
   return (
     <>
       {pageIsLoading && <SkeletonTextTVPage pageNum={pageNum} />}
-      {pagesHtml}
+      {!pageIsLoading && pagesHtml}
     </>
   );
 };
