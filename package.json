@@ -2,6 +2,9 @@
   "name": "texttv2019",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "10.x"
+  },
   "dependencies": {
     "@capacitor/android": "^1.4.0",
     "@capacitor/core": "^1.4.0",
