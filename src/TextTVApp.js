@@ -202,20 +202,6 @@ function TextTVApp(props) {
     }
   }, [adMobAdOptions]);
 
-  // const Test = props => {
-  //   console.log("Test", props);
-  //   return (
-  //     <div
-  //       onClick={e => {
-  //         props.history.push("/arkiv");
-  //       }}
-  //     >
-  //       Hejsan
-  //     </div>
-  //   );
-  // };
-  // // const TestWithRouter = withRouter(Test);
-
   return (
     <TabContext.Provider value={tabsinfo}>
       <IonApp>
