@@ -49,7 +49,7 @@ const handleCopyTextToClipboard = (pageData, pageNum) => {
         page_nums: pageNum
       }
     });
-  } catch (e) {}
+  } catch (e) { }
 };
 
 const handleCopyLinkToClipboard = (pageData, pageNum) => {
@@ -76,7 +76,7 @@ const handleCopyLinkToClipboard = (pageData, pageNum) => {
         page_nums: pageNum
       }
     });
-  } catch (e) {}
+  } catch (e) { }
 };
 
 const handleOpenLinkInBrowser = (pageData, pageNum) => {
@@ -96,7 +96,7 @@ const handleOpenLinkInBrowser = (pageData, pageNum) => {
         page_nums: pageNum
       }
     });
-  } catch (e) {}
+  } catch (e) { }
 };
 
 /**
@@ -133,7 +133,7 @@ Delad via https://texttv.nu/
             page_nums: pageNum
           }
         });
-      } catch (e) {}
+      } catch (e) { }
     })
     .catch(err => {
       console.log("Delning gick fel pga orsak", err);
@@ -157,9 +157,9 @@ function sendStats(pageIDsOrPageData, type) {
   }
 
   const randomNumber = Math.random();
-  fetch(
-    `https://api.texttv.nu/api/page/${pageIdsString}/${type}?random=${randomNumber}`
-  );
+  const url = `https://api.texttv.nu/api/page/${pageIdsString}/${type}?random=${randomNumber}`;
+  console.log(`sendStats to url ${url}`);
+  fetch(url);
 }
 
 /**
@@ -457,7 +457,7 @@ function hitTest(x, y) {
   return element;
 }
 
-const pointsSome = function(coordinates) {
+const pointsSome = function (coordinates) {
   var hit = document.elementFromPoint.apply(document, coordinates);
   // if (debug) {
   //   drawDot(dotParent, coordinates[0], coordinates[1]);

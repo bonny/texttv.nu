@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IonReactRouter } from "@ionic/react-router";
-import { withRouter } from "react-router";
+// import { withRouter } from "react-router";
 import { Plugins } from "@capacitor/core";
 import "@ionic/core/css/core.css";
 import "@ionic/core/css/ionic.bundle.css";
@@ -32,7 +32,7 @@ import PageCatchAll from "./PageCatchAll";
 import "./App.css";
 import "./theme.css";
 
-const { SplashScreen, AdMob, App } = Plugins;
+const { SplashScreen, AdMob } = Plugins;
 const analytics = new Analytics();
 
 try {
@@ -53,31 +53,31 @@ SplashScreen.hide();
  * Komponent som lägger till lyssnare för tillbaka-knapp på Android.
  * @param {*} props
  */
-const BackButtonListeners = props => {
-  const { history } = props;
+// const BackButtonListeners = props => {
+//   const { history } = props;
 
-  useEffect(() => {
-    App.addListener("appStateChange", state => {
-      // state.isActive contains the active state
-      // @TODO:
-      // console.log("App state changed. Is active?", state.isActive);
-    });
+//   useEffect(() => {
+//     App.addListener("appStateChange", state => {
+//       // state.isActive contains the active state
+//       // @TODO:
+//       // console.log("App state changed. Is active?", state.isActive);
+//     });
 
-    App.addListener("appRestoredResult", data => {
-      // console.log("Restored state:", data);
-    });
+//     App.addListener("appRestoredResult", data => {
+//       // console.log("Restored state:", data);
+//     });
 
-    App.addListener("backButton", data => {
-      // console.log("Backbutton:", data);
-      // @TODO: Kolla att detta fungerar på Android.
-      history.goBack();
-    });
-  }, [props, history]);
+//     App.addListener("backButton", data => {
+//       // console.log("Backbutton:", data);
+//       // @TODO: Kolla att detta fungerar på Android.
+//       history.goBack();
+//     });
+//   }, [props, history]);
 
-  return null;
-};
+//   return null;
+// };
 
-const BackButtonListenerWithRouter = withRouter(BackButtonListeners);
+// const BackButtonListenerWithRouter = withRouter(BackButtonListeners);
 
 function TextTVApp(props) {
   /**
@@ -164,12 +164,12 @@ function TextTVApp(props) {
   }
 
   const adMobAdOptions = {
-    // TODO: use real AD-id
-    //adId: "ca-app-pub-1689239266452655/3336016805",
+    // Riktigt ad-id för texttv
+    adId: "ca-app-pub-1689239266452655/3336016805",
 
     // google test ad
     // https://developers.google.com/admob/android/test-ads#sample_ad_units
-    adId: "ca-app-pub-3940256099942544/6300978111",
+    // adId: "ca-app-pub-3940256099942544/6300978111",
     adSize: "SMART_BANNER",
     position: "BOTTOM_CENTER",
     // hasTabBar: true, // make it true if you have TabBar Layout.
@@ -206,7 +206,7 @@ function TextTVApp(props) {
     <TabContext.Provider value={tabsinfo}>
       <IonApp>
         <IonReactRouter>
-          <BackButtonListenerWithRouter {...props} />
+          {/* <BackButtonListenerWithRouter {...props} /> */}
           <Route exact path="/" render={() => <Redirect to="/hem" />} />
           <IonSplitPane contentId="mainContent">
             <MenuWithRouter {...props} />

@@ -22,17 +22,16 @@ const TextTVSearchBar = props => {
   // const icon = isLoading ? "document" : "search";
 
   return (
-    <>
-      <IonSearchbar
-        placeholder="Gå till…"
-        type="number"
-        inputmode="numeric"
-        showCancelButton='never'
-        clearIcon={false}
-        onIonChange={handlePageNumInputChange}
-        debounce="100"
-      />
-    </>
+    <IonSearchbar
+      mode="md"
+      placeholder="Gå till…"
+      type="number"
+      inputmode="numeric"
+      showCancelButton="never"
+      clearIcon={false}
+      onIonChange={handlePageNumInputChange}
+      debounce="100"
+    />
   );
 };
 
