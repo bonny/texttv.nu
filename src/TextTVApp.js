@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { IonReactRouter } from "@ionic/react-router";
 // import { withRouter } from "react-router";
-import { Plugins } from "@capacitor/core";
+import { Plugins, StatusBarStyle } from "@capacitor/core";
 import "@ionic/core/css/core.css";
 import "@ionic/core/css/ionic.bundle.css";
 import {
@@ -32,11 +32,13 @@ import PageCatchAll from "./PageCatchAll";
 import "./App.css";
 import "./theme.css";
 
-const { SplashScreen, AdMob } = Plugins;
+const { SplashScreen, AdMob, StatusBar } = Plugins;
 const analytics = new Analytics();
 
 try {
-  AdMob.initialize("ca-app-pub-1689239266452655~1859283602")
+  AdMob.initialize({
+    appId: "ca-app-pub-1689239266452655~1859283602"
+  })
     .then(() => {
       // console.log("AdMob init ok");
     })
@@ -48,6 +50,10 @@ try {
 }
 
 SplashScreen.hide();
+
+StatusBar.setStyle({
+  style: StatusBarStyle.Dark
+});
 
 /**
  * Komponent som lägger till lyssnare för tillbaka-knapp på Android.
@@ -166,7 +172,8 @@ function TextTVApp(props) {
   const adMobAdOptions = {
     // Riktigt ad-id för texttv
     adId: "ca-app-pub-1689239266452655/3336016805",
-
+    isTesting: "LIVE",
+    banan: "SKAL",
     // google test ad
     // https://developers.google.com/admob/android/test-ads#sample_ad_units
     // adId: "ca-app-pub-3940256099942544/6300978111",
