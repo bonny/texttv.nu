@@ -196,6 +196,10 @@ function TextTVApp(props) {
         }
       );
 
+      AdMob.addListener("onAdFailedToLoad", info => {
+        console.log("onAdFailedToLoad", info);
+      });
+
       // Subscibe Banner Event Listener
       AdMob.addListener("onAdLoaded", info => {
         // console.log("Banner Ad Loaded", info);
@@ -242,7 +246,7 @@ function TextTVApp(props) {
                   />
 
                   <Route path="/sidor" component={TabSidor} exact={true} />
-                  <Route path="/:sidor/:pageNum" component={PageTextTV} />
+                  <Route path="/sidor/:pageNum" component={PageTextTV} />
 
                   <Route path="/nyast" component={TabNyast} exact={true} />
                   <Route path="/nyast/:pageNum" component={PageTextTV} />
