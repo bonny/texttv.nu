@@ -98,6 +98,9 @@ https://ionicframework.com/docs/theming/advanced
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9; */
+
+  /* Default i Ionic blir för smal i Iphone */
+  --ios-popover-width: 250px;
 }
 
 /*
@@ -274,5 +277,15 @@ Positionera toast ovanför tabbar.
 /* Visas annonser ska toast upp ovanför annonser också */
 .plt-ios .TextTVPage_Toast,
 .plt-android .TextTVPage_Toast {
-  top: -8em;  
+  top: -8em;
+}
+
+ion-popover.sc-ion-popover-ios-h {
+  border: 2px solid blue;
+  outline: 1px solid red;
+  --width: var(--ios-popover-width);
+}
+
+ion-popover.sc-ion-popover-ios {
+  left: calc(var(--ios-popover-width) - var(--ion-safe-area-right, 0px));
 }
