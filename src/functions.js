@@ -158,7 +158,6 @@ function sendStats(pageIDsOrPageData, type) {
 
   const randomNumber = Math.random();
   const url = `https://api.texttv.nu/api/page/${pageIdsString}/${type}?random=${randomNumber}`;
-  console.log(`sendStats to url ${url}`);
   fetch(url);
 }
 
@@ -473,11 +472,7 @@ const pointsSome = function (coordinates) {
 };
 
 const getNearestLink = e => {
-  // console.log("getNearestLink");
-  // console.log("clientXY", e.clientX, e.clientY);
-  // console.log("pageXY", e.pageX, e.pageY);
   const nearestLink = hitTest(e.clientX, e.clientY);
-  //console.log("nearestLink", nearestLink);
   return nearestLink;
 };
 

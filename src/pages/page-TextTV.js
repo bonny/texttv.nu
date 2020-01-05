@@ -2,16 +2,7 @@
  * IonPage-sida som visar en sida med en eller flera text-tv-sidor.
  */
 
-import {
-  IonPage,
-  IonContent,
-  IonIcon,
-  IonToast,
-  useIonViewDidEnter,
-  useIonViewDidLeave,
-  useIonViewWillEnter,
-  useIonViewWillLeave
-} from "@ionic/react";
+import { IonPage, IonContent, IonIcon, IonToast } from "@ionic/react";
 import { arrowDropleftCircle, arrowDroprightCircle } from "ionicons/icons";
 import React, { useEffect, useRef, useState } from "react";
 import { useSwipeable } from "react-swipeable";
@@ -55,7 +46,7 @@ const PageTextTV = props => {
   const contentRef = useRef();
   const pageRef = useRef();
   const maxDeltaNormalMove = 80;
-  
+
   let pageTitle = title || `${pageNum} - SVT Text TV`;
 
   const swipeConfig = {
@@ -63,8 +54,6 @@ const PageTextTV = props => {
     onSwiping: eventData => {
       const dir = eventData.dir;
       if (dir === "Left" || dir === "Right") {
-        // console.log("onSwiping", eventData);
-        // console.log("onSwiping left or right", eventData);
         const absoluteDeltaX = Math.abs(eventData.deltaX);
 
         // The number of pixels to move the page.
@@ -108,18 +97,13 @@ const PageTextTV = props => {
 
         // Om vi släppte swipen och var mer än deltaMax = gå till sida.
         if (absoluteDeltaX > maxDeltaNormalMove) {
-          // console.log("swiped left or right and more than deltamax", eventData);
-          // console.log("prev and next pageNum", prevPage, nextPage);
-
           setSwipeData({
             doMove: false
           });
 
           if (dir === "Left") {
-            // console.log("Gå till nästa sida, dvs. ", nextPage);
             history.push(`/sidor/${nextPage}`);
           } else if (dir === "Right") {
-            // console.log("Gå till föregående sida, dvs. ", prevPage);
             history.push(`/sidor/${prevPage}`);
           }
         } else {
@@ -141,7 +125,6 @@ const PageTextTV = props => {
   const updateRefreshTime = () => {
     setRefreshTime(getUnixtime());
     if (onRefresh) {
-      // console.log("call onRefresh in updateRefreshTime", onRefresh);
       onRefresh();
     }
   };
@@ -164,17 +147,11 @@ const PageTextTV = props => {
     const localUpdateRefreshTime = () => {
       setRefreshTime(getUnixtime());
       if (onRefresh) {
-        // console.log("call onRefresh in useEffect", onRefresh);
         onRefresh();
       }
     };
 
     if (passedRefreshTime > refreshTime) {
-      console.log(
-        "page-texttv passedRefreshTime > refreshTime",
-        passedRefreshTime,
-        refreshTime
-      );
       scrollToTop();
       localUpdateRefreshTime();
     }
@@ -240,9 +217,9 @@ const PageTextTV = props => {
       // och då kan en uppdatering som finns gälla föregående sida.
       const isHiddenPageAfterFetch = closestIonPage.matches(".ion-page-hidden");
       if (isHiddenPageAfterFetch) {
-        console.log(
-          "sidan som har en uppdatering är inte längre den aktiva, så visa inte toast"
-        );
+        // console.log(
+        //   "sidan som har en uppdatering är inte längre den aktiva, så visa inte toast"
+        // );
         return;
       }
 
@@ -272,7 +249,6 @@ const PageTextTV = props => {
    * vi här kommer åt sidans id osv.
    */
   const handlePageUpdate = data => {
-    // console.log("handlePageUpdate", data);
     setPageData(data);
   };
 
@@ -292,7 +268,6 @@ const PageTextTV = props => {
   const deltaXForTransform = swipeData.deltaXForTransform;
 
   if (pageData && pageData.length && deltaXForTransform) {
-    // console.log("swipeData", swipeData);
     firstPage = pageData[0];
     pageNextNum = firstPage.next_page;
     pagePrevNum = firstPage.prev_page;
@@ -317,22 +292,22 @@ const PageTextTV = props => {
     };
   }
 
-  useIonViewDidEnter(e => {
-    console.log("ionViewDidEnter event fired");
-    console.log("pageRef", pageRef);
-  });
+  // useIonViewDidEnter(e => {
+  //   console.log("ionViewDidEnter event fired");
+  //   console.log("pageRef", pageRef);
+  // });
 
-  useIonViewDidLeave(() => {
-    console.log("ionViewDidLeave event fired");
-  });
+  // useIonViewDidLeave(() => {
+  //   console.log("ionViewDidLeave event fired");
+  // });
 
-  useIonViewWillEnter(() => {
-    console.log("ionViewWillEnter event fired");
-  });
+  // useIonViewWillEnter(() => {
+  //   console.log("ionViewWillEnter event fired");
+  // });
 
-  useIonViewWillLeave(() => {
-    console.log("ionViewWillLeave event fired");
-  });
+  // useIonViewWillLeave(() => {
+  //   console.log("ionViewWillLeave event fired");
+  // });
 
   return (
     <IonPage ref={pageRef}>
@@ -386,12 +361,9 @@ const PageTextTV = props => {
             />
           </div>
         )}
-        {/* {normalizedDelta && <p>normalizedDelta: {normalizedDelta}</p>} */}
 
         <div {...swipeHandlers}>
           <div style={swipecontainerStyles}>
-            {/* dir: {swipeData.dir}
-            deltaX: {swipeData.deltaX} */}
             <TextTVPage
               pageNum={pageNum}
               pageId={pageId}
@@ -413,14 +385,12 @@ const PageTextTV = props => {
           message="En nyare version av sidan finns."
           cssClass="TextTVPage_Toast TextTVPage_UpdatedToast"
           showCloseButton={false}
-          // color="medium"
           buttons={[
             {
               side: "end",
               text: "Uppdatera",
               role: "confirm",
               handler: () => {
-                // console.log("refresh clicked");
                 setPageUpdatedToastVisible(false);
                 updateRefreshTime();
               }
@@ -432,19 +402,10 @@ const PageTextTV = props => {
               handler: () => {
                 // Göm toast.
                 // För hur länge? För alltid? För alltid för denna sida? Bara för denna uppdatering?
-                // console.log("close toast clicked");
                 setPageUpdatedToastVisible(false);
                 setDidDismissPageUpdateToast(true);
-                // updateRefreshTime();
               }
             }
-            // {
-            //   text: "Ok",
-            //   role: "cancel",
-            //   handler: () => {
-            //     console.log("Cancel clicked");
-            //   }
-            // }
           ]}
         />
       </IonContent>

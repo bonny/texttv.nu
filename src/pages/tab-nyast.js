@@ -62,13 +62,8 @@ export default props => {
    */
   useEffect(() => {
     const ionPageContent = getCurrentIonPageContentElm();
-    console.log("ionPageContent", ionPageContent, ionPageContent && ionPageContent.classList);
     ionPageContent && ionPageContent.scrollToTop();
   }, [selectedSegment]);
-
-  // const handleSegmentClick = e => {
-  //   console.log("handleSegmentClick", e);
-  // };
 
   // Scrolla till toppen om vi klickar på denna sidan tab igen
   // och vi är inte längst uppe redan
@@ -100,7 +95,6 @@ export default props => {
         <IonToolbar color="primary">
           <IonSegment
             onIonChange={handleSegmentChange}
-            // onClick={handleSegmentClick}
             value={selectedSegment}
           >
             <IonSegmentButton value="news">Nyheter</IonSegmentButton>

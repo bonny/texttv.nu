@@ -31,12 +31,8 @@ export default props => {
     onPageUpdate
   } = props;
 
-  // const [componentIsCleanUped, setComponentIsCleanUped] = useState(false);
   const [pageData, setPageData] = useState([]);
-  //const prevPageData = usePrevious(pageData);
   const prevPageNum = usePrevious(pageNum);
-
-  // const [pageIsLoaded, setPageIsLoaded] = useState(false);
   const [pageIsLoading, setPageIsLoading] = useState(true);
   const [pageIsLoadingNewPageRange, setPageIsLoadingNewPageRange] = useState(
     true
@@ -47,7 +43,6 @@ export default props => {
   const handleClick = e => {
     e.preventDefault();
 
-    // const target = e.target;
     const link = getNearestLink(e);
 
     if (link && link.nodeName === "A") {
@@ -90,13 +85,7 @@ export default props => {
 
       const timestamp = Date.now();
       history.push(`/${pathPrefix}${href}?date=${timestamp}`);
-    } // else {
-    // https://franciscohodge.com/2018/01/14/find-closest-element-click-coordinates-javascript-coding-question/
-    // https://developer.mozilla.org/en-US/docs/Web/API/DocumentOrShadowRoot/elementFromPoint
-    // https://stackoverflow.com/questions/7322490/finding-element-nearest-to-clicked-point
-    // console.log("handle page click outside link (find nearest link)", e);
-    // getNearestLink(e);
-    // }
+    }
   };
 
   // Använd useLayoutEffect istället för useEffect pga den senare gör att man hinner
@@ -113,7 +102,6 @@ export default props => {
    */
   useEffect(() => {
     setPageIsLoading(true);
-    // setPageIsLoaded(false);
 
     async function fetchPageContents() {
       // Hämta senaste sidan om bara pageNum,
@@ -142,7 +130,6 @@ export default props => {
 
           setPageData(pageData);
           setPageIsLoading(false);
-          // setPageIsLoaded(true);
           sendStats(pageData, "view");
         })
         .catch(fetchErr => {
