@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { getPageRangeInfo } from "./functions";
+import { getPageRangeInfo } from "../functions";
 
 /**
  * Komponent som alltid renderas, i.e. catch all component i React Router.

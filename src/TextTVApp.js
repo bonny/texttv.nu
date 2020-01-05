@@ -28,7 +28,7 @@ import Startsida from "./pages/tab-startsida";
 import TabContext from "./TabContext";
 import { getUnixtime } from "./functions";
 import { Analytics } from "capacitor-analytics";
-import PageCatchAll from "./PageCatchAll";
+import PageCatchAll from "./pages/PageCatchAll";
 import "./App.css";
 import "./theme.css";
 
