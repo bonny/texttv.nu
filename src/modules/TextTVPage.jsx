@@ -2,7 +2,7 @@
  * En text-tv-sida som visas i en IonPage.
  * Visas i en befintlig sida alltså.
  */
-import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   createMarkupForPage,
   getNearestLink,
