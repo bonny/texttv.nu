@@ -281,8 +281,6 @@ Positionera toast ovanför tabbar.
 }
 
 ion-popover.sc-ion-popover-ios-h {
-  border: 2px solid blue;
-  outline: 1px solid red;
   --width: var(--ios-popover-width);
 }
 
