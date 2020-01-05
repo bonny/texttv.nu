@@ -41,56 +41,59 @@ export default props => {
   // Leta upp närmaste länk, om någon, vid klick nånstans på sidan,
   // och gå till den länken.
   const handleClick = e => {
-    e.preventDefault();
-
     const link = getNearestLink(e);
 
-    if (link && link.nodeName === "A") {
-      // This is a link.
-      // href is '/100', '/101-102', '150,163'
-      let href = link.getAttribute("href");
-
-      // Make sure string begins with "/".
-      if (!href.startsWith("/")) {
-        href = `/${href}`;
-      }
-
-      // Göm ev synliga toasts.
-      // TODO: göm toast via state och inte via query selector + api method
-      hidePageUpdatedToasts();
-
-      // Om sökväg är t.ex "/sidor/100" så ger detta "sidor".
-      const firstPathName = history.location.pathname
-        .split("/")
-        .filter(e => e)
-        .find(e => true);
-
-      // Gå till sida 🎉.
-      let pathPrefix;
-      switch (firstPathName) {
-        case "hem":
-          pathPrefix = "hem";
-          break;
-        case "sidor":
-        default:
-          pathPrefix = "sidor";
-      }
-
-      // console.log(
-      //   "go to link, history pathname",
-      //   history.location.pathname,
-      //   history.location,
-      //   firstPathName
-      // );
-
-      const timestamp = Date.now();
-      history.push(`/${pathPrefix}${href}?date=${timestamp}`);
+    // Baila om vi inte hittade länk.
+    if (!link || link.nodeName !== "A") {
+      return;
     }
+
+    // Detta är en länk, så låt oss följa den.
+    e.preventDefault();
+
+    // href is '/100', '/101-102', '150,163'
+    let href = link.getAttribute("href");
+
+    // Make sure string begins with "/".
+    if (!href.startsWith("/")) {
+      href = `/${href}`;
+    }
+
+    // Göm ev synliga toasts.
+    // TODO: göm toast via state och inte via query selector + api method
+    hidePageUpdatedToasts();
+
+    // Om sökväg är t.ex "/sidor/100" så ger detta "sidor".
+    const firstPathName = history.location.pathname
+      .split("/")
+      .filter(e => e)
+      .find(e => true);
+
+    // Gå till sida 🎉.
+    let pathPrefix;
+    switch (firstPathName) {
+      case "hem":
+        pathPrefix = "hem";
+        break;
+      case "sidor":
+      default:
+        pathPrefix = "sidor";
+    }
+
+    // console.log(
+    //   "go to link, history pathname",
+    //   history.location.pathname,
+    //   history.location,
+    //   firstPathName
+    // );
+
+    const timestamp = Date.now();
+    history.push(`/${pathPrefix}${href}?date=${timestamp}`);
   };
 
-  // Använd useLayoutEffect istället för useEffect pga den senare gör att man hinner
-  // se det gamla innehållet först.
-  useLayoutEffect(() => {
+  // När sidan ändras så vill vi sätta innehållet till inget så att inte gamla innehållet
+  // syns för en kort stund. Verkar inte funka så bra dock..
+  useEffect(() => {
     if (pageNum !== prevPageNum) {
       setPageData([]);
       setPageIsLoadingNewPageRange(true);
