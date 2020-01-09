@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>30223179902-kms7el00gajqpo2ihf9g53843q7ult6o.apps.googleusercontent.com</string>
+	<string>30223179902-4o2bim7de5hu78imurdgl0geiu6g3b67.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.30223179902-kms7el00gajqpo2ihf9g53843q7ult6o</string>
+	<string>com.googleusercontent.apps.30223179902-4o2bim7de5hu78imurdgl0geiu6g3b67</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDAcbK2BAvbH3RgmiYPedOtarDNW3EAZuc</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.mufflify.brottsplatskartan</string>
+	<string>com.mufflify.TextTVnu</string>
 	<key>PROJECT_ID</key>
 	<string>teletext-a4d17</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:30223179902:ios:e82dc53ea85f8192</string>
+	<string>1:30223179902:ios:95b0b5b400e64b840bf82f</string>
 	<key>DATABASE_URL</key>
 	<string>https://teletext-a4d17.firebaseio.com</string>
 </dict>
