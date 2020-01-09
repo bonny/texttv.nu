@@ -32,8 +32,32 @@ import PageCatchAll from "./pages/PageCatchAll";
 import "./App.css";
 import "./theme.css";
 
+// Firebase App (the core Firebase SDK) is always required and must be listed first
+import * as firebase from "firebase/app";
+
+// If you enabled Analytics in your project, add the Firebase SDK for Analytics
+import "firebase/analytics";
+
 const { SplashScreen, AdMob, StatusBar } = Plugins;
 const analytics = new Analytics();
+
+const isRunningInWebBrowser = !isPlatform("ios") && !isPlatform("android");
+
+if (isRunningInWebBrowser) {
+  const firebaseConfig = {
+    apiKey: "AIzaSyD74YswGldkaY4lpbebtHPMD6p26CeFqEk",
+    authDomain: "teletext-a4d17.firebaseapp.com",
+    databaseURL: "https://teletext-a4d17.firebaseio.com",
+    projectId: "teletext-a4d17",
+    storageBucket: "teletext-a4d17.appspot.com",
+    messagingSenderId: "30223179902",
+    appId: "1:30223179902:web:1c9e49796a9a29c30bf82f",
+    measurementId: "G-F8Y7QYLTHQ"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+}
 
 try {
   AdMob.initialize({
