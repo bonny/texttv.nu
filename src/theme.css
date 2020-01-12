@@ -102,7 +102,11 @@ https://ionicframework.com/docs/theming/advanced
   /* Default i Ionic blir för smal i Iphone */
   --ios-popover-width: 250px;
 
-  --text-tv-ad-height: 200px;
+  /* Höjd på annons. Får från AdMob via callback och denna variabel uppdateras då. */
+  --text-tv-ad-height: 0;
+
+  /* Höjd på tab bar */
+  --text-tv-tab-bar-height: 0;
 }
 
 /*
@@ -255,9 +259,18 @@ b {
 }
 
 /* Gör plats för annonser (klicka på dom!) */
-.plt-ios ion-content,
-.plt-android ion-content {
+.ion-page ion-content {
   --offset-bottom: calc(-1 * var(--text-tv-ad-height)) !important;
+}
+
+/* På större skärmar så är sidemenu synlig och behöver
+också få utrymme för annonsen som lite fult och olyckligt sträcker sig över hela sidan.
+Lägg även på tab-bar-höjd här.
+*/
+ion-menu.split-pane-side.menu-side-start.menu-pane-visible ion-content {
+  --offset-bottom: calc(
+    -1 * (var(--text-tv-ad-height) + var(--text-tv-tab-bar-height))
+  ) !important;
 }
 
 /* 

@@ -151,14 +151,20 @@ function TextTVApp(props) {
 
   if (isPlatform("android")) {
     // On Android the tab height is 50px.
-    tabHeight = "56";
+    tabHeight = 56;
   } else if (isPlatform("ios")) {
     // On IOS the tab height is 56 px.
-    tabHeight = "50";
+    tabHeight = 50;
   } else {
     // Fall tillbaka på 50.
-    tabHeight = "50";
+    tabHeight = 50;
   }
+
+  document.documentElement.style.setProperty(
+    "--text-tv-tab-bar-height",
+    `${tabHeight}px`
+  );
+
 
   const adMobAdOptions = {
     adId: "ca-app-pub-1689239266452655/3336016805",
@@ -168,37 +174,37 @@ function TextTVApp(props) {
     // adId: "ca-app-pub-3940256099942544/6300978111",
     adSize: "SMART_BANNER",
     position: "BOTTOM_CENTER",
-    margin: tabHeight // RdLabo AdMob requires this to be a string (let adMargin = call.getString("margin") ?? "0"))
+    margin: tabHeight
   };
 
   useEffect(() => {
-    // console.log("useEffect admob show banner");
     try {
       AdMob.showBanner(adMobAdOptions).then(
         value => {
-          console.log("admob show banner ok", value); // true
+          // console.log("admob show banner ok", value); // true
         },
         error => {
           // console.error("admob show banner error", error); // show error
         }
       );
 
-      AdMob.addListener("onAdFailedToLoad", info => {
-        console.log("onAdFailedToLoad", info);
+      // AdMob.addListener("onAdFailedToLoad", info => {
+      //   console.log("onAdFailedToLoad", info);
+      // });
+
+      // Callback när en annons visas. size = object med bredd och höjd, ca såhär:
+      // {"width":375,"height":50}
+      AdMob.addListener("onAdSize", size => {
+        if (!size || !size.height) {
+          return;
+        }
+
+        document.documentElement.style.setProperty(
+          "--text-tv-ad-height",
+          `${size.height}px`
+        );
       });
 
-      AdMob.addListener("onAdSize", info => {
-        console.log("onAdSize", info);
-      });
-
-      // Subscibe Banner Event Listener
-      AdMob.addListener("onAdLoaded", info => {
-        console.log("Banner Ad Loaded", info);
-      })
-        .then()
-        .catch(e => {
-          // console.log("AdMob onAdLoaded catch error", e);
-        });
     } catch (e) {
       // console.log("admob got error when trying to show banner");
     }
