@@ -89,7 +89,7 @@ const Header = props => {
   return (
     <>
       <IonHeader>
-        <IonToolbar color="primary" mode="md">
+        <IonToolbar color="primary" mode="md" class="texttv-hide-smallest-screens">
           <IonTitle className="texttv-header-title">
             <Link to="/hem" className="texttv-header-title-link">
               <Logo className="texttv-logo" />
