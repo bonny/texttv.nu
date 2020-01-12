@@ -2,9 +2,15 @@
  * IonPage-sida som visar en sida med en eller flera text-tv-sidor.
  */
 
-import { IonPage, IonContent, IonIcon, IonToast } from "@ionic/react";
+import {
+  IonPage,
+  IonContent,
+  IonIcon,
+  IonToast,
+  NavContext
+} from "@ionic/react";
 import { arrowDropleftCircle, arrowDroprightCircle } from "ionicons/icons";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import { useSwipeable } from "react-swipeable";
 import {
   getCurrentIonPageContentElm,
@@ -47,32 +53,34 @@ const PageTextTV = props => {
   const pageRef = useRef();
   const maxDeltaNormalMove = 80;
 
+  const navContext = useContext(NavContext);
+
   let pageTitle = title || `${pageNum} - SVT Text TV`;
 
   const swipeConfig = {
-    delta: 10,
+    delta: 0,
     onSwiping: eventData => {
       const dir = eventData.dir;
       if (dir === "Left" || dir === "Right") {
-        const absoluteDeltaX = Math.abs(eventData.deltaX);
+        // const absoluteDeltaX = Math.abs(eventData.deltaX);
 
         // The number of pixels to move the page.
         let deltaXForTransform = eventData.deltaX * -1;
 
         // Gör rörelser "segare" när vi kommit över en gräns.
-        if (absoluteDeltaX > maxDeltaNormalMove) {
-          const numberOfXMoreThanNormal = absoluteDeltaX - maxDeltaNormalMove;
+        // if (absoluteDeltaX > maxDeltaNormalMove) {
+        //   const numberOfXMoreThanNormal = absoluteDeltaX - maxDeltaNormalMove;
 
-          // Make this number increase in smaller and smaller steps.
-          let numberOfXToAdd = numberOfXMoreThanNormal;
-          numberOfXToAdd = numberOfXToAdd * 0.15;
+        //   // Make this number increase in smaller and smaller steps.
+        //   let numberOfXToAdd = numberOfXMoreThanNormal;
+        //   numberOfXToAdd = numberOfXToAdd * 0.15;
 
-          if (dir === "Left") {
-            deltaXForTransform = -maxDeltaNormalMove - numberOfXToAdd;
-          } else {
-            deltaXForTransform = maxDeltaNormalMove + numberOfXToAdd;
-          }
-        }
+        //   if (dir === "Left") {
+        //     deltaXForTransform = -maxDeltaNormalMove - numberOfXToAdd;
+        //   } else {
+        //     deltaXForTransform = maxDeltaNormalMove + numberOfXToAdd;
+        //   }
+        // }
 
         setSwipeData({
           doMove: true,
@@ -102,9 +110,11 @@ const PageTextTV = props => {
           });
 
           if (dir === "Left") {
-            history.push(`/sidor/${nextPage}`);
+            // history.push(`/sidor/${nextPage}`);
+            navContext.navigate(`/sidor/${nextPage}`, "none");
           } else if (dir === "Right") {
-            history.push(`/sidor/${prevPage}`);
+            //history.push(`/sidor/${prevPage}`);
+            navContext.navigate(`/sidor/${prevPage}`, "none");
           }
         } else {
           // Om vi släppte men inte var mer än maxdelta = återgå till standard,
@@ -266,6 +276,7 @@ const PageTextTV = props => {
   let TextTVNextPrevSwipeNavStyles;
   let swipeDirection = swipeData.dir;
   const deltaXForTransform = swipeData.deltaXForTransform;
+  const absoluteDeltaX = swipeData.absoluteDeltaX;
 
   if (pageData && pageData.length && deltaXForTransform) {
     firstPage = pageData[0];
@@ -291,24 +302,6 @@ const PageTextTV = props => {
       opacity: 1 - Math.abs(normalizedDelta) / 3
     };
   }
-
-  // useIonViewDidEnter(e => {
-  //   console.log("ionViewDidEnter event fired");
-  //   console.log("pageRef", pageRef);
-  // });
-
-  // useIonViewDidLeave(() => {
-  //   console.log("ionViewDidLeave event fired");
-  // });
-
-  // useIonViewWillEnter(() => {
-  //   console.log("ionViewWillEnter event fired");
-  // });
-
-  // useIonViewWillLeave(() => {
-  //   console.log("ionViewWillLeave event fired");
-  // });
-
   return (
     <IonPage ref={pageRef}>
       <Header

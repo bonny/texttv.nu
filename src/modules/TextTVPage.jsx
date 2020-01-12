@@ -2,7 +2,8 @@
  * En text-tv-sida som visas i en IonPage.
  * Visas i en befintlig sida alltså.
  */
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
+import { NavContext } from "@ionic/react";
 import {
   createMarkupForPage,
   getNearestLink,
@@ -37,6 +38,8 @@ export default props => {
   const [pageIsLoadingNewPageRange, setPageIsLoadingNewPageRange] = useState(
     true
   );
+
+  const navContext = useContext(NavContext);
 
   // Leta upp närmaste länk, om någon, vid klick nånstans på sidan,
   // och gå till den länken.
@@ -88,7 +91,8 @@ export default props => {
     // );
 
     const timestamp = Date.now();
-    history.push(`/${pathPrefix}${href}?date=${timestamp}`);
+    //history.push(`/${pathPrefix}${href}?date=${timestamp}`);
+    navContext.navigate(`/${pathPrefix}${href}?date=${timestamp}`, "none");
   };
 
   // När sidan ändras så vill vi sätta innehållet till inget så att inte gamla innehållet
