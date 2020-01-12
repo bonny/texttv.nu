@@ -103,10 +103,10 @@ https://ionicframework.com/docs/theming/advanced
   --ios-popover-width: 250px;
 
   /* Höjd på annons. Får från AdMob via callback och denna variabel uppdateras då. */
-  --text-tv-ad-height: 0;
+  --text-tv-ad-height: 0px;
 
   /* Höjd på tab bar */
-  --text-tv-tab-bar-height: 0;
+  --text-tv-tab-bar-height: 0px;
 }
 
 /*

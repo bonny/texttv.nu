@@ -57,9 +57,7 @@ if (isRunningInWebBrowser()) {
 }
 
 try {
-  AdMob.initialize({
-    appId: "ca-app-pub-1689239266452655~1859283602"
-  })
+  AdMob.initialize()
     .then(() => {
       // console.log("AdMob init ok");
     })
@@ -165,10 +163,8 @@ function TextTVApp(props) {
     `${tabHeight}px`
   );
 
-
   const adMobAdOptions = {
     adId: "ca-app-pub-1689239266452655/3336016805",
-    isTesting: "LIVE",
     // google test ad
     // https://developers.google.com/admob/android/test-ads#sample_ad_units
     // adId: "ca-app-pub-3940256099942544/6300978111",
@@ -204,7 +200,6 @@ function TextTVApp(props) {
           `${size.height}px`
         );
       });
-
     } catch (e) {
       // console.log("admob got error when trying to show banner");
     }
