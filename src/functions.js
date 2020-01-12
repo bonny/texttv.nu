@@ -3,6 +3,8 @@
  */
 
 import { Plugins, Share } from "@capacitor/core";
+import { isPlatform } from "@ionic/react";
+
 import { Analytics } from "capacitor-analytics";
 
 const { Clipboard } = Plugins;
@@ -49,7 +51,7 @@ const handleCopyTextToClipboard = (pageData, pageNum) => {
         page_nums: pageNum
       }
     });
-  } catch (e) { }
+  } catch (e) {}
 };
 
 const handleCopyLinkToClipboard = (pageData, pageNum) => {
@@ -76,7 +78,7 @@ const handleCopyLinkToClipboard = (pageData, pageNum) => {
         page_nums: pageNum
       }
     });
-  } catch (e) { }
+  } catch (e) {}
 };
 
 const handleOpenLinkInBrowser = (pageData, pageNum) => {
@@ -96,7 +98,7 @@ const handleOpenLinkInBrowser = (pageData, pageNum) => {
         page_nums: pageNum
       }
     });
-  } catch (e) { }
+  } catch (e) {}
 };
 
 /**
@@ -133,7 +135,7 @@ Delad via https://texttv.nu/
             page_nums: pageNum
           }
         });
-      } catch (e) { }
+      } catch (e) {}
     })
     .catch(err => {
       console.log("Delning gick fel pga orsak", err);
@@ -456,7 +458,7 @@ function hitTest(x, y) {
   return element;
 }
 
-const pointsSome = function (coordinates) {
+const pointsSome = function(coordinates) {
   var hit = document.elementFromPoint.apply(document, coordinates);
   // if (debug) {
   //   drawDot(dotParent, coordinates[0], coordinates[1]);
@@ -495,6 +497,10 @@ function hidePageUpdatedToasts() {
     });
 }
 
+function isRunningInWebBrowser() {
+  return !isPlatform("ios") && !isPlatform("android");
+}
+
 export {
   getPageRangeInfo,
   getCacheBustTimeString,
@@ -516,5 +522,6 @@ export {
   handleCopyLinkToClipboard,
   handleCopyTextToClipboard,
   handleOpenLinkInBrowser,
-  handleShare
+  handleShare,
+  isRunningInWebBrowser
 };

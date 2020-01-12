@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { IonReactRouter } from "@ionic/react-router";
-// import { withRouter } from "react-router";
 import { Plugins, StatusBarStyle } from "@capacitor/core";
 import "@ionic/core/css/core.css";
 import "@ionic/core/css/ionic.bundle.css";
+import "./App.css";
+import "./theme.css";
 import {
   IonApp,
   IonIcon,
@@ -17,7 +18,7 @@ import {
 } from "@ionic/react";
 import { clock, eye, home, listBox } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
-import { getCacheBustTimeString } from "./functions";
+import { getCacheBustTimeString, isRunningInWebBrowser } from "./functions";
 import { MenuWithRouter } from "./modules/SideMenu";
 import PageTextTV from "./pages/page-TextTV.js";
 import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
@@ -29,8 +30,6 @@ import TabContext from "./TabContext";
 import { getUnixtime } from "./functions";
 import { Analytics } from "capacitor-analytics";
 import PageCatchAll from "./pages/PageCatchAll";
-import "./App.css";
-import "./theme.css";
 
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import * as firebase from "firebase/app";
@@ -41,9 +40,7 @@ import "firebase/analytics";
 const { SplashScreen, AdMob, StatusBar } = Plugins;
 const analytics = new Analytics();
 
-const isRunningInWebBrowser = !isPlatform("ios") && !isPlatform("android");
-
-if (isRunningInWebBrowser) {
+if (isRunningInWebBrowser()) {
   const firebaseConfig = {
     apiKey: "AIzaSyD74YswGldkaY4lpbebtHPMD6p26CeFqEk",
     authDomain: "teletext-a4d17.firebaseapp.com",
@@ -78,36 +75,6 @@ SplashScreen.hide();
 StatusBar.setStyle({
   style: StatusBarStyle.Dark
 });
-
-/**
- * Komponent som lägger till lyssnare för tillbaka-knapp på Android.
- * @param {*} props
- */
-// const BackButtonListeners = props => {
-//   const { history } = props;
-
-//   useEffect(() => {
-//     App.addListener("appStateChange", state => {
-//       // state.isActive contains the active state
-//       // @TODO:
-//       // console.log("App state changed. Is active?", state.isActive);
-//     });
-
-//     App.addListener("appRestoredResult", data => {
-//       // console.log("Restored state:", data);
-//     });
-
-//     App.addListener("backButton", data => {
-//       // console.log("Backbutton:", data);
-//       // @TODO: Kolla att detta fungerar på Android.
-//       history.goBack();
-//     });
-//   }, [props, history]);
-
-//   return null;
-// };
-
-// const BackButtonListenerWithRouter = withRouter(BackButtonListeners);
 
 function TextTVApp(props) {
   /**
@@ -194,17 +161,13 @@ function TextTVApp(props) {
   }
 
   const adMobAdOptions = {
-    // Riktigt ad-id för texttv
     adId: "ca-app-pub-1689239266452655/3336016805",
     isTesting: "LIVE",
-    banan: "SKAL",
     // google test ad
     // https://developers.google.com/admob/android/test-ads#sample_ad_units
     // adId: "ca-app-pub-3940256099942544/6300978111",
     adSize: "SMART_BANNER",
     position: "BOTTOM_CENTER",
-    // hasTabBar: true, // make it true if you have TabBar Layout.
-    // tabBarHeight: 56, // you can assign custom margin in pixel default is 56
     margin: tabHeight // RdLabo AdMob requires this to be a string (let adMargin = call.getString("margin") ?? "0"))
   };
 
@@ -213,7 +176,7 @@ function TextTVApp(props) {
     try {
       AdMob.showBanner(adMobAdOptions).then(
         value => {
-          // console.log("admob show banner ok", value); // true
+          console.log("admob show banner ok", value); // true
         },
         error => {
           // console.error("admob show banner error", error); // show error
@@ -224,9 +187,13 @@ function TextTVApp(props) {
         console.log("onAdFailedToLoad", info);
       });
 
+      AdMob.addListener("onAdSize", info => {
+        console.log("onAdSize", info);
+      });
+
       // Subscibe Banner Event Listener
       AdMob.addListener("onAdLoaded", info => {
-        // console.log("Banner Ad Loaded", info);
+        console.log("Banner Ad Loaded", info);
       })
         .then()
         .catch(e => {
