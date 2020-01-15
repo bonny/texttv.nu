@@ -86,6 +86,8 @@ const Header = props => {
       <IonBackButton defaultHref={backButtonDefaultHref} text="" />
     );
 
+  const favs = headerStyle === "HEADER_STYLE_STARTPAGE" ? <p>favoriter</p> : null;
+
   return (
     <>
       <IonHeader>
@@ -117,6 +119,7 @@ const Header = props => {
               }}
             >
               <IonIcon slot="icon-only" icon={more} mode="md" />
+              {favs}
             </IonButton>
           </IonButtons>
         </IonToolbar>
