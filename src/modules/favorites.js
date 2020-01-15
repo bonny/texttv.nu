@@ -8,6 +8,7 @@ export default [
   { title: "Målservice", pages: "376" },
   { title: "Målservice resultat", pages: "377" },
   { title: "Målservice & resultat", pages: "376-395" },
+  { title: "Väder", pages: "400" },
   { title: "TV-tablåer", pages: "600, 650-656" },
   { title: "Innehåll", pages: "700" }
 ];
