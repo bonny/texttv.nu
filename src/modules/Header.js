@@ -11,10 +11,11 @@ import {
   IonTitle,
   IonToast,
   IonToolbar,
-  isPlatform
+  isPlatform,
+  IonModal
 } from "@ionic/react";
 import { Link } from "react-router-dom";
-import { copy, link, more, open, refresh, share } from "ionicons/icons";
+import { copy, link, more, open, refresh, share, star } from "ionicons/icons";
 import React, { useState } from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
 import TextTVSearchBar from "./TextTVSearchBar";
@@ -27,7 +28,8 @@ const Header = props => {
     handleRefreshBtnClick,
     onCopyTextToClipboard,
     onCopyLinkToClipboard,
-    onOpenLinkInBrowser
+    onOpenLinkInBrowser,
+    editFavoritesButton
   } = props;
 
   // const backButtonDefaultHref = `/${match.params.tab}`;
@@ -86,8 +88,6 @@ const Header = props => {
       <IonBackButton defaultHref={backButtonDefaultHref} text="" />
     );
 
-  const favs = headerStyle === "HEADER_STYLE_STARTPAGE" ? <p>favoriter</p> : null;
-
   return (
     <>
       <IonHeader>
@@ -109,6 +109,7 @@ const Header = props => {
             <IonButton fill="clear" slot="end" onClick={handleRefreshBtnClick}>
               <IonIcon slot="icon-only" icon={refresh} mode="md" />
             </IonButton>
+
             <IonButton
               fill="clear"
               slot="end"
@@ -119,12 +120,10 @@ const Header = props => {
               }}
             >
               <IonIcon slot="icon-only" icon={more} mode="md" />
-              {favs}
             </IonButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-
       <IonPopover
         isOpen={showPopover}
         onDidDismiss={e => setShowPopover(false)}
@@ -149,9 +148,9 @@ const Header = props => {
               <IonLabel>Dela...</IonLabel>
             </IonItem>
           )}
+          {editFavoritesButton}
         </IonList>
       </IonPopover>
-
       <IonToast
         isOpen={actionPerformedToastOpened}
         onDidDismiss={() => {

@@ -7,7 +7,7 @@ import { isPlatform } from "@ionic/react";
 
 import { Analytics } from "capacitor-analytics";
 
-const { Clipboard } = Plugins;
+const { Clipboard, Storage } = Plugins;
 const analytics = new Analytics();
 
 const handleCopyTextToClipboard = (pageData, pageNum) => {
@@ -201,6 +201,11 @@ function getPageRangeInfo(pageRange) {
     count: 0,
     ranges: []
   };
+
+  // pageRange måste vara sträng.
+  if (typeof pageRange !== "string") {
+    pageRange = "";
+  }
 
   // Sidorna separeras med komma.
   let pageNums = pageRange.split(",");
@@ -501,6 +506,32 @@ function isRunningInWebBrowser() {
   return !isPlatform("ios") && !isPlatform("android");
 }
 
+const FAVORITES_DEFAULT_PAGES = ["100", "300", "700"];
+
+async function getFavorites() {
+  let favs;
+  const ret = await Storage.get({ key: "favorites" });
+  console.log("ret", ret);
+  try {
+    favs = JSON.parse(ret.value);
+  } catch (e) {
+    // Parse error.
+  }
+
+  if (favs === null || favs === undefined) {
+    favs = FAVORITES_DEFAULT_PAGES;
+  }
+  console.log("getFavorites", favs);
+  return favs;
+}
+
+async function saveFavorites(favs) {
+  await Storage.set({
+    key: "favorites",
+    value: JSON.stringify(favs)
+  });
+}
+
 export {
   getPageRangeInfo,
   getCacheBustTimeString,
@@ -523,5 +554,7 @@ export {
   handleCopyTextToClipboard,
   handleOpenLinkInBrowser,
   handleShare,
-  isRunningInWebBrowser
+  isRunningInWebBrowser,
+  getFavorites,
+  saveFavorites
 };

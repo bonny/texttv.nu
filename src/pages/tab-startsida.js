@@ -1,13 +1,25 @@
-import React, { useState, useEffect, useContext } from "react";
-import { IonGrid, IonRow, IonCol } from "@ionic/react";
-import PageTextTV from "./page-TextTV.js";
+import {
+  IonCol,
+  IonGrid,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonRow,
+  useIonViewWillEnter
+} from "@ionic/react";
+import { star } from "ionicons/icons";
+import React, { useContext, useEffect, useState } from "react";
+import {
+  getCurrentIonPageContentElm,
+  getCurrentIonPageScrollElm,
+  getFavorites,
+  getUnixtime,
+  saveFavorites
+} from "../functions";
+import RedigeraFavoriter from "../modules/RedigeraFavoriter";
 import SenastUppdaterat from "../modules/SenastUppdaterat";
 import TabContext from "../TabContext";
-import {
-  getUnixtime,
-  getCurrentIonPageContentElm,
-  getCurrentIonPageScrollElm
-} from "../functions";
+import PageTextTV from "./page-TextTV.js";
 
 const Startsida = props => {
   const tabsinfo = useContext(TabContext);
@@ -43,26 +55,66 @@ const Startsida = props => {
   }, [tabsinfoHem]);
 
   const handlePageTextTVRefresh = e => {
-    // console.log("handlePageTextTVRefresh", e);
     setLatestUpdatedPagesRefreshTime(getUnixtime());
   };
+
+  const [visaRedigeraFavoriter, setVisaRedigeraFavoriter] = useState(false);
 
   // Uppdatera dokument-titel.
   useEffect(() => {
     document.title = `Hem - SVT Text TV`;
   }, [latestUpdatedPagesRefreshTime]);
 
+  /**
+   * Knapp som vid klick visar redigera favoriter-modalen.
+   */
+  const editFavoritesButton = (
+    <IonItem
+      button
+      onClick={() => {
+        setVisaRedigeraFavoriter(true);
+      }}
+    >
+      <IonIcon slot="start" icon={star} />
+      <IonLabel>Ändra favoriter...</IonLabel>
+    </IonItem>
+  );
+
+  const [favoritePages, setFavoritePages] = useState([]);
+
+  useIonViewWillEnter(() => {
+    async function getFavs() {
+      const favoritePages = await getFavorites();
+      setFavoritePages(favoritePages);
+    }
+
+    getFavs();
+  });
+
   return (
     <>
       <PageTextTV
         {...props}
-        pageNum="100,300,700"
+        pageNum={favoritePages.join(",")}
         title="TextTV.nu"
         headerStyle="HEADER_STYLE_STARTPAGE"
         refreshTime={latestUpdatedPagesRefreshTime}
         onRefresh={handlePageTextTVRefresh}
+        editFavoritesButton={editFavoritesButton}
       >
-        <div>Favoriter yo</div>
+        <RedigeraFavoriter
+          isOpen={visaRedigeraFavoriter}
+          pages={favoritePages}
+          handleSaveModal={pages => {
+            setFavoritePages(pages);
+            saveFavorites(pages);
+            setVisaRedigeraFavoriter(false);
+          }}
+          handleCancelModal={() => {
+            setVisaRedigeraFavoriter(false);
+          }}
+        />
+
         <IonGrid no-padding>
           <IonRow className="ion-justify-content-center">
             <IonCol className="u-max-width-texttvpage ion-no-padding">
