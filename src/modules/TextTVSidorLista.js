@@ -3,40 +3,104 @@ import {
   IonLabel,
   IonList,
   IonListHeader,
-  IonNote
+  IonItemDivider,
+  IonItemGroup,
+  IonNote,
+  useIonViewWillEnter,
+  IonChip
 } from "@ionic/react";
-import React from "react";
+import React, { useState } from "react";
 import favorites from "./favorites";
+import { getFavorites } from "../functions";
 
 const TextTVSidorLista = props => {
   const { history, showHeader = true } = props;
+  const [favoritePages, setFavoritePages] = useState([]);
+
+  useIonViewWillEnter(() => {
+    async function getFavs() {
+      const favoritePages = await getFavorites();
+      setFavoritePages(favoritePages);
+      console.log("yo", favoritePages);
+    }
+
+    getFavs();
+  });
 
   return (
     <>
-      <IonList>
+      {/* <IonList>
         {showHeader && (
           <IonListHeader>
             <IonLabel>Sidor</IonLabel>
           </IonListHeader>
-        )}
+        )} */}
+
+      <IonList>
+        <IonListHeader>
+          <IonLabel>Favoriter</IonLabel>
+        </IonListHeader>
+
+        <IonItem lines="none" class="ion-text-wrap">
+          <IonLabel text-wrap class="ion-text-wrap">
+            {favoritePages.map(pageNum => {
+              const url = `/sidor/${pageNum}`;
+              return (
+                <IonChip
+                  button
+                  detail
+                  onClick={() => {
+                    history.push(url);
+                  }}
+                  key={pageNum}
+                  lines="none"
+                >
+                  <IonLabel>{pageNum}</IonLabel>
+                </IonChip>
+              );
+            })}
+          </IonLabel>
+        </IonItem>
+
+        {favoritePages.map(pageNum => {
+          const url = `/sidor/${pageNum}`;
+          return (
+            <IonItem
+              button
+              detail
+              onClick={() => {
+                history.push(url);
+              }}
+              key={pageNum}
+              lines="none"
+            >
+              <IonLabel text-wrap>
+                <h2 className="ListHeadlineSidor">{pageNum}</h2>
+              </IonLabel>
+            </IonItem>
+          );
+        })}
+      </IonList>
+
+      <IonList>
+        <IonListHeader>
+          <IonLabel>Sidor</IonLabel>
+        </IonListHeader>
 
         {favorites.map((page, index, arr) => {
-          // const lines = index === arr.length - 1 ? "none" : "inset";
           const url = `/sidor/${page.pages}`;
           return (
             <IonItem
               button
               detail
               onClick={() => {
-                // document.querySelector("ion-menu-controller").close();
                 history.push(url);
               }}
               key={page.pages}
-              lines='none'
+              lines="none"
             >
               <IonLabel text-wrap>
                 <h2 className="ListHeadlineSidor">{page.title}</h2>
-                {/* <p>{page.pages}</p> */}
               </IonLabel>
               <IonNote
                 slot="end"

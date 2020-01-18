@@ -81,7 +81,7 @@ const Startsida = props => {
   );
 
   const [favoritePages, setFavoritePages] = useState([]);
-
+    
   useIonViewWillEnter(() => {
     async function getFavs() {
       const favoritePages = await getFavorites();
