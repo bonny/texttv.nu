@@ -72,7 +72,9 @@ export default props => {
                 disabled={false}
                 no-padding
                 onIonItemReorder={itemReorderEventDetail => {
-                  setPageNums(itemReorderEventDetail.detail.complete([...pageNums]));
+                  setPageNums(
+                    itemReorderEventDetail.detail.complete([...pageNums])
+                  );
                 }}
               >
                 {pageNums.map(pagenum => {
@@ -136,7 +138,14 @@ export default props => {
             {
               text: "Lägg till",
               handler: values => {
-                setPageNums([...pageNums, values.pagenumber]);
+                // Lägg till nya sidan men se till att den inte redan finns
+                // och att den är ett giltigt nummer.
+                if (values.pagenumber < 100 || values.pagenumber > 999) {
+                  return false;
+                }
+                let pageNumWithNewNum = [...pageNums, values.pagenumber];
+                pageNumWithNewNum = [...new Set(pageNumWithNewNum)];
+                setPageNums(pageNumWithNewNum);
               }
             }
           ]}
