@@ -11,11 +11,10 @@ import {
   IonTitle,
   IonToast,
   IonToolbar,
-  isPlatform,
-  IonModal
+  isPlatform
 } from "@ionic/react";
 import { Link } from "react-router-dom";
-import { copy, link, more, open, refresh, share, star } from "ionicons/icons";
+import { copy, link, more, open, refresh, share } from "ionicons/icons";
 import React, { useState } from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
 import TextTVSearchBar from "./TextTVSearchBar";

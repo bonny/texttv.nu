@@ -3,8 +3,6 @@ import {
   IonLabel,
   IonList,
   IonListHeader,
-  IonItemDivider,
-  IonItemGroup,
   IonNote,
   useIonViewWillEnter,
   IonChip
@@ -14,7 +12,7 @@ import favorites from "./favorites";
 import { getFavorites } from "../functions";
 
 const TextTVSidorLista = props => {
-  const { history, showHeader = true } = props;
+  const { history } = props;
   const [favoritePages, setFavoritePages] = useState([]);
 
   useIonViewWillEnter(() => {
@@ -29,13 +27,6 @@ const TextTVSidorLista = props => {
 
   return (
     <>
-      {/* <IonList>
-        {showHeader && (
-          <IonListHeader>
-            <IonLabel>Sidor</IonLabel>
-          </IonListHeader>
-        )} */}
-
       <IonList>
         <IonListHeader>
           <IonLabel>Favoriter</IonLabel>
