@@ -14,7 +14,7 @@ import {
 import MestLasta from "../modules/MestLasta";
 import TextTVHeader from "../modules/TextTVHeader";
 import TextTVRefresher from "../modules/TextTVRefresher";
-import TabContext from "../TabContext";
+import TabContext from "../contexts/TabContext";
 
 export default props => {
   const { history } = props;

@@ -14,7 +14,7 @@ const Menu = props => {
     <IonMenu
       side="start"
       menuId="mainMenu"
-      contentId="menuContent"
+      contentId="routerOutletElm"
       type="overlay"
       swipeGesture={false}
     >

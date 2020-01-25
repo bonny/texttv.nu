@@ -2,7 +2,7 @@ import { IonPage, IonContent, IonToolbar } from "@ionic/react";
 import React, { useContext, useEffect } from "react";
 import TextTVHeader from "../modules/TextTVHeader";
 import TextTVSearchBar from "../modules/TextTVSearchBar";
-import TabContext from "../TabContext";
+import TabContext from "../contexts/TabContext";
 import {
   getCurrentIonPageContentElm,
   getCurrentIonPageScrollElm
