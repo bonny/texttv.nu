@@ -18,7 +18,7 @@ import {
 } from "../functions";
 import RedigeraFavoriter from "../modules/RedigeraFavoriter";
 import SenastUppdaterat from "../modules/SenastUppdaterat";
-import TabContext from "../contexts/TabContext";
+import { TabContext } from "../contexts/TabContext";
 import PageTextTV from "./page-TextTV.js";
 
 const Startsida = props => {

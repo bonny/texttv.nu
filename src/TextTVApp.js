@@ -26,7 +26,7 @@ import TabNyast from "./pages/tab-nyast";
 import TabPopulart from "./pages/tab-mest-last";
 import TabSidor from "./pages/tab-sidor";
 import Startsida from "./pages/tab-startsida";
-import TabContext from "./contexts/TabContext";
+import { TabContext } from "./contexts/TabContext";
 import { getUnixtime } from "./functions";
 import { Analytics } from "capacitor-analytics";
 import PageCatchAll from "./pages/PageCatchAll";
