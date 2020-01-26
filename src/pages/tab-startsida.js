@@ -4,15 +4,13 @@ import {
   IonIcon,
   IonItem,
   IonLabel,
-  IonRow,
-  useIonViewWillEnter
+  IonRow
 } from "@ionic/react";
 import { star } from "ionicons/icons";
 import React, { useContext, useEffect, useState } from "react";
 import {
   getCurrentIonPageContentElm,
   getCurrentIonPageScrollElm,
-  getFavorites,
   getUnixtime,
   saveFavorites
 } from "../functions";
@@ -20,10 +18,12 @@ import RedigeraFavoriter from "../modules/RedigeraFavoriter";
 import SenastUppdaterat from "../modules/SenastUppdaterat";
 import { TabContext } from "../contexts/TabContext";
 import PageTextTV from "./page-TextTV.js";
+import { FavoritesContext } from "../contexts/FavoritesContext";
 
 const Startsida = props => {
   const tabsinfo = useContext(TabContext);
   const tabsinfoHem = tabsinfo.tabs.hem;
+  const userFavorites = useContext(FavoritesContext);
 
   const [
     latestUpdatedPagesRefreshTime,
@@ -80,22 +80,11 @@ const Startsida = props => {
     </IonItem>
   );
 
-  const [favoritePages, setFavoritePages] = useState([]);
-    
-  useIonViewWillEnter(() => {
-    async function getFavs() {
-      const favoritePages = await getFavorites();
-      setFavoritePages(favoritePages);
-    }
-
-    getFavs();
-  });
-
   return (
     <>
       <PageTextTV
         {...props}
-        pageNum={favoritePages.join(",")}
+        pageNum={userFavorites.join(",")}
         title="TextTV.nu"
         headerStyle="HEADER_STYLE_STARTPAGE"
         refreshTime={latestUpdatedPagesRefreshTime}
@@ -104,9 +93,9 @@ const Startsida = props => {
       >
         <RedigeraFavoriter
           isOpen={visaRedigeraFavoriter}
-          pages={favoritePages}
+          pages={userFavorites}
           handleSaveModal={pages => {
-            setFavoritePages(pages);
+            // setFavoritePages(pages);
             saveFavorites(pages);
             setVisaRedigeraFavoriter(false);
           }}

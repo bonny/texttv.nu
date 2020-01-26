@@ -4,26 +4,15 @@ import {
   IonList,
   IonListHeader,
   IonNote,
-  useIonViewWillEnter,
   IonChip
 } from "@ionic/react";
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import favorites from "./favorites";
-import { getFavorites } from "../functions";
+import { FavoritesContext } from "../contexts/FavoritesContext";
 
 const TextTVSidorLista = props => {
   const { history } = props;
-  const [favoritePages, setFavoritePages] = useState([]);
-
-  useIonViewWillEnter(() => {
-    async function getFavs() {
-      const favoritePages = await getFavorites();
-      setFavoritePages(favoritePages);
-      console.log("yo", favoritePages);
-    }
-
-    getFavs();
-  });
+  const userFavorites = useContext(FavoritesContext);
 
   return (
     <>
@@ -34,7 +23,7 @@ const TextTVSidorLista = props => {
 
         <IonItem lines="none" class="ion-text-wrap">
           <IonLabel text-wrap class="ion-text-wrap">
-            {favoritePages.map(pageNum => {
+            {userFavorites.map(pageNum => {
               const url = `/sidor/${pageNum}`;
               return (
                 <IonChip

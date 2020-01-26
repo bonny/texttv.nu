@@ -508,10 +508,14 @@ function isRunningInWebBrowser() {
 
 const FAVORITES_DEFAULT_PAGES = ["100", "300", "700"];
 
-async function getFavorites() {
+/**
+ * @async
+ * @return {Promise<array>} Favoriter som array.
+ */
+async function loadFavorites() {
   let favs;
   const ret = await Storage.get({ key: "favorites" });
-  console.log("ret", ret);
+
   try {
     favs = JSON.parse(ret.value);
   } catch (e) {
@@ -521,7 +525,7 @@ async function getFavorites() {
   if (favs === null || favs === undefined) {
     favs = FAVORITES_DEFAULT_PAGES;
   }
-  console.log("getFavorites", favs);
+  console.log("loadFavorites från storage", favs);
   return favs;
 }
 
@@ -555,6 +559,7 @@ export {
   handleOpenLinkInBrowser,
   handleShare,
   isRunningInWebBrowser,
-  getFavorites,
-  saveFavorites
+  loadFavorites,
+  saveFavorites,
+  FAVORITES_DEFAULT_PAGES
 };

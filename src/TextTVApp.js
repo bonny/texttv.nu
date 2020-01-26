@@ -27,14 +27,16 @@ import TabPopulart from "./pages/tab-mest-last";
 import TabSidor from "./pages/tab-sidor";
 import Startsida from "./pages/tab-startsida";
 import { TabContext } from "./contexts/TabContext";
-import { getUnixtime } from "./functions";
+import { FavoritesContext } from "./contexts/FavoritesContext";
+import {
+  getUnixtime,
+  loadFavorites,
+  FAVORITES_DEFAULT_PAGES
+} from "./functions";
 import { Analytics } from "capacitor-analytics";
 import PageCatchAll from "./pages/PageCatchAll";
 
-// Firebase App (the core Firebase SDK) is always required and must be listed first
 import * as firebase from "firebase/app";
-
-// If you enabled Analytics in your project, add the Firebase SDK for Analytics
 import "firebase/analytics";
 
 const { SplashScreen, AdMob, StatusBar } = Plugins;
@@ -74,7 +76,29 @@ StatusBar.setStyle({
   style: StatusBarStyle.Dark
 });
 
+const detfaultTabinfoState = {
+  lastClicked: {
+    name: null,
+    time: null
+  },
+  prevClicked: {
+    name: null,
+    time: null
+  },
+  isNewTab: undefined,
+  isSameTab: undefined,
+  tabs: {
+    hem: {},
+    sidor: {},
+    nyast: {},
+    populart: {}
+  }
+};
+
 function TextTVApp(props) {
+  const [tabsinfo, setTabsinfo] = useState(detfaultTabinfoState);
+  const [favorites, setFavorites] = useState(FAVORITES_DEFAULT_PAGES);
+
   /**
    * När en tab klickas på så sätter vi tidpunkt för klicket
    * i state tabsinfo. Denna info används sedan i context TabContext
@@ -122,26 +146,16 @@ function TextTVApp(props) {
     });
   };
 
-  const detfaultTabinfoState = {
-    lastClicked: {
-      name: null,
-      time: null
-    },
-    prevClicked: {
-      name: null,
-      time: null
-    },
-    isNewTab: undefined,
-    isSameTab: undefined,
-    tabs: {
-      hem: {},
-      sidor: {},
-      nyast: {},
-      populart: {}
+  // Ladda in favoriter från storage när app startas.
+  useEffect(() => {
+    async function getFavs() {
+      const favoritePages = await loadFavorites();
+      setFavorites(favoritePages);
+      console.log("Hämtade favoriter när app startades", favoritePages);
     }
-  };
 
-  const [tabsinfo, setTabsinfo] = useState(detfaultTabinfoState);
+    getFavs();
+  }, []);
 
   // Avgör höjd på flikarna/tabbarn, dvs. hur många pixlar ska
   // annonsen flyttas upp för att inte vara iväg för flikarna.
@@ -207,109 +221,115 @@ function TextTVApp(props) {
 
   return (
     <TabContext.Provider value={tabsinfo}>
-      <IonApp>
-        <IonReactRouter>
-          {/* <BackButtonListenerWithRouter {...props} /> */}
-          <Route exact path="/" render={() => <Redirect to="/hem" />} />
-          <IonSplitPane contentId="mainContent">
-            <MenuWithRouter {...props} />
-            <div id="mainContent">
-              <IonTabs id="mainTabs">
-                <IonRouterOutlet id="routerOutletElm">
-                  <Route path="/test" component={PageTest} />
-                  <Route path="/testar" component={PageTestar} exact={true} />
-                  <Route
-                    path="/testar/undersida/:undersida/"
-                    component={PageTestarUndersida}
-                  />
-                  <Route path="/hem" component={Startsida} exact={true} />
-                  <Route path="/hem/:pageNum" component={PageTextTV} />
+      <FavoritesContext.Provider value={favorites}>
+        <IonApp>
+          <IonReactRouter>
+            {/* <BackButtonListenerWithRouter {...props} /> */}
+            <Route exact path="/" render={() => <Redirect to="/hem" />} />
+            <IonSplitPane contentId="mainContent">
+              <MenuWithRouter {...props} />
+              <div id="mainContent">
+                <IonTabs id="mainTabs">
+                  <IonRouterOutlet id="routerOutletElm">
+                    <Route path="/test" component={PageTest} />
+                    <Route path="/testar" component={PageTestar} exact={true} />
+                    <Route
+                      path="/testar/undersida/:undersida/"
+                      component={PageTestarUndersida}
+                    />
+                    <Route path="/hem" component={Startsida} exact={true} />
+                    <Route path="/hem/:pageNum" component={PageTextTV} />
 
-                  <Route path="/arkiv" component={TabPopulart} exact={true} />
-                  <Route
-                    path="/arkiv/:pageNum"
-                    component={PageTextTV}
-                    exact={true}
-                  />
-                  <Route
-                    path="/arkiv/:pageNum/:pageId/"
-                    component={PageTextTV}
-                    exact={true}
-                  />
+                    <Route path="/arkiv" component={TabPopulart} exact={true} />
+                    <Route
+                      path="/arkiv/:pageNum"
+                      component={PageTextTV}
+                      exact={true}
+                    />
+                    <Route
+                      path="/arkiv/:pageNum/:pageId/"
+                      component={PageTextTV}
+                      exact={true}
+                    />
 
-                  <Route path="/sidor" component={TabSidor} exact={true} />
-                  <Route path="/sidor/:pageNum" component={PageTextTV} />
+                    <Route path="/sidor" component={TabSidor} exact={true} />
+                    <Route path="/sidor/:pageNum" component={PageTextTV} />
 
-                  <Route path="/nyast" component={TabNyast} exact={true} />
-                  <Route path="/nyast/:pageNum" component={PageTextTV} />
+                    <Route path="/nyast" component={TabNyast} exact={true} />
+                    <Route path="/nyast/:pageNum" component={PageTextTV} />
 
-                  {/* 
+                    {/* 
                   Fallback för url som är sidnummer direkt, t.ex. "/100".
                   Bra om man t.ex. hijackar url och skriver sida där manuellt.
                   */}
-                  <Route
-                    path="/:pageNum([0-9]{3}.*)"
-                    component={PageCatchAll}
-                  />
-                </IonRouterOutlet>
+                    <Route
+                      path="/:pageNum([0-9]{3}.*)"
+                      component={PageCatchAll}
+                    />
+                  </IonRouterOutlet>
 
-                <IonTabBar slot="bottom">
-                  <IonTabButton tab="hem" href="/hem" onClick={handleTabClick}>
-                    <IonIcon icon={home} mode="md" />
-                    <IonLabel>Hem</IonLabel>
-                  </IonTabButton>
+                  <IonTabBar slot="bottom">
+                    <IonTabButton
+                      tab="hem"
+                      href="/hem"
+                      onClick={handleTabClick}
+                    >
+                      <IonIcon icon={home} mode="md" />
+                      <IonLabel>Hem</IonLabel>
+                    </IonTabButton>
 
-                  <IonTabButton
-                    tab="sidor"
-                    href="/sidor"
-                    className="ion-hide-lg-up"
-                    onClick={handleTabClick}
-                  >
-                    <IonIcon icon={listBox} mode="md" />
-                    <IonLabel>Sidor</IonLabel>
-                  </IonTabButton>
+                    <IonTabButton
+                      tab="sidor"
+                      href="/sidor"
+                      className="ion-hide-lg-up"
+                      onClick={handleTabClick}
+                    >
+                      <IonIcon icon={listBox} mode="md" />
+                      <IonLabel>Sidor</IonLabel>
+                    </IonTabButton>
 
-                  <IonTabButton
-                    tab="nyast"
-                    href="/nyast"
-                    onClick={handleTabClick}
-                  >
-                    <IonIcon icon={clock} mode="md" />
-                    <IonLabel>Nyast</IonLabel>
-                  </IonTabButton>
+                    <IonTabButton
+                      tab="nyast"
+                      href="/nyast"
+                      onClick={handleTabClick}
+                    >
+                      <IonIcon icon={clock} mode="md" />
+                      <IonLabel>Nyast</IonLabel>
+                    </IonTabButton>
 
-                  <IonTabButton
-                    tab="populart"
-                    href="/arkiv"
-                    onClick={handleTabClick}
-                    // onClick={props => {
-                    //   console.log(
-                    //     "navcontext",
-                    //     navcontext,
-                    //     navcontext.navigate
-                    //   );
+                    <IonTabButton
+                      tab="populart"
+                      href="/arkiv"
+                      onClick={handleTabClick}
+                      // onClick={props => {
+                      //   console.log(
+                      //     "navcontext",
+                      //     navcontext,
+                      //     navcontext.navigate
+                      //   );
 
-                    //   navcontext.navigate("/sidor/123");
-                    //   // return (React.createElement(IonTabBarUnwrapped, Object.assign({}, props, { navigate: props.navigate || ((path, direction) => {
-                    //         context.navigate(path, direction);
-                    //     }), currentPath: props.currentPath || context.currentPath }), props.children));
-                    // }}
-                  >
-                    {/* <TestWithRouter
+                      //   navcontext.navigate("/sidor/123");
+                      //   // return (React.createElement(IonTabBarUnwrapped, Object.assign({}, props, { navigate: props.navigate || ((path, direction) => {
+                      //         context.navigate(path, direction);
+                      //     }), currentPath: props.currentPath || context.currentPath }), props.children));
+                      // }}
+                    >
+                      {/* <TestWithRouter
                       onClick={props => {
                         console.log("click testwithrouter", this, props);
                         props.history.push("/sidor/101");
                       }}
                     /> */}
-                    <IonIcon icon={eye} mode="md" />
-                    <IonLabel>Mest läst</IonLabel>
-                  </IonTabButton>
-                </IonTabBar>
-              </IonTabs>
-            </div>
-          </IonSplitPane>
-        </IonReactRouter>
-      </IonApp>
+                      <IonIcon icon={eye} mode="md" />
+                      <IonLabel>Mest läst</IonLabel>
+                    </IonTabButton>
+                  </IonTabBar>
+                </IonTabs>
+              </div>
+            </IonSplitPane>
+          </IonReactRouter>
+        </IonApp>
+      </FavoritesContext.Provider>
     </TabContext.Provider>
   );
 }
