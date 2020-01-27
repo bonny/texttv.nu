@@ -18,7 +18,11 @@ import {
 } from "@ionic/react";
 import { clock, eye, home, listBox } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
-import { getCacheBustTimeString, isRunningInWebBrowser, useMountEffect } from "./functions";
+import {
+  getCacheBustTimeString,
+  isRunningInWebBrowser,
+  useMountEffect
+} from "./functions";
 import { MenuWithRouter } from "./modules/SideMenu";
 import PageTextTV from "./pages/page-TextTV.js";
 import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
@@ -91,6 +95,26 @@ const detfaultTabinfoState = {
   }
 };
 
+// Avgör höjd på flikarna/tabbarn, dvs. hur många pixlar ska
+// annonsen flyttas upp för att inte vara iväg för flikarna.
+let tabHeight;
+
+if (isPlatform("android")) {
+  // On Android the tab height is 50px.
+  tabHeight = 56;
+} else if (isPlatform("ios")) {
+  // On IOS the tab height is 56 px.
+  tabHeight = 50;
+} else {
+  // Fall tillbaka på 50.
+  tabHeight = 50;
+}
+
+document.documentElement.style.setProperty(
+  "--text-tv-tab-bar-height",
+  `${tabHeight}px`
+);
+
 function TextTVApp(props) {
   const [tabsinfo, setTabsinfo] = useState(detfaultTabinfoState);
 
@@ -100,7 +124,7 @@ function TextTVApp(props) {
       setFavorites({ ...favorites, pages: pages });
     }
   };
-  
+
   const [favorites, setFavorites] = useState(initialFavoritesState);
 
   /**
@@ -160,26 +184,6 @@ function TextTVApp(props) {
     getFavs();
   });
 
-  // Avgör höjd på flikarna/tabbarn, dvs. hur många pixlar ska
-  // annonsen flyttas upp för att inte vara iväg för flikarna.
-  let tabHeight;
-
-  if (isPlatform("android")) {
-    // On Android the tab height is 50px.
-    tabHeight = 56;
-  } else if (isPlatform("ios")) {
-    // On IOS the tab height is 56 px.
-    tabHeight = 50;
-  } else {
-    // Fall tillbaka på 50.
-    tabHeight = 50;
-  }
-
-  document.documentElement.style.setProperty(
-    "--text-tv-tab-bar-height",
-    `${tabHeight}px`
-  );
-
   const adMobAdOptions = {
     adId: "ca-app-pub-1689239266452655/3336016805",
     // google test ad
@@ -192,18 +196,7 @@ function TextTVApp(props) {
 
   useEffect(() => {
     try {
-      AdMob.showBanner(adMobAdOptions).then(
-        value => {
-          // console.log("admob show banner ok", value); // true
-        },
-        error => {
-          // console.error("admob show banner error", error); // show error
-        }
-      );
-
-      // AdMob.addListener("onAdFailedToLoad", info => {
-      //   console.log("onAdFailedToLoad", info);
-      // });
+      AdMob.showBanner(adMobAdOptions).then();
 
       // Callback när en annons visas. size = object med bredd och höjd, ca såhär:
       // {"width":375,"height":50}
@@ -304,25 +297,7 @@ function TextTVApp(props) {
                       tab="populart"
                       href="/arkiv"
                       onClick={handleTabClick}
-                      // onClick={props => {
-                      //   console.log(
-                      //     "navcontext",
-                      //     navcontext,
-                      //     navcontext.navigate
-                      //   );
-
-                      //   navcontext.navigate("/sidor/123");
-                      //   // return (React.createElement(IonTabBarUnwrapped, Object.assign({}, props, { navigate: props.navigate || ((path, direction) => {
-                      //         context.navigate(path, direction);
-                      //     }), currentPath: props.currentPath || context.currentPath }), props.children));
-                      // }}
                     >
-                      {/* <TestWithRouter
-                      onClick={props => {
-                        console.log("click testwithrouter", this, props);
-                        props.history.push("/sidor/101");
-                      }}
-                    /> */}
                       <IonIcon icon={eye} mode="md" />
                       <IonLabel>Mest läst</IonLabel>
                     </IonTabButton>

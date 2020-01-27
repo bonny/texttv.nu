@@ -150,6 +150,7 @@ const Header = props => {
           {editFavoritesButton}
         </IonList>
       </IonPopover>
+
       <IonToast
         isOpen={actionPerformedToastOpened}
         onDidDismiss={() => {
