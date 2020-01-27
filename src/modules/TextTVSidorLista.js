@@ -13,6 +13,7 @@ import { FavoritesContext } from "../contexts/FavoritesContext";
 const TextTVSidorLista = props => {
   const { history } = props;
   const userFavorites = useContext(FavoritesContext);
+  console.log('userFavorites in texttvsidorlista', userFavorites.pages);
 
   return (
     <>
@@ -23,7 +24,7 @@ const TextTVSidorLista = props => {
 
         <IonItem lines="none" class="ion-text-wrap">
           <IonLabel text-wrap class="ion-text-wrap">
-            {userFavorites.map(pageNum => {
+            {userFavorites.pages.map(pageNum => {
               const url = `/sidor/${pageNum}`;
               return (
                 <IonChip

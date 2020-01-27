@@ -111,6 +111,11 @@ export default props => {
     setPageIsLoading(true);
 
     async function fetchPageContents() {
+      // Baila om ingen sida är satt.
+      if (!pageNum && !pageId) {
+        return;
+      }
+
       // Hämta senaste sidan om bara pageNum,
       // hämta arkiv-sida om pageId
       let url;

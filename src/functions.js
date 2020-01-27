@@ -522,7 +522,9 @@ async function loadFavorites() {
     // Parse error.
   }
 
-  if (favs === null || favs === undefined) {
+  // Sätt till default-favoriter om man saknar favoriter (eller om något gått fel vid laddning).
+  if (favs === null || favs === undefined || favs.length === 0) {
+    console.log("sätt favs till default", favs);
     favs = FAVORITES_DEFAULT_PAGES;
   }
   console.log("loadFavorites från storage", favs);

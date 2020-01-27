@@ -30,6 +30,8 @@ const Startsida = props => {
     setLatestUpdatedPagesRefreshTime
   ] = useState(getUnixtime());
 
+  const [visaRedigeraFavoriter, setVisaRedigeraFavoriter] = useState(false);
+
   // Scrolla till toppen om vi klickar på denna sidan tab igen
   // och vi är inte längst uppe redan
   // Dvs. klickad tab = hem men vi är inte scrollade längst upp.
@@ -58,8 +60,6 @@ const Startsida = props => {
     setLatestUpdatedPagesRefreshTime(getUnixtime());
   };
 
-  const [visaRedigeraFavoriter, setVisaRedigeraFavoriter] = useState(false);
-
   // Uppdatera dokument-titel.
   useEffect(() => {
     document.title = `Hem - SVT Text TV`;
@@ -84,7 +84,7 @@ const Startsida = props => {
     <>
       <PageTextTV
         {...props}
-        pageNum={userFavorites.join(",")}
+        pageNum={userFavorites.pages.join(",")}
         title="TextTV.nu"
         headerStyle="HEADER_STYLE_STARTPAGE"
         refreshTime={latestUpdatedPagesRefreshTime}
@@ -93,10 +93,14 @@ const Startsida = props => {
       >
         <RedigeraFavoriter
           isOpen={visaRedigeraFavoriter}
-          pages={userFavorites}
+          pages={userFavorites.pages}
           handleSaveModal={pages => {
-            // setFavoritePages(pages);
+            // Spara till storage
             saveFavorites(pages);
+            // Uppdatera sidor i context
+            console.log("uppdatera favs i context", userFavorites);
+            userFavorites.setPages(pages);
+            // setFavoritePages(pages);
             setVisaRedigeraFavoriter(false);
           }}
           handleCancelModal={() => {

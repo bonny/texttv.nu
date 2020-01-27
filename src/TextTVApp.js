@@ -28,11 +28,7 @@ import TabSidor from "./pages/tab-sidor";
 import Startsida from "./pages/tab-startsida";
 import { TabContext } from "./contexts/TabContext";
 import { FavoritesContext } from "./contexts/FavoritesContext";
-import {
-  getUnixtime,
-  loadFavorites,
-  FAVORITES_DEFAULT_PAGES
-} from "./functions";
+import { getUnixtime, loadFavorites } from "./functions";
 import { Analytics } from "capacitor-analytics";
 import PageCatchAll from "./pages/PageCatchAll";
 
@@ -97,7 +93,15 @@ const detfaultTabinfoState = {
 
 function TextTVApp(props) {
   const [tabsinfo, setTabsinfo] = useState(detfaultTabinfoState);
-  const [favorites, setFavorites] = useState(FAVORITES_DEFAULT_PAGES);
+
+  const initialFavoritesState = {
+    pages: [],
+    setPages: pages => {
+      console.log("updatePages", pages);
+      setFavorites({ ...favorites, pages: pages });
+    }
+  };
+  const [favorites, setFavorites] = useState(initialFavoritesState);
 
   /**
    * När en tab klickas på så sätter vi tidpunkt för klicket
@@ -149,8 +153,11 @@ function TextTVApp(props) {
   // Ladda in favoriter från storage när app startas.
   useEffect(() => {
     async function getFavs() {
+      console.log("getFavs in TextTVApp.js");
       const favoritePages = await loadFavorites();
-      setFavorites(favoritePages);
+      console.log("getFavs got ", favoritePages);
+      // setFavorites(favoritePages);
+      favorites.setPages(favoritePages);
       console.log("Hämtade favoriter när app startades", favoritePages);
     }
 
