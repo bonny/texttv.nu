@@ -100,6 +100,7 @@ function TextTVApp(props) {
       setFavorites({ ...favorites, pages: pages });
     }
   };
+  
   const [favorites, setFavorites] = useState(initialFavoritesState);
 
   /**

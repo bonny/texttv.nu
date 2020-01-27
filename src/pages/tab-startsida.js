@@ -22,15 +22,14 @@ import { FavoritesContext } from "../contexts/FavoritesContext";
 
 const Startsida = props => {
   const tabsinfo = useContext(TabContext);
-  const tabsinfoHem = tabsinfo.tabs.hem;
   const userFavorites = useContext(FavoritesContext);
-
   const [
     latestUpdatedPagesRefreshTime,
     setLatestUpdatedPagesRefreshTime
   ] = useState(getUnixtime());
-
   const [visaRedigeraFavoriter, setVisaRedigeraFavoriter] = useState(false);
+
+  const tabsinfoHem = tabsinfo.tabs.hem;
 
   // Scrolla till toppen om vi klickar på denna sidan tab igen
   // och vi är inte längst uppe redan
@@ -98,10 +97,10 @@ const Startsida = props => {
             // Spara till storage
             saveFavorites(pages);
             // Uppdatera sidor i context
-            console.log("uppdatera favs i context", userFavorites);
             userFavorites.setPages(pages);
             // setFavoritePages(pages);
             setVisaRedigeraFavoriter(false);
+            // Visa toast.
           }}
           handleCancelModal={() => {
             setVisaRedigeraFavoriter(false);

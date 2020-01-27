@@ -14,7 +14,8 @@ import {
   IonReorderGroup,
   IonRow,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonToast
 } from "@ionic/react";
 import { add, close } from "ionicons/icons";
 import React, { useState, useEffect } from "react";
@@ -23,134 +24,155 @@ export default props => {
   const { isOpen, pages, handleSaveModal, handleCancelModal } = props;
   const [showAddPageAlert, setShowAddPageAlert] = useState(false);
   const [pageNums, setPageNums] = useState([]);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
 
   useEffect(() => {
     setPageNums(pages);
   }, [pages]);
 
   return (
-    <IonModal isOpen={isOpen}>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Favoriter</IonTitle>
-          <IonButtons slot="primary">
-            <IonButton
-              fill="clear"
-              color="secondary"
-              onClick={() => {
-                handleSaveModal(pageNums);
-              }}
-            >
-              Spara
-            </IonButton>
-          </IonButtons>
-          <IonButtons slot="secondary">
-            <IonButton
-              fill="clear"
-              color="secondary"
-              onClick={() => {
-                setPageNums(pages);
-                handleCancelModal();
-              }}
-            >
-              Avbryt
-            </IonButton>
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-        <IonGrid>
-          <IonRow>
-            <IonCol class="ion-margin">
-              <p>Sidorna du anger här visas när du går till startsidan/hem.</p>
-            </IonCol>
-          </IonRow>
-
-          <IonRow>
-            <IonCol>
-              <IonReorderGroup
-                disabled={false}
-                no-padding
-                onIonItemReorder={itemReorderEventDetail => {
-                  setPageNums(
-                    itemReorderEventDetail.detail.complete([...pageNums])
-                  );
-                }}
-              >
-                {pageNums.map(pagenum => {
-                  return (
-                    <IonItem key={pagenum}>
-                      <IonLabel>{pagenum}</IonLabel>
-                      <IonReorder slot="start" />
-                      <IonIcon
-                        slot="end"
-                        icon={close}
-                        onClick={e => {
-                          setPageNums(pageNums.filter(num => num !== pagenum));
-                        }}
-                      />
-                    </IonItem>
-                  );
-                })}
-              </IonReorderGroup>
-            </IonCol>
-          </IonRow>
-
-          <IonRow>
-            <IonCol>
+    <>
+      <IonModal isOpen={isOpen}>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Favoriter</IonTitle>
+            <IonButtons slot="primary">
               <IonButton
-                fill="outline"
+                fill="clear"
                 color="secondary"
                 onClick={() => {
-                  setShowAddPageAlert(true);
+                  setToastMessage("🌟Favoriterna sparades 👍");
+                  setShowToast(true);
+                  handleSaveModal(pageNums);
                 }}
               >
-                <IonIcon slot="icon-only" icon={add} />
-                Lägg till sida…
+                Spara
               </IonButton>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+            </IonButtons>
+            <IonButtons slot="secondary">
+              <IonButton
+                fill="clear"
+                color="secondary"
+                onClick={() => {
+                  setPageNums(pages);
+                  handleCancelModal();
+                }}
+              >
+                Avbryt
+              </IonButton>
+            </IonButtons>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent>
+          <IonGrid>
+            <IonRow>
+              <IonCol class="ion-margin">
+                <p>
+                  Sidorna du anger här visas när du går till startsidan/hem.
+                </p>
+              </IonCol>
+            </IonRow>
 
-        <IonAlert
-          isOpen={showAddPageAlert}
-          onDidDismiss={() => setShowAddPageAlert(false)}
-          header="Lägg till"
-          message="Ange sida att lägga till."
-          inputs={[
-            {
-              name: "pagenumber",
-              type: "number",
-              min: 100,
-              max: 999,
-              placeholder: "T.ex. 100 eller 377."
-            }
-          ]}
-          buttons={[
-            {
-              text: "Avbryt",
-              role: "cancel",
-              cssClass: "secondary",
-              handler: () => {
-                console.log("Confirm Cancel");
+            <IonRow>
+              <IonCol>
+                <IonReorderGroup
+                  disabled={false}
+                  no-padding
+                  onIonItemReorder={itemReorderEventDetail => {
+                    setPageNums(
+                      itemReorderEventDetail.detail.complete([...pageNums])
+                    );
+                  }}
+                >
+                  {pageNums.map(pagenum => {
+                    return (
+                      <IonItem key={pagenum}>
+                        <IonLabel>{pagenum}</IonLabel>
+                        <IonReorder slot="start" />
+                        <IonIcon
+                          slot="end"
+                          icon={close}
+                          onClick={e => {
+                            setPageNums(
+                              pageNums.filter(num => num !== pagenum)
+                            );
+                          }}
+                        />
+                      </IonItem>
+                    );
+                  })}
+                </IonReorderGroup>
+              </IonCol>
+            </IonRow>
+
+            <IonRow>
+              <IonCol>
+                <IonButton
+                  fill="outline"
+                  color="secondary"
+                  onClick={() => {
+                    setShowAddPageAlert(true);
+                  }}
+                >
+                  <IonIcon slot="icon-only" icon={add} />
+                  Lägg till sida…
+                </IonButton>
+              </IonCol>
+            </IonRow>
+          </IonGrid>
+
+          <IonAlert
+            isOpen={showAddPageAlert}
+            onDidDismiss={() => setShowAddPageAlert(false)}
+            header="Lägg till"
+            message="Ange sida att lägga till."
+            inputs={[
+              {
+                name: "pagenumber",
+                type: "number",
+                min: 100,
+                max: 999,
+                placeholder: "T.ex. 100 eller 377."
               }
-            },
-            {
-              text: "Lägg till",
-              handler: values => {
-                // Lägg till nya sidan men se till att den inte redan finns
-                // och att den är ett giltigt nummer.
-                if (values.pagenumber < 100 || values.pagenumber > 999) {
-                  return false;
+            ]}
+            buttons={[
+              {
+                text: "Avbryt",
+                role: "cancel",
+                cssClass: "secondary",
+                handler: () => {
+                  console.log("Confirm Cancel");
                 }
-                let pageNumWithNewNum = [...pageNums, values.pagenumber];
-                pageNumWithNewNum = [...new Set(pageNumWithNewNum)];
-                setPageNums(pageNumWithNewNum);
+              },
+              {
+                text: "Lägg till",
+                handler: values => {
+                  // Lägg till nya sidan men se till att den inte redan finns
+                  // och att den är ett giltigt nummer.
+                  if (values.pagenumber < 100 || values.pagenumber > 999) {
+                    return false;
+                  }
+                  let pageNumWithNewNum = [...pageNums, values.pagenumber];
+                  pageNumWithNewNum = [...new Set(pageNumWithNewNum)];
+                  setPageNums(pageNumWithNewNum);
+                }
               }
-            }
-          ]}
-        />
-      </IonContent>
-    </IonModal>
+            ]}
+          />
+        </IonContent>
+      </IonModal>
+
+      <IonToast
+        isOpen={showToast}
+        onDidDismiss={() => {
+          setShowToast(false);
+        }}
+        message={toastMessage}
+        position="bottom"
+        duration="2500"
+        cssClass="TextTVPage_Toast"
+      />
+    </>
   );
 };
