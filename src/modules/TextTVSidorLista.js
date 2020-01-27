@@ -13,8 +13,7 @@ import { FavoritesContext } from "../contexts/FavoritesContext";
 const TextTVSidorLista = props => {
   const { history } = props;
   const userFavorites = useContext(FavoritesContext);
-  console.log('userFavorites in texttvsidorlista', userFavorites.pages);
-
+  
   return (
     <>
       <IonList>

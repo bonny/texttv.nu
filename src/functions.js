@@ -1,7 +1,7 @@
 /**
  * Hjälpare.
  */
-
+import { useEffect } from "react";
 import { Plugins, Share } from "@capacitor/core";
 import { isPlatform } from "@ionic/react";
 
@@ -524,10 +524,9 @@ async function loadFavorites() {
 
   // Sätt till default-favoriter om man saknar favoriter (eller om något gått fel vid laddning).
   if (favs === null || favs === undefined || favs.length === 0) {
-    console.log("sätt favs till default", favs);
     favs = FAVORITES_DEFAULT_PAGES;
   }
-  console.log("loadFavorites från storage", favs);
+
   return favs;
 }
 
@@ -537,6 +536,8 @@ async function saveFavorites(favs) {
     value: JSON.stringify(favs)
   });
 }
+
+const useMountEffect = fun => useEffect(fun, []);
 
 export {
   getPageRangeInfo,
@@ -563,5 +564,6 @@ export {
   isRunningInWebBrowser,
   loadFavorites,
   saveFavorites,
-  FAVORITES_DEFAULT_PAGES
+  FAVORITES_DEFAULT_PAGES,
+  useMountEffect
 };

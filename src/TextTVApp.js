@@ -18,7 +18,7 @@ import {
 } from "@ionic/react";
 import { clock, eye, home, listBox } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
-import { getCacheBustTimeString, isRunningInWebBrowser } from "./functions";
+import { getCacheBustTimeString, isRunningInWebBrowser, useMountEffect } from "./functions";
 import { MenuWithRouter } from "./modules/SideMenu";
 import PageTextTV from "./pages/page-TextTV.js";
 import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
@@ -97,7 +97,6 @@ function TextTVApp(props) {
   const initialFavoritesState = {
     pages: [],
     setPages: pages => {
-      console.log("updatePages", pages);
       setFavorites({ ...favorites, pages: pages });
     }
   };
@@ -151,18 +150,14 @@ function TextTVApp(props) {
   };
 
   // Ladda in favoriter från storage när app startas.
-  useEffect(() => {
+  useMountEffect(() => {
     async function getFavs() {
-      console.log("getFavs in TextTVApp.js");
       const favoritePages = await loadFavorites();
-      console.log("getFavs got ", favoritePages);
-      // setFavorites(favoritePages);
       favorites.setPages(favoritePages);
-      console.log("Hämtade favoriter när app startades", favoritePages);
     }
 
     getFavs();
-  }, []);
+  });
 
   // Avgör höjd på flikarna/tabbarn, dvs. hur många pixlar ska
   // annonsen flyttas upp för att inte vara iväg för flikarna.
