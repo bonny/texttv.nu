@@ -27,13 +27,14 @@ export default props => {
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
-  useEffect(() => {
-    setPageNums(pages);
-  }, [pages]);
-
   return (
     <>
-      <IonModal isOpen={isOpen}>
+      <IonModal
+        isOpen={isOpen}
+        onDidDismiss={() => {
+          // Klickar utanför modalen t.ex. på Ipad.
+        }}
+      >
         <IonHeader>
           <IonToolbar>
             <IonTitle>Favoriter</IonTitle>
@@ -124,7 +125,9 @@ export default props => {
 
           <IonAlert
             isOpen={showAddPageAlert}
-            onDidDismiss={() => setShowAddPageAlert(false)}
+            onDidDismiss={() => {
+              setShowAddPageAlert(false);
+            }}
             header="Lägg till"
             message="Ange sida att lägga till."
             inputs={[
@@ -141,9 +144,7 @@ export default props => {
                 text: "Avbryt",
                 role: "cancel",
                 cssClass: "secondary",
-                handler: () => {
-                  console.log("Confirm Cancel");
-                }
+                handler: () => {}
               },
               {
                 text: "Lägg till",
