@@ -27,6 +27,10 @@ export default props => {
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
+  useEffect(() => {
+    setPageNums(pages);
+  }, [pages]);
+  
   return (
     <>
       <IonModal

@@ -4,16 +4,20 @@ import {
   IonList,
   IonListHeader,
   IonNote,
-  IonChip
+  IonChip,
+  IonButton
 } from "@ionic/react";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import favorites from "./favorites";
+import RedigeraFavoriter from "./RedigeraFavoriter";
 import { FavoritesContext } from "../contexts/FavoritesContext";
+import { saveFavorites } from "../functions";
 
 const TextTVSidorLista = props => {
   const { history } = props;
   const userFavorites = useContext(FavoritesContext);
-  
+  const [showEditFavoritesModal, setShowEditFavoritesModal] = useState(false);
+
   return (
     <>
       <IonList>
@@ -41,7 +45,30 @@ const TextTVSidorLista = props => {
             })}
           </IonLabel>
         </IonItem>
+
+        <IonItem>
+          <IonButton
+            onClick={() => {
+              setShowEditFavoritesModal(true);
+            }}
+          >
+            Ändra
+          </IonButton>
+        </IonItem>
       </IonList>
+
+      <RedigeraFavoriter
+        isOpen={showEditFavoritesModal}
+        pages={userFavorites.pages}
+        handleSaveModal={pages => {
+          saveFavorites(pages);
+          userFavorites.setPages(pages);
+          setShowEditFavoritesModal(false);
+        }}
+        handleCancelModal={() => {
+          setShowEditFavoritesModal(false);
+        }}
+      />
 
       <IonList>
         <IonListHeader>
