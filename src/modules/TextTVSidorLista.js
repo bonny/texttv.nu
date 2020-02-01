@@ -23,6 +23,14 @@ const TextTVSidorLista = props => {
       <IonList>
         <IonListHeader>
           <IonLabel>Favoriter</IonLabel>
+          <IonButton
+            fill="clear"
+            onClick={() => {
+              setShowEditFavoritesModal(true);
+            }}
+          >
+            Ändra
+          </IonButton>
         </IonListHeader>
 
         <IonItem lines="none" class="ion-text-wrap">
@@ -46,15 +54,6 @@ const TextTVSidorLista = props => {
           </IonLabel>
         </IonItem>
 
-        <IonItem>
-          <IonButton
-            onClick={() => {
-              setShowEditFavoritesModal(true);
-            }}
-          >
-            Ändra
-          </IonButton>
-        </IonItem>
       </IonList>
 
       <RedigeraFavoriter
