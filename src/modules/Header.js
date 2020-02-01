@@ -14,7 +14,7 @@ import {
   isPlatform
 } from "@ionic/react";
 import { Link } from "react-router-dom";
-import { copy, link, more, open, refresh, share } from "ionicons/icons";
+import { copy, link, ellipsisVertical, open, refresh, share } from "ionicons/icons";
 import React, { useState } from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
 import TextTVSearchBar from "./TextTVSearchBar";
@@ -118,7 +118,7 @@ const Header = props => {
                 setShowPopover(true);
               }}
             >
-              <IonIcon slot="icon-only" icon={more} mode="md" />
+              <IonIcon slot="icon-only" icon={ellipsisVertical} mode="md" />
             </IonButton>
           </IonButtons>
         </IonToolbar>

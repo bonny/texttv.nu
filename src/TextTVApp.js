@@ -16,7 +16,7 @@ import {
   IonTabs,
   isPlatform
 } from "@ionic/react";
-import { clock, eye, home, listBox } from "ionicons/icons";
+import { time, eye, home, list } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
 import {
   getCacheBustTimeString,
@@ -280,7 +280,7 @@ function TextTVApp(props) {
                       className="ion-hide-lg-up"
                       onClick={handleTabClick}
                     >
-                      <IonIcon icon={listBox} mode="md" />
+                      <IonIcon icon={list} mode="md" />
                       <IonLabel>Sidor</IonLabel>
                     </IonTabButton>
 
@@ -289,7 +289,7 @@ function TextTVApp(props) {
                       href="/nyast"
                       onClick={handleTabClick}
                     >
-                      <IonIcon icon={clock} mode="md" />
+                      <IonIcon icon={time} mode="md" />
                       <IonLabel>Nyast</IonLabel>
                     </IonTabButton>
 

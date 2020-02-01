@@ -9,7 +9,7 @@ import {
   IonToast,
   NavContext
 } from "@ionic/react";
-import { arrowDropleftCircle, arrowDroprightCircle } from "ionicons/icons";
+import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
 import React, { useEffect, useRef, useState, useContext } from "react";
 import { useSwipeable } from "react-swipeable";
 import {
@@ -333,7 +333,7 @@ const PageTextTV = props => {
           >
             <IonIcon
               className="TextTVNextPrevSwipeNav__icon"
-              icon={arrowDropleftCircle}
+              icon={caretBackCircle}
             />
             <span className="TextTVNextPrevSwipeNav__number">
               {pagePrevNum}
@@ -350,7 +350,7 @@ const PageTextTV = props => {
             </span>
             <IonIcon
               className="TextTVNextPrevSwipeNav__icon"
-              icon={arrowDroprightCircle}
+              icon={caretForwardCircle}
             />
           </div>
         )}

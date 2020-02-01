@@ -25,8 +25,6 @@ const TextTVSidorLista = props => {
           <IonLabel>Favoriter</IonLabel>
           <IonButton
             color="secondary"
-            size="small"
-            fill="clear"
             onClick={() => {
               setShowEditFavoritesModal(true);
             }}

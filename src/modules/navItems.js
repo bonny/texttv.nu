@@ -5,7 +5,7 @@ import {
   informationCircleOutline,
   logoFacebook,
   logoTwitter,
-  paper
+  newspaper
 } from "ionicons/icons";
 
 export const navItems = [
@@ -55,7 +55,7 @@ export const navItemsAlsoLike = [
   {
     title: "SVT Nyheter",
     href: "https://www.svt.se/",
-    icon: paper
+    icon: newspaper
   },
   {
     title: "SVT Nyheter på Twitter",

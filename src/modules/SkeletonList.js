@@ -12,7 +12,7 @@ const SkeletonListItems = [...Array(10)].map((val, index) => {
   };
   return (
     <IonItem key={index}>
-      <IonLabel text-wrap>
+      <IonLabel text-wrap class="ion-text-wrap">
         <p>
           <IonSkeletonText animated style={pStyles} />
         </p>

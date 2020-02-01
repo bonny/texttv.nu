@@ -16,7 +16,7 @@ const ListItem = props => {
       }}
       lines="none"
     >
-      <IonLabel text-wrap color="medium">
+      <IonLabel class="ion-text-wrap" text-wrap color="medium">
         <h2 className="ListHeadline">{page.title}</h2>
         <p className="ListText">
           <Moment unix fromNow locale="sv" className="MomentTime">
