@@ -5,4 +5,23 @@ const TabContext = React.createContext({
   lastClickedName: null
 });
 
-export { TabContext };
+const detfaultTabinfoState = {
+  lastClicked: {
+    name: null,
+    time: null
+  },
+  prevClicked: {
+    name: null,
+    time: null
+  },
+  isNewTab: undefined,
+  isSameTab: undefined,
+  tabs: {
+    hem: {},
+    sidor: {},
+    nyast: {},
+    populart: {}
+  }
+};
+
+export { TabContext, detfaultTabinfoState };

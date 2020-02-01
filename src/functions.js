@@ -539,6 +539,26 @@ async function saveFavorites(favs) {
 
 const useMountEffect = fun => useEffect(fun, []);
 
+// Avgör höjd på flikarna/tabbarn, dvs. hur många pixlar ska
+// annonsen flyttas upp för att inte vara iväg för flikarna.
+function getTabHeight() {
+  let tabHeight;
+
+  if (isPlatform("android")) {
+    // On Android the tab height is 50px.
+    tabHeight = 56;
+  } else if (isPlatform("ios")) {
+    // On IOS the tab height is 56 px.
+    tabHeight = 50;
+  } else {
+    // Fall tillbaka på 50.
+    tabHeight = 50;
+  }
+
+  return tabHeight;
+}
+
+
 export {
   getPageRangeInfo,
   getCacheBustTimeString,
@@ -565,5 +585,6 @@ export {
   loadFavorites,
   saveFavorites,
   FAVORITES_DEFAULT_PAGES,
-  useMountEffect
+  useMountEffect,
+  getTabHeight
 };

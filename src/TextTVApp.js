@@ -13,16 +13,17 @@ import {
   IonSplitPane,
   IonTabBar,
   IonTabButton,
-  IonTabs,
-  isPlatform
+  IonTabs
 } from "@ionic/react";
 import { time, eye, home, list } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
 import {
   getCacheBustTimeString,
   isRunningInWebBrowser,
-  useMountEffect
+  useMountEffect,
+  getTabHeight
 } from "./functions";
+import { adMobAdOptions } from "./options";
 import { MenuWithRouter } from "./modules/SideMenu";
 import PageTextTV from "./pages/page-TextTV.js";
 import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
@@ -30,7 +31,7 @@ import TabNyast from "./pages/tab-nyast";
 import TabPopulart from "./pages/tab-mest-last";
 import TabSidor from "./pages/tab-sidor";
 import Startsida from "./pages/tab-startsida";
-import { TabContext } from "./contexts/TabContext";
+import { TabContext, detfaultTabinfoState } from "./contexts/TabContext";
 import { FavoritesContext } from "./contexts/FavoritesContext";
 import { getUnixtime, loadFavorites } from "./functions";
 import { Analytics } from "capacitor-analytics";
@@ -76,44 +77,14 @@ StatusBar.setStyle({
   style: StatusBarStyle.Dark
 });
 
-const detfaultTabinfoState = {
-  lastClicked: {
-    name: null,
-    time: null
-  },
-  prevClicked: {
-    name: null,
-    time: null
-  },
-  isNewTab: undefined,
-  isSameTab: undefined,
-  tabs: {
-    hem: {},
-    sidor: {},
-    nyast: {},
-    populart: {}
-  }
-};
-
-// Avgör höjd på flikarna/tabbarn, dvs. hur många pixlar ska
-// annonsen flyttas upp för att inte vara iväg för flikarna.
-let tabHeight;
-
-if (isPlatform("android")) {
-  // On Android the tab height is 50px.
-  tabHeight = 56;
-} else if (isPlatform("ios")) {
-  // On IOS the tab height is 56 px.
-  tabHeight = 50;
-} else {
-  // Fall tillbaka på 50.
-  tabHeight = 50;
-}
+const tabHeight = getTabHeight();
 
 document.documentElement.style.setProperty(
   "--text-tv-tab-bar-height",
   `${tabHeight}px`
 );
+
+adMobAdOptions.margin = tabHeight;
 
 function TextTVApp(props) {
   const [tabsinfo, setTabsinfo] = useState(detfaultTabinfoState);
@@ -184,16 +155,6 @@ function TextTVApp(props) {
     getFavs();
   });
 
-  const adMobAdOptions = {
-    adId: "ca-app-pub-1689239266452655/3336016805",
-    // google test ad
-    // https://developers.google.com/admob/android/test-ads#sample_ad_units
-    // adId: "ca-app-pub-3940256099942544/6300978111",
-    adSize: "SMART_BANNER",
-    position: "BOTTOM_CENTER",
-    margin: tabHeight
-  };
-
   useEffect(() => {
     try {
       AdMob.showBanner(adMobAdOptions).then();
@@ -213,14 +174,13 @@ function TextTVApp(props) {
     } catch (e) {
       // console.log("admob got error when trying to show banner");
     }
-  }, [adMobAdOptions]);
+  }, []);
 
   return (
     <TabContext.Provider value={tabsinfo}>
       <FavoritesContext.Provider value={favorites}>
         <IonApp>
           <IonReactRouter>
-            {/* <BackButtonListenerWithRouter {...props} /> */}
             <Route exact path="/" render={() => <Redirect to="/hem" />} />
             <IonSplitPane contentId="mainContent">
               <MenuWithRouter {...props} />
