@@ -19,6 +19,8 @@ import {
 } from "@ionic/react";
 import { add, close } from "ionicons/icons";
 import React, { useState, useEffect } from "react";
+import { Plugins } from "@capacitor/core";
+const { AdMob } = Plugins;
 
 export default props => {
   const { isOpen, pages, handleSaveModal, handleCancelModal } = props;
@@ -30,7 +32,16 @@ export default props => {
   useEffect(() => {
     setPageNums(pages);
   }, [pages]);
-  
+
+  // Göm annonser när modal visas för annars hamnar annonsen över.
+  useEffect(() => {
+    if (isOpen) {
+      AdMob.resumeBanner();
+    } else {
+      AdMob.hideBanner();
+    }
+  }, [isOpen]);
+
   return (
     <>
       <IonModal

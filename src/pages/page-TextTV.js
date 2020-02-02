@@ -269,6 +269,14 @@ const PageTextTV = props => {
     setDidDismissPageUpdateToast(false);
   }, [pageNum]);
 
+  /**
+   * Göm uppdaterad-toast när vi lämnar sidan/vyn.
+   */
+  // useIonViewWillLeave(() => {
+  //   console.log('useIonViewWillLeave');
+  //   setPageUpdatedToastVisible(false);
+  // })
+
   let firstPage;
   let pageNextNum;
   let pagePrevNum;
