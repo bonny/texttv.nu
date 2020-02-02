@@ -36,9 +36,9 @@ export default props => {
   // Göm annonser när modal visas för annars hamnar annonsen över.
   useEffect(() => {
     if (isOpen) {
-      AdMob.resumeBanner();
-    } else {
       AdMob.hideBanner();
+    } else {
+      AdMob.resumeBanner();
     }
   }, [isOpen]);
 
