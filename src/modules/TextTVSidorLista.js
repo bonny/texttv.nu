@@ -90,7 +90,7 @@ const TextTVSidorLista = props => {
               </IonLabel>
               <IonNote
                 slot="end"
-                mode="ios"
+                xmode="ios"
                 className="ListPageNum"
                 color="medium"
               >

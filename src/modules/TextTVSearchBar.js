@@ -23,7 +23,7 @@ const TextTVSearchBar = props => {
 
   return (
     <IonSearchbar
-      mode="md"
+      xmode="md"
       placeholder="Gå till…"
       type="number"
       inputmode="numeric"

@@ -7,7 +7,7 @@ export default props => {
 
   return (
     <IonHeader>
-      <IonToolbar color="primary" mode="md">
+      <IonToolbar color="primary" xmode="md">
         <IonTitle>
           <Logo className="texttv-logo" />
           {title}

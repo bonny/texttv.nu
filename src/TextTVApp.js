@@ -230,7 +230,7 @@ function TextTVApp(props) {
                       href="/hem"
                       onClick={handleTabClick}
                     >
-                      <IonIcon icon={home} mode="md" />
+                      <IonIcon icon={home} xmode="md" />
                       <IonLabel>Hem</IonLabel>
                     </IonTabButton>
 
@@ -240,7 +240,7 @@ function TextTVApp(props) {
                       className="ion-hide-lg-up"
                       onClick={handleTabClick}
                     >
-                      <IonIcon icon={list} mode="md" />
+                      <IonIcon icon={list} xmode="md" />
                       <IonLabel>Sidor</IonLabel>
                     </IonTabButton>
 
@@ -249,7 +249,7 @@ function TextTVApp(props) {
                       href="/nyast"
                       onClick={handleTabClick}
                     >
-                      <IonIcon icon={time} mode="md" />
+                      <IonIcon icon={time} xmode="md" />
                       <IonLabel>Nyast</IonLabel>
                     </IonTabButton>
 
@@ -258,7 +258,7 @@ function TextTVApp(props) {
                       href="/arkiv"
                       onClick={handleTabClick}
                     >
-                      <IonIcon icon={eye} mode="md" />
+                      <IonIcon icon={eye} xmode="md" />
                       <IonLabel>Mest läst</IonLabel>
                     </IonTabButton>
                   </IonTabBar>

@@ -90,7 +90,7 @@ const Header = props => {
   return (
     <>
       <IonHeader>
-        <IonToolbar color="primary" mode="md">
+        <IonToolbar color="primary">
           <IonTitle className="texttv-header-title">
             <Link to="/hem" className="texttv-header-title-link">
               <Logo className="texttv-logo" />
@@ -106,7 +106,7 @@ const Header = props => {
 
           <IonButtons slot="end">
             <IonButton fill="clear" slot="end" onClick={handleRefreshBtnClick}>
-              <IonIcon slot="icon-only" icon={refresh} mode="md" />
+              <IonIcon slot="icon-only" icon={refresh} xmode="md" />
             </IonButton>
 
             <IonButton
@@ -118,7 +118,7 @@ const Header = props => {
                 setShowPopover(true);
               }}
             >
-              <IonIcon slot="icon-only" icon={ellipsisVertical} mode="md" />
+              <IonIcon slot="icon-only" icon={ellipsisVertical} xmode="md" />
             </IonButton>
           </IonButtons>
         </IonToolbar>
@@ -130,20 +130,20 @@ const Header = props => {
       >
         <IonList>
           <IonItem button onClick={handleCopyTextToClipboard}>
-            <IonIcon slot="start" icon={copy} mode="md" />
+            <IonIcon slot="start" icon={copy}  />
             <IonLabel>Kopiera text</IonLabel>
           </IonItem>
           <IonItem button onClick={handleCopyLinkToClipboard}>
-            <IonIcon slot="start" icon={link} mode="md" />
+            <IonIcon slot="start" icon={link}  />
             <IonLabel>Kopiera länk</IonLabel>
           </IonItem>
           <IonItem button onClick={handleOpenLink}>
-            <IonIcon slot="start" icon={open} mode="md" />
+            <IonIcon slot="start" icon={open}  />
             <IonLabel>Öppna i webbläsare</IonLabel>
           </IonItem>
           {showShare && (
             <IonItem button onClick={handleShareClick}>
-              <IonIcon slot="start" icon={share} mode="md" />
+              <IonIcon slot="start" icon={share}  />
               <IonLabel>Dela...</IonLabel>
             </IonItem>
           )}

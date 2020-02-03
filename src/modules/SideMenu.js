@@ -20,7 +20,7 @@ const Menu = props => {
     >
       <IonPage>
         <IonHeader>
-          <IonToolbar color="primary" mode="md">
+          <IonToolbar color="primary">
             {/* <IonTitle>Meny</IonTitle> */}
           </IonToolbar>
         </IonHeader>
