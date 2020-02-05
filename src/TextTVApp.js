@@ -157,6 +157,7 @@ function TextTVApp(props) {
 
   useEffect(() => {
     try {
+      console.log("Init admob with options", adMobAdOptions);
       AdMob.showBanner(adMobAdOptions).then();
 
       // Callback när en annons visas. size = object med bredd och höjd, ca såhär:
