@@ -31,10 +31,10 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-1689239266452655~5314264801</string>
 	<key>GADIsAdManagerApp</key>
 	<true/>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-1689239266452655~5314264801</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
