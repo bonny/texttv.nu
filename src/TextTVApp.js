@@ -26,6 +26,7 @@ import {
 import { adMobAdOptions } from "./options";
 import { MenuWithRouter } from "./modules/SideMenu";
 import PageTextTV from "./pages/page-TextTV.js";
+import { PageDebug } from "./pages/pageDebug.js";
 import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
 import TabNyast from "./pages/tab-nyast";
 import TabPopulart from "./pages/tab-mest-last";
@@ -188,6 +189,7 @@ function TextTVApp(props) {
               <div id="mainContent">
                 <IonTabs id="mainTabs">
                   <IonRouterOutlet id="routerOutletElm">
+                    <Route path="/debug" component={PageDebug} />
                     <Route path="/test" component={PageTest} />
                     <Route path="/testar" component={PageTestar} exact={true} />
                     <Route

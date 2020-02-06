@@ -6,7 +6,7 @@ import Moment from "react-moment";
 
 const ListItem = props => {
   const { link, page, history } = props;
-
+  console.log("ListItem");
   return (
     <IonItem
       button

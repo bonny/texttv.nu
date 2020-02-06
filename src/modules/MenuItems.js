@@ -7,8 +7,8 @@ import {
 } from "@ionic/react";
 import { document } from "ionicons/icons";
 import React from "react";
-import TextTVSidorLista from "./TextTVSidorLista";
 import { navItems, navItemsAlsoLike } from "./navItems";
+import TextTVSidorLista from "./TextTVSidorLista";
 
 const MenuItem = ({ item }) => {
   const icon = item.icon ? item.icon : document;
@@ -37,6 +37,10 @@ const MenuItems = props => {
         {navItemsAlsoLike.map(item => {
           return <MenuItem item={item} key={item.href} />;
         })}
+        <IonItem routerLink="/debug">
+          <IonIcon slot="start" icon={document} />
+          <IonLabel>Debug</IonLabel>
+        </IonItem>
       </IonList>
     </>
   );
