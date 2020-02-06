@@ -17,7 +17,7 @@
     "cordova-ios": "^5.1.1",
     "dayjs": "^1.8.20",
     "firebase": "^7.8.0",
-    "ionicons": "^5.0.0-17",
+    "ionicons": "^5.0.0",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
