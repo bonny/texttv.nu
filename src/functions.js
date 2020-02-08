@@ -109,6 +109,7 @@ const handleShare = async (e, pageData, pageNum) => {
 
   // Permalänk.
   const permalink = `https://www.texttv.nu/${pageNum}/arkiv/sida/${pageIdsString}`;
+  console.log("permalink", permalink);
 
   // Titel + ev. text från första sidan.
   const firstPage = pageData[0];
@@ -557,7 +558,6 @@ function getTabHeight() {
 
   return tabHeight;
 }
-
 
 export {
   getPageRangeInfo,

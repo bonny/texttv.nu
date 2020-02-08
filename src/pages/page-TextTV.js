@@ -317,7 +317,7 @@ const PageTextTV = props => {
         pageTitle={pageTitle}
         headerStyle={headerStyle}
         onShare={e => {
-          handleShare(e, pageData);
+          handleShare(e, pageData, pageNum);
         }}
         onCopyTextToClipboard={() => {
           handleCopyTextToClipboard(pageData, pageNum);
