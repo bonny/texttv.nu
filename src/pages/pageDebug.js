@@ -10,9 +10,12 @@ import {
   IonLabel,
   IonTitle,
   IonToolbar,
-  IonPage
+  IonPage,
+  IonSlide,
+  IonSlides
 } from "@ionic/react";
 import React from "react";
+import TextTVPage from "../modules/TextTVPage";
 const { AdMob } = Plugins;
 
 function PageDebug(props) {
@@ -61,6 +64,12 @@ function PageDebug(props) {
         console.error("showbanner err", error); // show error
       }
     );
+  };
+
+  const slideOpts = {
+    initialSlide: 1,
+    speed: 400,
+    autoHeight: true
   };
 
   return (
@@ -117,6 +126,47 @@ function PageDebug(props) {
           >
             <IonLabel>Visa Googles test-annons</IonLabel>
           </IonItem>
+        </IonCard>
+
+        <IonCard>
+          <IonCardHeader>
+            <IonCardTitle>Slides</IonCardTitle>
+          </IonCardHeader>
+
+          <IonCardContent>
+            <p>Här testar vi slides.</p>
+            <IonSlides
+              pager={false}
+              options={slideOpts}
+              style={{ outline: "2px solid pink" }}
+            >
+              <IonSlide>
+                <div>
+                  <TextTVPage pageNum="100" history={props.history} />
+                </div>
+              </IonSlide>
+              <IonSlide>
+                <div>
+                  <TextTVPage pageNum="101" history={props.history} />
+                </div>
+              </IonSlide>
+              <IonSlide>
+                <div>
+                  <TextTVPage pageNum="300" history={props.history} />
+                </div>
+              </IonSlide>
+              <IonSlide>
+                <div>
+                  <TextTVPage pageNum="100,101,102" history={props.history} />
+                </div>
+              </IonSlide>
+              <IonSlide>
+                <div>
+                  <TextTVPage pageNum="300-302,376,377" history={props.history} />
+                </div>
+              </IonSlide>
+            </IonSlides>
+          </IonCardContent>
         </IonCard>
       </IonContent>
     </IonPage>

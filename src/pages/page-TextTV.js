@@ -370,7 +370,6 @@ const PageTextTV = props => {
               pageId={pageId}
               history={history}
               refreshTime={refreshTime}
-              size="large"
               onPageUpdate={handlePageUpdate}
             />
           </div>
