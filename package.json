@@ -16,7 +16,7 @@
     "classnames": "^2.2.6",
     "cordova-ios": "^5.1.1",
     "dayjs": "^1.8.20",
-    "firebase": "^7.8.0",
+    "firebase": "^7.8.1",
     "ionicons": "^5.0.0",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
