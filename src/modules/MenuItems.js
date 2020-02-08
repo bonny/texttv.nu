@@ -26,18 +26,22 @@ const MenuItems = props => {
       <TextTVSidorLista {...props} showHeader={false} />
 
       <IonList>
-        <IonListHeader>Externa länkar om texttv.nu</IonListHeader>
+        <IonListHeader>
+          <IonLabel>Externa länkar om texttv.nu</IonLabel>
+        </IonListHeader>
         {navItems.map(item => {
           return <MenuItem item={item} key={item.href} />;
         })}
       </IonList>
 
       <IonList>
-        <IonListHeader>Vi på TextTV.nu gillar också</IonListHeader>
+        <IonListHeader>
+          <IonLabel>Vi på TextTV.nu gillar också</IonLabel>
+        </IonListHeader>
         {navItemsAlsoLike.map(item => {
           return <MenuItem item={item} key={item.href} />;
         })}
-        <IonItem routerLink="/debug">
+        <IonItem routerLink="/debug" style={{ opacity: 0 }}>
           <IonIcon slot="start" icon={document} />
           <IonLabel>Debug</IonLabel>
         </IonItem>
