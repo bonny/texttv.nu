@@ -135,39 +135,40 @@ function PageDebug(props) {
 
           <IonCardContent>
             <p>Här testar vi slides.</p>
-            <IonSlides
-              pager={false}
-              options={slideOpts}
-              style={{ outline: "2px solid pink" }}
-            >
-              <IonSlide>
-                <div>
-                  <TextTVPage pageNum="100" history={props.history} />
-                </div>
-              </IonSlide>
-              <IonSlide>
-                <div>
-                  <TextTVPage pageNum="101" history={props.history} />
-                </div>
-              </IonSlide>
-              <IonSlide>
-                <div>
-                  <TextTVPage pageNum="300" history={props.history} />
-                </div>
-              </IonSlide>
-              <IonSlide>
-                <div>
-                  <TextTVPage pageNum="100,101,102" history={props.history} />
-                </div>
-              </IonSlide>
-              <IonSlide>
-                <div>
-                  <TextTVPage pageNum="300-302,376,377" history={props.history} />
-                </div>
-              </IonSlide>
-            </IonSlides>
           </IonCardContent>
         </IonCard>
+
+        <IonSlides
+          pager={false}
+          options={slideOpts}
+          style={{ outline: "2px solid pink" }}
+        >
+          <IonSlide>
+            <div>
+              <TextTVPage pageNum="100" history={props.history} />
+            </div>
+          </IonSlide>
+          <IonSlide>
+            <div>
+              <TextTVPage pageNum="101" history={props.history} />
+            </div>
+          </IonSlide>
+          <IonSlide>
+            <div>
+              <TextTVPage pageNum="300" history={props.history} />
+            </div>
+          </IonSlide>
+          <IonSlide>
+            <div>
+              <TextTVPage pageNum="100,101,102" history={props.history} />
+            </div>
+          </IonSlide>
+          <IonSlide>
+            <div>
+              <TextTVPage pageNum="300-302,376,377" history={props.history} />
+            </div>
+          </IonSlide>
+        </IonSlides>
       </IonContent>
     </IonPage>
   );
