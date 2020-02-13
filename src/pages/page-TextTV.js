@@ -7,7 +7,9 @@ import {
   IonContent,
   IonIcon,
   IonToast,
-  NavContext
+  NavContext,
+  IonSlide,
+  IonSlides
 } from "@ionic/react";
 import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
 import React, { useEffect, useRef, useState, useContext } from "react";
@@ -310,6 +312,13 @@ const PageTextTV = props => {
       opacity: 1 - Math.abs(normalizedDelta) / 3
     };
   }
+
+  const sliderOptions = {
+    initialSlide: 1,
+    speed: 400,
+    autoHeight: true
+  };
+
   return (
     <IonPage ref={pageRef}>
       <Header
@@ -363,6 +372,29 @@ const PageTextTV = props => {
           </div>
         )}
 
+        {/* Nya slides */}
+        <p>NEW SLIDES</p>
+        <IonSlides pager={false} options={sliderOptions}>
+          <IonSlide>
+            <div>DUMMY</div>
+          </IonSlide>
+          <IonSlide>
+            <div>
+              <TextTVPage
+                pageNum={pageNum}
+                pageId={pageId}
+                history={history}
+                refreshTime={refreshTime}
+                onPageUpdate={handlePageUpdate}
+              />
+            </div>
+          </IonSlide>
+          <IonSlide>
+            <div>DUMMY</div>
+          </IonSlide>
+        </IonSlides>
+
+        <p>OLD SLIDES</p>
         <div {...swipeHandlers}>
           <div style={swipecontainerStyles}>
             <TextTVPage

@@ -95,12 +95,10 @@ export default props => {
   const { selectedSegment, refreshTime } = props;
 
   return (
-    <>
-      <MestLastaLista
-        {...props}
-        day={selectedSegment}
-        refreshTime={refreshTime}
-      />
-    </>
+    <MestLastaLista
+      {...props}
+      day={selectedSegment}
+      refreshTime={refreshTime}
+    />
   );
 };
