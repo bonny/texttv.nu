@@ -13,11 +13,11 @@ import {
 } from "@ionic/react";
 import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
 import React, { useEffect, useRef, useState, useContext } from "react";
-import { useSwipeable } from "react-swipeable";
+// import { useSwipeable } from "react-swipeable";
 import {
   getCurrentIonPageContentElm,
   getUnixtime,
-  normalizeBetweenTwoRanges,
+  // normalizeBetweenTwoRanges,
   handleCopyLinkToClipboard,
   handleCopyTextToClipboard,
   handleOpenLinkInBrowser,
@@ -44,92 +44,26 @@ const PageTextTV = props => {
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
   const [pageUpdatedToastVisible, setPageUpdatedToastVisible] = useState(false);
   const [pageData, setPageData] = useState([]);
-  const [swipeData, setSwipeData] = useState({
-    doMove: false
-  });
+  // const [swipeData, setSwipeData] = useState({
+  //   doMove: false
+  // });
   const [didDismissPageUpdateToast, setDidDismissPageUpdateToast] = useState(
     false
   );
 
   const contentRef = useRef();
   const pageRef = useRef();
-  const maxDeltaNormalMove = 80;
+  // const maxDeltaNormalMove = 80;
 
   const navContext = useContext(NavContext);
 
   let pageTitle = title || `${pageNum} - SVT Text TV`;
 
-  const swipeConfig = {
-    delta: 0,
-    onSwiping: eventData => {
-      const dir = eventData.dir;
-      if (dir === "Left" || dir === "Right") {
-        // const absoluteDeltaX = Math.abs(eventData.deltaX);
-
-        // The number of pixels to move the page.
-        let deltaXForTransform = eventData.deltaX * -1;
-
-        // Gör rörelser "segare" när vi kommit över en gräns.
-        // if (absoluteDeltaX > maxDeltaNormalMove) {
-        //   const numberOfXMoreThanNormal = absoluteDeltaX - maxDeltaNormalMove;
-
-        //   // Make this number increase in smaller and smaller steps.
-        //   let numberOfXToAdd = numberOfXMoreThanNormal;
-        //   numberOfXToAdd = numberOfXToAdd * 0.15;
-
-        //   if (dir === "Left") {
-        //     deltaXForTransform = -maxDeltaNormalMove - numberOfXToAdd;
-        //   } else {
-        //     deltaXForTransform = maxDeltaNormalMove + numberOfXToAdd;
-        //   }
-        // }
-
-        setSwipeData({
-          doMove: true,
-          deltaXForTransform: deltaXForTransform,
-          absoluteDeltaX: absoluteDeltaX,
-          dir: dir,
-          deltaX: eventData.deltaX
-        });
-      } else {
-        setSwipeData({
-          doMove: false
-        });
-      }
-    },
-    onSwiped: eventData => {
-      const dir = eventData.dir;
-      if (dir === "Left" || dir === "Right") {
-        const absoluteDeltaX = Math.abs(eventData.deltaX);
-        const firstPage = pageData[0];
-        const prevPage = firstPage.prev_page;
-        const nextPage = firstPage.next_page;
-
-        // Om vi släppte swipen och var mer än deltaMax = gå till sida.
-        if (absoluteDeltaX > maxDeltaNormalMove) {
-          setSwipeData({
-            doMove: false
-          });
-
-          if (dir === "Left") {
-            // history.push(`/sidor/${nextPage}`);
-            navContext.navigate(`/sidor/${nextPage}`, "none");
-          } else if (dir === "Right") {
-            //history.push(`/sidor/${prevPage}`);
-            navContext.navigate(`/sidor/${prevPage}`, "none");
-          }
-        } else {
-          // Om vi släppte men inte var mer än maxdelta = återgå till standard,
-          // dvs. ångra svepning som påbörjats.
-          setSwipeData({
-            doMove: false
-          });
-        }
-      }
-    }
-  };
-
-  const swipeHandlers = useSwipeable(swipeConfig);
+  const firstPage = pageData[0];
+  const pageCurrentNum = firstPage ? parseInt(firstPage.num) : null;
+  const pagePrevNum = firstPage ? parseInt(firstPage.prev_page) : null;
+  const pageNextNum = firstPage ? parseInt(firstPage.next_page) : null;
+  const initialSlide = 1;
 
   /**
    * Update the refresh time to the current time.
@@ -279,46 +213,14 @@ const PageTextTV = props => {
   //   setPageUpdatedToastVisible(false);
   // })
 
-  let firstPage;
-  let pageNextNum;
-  let pagePrevNum;
-  let normalizedDelta;
-  let TextTVNextPrevSwipeNavStyles;
-  let swipeDirection = swipeData.dir;
-  const deltaXForTransform = swipeData.deltaXForTransform;
-  const absoluteDeltaX = swipeData.absoluteDeltaX;
-
-  if (pageData && pageData.length && deltaXForTransform) {
-    firstPage = pageData[0];
-    pageNextNum = firstPage.next_page;
-    pagePrevNum = firstPage.prev_page;
-    normalizedDelta = normalizeBetweenTwoRanges(
-      deltaXForTransform,
-      0,
-      maxDeltaNormalMove,
-      0,
-      1
-    );
-    TextTVNextPrevSwipeNavStyles = {
-      opacity: Math.abs(normalizedDelta)
-    };
-  }
-
-  let swipecontainerStyles = {};
-
-  if (swipeData && swipeData.doMove) {
-    swipecontainerStyles = {
-      transform: `translateX(${deltaXForTransform}px)`,
-      opacity: 1 - Math.abs(normalizedDelta) / 3
-    };
-  }
-
   const sliderOptions = {
-    initialSlide: 1,
-    speed: 400,
-    autoHeight: true
+    initialSlide: initialSlide,
+    // autoHeight: true
   };
 
+  const showPrevPageSlide = pageCurrentNum !== 100;
+  const showNextPageSlide = pageNextNum !== 999;
+  
   return (
     <IonPage ref={pageRef}>
       <Header
@@ -343,7 +245,7 @@ const PageTextTV = props => {
       <IonContent ref={contentRef}>
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
-        {pagePrevNum && swipeDirection === "Right" && (
+        {/* {pagePrevNum && swipeDirection === "Right" && (
           <div
             className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev"
             style={TextTVNextPrevSwipeNavStyles}
@@ -370,14 +272,38 @@ const PageTextTV = props => {
               icon={caretForwardCircle}
             />
           </div>
-        )}
+        )} */}
 
         {/* Nya slides */}
-        <p>NEW SLIDES</p>
-        <IonSlides pager={false} options={sliderOptions}>
-          <IonSlide>
-            <div>DUMMY</div>
-          </IonSlide>
+        {/* <p>NEW SLIDES</p> */}
+
+        <IonSlides
+          pager={false}
+          options={sliderOptions}
+          // onIonSlideDidChange={e => {
+          //   console.log("onIonSlideDidChange", e);
+          //   console.log('pagePrevNum', pagePrevNum)
+          //   console.log('pageNextNum', pageNextNum)
+          // }}
+          onIonSlideNextEnd={e => {
+            console.log("slide next", e);
+            console.log("pageNextNum", pageNextNum, pageCurrentNum, history);
+            // navContext.navigate(`/sidor/${pageNextNum}`, "none");
+          }}
+          onIonSlidePrevEnd={e => {
+            console.log("slide prev", e);
+            console.log("pagePrevNum", pagePrevNum, pageCurrentNum, history);
+            // navContext.navigate(`/sidor/${pagePrevNum}`, "none");
+          }}
+          onIonSlidesDidLoad={e => {
+            console.log("onOonSlidesDidLoad", e);
+          }}
+        >
+          {showPrevPageSlide && (
+            <IonSlide>
+              <div>Gå till föregående sida {pagePrevNum}</div>
+            </IonSlide>
+          )}
           <IonSlide>
             <div>
               <TextTVPage
@@ -389,12 +315,14 @@ const PageTextTV = props => {
               />
             </div>
           </IonSlide>
-          <IonSlide>
-            <div>DUMMY</div>
-          </IonSlide>
+          {showNextPageSlide && (
+            <IonSlide>
+              <div>Gå till nästa sida {pageNextNum}</div>
+            </IonSlide>
+          )}
         </IonSlides>
 
-        <p>OLD SLIDES</p>
+        {/* <p>OLD SLIDES</p>
         <div {...swipeHandlers}>
           <div style={swipecontainerStyles}>
             <TextTVPage
@@ -405,7 +333,7 @@ const PageTextTV = props => {
               onPageUpdate={handlePageUpdate}
             />
           </div>
-        </div>
+        </div> */}
 
         {children}
 
