@@ -214,13 +214,21 @@ const PageTextTV = props => {
   // })
 
   const sliderOptions = {
-    initialSlide: initialSlide,
+    initialSlide: initialSlide
     // autoHeight: true
   };
 
-  const showPrevPageSlide = pageCurrentNum !== 100;
-  const showNextPageSlide = pageNextNum !== 999;
-  
+  // const showPrevPageSlide = pageCurrentNum !== 100;
+  // const showNextPageSlide = pageNextNum !== 999;
+  // const showPrevPageSlide = true;
+  // const showNextPageSlide = true;
+
+  console.log("pageCurrentNum", pageCurrentNum, pageNextNum, pagePrevNum);
+  const historyLocationPathname =
+    history.location.pathname + "_" + history.location.key;
+  console.log("history historyLocationPathname", historyLocationPathname);
+  console.log("history", history.location.key);
+
   return (
     <IonPage ref={pageRef}>
       <Header
@@ -298,14 +306,22 @@ const PageTextTV = props => {
           onIonSlidesDidLoad={e => {
             console.log("onOonSlidesDidLoad", e);
           }}
+          key={historyLocationPathname}
         >
-          {showPrevPageSlide && (
-            <IonSlide>
-              <div>Gå till föregående sida {pagePrevNum}</div>
-            </IonSlide>
-          )}
-          <IonSlide>
-            <div>
+          <IonSlide key={historyLocationPathname + "_prev"}>
+            <article>
+              <IonIcon
+                className="TextTVNextPrevSwipeNav__icon"
+                icon={caretBackCircle}
+              />
+              <span className="TextTVNextPrevSwipeNav__number">
+                Gå till {pagePrevNum}
+              </span>
+            </article>
+          </IonSlide>
+
+          <IonSlide key={historyLocationPathname + "_current"}>
+            <article>
               <TextTVPage
                 pageNum={pageNum}
                 pageId={pageId}
@@ -313,13 +329,20 @@ const PageTextTV = props => {
                 refreshTime={refreshTime}
                 onPageUpdate={handlePageUpdate}
               />
-            </div>
+            </article>
           </IonSlide>
-          {showNextPageSlide && (
-            <IonSlide>
-              <div>Gå till nästa sida {pageNextNum}</div>
-            </IonSlide>
-          )}
+
+          <IonSlide key={historyLocationPathname + "_next"}>
+            <article>
+              <span className="TextTVNextPrevSwipeNav__number">
+                Gå till {pageNextNum}
+              </span>
+              <IonIcon
+                className="TextTVNextPrevSwipeNav__icon"
+                icon={caretForwardCircle}
+              />
+            </article>
+          </IonSlide>
         </IonSlides>
 
         {/* <p>OLD SLIDES</p>
