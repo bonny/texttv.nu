@@ -42,6 +42,7 @@ const PageTextTV = props => {
   const pageNum = props.pageNum || match.params.pageNum;
   const pageId = props.pageId || match.params.pageId;
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
+  const [goNextEnabled, setGoNextEnabled] = useState(false);
   const [pageUpdatedToastVisible, setPageUpdatedToastVisible] = useState(false);
   const [pageData, setPageData] = useState([]);
   // const [swipeData, setSwipeData] = useState({
@@ -53,6 +54,7 @@ const PageTextTV = props => {
 
   const contentRef = useRef();
   const pageRef = useRef();
+  const sliderRef = useRef();
   // const maxDeltaNormalMove = 80;
 
   const navContext = useContext(NavContext);
@@ -63,7 +65,6 @@ const PageTextTV = props => {
   const pageCurrentNum = firstPage ? parseInt(firstPage.num) : null;
   const pagePrevNum = firstPage ? parseInt(firstPage.prev_page) : null;
   const pageNextNum = firstPage ? parseInt(firstPage.next_page) : null;
-  const initialSlide = 1;
 
   /**
    * Update the refresh time to the current time.
@@ -205,6 +206,11 @@ const PageTextTV = props => {
     setDidDismissPageUpdateToast(false);
   }, [pageNum]);
 
+  // useEffect(() => {
+  //   console.log("set go next disabled");
+  //   setGoNextEnabled(false);
+  // }, [pageNum, pageId]);
+
   /**
    * Göm uppdaterad-toast när vi lämnar sidan/vyn.
    */
@@ -214,7 +220,7 @@ const PageTextTV = props => {
   // })
 
   const sliderOptions = {
-    initialSlide: initialSlide
+    initialSlide: 1
     // autoHeight: true
   };
 
@@ -253,50 +259,40 @@ const PageTextTV = props => {
       <IonContent ref={contentRef}>
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
-        {/* {pagePrevNum && swipeDirection === "Right" && (
-          <div
-            className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev"
-            style={TextTVNextPrevSwipeNavStyles}
-          >
-            <IonIcon
-              className="TextTVNextPrevSwipeNav__icon"
-              icon={caretBackCircle}
-            />
-            <span className="TextTVNextPrevSwipeNav__number">
-              {pagePrevNum}
-            </span>
-          </div>
-        )}
-        {pageNextNum && swipeDirection === "Left" && (
-          <div
-            className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--next"
-            style={TextTVNextPrevSwipeNavStyles}
-          >
-            <span className="TextTVNextPrevSwipeNav__number">
-              {pageNextNum}
-            </span>
-            <IonIcon
-              className="TextTVNextPrevSwipeNav__icon"
-              icon={caretForwardCircle}
-            />
-          </div>
-        )} */}
-
-        {/* Nya slides */}
-        {/* <p>NEW SLIDES</p> */}
-
         <IonSlides
+          ref={sliderRef}
           pager={false}
           options={sliderOptions}
-          // onIonSlideDidChange={e => {
-          //   console.log("onIonSlideDidChange", e);
-          //   console.log('pagePrevNum', pagePrevNum)
-          //   console.log('pageNextNum', pageNextNum)
-          // }}
+          onIonSlideDidChange={e => {
+            console.log("onIonSlideDidChange", e);
+            console.log("pagePrevNum", pagePrevNum);
+            console.log("pageNextNum", pageNextNum);
+            sliderRef.current.getActiveIndex().then(activeIndex => {
+              console.log("activeIndex", activeIndex);
+              let navToPageNum;
+              if (activeIndex === 0) {
+                navToPageNum = pagePrevNum;
+              } else if (activeIndex === 2) {
+                navToPageNum = pageNextNum;
+              }
+
+              if (navToPageNum) {
+                navContext.navigate(`/sidor/${navToPageNum}`, "none");
+              }
+            });
+          }}
           onIonSlideNextEnd={e => {
-            console.log("slide next", e);
-            console.log("pageNextNum", pageNextNum, pageCurrentNum, history);
             // navContext.navigate(`/sidor/${pageNextNum}`, "none");
+            // Om initialSlide används och är mer än 0 så triggas detta event vid init av slider.
+            // Så vi måste ignorera första eventet.
+            // goNextEnabled
+            // if (goNextEnabled) {
+            //   console.log("GO NEXT YES");
+            // } else {
+            //   setGoNextEnabled(true);
+            // }
+            // Vi har 3 slides, om vi svept till höger men index är 1 så ska vi icke gå.
+            // getActiveIndex
           }}
           onIonSlidePrevEnd={e => {
             console.log("slide prev", e);
@@ -344,19 +340,6 @@ const PageTextTV = props => {
             </article>
           </IonSlide>
         </IonSlides>
-
-        {/* <p>OLD SLIDES</p>
-        <div {...swipeHandlers}>
-          <div style={swipecontainerStyles}>
-            <TextTVPage
-              pageNum={pageNum}
-              pageId={pageId}
-              history={history}
-              refreshTime={refreshTime}
-              onPageUpdate={handlePageUpdate}
-            />
-          </div>
-        </div> */}
 
         {children}
 
