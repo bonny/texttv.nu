@@ -9,7 +9,8 @@ import {
   IonSplitPane,
   IonTabBar,
   IonTabButton,
-  IonTabs
+  IonTabs,
+  NavContext
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { Analytics } from "capacitor-analytics";
@@ -21,7 +22,7 @@ import {
   listOutline,
   timeOutline
 } from "ionicons/icons";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Redirect, Route } from "react-router-dom";
 import "./App.css";
 import { FavoritesContext } from "./contexts/FavoritesContext";
@@ -45,9 +46,125 @@ import TabNyast from "./pages/tab-nyast";
 import TabSidor from "./pages/tab-sidor";
 import Startsida from "./pages/tab-startsida";
 import "./theme.css";
-
 const { SplashScreen, AdMob, StatusBar } = Plugins;
 const analytics = new Analytics();
+
+// Testa navcontext. Fungerar i komponenter som läggs in under IonReactRouter.
+// Lägger sig ovanför tab button och fångar klickar och kringgår
+// tabarnas standardbeteende där de inte går till tab-roten vid varje klick.
+const TabFastNav = ({ href }) => {
+  const navContext = useContext(NavContext);
+  console.log("navContext", navContext);
+  const styles = {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%"
+  };
+
+  const navigate = () => {
+    navContext.navigate(href, "none");
+  };
+
+  return <div onClick={navigate} style={styles}></div>;
+};
+
+const Tabbarna = props => {
+  const { handleTabClick } = props;
+  const navContext = useContext(NavContext);
+  const { currentPath } = navContext;
+  console.log("navContext", navContext);
+  console.log("currentPath", currentPath);
+
+  const navigate = url => {
+    navContext.navigate(url, "none");
+  };
+
+  return (
+    <IonTabs id="mainTabs">
+      <IonRouterOutlet id="routerOutletElm">
+        <Route path="/debug" component={PageDebug} />
+        <Route path="/test" component={PageTest} />
+        <Route path="/testar" component={PageTestar} exact={true} />
+        <Route
+          path="/testar/undersida/:undersida/"
+          component={PageTestarUndersida}
+        />
+        <Route path="/hem" component={Startsida} exact={true} />
+        <Route path="/hem/:pageNum" component={PageTextTV} />
+
+        <Route path="/arkiv" component={TabPopulart} exact={true} />
+        <Route path="/arkiv/:pageNum" component={PageTextTV} exact={true} />
+        <Route
+          path="/arkiv/:pageNum/:pageId/"
+          component={PageTextTV}
+          exact={true}
+        />
+
+        <Route path="/sidor" component={TabSidor} exact={true} />
+        <Route path="/sidor/:pageNum" component={PageTextTV} />
+
+        <Route path="/nyast" component={TabNyast} exact={true} />
+        <Route path="/nyast/:pageNum" component={PageTextTV} />
+
+        {/* 
+    Fallback för url som är sidnummer direkt, t.ex. "/100".
+    Bra om man t.ex. hijackar url och skriver sida där manuellt.
+    */}
+        <Route path="/:pageNum([0-9]{3}.*)" component={PageCatchAll} />
+      </IonRouterOutlet>
+
+      <IonTabBar slot="bottom">
+        <IonTabButton
+          tab="hem"
+          xhref="/hem"
+          selected={currentPath.startsWith("/hem")}
+          onClick={e => {
+            handleTabClick(e);
+            navigate("/hem");
+          }}
+        >
+          <IonIcon icon={homeOutline} />
+          <IonLabel>Hem</IonLabel>
+        </IonTabButton>
+
+        <IonTabButton
+          tab="sidor"
+          xhref="/sidor"
+          className="ion-hide-lg-up"
+          selected={currentPath.startsWith("/sidor")}
+          onClick={e => {
+            handleTabClick(e);
+            navigate("/sidor");
+          }}
+        >
+          <IonIcon icon={listOutline} />
+          <IonLabel>Sidor</IonLabel>
+        </IonTabButton>
+
+        <IonTabButton
+          tab="nyast"
+          xhref="/nyast"
+          selected={currentPath.startsWith("/nyast")}
+          onClick={e => {
+            handleTabClick(e);
+            navigate("/nyast");
+          }}
+        >
+          <IonIcon icon={timeOutline} />
+          <IonLabel>Nyast</IonLabel>
+        </IonTabButton>
+
+        <IonTabButton tab="populart">
+          <IonIcon icon={eyeOutline} />
+          <IonLabel>Mest läst</IonLabel>
+          <TabFastNav href="/arkiv" />
+        </IonTabButton>
+      </IonTabBar>
+    </IonTabs>
+  );
+};
 
 if (isRunningInWebBrowser()) {
   const firebaseConfig = {
@@ -192,85 +309,7 @@ function TextTVApp(props) {
             <IonSplitPane contentId="mainContent">
               <MenuWithRouter {...props} />
               <div id="mainContent">
-                <IonTabs id="mainTabs">
-                  <IonRouterOutlet id="routerOutletElm">
-                    <Route path="/debug" component={PageDebug} />
-                    <Route path="/test" component={PageTest} />
-                    <Route path="/testar" component={PageTestar} exact={true} />
-                    <Route
-                      path="/testar/undersida/:undersida/"
-                      component={PageTestarUndersida}
-                    />
-                    <Route path="/hem" component={Startsida} exact={true} />
-                    <Route path="/hem/:pageNum" component={PageTextTV} />
-
-                    <Route path="/arkiv" component={TabPopulart} exact={true} />
-                    <Route
-                      path="/arkiv/:pageNum"
-                      component={PageTextTV}
-                      exact={true}
-                    />
-                    <Route
-                      path="/arkiv/:pageNum/:pageId/"
-                      component={PageTextTV}
-                      exact={true}
-                    />
-
-                    <Route path="/sidor" component={TabSidor} exact={true} />
-                    <Route path="/sidor/:pageNum" component={PageTextTV} />
-
-                    <Route path="/nyast" component={TabNyast} exact={true} />
-                    <Route path="/nyast/:pageNum" component={PageTextTV} />
-
-                    {/* 
-                  Fallback för url som är sidnummer direkt, t.ex. "/100".
-                  Bra om man t.ex. hijackar url och skriver sida där manuellt.
-                  */}
-                    <Route
-                      path="/:pageNum([0-9]{3}.*)"
-                      component={PageCatchAll}
-                    />
-                  </IonRouterOutlet>
-
-                  <IonTabBar slot="bottom">
-                    <IonTabButton
-                      tab="hem"
-                      href="/hem"
-                      onClick={handleTabClick}
-                    >
-                      <IonIcon icon={homeOutline} />
-                      <IonLabel>Hem</IonLabel>
-                    </IonTabButton>
-
-                    <IonTabButton
-                      tab="sidor"
-                      href="/sidor"
-                      className="ion-hide-lg-up"
-                      onClick={handleTabClick}
-                    >
-                      <IonIcon icon={listOutline} />
-                      <IonLabel>Sidor</IonLabel>
-                    </IonTabButton>
-
-                    <IonTabButton
-                      tab="nyast"
-                      href="/nyast"
-                      onClick={handleTabClick}
-                    >
-                      <IonIcon icon={timeOutline} />
-                      <IonLabel>Nyast</IonLabel>
-                    </IonTabButton>
-
-                    <IonTabButton
-                      tab="populart"
-                      href="/arkiv"
-                      onClick={handleTabClick}
-                    >
-                      <IonIcon icon={eyeOutline} />
-                      <IonLabel>Mest läst</IonLabel>
-                    </IonTabButton>
-                  </IonTabBar>
-                </IonTabs>
+                <Tabbarna handleTabClick={handleTabClick} />
               </div>
             </IonSplitPane>
           </IonReactRouter>
