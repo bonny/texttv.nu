@@ -15,7 +15,18 @@ import {
   IonTabButton,
   IonTabs
 } from "@ionic/react";
-import { time, eye, home, list } from "ionicons/icons";
+import {
+  time,
+  timeOutline,
+  eye,
+  eyeOutline,
+  glassesOutline,
+  home,
+  list,
+  listOutline,
+  listCircleOutline,
+  homeOutline
+} from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
 import {
   getCacheBustTimeString,
@@ -156,7 +167,9 @@ function TextTVApp(props) {
     getFavs();
   });
 
+  // Visa annons + sätt annons-höjd till variabel när sidan renderas.
   useEffect(() => {
+    console.log("XXXXX");
     try {
       AdMob.showBanner(adMobAdOptions).then();
 
@@ -232,7 +245,7 @@ function TextTVApp(props) {
                       href="/hem"
                       onClick={handleTabClick}
                     >
-                      <IonIcon icon={home} xmode="md" />
+                      <IonIcon icon={homeOutline} />
                       <IonLabel>Hem</IonLabel>
                     </IonTabButton>
 
@@ -242,7 +255,7 @@ function TextTVApp(props) {
                       className="ion-hide-lg-up"
                       onClick={handleTabClick}
                     >
-                      <IonIcon icon={list} xmode="md" />
+                      <IonIcon icon={listOutline} />
                       <IonLabel>Sidor</IonLabel>
                     </IonTabButton>
 
@@ -251,7 +264,7 @@ function TextTVApp(props) {
                       href="/nyast"
                       onClick={handleTabClick}
                     >
-                      <IonIcon icon={time} xmode="md" />
+                      <IonIcon icon={timeOutline} />
                       <IonLabel>Nyast</IonLabel>
                     </IonTabButton>
 
@@ -260,7 +273,7 @@ function TextTVApp(props) {
                       href="/arkiv"
                       onClick={handleTabClick}
                     >
-                      <IonIcon icon={eye} xmode="md" />
+                      <IonIcon icon={eyeOutline} />
                       <IonLabel>Mest läst</IonLabel>
                     </IonTabButton>
                   </IonTabBar>

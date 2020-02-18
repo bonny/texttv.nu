@@ -13,11 +13,10 @@ import {
 } from "@ionic/react";
 import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
 import React, { useEffect, useRef, useState, useContext } from "react";
-// import { useSwipeable } from "react-swipeable";
+
 import {
   getCurrentIonPageContentElm,
   getUnixtime,
-  // normalizeBetweenTwoRanges,
   handleCopyLinkToClipboard,
   handleCopyTextToClipboard,
   handleOpenLinkInBrowser,
