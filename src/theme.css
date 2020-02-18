@@ -225,21 +225,19 @@ b {
   max-width: 20em;
 }
 
-.TextTVNextPrevSwipeNav {
-  /* background: #666; */
-  line-height: 1;
-  max-width: 100px;
-  position: fixed;
-  top: 50%;
-  z-index: 10;
-  font-size: 1.5rem;
-  white-space: nowrap;
-}
-
 .TextTVNextPrevSwipeNav__icon,
 .TextTVNextPrevSwipeNav__number {
   display: inline-block;
   vertical-align: middle;
+}
+
+.TextTVNextPrevSwipeNav {
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+}
+
+.TextTVNextPrevSwipeNav__inner {
 }
 
 .TextTVNextPrevSwipeNav--prev {
