@@ -298,7 +298,7 @@ ion-popover.sc-ion-popover-ios {
   left: calc(var(--ios-popover-width) - var(--ion-safe-area-right, 0px));
 }
 
-/* Class för att gömma saker, t.ex. header med logo, på t.ex. iphone se */
+/* Class för att gömma saker, t.ex. header med logo, på t.ex. Iphone 5/SE */
 @media (max-width: 320px) {
   .texttv-hide-smallest-screens {
     display: none !important;

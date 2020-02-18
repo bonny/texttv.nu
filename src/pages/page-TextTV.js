@@ -9,11 +9,7 @@ import {
   IonToast,
   NavContext,
   IonSlide,
-  IonSlides,
-  useIonViewDidEnter,
-  useIonViewDidLeave,
-  useIonViewWillEnter,
-  useIonViewWillLeave
+  IonSlides
 } from "@ionic/react";
 import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
 import React, { useEffect, useRef, useState, useContext } from "react";
@@ -46,12 +42,8 @@ const PageTextTV = props => {
   const pageNum = props.pageNum || match.params.pageNum;
   const pageId = props.pageId || match.params.pageId;
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
-  // const [goNextEnabled, setGoNextEnabled] = useState(false);
   const [pageUpdatedToastVisible, setPageUpdatedToastVisible] = useState(false);
   const [pageData, setPageData] = useState([]);
-  // const [swipeData, setSwipeData] = useState({
-  //   doMove: false
-  // });
   const [didDismissPageUpdateToast, setDidDismissPageUpdateToast] = useState(
     false
   );
@@ -78,21 +70,22 @@ const PageTextTV = props => {
     pageNextNum = 999;
   }
 
-  useIonViewDidEnter(() => {
-    console.log("ionViewDidEnter event fired");
-  });
+  // Dessa event körs aldrig pga buggar.
+  // useIonViewDidEnter(() => {
+  //   console.log("ionViewDidEnter event fired");
+  // });
 
-  useIonViewDidLeave(() => {
-    console.log("ionViewDidLeave event fired");
-  });
+  // useIonViewDidLeave(() => {
+  //   console.log("ionViewDidLeave event fired");
+  // });
 
-  useIonViewWillEnter(() => {
-    console.log("ionViewWillEnter event fired");
-  });
+  // useIonViewWillEnter(() => {
+  //   console.log("ionViewWillEnter event fired");
+  // });
 
-  useIonViewWillLeave(() => {
-    console.log("ionViewWillLeave event fired");
-  });
+  // useIonViewWillLeave(() => {
+  //   console.log("ionViewWillLeave event fired");
+  // });
 
   /**
    * Update the refresh time to the current time.

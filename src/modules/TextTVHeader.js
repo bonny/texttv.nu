@@ -3,11 +3,11 @@ import React from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
 
 export default props => {
-  const { title = "TextTV.nu", buttonsEnd } = props;
+  const { title = "TextTV.nu", buttonsEnd, children } = props;
 
   return (
-    <IonHeader>
-      <IonToolbar color="primary" xmode="md">
+    <IonHeader className="texttv-hide-smallest-screens">
+      <IonToolbar color="primary">
         <IonTitle>
           <Logo className="texttv-logo" />
           {title}
@@ -16,7 +16,7 @@ export default props => {
           <IonButtons slot="end">{buttonsEnd}</IonButtons>
         </IonButtons>
       </IonToolbar>
-      {props.children}
+      {children}
     </IonHeader>
   );
 };
