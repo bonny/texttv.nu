@@ -225,16 +225,17 @@ b {
   max-width: 20em;
 }
 
-.TextTVNextPrevSwipeNav__icon,
-.TextTVNextPrevSwipeNav__number {
-  display: inline-block;
-  vertical-align: middle;
-}
-
 .TextTVNextPrevSwipeNav {
   min-height: 40vh;
   display: flex;
   align-items: center;
+  opacity: 0.5;
+}
+
+.TextTVNextPrevSwipeNav__icon,
+.TextTVNextPrevSwipeNav__number {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .TextTVNextPrevSwipeNav__inner {
