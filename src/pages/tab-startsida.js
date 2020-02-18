@@ -6,7 +6,7 @@ import {
   IonLabel,
   IonRow
 } from "@ionic/react";
-import { star } from "ionicons/icons";
+import { starOutline } from "ionicons/icons";
 import React, { useContext, useEffect, useState } from "react";
 import {
   getCurrentIonPageContentElm,
@@ -74,7 +74,7 @@ const Startsida = props => {
         setVisaRedigeraFavoriter(true);
       }}
     >
-      <IonIcon slot="start" icon={star} />
+      <IonIcon slot="start" icon={starOutline} />
       <IonLabel>Ändra favoriter...</IonLabel>
     </IonItem>
   );

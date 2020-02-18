@@ -14,7 +14,7 @@ import {
   isPlatform
 } from "@ionic/react";
 import { Link } from "react-router-dom";
-import { copy, link, ellipsisVertical, open, refresh, share } from "ionicons/icons";
+import { copyOutline, linkOutline, ellipsisVertical, openOutline, refresh, shareOutline } from "ionicons/icons";
 import React, { useState } from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
 import TextTVSearchBar from "./TextTVSearchBar";
@@ -130,20 +130,20 @@ const Header = props => {
       >
         <IonList>
           <IonItem button onClick={handleCopyTextToClipboard}>
-            <IonIcon slot="start" icon={copy}  />
+            <IonIcon slot="start" icon={copyOutline}  />
             <IonLabel>Kopiera text</IonLabel>
           </IonItem>
           <IonItem button onClick={handleCopyLinkToClipboard}>
-            <IonIcon slot="start" icon={link}  />
+            <IonIcon slot="start" icon={linkOutline}  />
             <IonLabel>Kopiera länk</IonLabel>
           </IonItem>
           <IonItem button onClick={handleOpenLink}>
-            <IonIcon slot="start" icon={open}  />
+            <IonIcon slot="start" icon={openOutline}  />
             <IonLabel>Öppna i webbläsare</IonLabel>
           </IonItem>
           {showShare && (
             <IonItem button onClick={handleShareClick}>
-              <IonIcon slot="start" icon={share}  />
+              <IonIcon slot="start" icon={shareOutline}  />
               <IonLabel>Dela...</IonLabel>
             </IonItem>
           )}

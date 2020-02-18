@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { IonReactRouter } from "@ionic/react-router";
 import { Plugins, StatusBarStyle } from "@capacitor/core";
 import "@ionic/core/css/core.css";
 import "@ionic/core/css/ionic.bundle.css";
-import "./App.css";
-import "./theme.css";
 import {
   IonApp,
   IonIcon,
@@ -15,42 +11,40 @@ import {
   IonTabButton,
   IonTabs
 } from "@ionic/react";
+import { IonReactRouter } from "@ionic/react-router";
+import { Analytics } from "capacitor-analytics";
+import "firebase/analytics";
+import * as firebase from "firebase/app";
 import {
-  time,
-  timeOutline,
-  eye,
   eyeOutline,
-  glassesOutline,
-  home,
-  list,
+  homeOutline,
   listOutline,
-  listCircleOutline,
-  homeOutline
+  timeOutline
 } from "ionicons/icons";
+import React, { useEffect, useState } from "react";
 import { Redirect, Route } from "react-router-dom";
+import "./App.css";
+import { FavoritesContext } from "./contexts/FavoritesContext";
+import { detfaultTabinfoState, TabContext } from "./contexts/TabContext";
 import {
   getCacheBustTimeString,
+  getTabHeight,
+  getUnixtime,
   isRunningInWebBrowser,
-  useMountEffect,
-  getTabHeight
+  loadFavorites,
+  useMountEffect
 } from "./functions";
-import { adMobAdOptions } from "./options";
 import { MenuWithRouter } from "./modules/SideMenu";
+import { adMobAdOptions } from "./options";
 import PageTextTV from "./pages/page-TextTV.js";
+import PageCatchAll from "./pages/PageCatchAll";
 import { PageDebug } from "./pages/pageDebug.js";
 import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
-import TabNyast from "./pages/tab-nyast";
 import TabPopulart from "./pages/tab-mest-last";
+import TabNyast from "./pages/tab-nyast";
 import TabSidor from "./pages/tab-sidor";
 import Startsida from "./pages/tab-startsida";
-import { TabContext, detfaultTabinfoState } from "./contexts/TabContext";
-import { FavoritesContext } from "./contexts/FavoritesContext";
-import { getUnixtime, loadFavorites } from "./functions";
-import { Analytics } from "capacitor-analytics";
-import PageCatchAll from "./pages/PageCatchAll";
-
-import * as firebase from "firebase/app";
-import "firebase/analytics";
+import "./theme.css";
 
 const { SplashScreen, AdMob, StatusBar } = Plugins;
 const analytics = new Analytics();
@@ -169,7 +163,6 @@ function TextTVApp(props) {
 
   // Visa annons + sätt annons-höjd till variabel när sidan renderas.
   useEffect(() => {
-    console.log("XXXXX");
     try {
       AdMob.showBanner(adMobAdOptions).then();
 
