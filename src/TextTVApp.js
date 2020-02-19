@@ -49,37 +49,42 @@ import "./theme.css";
 const { SplashScreen, AdMob, StatusBar } = Plugins;
 const analytics = new Analytics();
 
-// Testa navcontext. Fungerar i komponenter som läggs in under IonReactRouter.
-// Lägger sig ovanför tab button och fångar klickar och kringgår
-// tabarnas standardbeteende där de inte går till tab-roten vid varje klick.
-const TabFastNav = ({ href }) => {
-  const navContext = useContext(NavContext);
-  console.log("navContext", navContext);
-  const styles = {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%"
-  };
-
-  const navigate = () => {
-    navContext.navigate(href, "none");
-  };
-
-  return <div onClick={navigate} style={styles}></div>;
-};
-
 const Tabbarna = props => {
   const { handleTabClick } = props;
   const navContext = useContext(NavContext);
   const { currentPath } = navContext;
-  console.log("navContext", navContext);
-  console.log("currentPath", currentPath);
 
   const navigate = url => {
     navContext.navigate(url, "none");
   };
+
+  const tabButtons = [
+    {
+      tab: "hem",
+      title: "Hem",
+      icon: homeOutline,
+      href: "/hem"
+    },
+    {
+      tab: "sidor",
+      title: "sidor",
+      icon: listOutline,
+      href: "/sidor",
+      className: "ion-hide-lg-up"
+    },
+    {
+      tab: "nyast",
+      title: "Nyast",
+      icon: timeOutline,
+      href: "/nyast"
+    },
+    {
+      tab: "populart",
+      title: "Mest läst",
+      icon: eyeOutline,
+      href: "/arkiv"
+    }
+  ];
 
   return (
     <IonTabs id="mainTabs">
@@ -109,58 +114,32 @@ const Tabbarna = props => {
         <Route path="/nyast/:pageNum" component={PageTextTV} />
 
         {/* 
-    Fallback för url som är sidnummer direkt, t.ex. "/100".
-    Bra om man t.ex. hijackar url och skriver sida där manuellt.
-    */}
+        Fallback för url som är sidnummer direkt, t.ex. "/100".
+        Bra om man t.ex. hijackar url och skriver sida där manuellt.
+        */}
         <Route path="/:pageNum([0-9]{3}.*)" component={PageCatchAll} />
       </IonRouterOutlet>
 
       <IonTabBar slot="bottom">
-        <IonTabButton
-          tab="hem"
-          xhref="/hem"
-          selected={currentPath.startsWith("/hem")}
-          onClick={e => {
-            handleTabClick(e);
-            navigate("/hem");
-          }}
-        >
-          <IonIcon icon={homeOutline} />
-          <IonLabel>Hem</IonLabel>
-        </IonTabButton>
+        {tabButtons.map(tabBtnProps => {
+          const { tab, className, href, icon, title } = tabBtnProps;
 
-        <IonTabButton
-          tab="sidor"
-          xhref="/sidor"
-          className="ion-hide-lg-up"
-          selected={currentPath.startsWith("/sidor")}
-          onClick={e => {
-            handleTabClick(e);
-            navigate("/sidor");
-          }}
-        >
-          <IonIcon icon={listOutline} />
-          <IonLabel>Sidor</IonLabel>
-        </IonTabButton>
-
-        <IonTabButton
-          tab="nyast"
-          xhref="/nyast"
-          selected={currentPath.startsWith("/nyast")}
-          onClick={e => {
-            handleTabClick(e);
-            navigate("/nyast");
-          }}
-        >
-          <IonIcon icon={timeOutline} />
-          <IonLabel>Nyast</IonLabel>
-        </IonTabButton>
-
-        <IonTabButton tab="populart">
-          <IonIcon icon={eyeOutline} />
-          <IonLabel>Mest läst</IonLabel>
-          <TabFastNav href="/arkiv" />
-        </IonTabButton>
+          return (
+            <IonTabButton
+              key={tab}
+              tab={tab}
+              className={className}
+              selected={currentPath.startsWith(href)}
+              onClick={e => {
+                handleTabClick(e);
+                navigate(href);
+              }}
+            >
+              <IonIcon icon={icon} />
+              <IonLabel>{title}</IonLabel>
+            </IonTabButton>
+          );
+        })}
       </IonTabBar>
     </IonTabs>
   );
