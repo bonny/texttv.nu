@@ -74,7 +74,8 @@ const TextTVSidorLista = props => {
         </IonListHeader>
 
         {favorites.map((page, index, arr) => {
-          const url = `/sidor/${page.pages}`;
+          const pages = page.pages;
+          const url = `/sidor/${pages}`;
           return (
             <IonItem
               button
@@ -82,19 +83,14 @@ const TextTVSidorLista = props => {
               onClick={() => {
                 history.push(url);
               }}
-              key={page.pages}
+              key={pages}
               lines="none"
             >
               <IonLabel text-wrap>
                 <h2 className="ListHeadlineSidor">{page.title}</h2>
               </IonLabel>
-              <IonNote
-                slot="end"
-                xmode="ios"
-                className="ListPageNum"
-                color="medium"
-              >
-                {page.pages}
+              <IonNote slot="end" className="ListPageNum" color="medium">
+                {pages}
               </IonNote>
             </IonItem>
           );
