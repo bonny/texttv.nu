@@ -1,5 +1,8 @@
 # Aktuellt arbete
 
+Just nu:  
+testar egen komponent med navcontext för flikarna.
+
 ## Blandat Todo
 
 - [x] `undefined` när delar sida via dela-funktion (inte öppna i browser/kopiera länk).
@@ -7,7 +10,6 @@
 - [ ] Mindre "flicker" vid byte av sida
 - [ ] Lägga till/ta bort favorit direkt på respektive sida.
 - [ ] Gå till rot på varje tab vid tab-click.
-
 
 ## Changelog
 
