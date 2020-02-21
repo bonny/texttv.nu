@@ -1,7 +1,8 @@
 # Aktuellt arbete
 
-Just nu:  
-testar egen komponent med navcontext för flikarna.
+### Just nu
+
+- testar egen komponent med navcontext för flikarna.
 
 ## Blandat Todo
 
