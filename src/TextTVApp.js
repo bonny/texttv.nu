@@ -17,6 +17,10 @@ import { Analytics } from "capacitor-analytics";
 import "firebase/analytics";
 import * as firebase from "firebase/app";
 import {
+  eye,
+  home,
+  list,
+  time,
   eyeOutline,
   homeOutline,
   listOutline,
@@ -63,12 +67,14 @@ const Tabbarna = props => {
       tab: "hem",
       title: "Hem",
       icon: homeOutline,
+      iconSelected: home,
       href: "/hem"
     },
     {
       tab: "sidor",
       title: "sidor",
       icon: listOutline,
+      iconSelected: list,
       href: "/sidor",
       className: "ion-hide-lg-up"
     },
@@ -76,12 +82,14 @@ const Tabbarna = props => {
       tab: "nyast",
       title: "Nyast",
       icon: timeOutline,
+      iconSelected: time,
       href: "/nyast"
     },
     {
       tab: "populart",
       title: "Mest läst",
       icon: eyeOutline,
+      iconSelected: eye,
       href: "/arkiv"
     }
   ];
@@ -122,22 +130,38 @@ const Tabbarna = props => {
 
       <IonTabBar slot="bottom">
         {tabButtons.map(tabBtnProps => {
-          const { tab, className, href, icon, title } = tabBtnProps;
+          const {
+            tab,
+            className,
+            href,
+            icon,
+            iconSelected,
+            title
+          } = tabBtnProps;
+          const isSelected = currentPath.startsWith(href);
+
+          // @TODO: använd olika ikoner baserat på aktiv eller inte
+          const tabIcon = isSelected ? iconSelected : icon;
 
           return (
             <IonTabButton
               key={tab}
               tab={tab}
               className={className}
-              selected={currentPath.startsWith(href)}
+              selected={isSelected}
               onClick={e => {
                 handleTabClick(e);
-                // @TODO: om vi är på samma sida så ska vi scrolla upp
-                // istället för att navigera.
+
+                // Bail och gå inte till sida pga redan på rätt sida.
+                // Upp till komponenten att scrolla upp eller ladda om
+                if (currentPath === href) {
+                  return;
+                }
+
                 navigate(href);
               }}
             >
-              <IonIcon icon={icon} />
+              <IonIcon icon={tabIcon} />
               <IonLabel>{title}</IonLabel>
             </IonTabButton>
           );
