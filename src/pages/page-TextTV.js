@@ -3,17 +3,16 @@
  */
 
 import {
-  IonPage,
   IonContent,
   IonIcon,
-  IonToast,
-  NavContext,
+  IonPage,
   IonSlide,
-  IonSlides
+  IonSlides,
+  IonToast,
+  NavContext
 } from "@ionic/react";
 import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
-import React, { useEffect, useRef, useState, useContext } from "react";
-
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
   getCurrentIonPageContentElm,
   getUnixtime,
@@ -25,6 +24,13 @@ import {
 import Header from "../modules/Header";
 import TextTVPage from "../modules/TextTVPage";
 import TextTVRefresher from "../modules/TextTVRefresher";
+
+const scrollToTop = () => {
+  let currentIonPageContent = getCurrentIonPageContentElm();
+  if (currentIonPageContent) {
+    currentIonPageContent.scrollToTop(750);
+  }
+};
 
 const PageTextTV = props => {
   const {
@@ -52,6 +58,12 @@ const PageTextTV = props => {
   const sliderRef = useRef();
 
   const navContext = useContext(NavContext);
+
+  // Unik sträng som används som key för ion-slides.
+  // Om inte key används så "nollas" inte slider och man stannar på
+  // sidan man svept till istället för att komma till mittensliden med textinnehållet.
+  const historyLocationPathname =
+    history.location.pathname + "_" + history.location.key;
 
   let pageTitle = title || `${pageNum} - SVT Text TV`;
 
@@ -123,13 +135,6 @@ const PageTextTV = props => {
       localUpdateRefreshTime();
     }
   }, [passedRefreshTime, refreshTime, onRefresh]);
-
-  const scrollToTop = () => {
-    let currentIonPageContent = getCurrentIonPageContentElm();
-    if (currentIonPageContent) {
-      currentIonPageContent.scrollToTop(750);
-    }
-  };
 
   // Leta efter uppdateringar av sidan eller sidorna
   // när pageNum eller refreshTime ändrats.
@@ -226,21 +231,9 @@ const PageTextTV = props => {
     setDidDismissPageUpdateToast(false);
   }, [pageNum]);
 
-  /**
-   * Göm uppdaterad-toast när vi lämnar sidan/vyn.
-   */
-  // useIonViewWillLeave(() => {
-  //   console.log('useIonViewWillLeave');
-  //   setPageUpdatedToastVisible(false);
-  // })
-
   const sliderOptions = {
     initialSlide: 1
   };
-
-  // console.log("pageCurrentNum", pageCurrentNum, pageNextNum, pagePrevNum);
-  const historyLocationPathname =
-    history.location.pathname + "_" + history.location.key;
 
   return (
     <IonPage ref={pageRef}>
@@ -267,9 +260,28 @@ const PageTextTV = props => {
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
         <IonSlides
+          key={historyLocationPathname}
           ref={sliderRef}
           pager={false}
           options={sliderOptions}
+          onIonSlidesDidLoad={e => {
+            // När slides körs på startsidan så blir det nån bugg som gör att slides Swiper
+            // inte initieras helt korrekt på nåt vis och av nån anledning.
+            // Eventligen beror detta på att på startsidan så visas mer innehåller under slider
+            // komponenten tar mer än 20 ms att ladda?
+            // update() på swiper verkar lösa detta.
+            e.target.getSwiper().then(swiper => {
+              const hasTranslateApplied = swiper.wrapperEl.style.cssText.indexOf(
+                "translate3d"
+              );
+              if (hasTranslateApplied === -1) {
+                console.log("translate not found on element, so init failed");
+                setTimeout(() => {
+                  swiper.update();
+                }, 100);
+              }
+            });
+          }}
           onIonSlideDidChange={e => {
             sliderRef.current.getActiveIndex().then(activeIndex => {
               let navToPageNum;
@@ -285,7 +297,6 @@ const PageTextTV = props => {
               }
             });
           }}
-          key={historyLocationPathname}
         >
           <IonSlide>
             <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev">
@@ -328,8 +339,6 @@ const PageTextTV = props => {
           </IonSlide>
         </IonSlides>
 
-        {children}
-
         {/* Toast med meddelande om att uppdatering av sidan finns. */}
         <IonToast
           isOpen={pageUpdatedToastVisible}
@@ -361,6 +370,8 @@ const PageTextTV = props => {
             }
           ]}
         />
+
+        {children}
       </IonContent>
     </IonPage>
   );
