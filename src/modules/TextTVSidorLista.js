@@ -75,7 +75,8 @@ const TextTVSidorLista = props => {
 
         {favorites.map((page, index, arr) => {
           const pages = page.pages;
-          const url = `/sidor/${pages}`;
+          const url = page.href ? page.href : `/sidor/${pages}`;
+
           return (
             <IonItem
               button
@@ -83,7 +84,7 @@ const TextTVSidorLista = props => {
               onClick={() => {
                 history.push(url);
               }}
-              key={pages}
+              key={url}
               lines="none"
             >
               <IonLabel text-wrap>

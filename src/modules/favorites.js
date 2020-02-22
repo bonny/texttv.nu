@@ -1,5 +1,6 @@
 export default [
-  { title: "Start", pages: "100" },
+  { title: "Hem/Favoriter", href: "/hem" },
+  { title: "SVT Text Start", pages: "100" },
   { title: "Inrikesnyheter", pages: "101-103" },
   { title: "Utrikesnyheter", pages: "104-105" },
   { title: "Ekonomi", pages: "200-202" },
