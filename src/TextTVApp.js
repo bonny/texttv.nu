@@ -132,6 +132,8 @@ const Tabbarna = props => {
               selected={currentPath.startsWith(href)}
               onClick={e => {
                 handleTabClick(e);
+                // @TODO: om vi är på samma sida så ska vi scrolla upp
+                // istället för att navigera.
                 navigate(href);
               }}
             >
