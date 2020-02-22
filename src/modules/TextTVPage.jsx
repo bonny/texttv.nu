@@ -135,8 +135,7 @@ export default props => {
         url = `https://api.texttv.nu/api/get/${pageNum}?cb=${cacheBustTimeString}&app=texttvapp${slowAnswerQueryString}`;
       }
 
-      const response = fetch(url);
-      response
+      fetch(url)
         .then(async responseDatas => {
           const pageData = await responseDatas.json();
 
