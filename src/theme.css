@@ -100,7 +100,7 @@ https://ionicframework.com/docs/theming/advanced
   --ion-color-light-tint: #f5f6f9; */
 
   /* Default i Ionic blir för smal i Iphone */
-  --ios-popover-width: 250px;
+  --ios-popover-width: 275px;
 
   /* Höjd på annons. Får från AdMob via callback och denna variabel uppdateras då. */
   --text-tv-ad-height: 0px;
@@ -291,6 +291,7 @@ Positionera toast ovanför tabbar.
   top: -8em;
 }
 
+/* Popover med sid-åtgärder är för smal i Ios */
 ion-popover.sc-ion-popover-ios-h {
   --width: var(--ios-popover-width);
 }
