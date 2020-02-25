@@ -16,7 +16,7 @@ https://app.texttv.nu/
 
 ### Nyheter i nya text-tv-appen
 
-#### Version n
+#### Version 3.0.2
 
 - Mer text får plats på mindre skärmar, t.ex för de med Iphone 5/SE.
 - Bättre känsla vid svepning mellan sidor
