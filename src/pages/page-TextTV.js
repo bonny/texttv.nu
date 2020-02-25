@@ -276,21 +276,17 @@ const PageTextTV = props => {
               let checkNum = 0;
 
               const checkIntervalId = setInterval(() => {
-                console.log("check if swiper has inited ok");
                 const hasTranslateApplied = swiper.wrapperEl.style.cssText.indexOf(
                   "translate3d"
                 );
 
                 if (checkNum > maxNumberOfChecks) {
-                  console.log("max numnber of checks, stop checking");
                   clearInterval(checkIntervalId);
                 }
 
                 if (hasTranslateApplied === -1) {
-                  console.log("translate not found on element, so init failed");
                   swiper.update();
                 } else {
-                  console.log("translate found, stop checking");
                   clearInterval(checkIntervalId);
                 }
 
