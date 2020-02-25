@@ -16,10 +16,25 @@ https://app.texttv.nu/
 
 ### Nyheter i nya text-tv-appen
 
+#### Version n
+
+- Mer text får plats på mindre skärmar, t.ex för de med Iphone 5/SE.
+- Bättre känsla vid svepning mellan sidor
+- Ikonerna matchar bättre nyare versioner av iOS
+- Blandade mindre fixar.
+
+#### Version 3.0.1
+
+- Favoriterna är tillbaka
+- Snabbare och mer direkta svepningar med mindre lagg.
+- Startsidan för väder, sidan 400, är nu med direkt i menyn.
+
+#### Version 3.0
+
 - Ny design.
 - Större klickyta, bra t.ex. för små mobiler där det kan vara svårt att pricka sidnummret.
 - Tillbaka-knapp fungerar på Android.
-- Tydligare gränssnitt med lättare tillgång till 
+- Tydligare gränssnitt med lättare tillgång till
   - startsida
   - vanliga sidor
   - senast uppdaterade sidorna
