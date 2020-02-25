@@ -7,8 +7,9 @@
 - [x] `undefined` när delar sida via dela-funktion (inte öppna i browser/kopiera länk).
 - [x] Bättre swipe-känsla.
 - [x] Gå till rot på varje tab vid tab-click.
-- [ ] Svep fastnar på första skärmen ibland
-- [ ] Popover för smal i Ios
+- [x] Svep fastnar på första skärmen ibland
+- [x] Popover för smal i Ios
+- [ ] Toppraden för tajt på Iphone 5/SE
 - [ ] Mindre "flicker" vid byte av sida
 - [ ] Lägga till/ta bort favorit direkt på respektive sida.
 - [ ] Merge in i master, sätt tag på gammalt först så kan hitta tillbaka.
