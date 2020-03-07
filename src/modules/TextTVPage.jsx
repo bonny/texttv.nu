@@ -83,15 +83,7 @@ export default props => {
         pathPrefix = "sidor";
     }
 
-    // console.log(
-    //   "go to link, history pathname",
-    //   history.location.pathname,
-    //   history.location,
-    //   firstPathName
-    // );
-
     const timestamp = Date.now();
-    //history.push(`/${pathPrefix}${href}?date=${timestamp}`);
     navContext.navigate(`/${pathPrefix}${href}?date=${timestamp}`, "none");
   };
 
