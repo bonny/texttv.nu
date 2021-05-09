@@ -12,11 +12,8 @@
 - [ ] Toppraden för tajt på Iphone 5/SE
 - [ ] Mindre "flicker" vid byte av sida
 - [ ] Lägga till/ta bort favorit direkt på respektive sida.
-- [ ] Merge in i master, sätt tag på gammalt först så kan hitta tillbaka.
+- [ ] Genvägar till samma sidor som svt.se/text-tv har, så användare känner igen sig.
+- [ ] Får "sidan uppdaterad"-meddelande lite för ofta. Nån loop eller nåt som är skev.
+- [ ] 
 
 ## Changelog
-
-- Bättre känsla vid svepning mellan sidor
-- Mer text får plats på mindre skärmar, t.ex för de med Iphone 5/SE.
-- Ikonerna matchar bättre nyare versioner av iOS
-- Blandade mindre fixar.
