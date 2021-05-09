@@ -8,7 +8,9 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 ## Kom igång
 
-- `npm start`
+- `npm install -g @ionic/cli`
+- `npm start` eller `ionic serve`
+-
 
 ## Ny app 2019 🎉
 
