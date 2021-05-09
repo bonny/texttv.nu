@@ -6,6 +6,10 @@ Här bygger vi [iOS appen](https://itunes.apple.com/se/app/texttv.nu/id607998045
 
 Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka in förbättringsförslag.
 
+## Kom igång
+
+- `npm start`
+
 ## Ny app 2019 🎉
 
 För att fira att SVT Text TV fyllt 40 år så håller vi (långsamt...) på att ta fram en ny app. Du kan tjyvkika på den här:
