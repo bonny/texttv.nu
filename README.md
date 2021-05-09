@@ -12,7 +12,7 @@ För att fira att SVT Text TV fyllt 40 år så håller vi (långsamt...) på att
 
 https://app.texttv.nu/
 
-![Skärmdump som visar hur nya appen för SVT Text TV ungefär kommer se ut](https://raw.githubusercontent.com/bonny/texttv.nu/texttv2019/src/images/text-tv-app-2019-sk%C3%A4rmdump.png)
+![Skärmdump som visar hur nya appen för SVT Text TV ungefär kommer se ut](https://raw.githubusercontent.com/bonny/texttv.nu/main/src/images/text-tv-app-2019-sk%C3%A4rmdump.png)
 
 ### Nyheter i nya text-tv-appen
 
