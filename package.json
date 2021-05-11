@@ -19,7 +19,6 @@
     "firebase": "^7.9.1",
     "ionicons": "^5.0.0",
     "moment": "^2.24.0",
-    "node-sass": "^4.13.1",
     "react": "^17.0.2",
     "react-app-rewire-disable-chunks": "0.0.1",
     "react-dom": "^17.0.2",
