@@ -96,7 +96,7 @@ const Tabbarna = props => {
 
   return (
     <IonTabs id="mainTabs">
-      <IonRouterOutlet id="routerOutletElm">
+      <IonRouterOutlet id="routerOutletElm" animated={false}>
         <Route path="/debug" component={PageDebug} />
         <Route path="/test" component={PageTest} />
         <Route path="/testar" component={PageTestar} exact={true} />
@@ -138,7 +138,10 @@ const Tabbarna = props => {
             iconSelected,
             title
           } = tabBtnProps;
-          const isSelected = currentPath.startsWith(href);
+          
+          // @TODO: knas här
+          console.log({currentPath});
+          const isSelected = currentPath?.startsWith(href);
 
           // @TODO: använd olika ikoner baserat på aktiv eller inte
           const tabIcon = isSelected ? iconSelected : icon;
