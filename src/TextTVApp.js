@@ -15,7 +15,7 @@ import {
 import { IonReactRouter } from "@ionic/react-router";
 import { Analytics } from "capacitor-analytics";
 import "firebase/analytics";
-import * as firebase from "firebase/app";
+import firebase from 'firebase/app'
 import {
   eye,
   home,
