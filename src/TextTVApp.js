@@ -175,6 +175,7 @@ const Tabbarna = props => {
 };
 
 if (isRunningInWebBrowser()) {
+  // Konfig för web. När app körs sätts dessa via app/capacitor tror jag.
   const firebaseConfig = {
     apiKey: "AIzaSyD74YswGldkaY4lpbebtHPMD6p26CeFqEk",
     authDomain: "teletext-a4d17.firebaseapp.com",

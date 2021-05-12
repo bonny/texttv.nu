@@ -7,7 +7,7 @@ import com.getcapacitor.Plugin;
 
 import java.util.ArrayList;
 
-import io.stewan.capacitor.analytics.AnalyticsPlugin;
+import com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;
 
 public class MainActivity extends BridgeActivity {
   @Override
@@ -23,8 +23,7 @@ public class MainActivity extends BridgeActivity {
       add(jp.rdlabo.capacitor.plugin.admob.AdMob.class);
 
       // Add Capacitor Firebase analytics plugin
-      add(AnalyticsPlugin.class);
-
+      add(FirebaseAnalytics.class);
     }});
   }
 }
