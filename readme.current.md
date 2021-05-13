@@ -19,6 +19,6 @@
 - [ ] ta bort ev. animationer vid navigering, https://ionicframework.com/docs/api/router-outlet#:~:text=animated
 - [ ] lägg till debug-context som visar debug-meddelanden i nån ruta
 - [ ] gå till-sida input även på mest läst och senaste. det ska alltid gå att gå vidare till valfri sida!
-- [ ]
+- [ ] statistik på omladdningar och när favoriter ändras osv. även när tab klickas? få koll på vilka funktioner som faktiskt används.
 
 ## Changelog
