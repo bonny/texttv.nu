@@ -16,6 +16,9 @@
 - [ ] Senast + mest läst: alltid&max två rader så innehållet inte hoppar
 - [ ] Mest lästa/senast: får nån ram mellan varje item under load/skeleton
 - [ ] När man klickar på mest lästa/senaste ett par gånger så verkar det laddas dubbla ajax + sidor laddas fast inga visas?
-- [ ] 
+- [ ] ta bort ev. animationer vid navigering, https://ionicframework.com/docs/api/router-outlet#:~:text=animated
+- [ ] lägg till debug-context som visar debug-meddelanden i nån ruta
+- [ ] gå till-sida input även på mest läst och senaste. det ska alltid gå att gå vidare till valfri sida!
+- [ ]
 
 ## Changelog

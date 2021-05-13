@@ -1,14 +1,12 @@
 /**
  * Hjälpare.
  */
-import { useEffect } from "react";
 import { Plugins, Share } from "@capacitor/core";
 import { isPlatform } from "@ionic/react";
-
-import { Analytics } from "capacitor-analytics";
+import { useEffect } from "react";
+import { FirebaseAnalytics } from "./analytics";
 
 const { Clipboard, Storage } = Plugins;
-const analytics = new Analytics();
 
 const handleCopyTextToClipboard = (pageData, pageNum) => {
   const pageRangeInfo = getPageRangeInfo(pageNum);
@@ -29,7 +27,7 @@ const handleCopyTextToClipboard = (pageData, pageNum) => {
     text = text + "\n----------------------------------------\n\n";
     //}
 
-    page.content.forEach(val => {
+    page.content.forEach((val) => {
       text = text + val;
     });
   });
@@ -37,19 +35,19 @@ const handleCopyTextToClipboard = (pageData, pageNum) => {
   text = stripHtml(text);
 
   Clipboard.write({
-    string: text
+    string: text,
   });
 
   sendStats(pageData, "copyTextToClipboard");
 
   try {
-    analytics.logEvent({
+    FirebaseAnalytics.logEvent({
       name: "share",
       params: {
         content_type: "text to clipboard",
         item_id: pageIdsString,
-        page_nums: pageNum
-      }
+        page_nums: pageNum,
+      },
     });
   } catch (e) {}
 };
@@ -58,25 +56,26 @@ const handleCopyLinkToClipboard = (pageData, pageNum) => {
   const pageIdsString = getPageIdsFromPageData(pageData);
 
   const shareDate = new Date();
-  const formattedDate = `${shareDate.getFullYear()}-${shareDate.getMonth() +
-    1}-${shareDate.getDate()}`;
+  const formattedDate = `${shareDate.getFullYear()}-${
+    shareDate.getMonth() + 1
+  }-${shareDate.getDate()}`;
 
   const permalink = `https://texttv.nu/${pageNum}/arkiv/${formattedDate}/${pageIdsString}/`;
 
   Clipboard.write({
-    string: permalink
+    string: permalink,
   });
 
   sendStats(pageData, "copyLinkToClipboard");
 
   try {
-    analytics.logEvent({
+    FirebaseAnalytics.logEvent({
       name: "share",
       params: {
         content_type: "link to clipboard",
         item_id: pageIdsString,
-        page_nums: pageNum
-      }
+        page_nums: pageNum,
+      },
     });
   } catch (e) {}
 };
@@ -90,13 +89,13 @@ const handleOpenLinkInBrowser = (pageData, pageNum) => {
   sendStats(pageData, "openLinkInBrowser");
 
   try {
-    analytics.logEvent({
+    FirebaseAnalytics.logEvent({
       name: "share",
       params: {
         content_type: "link to browser",
         item_id: pageIdsString,
-        page_nums: pageNum
-      }
+        page_nums: pageNum,
+      },
     });
   } catch (e) {}
 };
@@ -120,25 +119,25 @@ const handleShare = async (e, pageData, pageNum) => {
 Delad via https://texttv.nu/
 `,
     url: permalink,
-    dialogTitle: "Dela sida"
+    dialogTitle: "Dela sida",
   });
 
   sharePromise
-    .then(data => {
+    .then((data) => {
       sendStats(pageData, "share");
 
       try {
-        analytics.logEvent({
+        FirebaseAnalytics.logEvent({
           name: "share",
           params: {
             content_type: "page",
             item_id: pageIdsString,
-            page_nums: pageNum
-          }
+            page_nums: pageNum,
+          },
         });
       } catch (e) {}
     })
-    .catch(err => {
+    .catch((err) => {
       console.log("Delning gick fel pga orsak", err);
     });
 };
@@ -173,7 +172,7 @@ function sendStats(pageIDsOrPageData, type) {
 function getPageIdsFromPageData(pageData) {
   let pageIdsString = "";
 
-  pageData.forEach(page => {
+  pageData.forEach((page) => {
     pageIdsString = pageIdsString + `,${page.id}`;
   });
 
@@ -200,7 +199,7 @@ function getPageRangeInfo(pageRange) {
     isValid: false,
     allValid: true,
     count: 0,
-    ranges: []
+    ranges: [],
   };
 
   // pageRange måste vara sträng.
@@ -212,7 +211,7 @@ function getPageRangeInfo(pageRange) {
   let pageNums = pageRange.split(",");
 
   // Ta bort mellanslag först och sist i varje element.
-  pageNums = pageNums.map(string => string.trim());
+  pageNums = pageNums.map((string) => string.trim());
 
   // Räkna ut.
   pageNums.reduce((acc, currentVal) => {
@@ -292,8 +291,8 @@ function getCurrentIonPage() {
   const currentIonPage = [
     ...document.querySelectorAll(
       ".ion-page#main .ion-page:not(.ion-page-hidden)"
-    )
-  ].find(e => true);
+    ),
+  ].find((e) => true);
   return currentIonPage;
 }
 
@@ -307,8 +306,8 @@ function getCurrentIonPageContentElm() {
   const currentIonPageContent = [
     ...document.querySelectorAll(
       "#mainContent .ion-page:not(.ion-page-hidden) ion-content"
-    )
-  ].find(e => true);
+    ),
+  ].find((e) => true);
 
   // Baila om inget element alls hittades.
   if (!currentIonPageContent) {
@@ -374,7 +373,7 @@ function stripHtml(html) {
 
 function createMarkupForPage(page) {
   return {
-    __html: page.content
+    __html: page.content,
   };
 }
 
@@ -422,7 +421,7 @@ function hitTest(x, y) {
       [x - increment, y - increment],
       [x + increment, y - increment],
       [x + increment, y + increment],
-      [x - increment, y + increment]
+      [x - increment, y + increment],
     ];
 
     // Threshold until we start testing for direct horizontal and vertical coordinates.
@@ -464,7 +463,7 @@ function hitTest(x, y) {
   return element;
 }
 
-const pointsSome = function(coordinates) {
+const pointsSome = function (coordinates) {
   var hit = document.elementFromPoint.apply(document, coordinates);
   // if (debug) {
   //   drawDot(dotParent, coordinates[0], coordinates[1]);
@@ -479,7 +478,7 @@ const pointsSome = function(coordinates) {
   return false;
 };
 
-const getNearestLink = e => {
+const getNearestLink = (e) => {
   const nearestLink = hitTest(e.clientX, e.clientY);
   return nearestLink;
 };
@@ -498,7 +497,7 @@ const normalizeBetweenTwoRanges = (val, minVal, maxVal, newMin, newMax) => {
 function hidePageUpdatedToasts() {
   document
     .querySelectorAll("ion-toast.TextTVPage_UpdatedToast")
-    .forEach(elm => {
+    .forEach((elm) => {
       elm.dismiss();
     });
 }
@@ -534,11 +533,11 @@ async function loadFavorites() {
 async function saveFavorites(favs) {
   await Storage.set({
     key: "favorites",
-    value: JSON.stringify(favs)
+    value: JSON.stringify(favs),
   });
 }
 
-const useMountEffect = fun => useEffect(fun, []);
+const useMountEffect = (fun) => useEffect(fun, []);
 
 // Avgör höjd på flikarna/tabbarn, dvs. hur många pixlar ska
 // annonsen flyttas upp för att inte vara iväg för flikarna.
@@ -586,5 +585,5 @@ export {
   saveFavorites,
   FAVORITES_DEFAULT_PAGES,
   useMountEffect,
-  getTabHeight
+  getTabHeight,
 };

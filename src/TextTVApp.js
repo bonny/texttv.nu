@@ -10,24 +10,22 @@ import {
   IonTabBar,
   IonTabButton,
   IonTabs,
-  NavContext
+  NavContext,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { Analytics } from "capacitor-analytics";
-import "firebase/analytics";
-import firebase from 'firebase/app'
 import {
   eye,
-  home,
-  list,
-  time,
   eyeOutline,
+  home,
   homeOutline,
+  list,
   listOutline,
-  timeOutline
+  time,
+  timeOutline,
 } from "ionicons/icons";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Redirect, Route } from "react-router-dom";
+import { FirebaseAnalytics } from "./analytics";
 import "./App.css";
 import { FavoritesContext } from "./contexts/FavoritesContext";
 import { detfaultTabinfoState, TabContext } from "./contexts/TabContext";
@@ -35,9 +33,8 @@ import {
   getCacheBustTimeString,
   getTabHeight,
   getUnixtime,
-  isRunningInWebBrowser,
   loadFavorites,
-  useMountEffect
+  useMountEffect,
 } from "./functions";
 import { MenuWithRouter } from "./modules/SideMenu";
 import { adMobAdOptions } from "./options";
@@ -50,15 +47,15 @@ import TabNyast from "./pages/tab-nyast";
 import TabSidor from "./pages/tab-sidor";
 import Startsida from "./pages/tab-startsida";
 import "./theme.css";
-const { SplashScreen, AdMob, StatusBar } = Plugins;
-const analytics = new Analytics();
 
-const Tabbarna = props => {
+const { SplashScreen, AdMob, StatusBar } = Plugins;
+
+const Tabbarna = (props) => {
   const { handleTabClick } = props;
   const navContext = useContext(NavContext);
   const { currentPath } = navContext;
 
-  const navigate = url => {
+  const navigate = (url) => {
     navContext.navigate(url, "none");
   };
 
@@ -68,7 +65,7 @@ const Tabbarna = props => {
       title: "Hem",
       icon: homeOutline,
       iconSelected: home,
-      href: "/hem"
+      href: "/hem",
     },
     {
       tab: "sidor",
@@ -76,22 +73,22 @@ const Tabbarna = props => {
       icon: listOutline,
       iconSelected: list,
       href: "/sidor",
-      className: "ion-hide-lg-up"
+      className: "ion-hide-lg-up",
     },
     {
       tab: "nyast",
       title: "Nyast",
       icon: timeOutline,
       iconSelected: time,
-      href: "/nyast"
+      href: "/nyast",
     },
     {
       tab: "populart",
       title: "Mest läst",
       icon: eyeOutline,
       iconSelected: eye,
-      href: "/arkiv"
-    }
+      href: "/arkiv",
+    },
   ];
 
   return (
@@ -129,18 +126,18 @@ const Tabbarna = props => {
       </IonRouterOutlet>
 
       <IonTabBar slot="bottom">
-        {tabButtons.map(tabBtnProps => {
+        {tabButtons.map((tabBtnProps) => {
           const {
             tab,
             className,
             href,
             icon,
             iconSelected,
-            title
+            title,
           } = tabBtnProps;
-          
+
           // @TODO: knas här
-          console.log({currentPath});
+          console.log({ currentPath });
           const isSelected = currentPath?.startsWith(href);
 
           // @TODO: använd olika ikoner baserat på aktiv eller inte
@@ -152,7 +149,7 @@ const Tabbarna = props => {
               tab={tab}
               className={className}
               selected={isSelected}
-              onClick={e => {
+              onClick={(e) => {
                 handleTabClick(e);
 
                 // Bail och gå inte till sida pga redan på rätt sida.
@@ -174,29 +171,12 @@ const Tabbarna = props => {
   );
 };
 
-if (isRunningInWebBrowser()) {
-  // Konfig för web. När app körs sätts dessa via app/capacitor tror jag.
-  const firebaseConfig = {
-    apiKey: "AIzaSyD74YswGldkaY4lpbebtHPMD6p26CeFqEk",
-    authDomain: "teletext-a4d17.firebaseapp.com",
-    databaseURL: "https://teletext-a4d17.firebaseio.com",
-    projectId: "teletext-a4d17",
-    storageBucket: "teletext-a4d17.appspot.com",
-    messagingSenderId: "30223179902",
-    appId: "1:30223179902:web:1c9e49796a9a29c30bf82f",
-    measurementId: "G-F8Y7QYLTHQ"
-  };
-
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-}
-
 try {
   AdMob.initialize()
     .then(() => {
       // console.log("AdMob init ok");
     })
-    .catch(e => {
+    .catch((e) => {
       // console.log("AdMob init catch", e);
     });
 } catch (e) {
@@ -206,7 +186,7 @@ try {
 SplashScreen.hide();
 
 StatusBar.setStyle({
-  style: StatusBarStyle.Dark
+  style: StatusBarStyle.Dark,
 });
 
 const tabHeight = getTabHeight();
@@ -223,9 +203,9 @@ function TextTVApp(props) {
 
   const initialFavoritesState = {
     pages: [],
-    setPages: pages => {
+    setPages: (pages) => {
       setFavorites({ ...favorites, pages: pages });
-    }
+    },
   };
 
   const [favorites, setFavorites] = useState(initialFavoritesState);
@@ -234,7 +214,7 @@ function TextTVApp(props) {
    * När en tab klickas på så sätter vi tidpunkt för klicket
    * i state tabsinfo. Denna info används sedan i context TabContext
    */
-  const handleTabClick = e => {
+  const handleTabClick = (e) => {
     const target = e.currentTarget;
 
     // "tab-button-nyast", "tab-button-sidor", ...
@@ -246,8 +226,8 @@ function TextTVApp(props) {
     // Skicka statistik när man går till ny flik.
     if (isNewTab) {
       try {
-        analytics.setScreen({
-          name: tab
+        FirebaseAnalytics.setScreenName({
+          name: tab,
         });
       } catch (e) {}
     }
@@ -259,11 +239,11 @@ function TextTVApp(props) {
       lastClicked: {
         name: tab,
         time: timestamp,
-        timeCacheBusterString: cacheBustTimeString
+        timeCacheBusterString: cacheBustTimeString,
       },
       prevClicked: {
         name: tabsinfo.lastClicked.name,
-        time: tabsinfo.lastClicked.time
+        time: tabsinfo.lastClicked.time,
       },
       tabs: {
         ...tabsinfo.tabs,
@@ -271,9 +251,9 @@ function TextTVApp(props) {
           name: tab,
           lastClickedTime: timestamp,
           lastClickedTimeCacheBusterString: cacheBustTimeString,
-          isNewTab: isNewTab
-        }
-      }
+          isNewTab: isNewTab,
+        },
+      },
     });
   };
 
@@ -294,7 +274,7 @@ function TextTVApp(props) {
 
       // Callback när en annons visas. size = object med bredd och höjd, ca såhär:
       // {"width":375,"height":50}
-      AdMob.addListener("onAdSize", size => {
+      AdMob.addListener("onAdSize", (size) => {
         if (!size || !size.height) {
           return;
         }
