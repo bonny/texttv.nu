@@ -20,7 +20,10 @@
 - [ ] lägg till debug-context som visar debug-meddelanden i nån ruta
 - [ ] gå till-sida input även på mest läst och senaste. det ska alltid gå att gå vidare till valfri sida!
 - [ ] statistik på omladdningar och när favoriter ändras osv. även när tab klickas? få koll på vilka funktioner som faktiskt används.
+- [ ] när går till sida laddas för många sidor in, typ nuvarande sida + kommande sida + även startsidan?!
+- [ ] statistik saknas när man går till sida, loggas aldrig till Firebase?
 - [x] sätt fallback-font till någon som är lika bred som Ubuntu mono
   - [x] förslag: Consolas (mkt lik, samma bredd, finns i windows), Inconsolata (open source-variant av consolas)
+- [ ] "404-sida" om man manuellt anger sida som inte finns
 
 ## Changelog
