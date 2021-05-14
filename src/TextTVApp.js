@@ -1,29 +1,9 @@
 import { Plugins, StatusBarStyle } from "@capacitor/core";
 import "@ionic/core/css/core.css";
 import "@ionic/core/css/ionic.bundle.css";
-import {
-  IonApp,
-  IonIcon,
-  IonLabel,
-  IonRouterOutlet,
-  IonSplitPane,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-  NavContext,
-} from "@ionic/react";
+import { IonApp, IonSplitPane } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import {
-  eye,
-  eyeOutline,
-  home,
-  homeOutline,
-  list,
-  listOutline,
-  time,
-  timeOutline,
-} from "ionicons/icons";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Redirect, Route } from "react-router-dom";
 import { FirebaseAnalytics } from "./analytics";
 import "./App.css";
@@ -37,139 +17,11 @@ import {
   useMountEffect,
 } from "./functions";
 import { MenuWithRouter } from "./modules/SideMenu";
+import { Navigationsflikar } from "./modules/Navigationsflikar";
 import { adMobAdOptions } from "./options";
-import PageTextTV from "./pages/page-TextTV.js";
-import PageCatchAll from "./pages/PageCatchAll";
-import { PageDebug } from "./pages/pageDebug.js";
-import { PageTest, PageTestar, PageTestarUndersida } from "./pages/PageTest";
-import TabPopulart from "./pages/tab-mest-last";
-import TabNyast from "./pages/tab-nyast";
-import TabSidor from "./pages/tab-sidor";
-import Startsida from "./pages/tab-startsida";
 import "./theme.css";
 
 const { SplashScreen, AdMob, StatusBar } = Plugins;
-
-const Tabbarna = (props) => {
-  const { handleTabClick } = props;
-  const navContext = useContext(NavContext);
-  const { currentPath } = navContext;
-
-  const navigate = (url) => {
-    navContext.navigate(url, "none");
-  };
-
-  const tabButtons = [
-    {
-      tab: "hem",
-      title: "Hem",
-      icon: homeOutline,
-      iconSelected: home,
-      href: "/hem",
-    },
-    {
-      tab: "sidor",
-      title: "sidor",
-      icon: listOutline,
-      iconSelected: list,
-      href: "/sidor",
-      className: "ion-hide-lg-up",
-    },
-    {
-      tab: "nyast",
-      title: "Nyast",
-      icon: timeOutline,
-      iconSelected: time,
-      href: "/nyast",
-    },
-    {
-      tab: "populart",
-      title: "Mest läst",
-      icon: eyeOutline,
-      iconSelected: eye,
-      href: "/arkiv",
-    },
-  ];
-
-  return (
-    <IonTabs id="mainTabs">
-      <IonRouterOutlet id="routerOutletElm" animated={false}>
-        <Route path="/debug" component={PageDebug} />
-        <Route path="/test" component={PageTest} />
-        <Route path="/testar" component={PageTestar} exact={true} />
-        <Route
-          path="/testar/undersida/:undersida/"
-          component={PageTestarUndersida}
-        />
-        <Route path="/hem" component={Startsida} exact={true} />
-        <Route path="/hem/:pageNum" component={PageTextTV} />
-
-        <Route path="/arkiv" component={TabPopulart} exact={true} />
-        <Route path="/arkiv/:pageNum" component={PageTextTV} exact={true} />
-        <Route
-          path="/arkiv/:pageNum/:pageId/"
-          component={PageTextTV}
-          exact={true}
-        />
-
-        <Route path="/sidor" component={TabSidor} exact={true} />
-        <Route path="/sidor/:pageNum" component={PageTextTV} />
-
-        <Route path="/nyast" component={TabNyast} exact={true} />
-        <Route path="/nyast/:pageNum" component={PageTextTV} />
-
-        {/* 
-        Fallback för url som är sidnummer direkt, t.ex. "/100".
-        Bra om man t.ex. hijackar url och skriver sida där manuellt.
-        */}
-        <Route path="/:pageNum([0-9]{3}.*)" component={PageCatchAll} />
-      </IonRouterOutlet>
-
-      <IonTabBar slot="bottom">
-        {tabButtons.map((tabBtnProps) => {
-          const {
-            tab,
-            className,
-            href,
-            icon,
-            iconSelected,
-            title,
-          } = tabBtnProps;
-
-          // @TODO: knas här
-          console.log({ currentPath });
-          const isSelected = currentPath?.startsWith(href);
-
-          // @TODO: använd olika ikoner baserat på aktiv eller inte
-          const tabIcon = isSelected ? iconSelected : icon;
-
-          return (
-            <IonTabButton
-              key={tab}
-              tab={tab}
-              className={className}
-              selected={isSelected}
-              onClick={(e) => {
-                handleTabClick(e);
-
-                // Bail och gå inte till sida pga redan på rätt sida.
-                // Upp till komponenten att scrolla upp eller ladda om
-                if (currentPath === href) {
-                  return;
-                }
-
-                navigate(href);
-              }}
-            >
-              <IonIcon icon={tabIcon} />
-              <IonLabel>{title}</IonLabel>
-            </IonTabButton>
-          );
-        })}
-      </IonTabBar>
-    </IonTabs>
-  );
-};
 
 try {
   AdMob.initialize()
@@ -209,53 +61,6 @@ function TextTVApp(props) {
   };
 
   const [favorites, setFavorites] = useState(initialFavoritesState);
-
-  /**
-   * När en tab klickas på så sätter vi tidpunkt för klicket
-   * i state tabsinfo. Denna info används sedan i context TabContext
-   */
-  const handleTabClick = (e) => {
-    const target = e.currentTarget;
-
-    // "tab-button-nyast", "tab-button-sidor", ...
-    const tab = target.getAttribute("id").replace("tab-button-", "");
-    const cacheBustTimeString = getCacheBustTimeString(2);
-    const timestamp = getUnixtime();
-    const isNewTab = tabsinfo.lastClicked.name !== tab;
-
-    // Skicka statistik när man går till ny flik.
-    if (isNewTab) {
-      try {
-        FirebaseAnalytics.setScreenName({
-          name: tab,
-        });
-      } catch (e) {}
-    }
-
-    setTabsinfo({
-      ...tabsinfo,
-      isNewTab: isNewTab,
-      isSameTab: !isNewTab,
-      lastClicked: {
-        name: tab,
-        time: timestamp,
-        timeCacheBusterString: cacheBustTimeString,
-      },
-      prevClicked: {
-        name: tabsinfo.lastClicked.name,
-        time: tabsinfo.lastClicked.time,
-      },
-      tabs: {
-        ...tabsinfo.tabs,
-        [tab]: {
-          name: tab,
-          lastClickedTime: timestamp,
-          lastClickedTimeCacheBusterString: cacheBustTimeString,
-          isNewTab: isNewTab,
-        },
-      },
-    });
-  };
 
   // Ladda in favoriter från storage när app startas.
   useMountEffect(() => {
@@ -298,7 +103,7 @@ function TextTVApp(props) {
             <IonSplitPane contentId="mainContent">
               <MenuWithRouter {...props} />
               <div id="mainContent">
-                <Tabbarna handleTabClick={handleTabClick} />
+                <Navigationsflikar id="mainContent" />
               </div>
             </IonSplitPane>
           </IonReactRouter>
