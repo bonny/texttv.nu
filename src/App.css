@@ -26,7 +26,7 @@
 .TextTVPage,
 .TextTVSkeletonPage,
 .u-max-width-texttvpage {
-  font-family: "Ubuntu Mono", monospace;
+  font-family: "Ubuntu Mono", Consolas, Inconsolata, monospace;
   background: var(--text-tv-background);
   color: #ddd;
   text-align: center;
