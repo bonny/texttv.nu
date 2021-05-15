@@ -15,7 +15,6 @@
     "@ionic/react-router": "^5.6.6",
     "@rdlabo/capacitor-admob": "^0.3.0",
     "classnames": "^2.2.6",
-    "cordova-ios": "^6.2.0",
     "dayjs": "^1.8.20",
     "firebase": "^8.6.1",
     "ionicons": "^5.0.0",
