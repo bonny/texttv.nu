@@ -2,11 +2,10 @@ import {
   IonIcon,
   IonLabel,
   IonRouterOutlet,
-
   IonTabBar,
   IonTabButton,
   IonTabs,
-  NavContext
+  NavContext,
 } from "@ionic/react";
 import {
   eye,
@@ -16,7 +15,7 @@ import {
   list,
   listOutline,
   time,
-  timeOutline
+  timeOutline,
 } from "ionicons/icons";
 import React, { useContext } from "react";
 import { Route } from "react-router-dom";
@@ -66,7 +65,8 @@ export const Navigationsflikar = () => {
   ];
 
   return (
-    <IonTabs>
+    <IonTabs id="mainContent">
+      {/* kan id vara här för IonSplitPane? id="mainContent" */}
       <IonRouterOutlet id="routerOutletElm" animated={false}>
         {/* Diverse testsidor/testsökvägar. */}
         <Route path="/debug" component={PageDebug} />
@@ -74,7 +74,8 @@ export const Navigationsflikar = () => {
         <Route path="/testar" component={PageTestar} exact={true} />
         <Route
           path="/testar/undersida/:undersida/"
-          component={PageTestarUndersida} />
+          component={PageTestarUndersida}
+        />
 
         <Route path="/hem" component={Startsida} exact={true} />
         <Route path="/hem/:pageNum" component={PageTextTV} />
@@ -84,7 +85,8 @@ export const Navigationsflikar = () => {
         <Route
           path="/arkiv/:pageNum/:pageId/"
           component={PageTextTV}
-          exact={true} />
+          exact={true}
+        />
 
         <Route path="/sidor" component={TabSidor} exact={true} />
         <Route path="/sidor/:pageNum" component={PageTextTV} />

@@ -102,9 +102,7 @@ function TextTVApp(props) {
             <Route exact path="/" render={() => <Redirect to="/hem" />} />
             <IonSplitPane contentId="mainContent">
               <MenuWithRouter {...props} />
-              <div id="mainContent">
-                <Navigationsflikar id="mainContent" />
-              </div>
+              <Navigationsflikar />
             </IonSplitPane>
           </IonReactRouter>
         </IonApp>
