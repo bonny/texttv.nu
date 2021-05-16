@@ -12,7 +12,7 @@ import {
   IonToolbar,
   IonPage,
   IonSlide,
-  IonSlides
+  IonSlides,
 } from "@ionic/react";
 import React from "react";
 import TextTVPage from "../modules/TextTVPage";
@@ -24,7 +24,7 @@ function PageDebug(props) {
     adId: "ca-app-pub-1689239266452655/6481628543",
     adSize: "SMART_BANNER",
     position: "BOTTOM_CENTER",
-    isTesting: false
+    isTesting: false,
   };
 
   let adMobAdOptionsOldAd = {
@@ -32,17 +32,17 @@ function PageDebug(props) {
     adId: "ca-app-pub-1689239266452655/6790998004",
     adSize: "SMART_BANNER",
     position: "BOTTOM_CENTER",
-    isTesting: false
+    isTesting: false,
   };
 
   let adMobAdOptionsTestAd = {
     adId: "ca-app-pub-3940256099942544/6300978111",
     adSize: "SMART_BANNER",
     position: "BOTTOM_CENTER",
-    isTesting: false
+    isTesting: false,
   };
 
-  const showAd = adname => {
+  const showAd = (adname) => {
     let adoptions;
     switch (adname) {
       case "new":
@@ -57,10 +57,10 @@ function PageDebug(props) {
       default:
     }
     AdMob.showBanner(adoptions).then(
-      value => {
+      (value) => {
         console.log("showBanner ok", value); // true
       },
-      error => {
+      (error) => {
         console.error("showbanner err", error); // show error
       }
     );
@@ -69,7 +69,7 @@ function PageDebug(props) {
   const slideOpts = {
     initialSlide: 1,
     speed: 400,
-    autoHeight: true
+    autoHeight: true,
   };
 
   return (

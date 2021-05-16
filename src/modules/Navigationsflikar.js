@@ -1,11 +1,14 @@
 import {
   IonIcon,
   IonLabel,
+  IonRouterLink,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
   IonTabs,
   NavContext,
+  IonItem,
+  IonButton,
 } from "@ionic/react";
 import {
   eye,
@@ -18,11 +21,10 @@ import {
   timeOutline,
 } from "ionicons/icons";
 import React, { useContext } from "react";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import PageTextTV from "../pages/page-TextTV.js";
 import PageCatchAll from "../pages/PageCatchAll";
 import { PageDebug } from "../pages/pageDebug.js";
-import { PageTest, PageTestar, PageTestarUndersida } from "../pages/PageTest";
 import TabPopulart from "../pages/tab-mest-last";
 import TabNyast from "../pages/tab-nyast";
 import TabSidor from "../pages/tab-sidor";
@@ -62,20 +64,46 @@ export const Navigationsflikar = () => {
       iconSelected: eye,
       href: "/arkiv",
     },
+    {
+      tab: "debug",
+      title: "Debug",
+      href: "/debug",
+    },
   ];
 
+  // const handleTabsWillChange = (e) => {
+  //   console.log("handleTabsWillChange", e);
+  //   return false;
+  // };
+
+  // const handleTabsDidChange = (e) => {
+  //   console.log("handleTabsDigChange", e);
+  // };
+
+  // @TODO
+  // Fungerar ej pga:
+  // https://github.com/ionic-team/ionic-framework/issues/22511
+  // Se även:
+  // https://github.com/ionic-team/ionic-framework/issues/17761
+  const handleClick = (e) => {
+    const tabButton = e.target.closest("ion-tab-button");
+    const tabHref = tabButton.getAttribute("data-href");
+    console.log("handleClick", "tabButton", tabButton, tabHref);
+    //history.push('/debug');
+    console.log("navContext", navContext);
+    navContext.navigate(tabHref, 'root');
+  };
+
   return (
-    <IonTabs id="mainContent">
+    <IonTabs
+      id="mainContent"
+      // onIonTabsWillChange={handleTabsWillChange}
+      // onIonTabsDidChange={handleTabsDidChange}
+    >
       {/* kan id vara här för IonSplitPane? id="mainContent" */}
       <IonRouterOutlet id="routerOutletElm" animated={false}>
         {/* Diverse testsidor/testsökvägar. */}
         <Route path="/debug" component={PageDebug} />
-        <Route path="/test" component={PageTest} />
-        <Route path="/testar" component={PageTestar} exact={true} />
-        <Route
-          path="/testar/undersida/:undersida/"
-          component={PageTestarUndersida}
-        />
 
         <Route path="/hem" component={Startsida} exact={true} />
         <Route path="/hem/:pageNum" component={PageTextTV} />
@@ -117,7 +145,15 @@ export const Navigationsflikar = () => {
           const tabIcon = isSelected ? iconSelected : icon;
 
           return (
-            <IonTabButton key={tab} tab={tab} href={href} className={className}>
+            <IonTabButton
+              // onClick fungerar inte pga bugg i ionic (se handleClick)
+              onMouseUp={handleClick}
+              // href={href}
+              data-href={href}
+              key={`${tab}`}
+              tab={`${tab}`}
+              className={className}
+            >
               <IonIcon icon={tabIcon} />
               <IonLabel>{title}</IonLabel>
             </IonTabButton>
