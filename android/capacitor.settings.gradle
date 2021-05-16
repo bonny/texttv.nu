@@ -7,6 +7,3 @@ project(':capacitor-community-admob').projectDir = new File('../node_modules/@ca
 
 include ':capacitor-community-firebase-analytics'
 project(':capacitor-community-firebase-analytics').projectDir = new File('../node_modules/@capacitor-community/firebase-analytics/android')
-
-include ':rdlabo-capacitor-admob'
-project(':rdlabo-capacitor-admob').projectDir = new File('../node_modules/@rdlabo/capacitor-admob/android/@rdlabo/capacitor-admob')
