@@ -18,8 +18,6 @@ const TextTVSearchBar = (props) => {
     }
   };
 
-  // const icon = isLoading ? "document" : "search";
-
   return (
     <IonSearchbar
       placeholder="Gå till…"
@@ -29,6 +27,7 @@ const TextTVSearchBar = (props) => {
       clearIcon={false}
       onIonChange={handlePageNumInputChange}
       debounce="100"
+      className="texttv-pagenumber-input"
     />
   );
 };

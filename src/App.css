@@ -236,6 +236,15 @@
   margin-right: 10px;
 }
 
+.texttv-pagenumber-input input[type="number"]::-webkit-outer-spin-button,
+.texttv-pagenumber-input input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.texttv-pagenumber-input input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 @media only screen and (min-width: 540px) {
   .TextTVPage,
   .TextTVSkeletonPage,
