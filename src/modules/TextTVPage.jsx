@@ -2,17 +2,16 @@
  * En text-tv-sida som visas i en IonPage.
  * Visas i en befintlig sida alltså.
  */
-import React, { useEffect, useState, useRef, useContext } from "react";
-import { NavContext } from "@ionic/react";
+import classNames from "classnames";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
   createMarkupForPage,
-  getNearestLink,
   getCacheBustTimeString,
+  getNearestLink,
   hidePageUpdatedToasts,
-  sendStats
+  sendStats,
 } from "../functions";
 import SkeletonTextTVPage from "../modules/SkeletonTextTVPage";
-import classNames from "classnames";
 
 function usePrevious(value) {
   const ref = useRef();
@@ -22,14 +21,14 @@ function usePrevious(value) {
   return ref.current;
 }
 
-export default props => {
+export default (props) => {
   const {
     pageNum,
     pageId,
     children,
     history,
     refreshTime,
-    onPageUpdate
+    onPageUpdate,
   } = props;
 
   const [pageData, setPageData] = useState([]);
@@ -39,11 +38,9 @@ export default props => {
     true
   );
 
-  const navContext = useContext(NavContext);
-
   // Leta upp närmaste länk, om någon, vid klick nånstans på sidan,
   // och gå till den länken.
-  const handleClick = e => {
+  const handleClick = (e) => {
     const link = getNearestLink(e);
 
     // Baila om vi inte hittade länk.
@@ -69,8 +66,8 @@ export default props => {
     // Om sökväg är t.ex "/sidor/100" så ger detta "sidor".
     const firstPathName = history.location.pathname
       .split("/")
-      .filter(e => e)
-      .find(e => true);
+      .filter((e) => e)
+      .find((e) => true);
 
     // Gå till sida 🎉.
     let pathPrefix;
@@ -84,7 +81,9 @@ export default props => {
     }
 
     const timestamp = Date.now();
-    navContext.navigate(`/${pathPrefix}${href}?date=${timestamp}`, "none");
+    const fullUrl = `/${pathPrefix}${href}?date=${timestamp}`;
+    console.log("gå till url", fullUrl);
+    history.push(fullUrl);
   };
 
   // När sidan ändras så vill vi sätta innehållet till inget så att inte gamla innehållet
@@ -128,14 +127,14 @@ export default props => {
       }
 
       fetch(url)
-        .then(async responseDatas => {
+        .then(async (responseDatas) => {
           const pageData = await responseDatas.json();
 
           setPageData(pageData);
           setPageIsLoading(false);
           sendStats(pageData, "view");
         })
-        .catch(fetchErr => {
+        .catch((fetchErr) => {
           console.log("Fel vid hämtning av sida:", fetchErr);
         });
     }
@@ -154,11 +153,11 @@ export default props => {
 
   const classes = classNames({
     "TextTVPage--isLoadingNewPageRange": pageIsLoadingNewPageRange,
-    TextTVPage: true
+    TextTVPage: true,
   });
 
   // Wrap each page.
-  const pagesHtml = pageData.map(page => {
+  const pagesHtml = pageData.map((page) => {
     return (
       <div
         className={classes}

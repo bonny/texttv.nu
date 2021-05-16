@@ -9,17 +9,17 @@ import {
   IonSlide,
   IonSlides,
   IonToast,
-  NavContext
 } from "@ionic/react";
 import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   getCurrentIonPageContentElm,
   getUnixtime,
   handleCopyLinkToClipboard,
   handleCopyTextToClipboard,
   handleOpenLinkInBrowser,
-  handleShare
+  handleShare,
 } from "../functions";
 import Header from "../modules/Header";
 import TextTVPage from "../modules/TextTVPage";
@@ -32,7 +32,7 @@ const scrollToTop = () => {
   }
 };
 
-const PageTextTV = props => {
+const PageTextTV = (props) => {
   const {
     match,
     history,
@@ -41,7 +41,7 @@ const PageTextTV = props => {
     children,
     refreshTime: passedRefreshTime,
     // Custom function att köra om refresh-knappen tryckts på.
-    onRefresh
+    onRefresh,
   } = props;
 
   const pageNum = props.pageNum || match.params.pageNum;
@@ -56,8 +56,6 @@ const PageTextTV = props => {
   const contentRef = useRef();
   const pageRef = useRef();
   const sliderRef = useRef();
-
-  const navContext = useContext(NavContext);
 
   // Unik sträng som används som key för ion-slides.
   // Om inte key används så "nollas" inte slider och man stannar på
@@ -108,14 +106,14 @@ const PageTextTV = props => {
     }
   };
 
-  const handlePullToRefresh = e => {
+  const handlePullToRefresh = (e) => {
     updateRefreshTime();
     setTimeout(() => {
       e.target.complete();
     }, 750);
   };
 
-  const handleRefreshBtnClick = e => {
+  const handleRefreshBtnClick = (e) => {
     updateRefreshTime();
   };
 
@@ -220,7 +218,7 @@ const PageTextTV = props => {
    * Hämtar upp state från en texttv sida, så
    * vi här kommer åt sidans id osv.
    */
-  const handlePageUpdate = data => {
+  const handlePageUpdate = (data) => {
     setPageData(data);
   };
 
@@ -232,7 +230,7 @@ const PageTextTV = props => {
   }, [pageNum]);
 
   const sliderOptions = {
-    initialSlide: 1
+    initialSlide: 1,
   };
 
   return (
@@ -241,7 +239,7 @@ const PageTextTV = props => {
         {...props}
         pageTitle={pageTitle}
         headerStyle={headerStyle}
-        onShare={e => {
+        onShare={(e) => {
           handleShare(e, pageData, pageNum);
         }}
         onCopyTextToClipboard={() => {
@@ -264,13 +262,13 @@ const PageTextTV = props => {
           ref={sliderRef}
           pager={false}
           options={sliderOptions}
-          onIonSlidesDidLoad={e => {
+          onIonSlidesDidLoad={(e) => {
             // När slides körs på startsidan så blir det nån bugg som gör att slides Swiper
             // inte initieras helt korrekt på nåt vis och av nån anledning.
             // Eventligen beror detta på att på startsidan så visas mer innehåller under slider
             // komponenten tar mer än 20 ms att ladda?
             // update() på swiper verkar lösa detta.
-            e.target.getSwiper().then(swiper => {
+            e.target.getSwiper().then((swiper) => {
               const checkInterval = 10;
               const maxNumberOfChecks = 10;
               let checkNum = 0;
@@ -294,8 +292,12 @@ const PageTextTV = props => {
               }, checkInterval);
             });
           }}
-          onIonSlideDidChange={e => {
-            sliderRef.current.getActiveIndex().then(activeIndex => {
+          onIonSlideDidChange={(e) => {
+            if (!sliderRef.current) {
+              return;
+            }
+
+            sliderRef.current.getActiveIndex().then((activeIndex) => {
               let navToPageNum;
 
               if (activeIndex === 0) {
@@ -305,7 +307,7 @@ const PageTextTV = props => {
               }
 
               if (navToPageNum) {
-                navContext.navigate(`/sidor/${navToPageNum}`, "none");
+                history.push(`/sidor/${navToPageNum}`);
               }
             });
           }}
@@ -367,7 +369,7 @@ const PageTextTV = props => {
               handler: () => {
                 setPageUpdatedToastVisible(false);
                 updateRefreshTime();
-              }
+              },
             },
             {
               side: "end",
@@ -378,8 +380,8 @@ const PageTextTV = props => {
                 // För hur länge? För alltid? För alltid för denna sida? Bara för denna uppdatering?
                 setPageUpdatedToastVisible(false);
                 setDidDismissPageUpdateToast(true);
-              }
-            }
+              },
+            },
           ]}
         />
 

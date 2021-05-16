@@ -1,14 +1,10 @@
 import {
   IonIcon,
   IonLabel,
-  IonRouterLink,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
   IonTabs,
-  NavContext,
-  IonItem,
-  IonButton,
 } from "@ionic/react";
 import {
   eye,
@@ -20,8 +16,8 @@ import {
   time,
   timeOutline,
 } from "ionicons/icons";
-import React, { useContext } from "react";
-import { Route, Link } from "react-router-dom";
+import React from "react";
+import { Route, useHistory, useLocation } from "react-router-dom";
 import PageTextTV from "../pages/page-TextTV.js";
 import PageCatchAll from "../pages/PageCatchAll";
 import { PageDebug } from "../pages/pageDebug.js";
@@ -31,9 +27,6 @@ import TabSidor from "../pages/tab-sidor";
 import Startsida from "../pages/tab-startsida";
 
 export const Navigationsflikar = () => {
-  const navContext = useContext(NavContext);
-  const routeInfo = navContext.routeInfo;
-
   const tabButtons = [
     {
       tab: "hem",
@@ -88,11 +81,11 @@ export const Navigationsflikar = () => {
   const handleClick = (e) => {
     const tabButton = e.target.closest("ion-tab-button");
     const tabHref = tabButton.getAttribute("data-href");
-    console.log("handleClick", "tabButton", tabButton, tabHref);
-    //history.push('/debug');
-    console.log("navContext", navContext);
-    navContext.navigate(tabHref, 'root');
+    history.push(tabHref);
   };
+
+  const history = useHistory();
+  const location = useLocation();
 
   return (
     <IonTabs
@@ -141,7 +134,7 @@ export const Navigationsflikar = () => {
           } = tabBtnProps;
 
           // Sätt ikon baserat på om fliken är vald eller inte.
-          const isSelected = routeInfo.pathname.startsWith(href);
+          const isSelected = location.pathname.startsWith(href);
           const tabIcon = isSelected ? iconSelected : icon;
 
           return (
@@ -153,6 +146,7 @@ export const Navigationsflikar = () => {
               key={`${tab}`}
               tab={`${tab}`}
               className={className}
+              selected={isSelected}
             >
               <IonIcon icon={tabIcon} />
               <IonLabel>{title}</IonLabel>
