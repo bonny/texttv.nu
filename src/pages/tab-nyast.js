@@ -14,14 +14,14 @@ import {
 import SenastUppdaterat from "../modules/SenastUppdaterat";
 import TextTVHeader from "../modules/TextTVHeader";
 import TextTVRefresher from "../modules/TextTVRefresher";
-import { TabContext } from "../contexts/TabContext";
+// import { TabContext } from "../contexts/TabContext";
 
 export default props => {
   const { history } = props;
   const [selectedSegment, setSelectedSegment] = useState("news");
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
-  const tabsinfo = useContext(TabContext);
-  const tabsinfoNyast = tabsinfo.tabs.nyast;
+  // const tabsinfo = useContext(TabContext);
+  // const tabsinfoNyast = tabsinfo.tabs.nyast;
 
   // Uppdatera dokument-titel.
   useEffect(() => {
@@ -39,7 +39,7 @@ export default props => {
     }
 
     document.title = pageTitle;
-  }, [selectedSegment, tabsinfoNyast]);
+  }, [selectedSegment]);
 
   const doRefresh = e => {
     setRefreshTime(getUnixtime());
@@ -60,15 +60,15 @@ export default props => {
    * Scrolla upp när flik byts, annars börjar man nya fliken ev. nedscrollad
    * vilket är lite irri.
    */
-  useEffect(() => {
+/*   useEffect(() => {
     const ionPageContent = getCurrentIonPageContentElm();
     ionPageContent && ionPageContent.scrollToTop();
   }, [selectedSegment]);
-
+ */
   // Scrolla till toppen om vi klickar på denna sidan tab igen
   // och vi är inte längst uppe redan
   // Dvs. klickad tab = hem men vi är inte scrollade längst upp.
-  useEffect(() => {
+  /* useEffect(() => {
     const scrollToTopOrRefresh = () => {
       const ionPageContent = getCurrentIonPageContentElm();
       const ionPageScrollElement = getCurrentIonPageScrollElm();
@@ -88,7 +88,7 @@ export default props => {
 
     scrollToTopOrRefresh();
   }, [tabsinfoNyast]);
-
+ */
   return (
     <IonPage>
       <TextTVHeader {...props} title="Nyast">

@@ -148,6 +148,7 @@ const PageTextTV = (props) => {
 
       var url = `https://api.texttv.nu/api/updated/${pageNum}/${refreshTime}`;
 
+      // @TODO: crashar ibland.
       const closestIonPage = contentRef.current.closest(".ion-page");
       const isHiddenPage = closestIonPage.matches(".ion-page-hidden");
       let doCheckForUpdate = true;

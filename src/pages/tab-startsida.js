@@ -29,12 +29,12 @@ const Startsida = props => {
   ] = useState(getUnixtime());
   const [visaRedigeraFavoriter, setVisaRedigeraFavoriter] = useState(false);
 
-  const tabsinfoHem = tabsinfo.tabs.hem;
+  // const tabsinfoHem = tabsinfo.tabs.hem;
 
   // Scrolla till toppen om vi klickar på denna sidan tab igen
   // och vi är inte längst uppe redan
   // Dvs. klickad tab = hem men vi är inte scrollade längst upp.
-  useEffect(() => {
+/*   useEffect(() => {
     const ionPageContent = getCurrentIonPageContentElm();
     const ionPageScrollElement = getCurrentIonPageScrollElm();
 
@@ -54,7 +54,7 @@ const Startsida = props => {
       setLatestUpdatedPagesRefreshTime(getUnixtime());
     }
   }, [tabsinfoHem]);
-
+ */
   const handlePageTextTVRefresh = e => {
     setLatestUpdatedPagesRefreshTime(getUnixtime());
   };

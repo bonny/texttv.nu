@@ -14,14 +14,14 @@ import {
 import MestLasta from "../modules/MestLasta";
 import TextTVHeader from "../modules/TextTVHeader";
 import TextTVRefresher from "../modules/TextTVRefresher";
-import { TabContext } from "../contexts/TabContext";
+// import { TabContext } from "../contexts/TabContext";
 
 export default props => {
   const { history } = props;
   const [selectedSegment, setSelectedSegment] = useState("today");
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
-  const tabsinfo = useContext(TabContext);
-  const tabsinfoPopulart = tabsinfo.tabs.populart;
+  //const tabsinfo = useContext(TabContext);
+  //const tabsinfoPopulart = tabsinfo.tabs.populart;
 
   // Uppdatera dokument-titel.
   useEffect(() => {
@@ -39,7 +39,7 @@ export default props => {
         break;
     }
     document.title = pageTitle;
-  }, [selectedSegment, tabsinfoPopulart]);
+  }, [selectedSegment]);
 
   const doRefresh = e => {
     setRefreshTime(getUnixtime());
@@ -72,7 +72,7 @@ export default props => {
   // Scrolla till toppen om vi klickar på denna sidan tab igen
   // och vi är inte längst uppe redan
   // Dvs. klickad tab = hem men vi är inte scrollade längst upp.
-  useEffect(() => {
+/*   useEffect(() => {
     const scrollToTopOrRefresh = () => {
       const ionPageContent = getCurrentIonPageContentElm();
       const ionPageScrollElement = getCurrentIonPageScrollElm();
@@ -91,7 +91,7 @@ export default props => {
     };
 
     scrollToTopOrRefresh();
-  }, [tabsinfoPopulart]);
+  }, [tabsinfoPopulart]); */
 
   return (
     <IonPage>

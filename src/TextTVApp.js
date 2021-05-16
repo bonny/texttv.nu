@@ -8,7 +8,7 @@ import { Redirect, Route } from "react-router-dom";
 import { FirebaseAnalytics } from "./analytics";
 import "./App.css";
 import { FavoritesContext } from "./contexts/FavoritesContext";
-import { detfaultTabinfoState, TabContext } from "./contexts/TabContext";
+// import { detfaultTabinfoState, TabContext } from "./contexts/TabContext";
 import {
   getCacheBustTimeString,
   getTabHeight,
@@ -51,8 +51,6 @@ document.documentElement.style.setProperty(
 adMobAdOptions.margin = tabHeight;
 
 function TextTVApp(props) {
-  const [tabsinfo, setTabsinfo] = useState(detfaultTabinfoState);
-
   const initialFavoritesState = {
     pages: [],
     setPages: (pages) => {
@@ -95,19 +93,17 @@ function TextTVApp(props) {
   }, []);
 
   return (
-    <TabContext.Provider value={tabsinfo}>
-      <FavoritesContext.Provider value={favorites}>
-        <IonApp>
-          <IonReactRouter>
-            <Route exact path="/" render={() => <Redirect to="/hem" />} />
-            <IonSplitPane contentId="mainContent">
-              <MenuWithRouter {...props} />
-              <Navigationsflikar />
-            </IonSplitPane>
-          </IonReactRouter>
-        </IonApp>
-      </FavoritesContext.Provider>
-    </TabContext.Provider>
+    <FavoritesContext.Provider value={favorites}>
+      <IonApp>
+        <IonReactRouter>
+          <Route exact path="/" render={() => <Redirect to="/hem" />} />
+          <IonSplitPane contentId="mainContent">
+            <MenuWithRouter {...props} />
+            <Navigationsflikar />
+          </IonSplitPane>
+        </IonReactRouter>
+      </IonApp>
+    </FavoritesContext.Provider>
   );
 }
 
