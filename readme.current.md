@@ -25,5 +25,7 @@
 - [x] sätt fallback-font till någon som är lika bred som Ubuntu mono
   - [x] förslag: Consolas (mkt lik, samma bredd, finns i windows), Inconsolata (open source-variant av consolas)
 - [ ] "404-sida" om man manuellt anger sida som inte finns
+- [ ] koppla ihop admob med firebase https://mail.google.com/mail/u/0/#all/FMfcgxwLtszrLRqMqXcpTpqnNzWPQQrW
+- [ ] kolla att admob är korrekt ihopkopplat https://mail.google.com/mail/u/0/#all/FMfcgxwLsKBxCKFJdmLGTZqkWbJBzGzq
 
 ## Changelog
