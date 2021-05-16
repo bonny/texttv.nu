@@ -82,7 +82,6 @@ export default (props) => {
 
     const timestamp = Date.now();
     const fullUrl = `/${pathPrefix}${href}?date=${timestamp}`;
-    console.log("gå till url", fullUrl);
     history.push(fullUrl);
   };
 
