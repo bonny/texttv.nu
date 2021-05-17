@@ -24,6 +24,7 @@ import { TabPopulart } from "../pages/tab-mest-last";
 import { TabNyast } from "../pages/tab-nyast";
 import { TabSidor } from "../pages/tab-sidor";
 import { Startsida } from "../pages/tab-startsida";
+import { Page404 } from "../pages/page-404.js";
 
 export const Navigationsflikar = () => {
   const tabButtons = [
@@ -119,6 +120,9 @@ export const Navigationsflikar = () => {
             Bra om man t.ex. hijackar url och skriver sida där manuellt.
             */}
         <Route path="/:pageNum([0-9]{3}.*)" component={PageCatchAll} />
+
+        {/* 404-sida */}
+        <Route component={Page404} />
       </IonRouterOutlet>
 
       <IonTabBar slot="bottom">

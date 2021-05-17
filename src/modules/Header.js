@@ -11,15 +11,22 @@ import {
   IonTitle,
   IonToast,
   IonToolbar,
-  isPlatform
+  isPlatform,
 } from "@ionic/react";
 import { Link } from "react-router-dom";
-import { copyOutline, linkOutline, ellipsisVertical, openOutline, refresh, shareOutline } from "ionicons/icons";
+import {
+  copyOutline,
+  linkOutline,
+  ellipsisVertical,
+  openOutline,
+  refresh,
+  shareOutline,
+} from "ionicons/icons";
 import React, { useState } from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
 import TextTVSearchBar from "./TextTVSearchBar";
 
-const Header = props => {
+const Header = (props) => {
   const {
     history,
     headerStyle,
@@ -28,7 +35,7 @@ const Header = props => {
     onCopyTextToClipboard,
     onCopyLinkToClipboard,
     onOpenLinkInBrowser,
-    editFavoritesButton
+    editFavoritesButton,
   } = props;
 
   // const backButtonDefaultHref = `/${match.params.tab}`;
@@ -105,45 +112,53 @@ const Header = props => {
           <TextTVSearchBar history={history} />
 
           <IonButtons slot="end">
-            <IonButton fill="clear" slot="end" onClick={handleRefreshBtnClick}>
-              <IonIcon slot="icon-only" icon={refresh} xmode="md" />
-            </IonButton>
+            {handleRefreshBtnClick && (
+              <IonButton
+                fill="clear"
+                slot="end"
+                onClick={handleRefreshBtnClick}
+              >
+                <IonIcon slot="icon-only" icon={refresh} />
+              </IonButton>
+            )}
 
-            <IonButton
-              fill="clear"
-              slot="end"
-              onClick={e => {
-                e.persist();
-                setPopoverEvent(e);
-                setShowPopover(true);
-              }}
-            >
-              <IonIcon slot="icon-only" icon={ellipsisVertical} xmode="md" />
-            </IonButton>
+            {onCopyTextToClipboard && (
+              <IonButton
+                fill="clear"
+                slot="end"
+                onClick={(e) => {
+                  e.persist();
+                  setPopoverEvent(e);
+                  setShowPopover(true);
+                }}
+              >
+                <IonIcon slot="icon-only" icon={ellipsisVertical} />
+              </IonButton>
+            )}
           </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonPopover
         isOpen={showPopover}
-        onDidDismiss={e => setShowPopover(false)}
+        onDidDismiss={(e) => setShowPopover(false)}
         event={popoverEvent}
       >
         <IonList>
           <IonItem button onClick={handleCopyTextToClipboard}>
-            <IonIcon slot="start" icon={copyOutline}  />
+            <IonIcon slot="start" icon={copyOutline} />
             <IonLabel>Kopiera text</IonLabel>
           </IonItem>
           <IonItem button onClick={handleCopyLinkToClipboard}>
-            <IonIcon slot="start" icon={linkOutline}  />
+            <IonIcon slot="start" icon={linkOutline} />
             <IonLabel>Kopiera länk</IonLabel>
           </IonItem>
           <IonItem button onClick={handleOpenLink}>
-            <IonIcon slot="start" icon={openOutline}  />
+            <IonIcon slot="start" icon={openOutline} />
             <IonLabel>Öppna i webbläsare</IonLabel>
           </IonItem>
           {showShare && (
             <IonItem button onClick={handleShareClick}>
-              <IonIcon slot="start" icon={shareOutline}  />
+              <IonIcon slot="start" icon={shareOutline} />
               <IonLabel>Dela...</IonLabel>
             </IonItem>
           )}
