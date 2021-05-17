@@ -3,7 +3,6 @@
  */
 import { Plugins, Share } from "@capacitor/core";
 import { isPlatform } from "@ionic/react";
-import { useEffect } from "react";
 import { FirebaseAnalytics } from "./analytics";
 
 const { Clipboard, Storage } = Plugins;
@@ -537,8 +536,6 @@ async function saveFavorites(favs) {
   });
 }
 
-const useMountEffect = (fun) => useEffect(fun, []);
-
 // Avgör höjd på flikarna/tabbarn, dvs. hur många pixlar ska
 // annonsen flyttas upp för att inte vara iväg för flikarna.
 function getTabHeight() {
@@ -584,6 +581,5 @@ export {
   loadFavorites,
   saveFavorites,
   FAVORITES_DEFAULT_PAGES,
-  useMountEffect,
   getTabHeight,
 };

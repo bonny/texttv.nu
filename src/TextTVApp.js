@@ -6,12 +6,12 @@ import { IonReactRouter } from "@ionic/react-router";
 import React, { useEffect, useState } from "react";
 import { Redirect, Route } from "react-router-dom";
 import "./App.css";
-import "./theme.css";
 import { FavoritesContext } from "./contexts/FavoritesContext";
-import { getTabHeight, loadFavorites, useMountEffect } from "./functions";
+import { getTabHeight, loadFavorites } from "./functions";
 import { Navigationsflikar } from "./modules/Navigationsflikar";
 import { MenuWithRouter } from "./modules/SideMenu";
 import { adMobAdOptions } from "./options";
+import "./theme.css";
 
 const { SplashScreen, AdMob, StatusBar } = Plugins;
 
@@ -53,14 +53,14 @@ function TextTVApp(props) {
   const [favorites, setFavorites] = useState(initialFavoritesState);
 
   // Ladda in favoriter från storage när app startas.
-  useMountEffect(() => {
+  useEffect(() => {
     async function getFavs() {
       const favoritePages = await loadFavorites();
       favorites.setPages(favoritePages);
     }
-
     getFavs();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Visa annons + sätt annons-höjd till variabel när sidan renderas.
   useEffect(() => {
