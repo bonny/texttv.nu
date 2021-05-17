@@ -8,14 +8,13 @@ import {
   IonHeader,
   IonItem,
   IonLabel,
-  IonTitle,
-  IonToolbar,
   IonPage,
   IonSlide,
   IonSlides,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/react";
-import React from "react";
-import TextTVPage from "../modules/TextTVPage";
+import { TextTVPage } from "../modules/TextTVPage";
 const { AdMob } = Plugins;
 
 function PageDebug(props) {

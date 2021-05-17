@@ -1,5 +1,4 @@
 import { IonSearchbar } from "@ionic/react";
-import React from "react";
 
 const TextTVSearchBar = (props) => {
   const { history } = props;

@@ -6,7 +6,6 @@ import {
   IonListHeader
 } from "@ionic/react";
 import { document } from "ionicons/icons";
-import React from "react";
 import { navItems, navItemsAlsoLike } from "./navItems";
 import TextTVSidorLista from "./TextTVSidorLista";
 

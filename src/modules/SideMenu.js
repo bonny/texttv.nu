@@ -3,13 +3,12 @@ import {
   IonHeader,
   IonMenu,
   IonToolbar,
-  IonPage
+  IonPage,
 } from "@ionic/react";
-import React from "react";
 import { withRouter } from "react-router";
 import MenuItems from "./MenuItems";
 
-const Menu = props => {
+const Menu = (props) => {
   return (
     <IonMenu
       side="start"

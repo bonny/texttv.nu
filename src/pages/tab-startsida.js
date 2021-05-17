@@ -4,28 +4,21 @@ import {
   IonIcon,
   IonItem,
   IonLabel,
-  IonRow
+  IonRow,
 } from "@ionic/react";
 import { starOutline } from "ionicons/icons";
 import React, { useContext, useEffect, useState } from "react";
-import {
-  getCurrentIonPageContentElm,
-  getCurrentIonPageScrollElm,
-  getUnixtime,
-  saveFavorites
-} from "../functions";
-import RedigeraFavoriter from "../modules/RedigeraFavoriter";
-import SenastUppdaterat from "../modules/SenastUppdaterat";
-import { TabContext } from "../contexts/TabContext";
-import PageTextTV from "./page-TextTV.js";
 import { FavoritesContext } from "../contexts/FavoritesContext";
+import { getUnixtime, saveFavorites } from "../functions";
+import { RedigeraFavoriter } from "../modules/RedigeraFavoriter";
+import { SenastUppdaterat } from "../modules/SenastUppdaterat";
+import PageTextTV from "./page-TextTV.js";
 
-const Startsida = props => {
-  const tabsinfo = useContext(TabContext);
+const Startsida = (props) => {
   const userFavorites = useContext(FavoritesContext);
   const [
     latestUpdatedPagesRefreshTime,
-    setLatestUpdatedPagesRefreshTime
+    setLatestUpdatedPagesRefreshTime,
   ] = useState(getUnixtime());
   const [visaRedigeraFavoriter, setVisaRedigeraFavoriter] = useState(false);
 
@@ -34,7 +27,7 @@ const Startsida = props => {
   // Scrolla till toppen om vi klickar på denna sidan tab igen
   // och vi är inte längst uppe redan
   // Dvs. klickad tab = hem men vi är inte scrollade längst upp.
-/*   useEffect(() => {
+  /*   useEffect(() => {
     const ionPageContent = getCurrentIonPageContentElm();
     const ionPageScrollElement = getCurrentIonPageScrollElm();
 
@@ -55,7 +48,7 @@ const Startsida = props => {
     }
   }, [tabsinfoHem]);
  */
-  const handlePageTextTVRefresh = e => {
+  const handlePageTextTVRefresh = (e) => {
     setLatestUpdatedPagesRefreshTime(getUnixtime());
   };
 
@@ -92,7 +85,7 @@ const Startsida = props => {
       <RedigeraFavoriter
         isOpen={visaRedigeraFavoriter}
         pages={userFavorites.pages}
-        handleSaveModal={pages => {
+        handleSaveModal={(pages) => {
           // Spara till storage
           saveFavorites(pages);
           // Uppdatera sidor i context
@@ -135,4 +128,4 @@ const Startsida = props => {
   );
 };
 
-export default Startsida;
+export { Startsida };

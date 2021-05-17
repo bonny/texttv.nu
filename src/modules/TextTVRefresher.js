@@ -1,7 +1,6 @@
 import { IonRefresher, IonRefresherContent } from "@ionic/react";
-import React from "react";
 
-const TextTVRefresher = props => {
+const TextTVRefresher = (props) => {
   const { handlePullToRefresh } = props;
   return (
     <IonRefresher

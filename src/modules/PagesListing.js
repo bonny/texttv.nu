@@ -1,17 +1,15 @@
 import { IonItem, IonLabel } from "@ionic/react";
-import React from "react";
-// import { withRouter } from "react-router";
 import "moment/locale/sv";
 import Moment from "react-moment";
 
-const ListItem = props => {
+const ListItem = (props) => {
   const { link, page, history } = props;
 
   return (
     <IonItem
       button
       detail
-      onClick={e => {
+      onClick={(e) => {
         history.push(link);
       }}
       lines="none"
@@ -28,14 +26,14 @@ const ListItem = props => {
   );
 };
 
-const PagesListing = props => {
+const PagesListing = (props) => {
   // linkto = pagenum | pageid
   const { pages, history, linkTo = "pagenum" } = props;
   // Om sökväg är t.ex "/sidor/100" så ger detta "sidor".
   const firstPathName = history.location.pathname
     .split("/")
-    .filter(e => e)
-    .find(e => true);
+    .filter((e) => e)
+    .find((e) => true);
 
   let linkprefix = "";
   switch (firstPathName) {

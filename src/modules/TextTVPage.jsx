@@ -3,7 +3,7 @@
  * Visas i en befintlig sida alltså.
  */
 import classNames from "classnames";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   createMarkupForPage,
   getCacheBustTimeString,
@@ -21,7 +21,7 @@ function usePrevious(value) {
   return ref.current;
 }
 
-export default (props) => {
+const TextTVPage = (props) => {
   const {
     pageNum,
     pageId,
@@ -183,3 +183,5 @@ export default (props) => {
     </>
   );
 };
+
+export { TextTVPage };

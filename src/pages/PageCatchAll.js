@@ -1,4 +1,3 @@
-import React from "react";
 import { Redirect } from "react-router-dom";
 import { getPageRangeInfo } from "../functions";
 
@@ -8,7 +7,7 @@ import { getPageRangeInfo } from "../functions";
  *
  * @param object props
  */
-const PageCatchAll = props => {
+const PageCatchAll = (props) => {
   const { pageNum } = props.match.params;
   const pageRangeInfo = getPageRangeInfo(pageNum);
   if (pageRangeInfo.allValid) {

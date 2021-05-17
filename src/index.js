@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom";
 import TextTVApp from "./TextTVApp";
 import * as serviceWorker from "./serviceWorker";

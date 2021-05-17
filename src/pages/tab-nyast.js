@@ -1,27 +1,20 @@
 import {
-  IonPage,
   IonContent,
+  IonPage,
   IonSegment,
   IonSegmentButton,
-  IonToolbar
+  IonToolbar,
 } from "@ionic/react";
-import React, { useContext, useEffect, useState } from "react";
-import {
-  getCurrentIonPageContentElm,
-  getCurrentIonPageScrollElm,
-  getUnixtime
-} from "../functions";
-import SenastUppdaterat from "../modules/SenastUppdaterat";
-import TextTVHeader from "../modules/TextTVHeader";
+import React, { useEffect, useState } from "react";
+import { getUnixtime } from "../functions";
+import { SenastUppdaterat } from "../modules/SenastUppdaterat";
+import { TextTVHeader } from "../modules/TextTVHeader";
 import TextTVRefresher from "../modules/TextTVRefresher";
-// import { TabContext } from "../contexts/TabContext";
 
-export default props => {
+const TabNyast = (props) => {
   const { history } = props;
   const [selectedSegment, setSelectedSegment] = useState("news");
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
-  // const tabsinfo = useContext(TabContext);
-  // const tabsinfoNyast = tabsinfo.tabs.nyast;
 
   // Uppdatera dokument-titel.
   useEffect(() => {
@@ -41,18 +34,18 @@ export default props => {
     document.title = pageTitle;
   }, [selectedSegment]);
 
-  const doRefresh = e => {
+  const doRefresh = (e) => {
     setRefreshTime(getUnixtime());
   };
 
-  const handlePullToRefresh = e => {
+  const handlePullToRefresh = (e) => {
     doRefresh();
     setTimeout(() => {
       e.target.complete();
     }, 500);
   };
 
-  const handleSegmentChange = e => {
+  const handleSegmentChange = (e) => {
     setSelectedSegment(e.detail.value);
   };
 
@@ -60,7 +53,7 @@ export default props => {
    * Scrolla upp när flik byts, annars börjar man nya fliken ev. nedscrollad
    * vilket är lite irri.
    */
-/*   useEffect(() => {
+  /*   useEffect(() => {
     const ionPageContent = getCurrentIonPageContentElm();
     ionPageContent && ionPageContent.scrollToTop();
   }, [selectedSegment]);
@@ -93,10 +86,7 @@ export default props => {
     <IonPage>
       <TextTVHeader {...props} title="Nyast">
         <IonToolbar color="primary">
-          <IonSegment
-            onIonChange={handleSegmentChange}
-            value={selectedSegment}
-          >
+          <IonSegment onIonChange={handleSegmentChange} value={selectedSegment}>
             <IonSegmentButton value="news">Nyheter</IonSegmentButton>
             <IonSegmentButton value="sports">Sport</IonSegmentButton>
           </IonSegment>
@@ -115,3 +105,5 @@ export default props => {
     </IonPage>
   );
 };
+
+export { TabNyast };

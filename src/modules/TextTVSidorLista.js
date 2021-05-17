@@ -5,15 +5,15 @@ import {
   IonListHeader,
   IonNote,
   IonChip,
-  IonButton
+  IonButton,
 } from "@ionic/react";
 import React, { useContext, useState } from "react";
-import favorites from "./favorites";
-import RedigeraFavoriter from "./RedigeraFavoriter";
+import { favoriter } from "./favoriter";
+import { RedigeraFavoriter } from "./RedigeraFavoriter";
 import { FavoritesContext } from "../contexts/FavoritesContext";
 import { saveFavorites } from "../functions";
 
-const TextTVSidorLista = props => {
+const TextTVSidorLista = (props) => {
   const { history } = props;
   const userFavorites = useContext(FavoritesContext);
   const [showEditFavoritesModal, setShowEditFavoritesModal] = useState(false);
@@ -35,7 +35,7 @@ const TextTVSidorLista = props => {
 
         <IonItem lines="none" class="ion-text-wrap">
           <IonLabel text-wrap class="ion-text-wrap">
-            {userFavorites.pages.map(pageNum => {
+            {userFavorites.pages.map((pageNum) => {
               const url = `/sidor/${pageNum}`;
               return (
                 <IonChip
@@ -58,7 +58,7 @@ const TextTVSidorLista = props => {
       <RedigeraFavoriter
         isOpen={showEditFavoritesModal}
         pages={userFavorites.pages}
-        handleSaveModal={pages => {
+        handleSaveModal={(pages) => {
           saveFavorites(pages);
           userFavorites.setPages(pages);
           setShowEditFavoritesModal(false);
@@ -73,7 +73,7 @@ const TextTVSidorLista = props => {
           <IonLabel>Sidor</IonLabel>
         </IonListHeader>
 
-        {favorites.map((page, index, arr) => {
+        {favoriter.map((page, index, arr) => {
           const pages = page.pages;
           const url = page.href ? page.href : `/sidor/${pages}`;
 

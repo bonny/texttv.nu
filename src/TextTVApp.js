@@ -5,21 +5,13 @@ import { IonApp, IonSplitPane } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import React, { useEffect, useState } from "react";
 import { Redirect, Route } from "react-router-dom";
-import { FirebaseAnalytics } from "./analytics";
 import "./App.css";
-import { FavoritesContext } from "./contexts/FavoritesContext";
-// import { detfaultTabinfoState, TabContext } from "./contexts/TabContext";
-import {
-  getCacheBustTimeString,
-  getTabHeight,
-  getUnixtime,
-  loadFavorites,
-  useMountEffect,
-} from "./functions";
-import { MenuWithRouter } from "./modules/SideMenu";
-import { Navigationsflikar } from "./modules/Navigationsflikar";
-import { adMobAdOptions } from "./options";
 import "./theme.css";
+import { FavoritesContext } from "./contexts/FavoritesContext";
+import { getTabHeight, loadFavorites, useMountEffect } from "./functions";
+import { Navigationsflikar } from "./modules/Navigationsflikar";
+import { MenuWithRouter } from "./modules/SideMenu";
+import { adMobAdOptions } from "./options";
 
 const { SplashScreen, AdMob, StatusBar } = Plugins;
 

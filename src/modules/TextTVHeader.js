@@ -1,8 +1,7 @@
 import { IonButtons, IonHeader, IonTitle, IonToolbar } from "@ionic/react";
-import React from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
 
-export default (props) => {
+const TextTVHeader = (props) => {
   const { title = "TextTV.nu", buttonsEnd, children } = props;
 
   return (
@@ -20,3 +19,5 @@ export default (props) => {
     </IonHeader>
   );
 };
+
+export { TextTVHeader };

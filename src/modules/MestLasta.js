@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import PagesListing from "./PagesListing";
 import SkeletonList from "./SkeletonList";
 
-const MestLastaLista = props => {
+const MestLastaLista = (props) => {
   const { history, day = "today", refreshTime, count = 15 } = props;
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingError, setIsLoadingError] = useState(false);
@@ -15,12 +15,8 @@ const MestLastaLista = props => {
     let isUnmounted = false;
     let dateYMD;
     let todayYMD = dayjs().format("YYYY-MM-DD");
-    let yesterdayYMD = dayjs()
-      .subtract(1, "day")
-      .format("YYYY-MM-DD");
-    let dayBeforeYesterdayYMD = dayjs()
-      .subtract(2, "day")
-      .format("YYYY-MM-DD");
+    let yesterdayYMD = dayjs().subtract(1, "day").format("YYYY-MM-DD");
+    let dayBeforeYesterdayYMD = dayjs().subtract(2, "day").format("YYYY-MM-DD");
 
     switch (day) {
       case "dayBeforeYesterday":
@@ -42,10 +38,10 @@ const MestLastaLista = props => {
     setPages([]);
 
     fetch(endpoint)
-      .then(data => {
+      .then((data) => {
         return data.json();
       })
-      .then(data => {
+      .then((data) => {
         // Bail if component already unmounted.
         if (isUnmounted) {
           setIsLoading(false);
@@ -55,12 +51,12 @@ const MestLastaLista = props => {
         setIsLoading(false);
         setPages(data.pages);
       })
-      .catch(error => {
+      .catch((error) => {
         // Network error or similar.
         setIsLoadingError(true);
       });
 
-    return e => {
+    return (e) => {
       isUnmounted = true;
     };
   }, [day, count, refreshTime]);
@@ -91,7 +87,7 @@ const MestLastaLista = props => {
   );
 };
 
-export default props => {
+const MestLasta = (props) => {
   const { selectedSegment, refreshTime } = props;
 
   return (
@@ -102,3 +98,5 @@ export default props => {
     />
   );
 };
+
+export { MestLasta };

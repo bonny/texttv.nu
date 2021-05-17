@@ -16,15 +16,14 @@ import {
   time,
   timeOutline,
 } from "ionicons/icons";
-import React from "react";
 import { Route, useHistory, useLocation } from "react-router-dom";
 import PageTextTV from "../pages/page-TextTV.js";
 import PageCatchAll from "../pages/PageCatchAll";
 import { PageDebug } from "../pages/pageDebug.js";
-import TabPopulart from "../pages/tab-mest-last";
-import TabNyast from "../pages/tab-nyast";
-import TabSidor from "../pages/tab-sidor";
-import Startsida from "../pages/tab-startsida";
+import { TabPopulart } from "../pages/tab-mest-last";
+import { TabNyast } from "../pages/tab-nyast";
+import { TabSidor } from "../pages/tab-sidor";
+import { Startsida } from "../pages/tab-startsida";
 
 export const Navigationsflikar = () => {
   const tabButtons = [

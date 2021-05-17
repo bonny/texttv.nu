@@ -33,3 +33,4 @@
 - [x] Bättre logik och känsla när man går tillbaka i historiken och när man klickar på en flik (går till flikens "start" istället för senast besökta sida på fliken)
 - [x] sätt fallback-font till någon som är lika bred som Ubuntu mono
   - [x] förslag: Consolas (mkt lik, samma bredd, finns i windows), Inconsolata (open source-variant av consolas)
+- [x] Ta bort pil upp/ner på desktop på sidnummerinputen

@@ -1,18 +1,11 @@
-import { IonPage, IonContent, IonToolbar } from "@ionic/react";
-import React, { useContext, useEffect } from "react";
-import TextTVHeader from "../modules/TextTVHeader";
-import TextTVSearchBar from "../modules/TextTVSearchBar";
-// import { TabContext } from "../contexts/TabContext";
-import {
-  getCurrentIonPageContentElm,
-  getCurrentIonPageScrollElm
-} from "../functions";
+import { IonContent, IonPage, IonToolbar } from "@ionic/react";
+import React, { useEffect } from "react";
 import MenuItems from "../modules/MenuItems";
+import { TextTVHeader } from "../modules/TextTVHeader";
+import TextTVSearchBar from "../modules/TextTVSearchBar";
 
-export default props => {
+const TabSidor = (props) => {
   const { history } = props;
-  // const tabsinfo = useContext(TabContext);
-  // const tabsinfoSidor = tabsinfo.tabs.sidor;
 
   // Uppdatera dokument-titel.
   useEffect(() => {
@@ -20,7 +13,7 @@ export default props => {
   }, []);
 
   // Scrolla till toppen om vi klickar på denna sidans tab igen.
-/*   useEffect(() => {
+  /*   useEffect(() => {
     const ionPageContent = getCurrentIonPageContentElm();
     const ionPageScrollElement = getCurrentIonPageScrollElm();
     ionPageScrollElement && ionPageContent.scrollToTop(500);
@@ -40,3 +33,5 @@ export default props => {
     </IonPage>
   );
 };
+
+export { TabSidor };

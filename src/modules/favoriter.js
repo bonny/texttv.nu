@@ -1,4 +1,4 @@
-export default [
+const favoriter = [
   { title: "Hem/Favoriter", href: "/hem" },
   { title: "SVT Text Start", pages: "100" },
   { title: "Inrikesnyheter", pages: "101-103" },
@@ -14,3 +14,5 @@ export default [
   { title: "TV-tablåer", pages: "600, 650-656" },
   { title: "Innehåll", pages: "700" },
 ];
+
+export { favoriter };

@@ -12,7 +12,6 @@ import {
 } from "@ionic/react";
 import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
 import React, { useEffect, useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
 import {
   getCurrentIonPageContentElm,
   getUnixtime,
@@ -22,7 +21,7 @@ import {
   handleShare,
 } from "../functions";
 import Header from "../modules/Header";
-import TextTVPage from "../modules/TextTVPage";
+import { TextTVPage } from "../modules/TextTVPage";
 import TextTVRefresher from "../modules/TextTVRefresher";
 
 const scrollToTop = () => {

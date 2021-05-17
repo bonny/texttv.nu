@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import SkeletonList from "./SkeletonList";
 import PagesListing from "./PagesListing";
 
-const SenastUppdateradeLista = props => {
+const SenastUppdateradeLista = (props) => {
   const { type = "news", history, refreshTime, count = 15 } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingError, setIsLoadingError] = useState(false);
@@ -14,17 +14,17 @@ const SenastUppdateradeLista = props => {
     const endpoints = [
       {
         what: "news",
-        endpoint: `https://texttv.nu/api/last_updated/news?count=${count}`
+        endpoint: `https://texttv.nu/api/last_updated/news?count=${count}`,
       },
       {
         what: "sports",
-        endpoint: `https://texttv.nu/api/last_updated/sport?count=${count}`
-      }
+        endpoint: `https://texttv.nu/api/last_updated/sport?count=${count}`,
+      },
     ];
 
     let isUnmounted = false;
 
-    let endpoint = endpoints.find(source => {
+    let endpoint = endpoints.find((source) => {
       return source.what === type;
     });
 
@@ -33,10 +33,10 @@ const SenastUppdateradeLista = props => {
     setPages([]);
 
     fetch(endpoint.endpoint)
-      .then(data => {
+      .then((data) => {
         return data.json();
       })
-      .then(data => {
+      .then((data) => {
         setIsLoading(false);
 
         // Bail if component already unmounted.
@@ -46,12 +46,12 @@ const SenastUppdateradeLista = props => {
 
         setPages(data.pages);
       })
-      .catch(error => {
+      .catch((error) => {
         // Network error or similar.
         setIsLoadingError(true);
       });
 
-    return e => {
+    return (e) => {
       isUnmounted = true;
     };
   }, [type, count, refreshTime]);
@@ -62,12 +62,12 @@ const SenastUppdateradeLista = props => {
     <>
       {isLoadingError && <p>Det blev ett fel vid laddning ...</p>}
       {isLoading && SkeletonList}
-      {Pages && <IonList>{Pages}</IonList>}  
+      {Pages && <IonList>{Pages}</IonList>}
     </>
   );
 };
 
-export default props => {
+const SenastUppdaterat = (props) => {
   const { selectedSegment, refreshTime, ...rest } = props;
 
   return (
@@ -80,3 +80,5 @@ export default props => {
     </>
   );
 };
+
+export { SenastUppdaterat };

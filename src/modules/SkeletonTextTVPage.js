@@ -1,5 +1,4 @@
 import { IonSkeletonText } from "@ionic/react";
-import React from "react";
 import { getPageRangeInfo } from "../functions";
 
 let fortyChars = " ".repeat(40);
@@ -44,7 +43,7 @@ export default function SkeletonTextTVPage(props) {
     backgroundColor: "rgb(17,30,63)",
     opacity: 0.75,
     maxWidth: "20em",
-    margin: "0 auto"
+    margin: "0 auto",
   };
 
   // Skapa lika många skeleton-sidor som antalet sidor som ska hämtas och skrivas ut.
@@ -63,7 +62,7 @@ export default function SkeletonTextTVPage(props) {
 
   function createMarkup() {
     return {
-      __html: html
+      __html: html,
     };
   }
 

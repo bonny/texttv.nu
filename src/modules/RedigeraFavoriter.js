@@ -1,3 +1,4 @@
+import { Plugins } from "@capacitor/core";
 import {
   IonAlert,
   IonButton,
@@ -14,15 +15,14 @@ import {
   IonReorderGroup,
   IonRow,
   IonTitle,
+  IonToast,
   IonToolbar,
-  IonToast
 } from "@ionic/react";
 import { add, close } from "ionicons/icons";
-import React, { useState, useEffect } from "react";
-import { Plugins } from "@capacitor/core";
+import React, { useEffect, useState } from "react";
 const { AdMob } = Plugins;
 
-export default props => {
+const RedigeraFavoriter = (props) => {
   const { isOpen, pages, handleSaveModal, handleCancelModal } = props;
   const [showAddPageAlert, setShowAddPageAlert] = useState(false);
   const [pageNums, setPageNums] = useState([]);
@@ -95,13 +95,13 @@ export default props => {
                 <IonReorderGroup
                   disabled={false}
                   no-padding
-                  onIonItemReorder={itemReorderEventDetail => {
+                  onIonItemReorder={(itemReorderEventDetail) => {
                     setPageNums(
                       itemReorderEventDetail.detail.complete([...pageNums])
                     );
                   }}
                 >
-                  {pageNums.map(pagenum => {
+                  {pageNums.map((pagenum) => {
                     return (
                       <IonItem key={pagenum}>
                         <IonLabel>{pagenum}</IonLabel>
@@ -109,9 +109,9 @@ export default props => {
                         <IonIcon
                           slot="end"
                           icon={close}
-                          onClick={e => {
+                          onClick={(e) => {
                             setPageNums(
-                              pageNums.filter(num => num !== pagenum)
+                              pageNums.filter((num) => num !== pagenum)
                             );
                           }}
                         />
@@ -151,19 +151,19 @@ export default props => {
                 type: "number",
                 min: 100,
                 max: 999,
-                placeholder: "T.ex. 100 eller 377."
-              }
+                placeholder: "T.ex. 100 eller 377.",
+              },
             ]}
             buttons={[
               {
                 text: "Avbryt",
                 role: "cancel",
                 cssClass: "secondary",
-                handler: () => {}
+                handler: () => {},
               },
               {
                 text: "Lägg till",
-                handler: values => {
+                handler: (values) => {
                   // Lägg till nya sidan men se till att den inte redan finns
                   // och att den är ett giltigt nummer.
                   if (values.pagenumber < 100 || values.pagenumber > 999) {
@@ -172,8 +172,8 @@ export default props => {
                   let pageNumWithNewNum = [...pageNums, values.pagenumber];
                   pageNumWithNewNum = [...new Set(pageNumWithNewNum)];
                   setPageNums(pageNumWithNewNum);
-                }
-              }
+                },
+              },
             ]}
           />
         </IonContent>
@@ -192,3 +192,5 @@ export default props => {
     </>
   );
 };
+
+export { RedigeraFavoriter };
