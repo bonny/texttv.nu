@@ -10,14 +10,14 @@ const SkeletonListItems = [...Array(10)].map((val, index) => {
     width: Math.random() * (75 - 35) + 35 + "%",
   };
   return (
-    <IonItem key={index}>
+    <IonItem key={index} lines="none">
       <IonLabel text-wrap class="ion-text-wrap">
-        <p>
-          <IonSkeletonText animated style={pStyles} />
-        </p>
         <h1>
           <IonSkeletonText animated style={H1Style} />
         </h1>
+        <p>
+          <IonSkeletonText animated style={pStyles} />
+        </p>
       </IonLabel>
     </IonItem>
   );
