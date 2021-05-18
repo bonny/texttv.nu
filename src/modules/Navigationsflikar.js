@@ -119,7 +119,7 @@ export const Navigationsflikar = () => {
             Fallback för url som är sidnummer direkt, t.ex. "/100".
             Bra om man t.ex. hijackar url och skriver sida där manuellt.
             */}
-        <Route path="/:pageNum([0-9]{3}.*)" component={PageCatchAll} />
+        <Route path="/:pageNum([0-9]{3}.*/?)" component={PageCatchAll} />
 
         {/* 404-sida */}
         <Route component={Page404} />
