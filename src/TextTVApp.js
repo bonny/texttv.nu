@@ -5,7 +5,7 @@ import { IonApp, IonSplitPane } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import React, { useEffect, useState } from "react";
 import { Redirect, Route } from "react-router-dom";
-import "./App.css";
+import "./app.css";
 import { FavoritesContext } from "./contexts/FavoritesContext";
 import { getTabHeight, loadFavorites } from "./functions";
 import { Navigationsflikar } from "./modules/Navigationsflikar";
