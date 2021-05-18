@@ -4,9 +4,8 @@
 
 ## Blandat Todo
 
-- [ ] Uppdatera NPM-paket
+- [ ] när går till sida laddas för många sidor in, typ nuvarande sida + kommande sida + även startsidan?!
 - [ ] Senast + mest läst: alltid&max två rader så innehållet inte hoppar
-  - [ ] Mest lästa/senast: får nån ram mellan varje item under load/skeleton
 - [ ] "Nyare version av sidan finns"
   - [ ] kommer upp för ofta
   - [ ] synlig på andra sidor än den man är på
@@ -19,18 +18,18 @@
   - [ ] Alltid synliga på alla sidor. Snabbt och smidigt!
 - [ ] När man klickar på mest lästa/senaste ett par gånger så verkar det laddas dubbla ajax + sidor laddas fast inga visas?
 - [ ] lägg till debug-context som visar debug-meddelanden i nån ruta
-- [ ] gå till-sida input även på mest läst och senaste. det ska alltid gå att gå vidare till valfri sida!
 - [ ] statistik på omladdningar och när favoriter ändras osv. även när tab klickas? få koll på vilka funktioner som faktiskt används.
-- [ ] när går till sida laddas för många sidor in, typ nuvarande sida + kommande sida + även startsidan?!
 - [ ] statistik saknas när man går till sida, loggas aldrig till Firebase?
 - [ ] koppla ihop admob med firebase https://mail.google.com/mail/u/0/#all/FMfcgxwLtszrLRqMqXcpTpqnNzWPQQrW
 - [ ] kolla att admob är korrekt ihopkopplat https://mail.google.com/mail/u/0/#all/FMfcgxwLsKBxCKFJdmLGTZqkWbJBzGzq
 
 ## Changelog
 
+- [x] Uppdatera NPM-paket
 - [x] Ta bort ev. animationer vid navigering, https://ionicframework.com/docs/api/router-outlet#:~:text=animated
 - [x] Bättre logik och känsla när man går tillbaka i historiken och när man klickar på en flik (går till flikens "start" istället för senast besökta sida på fliken)
 - [x] sätt fallback-font till någon som är lika bred som Ubuntu mono
   - [x] förslag: Consolas (mkt lik, samma bredd, finns i windows), Inconsolata (open source-variant av consolas)
 - [x] Ta bort pil upp/ner på desktop på sidnummerinputen
 - [x] "404-sida" om man manuellt anger sida som inte finns
+- [x] Mest lästa/senast: får nån ram mellan varje item under load/skeleton
