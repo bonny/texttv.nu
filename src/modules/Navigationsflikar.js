@@ -6,17 +6,9 @@ import {
   IonTabButton,
   IonTabs,
 } from "@ionic/react";
-import {
-  eye,
-  eyeOutline,
-  home,
-  homeOutline,
-  list,
-  listOutline,
-  time,
-  timeOutline,
-} from "ionicons/icons";
+import { useEffect } from "react";
 import { Route, useHistory, useLocation } from "react-router-dom";
+import { Page404 } from "../pages/page-404.js";
 import PageTextTV from "../pages/page-TextTV.js";
 import PageCatchAll from "../pages/PageCatchAll";
 import { PageDebug } from "../pages/pageDebug.js";
@@ -24,76 +16,24 @@ import { TabPopulart } from "../pages/tab-mest-last";
 import { TabNyast } from "../pages/tab-nyast";
 import { TabSidor } from "../pages/tab-sidor";
 import { Startsida } from "../pages/tab-startsida";
-import { Page404 } from "../pages/page-404.js";
+import { tabButtons } from "./tabButtons";
 
 export const Navigationsflikar = () => {
-  const tabButtons = [
-    {
-      tab: "hem",
-      title: "Hem",
-      icon: homeOutline,
-      iconSelected: home,
-      href: "/hem",
-    },
-    {
-      tab: "sidor",
-      title: "sidor",
-      icon: listOutline,
-      iconSelected: list,
-      href: "/sidor",
-      className: "ion-hide-lg-up",
-    },
-    {
-      tab: "nyast",
-      title: "Nyast",
-      icon: timeOutline,
-      iconSelected: time,
-      href: "/nyast",
-    },
-    {
-      tab: "populart",
-      title: "Mest läst",
-      icon: eyeOutline,
-      iconSelected: eye,
-      href: "/arkiv",
-    },
-    {
-      tab: "debug",
-      title: "Debug",
-      href: "/debug",
-    },
-  ];
+  const history = useHistory();
+  const location = useLocation();
 
-  // const handleTabsWillChange = (e) => {
-  //   console.log("handleTabsWillChange", e);
-  //   return false;
-  // };
-
-  // const handleTabsDidChange = (e) => {
-  //   console.log("handleTabsDigChange", e);
-  // };
-
-  // @TODO
-  // Fungerar ej pga:
+  // Click fungerar ej pga:
   // https://github.com/ionic-team/ionic-framework/issues/22511
-  // Se även:
   // https://github.com/ionic-team/ionic-framework/issues/17761
-  const handleClick = (e) => {
+  // så därför använder vi mouseup.
+  const handleTabMouseUp = (e) => {
     const tabButton = e.target.closest("ion-tab-button");
     const tabHref = tabButton.getAttribute("data-href");
     history.push(tabHref);
   };
 
-  const history = useHistory();
-  const location = useLocation();
-
   return (
-    <IonTabs
-      id="mainContent"
-      // onIonTabsWillChange={handleTabsWillChange}
-      // onIonTabsDidChange={handleTabsDidChange}
-    >
-      {/* kan id vara här för IonSplitPane? id="mainContent" */}
+    <IonTabs id="mainContent">
       <IonRouterOutlet id="routerOutletElm" animated={false}>
         {/* Diverse testsidor/testsökvägar. */}
         <Route path="/debug" component={PageDebug} />
@@ -127,14 +67,8 @@ export const Navigationsflikar = () => {
 
       <IonTabBar slot="bottom">
         {tabButtons.map((tabBtnProps) => {
-          const {
-            tab,
-            className,
-            href,
-            icon,
-            iconSelected,
-            title,
-          } = tabBtnProps;
+          const { tab, className, href, icon, iconSelected, title } =
+            tabBtnProps;
 
           // Sätt ikon baserat på om fliken är vald eller inte.
           const isSelected = location.pathname.startsWith(href);
@@ -143,7 +77,7 @@ export const Navigationsflikar = () => {
           return (
             <IonTabButton
               // onClick fungerar inte pga bugg i ionic (se handleClick)
-              onMouseUp={handleClick}
+              onMouseUp={handleTabMouseUp}
               // href={href}
               data-href={href}
               key={`${tab}`}
