@@ -141,6 +141,15 @@ const TextTVPage = (props) => {
     fetchPageContents();
   }, [pageNum, pageId, refreshTime]);
 
+  useEffect(() => {
+    console.log(
+      "TextTVPage pageNum, pageId, refreshTime",
+      pageNum,
+      pageId,
+      refreshTime
+    );
+  }, [pageNum, pageId, refreshTime]);
+
   /**
    * Kör uppdaterad-funktion från props.
    */

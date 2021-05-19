@@ -9,6 +9,7 @@ import {
   IonSlide,
   IonSlides,
   IonToast,
+  useIonViewDidEnter,
 } from "@ionic/react";
 import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
 import React, { useEffect, useRef, useState } from "react";
@@ -48,9 +49,8 @@ const PageTextTV = (props) => {
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
   const [pageUpdatedToastVisible, setPageUpdatedToastVisible] = useState(false);
   const [pageData, setPageData] = useState([]);
-  const [didDismissPageUpdateToast, setDidDismissPageUpdateToast] = useState(
-    false
-  );
+  const [didDismissPageUpdateToast, setDidDismissPageUpdateToast] =
+    useState(false);
 
   const contentRef = useRef();
   const pageRef = useRef();
@@ -78,11 +78,11 @@ const PageTextTV = (props) => {
     pageNextNum = 999;
   }
 
-  // Dessa event körs aldrig pga buggar.
-  // useIonViewDidEnter(() => {
-  //   console.log("ionViewDidEnter event fired");
-  // });
-
+  // https://ionicframework.com/docs/react/lifecycle
+  /*   useIonViewDidEnter(() => {
+    console.log("ionViewDidEnter event fired");
+  });
+ */
   // useIonViewDidLeave(() => {
   //   console.log("ionViewDidLeave event fired");
   // });
@@ -94,6 +94,12 @@ const PageTextTV = (props) => {
   // useIonViewWillLeave(() => {
   //   console.log("ionViewWillLeave event fired");
   // });
+
+  useEffect(() => {
+    console.log(
+      `render page-texttv, pageNum: ${pageNum}, refreshTime: ${refreshTime}, passedRefreshTime: ${passedRefreshTime}, onRefresh: changed`
+    );
+  }, [pageNum, refreshTime, passedRefreshTime, onRefresh]);
 
   /**
    * Update the refresh time to the current time.
@@ -204,6 +210,7 @@ const PageTextTV = (props) => {
     intervalId = setInterval(checkForUpdate, checkForUpdateInterval);
 
     // Sluta leta efter uppdateringar vid cleanup.
+    // @TODO: denna körs inte pga komponenten är kvar fast man navigerar bort.
     return () => {
       clearInterval(intervalId);
     };
@@ -274,9 +281,8 @@ const PageTextTV = (props) => {
               let checkNum = 0;
 
               const checkIntervalId = setInterval(() => {
-                const hasTranslateApplied = swiper.wrapperEl.style.cssText.indexOf(
-                  "translate3d"
-                );
+                const hasTranslateApplied =
+                  swiper.wrapperEl.style.cssText.indexOf("translate3d");
 
                 if (checkNum > maxNumberOfChecks) {
                   clearInterval(checkIntervalId);
@@ -358,7 +364,7 @@ const PageTextTV = (props) => {
           isOpen={pageUpdatedToastVisible}
           onDidDismiss={() => {}}
           position="bottom"
-          message="En nyare version av sidan finns."
+          message={`En nyare version av sidan ${pageNum} finns.`}
           cssClass="TextTVPage_Toast TextTVPage_UpdatedToast"
           showCloseButton={false}
           buttons={[
