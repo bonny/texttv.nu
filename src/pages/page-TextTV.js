@@ -71,6 +71,9 @@ const PageTextTV = (props) => {
   const firstPage = pageData[0];
   const pageCurrentNum = firstPage ? parseInt(firstPage.num) : null;
 
+  // @TODO: gå till nästa sida som finns enligt API-svar, inte till tom sida.
+  // dock om man låter en sida vara öppen en stund så kan nästa/föregående sida ha förändrats,
+  // så en sida som var tom har plötsligt fått innehåll. Eller tvärtom.
   let pagePrevNum = pageCurrentNum ? pageCurrentNum - 1 : null;
   let pageNextNum = pageCurrentNum ? pageCurrentNum + 1 : null;
 

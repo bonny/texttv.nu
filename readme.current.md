@@ -9,6 +9,7 @@
 
 ## Blandat Todo
 
+- [ ] Går till hem = sida ska alltid laddas om. Även vid klick på tab.
 - [ ] när går till sida laddas för många sidor in, typ nuvarande sida + kommande sida + även startsidan?!
 - [ ] Senast + mest läst: alltid&max två rader så innehållet inte hoppar
 - [ ] "Nyare version av sidan finns"

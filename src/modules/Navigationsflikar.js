@@ -27,7 +27,8 @@ export const Navigationsflikar = () => {
   // så därför använder vi mouseup.
   const handleTabMouseUp = (e) => {
     const tabButton = e.target.closest("ion-tab-button");
-    const tabHref = tabButton.getAttribute("data-href");
+    let tabHref = tabButton.getAttribute("data-href");
+    tabHref = `${tabHref}?clicktime=${Date.now()}`;
     history.push(tabHref);
   };
 
