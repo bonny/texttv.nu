@@ -30,10 +30,10 @@ import { TextTVPage } from "../modules/TextTVPage";
 import TextTVRefresher from "../modules/TextTVRefresher";
 // import { useInView } from "react-intersection-observer";
 
-const scrollToTop = () => {
+const scrollToTop = (speed = 750) => {
   let currentIonPageContent = getCurrentIonPageContentElm();
   if (currentIonPageContent) {
-    currentIonPageContent.scrollToTop(750);
+    currentIonPageContent.scrollToTop(speed);
   }
 };
 
@@ -353,9 +353,10 @@ const PageTextTV = (props) => {
               }
 
               if (navToPageNum) {
+                // Gå till sida och gå sedan tillbaka till slidern i mitten.
                 history.push(`/sidor/${navToPageNum}`);
-                
                 sliderRef.current.slideTo(1, 0);
+                scrollToTop(0);
               }
             });
           }}
