@@ -3,7 +3,7 @@
  * Visas i en befintlig sida alltså.
  */
 import classNames from "classnames";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   createMarkupForPage,
   getCacheBustTimeString,
@@ -22,21 +22,27 @@ function usePrevious(value) {
 }
 
 const TextTVPage = (props) => {
-  const {
-    pageNum,
-    pageId,
-    children,
-    history,
-    refreshTime,
-    onPageUpdate,
-  } = props;
+  const { pageNum, pageId, children, history, refreshTime, onPageUpdate } =
+    props;
 
   const [pageData, setPageData] = useState([]);
   const prevPageNum = usePrevious(pageNum);
   const [pageIsLoading, setPageIsLoading] = useState(true);
-  const [pageIsLoadingNewPageRange, setPageIsLoadingNewPageRange] = useState(
-    true
-  );
+  const [pageIsLoadingNewPageRange, setPageIsLoadingNewPageRange] =
+    useState(true);
+
+  // useIonViewWillEnter(() => {
+  //   console.log("subtextpage ionViewWillEnter", pageNum);
+  // });
+
+  // useIonViewWillLeave(() => {
+  //   console.log("subtextpage ionViewWillLeave", pageNum);
+  // });
+
+  // useIonViewWillLeave(() => {
+  //   const pageNumYo = pageNum;
+  //   console.log("useIonViewWillLeave", pageNum, pageNumYo);
+  // });
 
   // Leta upp närmaste länk, om någon, vid klick nånstans på sidan,
   // och gå till den länken.
@@ -70,20 +76,28 @@ const TextTVPage = (props) => {
       .find((e) => true);
 
     // Gå till sida 🎉.
-    let pathPrefix;
-    switch (firstPathName) {
-      case "hem":
-        pathPrefix = "hem";
-        break;
-      case "sidor":
-      default:
-        pathPrefix = "sidor";
-    }
+    const pathPrefix = "sidor";
+    // switch (firstPathName) {
+    //   case "hem":
+    //     pathPrefix = "sidor";
+    //     break;
+    //   case "sidor":
+    //   default:
+    //     pathPrefix = "sidor";
+    // }
 
     const timestamp = Date.now();
     const fullUrl = `/${pathPrefix}${href}?date=${timestamp}`;
     history.push(fullUrl);
   };
+
+  // useEffect(() => {
+  //   console.log("TextTVPage useEffect", pageNum);
+
+  //   return function cleanup() {
+  //     console.log("TextTVPage useEffect cleanup", pageNum);
+  //   };
+  // }, [pageNum]);
 
   // När sidan ändras så vill vi sätta innehållet till inget så att inte gamla innehållet
   // syns för en kort stund. Verkar inte funka så bra dock..
@@ -98,6 +112,9 @@ const TextTVPage = (props) => {
    * Ladda in sida från API när pageNum eller refreshTime ändras.
    */
   useEffect(() => {
+    // console.log(
+    //   `fetchPageContents, pageNum: ${pageNum}, pageId: ${pageId}, refreshTime: ${refreshTime}`
+    // );
     setPageIsLoading(true);
 
     async function fetchPageContents() {
@@ -141,14 +158,14 @@ const TextTVPage = (props) => {
     fetchPageContents();
   }, [pageNum, pageId, refreshTime]);
 
-  useEffect(() => {
-    console.log(
-      "TextTVPage pageNum, pageId, refreshTime",
-      pageNum,
-      pageId,
-      refreshTime
-    );
-  }, [pageNum, pageId, refreshTime]);
+  // useEffect(() => {
+  //   console.log(
+  //     "TextTVPage pageNum, pageId, refreshTime",
+  //     pageNum,
+  //     pageId,
+  //     refreshTime
+  //   );
+  // }, [pageNum, pageId, refreshTime]);
 
   /**
    * Kör uppdaterad-funktion från props.

@@ -1,5 +1,5 @@
 import { IonList } from "@ionic/react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import SkeletonList from "./SkeletonList";
 import PagesListing from "./PagesListing";
 

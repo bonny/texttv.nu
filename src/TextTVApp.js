@@ -3,7 +3,7 @@ import "@ionic/core/css/core.css";
 import "@ionic/core/css/ionic.bundle.css";
 import { IonApp, IonSplitPane } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Redirect, Route } from "react-router-dom";
 import "./app.css";
 import { FavoritesContext } from "./contexts/FavoritesContext";

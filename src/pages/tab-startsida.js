@@ -7,7 +7,7 @@ import {
   IonRow,
 } from "@ionic/react";
 import { starOutline } from "ionicons/icons";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FavoritesContext } from "../contexts/FavoritesContext";
 import { getUnixtime, saveFavorites } from "../functions";
 import { RedigeraFavoriter } from "../modules/RedigeraFavoriter";
@@ -16,10 +16,8 @@ import PageTextTV from "./page-TextTV.js";
 
 const Startsida = (props) => {
   const userFavorites = useContext(FavoritesContext);
-  const [
-    latestUpdatedPagesRefreshTime,
-    setLatestUpdatedPagesRefreshTime,
-  ] = useState(getUnixtime());
+  const [latestUpdatedPagesRefreshTime, setLatestUpdatedPagesRefreshTime] =
+    useState(getUnixtime());
   const [visaRedigeraFavoriter, setVisaRedigeraFavoriter] = useState(false);
 
   // const tabsinfoHem = tabsinfo.tabs.hem;

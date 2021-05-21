@@ -1,5 +1,5 @@
 import { IonContent, IonPage, IonToolbar } from "@ionic/react";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import MenuItems from "../modules/MenuItems";
 import { TextTVHeader } from "../modules/TextTVHeader";
 import TextTVSearchBar from "../modules/TextTVSearchBar";

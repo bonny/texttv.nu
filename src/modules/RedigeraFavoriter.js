@@ -19,7 +19,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { add, close } from "ionicons/icons";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 const { AdMob } = Plugins;
 
 const RedigeraFavoriter = (props) => {

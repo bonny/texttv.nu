@@ -7,7 +7,7 @@ import {
   IonChip,
   IonButton,
 } from "@ionic/react";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { favoriter } from "./favoriter";
 import { RedigeraFavoriter } from "./RedigeraFavoriter";
 import { FavoritesContext } from "../contexts/FavoritesContext";

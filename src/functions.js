@@ -313,7 +313,7 @@ function getCurrentIonPageContentElm() {
     return false;
   }
 
-  // BAila om elementet inte är redo.
+  // Baila om elementet inte är redo.
   if (
     currentIonPageContent &&
     !currentIonPageContent.classList.contains("hydrated")

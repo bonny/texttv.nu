@@ -5,7 +5,7 @@ import {
   IonSegmentButton,
   IonToolbar,
 } from "@ionic/react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getCurrentIonPageContentElm, getUnixtime } from "../functions";
 import { MestLasta } from "../modules/MestLasta";
 import { TextTVHeader } from "../modules/TextTVHeader";

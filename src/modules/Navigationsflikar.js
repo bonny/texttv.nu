@@ -6,7 +6,6 @@ import {
   IonTabButton,
   IonTabs,
 } from "@ionic/react";
-import { useEffect } from "react";
 import { Route, useHistory, useLocation } from "react-router-dom";
 import { Page404 } from "../pages/page-404.js";
 import PageTextTV from "../pages/page-TextTV.js";
@@ -38,22 +37,22 @@ export const Navigationsflikar = () => {
         {/* Diverse testsidor/testsökvägar. */}
         <Route path="/debug" component={PageDebug} />
 
+        <Route path="/hem/:pageNum" component={PageTextTV} exact={true} />
         <Route path="/hem" component={Startsida} exact={true} />
-        <Route path="/hem/:pageNum" component={PageTextTV} />
 
-        <Route path="/arkiv" component={TabPopulart} exact={true} />
-        <Route path="/arkiv/:pageNum" component={PageTextTV} exact={true} />
         <Route
           path="/arkiv/:pageNum/:pageId/"
           component={PageTextTV}
           exact={true}
         />
+        <Route path="/arkiv/:pageNum" component={PageTextTV} exact={true} />
+        <Route path="/arkiv" component={TabPopulart} exact={true} />
 
+        <Route path="/sidor/:pageNum" component={PageTextTV} exact={true} />
         <Route path="/sidor" component={TabSidor} exact={true} />
-        <Route path="/sidor/:pageNum" component={PageTextTV} />
 
+        <Route path="/nyast/:pageNum" component={PageTextTV} exact={true} />
         <Route path="/nyast" component={TabNyast} exact={true} />
-        <Route path="/nyast/:pageNum" component={PageTextTV} />
 
         {/*
             Fallback för url som är sidnummer direkt, t.ex. "/100".

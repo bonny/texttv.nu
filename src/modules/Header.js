@@ -22,7 +22,7 @@ import {
   refresh,
   shareOutline,
 } from "ionicons/icons";
-import React, { useState } from "react";
+import { useState } from "react";
 import { ReactComponent as Logo } from "../images/logo.svg";
 import TextTVSearchBar from "./TextTVSearchBar";
 
@@ -42,9 +42,8 @@ const Header = (props) => {
   const backButtonDefaultHref = `/hem?default`;
   const [showPopover, setShowPopover] = useState(false);
   const [popoverEvent, setPopoverEvent] = useState();
-  const [actionPerformedToastOpened, setActionPerformedToastOpened] = useState(
-    false
-  );
+  const [actionPerformedToastOpened, setActionPerformedToastOpened] =
+    useState(false);
   const [actionPerformedMessage, setActionPerformedMessage] = useState("");
 
   // Visa endast share-knappen om denna variabel är true.

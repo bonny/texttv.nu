@@ -5,7 +5,7 @@ import {
   IonSegmentButton,
   IonToolbar,
 } from "@ionic/react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getUnixtime } from "../functions";
 import { SenastUppdaterat } from "../modules/SenastUppdaterat";
 import { TextTVHeader } from "../modules/TextTVHeader";

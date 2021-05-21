@@ -2,6 +2,11 @@
 
 ### Just nu
 
+## Ladda in sida vid rätt tillfälle
+
+- sida visas: ladda när view enter eller useEffect körs
+- sida visas inte: useEffect cleanup eller view leave
+
 ## Blandat Todo
 
 - [ ] när går till sida laddas för många sidor in, typ nuvarande sida + kommande sida + även startsidan?!

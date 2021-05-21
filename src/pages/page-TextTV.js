@@ -9,10 +9,14 @@ import {
   IonSlide,
   IonSlides,
   IonToast,
-  useIonViewDidEnter,
+  useIonViewWillEnter,
+  useIonViewWillLeave,
+  // useIonViewDidEnter,
+  // useIonViewDidLeave,
 } from "@ionic/react";
+
 import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   getCurrentIonPageContentElm,
   getUnixtime,
@@ -24,6 +28,7 @@ import {
 import Header from "../modules/Header";
 import { TextTVPage } from "../modules/TextTVPage";
 import TextTVRefresher from "../modules/TextTVRefresher";
+// import { useInView } from "react-intersection-observer";
 
 const scrollToTop = () => {
   let currentIonPageContent = getCurrentIonPageContentElm();
@@ -53,7 +58,6 @@ const PageTextTV = (props) => {
     useState(false);
 
   const contentRef = useRef();
-  const pageRef = useRef();
   const sliderRef = useRef();
 
   // Unik sträng som används som key för ion-slides.
@@ -78,28 +82,48 @@ const PageTextTV = (props) => {
     pageNextNum = 999;
   }
 
-  // https://ionicframework.com/docs/react/lifecycle
-  /*   useIonViewDidEnter(() => {
-    console.log("ionViewDidEnter event fired");
-  });
- */
-  // useIonViewDidLeave(() => {
-  //   console.log("ionViewDidLeave event fired");
-  // });
+  /*
+  Få event när sida laddas in så vi kan:
+  - ladda in sidan
+  - börja kolla om uppdateringar finns
 
-  // useIonViewWillEnter(() => {
-  //   console.log("ionViewWillEnter event fired");
-  // });
+  Få event när sidan inte visas längre, pga byter till annan sida eller flik så vi kan:
+  - sluta leta efter uppdateringar
+  */
 
-  // useIonViewWillLeave(() => {
-  //   console.log("ionViewWillLeave event fired");
-  // });
+  useIonViewWillEnter(() => {
+    console.log(
+      `Sida ${pageNum} visas pga view enter med refreshTime ${refreshTime}. Ladda in sidan/sidorna, börja leta efter uppdateringar.`
+    );
+  }, [pageNum, pageId, refreshTime]);
+
+  useIonViewWillLeave(() => {
+    console.log(
+      `Sida ${pageNum} visas inte längre pga view leave. Sluta leta efter uppdateringar.`
+    );
+  }, [pageNum, pageId, refreshTime]);
 
   useEffect(() => {
     console.log(
-      `render page-texttv, pageNum: ${pageNum}, refreshTime: ${refreshTime}, passedRefreshTime: ${passedRefreshTime}, onRefresh: changed`
+      `Sida ${pageNum} visas med refreshTime ${refreshTime}. Ladda in sidan/sidorna, börja leta efter uppdateringar.`
     );
-  }, [pageNum, refreshTime, passedRefreshTime, onRefresh]);
+
+    return function cleanup() {
+      console.log(
+        `Sida ${pageNum} visas inte längre eller komponenten har monterats av. Sluta leta efter uppdateringar.`
+      );
+    };
+  }, [pageNum, pageId, refreshTime]);
+
+  // const { ref, inView, entry } = useInView({
+  //   /* Optional options */
+  //   threshold: 0,
+  //   triggerOnce: true,
+  // });
+
+  // useEffect(() => {
+  //   console.log({ inView, entry }, pageNum);
+  // }, [inView, pageNum, entry]);
 
   /**
    * Update the refresh time to the current time.
@@ -141,7 +165,7 @@ const PageTextTV = (props) => {
 
   // Leta efter uppdateringar av sidan eller sidorna
   // när pageNum eller refreshTime ändrats.
-  useEffect(() => {
+  /* useEffect(() => {
     const checkForUpdateInterval = 5000;
     let intervalId;
     const checkForUpdate = async () => {
@@ -149,8 +173,7 @@ const PageTextTV = (props) => {
       // http://texttv.nu/api/updated/100,300,700/1439310425
       // kod körs var femte sekund i existerande app
       // https://github.com/bonny/texttv.nu/blob/master/app/texttvnucodovaapp/www/js/texttv.backbone.app.js#L675
-      // TODO: refreshTime blir för unik, använd cachebust eller riktigt timestamp från sida.
-
+      // @TODO: refreshTime blir för unik, använd cachebust eller riktigt timestamp från sida.
       var url = `https://api.texttv.nu/api/updated/${pageNum}/${refreshTime}`;
 
       // @TODO: crashar ibland.
@@ -215,8 +238,9 @@ const PageTextTV = (props) => {
       clearInterval(intervalId);
     };
   }, [pageNum, refreshTime, didDismissPageUpdateToast]);
+ */
 
-  // Uppdatera dokument-titel.
+  // Uppdatera dokument-titel när pageTitle ändras.
   useEffect(() => {
     document.title = pageTitle;
   }, [pageTitle]);
@@ -241,7 +265,7 @@ const PageTextTV = (props) => {
   };
 
   return (
-    <IonPage ref={pageRef}>
+    <IonPage>
       <Header
         {...props}
         pageTitle={pageTitle}
@@ -264,8 +288,24 @@ const PageTextTV = (props) => {
       <IonContent ref={contentRef}>
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
+        <p>
+          <strong>Debug:</strong>
+          <br />
+          pagenum: {pageNum}
+          <br />
+          passedRefreshTime: {passedRefreshTime}
+          <br />
+          pageId: {pageId}
+          <br />
+          match.path: {match.path}
+          <br />
+          match.url: {match.url}
+          <br />
+          refreshTime: {refreshTime}
+        </p>
+
         <IonSlides
-          key={historyLocationPathname}
+          xkey={historyLocationPathname}
           ref={sliderRef}
           pager={false}
           options={sliderOptions}
@@ -314,6 +354,8 @@ const PageTextTV = (props) => {
 
               if (navToPageNum) {
                 history.push(`/sidor/${navToPageNum}`);
+                
+                sliderRef.current.slideTo(1, 0);
               }
             });
           }}
