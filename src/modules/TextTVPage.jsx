@@ -87,7 +87,7 @@ const TextTVPage = (props) => {
     // }
 
     const timestamp = Date.now();
-    const fullUrl = `/${pathPrefix}${href}?date=${timestamp}`;
+    const fullUrl = `/${pathPrefix}${href}`;
     history.push(fullUrl);
   };
 
