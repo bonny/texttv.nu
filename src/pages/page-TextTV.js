@@ -98,6 +98,7 @@ const PageTextTV = (props) => {
     console.log(
       `Sida ${pageNum} visas pga view enter med refreshTime ${refreshTime}. Ladda in sidan/sidorna, börja leta efter uppdateringar.`
     );
+    updateRefreshTime();
   }, [pageNum, pageId, refreshTime]);
 
   useIonViewWillLeave(() => {
