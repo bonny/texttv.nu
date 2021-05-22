@@ -52,7 +52,7 @@ export default function SkeletonTextTVPage(props) {
       <div className="TextTVPage TextTVPage--skeleton" key={i}>
         <div className="TextTVPage__wrap">
           <div className="TextTVPage__inner">
-            <IonSkeletonText animated style={skeletonTextStyle} />
+            <IonSkeletonText style={skeletonTextStyle} />
             <div className="root" dangerouslySetInnerHTML={createMarkup()} />
           </div>
         </div>

@@ -15,6 +15,7 @@ import { TabPopulart } from "../pages/tab-mest-last";
 import { TabNyast } from "../pages/tab-nyast";
 import { TabSidor } from "../pages/tab-sidor";
 import { Startsida } from "../pages/tab-startsida";
+import { PageTestSkeleton } from "../pages/tabTestSkeleton";
 import { tabButtons } from "./tabButtons";
 
 export const Navigationsflikar = () => {
@@ -36,6 +37,7 @@ export const Navigationsflikar = () => {
       <IonRouterOutlet id="routerOutletElm" animated={false}>
         {/* Diverse testsidor/testsökvägar. */}
         <Route path="/debug" component={PageDebug} />
+        <Route path="/test/skeleton" component={PageTestSkeleton} />
 
         <Route path="/hem/:pageNum" component={PageTextTV} exact={true} />
         <Route path="/hem" component={Startsida} exact={true} />
