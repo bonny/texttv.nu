@@ -70,10 +70,10 @@ const TextTVPage = (props) => {
     hidePageUpdatedToasts();
 
     // Om sökväg är t.ex "/sidor/100" så ger detta "sidor".
-    const firstPathName = history.location.pathname
-      .split("/")
-      .filter((e) => e)
-      .find((e) => true);
+    // const firstPathName = history.location.pathname
+    //   .split("/")
+    //   .filter((e) => e)
+    //   .find((e) => true);
 
     // Gå till sida 🎉.
     const pathPrefix = "sidor";
@@ -86,7 +86,7 @@ const TextTVPage = (props) => {
     //     pathPrefix = "sidor";
     // }
 
-    const timestamp = Date.now();
+    // const timestamp = Date.now();
     const fullUrl = `/${pathPrefix}${href}`;
     history.push(fullUrl);
   };

@@ -1,14 +1,4 @@
-import {
-  IonIcon,
-  IonLabel,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-  IonPage,
-  IonContent,
-} from "@ionic/react";
-
+import { IonContent, IonPage } from "@ionic/react";
 import SkeletonTextTVPage from "../modules/SkeletonTextTVPage";
 
 function PageTestSkeleton() {
