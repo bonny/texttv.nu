@@ -95,11 +95,17 @@ const PageTextTV = (props) => {
   */
 
   useIonViewWillEnter(() => {
+    // Baila om inte startsidan/hem.
+    if (match.path !== "/hem") {
+      return;
+    }
+
     console.log(
-      `Sida ${pageNum} visas pga view enter med refreshTime ${refreshTime}. Ladda in sidan/sidorna, börja leta efter uppdateringar.`
+      `Sida ${pageNum} dvs hem visas pga view enter med refreshTime ${refreshTime}, match.path ${match.path}. Ladda in sidan/sidorna, börja leta efter uppdateringar.`
     );
+    
     updateRefreshTime();
-  }, [pageNum, pageId, refreshTime]);
+  }, [pageNum, pageId, refreshTime, match.path]);
 
   useIonViewWillLeave(() => {
     console.log(
