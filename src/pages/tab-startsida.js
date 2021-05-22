@@ -18,7 +18,6 @@ import PageTextTV from "./page-TextTV.js";
 
 const Startsida = (props) => {
   const routeMatch = useRouteMatch({ path: "/hem", exact: true });
-
   const userFavorites = useContext(FavoritesContext);
   const [latestUpdatedPagesRefreshTime, setLatestUpdatedPagesRefreshTime] =
     useState(getUnixtime());

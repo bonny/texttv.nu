@@ -4,19 +4,42 @@ import {
   IonSegment,
   IonSegmentButton,
   IonToolbar,
+  IonLabel,
+  useIonViewWillEnter,
 } from "@ionic/react";
 import { useEffect, useState } from "react";
+import { useRouteMatch } from "react-router-dom";
 import { getUnixtime } from "../functions";
 import { SenastUppdaterat } from "../modules/SenastUppdaterat";
 import { TextTVHeader } from "../modules/TextTVHeader";
 import TextTVRefresher from "../modules/TextTVRefresher";
 
 const TabNyast = (props) => {
+  const routeMatch = useRouteMatch({ path: props.match.path, exact: true });
   const { history } = props;
   const [selectedSegment, setSelectedSegment] = useState("news");
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
 
-  // Uppdatera dokument-titel.
+  // @HERE: ladda om vid klick på flik
+  useEffect(() => {
+    if (!routeMatch) {
+      return;
+    }
+
+    console.log(
+      "routeMatch för tab nyast",
+      selectedSegment,
+      refreshTime,
+      routeMatch
+    );
+    // doRefresh();
+  }, [routeMatch, refreshTime, selectedSegment]);
+
+  useIonViewWillEnter(() => {
+    console.log("tab-nyast ionViewWillEnter");
+  });
+
+  // Uppdatera dokument-titel beroende på valt segment.
   useEffect(() => {
     let pageTitle;
 
@@ -86,9 +109,30 @@ const TabNyast = (props) => {
     <IonPage>
       <TextTVHeader {...props} title="Nyast">
         <IonToolbar color="primary">
-          <IonSegment onIonChange={handleSegmentChange} value={selectedSegment}>
-            <IonSegmentButton value="news">Nyheter</IonSegmentButton>
-            <IonSegmentButton value="sports">Sport</IonSegmentButton>
+          <IonSegment
+            // onIonChange={handleSegmentChange}
+            value={selectedSegment}
+            onClick={(e) => {
+              const clickedSegmentValue = e.target.value;
+              console.log('clickedSegmentValue', clickedSegmentValue)
+              console.log('selectedSegment', selectedSegment)
+              if (clickedSegmentValue === selectedSegment) {
+                // Om samma flik refresh.
+                console.log('samma flik');
+                doRefresh();
+              } else {
+                // Ny flik, sätt segment bara.
+                console.log('ny flik');
+                setSelectedSegment(clickedSegmentValue);
+              }
+            }}
+          >
+            <IonSegmentButton value="news">
+              <IonLabel>Nyheter</IonLabel>
+            </IonSegmentButton>
+            <IonSegmentButton value="sports">
+              <IonLabel>Sport</IonLabel>
+            </IonSegmentButton>
           </IonSegment>
         </IonToolbar>
       </TextTVHeader>
