@@ -24,7 +24,7 @@ const Startsida = (props) => {
   const [visaRedigeraFavoriter, setVisaRedigeraFavoriter] = useState(false);
 
   // Uppdatera refreshtime när route matchar /hem, dvs.
-  // när Hem är aktiv flik.
+  // när Hem blir aktiv flik.
   useEffect(() => {
     if (!routeMatch) {
       // console.log("xx yo NO match hem!", routeMatch, latestUpdatedPagesRefreshTime);

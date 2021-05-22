@@ -7,12 +7,14 @@ import {
   IonLabel,
   useIonViewWillEnter,
 } from "@ionic/react";
+
 import { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import { getUnixtime } from "../functions";
 import { SenastUppdaterat } from "../modules/SenastUppdaterat";
 import { TextTVHeader } from "../modules/TextTVHeader";
 import TextTVRefresher from "../modules/TextTVRefresher";
+const queryString = require("query-string");
 
 const TabNyast = (props) => {
   const routeMatch = useRouteMatch({ path: props.match.path, exact: true });
@@ -20,23 +22,29 @@ const TabNyast = (props) => {
   const [selectedSegment, setSelectedSegment] = useState("news");
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
 
+  console.log("history.location", history.location);
+  const { clicktime } = queryString.parse(history.location.search);
+
+  useEffect(
+    (e) => {
+      console.log("clicktime", clicktime);
+      doRefresh();
+    },
+    [clicktime]
+  );
+
   // @HERE: ladda om vid klick på flik
   useEffect(() => {
     if (!routeMatch) {
       return;
     }
-
-    console.log(
-      "routeMatch för tab nyast",
-      selectedSegment,
-      refreshTime,
-      routeMatch
-    );
+    //doRefresh();
+    console.log("routeMatch för tab nyast", selectedSegment, routeMatch);
     // doRefresh();
   }, [routeMatch, refreshTime, selectedSegment]);
 
   useIonViewWillEnter(() => {
-    console.log("tab-nyast ionViewWillEnter");
+    doRefresh();
   });
 
   // Uppdatera dokument-titel beroende på valt segment.
@@ -105,6 +113,17 @@ const TabNyast = (props) => {
     scrollToTopOrRefresh();
   }, [tabsinfoNyast]);
  */
+  const handleSegmentClick = (e) => {
+    const clickedSegmentValue = e.target.value;
+    if (clickedSegmentValue === selectedSegment) {
+      // Om samma flik refresh.
+      doRefresh();
+    } else {
+      // Ny flik, sätt segment bara.
+      setSelectedSegment(clickedSegmentValue);
+    }
+  };
+
   return (
     <IonPage>
       <TextTVHeader {...props} title="Nyast">
@@ -112,20 +131,7 @@ const TabNyast = (props) => {
           <IonSegment
             // onIonChange={handleSegmentChange}
             value={selectedSegment}
-            onClick={(e) => {
-              const clickedSegmentValue = e.target.value;
-              console.log('clickedSegmentValue', clickedSegmentValue)
-              console.log('selectedSegment', selectedSegment)
-              if (clickedSegmentValue === selectedSegment) {
-                // Om samma flik refresh.
-                console.log('samma flik');
-                doRefresh();
-              } else {
-                // Ny flik, sätt segment bara.
-                console.log('ny flik');
-                setSelectedSegment(clickedSegmentValue);
-              }
-            }}
+            onClick={handleSegmentClick}
           >
             <IonSegmentButton value="news">
               <IonLabel>Nyheter</IonLabel>
