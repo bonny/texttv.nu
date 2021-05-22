@@ -78,7 +78,7 @@ export const Navigationsflikar = () => {
           return (
             <IonTabButton
               // onClick fungerar inte pga bugg i ionic (se handleClick)
-              onMouseUp={handleTabMouseUp}
+              onMouseDown={handleTabMouseUp}
               // href={href}
               data-href={href}
               key={`${tab}`}
