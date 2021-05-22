@@ -1,7 +1,7 @@
 import { Plugins, StatusBarStyle } from "@capacitor/core";
 import "@ionic/core/css/core.css";
 import "@ionic/core/css/ionic.bundle.css";
-import { IonApp, IonSplitPane } from "@ionic/react";
+import { IonApp, IonSplitPane, isPlatform } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { useEffect, useState } from "react";
 import { Redirect, Route } from "react-router-dom";
@@ -15,23 +15,28 @@ import "./theme.css";
 
 const { SplashScreen, AdMob, StatusBar } = Plugins;
 
-try {
-  AdMob.initialize()
-    .then(() => {
-      // console.log("AdMob init ok");
-    })
-    .catch((e) => {
-      // console.log("AdMob init catch", e);
-    });
-} catch (e) {
-  // console.log("got error when trying to init admob", e);
+// Initiera saker på en Ios eller Android-enhet.
+// Hybrid = "a device running Capacitor or Cordova".
+// https://ionicframework.com/docs/react/platform
+if (isPlatform("hybrid")) {
+  try {
+    AdMob.initialize()
+      .then(() => {
+        // console.log("AdMob init ok");
+      })
+      .catch((e) => {
+        // console.log("AdMob init catch", e);
+      });
+  } catch (e) {
+    // console.log("got error when trying to init admob", e);
+  }
+
+  SplashScreen.hide();
+
+  StatusBar.setStyle({
+    style: StatusBarStyle.Dark,
+  });
 }
-
-SplashScreen.hide();
-
-StatusBar.setStyle({
-  style: StatusBarStyle.Dark,
-});
 
 const tabHeight = getTabHeight();
 
@@ -64,6 +69,11 @@ function TextTVApp(props) {
 
   // Visa annons + sätt annons-höjd till variabel när sidan renderas.
   useEffect(() => {
+    // Baila om vi inte kör på en enhet.
+    if (!isPlatform("hybrid")) {
+      return;
+    }
+
     try {
       AdMob.showBanner(adMobAdOptions).then();
 
