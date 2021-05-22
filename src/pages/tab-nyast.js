@@ -17,7 +17,6 @@ import TextTVRefresher from "../modules/TextTVRefresher";
 const queryString = require("query-string");
 
 const TabNyast = (props) => {
-  const routeMatch = useRouteMatch({ path: props.match.path, exact: true });
   const { history } = props;
   const [selectedSegment, setSelectedSegment] = useState("news");
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
@@ -25,27 +24,9 @@ const TabNyast = (props) => {
   console.log("history.location", history.location);
   const { clicktime } = queryString.parse(history.location.search);
 
-  useEffect(
-    (e) => {
-      console.log("clicktime", clicktime);
-      doRefresh();
-    },
-    [clicktime]
-  );
-
-  // @HERE: ladda om vid klick på flik
   useEffect(() => {
-    if (!routeMatch) {
-      return;
-    }
-    //doRefresh();
-    console.log("routeMatch för tab nyast", selectedSegment, routeMatch);
-    // doRefresh();
-  }, [routeMatch, refreshTime, selectedSegment]);
-
-  useIonViewWillEnter(() => {
     doRefresh();
-  });
+  }, [clicktime]);
 
   // Uppdatera dokument-titel beroende på valt segment.
   useEffect(() => {
@@ -76,43 +57,7 @@ const TabNyast = (props) => {
     }, 500);
   };
 
-  const handleSegmentChange = (e) => {
-    setSelectedSegment(e.detail.value);
-  };
-
-  /**
-   * Scrolla upp när flik byts, annars börjar man nya fliken ev. nedscrollad
-   * vilket är lite irri.
-   */
-  /*   useEffect(() => {
-    const ionPageContent = getCurrentIonPageContentElm();
-    ionPageContent && ionPageContent.scrollToTop();
-  }, [selectedSegment]);
- */
-  // Scrolla till toppen om vi klickar på denna sidan tab igen
-  // och vi är inte längst uppe redan
-  // Dvs. klickad tab = hem men vi är inte scrollade längst upp.
-  /* useEffect(() => {
-    const scrollToTopOrRefresh = () => {
-      const ionPageContent = getCurrentIonPageContentElm();
-      const ionPageScrollElement = getCurrentIonPageScrollElm();
-
-      if (!ionPageScrollElement || !ionPageContent) {
-        return;
-      }
-
-      if (ionPageScrollElement.scrollTop > 0) {
-        // Scrolla upp och vi har scrollat ner.
-        ionPageContent.scrollToTop(500);
-      } else {
-        // Ladda om om vi är längst uppe.
-        doRefresh();
-      }
-    };
-
-    scrollToTopOrRefresh();
-  }, [tabsinfoNyast]);
- */
+  // Ändra flik eller ladda om vid klick på segment.
   const handleSegmentClick = (e) => {
     const clickedSegmentValue = e.target.value;
     if (clickedSegmentValue === selectedSegment) {
@@ -128,11 +73,7 @@ const TabNyast = (props) => {
     <IonPage>
       <TextTVHeader {...props} title="Nyast">
         <IonToolbar color="primary">
-          <IonSegment
-            // onIonChange={handleSegmentChange}
-            value={selectedSegment}
-            onClick={handleSegmentClick}
-          >
+          <IonSegment value={selectedSegment} onClick={handleSegmentClick}>
             <IonSegmentButton value="news">
               <IonLabel>Nyheter</IonLabel>
             </IonSegmentButton>

@@ -27,43 +27,11 @@ const Startsida = (props) => {
   // när Hem blir aktiv flik.
   useEffect(() => {
     if (!routeMatch) {
-      // console.log("xx yo NO match hem!", routeMatch, latestUpdatedPagesRefreshTime);
       return;
     }
     setLatestUpdatedPagesRefreshTime(getUnixtime());
   }, [routeMatch, latestUpdatedPagesRefreshTime]);
-  // console.log("startsida props", props, location.key, { routeMatch });
 
-  // const tabsinfoHem = tabsinfo.tabs.hem;
-  useIonViewWillEnter(() => {
-    // @TODO: använd location.key för att upptäcka förändringar.
-    // setLatestUpdatedPagesRefreshTime(getUnixtime());
-  });
-
-  // Scrolla till toppen om vi klickar på denna sidan tab igen
-  // och vi är inte längst uppe redan
-  // Dvs. klickad tab = hem men vi är inte scrollade längst upp.
-  /*   useEffect(() => {
-    const ionPageContent = getCurrentIonPageContentElm();
-    const ionPageScrollElement = getCurrentIonPageScrollElm();
-
-    if (!ionPageScrollElement) {
-      return;
-    }
-
-    if (tabsinfoHem.isNewTab) {
-      // Vi kommer till denna flik från en annan flik.
-      // Låt aktuellt innehåll + scrollpos vara.
-    } else if (ionPageScrollElement.scrollTop > 0) {
-      // Vi är redan på vår flik och har scrollat ner en bit,
-      // så scrolla upp och vi har scrollat ner.
-      ionPageContent.scrollToTop(500);
-    } else {
-      // Ladda om om vi är längst uppe.
-      setLatestUpdatedPagesRefreshTime(getUnixtime());
-    }
-  }, [tabsinfoHem]);
- */
   const handlePageTextTVRefresh = (e) => {
     setLatestUpdatedPagesRefreshTime(getUnixtime());
   };
