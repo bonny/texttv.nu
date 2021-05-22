@@ -14,7 +14,7 @@ import {
   // useIonViewDidEnter,
   // useIonViewDidLeave,
 } from "@ionic/react";
-
+import { Route, useHistory, useLocation } from "react-router-dom";
 import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -103,7 +103,7 @@ const PageTextTV = (props) => {
     console.log(
       `Sida ${pageNum} dvs hem visas pga view enter med refreshTime ${refreshTime}, match.path ${match.path}. Ladda in sidan/sidorna, börja leta efter uppdateringar.`
     );
-    
+
     updateRefreshTime();
   }, [pageNum, pageId, refreshTime, match.path]);
 
@@ -168,7 +168,7 @@ const PageTextTV = (props) => {
     };
 
     if (passedRefreshTime > refreshTime) {
-      scrollToTop();
+      scrollToTop(0);
       localUpdateRefreshTime();
     }
   }, [passedRefreshTime, refreshTime, onRefresh]);
@@ -274,6 +274,8 @@ const PageTextTV = (props) => {
     initialSlide: 1,
   };
 
+  const location = useLocation();
+
   return (
     <IonPage>
       <Header
@@ -310,6 +312,8 @@ const PageTextTV = (props) => {
           match.path: {match.path}
           <br />
           match.url: {match.url}
+          <br />
+          location.key: {location.key}
           <br />
           refreshTime: {refreshTime}
         </p>

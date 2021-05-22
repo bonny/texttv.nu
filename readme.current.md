@@ -2,11 +2,6 @@
 
 ### Just nu
 
-## Ladda in sida vid rätt tillfälle
-
-- sida visas: ladda när view enter eller useEffect körs
-- sida visas inte: useEffect cleanup eller view leave
-
 ## Blandat Todo
 
 - [ ] Går till hem = sida ska alltid laddas om. Även vid klick på tab.
