@@ -26,10 +26,11 @@ export const Navigationsflikar = () => {
   // https://github.com/ionic-team/ionic-framework/issues/22511
   // https://github.com/ionic-team/ionic-framework/issues/17761
   // så därför använder vi mouseup.
-  const handleTabMouseUp = (e) => {
+  const handleTabMouseDown = (e) => {
     const tabButton = e.target.closest("ion-tab-button");
     const tabHref = tabButton.getAttribute("data-href");
-    history.push(tabHref);
+    const time = Date.now();
+    history.push(`${tabHref}?clicktime=${time}`);
   };
 
   return (
@@ -78,7 +79,7 @@ export const Navigationsflikar = () => {
           return (
             <IonTabButton
               // onClick fungerar inte pga bugg i ionic (se handleClick)
-              onMouseDown={handleTabMouseUp}
+              onMouseDown={handleTabMouseDown}
               // href={href}
               data-href={href}
               key={`${tab}`}
