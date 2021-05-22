@@ -11,7 +11,7 @@ import {
   hidePageUpdatedToasts,
   sendStats,
 } from "../functions";
-// import SkeletonTextTVPage from "../modules/SkeletonTextTVPage";
+import SkeletonTextTVPage from "../modules/SkeletonTextTVPage";
 
 function usePrevious(value) {
   const ref = useRef();
@@ -204,7 +204,7 @@ const TextTVPage = (props) => {
 
   return (
     <>
-      {/* {pageIsLoading && <SkeletonTextTVPage pageNum={pageNum} />} */}
+      {pageIsLoading && <SkeletonTextTVPage pageNum={pageNum} />}
       {!pageIsLoading && pagesHtml}
     </>
   );

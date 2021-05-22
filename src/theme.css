@@ -190,13 +190,23 @@ b {
 
 @keyframes fadeInDown {
   from {
-    opacity: 0.5;
+    opacity: .5;
     transform: translate3d(0, 0, 0);
   }
 
   to {
     opacity: 1;
     transform: translate3d(0, 8px, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
@@ -207,11 +217,11 @@ b {
   /* animation-name: fadeInUp; */
 }
 
-/* Skeleton-sidan tonas in om laddningen tar mer än några sekunder */
+/* Skeleton-sidan tonas in om laddningen inte syns direkt */
 .TextTVPage--skeleton {
-  animation-name: fadeInDown;
-  animation-delay: 1.25s;
-  animation-duration: 0.25s;
+  animation-name: fadeIn;
+  animation-delay: 0.5s;
+  animation-duration: 0.5s;
 }
 
 .TextTVPage--isLoadingNewPageRange {
