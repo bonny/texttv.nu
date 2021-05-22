@@ -1,9 +1,14 @@
 import { IonItem, IonLabel } from "@ionic/react";
-import "moment/locale/sv";
-import Moment from "react-moment";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+require("dayjs/locale/sv");
+
+dayjs.locale("sv");
+dayjs.extend(relativeTime);
 
 const ListItem = (props) => {
   const { link, page, history } = props;
+  const dayJsFromNow = dayjs(page.date_added_unix * 1000).fromNow();
 
   return (
     <IonItem
@@ -17,9 +22,7 @@ const ListItem = (props) => {
       <IonLabel class="ion-text-wrap" text-wrap color="medium">
         <h2 className="ListHeadline">{page.title}</h2>
         <p className="ListText">
-          <Moment unix fromNow locale="sv" className="MomentTime">
-            {page.date_added_unix}
-          </Moment>
+          {page.page_num} • {dayJsFromNow}
         </p>
       </IonLabel>
     </IonItem>
@@ -48,8 +51,6 @@ const PagesListing = (props) => {
   }
 
   return pages.map((page, index, arr) => {
-    // No line on last item.
-    // const lines = index === arr.length - 1 ? "none" : "inset";
     let link;
 
     switch (linkTo) {
@@ -66,7 +67,6 @@ const PagesListing = (props) => {
         {...props}
         link={link}
         page={page}
-        // lines={lines}
         key={page.id}
         passedHistory={history}
       />

@@ -204,14 +204,6 @@
   color: #12c;
 }
 
-.MomentTime {
-  display: inline-block;
-}
-
-.MomentTime::first-letter {
-  text-transform: uppercase;
-}
-
 .ListHeadline {
   color: var(--text-tv-color-yellow) !important;
   font-size: var(--text-tv-font-size) !important;

@@ -4,8 +4,6 @@
 
 ## Blandat Todo
 
-- [ ] Går till hem = sida ska alltid laddas om. Även vid klick på tab.
-- [ ] när går till sida laddas för många sidor in, typ nuvarande sida + kommande sida + även startsidan?!
 - [ ] Senast + mest läst: alltid&max två rader så innehållet inte hoppar
 - [ ] "Nyare version av sidan finns"
   - [ ] kommer upp för ofta
@@ -34,3 +32,6 @@
 - [x] Ta bort pil upp/ner på desktop på sidnummerinputen
 - [x] "404-sida" om man manuellt anger sida som inte finns
 - [x] Mest lästa/senast: får nån ram mellan varje item under load/skeleton
+- [x] Går till hem = sida ska alltid laddas om. Även vid klick på tab.
+- [x] när går till sida laddas för många sidor in, typ nuvarande sida + kommande sida + även startsidan?!
+- [x] Kolla bundle size https://create-react-app.dev/docs/analyzing-the-bundle-size/ npm run build, npm run analyze
