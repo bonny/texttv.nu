@@ -73,7 +73,7 @@ const TabNyast = (props) => {
     <IonPage>
       <TextTVHeader {...props} title="Nyast">
         <IonToolbar color="primary">
-          <IonSegment value={selectedSegment} onClick={handleSegmentClick}>
+          <IonSegment value={selectedSegment} onClick={handleSegmentClick} swipeGesture={false}>
             <IonSegmentButton value="news">
               <IonLabel>Nyheter</IonLabel>
             </IonSegmentButton>
