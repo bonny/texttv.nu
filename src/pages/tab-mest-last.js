@@ -6,19 +6,28 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { useEffect, useState } from "react";
-import { getCurrentIonPageContentElm, getUnixtime } from "../functions";
+import { getUnixtime } from "../functions";
 import { MestLasta } from "../modules/MestLasta";
 import { TextTVHeader } from "../modules/TextTVHeader";
 import TextTVRefresher from "../modules/TextTVRefresher";
+const queryString = require("query-string");
 
 const TabPopulart = (props) => {
   const { history } = props;
   const [selectedSegment, setSelectedSegment] = useState("today");
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
+  const { clicktime } = queryString.parse(history.location.search);
+
+  // Uppdatera från server när clicktime ändrats,
+  // dvs. när man klickat på fliken.
+  useEffect(() => {
+    doRefresh();
+  }, [clicktime]);
 
   // Uppdatera dokument-titel.
   useEffect(() => {
     let pageTitle;
+
     switch (selectedSegment) {
       case "today":
       default:
@@ -45,48 +54,27 @@ const TabPopulart = (props) => {
     }, 500);
   };
 
-  const handleSegmentChange = (e) => {
-    setSelectedSegment(e.detail.value);
+  // Ändra flik eller ladda om vid klick på segment.
+  const handleSegmentClick = (e) => {
+    const clickedSegmentValue = e.target.value;
+    if (clickedSegmentValue === selectedSegment) {
+      // Om samma flik refresh.
+      doRefresh();
+    } else {
+      // Ny flik, sätt segment bara.
+      setSelectedSegment(clickedSegmentValue);
+    }
   };
-
-  /**
-   * Scrolla upp när flik byts, annars börjar man nya fliken ev. nedscrollad
-   * vilket är lite irri.
-   */
-  useEffect(() => {
-    const ionPageContent = getCurrentIonPageContentElm();
-    ionPageContent && ionPageContent.scrollToTop();
-  }, [selectedSegment]);
-
-  // Scrolla till toppen om vi klickar på denna sidan tab igen
-  // och vi är inte längst uppe redan
-  // Dvs. klickad tab = hem men vi är inte scrollade längst upp.
-  /*   useEffect(() => {
-    const scrollToTopOrRefresh = () => {
-      const ionPageContent = getCurrentIonPageContentElm();
-      const ionPageScrollElement = getCurrentIonPageScrollElm();
-
-      if (!ionPageScrollElement) {
-        return;
-      }
-
-      if (ionPageScrollElement.scrollTop > 0) {
-        // Scrolla upp och vi har scrollat ner.
-        ionPageContent.scrollToTop(500);
-      } else {
-        // Ladda om om vi är längst uppe.
-        doRefresh();
-      }
-    };
-
-    scrollToTopOrRefresh();
-  }, [tabsinfoPopulart]); */
 
   return (
     <IonPage>
       <TextTVHeader {...props} title="Mest läst">
         <IonToolbar color="primary">
-          <IonSegment onIonChange={handleSegmentChange} value={selectedSegment}>
+          <IonSegment
+            value={selectedSegment}
+            onClick={handleSegmentClick}
+            swipeGesture={false}
+          >
             <IonSegmentButton value="today">Idag</IonSegmentButton>
             <IonSegmentButton value="yesterday">Igår</IonSegmentButton>
             <IonSegmentButton value="dayBeforeYesterday">
