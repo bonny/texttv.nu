@@ -1,15 +1,12 @@
 import {
   IonContent,
+  IonLabel,
   IonPage,
   IonSegment,
   IonSegmentButton,
   IonToolbar,
-  IonLabel,
-  useIonViewWillEnter,
 } from "@ionic/react";
-
 import { useEffect, useState } from "react";
-import { useRouteMatch } from "react-router-dom";
 import { getUnixtime } from "../functions";
 import { SenastUppdaterat } from "../modules/SenastUppdaterat";
 import { TextTVHeader } from "../modules/TextTVHeader";
@@ -20,10 +17,10 @@ const TabNyast = (props) => {
   const { history } = props;
   const [selectedSegment, setSelectedSegment] = useState("news");
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
-
-  console.log("history.location", history.location);
   const { clicktime } = queryString.parse(history.location.search);
 
+  // Uppdatera från server när clicktime ändrats,
+  // dvs. när man klickat på fliken.
   useEffect(() => {
     doRefresh();
   }, [clicktime]);
@@ -73,7 +70,11 @@ const TabNyast = (props) => {
     <IonPage>
       <TextTVHeader {...props} title="Nyast">
         <IonToolbar color="primary">
-          <IonSegment value={selectedSegment} onClick={handleSegmentClick} swipeGesture={false}>
+          <IonSegment
+            value={selectedSegment}
+            onClick={handleSegmentClick}
+            swipeGesture={false}
+          >
             <IonSegmentButton value="news">
               <IonLabel>Nyheter</IonLabel>
             </IonSegmentButton>

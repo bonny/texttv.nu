@@ -11,12 +11,10 @@ import {
   IonToast,
   useIonViewWillEnter,
   useIonViewWillLeave,
-  // useIonViewDidEnter,
-  // useIonViewDidLeave,
 } from "@ionic/react";
-import { Route, useHistory, useLocation } from "react-router-dom";
 import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import {
   getCurrentIonPageContentElm,
   getUnixtime,
@@ -63,8 +61,6 @@ const PageTextTV = (props) => {
   // Unik sträng som används som key för ion-slides.
   // Om inte key används så "nollas" inte slider och man stannar på
   // sidan man svept till istället för att komma till mittensliden med textinnehållet.
-  const historyLocationPathname =
-    history.location.pathname + "_" + history.location.key;
 
   let pageTitle = title || `${pageNum} - SVT Text TV`;
 
@@ -125,16 +121,6 @@ const PageTextTV = (props) => {
     };
   }, [pageNum, pageId, refreshTime]);
 
-  // const { ref, inView, entry } = useInView({
-  //   /* Optional options */
-  //   threshold: 0,
-  //   triggerOnce: true,
-  // });
-
-  // useEffect(() => {
-  //   console.log({ inView, entry }, pageNum);
-  // }, [inView, pageNum, entry]);
-
   /**
    * Update the refresh time to the current time.
    */
@@ -149,7 +135,7 @@ const PageTextTV = (props) => {
     updateRefreshTime();
     setTimeout(() => {
       e.target.complete();
-    }, 750);
+    }, 500);
   };
 
   const handleRefreshBtnClick = (e) => {
@@ -276,6 +262,60 @@ const PageTextTV = (props) => {
 
   const location = useLocation();
 
+  const handleSlidesDidLoad = (e) => {
+    // När slides körs på startsidan så blir det nån bugg som gör att slides Swiper
+    // inte initieras helt korrekt på nåt vis och av nån anledning.
+    // Eventligen beror detta på att på startsidan så visas mer innehåller under slider
+    // komponenten tar mer än 20 ms att ladda?
+    // update() på swiper verkar lösa detta.
+    e.target.getSwiper().then((swiper) => {
+      const checkInterval = 10;
+      const maxNumberOfChecks = 10;
+      let checkNum = 0;
+
+      const checkIntervalId = setInterval(() => {
+        const hasTranslateApplied =
+          swiper.wrapperEl.style.cssText.indexOf("translate3d");
+
+        if (checkNum > maxNumberOfChecks) {
+          clearInterval(checkIntervalId);
+        }
+
+        if (hasTranslateApplied === -1) {
+          swiper.update();
+        } else {
+          clearInterval(checkIntervalId);
+        }
+
+        checkNum++;
+      }, checkInterval);
+    });
+  };
+
+  const handleSlideDidChange = (e) => {
+    if (!sliderRef.current) {
+      return;
+    }
+
+    sliderRef.current.getActiveIndex().then((activeIndex) => {
+      let navToPageNum;
+
+      if (activeIndex === 0) {
+        navToPageNum = pagePrevNum;
+      } else if (activeIndex === 2) {
+        navToPageNum = pageNextNum;
+      }
+
+      if (navToPageNum) {
+        // Gå till sida och gå sedan tillbaka till slidern i mitten.
+        history.push(`/sidor/${navToPageNum}`);
+        // Får ibland på Vercel "Cannot read property 'slideTo' of null" trots att vi kollat denna tidigare.
+        sliderRef?.current?.slideTo(1, 0);
+        scrollToTop(0);
+      }
+    });
+  };
+
   return (
     <IonPage>
       <Header
@@ -300,7 +340,7 @@ const PageTextTV = (props) => {
       <IonContent ref={contentRef}>
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
-        <p>
+{/*         <p>
           <strong>Debug:</strong>
           <br />
           pagenum: {pageNum}
@@ -317,64 +357,13 @@ const PageTextTV = (props) => {
           <br />
           refreshTime: {refreshTime}
         </p>
-
+ */}
         <IonSlides
-          xkey={historyLocationPathname}
           ref={sliderRef}
           pager={false}
           options={sliderOptions}
-          onIonSlidesDidLoad={(e) => {
-            // När slides körs på startsidan så blir det nån bugg som gör att slides Swiper
-            // inte initieras helt korrekt på nåt vis och av nån anledning.
-            // Eventligen beror detta på att på startsidan så visas mer innehåller under slider
-            // komponenten tar mer än 20 ms att ladda?
-            // update() på swiper verkar lösa detta.
-            e.target.getSwiper().then((swiper) => {
-              const checkInterval = 10;
-              const maxNumberOfChecks = 10;
-              let checkNum = 0;
-
-              const checkIntervalId = setInterval(() => {
-                const hasTranslateApplied =
-                  swiper.wrapperEl.style.cssText.indexOf("translate3d");
-
-                if (checkNum > maxNumberOfChecks) {
-                  clearInterval(checkIntervalId);
-                }
-
-                if (hasTranslateApplied === -1) {
-                  swiper.update();
-                } else {
-                  clearInterval(checkIntervalId);
-                }
-
-                checkNum++;
-              }, checkInterval);
-            });
-          }}
-          onIonSlideDidChange={(e) => {
-            if (!sliderRef.current) {
-              return;
-            }
-
-            sliderRef.current.getActiveIndex().then((activeIndex) => {
-              let navToPageNum;
-
-              if (activeIndex === 0) {
-                navToPageNum = pagePrevNum;
-              } else if (activeIndex === 2) {
-                navToPageNum = pageNextNum;
-              }
-
-              if (navToPageNum) {
-                // Gå till sida och gå sedan tillbaka till slidern i mitten.
-                history.push(`/sidor/${navToPageNum}`);
-                // Får ibland på Vercel "Cannot read property 'slideTo' of null" trots att vi kollat denna tidigare.
-                sliderRef?.current?.slideTo(1, 0);
-                scrollToTop(0);
-              }
-            });
-          }}
+          onIonSlidesDidLoad={handleSlidesDidLoad}
+          onIonSlideDidChange={handleSlideDidChange}
         >
           <IonSlide>
             <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev">
