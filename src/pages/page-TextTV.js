@@ -369,7 +369,8 @@ const PageTextTV = (props) => {
               if (navToPageNum) {
                 // Gå till sida och gå sedan tillbaka till slidern i mitten.
                 history.push(`/sidor/${navToPageNum}`);
-                sliderRef.current.slideTo(1, 0);
+                // Får ibland på Vercel "Cannot read property 'slideTo' of null" trots att vi kollat denna tidigare.
+                sliderRef?.current?.slideTo(1, 0);
                 scrollToTop(0);
               }
             });
