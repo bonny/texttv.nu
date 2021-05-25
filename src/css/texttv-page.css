@@ -1,0 +1,133 @@
+/**
+ * Stilar för en texttv-sida, dvs. färger osv.
+ */
+.TextTVPage pre,
+.TextTVPage ul,
+.TextTVPage dl,
+.TextTVPage p,
+.TextTVPage input,
+.TextTVPage button,
+.TextTVPage body,
+.TextTVPage pre,
+.TextTVPage span,
+.TextTVPage body,
+.TextTVPage pre,
+.TextTVPage h1,
+.TextTVPage h2 {
+  font-weight: normal;
+  font-family: inherit;
+  font-size: inherit;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  line-height: 100%;
+}
+
+.TextTVPage ul {
+  list-style-type: none;
+}
+
+.TextTVPage a {
+  color: rgb(221, 221, 221);
+}
+.TextTVPage .root {
+  white-space: pre;
+  word-wrap: initial;
+}
+.TextTVPage .root .toprow {
+  color: #ddd;
+  line-height: 1;
+}
+.TextTVPage .inpage-pages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.TextTVPage h1,
+.TextTVPage h2 {
+  font-size: 100%;
+  display: inline;
+}
+
+.TextTVPage .DH {
+  display: inline-block;
+  transform: scaleY(2);
+  transform-origin: top;
+}
+
+/* Textfärger */
+.TextTVPage {
+  color: rgb(252, 254, 252);
+}
+.TextTVPage .R,
+.TextTVPage .R a {
+  color: #f00;
+}
+
+.TextTVPage .B,
+.TextTVPage .B a {
+  color: #12c;
+}
+
+.TextTVPage .W,
+.TextTVPage .W a {
+  color: rgb(252, 254, 252);
+}
+
+.TextTVPage .Y,
+.TextTVPage .Y a {
+  color: rgb(252, 254, 1);
+}
+
+.TextTVPage .C,
+.TextTVPage .C a {
+  color: #00c8ee;
+}
+
+.TextTVPage .G,
+.TextTVPage .G a {
+  color: #0f0;
+}
+
+.TextTVPage .M,
+.TextTVPage .M a {
+  color: rgb(252, 3, 253);
+}
+
+/* Bakgrundsfärger */
+.TextTVPage .bgW,
+.TextTVPage .bgW a span {
+  background-color: rgb(252, 254, 252);
+}
+
+.TextTVPage .bgG,
+.TextTVPage .bgG a span {
+  background-color: #0f0;
+}
+
+.TextTVPage .bgR,
+.TextTVPage .bgR a span {
+  background-color: rgb(252, 3, 4);
+}
+
+.TextTVPage .bgC,
+.TextTVPage .bgC a span {
+  background-color: rgb(0, 200, 238);
+}
+
+.TextTVPage .bgM,
+.TextTVPage .bgM a span {
+  background-color: rgb(252, 3, 253);
+}
+
+.TextTVPage .bgY {
+  background-color: rgb(252, 254, 1);
+}
+
+.TextTVPage .bgB {
+  background-color: #00f;
+}
+
+.TextTVPage .bgBl {
+  background-color: black;
+}

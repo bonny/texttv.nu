@@ -5,13 +5,14 @@ import { IonApp, IonSplitPane, isPlatform } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { useEffect, useState } from "react";
 import { Redirect, Route } from "react-router-dom";
-import "./app.css";
 import { FavoritesContext } from "./contexts/FavoritesContext";
+import "./css/app.css";
+import "./css/texttv-page.css";
+import "./css/theme.css";
 import { getTabHeight, loadFavorites } from "./functions";
 import { Navigationsflikar } from "./modules/Navigationsflikar";
 import { MenuWithRouter } from "./modules/SideMenu";
 import { adMobAdOptions } from "./options";
-import "./theme.css";
 
 const { SplashScreen, AdMob, StatusBar } = Plugins;
 

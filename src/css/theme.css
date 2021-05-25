@@ -10,15 +10,15 @@ https://ionicframework.com/docs/theming/advanced
 */
 
 :root {
-  --ion-background-color: #202124;
+  --ion-background-color: black;
   --ion-background-color-rgb: 32, 33, 36;
-
-  --text-tv-background: #202124;
+  --text-tv-background: black;
   --text-tv-color: #e8eaed;
   --text-tv-color-rgb: 32, 33, 36;
   --text-tv-font-family: "Ubuntu Mono", Courier, monospace;
   --text-tv-font-size: 4.8vw;
   --text-tv-color-white: var(--text-tv-color);
+  /* Används av sidlisting bland annat  */
   --text-tv-color-yellow: #e2e200;
   --text-tv-color-cyan: #00c8ee;
 
@@ -118,8 +118,8 @@ Toast bakgrundsfärg: #313235
 
 /* Dessa värden är skapade på https://ionicframework.com/docs/theming/themes */
 :root {
-  --ion-background-color: #202124;
-  --ion-background-color-rgb: 32, 33, 36;
+  --ion-background-color: #111;
+  --ion-background-color-rgb: 11, 11, 11;
 
   --ion-text-color: #e8eaed;
   --ion-text-color-rgb: 232, 234, 237;

@@ -10,7 +10,7 @@
 @font-face {
   font-family: "Ubuntu Mono";
   src: local("Ubuntu Mono"),
-    url("./fonts/ubuntu-font-family-0.83/UbuntuMono-R.ttf") format("truetype");
+    url("../fonts/ubuntu-font-family-0.83/UbuntuMono-R.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -18,7 +18,7 @@
 @font-face {
   font-family: "Ubuntu Mono";
   src: local("Ubuntu Mono"),
-    url("./fonts/ubuntu-font-family-0.83/UbuntuMono-B.ttf") format("truetype");
+    url("../fonts/ubuntu-font-family-0.83/UbuntuMono-B.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
@@ -74,140 +74,6 @@
 
 .TextTVSkeletonPage {
   white-space: pre;
-}
-
-/* .TextTVPage__wrap {
-}
-
-.TextTVPage__inner {
-} */
-
-.TextTVPage pre,
-.TextTVPage ul,
-.TextTVPage dl,
-.TextTVPage p,
-.TextTVPage input,
-.TextTVPage button,
-.TextTVPage body,
-.TextTVPage pre,
-.TextTVPage span,
-.TextTVPage body,
-.TextTVPage pre,
-.TextTVPage h1,
-.TextTVPage h2 {
-  font-weight: normal;
-  font-family: inherit;
-  font-size: inherit;
-  display: inline;
-  margin: 0;
-  padding: 0;
-  line-height: 100%;
-}
-
-.TextTVPage ul {
-  list-style-type: none;
-}
-
-.TextTVPage a {
-  color: rgb(221, 221, 221);
-}
-.TextTVPage .root {
-  white-space: pre;
-  word-wrap: initial;
-}
-.TextTVPage .root .toprow {
-  color: #ddd;
-  line-height: 1;
-}
-.TextTVPage .inpage-pages {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-.TextTVPage h1,
-.TextTVPage h2 {
-  font-size: 100%;
-  display: inline;
-}
-.TextTVPage .B {
-  color: #336;
-}
-.TextTVPage .C {
-  color: #066;
-}
-.TextTVPage .W {
-  color: #333;
-}
-.TextTVPage .Y {
-  color: #660;
-}
-.TextTVPage .DH {
-  font-weight: normal;
-  font-family: inherit;
-  font-weight: 700;
-}
-/* .TextTVPage .bgB,
-.TextTVPage .bgB a span {
-} */
-.TextTVPage .bgW,
-.TextTVPage .bgW a span {
-  background-color: orange;
-}
-.TextTVPage .bgG,
-.TextTVPage .bgG a span {
-  background-color: rgba(0, 255, 0, 0.5);
-}
-.TextTVPage .bgR,
-.TextTVPage .bgR a span {
-  background-color: rgba(255, 0, 0, 0.25);
-}
-.TextTVPage .bgC,
-.TextTVPage .bgC a span {
-  background-color: rgb(0, 200, 238);
-}
-
-.TextTVPage .bgM,
-.TextTVPage .bgM a span {
-  background-color: rgb(252, 3, 253);
-}
-
-.TextTVPage .R,
-.TextTVPage .R a,
-.TextTVPage .R a:visited,
-.TextTVPage .R a:visited:hover {
-  color: #f00;
-}
-.TextTVPage .B,
-.TextTVPage .B a {
-  color: #12c;
-}
-.TextTVPage .W,
-.TextTVPage .W a {
-  color: #ddd;
-}
-.TextTVPage .Y,
-.TextTVPage .Y a {
-  color: rgb(252, 254, 1);
-}
-.TextTVPage .C,
-.TextTVPage .C a {
-  color: #00c8ee;
-}
-.TextTVPage .bgB,
-.TextTVPage .bgB a {
-  background-color: #00f;
-  color: #ddd;
-}
-/* .TextTVPage .DH {
-} */
-.TextTVPage .G,
-.TextTVPage .G a {
-  color: #0f0;
-}
-.TextTVPage .bgY,
-.TextTVPage .bgY a {
-  background-color: rgb(252, 254, 1);
-  color: #12c;
 }
 
 .ListHeadline {

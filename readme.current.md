@@ -4,21 +4,19 @@
 
 ## Blandat Todo
 
-- [ ] Senast + mest läst: alltid&max två rader så innehållet inte hoppar
+- [ ] Mindre "flicker" vid byte av sida
+- [ ] statistik på omladdningar och när favoriter ändras osv. även när tab klickas? få koll på vilka funktioner som faktiskt används.
+- [ ] statistik saknas när man går till sida, loggas aldrig till Firebase?
 - [ ] "Nyare version av sidan finns"
   - [ ] kommer upp för ofta
   - [ ] synlig på andra sidor än den man är på
   - [ ] synlig när man redigerar favoriter
-- [ ] Mindre "flicker" vid byte av sida
 - [ ] Genvägar till samma sidor som svt.se/text-tv har, så användare känner igen sig.
   - [ ] Eller om det är favoriter man lägger längst upp helt enkelt
   - [ ] Så kan ändra-knappen vara längst till höger
   - [ ] Som standard = samma sidor som hos svt
   - [ ] Alltid synliga på alla sidor. Snabbt och smidigt!
-- [ ] När man klickar på mest lästa/senaste ett par gånger så verkar det laddas dubbla ajax + sidor laddas fast inga visas?
 - [ ] lägg till debug-context som visar debug-meddelanden i nån ruta
-- [ ] statistik på omladdningar och när favoriter ändras osv. även när tab klickas? få koll på vilka funktioner som faktiskt används.
-- [ ] statistik saknas när man går till sida, loggas aldrig till Firebase?
 - [ ] koppla ihop admob med firebase https://mail.google.com/mail/u/0/#all/FMfcgxwLtszrLRqMqXcpTpqnNzWPQQrW
 - [ ] kolla att admob är korrekt ihopkopplat https://mail.google.com/mail/u/0/#all/FMfcgxwLsKBxCKFJdmLGTZqkWbJBzGzq
 
@@ -35,3 +33,9 @@
 - [x] Går till hem = sida ska alltid laddas om. Även vid klick på tab.
 - [x] när går till sida laddas för många sidor in, typ nuvarande sida + kommande sida + även startsidan?!
 - [x] Kolla bundle size https://create-react-app.dev/docs/analyzing-the-bundle-size/ npm run build, npm run analyze
+- [x] Senast + mest läst: visa sidnummer
+- [x] När man klickar på mest lästa/senaste ett par gånger så verkar det laddas dubbla ajax + sidor laddas fast inga visas?
+- [x] Ladda in "nyast" och "mest läst" när man klickar på fliken
+- [x] Korrigerat färger
+- [x] Fixa färgerna, se testsida 777
+- [ ]
