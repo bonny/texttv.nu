@@ -4,6 +4,9 @@
 
 ## Blandat Todo
 
+- [ ] I Desktop Safari och mobile chrome så går localhost:8100/ --> localhost:8100/hem och sen går det inte att swipe'a vidare
+- [ ] Sida finns inte ska bli lika hög som en vanlig sida så det går lättare/som vanligt att swipe'a
+- [ ] Nav-knappar längst ner för föregående/nästa sida. Kanske num-input i mitten?
 - [ ] Mindre "flicker" vid byte av sida
 - [ ] statistik på omladdningar och när favoriter ändras osv. även när tab klickas? få koll på vilka funktioner som faktiskt används.
 - [ ] statistik saknas när man går till sida, loggas aldrig till Firebase?
