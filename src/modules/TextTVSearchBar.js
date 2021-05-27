@@ -27,6 +27,7 @@ const TextTVSearchBar = (props) => {
       onIonChange={handlePageNumInputChange}
       debounce="100"
       className="texttv-pagenumber-input"
+      enterkeyhint="go"
     />
   );
 };
