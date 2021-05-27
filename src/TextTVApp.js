@@ -4,7 +4,6 @@ import "@ionic/core/css/ionic.bundle.css";
 import { IonApp, IonSplitPane, isPlatform } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { useEffect, useState } from "react";
-import { Redirect, Route } from "react-router-dom";
 import { FavoritesContext } from "./contexts/FavoritesContext";
 import "./css/app.css";
 import "./css/texttv-page.css";
@@ -99,7 +98,6 @@ function TextTVApp(props) {
     <FavoritesContext.Provider value={favorites}>
       <IonApp>
         <IonReactRouter>
-          <Route exact path="/" render={() => <Redirect to="/hem" />} />
           <IonSplitPane contentId="mainContent">
             <MenuWithRouter {...props} />
             <Navigationsflikar />

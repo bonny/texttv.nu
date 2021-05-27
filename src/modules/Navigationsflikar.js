@@ -6,7 +6,7 @@ import {
   IonTabButton,
   IonTabs,
 } from "@ionic/react";
-import { Route, useHistory, useLocation } from "react-router-dom";
+import { Route, Redirect, useHistory, useLocation } from "react-router-dom";
 import { Page404 } from "../pages/page-404.js";
 import PageTextTV from "../pages/page-TextTV.js";
 import PageCatchAll from "../pages/PageCatchAll";
@@ -36,6 +36,7 @@ export const Navigationsflikar = () => {
   return (
     <IonTabs id="mainContent">
       <IonRouterOutlet id="routerOutletElm" animated={false}>
+        <Route exact path="/" render={() => <Redirect to="/hem" />} />
         {/* Diverse testsidor/testsökvägar. */}
         <Route path="/debug" component={PageDebug} />
         <Route path="/test/skeleton" component={PageTestSkeleton} />
