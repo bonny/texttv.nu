@@ -7,7 +7,7 @@ const SkeletonListItems = [...Array(10)].map((val, index) => {
   };
   const H1Style = {
     height: "24px",
-    width: Math.random() * (75 - 35) + 35 + "%",
+    width: Math.random() * (85 - 55) + 55 + "%",
   };
   return (
     <IonItem key={index} lines="none">
