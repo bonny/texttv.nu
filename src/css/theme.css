@@ -220,8 +220,8 @@ b {
 /* Skeleton-sidan tonas in om laddningen inte syns direkt */
 .TextTVPage--skeleton {
   animation-name: fadeIn;
-  animation-delay: 1s;
-  animation-duration: 2s;
+  animation-delay: 0.75s;
+  animation-duration: 1s;
 }
 
 .TextTVPage--isLoadingNewPageRange {

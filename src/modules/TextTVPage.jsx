@@ -20,7 +20,7 @@ const TextTVPage = (props) => {
   const [pageData, setPageData] = useState([]);
   const [pageIsLoading, setPageIsLoading] = useState(false);
   const [pageIsDoneLoading, setPageIsDoneLoading] = useState(false);
-  
+
   // useIonViewWillEnter(() => {
   //   console.log("subtextpage ionViewWillEnter", pageNum);
   // });
