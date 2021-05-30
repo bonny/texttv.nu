@@ -10,8 +10,6 @@ https://ionicframework.com/docs/theming/advanced
 */
 
 :root {
-  --ion-background-color: black;
-  --ion-background-color-rgb: 32, 33, 36;
   --text-tv-background: black;
   --text-tv-color: #e8eaed;
   --text-tv-color-rgb: 32, 33, 36;
@@ -118,8 +116,8 @@ Toast bakgrundsfärg: #313235
 
 /* Dessa värden är skapade på https://ionicframework.com/docs/theming/themes */
 :root {
-  --ion-background-color: #111;
-  --ion-background-color-rgb: 11, 11, 11;
+  --ion-background-color: #000;
+  --ion-background-color-rgb: 0, 0, 0;
 
   --ion-text-color: #e8eaed;
   --ion-text-color-rgb: 232, 234, 237;
