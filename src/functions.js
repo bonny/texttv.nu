@@ -129,7 +129,7 @@ Delad via https://texttv.nu/
         FirebaseAnalytics.logEvent({
           name: "share",
           params: {
-            content_type: "page",
+            content_type: "native share",
             item_id: pageIdsString,
             page_nums: pageNum,
           },
