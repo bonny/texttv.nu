@@ -214,7 +214,9 @@ b {
   user-select: auto;
   animation-duration: 0.25s;
   animation-fill-mode: both;
-  /* animation-name: fadeInUp; */
+  animation-name: fadeIn;
+  animation-delay: 0s;
+  animation-duration: 0.25s;
 }
 
 /* Skeleton-sidan tonas in om laddningen inte syns direkt */

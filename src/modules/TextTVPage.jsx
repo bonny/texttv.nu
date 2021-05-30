@@ -13,24 +13,14 @@ import {
 } from "../functions";
 import SkeletonTextTVPage from "../modules/SkeletonTextTVPage";
 
-function usePrevious(value) {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-}
-
 const TextTVPage = (props) => {
   const { pageNum, pageId, children, history, refreshTime, onPageUpdate } =
     props;
 
   const [pageData, setPageData] = useState([]);
-  const prevPageNum = usePrevious(pageNum);
-  const [pageIsLoading, setPageIsLoading] = useState(true);
-  const [pageIsLoadingNewPageRange, setPageIsLoadingNewPageRange] =
-    useState(true);
-
+  const [pageIsLoading, setPageIsLoading] = useState(false);
+  const [pageIsDoneLoading, setPageIsDoneLoading] = useState(false);
+  
   // useIonViewWillEnter(() => {
   //   console.log("subtextpage ionViewWillEnter", pageNum);
   // });
@@ -54,7 +44,7 @@ const TextTVPage = (props) => {
       return;
     }
 
-    // Detta är en länk, så låt oss följa den.
+    // Följ inte länken eftersom vi pushar manuellt till history.
     e.preventDefault();
 
     // href is '/100', '/101-102', '150,163'
@@ -69,44 +59,10 @@ const TextTVPage = (props) => {
     // TODO: göm toast via state och inte via query selector + api method
     hidePageUpdatedToasts();
 
-    // Om sökväg är t.ex "/sidor/100" så ger detta "sidor".
-    // const firstPathName = history.location.pathname
-    //   .split("/")
-    //   .filter((e) => e)
-    //   .find((e) => true);
-
-    // Gå till sida 🎉.
-    const pathPrefix = "sidor";
-    // switch (firstPathName) {
-    //   case "hem":
-    //     pathPrefix = "sidor";
-    //     break;
-    //   case "sidor":
-    //   default:
-    //     pathPrefix = "sidor";
-    // }
-
     // const timestamp = Date.now();
-    const fullUrl = `/${pathPrefix}${href}`;
+    const fullUrl = `/sidor${href}`;
     history.push(fullUrl);
   };
-
-  // useEffect(() => {
-  //   console.log("TextTVPage useEffect", pageNum);
-
-  //   return function cleanup() {
-  //     console.log("TextTVPage useEffect cleanup", pageNum);
-  //   };
-  // }, [pageNum]);
-
-  // När sidan ändras så vill vi sätta innehållet till inget så att inte gamla innehållet
-  // syns för en kort stund. Verkar inte funka så bra dock..
-  useEffect(() => {
-    if (pageNum !== prevPageNum) {
-      setPageData([]);
-      setPageIsLoadingNewPageRange(true);
-    }
-  }, [pageNum, pageId, refreshTime, prevPageNum]);
 
   /**
    * Ladda in sida från API när pageNum eller refreshTime ändras.
@@ -116,6 +72,7 @@ const TextTVPage = (props) => {
     //   `fetchPageContents, pageNum: ${pageNum}, pageId: ${pageId}, refreshTime: ${refreshTime}`
     // );
     setPageIsLoading(true);
+    setPageIsDoneLoading(false);
 
     async function fetchPageContents() {
       // Baila om ingen sida är satt.
@@ -144,10 +101,12 @@ const TextTVPage = (props) => {
 
       fetch(url)
         .then(async (responseDatas) => {
+          // Sida är laddad.
           const pageData = await responseDatas.json();
 
           setPageData(pageData);
           setPageIsLoading(false);
+          setPageIsDoneLoading(true);
           sendStats(pageData, "view");
         })
         .catch((fetchErr) => {
@@ -157,15 +116,6 @@ const TextTVPage = (props) => {
 
     fetchPageContents();
   }, [pageNum, pageId, refreshTime]);
-
-  // useEffect(() => {
-  //   console.log(
-  //     "TextTVPage pageNum, pageId, refreshTime",
-  //     pageNum,
-  //     pageId,
-  //     refreshTime
-  //   );
-  // }, [pageNum, pageId, refreshTime]);
 
   /**
    * Kör uppdaterad-funktion från props.
@@ -177,11 +127,12 @@ const TextTVPage = (props) => {
   }, [pageNum, pageData, onPageUpdate]);
 
   const classes = classNames({
-    "TextTVPage--isLoadingNewPageRange": pageIsLoadingNewPageRange,
+    "TextTVPage--isLoading": pageIsLoading,
+    "TextTVPage--isDoneLoading": pageIsDoneLoading,
     TextTVPage: true,
   });
 
-  // Wrap each page.
+  // Lägg en `div` runt varje sida.
   const pagesHtml = pageData.map((page) => {
     return (
       <div
