@@ -8,7 +8,7 @@ dayjs.extend(relativeTime);
 
 const ListItem = (props) => {
   const { link, page, history } = props;
-  const dayJsFromNow = dayjs(page.date_added_unix * 1000).fromNow();
+  const dayJsFromNow = dayjs(page.date_added_unix * 1000).fromNow(true);
 
   return (
     <IonItem
@@ -22,7 +22,7 @@ const ListItem = (props) => {
       <IonLabel class="ion-text-wrap" text-wrap color="medium">
         <h2 className="ListHeadline">{page.title}</h2>
         <p className="ListText">
-          {page.page_num} • {dayJsFromNow}
+          {page.page_num} • {dayJsFromNow} sedan
         </p>
       </IonLabel>
     </IonItem>
