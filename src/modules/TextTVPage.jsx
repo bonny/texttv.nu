@@ -68,12 +68,6 @@ const TextTVPage = (props) => {
    * Ladda in sida från API när pageNum eller refreshTime ändras.
    */
   useEffect(() => {
-    // console.log(
-    //   `fetchPageContents, pageNum: ${pageNum}, pageId: ${pageId}, refreshTime: ${refreshTime}`
-    // );
-    setPageIsLoading(true);
-    setPageIsDoneLoading(false);
-
     async function fetchPageContents() {
       // Baila om ingen sida är satt.
       if (!pageNum && !pageId) {
@@ -114,6 +108,8 @@ const TextTVPage = (props) => {
         });
     }
 
+    setPageIsLoading(true);
+    setPageIsDoneLoading(false);
     fetchPageContents();
   }, [pageNum, pageId, refreshTime]);
 
