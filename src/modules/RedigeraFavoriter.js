@@ -16,7 +16,7 @@ import {
   IonRow,
   IonTitle,
   IonToast,
-  IonToolbar
+  IonToolbar,
 } from "@ionic/react";
 import { add, close } from "ionicons/icons";
 import { useEffect, useState } from "react";
@@ -38,7 +38,7 @@ const RedigeraFavoriter = (props) => {
 
     try {
       FirebaseAnalytics.logEvent({
-        name: "show_edit_favorites",
+        name: "edit_favorites_show",
       });
     } catch (e) {}
   }, [isOpen]);
@@ -75,6 +75,11 @@ const RedigeraFavoriter = (props) => {
                   setToastMessage("🌟Favoriterna sparades 👍");
                   setShowToast(true);
                   handleSaveModal(pageNums);
+                  try {
+                    FirebaseAnalytics.logEvent({
+                      name: "edit_favorites_save",
+                    });
+                  } catch (e) {}
                 }}
               >
                 Spara
