@@ -16,10 +16,11 @@ import {
   IonRow,
   IonTitle,
   IonToast,
-  IonToolbar,
+  IonToolbar
 } from "@ionic/react";
 import { add, close } from "ionicons/icons";
 import { useEffect, useState } from "react";
+import { FirebaseAnalytics } from "../analytics";
 const { AdMob } = Plugins;
 
 const RedigeraFavoriter = (props) => {
@@ -28,6 +29,19 @@ const RedigeraFavoriter = (props) => {
   const [pageNums, setPageNums] = useState([]);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
+
+  // Logga när ändra favoriter-modal visas.
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    try {
+      FirebaseAnalytics.logEvent({
+        name: "show_edit_favorites",
+      });
+    } catch (e) {}
+  }, [isOpen]);
 
   useEffect(() => {
     setPageNums(pages);
