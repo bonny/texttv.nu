@@ -210,11 +210,7 @@ b {
 
 .TextTVPage {
   user-select: auto;
-  animation-duration: 0.25s;
-  animation-fill-mode: both;
-  animation-name: fadeIn;
-  animation-delay: 0s;
-  animation-duration: 0.25s;
+  opacity: 0;
 }
 
 /* Skeleton-sidan tonas in om laddningen inte syns direkt */
@@ -224,11 +220,11 @@ b {
   animation-duration: 1s;
 }
 
-.TextTVPage--isLoadingNewPageRange {
-  /* user-select: auto;
-  animation-duration: 0.25s;
+.TextTVPage--isDoneLoading {
   animation-fill-mode: both;
-  animation-name: fadeInUp; */
+  animation-name: fadeIn;
+  animation-delay: 0s;
+  animation-duration: 0.25s;
 }
 
 .u-max-width-texttvpage {
