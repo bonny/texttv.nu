@@ -215,6 +215,7 @@ b {
 
 /* Skeleton-sidan tonas in om laddningen inte syns direkt */
 .TextTVPage--skeleton {
+  animation-fill-mode: both;
   animation-name: fadeIn;
   animation-delay: 0.75s;
   animation-duration: 1s;
