@@ -340,7 +340,7 @@ const PageTextTV = (props) => {
       <IonContent ref={contentRef}>
         <TextTVRefresher handlePullToRefresh={handlePullToRefresh} />
 
-{/*         <p>
+        {/*         <p>
           <strong>Debug:</strong>
           <br />
           pagenum: {pageNum}
