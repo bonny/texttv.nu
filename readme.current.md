@@ -4,12 +4,20 @@
 
 ## Blandat Todo
 
-- [ ] I Desktop Safari och mobile chrome så går localhost:8100/ --> localhost:8100/hem och sen går det inte att swipe'a vidare
 - [ ] Sida finns inte ska bli lika hög som en vanlig sida så det går lättare/som vanligt att swipe'a
 - [ ] Nav-knappar längst ner för föregående/nästa sida. Kanske num-input i mitten?
-- [ ] Mindre "flicker" vid byte av sida
-- [ ] statistik på omladdningar och när favoriter ändras osv. även när tab klickas? få koll på vilka funktioner som faktiskt används.
-- [ ] statistik saknas när man går till sida, loggas aldrig till Firebase?
+- [ ] Lägg till statistik till Firebase
+  - [ ] när sida visas via klick
+  - [ ] när sida gås till via "sök"-rutan
+  - [ ] när sida gås till via meny
+  - [ ] när man byter flik
+  - [ ] när man går till sida på nyast
+  - [ ] när man går till sida på mest läst
+  - [ ] när man redigerar favoriter
+  - [ ] vilka favoriter man sparar?
+  - [ ] och när favoriter ändras osv. även när tab klickas? få koll på vilka funktioner som faktiskt används.
+- Nyheter-rubrik och lista under en sida
+- Sport-rubrik och lista under en sida
 - [ ] "Nyare version av sidan finns"
   - [ ] kommer upp för ofta
   - [ ] synlig på andra sidor än den man är på
@@ -19,9 +27,13 @@
   - [ ] Så kan ändra-knappen vara längst till höger
   - [ ] Som standard = samma sidor som hos svt
   - [ ] Alltid synliga på alla sidor. Snabbt och smidigt!
-- [ ] lägg till debug-context som visar debug-meddelanden i nån ruta
 - [ ] koppla ihop admob med firebase https://mail.google.com/mail/u/0/#all/FMfcgxwLtszrLRqMqXcpTpqnNzWPQQrW
 - [ ] kolla att admob är korrekt ihopkopplat https://mail.google.com/mail/u/0/#all/FMfcgxwLsKBxCKFJdmLGTZqkWbJBzGzq
+
+## Todo API/på servern
+
+- [ ] Import "Sidan ej i sändning"-sidor ska bli lika hög som andra sidorna, har ren text nu men måste få markup
+- [ ]
 
 ## Changelog
 
@@ -41,4 +53,5 @@
 - [x] Ladda in "nyast" och "mest läst" när man klickar på fliken
 - [x] Korrigerat färger
 - [x] Fixa färgerna, se testsida 777
-- [ ]
+- [x] I Desktop Safari och mobile chrome så går localhost:8100/ --> localhost:8100/hem och sen går det inte att swipe'a vidare
+- [x] Mindre "flicker" vid byte av sida, typ tona in nya sidan?
