@@ -16,6 +16,7 @@ import { TabNyast } from "../pages/tab-nyast";
 import { TabSidor } from "../pages/tab-sidor";
 import { Startsida } from "../pages/tab-startsida";
 import { PageTestSkeleton } from "../pages/tabTestSkeleton";
+import { PageTestTextTVSida } from "../pages/tabTestTextTVSida";
 import { tabButtons } from "./tabButtons";
 
 export const Navigationsflikar = () => {
@@ -40,6 +41,8 @@ export const Navigationsflikar = () => {
         {/* Diverse testsidor/testsökvägar. */}
         <Route path="/debug" component={PageDebug} />
         <Route path="/test/skeleton" component={PageTestSkeleton} />
+        <Route path="/test/texttvsida" component={PageTestTextTVSida} />
+        <Route path="/test/texttvsida/:urlPageNum" component={PageTestTextTVSida} />
 
         <Route path="/hem/:pageNum" component={PageTextTV} exact={true} />
         <Route path="/hem" component={Startsida} exact={true} />
