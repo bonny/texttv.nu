@@ -1,4 +1,5 @@
 import { IonSearchbar } from "@ionic/react";
+import { FirebaseAnalytics } from "../analytics";
 
 const TextTVSearchBar = (props) => {
   const { history } = props;
@@ -14,6 +15,15 @@ const TextTVSearchBar = (props) => {
       e.target.getInputElement().then((elm) => {
         elm.blur();
       });
+
+      try {
+        FirebaseAnalytics.logEvent({
+          name: "go_to_page_manually",
+          params: {
+            page_num: pageNum,
+          },
+        });
+      } catch (e) {}
     }
   };
 
