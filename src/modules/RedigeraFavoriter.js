@@ -78,6 +78,9 @@ const RedigeraFavoriter = (props) => {
                   try {
                     FirebaseAnalytics.logEvent({
                       name: "edit_favorites_save",
+                      params: {
+                        page_nums: pageNums,
+                      },
                     });
                   } catch (e) {}
                 }}
