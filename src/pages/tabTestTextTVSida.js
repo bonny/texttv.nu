@@ -8,6 +8,7 @@ import {
 } from "@ionic/react";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { TextTVPage } from "../modules/TextTVPage";
+import classNames from "classnames";
 
 function PageTestTextTVSida(props) {
   const urlPageNum = props.match.params.urlPageNum;
@@ -15,12 +16,18 @@ function PageTestTextTVSida(props) {
   const [pageNum, setPageNum] = useState(100);
   const [refreshTime, setRefreshTime] = useState(0);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!urlPageNum) {
       return;
     }
 
+    console.log("set from urlPageNum", { urlPageNum });
+
     setPageNum(urlPageNum);
+
+    return () => {
+      console.log("cleanup", { urlPageNum });
+    };
   }, [urlPageNum]);
 
   const handleClickNextPageProps = (e) => {
@@ -33,7 +40,13 @@ function PageTestTextTVSida(props) {
     history.push(nextPageURL);
   };
 
-  console.log("render", { urlPageNum }, { pageNum });
+  console.log("render", { urlPageNum }, { pageNum }, { refreshTime });
+
+  // const classes = classNames({
+  //   "TextTVPage--isLoading": pageIsLoading,
+  //   "TextTVPage--isDoneLoading": pageIsDoneLoading,
+  //   TextTVPage: true,
+  // });
 
   return (
     <IonPage>
@@ -57,7 +70,9 @@ function PageTestTextTVSida(props) {
           </IonButton>
         </p>
 
-        <TextTVPage pageNum={pageNum} refreshTime={refreshTime} />
+        <div>
+          <TextTVPage pageNum={pageNum} refreshTime={refreshTime} />
+        </div>
       </IonContent>
     </IonPage>
   );
