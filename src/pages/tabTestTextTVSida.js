@@ -6,7 +6,7 @@ import {
   IonToolbar,
   IonButton,
 } from "@ionic/react";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { TextTVPage } from "../modules/TextTVPage";
 
 function PageTestTextTVSida(props) {
@@ -15,12 +15,10 @@ function PageTestTextTVSida(props) {
   const [pageNum, setPageNum] = useState(100);
   const [refreshTime, setRefreshTime] = useState(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!urlPageNum) {
       return;
     }
-
-    console.log("in effect urlPageNum", urlPageNum);
 
     setPageNum(urlPageNum);
   }, [urlPageNum]);
@@ -34,6 +32,8 @@ function PageTestTextTVSida(props) {
     const nextPageURL = `/test/texttvsida/${nextPageNum}`;
     history.push(nextPageURL);
   };
+
+  console.log("render", { urlPageNum }, { pageNum });
 
   return (
     <IonPage>
