@@ -3,7 +3,7 @@
  * Visas i en befintlig sida alltså.
  */
 import classNames from "classnames";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   createMarkupForPage,
   getCacheBustTimeString,
