@@ -210,7 +210,7 @@ b {
 
 .TextTVPage {
   user-select: auto;
-  opacity: 0;
+  /* opacity: 0; */
 }
 
 /* Skeleton-sidan tonas in om laddningen inte syns direkt */
@@ -224,8 +224,8 @@ b {
 .TextTVPage--isDoneLoading {
   animation-fill-mode: both;
   animation-name: fadeIn;
-  animation-delay: 0.2s;
-  animation-duration: 0.25s;
+  animation-delay: 0s;
+  animation-duration: .25s;
 }
 
 .u-max-width-texttvpage {
