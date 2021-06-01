@@ -88,10 +88,19 @@ const Header = (props) => {
    * HEADER_STYLE_DEFAULT = utseende som används på sidor, med tillbaka-knapp
    * HEADER_STYLE_STARTPAGE = utseende för startsidan, utan tillbaka-knapp
    */
-  const backButton =
-    headerStyle === "HEADER_STYLE_STARTPAGE" ? null : (
-      <IonBackButton defaultHref={backButtonDefaultHref} text="" />
-    );
+  // const backButton =
+  //   headerStyle === "HEADER_STYLE_STARTPAGE" ? null : (
+  //     <IonBackButton defaultHref={backButtonDefaultHref} text="" />
+  //   );
+
+  // console.log("history.action", history.action);
+
+  // Om history.action är PUSH så kan vi gå tillbaka i historiken.
+  const canGoback = history.action === "PUSH";
+
+  const backButton = canGoback ? (
+    <IonBackButton defaultHref={backButtonDefaultHref} text="" />
+  ) : null;
 
   return (
     <>
