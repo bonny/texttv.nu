@@ -224,7 +224,7 @@ b {
 .TextTVPage--isDoneLoading {
   animation-fill-mode: both;
   animation-name: fadeIn;
-  animation-delay: 0s;
+  animation-delay: 0.2s;
   animation-duration: 0.25s;
 }
 
