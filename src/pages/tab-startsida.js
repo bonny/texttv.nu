@@ -61,7 +61,6 @@ const Startsida = (props) => {
       {...props}
       pageNum={userFavorites.pages.join(",")}
       title="TextTV.nu"
-      headerStyle="HEADER_STYLE_STARTPAGE"
       refreshTime={latestUpdatedPagesRefreshTime}
       onRefresh={handlePageTextTVRefresh}
       editFavoritesButton={editFavoritesButton}

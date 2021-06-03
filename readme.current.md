@@ -4,8 +4,7 @@
 
 ## Blandat Todo
 
-- [ ] Sida finns inte ska bli lika hög som en vanlig sida så det går lättare/som vanligt att swipe'a
-- [ ] Nav-knappar längst ner för föregående/nästa sida. Kanske num-input i mitten?
+- [ ] Ta bort referenser till gamla header
 - [ ] Lägg till statistik till Firebase
   - [ ] när sida visas via klick
   - [ ] när sida gås till via "sök"-rutan
@@ -13,12 +12,12 @@
   - [ ] när man byter flik
   - [ ] när man går till sida på nyast
   - [ ] när man går till sida på mest läst
-  - [ ] när man redigerar favoriter
-  - [ ] vilka favoriter man sparar?
-  - [ ] och när favoriter ändras osv. även när tab klickas? få koll på vilka funktioner som faktiskt används.
-- Nyheter-rubrik och lista under en sida
-- Sport-rubrik och lista under en sida
+  - [x] när man väljer att redigera favoriter
+  - [x] när man sparar favoriter
+  - [x] vilka favoriter man sparar?
+- [ ] Nav-knappar längst ner för föregående/nästa sida. Kanske num-input i mitten?
 - [ ] "Nyare version av sidan finns"
+  - [ ] Aktivera igen
   - [ ] kommer upp för ofta
   - [ ] synlig på andra sidor än den man är på
   - [ ] synlig när man redigerar favoriter
@@ -30,7 +29,7 @@
 - [ ] koppla ihop admob med firebase https://mail.google.com/mail/u/0/#all/FMfcgxwLtszrLRqMqXcpTpqnNzWPQQrW
 - [ ] kolla att admob är korrekt ihopkopplat https://mail.google.com/mail/u/0/#all/FMfcgxwLsKBxCKFJdmLGTZqkWbJBzGzq
 
-## Todo API/på servern
+## Todo API/import/på servern
 
 - [ ] Import "Sidan ej i sändning"-sidor ska bli lika hög som andra sidorna, har ren text nu men måste få markup
 - [ ]
@@ -55,3 +54,4 @@
 - [x] Fixa färgerna, se testsida 777
 - [x] I Desktop Safari och mobile chrome så går localhost:8100/ --> localhost:8100/hem och sen går det inte att swipe'a vidare
 - [x] Mindre "flicker" vid byte av sida, typ tona in nya sidan?
+- [x] Tillbaka-knapp även på sidor-sidan

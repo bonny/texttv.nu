@@ -40,7 +40,6 @@ const PageTextTV = (props) => {
     match,
     history,
     title,
-    headerStyle = "HEADER_STYLE_DEFAULT",
     children,
     refreshTime: passedRefreshTime,
     // Custom function att köra om refresh-knappen tryckts på.
@@ -321,7 +320,6 @@ const PageTextTV = (props) => {
       <Header
         {...props}
         pageTitle={pageTitle}
-        headerStyle={headerStyle}
         onShare={(e) => {
           handleShare(e, pageData, pageNum);
         }}
