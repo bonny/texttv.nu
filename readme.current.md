@@ -4,7 +4,6 @@
 
 ## Blandat Todo
 
-- [ ] Ta bort referenser till gamla header
 - [ ] Lägg till statistik till Firebase
   - [ ] när sida visas via klick
   - [ ] när sida gås till via "sök"-rutan
@@ -55,3 +54,5 @@
 - [x] I Desktop Safari och mobile chrome så går localhost:8100/ --> localhost:8100/hem och sen går det inte att swipe'a vidare
 - [x] Mindre "flicker" vid byte av sida, typ tona in nya sidan?
 - [x] Tillbaka-knapp även på sidor-sidan
+- [x] Tillbaka-knapp och "Gå till sida"-input finns nu även på "Nyast" och "Mest läst", så navigationen blir mer konsekvent.
+- [x] Ta bort referenser till gamla header
