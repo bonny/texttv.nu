@@ -5,12 +5,16 @@ import {
   IonSegment,
   IonSegmentButton,
   IonToolbar,
+  IonButtons,
 } from "@ionic/react";
 import { useEffect, useState } from "react";
 import { getUnixtime } from "../functions";
 import { SenastUppdaterat } from "../modules/SenastUppdaterat";
 import { TextTVHeader } from "../modules/TextTVHeader";
 import TextTVRefresher from "../modules/TextTVRefresher";
+import TextTVSearchBar from "../modules/TextTVSearchBar";
+import { BackButton } from "../modules/BackButton";
+
 const queryString = require("query-string");
 
 const TabNyast = (props) => {
@@ -82,6 +86,12 @@ const TabNyast = (props) => {
               <IonLabel>Sport</IonLabel>
             </IonSegmentButton>
           </IonSegment>
+        </IonToolbar>
+        <IonToolbar mode="md">
+          <IonButtons slot="start">
+            <BackButton history={history} />
+          </IonButtons>
+          <TextTVSearchBar history={history} />
         </IonToolbar>
       </TextTVHeader>
 

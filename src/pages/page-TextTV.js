@@ -291,6 +291,10 @@ const PageTextTV = (props) => {
     });
   };
 
+  /**
+   * När man swipeat åt ett håll navigeras man iväg till den sidan
+   * via en history.push().
+   */
   const handleSlideDidChange = (e) => {
     if (!sliderRef.current) {
       return;
@@ -305,13 +309,15 @@ const PageTextTV = (props) => {
         navToPageNum = pageNextNum;
       }
 
-      if (navToPageNum) {
-        // Gå till sida och gå sedan tillbaka till slidern i mitten.
-        history.push(`/sidor/${navToPageNum}`);
-        // Får ibland på Vercel "Cannot read property 'slideTo' of null" trots att vi kollat denna tidigare.
-        sliderRef?.current?.slideTo(1, 0);
-        scrollToTop(0);
+      if (!navToPageNum) {
+        return;
       }
+
+      // Gå till sida och gå sedan tillbaka till slidern i mitten.
+      history.push(`/sidor/${navToPageNum}`);
+      // Får ibland på Vercel "Cannot read property 'slideTo' of null" trots att vi kollat denna tidigare.
+      sliderRef?.current?.slideTo(1, 0);
+      scrollToTop(0);
     });
   };
 
