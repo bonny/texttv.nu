@@ -29,7 +29,7 @@ const TextTVSearchBar = (props) => {
 
   return (
     <IonSearchbar
-      placeholder="Gå till…"
+      placeholder="Gå till sida…"
       type="number"
       inputmode="numeric"
       showCancelButton="never"
