@@ -131,3 +131,8 @@
 .TextTVPage .bgBl {
   background-color: black;
 }
+
+/* Skala bakgrundsbilder "pixligt" så de inte upplevs suddiga. */
+.TextTVPage .bgImg {
+  image-rendering: pixelated;
+}
