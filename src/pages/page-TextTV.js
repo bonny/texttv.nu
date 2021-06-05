@@ -46,7 +46,9 @@ const PageTextTV = (props) => {
     onRefresh,
   } = props;
 
+  // Sidnummer att visa. Kan vara flera separerade med kommatecken, t.ex. "100,300,700".
   const pageNum = props.pageNum || match.params.pageNum;
+
   const pageId = props.pageId || match.params.pageId;
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
   const [pageUpdatedToastVisible, setPageUpdatedToastVisible] = useState(false);
@@ -56,10 +58,6 @@ const PageTextTV = (props) => {
 
   const contentRef = useRef();
   const sliderRef = useRef();
-
-  // Unik sträng som används som key för ion-slides.
-  // Om inte key används så "nollas" inte slider och man stannar på
-  // sidan man svept till istället för att komma till mittensliden med textinnehållet.
 
   let pageTitle = title || `${pageNum} - SVT Text TV`;
 
@@ -160,9 +158,12 @@ const PageTextTV = (props) => {
 
   // Leta efter uppdateringar av sidan eller sidorna
   // när pageNum eller refreshTime ändrats.
-  /* useEffect(() => {
+  useEffect(() => {
+    // Hur ofta i millisekunder vi ska leta efter uppdatering av en sida.
     const checkForUpdateInterval = 5000;
+
     let intervalId;
+
     const checkForUpdate = async () => {
       // hitta ID på sidan som har högst id och kolla den
       // http://texttv.nu/api/updated/100,300,700/1439310425
@@ -233,7 +234,6 @@ const PageTextTV = (props) => {
       clearInterval(intervalId);
     };
   }, [pageNum, refreshTime, didDismissPageUpdateToast]);
- */
 
   // Uppdatera dokument-titel när pageTitle ändras.
   useEffect(() => {
