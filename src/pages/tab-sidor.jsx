@@ -1,15 +1,9 @@
-import {
-  IonContent,
-  IonPage,
-  IonToolbar,
-  IonBackButton,
-  IonButtons,
-} from "@ionic/react";
+import { IonButtons, IonContent, IonPage, IonToolbar } from "@ionic/react";
 import { useEffect } from "react";
+import { BackButton } from "../modules/BackButton";
 import MenuItems from "../modules/MenuItems";
 import { TextTVHeader } from "../modules/TextTVHeader";
 import TextTVSearchBar from "../modules/TextTVSearchBar";
-import { BackButton } from "../modules/BackButton";
 
 const TabSidor = (props) => {
   const { history } = props;

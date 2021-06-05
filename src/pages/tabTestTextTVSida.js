@@ -1,20 +1,19 @@
 import {
+  IonButton,
   IonContent,
   IonHeader,
   IonPage,
   IonTitle,
   IonToolbar,
-  IonButton,
 } from "@ionic/react";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { TextTVPage } from "../modules/TextTVPage";
-import classNames from "classnames";
 
 function PageTestTextTVSida(props) {
   const urlPageNum = props.match.params.urlPageNum;
   const history = props.history;
   const [pageNum, setPageNum] = useState(100);
-  const [refreshTime, setRefreshTime] = useState(0);
+  const [refreshTime] = useState(0);
 
   useEffect(() => {
     if (!urlPageNum) {

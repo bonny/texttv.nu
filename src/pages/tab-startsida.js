@@ -5,7 +5,6 @@ import {
   IonItem,
   IonLabel,
   IonRow,
-  useIonViewWillEnter,
 } from "@ionic/react";
 import { starOutline } from "ionicons/icons";
 import { useContext, useEffect, useState } from "react";
