@@ -56,3 +56,5 @@
 - [x] Tillbaka-knapp även på sidor-sidan
 - [x] Tillbaka-knapp och "Gå till sida"-input finns nu även på "Nyast" och "Mest läst", så navigationen blir mer konsekvent.
 - [x] Ta bort referenser till gamla header
+- [x] Inte antialias på bilder
+- [x] Gör länkar i listor till riktiga a-taggar så man kan öppna i nytt fönster osv.

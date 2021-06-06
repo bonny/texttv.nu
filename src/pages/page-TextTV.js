@@ -164,6 +164,7 @@ const PageTextTV = (props) => {
 
     let intervalId;
 
+    // Kolla med servern om nyare version av någon av sidorna finns.
     const checkForUpdate = async () => {
       // hitta ID på sidan som har högst id och kolla den
       // http://texttv.nu/api/updated/100,300,700/1439310425
@@ -195,6 +196,14 @@ const PageTextTV = (props) => {
         //   `${pageNum} är synlig, så letar efter uppdatering av sidan, via url ${url}`
         // );
       }
+
+      console.log("checkForUpdate", pageNum);
+
+      /*
+      - Går från startsida till undersida = fortsätter leta efter uppdateringar för hem-sidorna.
+      - Går från undersida t.ex. 135 till nyast = fortsätter leta efter uppdateringar
+      
+      */
 
       if (!doCheckForUpdate) {
         return;
@@ -231,6 +240,7 @@ const PageTextTV = (props) => {
     // Sluta leta efter uppdateringar vid cleanup.
     // @TODO: denna körs inte pga komponenten är kvar fast man navigerar bort.
     return () => {
+      console.log("checkForUpdate, avbryt setInterval", pageNum);
       clearInterval(intervalId);
     };
   }, [pageNum, refreshTime, didDismissPageUpdateToast]);

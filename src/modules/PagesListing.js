@@ -15,8 +15,10 @@ const ListItem = (props) => {
       button
       detail
       onClick={(e) => {
+        e.preventDefault();
         history.push(link);
       }}
+      href={link}
       lines="none"
     >
       <IonLabel class="ion-text-wrap" text-wrap color="medium">

@@ -81,10 +81,12 @@ const TextTVSidorLista = (props) => {
             <IonItem
               button
               detail
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 history.push(url);
               }}
               key={url}
+              href={url}
               lines="none"
             >
               <IonLabel text-wrap>
