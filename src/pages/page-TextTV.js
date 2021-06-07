@@ -1,7 +1,6 @@
 /**
  * IonPage-sida som visar en sida med en eller flera text-tv-sidor.
  */
-
 import {
   IonContent,
   IonIcon,
@@ -26,7 +25,6 @@ import {
 import Header from "../modules/Header";
 import { TextTVPage } from "../modules/TextTVPage";
 import TextTVRefresher from "../modules/TextTVRefresher";
-// import { useInView } from "react-intersection-observer";
 
 const scrollToTop = (speed = 750) => {
   let currentIonPageContent = getCurrentIonPageContentElm();
@@ -51,10 +49,13 @@ const PageTextTV = (props) => {
 
   const pageId = props.pageId || match.params.pageId;
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
-  const [pageUpdatedToastVisible, setPageUpdatedToastVisible] = useState(false);
+  const [pageUpdatedToastState, setPageUpdatedToastState] = useState({
+    showToast: false,
+    pageNums: [],
+    updatedText: "",
+    toastDismissed: false,
+  });
   const [pageData, setPageData] = useState([]);
-  const [didDismissPageUpdateToast, setDidDismissPageUpdateToast] =
-    useState(false);
 
   const contentRef = useRef();
   const sliderRef = useRef();
@@ -186,7 +187,7 @@ const PageTextTV = (props) => {
         //   `${pageNum} är inte synlig, så kollar inte efter uppdatering`
         // );
         doCheckForUpdate = false;
-      } else if (didDismissPageUpdateToast) {
+      } else if (pageUpdatedToastState.toastDismissed) {
         // console.log(
         //   `${pageNum} har redan kollats efter uppdatering och användare tryckte på cancel i toast, så kollar inte mer efter uppdatering`
         // );
@@ -202,7 +203,8 @@ const PageTextTV = (props) => {
       /*
       - Går från startsida till undersida = fortsätter leta efter uppdateringar för hem-sidorna.
       - Går från undersida t.ex. 135 till nyast = fortsätter leta efter uppdateringar
-      
+      - Går från sida med uppdatering-finns-toast till annan flik = toast visas fortfarande
+      - Lagra i state vilken sida det är som faktiskt uppdaterats så vi slipper undra om det är 100, 300 eller 402.
       */
 
       if (!doCheckForUpdate) {
@@ -211,6 +213,31 @@ const PageTextTV = (props) => {
 
       const response = await fetch(url);
       const responseJson = await response.json();
+
+      /*
+      Json är ca såhär:
+      {
+        "is_ok": true,
+        "update_available": true,
+        "res": [
+          {
+            "id": "30365020",
+            "page_num": "127",
+            "date_updated": "2021-06-07 20:56:13",
+            "title": "Bol\u00e5n Nordea s\u00e4nker kalkylr\u00e4ntan f\u00f6r",
+            "date_added": "2021-06-07 20:56:13"
+          },
+          {
+            "id": "30365019",
+            "page_num": "118",
+            "date_updated": "2021-06-07 20:56:10",
+            "title": "Damberg (S): Stolt \u00f6ver svensk polis",
+            "date_added": "2021-06-07 20:56:10"
+          }
+        ]
+      }
+
+      */
 
       // Sätt denna till true för att fejka att
       // det alltid finns en uppdatering av sida.
@@ -221,9 +248,9 @@ const PageTextTV = (props) => {
       // och då kan en uppdatering som finns gälla föregående sida.
       const isHiddenPageAfterFetch = closestIonPage.matches(".ion-page-hidden");
       if (isHiddenPageAfterFetch) {
-        // console.log(
-        //   "sidan som har en uppdatering är inte längre den aktiva, så visa inte toast"
-        // );
+        console.log(
+          "sidan som har en uppdatering är inte längre den aktiva, så visa inte toast"
+        );
         return;
       }
 
@@ -231,7 +258,17 @@ const PageTextTV = (props) => {
         fakeUpdateAvailable ||
         (responseJson.is_ok && responseJson.update_available)
       ) {
-        setPageUpdatedToastVisible(true);
+        const pageNums = responseJson.res.map((vals) => vals.page_num);
+        const updatedText =
+          pageNums.length > 1
+            ? `Sidorna ${pageNums.join(", ")} har uppdateringar`
+            : `Sidan ${pageNums.join("")} har en uppdatering`;
+        console.log({ responseJson });
+        setPageUpdatedToastState({
+          ...pageUpdatedToastState,
+          showToast: true,
+          updatedText: updatedText,
+        });
       }
     };
 
@@ -243,7 +280,7 @@ const PageTextTV = (props) => {
       console.log("checkForUpdate, avbryt setInterval", pageNum);
       clearInterval(intervalId);
     };
-  }, [pageNum, refreshTime, didDismissPageUpdateToast]);
+  }, [pageNum, refreshTime, pageUpdatedToastState]);
 
   // Uppdatera dokument-titel när pageTitle ändras.
   useEffect(() => {
@@ -262,7 +299,12 @@ const PageTextTV = (props) => {
    * När ny sida laddas in så nollställer vi att man gömt uppdaterings-toast.
    */
   useEffect(() => {
-    setDidDismissPageUpdateToast(false);
+    setPageUpdatedToastState((prevState) => {
+      return {
+        ...prevState,
+        toastDismissed: false,
+      };
+    });
   }, [pageNum]);
 
   const sliderOptions = {
@@ -422,10 +464,10 @@ const PageTextTV = (props) => {
 
         {/* Toast med meddelande om att uppdatering av sidan finns. */}
         <IonToast
-          isOpen={pageUpdatedToastVisible}
+          isOpen={pageUpdatedToastState.showToast}
           onDidDismiss={() => {}}
           position="bottom"
-          message={`En nyare version av sidan ${pageNum} finns.`}
+          message={pageUpdatedToastState.updatedText}
           cssClass="TextTVPage_Toast TextTVPage_UpdatedToast"
           showCloseButton={false}
           buttons={[
@@ -434,7 +476,10 @@ const PageTextTV = (props) => {
               text: "Uppdatera",
               role: "confirm",
               handler: () => {
-                setPageUpdatedToastVisible(false);
+                setPageUpdatedToastState({
+                  ...pageUpdatedToastState,
+                  showToast: false,
+                });
                 updateRefreshTime();
               },
             },
@@ -443,10 +488,13 @@ const PageTextTV = (props) => {
               text: "✕",
               role: "confirm",
               handler: () => {
-                // Göm toast.
-                // För hur länge? För alltid? För alltid för denna sida? Bara för denna uppdatering?
-                setPageUpdatedToastVisible(false);
-                setDidDismissPageUpdateToast(true);
+                // Göm toast utan att uppdatera sidan.
+                // @TODO: Bestäm för hur länge? För alltid? För alltid för denna sida? Bara för denna uppdatering?
+                setPageUpdatedToastState({
+                  ...pageUpdatedToastState,
+                  showToast: false,
+                  toastDismissed: true,
+                });
               },
             },
           ]}
