@@ -86,8 +86,13 @@ const PageTextTV = (props) => {
   });
   const [pageData, setPageData] = useState([]);
 
+  // Ref till ion-content-elementet.
   const contentRef = useRef();
+
+  // Ref som används för att hålla kolla på ID från setInterval.
+  // https://reactjs.org/docs/hooks-faq.html#is-there-something-like-instance-variables
   const checkForUpdateIntervalId = useRef();
+
   const firstPage = pageData[0];
 
   const pageCurrentNum = firstPage ? parseInt(firstPage.num) : null;
@@ -130,10 +135,22 @@ const PageTextTV = (props) => {
     updateRefreshTime();
   }, [pageNum, pageId, refreshTime, match.path]);
 
+  /**
+   * När man byter flik ska vi:
+   * - sluta leta efter uppdateringar av sidan.
+   * - gömma uppdatering-finns-toast.
+   */
   useIonViewWillLeave(() => {
-    console.log(
-      `Sida ${pageNum} visas inte längre pga view leave. Sluta leta efter uppdateringar.`
-    );
+    stopCheckForUpdates({
+      reason: "checkForUpdate, avbryt setInterval pga view will leave",
+    });
+
+    setPageUpdatedToastState((oldState) => {
+      return {
+        ...oldState,
+        showToast: false,
+      };
+    });
   }, [pageNum, pageId, refreshTime]);
 
   useEffect(() => {
@@ -232,13 +249,6 @@ const PageTextTV = (props) => {
         { doCheckForUpdate }
       );
 
-      /*
-      - Går från startsida till undersida = fortsätter leta efter uppdateringar för hem-sidorna.
-      - Går från undersida t.ex. 135 till nyast = fortsätter leta efter uppdateringar
-      - Går från sida med uppdatering-finns-toast till annan flik = toast visas fortfarande
-      - [x] Lagra i state vilken sida det är som faktiskt uppdaterats så vi slipper undra om det är 100, 300 eller 402.
-      */
-
       if (!doCheckForUpdate) {
         return;
       }
@@ -273,7 +283,7 @@ const PageTextTV = (props) => {
 
       // Sätt denna till true för att fejka att
       // det alltid finns en uppdatering av sida.
-      const fakeUpdateAvailable = false;
+      const fakeUpdateAvailable = true;
 
       // Kolla att sidan vi letat efter fortfarande är sidan som vi visar.
       // Användaren kan vara snabb så precis när en letning görs så byter de sida
@@ -295,7 +305,7 @@ const PageTextTV = (props) => {
           pageNums.length > 1
             ? `Sidorna ${pageNums.join(", ")} har uppdateringar`
             : `Sidan ${pageNums.join("")} har en uppdatering`;
-        console.log({ responseJson });
+
         setPageUpdatedToastState((oldState) => {
           return {
             ...oldState,
@@ -377,6 +387,12 @@ const PageTextTV = (props) => {
       // Får ibland på Vercel "Cannot read property 'slideTo' of null" trots att vi kollat denna tidigare.
       swiper.slideTo(1, 0);
       scrollToTop(0);
+
+      // Göm ev. synlig uppdatering-finns-toast.
+      setPageUpdatedToastState({
+        ...pageUpdatedToastState,
+        showToast: false,
+      });
     });
   };
 
