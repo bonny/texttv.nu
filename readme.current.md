@@ -4,29 +4,31 @@
 
 ## Blandat Todo
 
-- [ ] Nav-knappar längst ner för föregående/nästa sida. Kanske num-input i mitten?
 - [ ] Lägg till statistik till Firebase
-  - [ ] när sida visas via klick
-  - [ ] när sida gås till via "sök"-rutan
-  - [ ] när sida gås till via meny
-  - [ ] när man byter flik
-  - [ ] när man går till sida på nyast
-  - [ ] när man går till sida på mest läst
+  - [ ] Sida visas, ange "source" via param så alla får samma "huvud-event"
+    - [ ] när sida visas via klick
+    - [ ] när sida gås till via "sök"-rutan
+    - [ ] när sida gås till via meny
+    - [ ] när man byter flik
+    - [ ] när man går till sida på nyast
+    - [ ] när man går till sida på mest läst
   - [x] när man väljer att redigera favoriter
   - [x] när man sparar favoriter
   - [x] vilka favoriter man sparar?
+
+## Kanske till nästa uppdatering
+
+- [ ] Breadcrumb, API-baserad
+- [ ] Nav-knappar längst ner för föregående/nästa sida. Kanske num-input i mitten?
 - [ ] Genvägar till samma sidor som svt.se/text-tv har, så användare känner igen sig.
   - [ ] Eller om det är favoriter man lägger längst upp helt enkelt
   - [ ] Så kan ändra-knappen vara längst till höger
   - [ ] Som standard = samma sidor som hos svt
   - [ ] Alltid synliga på alla sidor. Snabbt och smidigt!
-- [ ] koppla ihop admob med firebase https://mail.google.com/mail/u/0/#all/FMfcgxwLtszrLRqMqXcpTpqnNzWPQQrW
-- [ ] kolla att admob är korrekt ihopkopplat https://mail.google.com/mail/u/0/#all/FMfcgxwLsKBxCKFJdmLGTZqkWbJBzGzq
 
 ## Todo API/import/på servern
 
-- [ ] Import "Sidan ej i sändning"-sidor ska bli lika hög som andra sidorna, har ren text nu men måste få markup
-- [ ]
+- [ ] Import: "Sidan ej i sändning"-sidor ska bli lika hög som andra sidorna, har ren text nu men måste få markup
 
 ## Changelog
 
@@ -65,3 +67,4 @@
   - [x] kommer upp för ofta
   - [x] synlig på andra sidor än den man är på
   - [x] synlig när man redigerar favoriter
+- [x] kolla att admob är korrekt ihopkopplat https://mail.google.com/mail/u/0/#all/FMfcgxwLsKBxCKFJdmLGTZqkWbJBzGzq
