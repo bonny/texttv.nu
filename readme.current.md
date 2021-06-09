@@ -4,6 +4,7 @@
 
 ## Blandat Todo
 
+- [ ] Nav-knappar längst ner för föregående/nästa sida. Kanske num-input i mitten?
 - [ ] Lägg till statistik till Firebase
   - [ ] när sida visas via klick
   - [ ] när sida gås till via "sök"-rutan
@@ -52,3 +53,15 @@
 - [x] Ta bort referenser till gamla header
 - [x] Inte antialias på bilder
 - [x] Gör länkar i listor till riktiga a-taggar så man kan öppna i nytt fönster osv.
+- [x] "Sidan har en uppdatering"-meddelane göms när man går till nästa sida.
+- [x] Går från startsida till undersida = fortsätter leta efter uppdateringar för hem-sidorna.
+- [x] Går från undersida t.ex. 135 till nyast = fortsätter leta efter uppdateringar
+- [x] Går från sida med uppdatering-finns-toast till annan flik = toast visas fortfarande
+- [x] Lagra i state vilken sida det är som faktiskt uppdaterats så vi slipper undra om det är 100, 300 eller 402.
+- [x] Använd ref() för intervalId
+- [x] "Nyare version av sidan finns"
+  - [x] Aktivera igen
+  - [x] flytta intervalID till ~~state~~ref
+  - [x] kommer upp för ofta
+  - [x] synlig på andra sidor än den man är på
+  - [x] synlig när man redigerar favoriter
