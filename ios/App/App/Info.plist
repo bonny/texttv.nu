@@ -187,7 +187,7 @@
 			</dict>
 		</array>
 		<key>NSUserTrackingUsageDescription</key>
-		<string>This identifier will be used to deliver personalized ads to you.</string>
+		<string>Identifieraren kommer användas för att visa dig anpassade annonser.</string>
 		<key>LSApplicationCategoryType</key>
 		<string></string>
 		<key>LSRequiresIPhoneOS</key>
