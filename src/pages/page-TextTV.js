@@ -13,7 +13,6 @@ import {
 } from "@ionic/react";
 import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
 import {
   getCurrentIonPageContentElm,
   getUnixtime,
@@ -33,6 +32,36 @@ const scrollToTop = (speed = 750) => {
   }
 };
 
+const handleSlidesDidLoad = (e) => {
+  // När slides körs på startsidan så blir det nån bugg som gör att slides Swiper
+  // inte initieras helt korrekt på nåt vis och av nån anledning.
+  // Eventligen beror detta på att på startsidan så visas mer innehåller under slider
+  // komponenten tar mer än 20 ms att ladda?
+  // update() på swiper verkar lösa detta.
+  e.target.getSwiper().then((swiper) => {
+    const checkInterval = 10;
+    const maxNumberOfChecks = 10;
+    let checkNum = 0;
+
+    const checkIntervalId = setInterval(() => {
+      const hasTranslateApplied =
+        swiper.wrapperEl.style.cssText.indexOf("translate3d");
+
+      if (checkNum > maxNumberOfChecks) {
+        clearInterval(checkIntervalId);
+      }
+
+      if (hasTranslateApplied === -1) {
+        swiper.update();
+      } else {
+        clearInterval(checkIntervalId);
+      }
+
+      checkNum++;
+    }, checkInterval);
+  });
+};
+
 const PageTextTV = (props) => {
   const {
     match,
@@ -46,8 +75,8 @@ const PageTextTV = (props) => {
 
   // Sidnummer att visa. Kan vara flera separerade med kommatecken, t.ex. "100,300,700".
   const pageNum = props.pageNum || match.params.pageNum;
-
   const pageId = props.pageId || match.params.pageId;
+
   const [refreshTime, setRefreshTime] = useState(getUnixtime());
   const [pageUpdatedToastState, setPageUpdatedToastState] = useState({
     showToast: false,
@@ -58,12 +87,12 @@ const PageTextTV = (props) => {
   const [pageData, setPageData] = useState([]);
 
   const contentRef = useRef();
-  const sliderRef = useRef();
+  const checkForUpdateIntervalId = useRef();
+  const firstPage = pageData[0];
+
+  const pageCurrentNum = firstPage ? parseInt(firstPage.num) : null;
 
   let pageTitle = title || `${pageNum} - SVT Text TV`;
-
-  const firstPage = pageData[0];
-  const pageCurrentNum = firstPage ? parseInt(firstPage.num) : null;
 
   // @TODO: gå till nästa sida som finns enligt API-svar, inte till tom sida.
   // dock om man låter en sida vara öppen en stund så kan nästa/föregående sida ha förändrats,
@@ -163,8 +192,6 @@ const PageTextTV = (props) => {
     // Hur ofta i millisekunder vi ska leta efter uppdatering av en sida.
     const checkForUpdateInterval = 5000;
 
-    let intervalId;
-
     // Kolla med servern om nyare version av någon av sidorna finns.
     const checkForUpdate = async () => {
       // hitta ID på sidan som har högst id och kolla den
@@ -198,13 +225,18 @@ const PageTextTV = (props) => {
         // );
       }
 
-      console.log("checkForUpdate", pageNum);
+      console.log(
+        "checkForUpdate",
+        { pageNum },
+        { refreshTime },
+        { doCheckForUpdate }
+      );
 
       /*
       - Går från startsida till undersida = fortsätter leta efter uppdateringar för hem-sidorna.
       - Går från undersida t.ex. 135 till nyast = fortsätter leta efter uppdateringar
       - Går från sida med uppdatering-finns-toast till annan flik = toast visas fortfarande
-      - Lagra i state vilken sida det är som faktiskt uppdaterats så vi slipper undra om det är 100, 300 eller 402.
+      - [x] Lagra i state vilken sida det är som faktiskt uppdaterats så vi slipper undra om det är 100, 300 eller 402.
       */
 
       if (!doCheckForUpdate) {
@@ -264,28 +296,38 @@ const PageTextTV = (props) => {
             ? `Sidorna ${pageNums.join(", ")} har uppdateringar`
             : `Sidan ${pageNums.join("")} har en uppdatering`;
         console.log({ responseJson });
-        setPageUpdatedToastState({
-          ...pageUpdatedToastState,
-          showToast: true,
-          updatedText: updatedText,
+        setPageUpdatedToastState((oldState) => {
+          return {
+            ...oldState,
+            showToast: true,
+            updatedText: updatedText,
+          };
         });
       }
     };
 
-    intervalId = setInterval(checkForUpdate, checkForUpdateInterval);
+    const intervalId = setInterval(checkForUpdate, checkForUpdateInterval);
+    checkForUpdateIntervalId.current = intervalId;
 
-    // Sluta leta efter uppdateringar vid cleanup.
-    // @TODO: denna körs inte pga komponenten är kvar fast man navigerar bort.
+    // Sluta leta efter uppdateringar vid cleanup, t.ex. när sidnummer ändras.
+    // Körs dock inte när man går till annan flik pga det är en annan komponent som renderas.
     return () => {
-      console.log("checkForUpdate, avbryt setInterval", pageNum);
-      clearInterval(intervalId);
+      stopCheckForUpdates({
+        reason: "checkForUpdate, avbryt setInterval pga effect cleanup",
+      });
     };
-  }, [pageNum, refreshTime, pageUpdatedToastState]);
+  }, [pageNum, refreshTime, pageUpdatedToastState.toastDismissed]);
 
   // Uppdatera dokument-titel när pageTitle ändras.
   useEffect(() => {
     document.title = pageTitle;
   }, [pageTitle]);
+
+  const stopCheckForUpdates = ({ reason }) => {
+    console.log(reason, pageNum);
+
+    clearInterval(checkForUpdateIntervalId.current);
+  };
 
   /**
    * Hämtar upp state från en texttv sida, så
@@ -311,48 +353,13 @@ const PageTextTV = (props) => {
     initialSlide: 1,
   };
 
-  const location = useLocation();
-
-  const handleSlidesDidLoad = (e) => {
-    // När slides körs på startsidan så blir det nån bugg som gör att slides Swiper
-    // inte initieras helt korrekt på nåt vis och av nån anledning.
-    // Eventligen beror detta på att på startsidan så visas mer innehåller under slider
-    // komponenten tar mer än 20 ms att ladda?
-    // update() på swiper verkar lösa detta.
-    e.target.getSwiper().then((swiper) => {
-      const checkInterval = 10;
-      const maxNumberOfChecks = 10;
-      let checkNum = 0;
-
-      const checkIntervalId = setInterval(() => {
-        const hasTranslateApplied =
-          swiper.wrapperEl.style.cssText.indexOf("translate3d");
-
-        if (checkNum > maxNumberOfChecks) {
-          clearInterval(checkIntervalId);
-        }
-
-        if (hasTranslateApplied === -1) {
-          swiper.update();
-        } else {
-          clearInterval(checkIntervalId);
-        }
-
-        checkNum++;
-      }, checkInterval);
-    });
-  };
-
   /**
    * När man swipeat åt ett håll navigeras man iväg till den sidan
    * via en history.push().
    */
   const handleSlideDidChange = (e) => {
-    if (!sliderRef.current) {
-      return;
-    }
-
-    sliderRef.current.getActiveIndex().then((activeIndex) => {
+    e.target.getSwiper().then((swiper) => {
+      const activeIndex = swiper.activeIndex;
       let navToPageNum;
 
       if (activeIndex === 0) {
@@ -368,7 +375,7 @@ const PageTextTV = (props) => {
       // Gå till sida och gå sedan tillbaka till slidern i mitten.
       history.push(`/sidor/${navToPageNum}`);
       // Får ibland på Vercel "Cannot read property 'slideTo' of null" trots att vi kollat denna tidigare.
-      sliderRef?.current?.slideTo(1, 0);
+      swiper.slideTo(1, 0);
       scrollToTop(0);
     });
   };
@@ -415,7 +422,6 @@ const PageTextTV = (props) => {
         </p>
  */}
         <IonSlides
-          ref={sliderRef}
           pager={false}
           options={sliderOptions}
           onIonSlidesDidLoad={handleSlidesDidLoad}
