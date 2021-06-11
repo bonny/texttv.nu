@@ -15,7 +15,7 @@
     "@ionic/react-router": "^5.6.9",
     "classnames": "^2.2.6",
     "dayjs": "^1.10.5",
-    "firebase": "^8.6.5",
+    "firebase": "^8.6.7",
     "ionicons": "^5.0.0",
     "query-string": "^7.0.0",
     "react": "^17.0.2",
