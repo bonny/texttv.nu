@@ -6,7 +6,7 @@ import {
   list,
   listOutline,
   time,
-  timeOutline
+  timeOutline,
 } from "ionicons/icons";
 
 export const tabButtons = [
@@ -39,9 +39,9 @@ export const tabButtons = [
     iconSelected: eye,
     href: "/arkiv",
   },
-  {
-    tab: "debug",
-    title: "Debug",
-    href: "/debug",
-  },
+  // {
+  //   tab: "debug",
+  //   title: "Debug",
+  //   href: "/debug",
+  // },
 ];
