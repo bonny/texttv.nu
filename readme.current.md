@@ -4,6 +4,10 @@
 
 ## Blandat Todo
 
+- Går bara att redigera favoriter en gång, om man på stor skärm klickar utanför modalen för att stänga.
+- [ ] Iphone 8 svårt att scrolla
+  - [ ] Installera på fysisk enhet och testa om samma problem finns där
+- [ ] Ibland när man går till sida får man direkt en uppdatering-finns-notis, klickar man ladda om känns det som att sidan faktiskt inte fått en uppdatering... anrop från tidigare sida som är kvar eller nåt? sätt nån unmounted-flagga eller nåt.
 - [ ] Lägg till statistik till Firebase
   - [ ] Sida visas, ange "source" via param så alla får samma "huvud-event"
     - [ ] när sida visas via klick
