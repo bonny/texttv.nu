@@ -56,14 +56,14 @@ const RedigeraFavoriter = (props) => {
     }
   }, [isOpen]);
 
+  const handleCancel = () => {
+    setPageNums(pages);
+    handleCancelModal();
+  };
+
   return (
     <>
-      <IonModal
-        isOpen={isOpen}
-        onDidDismiss={() => {
-          // Klickar utanför modalen t.ex. på Ipad.
-        }}
-      >
+      <IonModal isOpen={isOpen} onDidDismiss={handleCancel}>
         <IonHeader>
           <IonToolbar>
             <IonTitle>Favoriter</IonTitle>
@@ -89,14 +89,7 @@ const RedigeraFavoriter = (props) => {
               </IonButton>
             </IonButtons>
             <IonButtons slot="secondary">
-              <IonButton
-                fill="clear"
-                color="secondary"
-                onClick={() => {
-                  setPageNums(pages);
-                  handleCancelModal();
-                }}
-              >
+              <IonButton fill="clear" color="secondary" onClick={handleCancel}>
                 Avbryt
               </IonButton>
             </IonButtons>
