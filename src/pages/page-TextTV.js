@@ -178,7 +178,7 @@ const PageTextTV = (props) => {
   const handlePullToRefresh = (e) => {
     updateRefreshTime();
     setTimeout(() => {
-      e.detail.complete();
+      e.target.complete();
     }, 500);
   };
 
