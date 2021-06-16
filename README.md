@@ -11,6 +11,7 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 - Använd `rbenv local` för att få igång Ruby-version som fungar på M1. Kanske måste installera om cocoapods och ffi efter ändring av ruby-version.
 - `npm install -g @ionic/cli`
 - `npm start` eller `ionic serve`
+- Bygg på XCode med Intelprocessor pga får Firebase-pods-problem på M1.
 
 ### Random kommandon
 
