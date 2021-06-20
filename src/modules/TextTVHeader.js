@@ -5,7 +5,7 @@ const TextTVHeader = (props) => {
   const { title = "TextTV.nu", buttonsEnd, children } = props;
 
   return (
-    <IonHeader className="texttv-hide-smallest-screens">
+    <IonHeader>
       <IonToolbar color="primary">
         <IonTitle>
           <Logo className="texttv-logo" />

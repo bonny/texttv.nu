@@ -4,6 +4,9 @@
 
 ## Blandat Todo
 
+- Byt tillbaka till native pull-to-refresh igen
+- Dela-knappen: lägga lite tydligare
+- Uppdatera Capacitor till 3 https://capacitorjs.com/docs/updating/3-0
 - Går bara att redigera favoriter en gång, om man på stor skärm klickar utanför modalen för att stänga.
 - Iphone SE: header syns inte, går inte byta segment på nyast t.ex.
 - [ ] Scrollproblem
@@ -75,3 +78,5 @@
   - [x] synlig på andra sidor än den man är på
   - [x] synlig när man redigerar favoriter
 - [x] kolla att admob är korrekt ihopkopplat https://mail.google.com/mail/u/0/#all/FMfcgxwLsKBxCKFJdmLGTZqkWbJBzGzq
+- [x] ta bort texttv-hide-smallest-screens pga blir konstiga marginaler, bättre utseende på Iphone SE/mindre kollapsat
+- [ ] 
