@@ -4,15 +4,9 @@
 
 ## Blandat Todo
 
-- Byt tillbaka till native pull-to-refresh igen
-- Dela-knappen: lägga lite tydligare
-- Uppdatera Capacitor till 3 https://capacitorjs.com/docs/updating/3-0
-- Går bara att redigera favoriter en gång, om man på stor skärm klickar utanför modalen för att stänga.
-- Iphone SE: header syns inte, går inte byta segment på nyast t.ex.
-- [ ] Scrollproblem
-  - [ ] Fysisk Iphone 8 svårt att scrolla
-  - [x] Går scrolla på fysisk Ipad mini
-  - [/] Installera på fysisk enhet och testa om samma problem finns där
+- [ ] Testa på olika iphones + android
+- [ ] Ta bort debug logs
+- [ ] Uppdatera Capacitor till 3 https://capacitorjs.com/docs/updating/3-0
 - [ ] Ibland när man går till sida får man direkt en uppdatering-finns-notis, klickar man ladda om känns det som att sidan faktiskt inte fått en uppdatering... anrop från tidigare sida som är kvar eller nåt? sätt nån unmounted-flagga eller nåt.
 - [ ] Lägg till statistik till Firebase
   - [ ] Sida visas, ange "source" via param så alla får samma "huvud-event"
@@ -28,6 +22,7 @@
 
 ## Kanske till nästa uppdatering
 
+- [ ] Dela-knappen: lägga lite tydligare
 - [ ] Breadcrumb, API-baserad
 - [ ] Nav-knappar längst ner för föregående/nästa sida. Kanske num-input i mitten?
 - [ ] Genvägar till samma sidor som svt.se/text-tv har, så användare känner igen sig.
@@ -79,4 +74,10 @@
   - [x] synlig när man redigerar favoriter
 - [x] kolla att admob är korrekt ihopkopplat https://mail.google.com/mail/u/0/#all/FMfcgxwLsKBxCKFJdmLGTZqkWbJBzGzq
 - [x] ta bort texttv-hide-smallest-screens pga blir konstiga marginaler, bättre utseende på Iphone SE/mindre kollapsat
-- [ ] 
+- [x] Iphone SE: header syns inte, går inte byta segment på nyast t.ex.
+- [x] Byt tillbaka till native pull-to-refresh igen
+- [x] Går bara att redigera favoriter en gång, om man på stor skärm klickar utanför modalen för att stänga.
+- [x] Scrollproblem
+  - [x] Fysisk Iphone 8 svårt att scrolla
+  - [x] Går scrolla på fysisk Ipad mini
+  - [x] Installera på fysisk enhet och testa om samma problem finns där
