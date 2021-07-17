@@ -1,6 +1,7 @@
 import { IonItem, IonLabel } from "@ionic/react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { logPageView } from "../functions";
 require("dayjs/locale/sv");
 
 dayjs.locale("sv");
@@ -16,6 +17,7 @@ const ListItem = (props) => {
       detail
       onClick={(e) => {
         e.preventDefault();
+        logPageView(page.page_num, "latest_or_most_read");
         history.push(link);
       }}
       href={link}

@@ -1,5 +1,5 @@
 const favoriter = [
-  { title: "Hem/Favoriter", href: "/hem" },
+  { title: "Hem/Favoriter", href: "/hem", isHome: true },
   { title: "SVT Text Start", pages: "100" },
   { title: "Inrikesnyheter", pages: "101-103" },
   { title: "Utrikesnyheter", pages: "104-105" },

@@ -10,6 +10,7 @@ import {
   getNearestLink,
   hidePageUpdatedToasts,
   sendStats,
+  logPageView,
 } from "../functions";
 import SkeletonTextTVPage from "../modules/SkeletonTextTVPage";
 
@@ -42,11 +43,15 @@ const TextTVPage = (props) => {
       href = `/${href}`;
     }
 
+    // Also keep version of href without / for stats.
+    const linkPageNum = href.replaceAll("/", "");
+
     // Göm ev synliga toasts.
     // TODO: göm toast via state och inte via query selector + api method
     hidePageUpdatedToasts();
 
-    // const timestamp = Date.now();
+    logPageView(linkPageNum, "click");
+
     const fullUrl = `/sidor${href}`;
     history.push(fullUrl);
   };

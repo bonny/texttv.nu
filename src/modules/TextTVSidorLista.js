@@ -11,7 +11,7 @@ import { useContext, useState } from "react";
 import { favoriter } from "./favoriter";
 import { RedigeraFavoriter } from "./RedigeraFavoriter";
 import { FavoritesContext } from "../contexts/FavoritesContext";
-import { saveFavorites } from "../functions";
+import { saveFavorites, logPageView } from "../functions";
 
 const TextTVSidorLista = (props) => {
   const { history } = props;
@@ -42,6 +42,7 @@ const TextTVSidorLista = (props) => {
                   button
                   detail
                   onClick={() => {
+                    logPageView(pageNum, "menu_pages_favorites");
                     history.push(url);
                   }}
                   key={pageNum}
@@ -83,6 +84,7 @@ const TextTVSidorLista = (props) => {
               detail
               onClick={(e) => {
                 e.preventDefault();
+                logPageView(page.isHome ? "home" : pages, "menu_pages");
                 history.push(url);
               }}
               key={url}
