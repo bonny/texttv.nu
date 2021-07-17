@@ -57,10 +57,10 @@ function PageDebug(props) {
     }
     AdMob.showBanner(adoptions).then(
       (value) => {
-        console.log("showBanner ok", value); // true
+        // showBanner ok
       },
       (error) => {
-        console.error("showbanner err", error); // show error
+        // showbanner error
       }
     );
   };

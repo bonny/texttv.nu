@@ -22,13 +22,13 @@ if (isPlatform("hybrid")) {
   try {
     AdMob.initialize()
       .then(() => {
-        // console.log("AdMob init ok");
+        // AdMob init ok.
       })
       .catch((e) => {
-        // console.log("AdMob init catch", e);
+        // AdMob init catch.
       });
   } catch (e) {
-    // console.log("got error when trying to init admob", e);
+    // AdMob init error.
   }
 
   SplashScreen.hide();
@@ -90,7 +90,7 @@ function TextTVApp(props) {
         );
       });
     } catch (e) {
-      // console.log("admob got error when trying to show banner");
+      // AdMob got error when trying to show banner.
     }
   }, []);
 

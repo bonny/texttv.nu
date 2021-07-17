@@ -104,10 +104,7 @@ const handleOpenLinkInBrowser = (pageData, pageNum) => {
  */
 const handleShare = async (e, pageData, pageNum) => {
   const pageIdsString = getPageIdsFromPageData(pageData);
-
-  // Permalänk.
   const permalink = `https://www.texttv.nu/${pageNum}/arkiv/sida/${pageIdsString}`;
-  console.log("permalink", permalink);
 
   // Titel + ev. text från första sidan.
   const firstPage = pageData[0];
@@ -377,19 +374,8 @@ function createMarkupForPage(page) {
 }
 
 function isValidHit(el) {
-  // console.log("isValidHit", el.nodeName);
-  //return el && el.webkitMatchesSelector("aside");
   return el && el.nodeName === "A";
 }
-
-// function drawDot(parent, x, y) {
-//   // console.log(parent, x, y);
-//   var dot = document.createElement("b");
-//   dot.setAttribute("style", "top: " + y + "px; left: " + x + "px;");
-//   //    dot.style.top = y + 'px';
-//   //    dot.style.left = x + 'px';
-//   parent.appendChild(dot);
-// }
 
 function hitTest(x, y) {
   var element,
@@ -401,16 +387,10 @@ function hitTest(x, y) {
 
   var i = 0;
 
-  // if (debug) {
-  //   var dotParent = document.createElement("div");
-  //   dotParent.classList.add("dot-container");
-  // }
-
   while (!element) {
     i = i + 3;
 
     if (i > 40) {
-      // console.log("seat belt!");
       break;
     }
 
@@ -445,32 +425,17 @@ function hitTest(x, y) {
 
     var foundPoints = points.find(pointsSome);
     if (foundPoints) {
-      // console.log("foundPoints", foundPoints);
       element = document.elementFromPoint.apply(document, foundPoints);
     }
-
-    // if (elem) {
-    //   element = hit;
-    // }
   }
-
-  // if (debug) {
-  //   var section = document.querySelector("ion-app");
-  //   if (dotParent && section) section.appendChild(dotParent);
-  // }
 
   return element;
 }
 
 const pointsSome = function (coordinates) {
   var hit = document.elementFromPoint.apply(document, coordinates);
-  // if (debug) {
-  //   drawDot(dotParent, coordinates[0], coordinates[1]);
-  // }
-  if (isValidHit(hit)) {
-    //element = hit;
-    // console.log("valid hit", hit);
 
+  if (isValidHit(hit)) {
     return hit;
   }
 

@@ -4,8 +4,6 @@
 
 ## Blandat Todo
 
-- [ ] Testa på olika iphones + android
-- [ ] Ta bort debug logs
 - [ ] Uppdatera Capacitor till 3 https://capacitorjs.com/docs/updating/3-0
 - [ ] Ibland när man går till sida får man direkt en uppdatering-finns-notis, klickar man ladda om känns det som att sidan faktiskt inte fått en uppdatering... anrop från tidigare sida som är kvar eller nåt? sätt nån unmounted-flagga eller nåt.
 - [ ] Lägg till statistik till Firebase
@@ -81,3 +79,4 @@
   - [x] Fysisk Iphone 8 svårt att scrolla
   - [x] Går scrolla på fysisk Ipad mini
   - [x] Installera på fysisk enhet och testa om samma problem finns där
+- [x] Ta bort debug logs

@@ -20,13 +20,7 @@ function PageTestTextTVSida(props) {
       return;
     }
 
-    console.log("set from urlPageNum", { urlPageNum });
-
     setPageNum(urlPageNum);
-
-    return () => {
-      console.log("cleanup", { urlPageNum });
-    };
   }, [urlPageNum]);
 
   const handleClickNextPageProps = (e) => {
@@ -38,8 +32,6 @@ function PageTestTextTVSida(props) {
     const nextPageURL = `/test/texttvsida/${nextPageNum}`;
     history.push(nextPageURL);
   };
-
-  console.log("render", { urlPageNum }, { pageNum }, { refreshTime });
 
   // const classes = classNames({
   //   "TextTVPage--isLoading": pageIsLoading,

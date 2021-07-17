@@ -21,19 +21,6 @@ const TextTVPage = (props) => {
   const [pageIsLoading, setPageIsLoading] = useState(false);
   const [pageIsDoneLoading, setPageIsDoneLoading] = useState(false);
 
-  // useIonViewWillEnter(() => {
-  //   console.log("subtextpage ionViewWillEnter", pageNum);
-  // });
-
-  // useIonViewWillLeave(() => {
-  //   console.log("subtextpage ionViewWillLeave", pageNum);
-  // });
-
-  // useIonViewWillLeave(() => {
-  //   const pageNumYo = pageNum;
-  //   console.log("useIonViewWillLeave", pageNum, pageNumYo);
-  // });
-
   // Leta upp närmaste länk, om någon, vid klick nånstans på sidan,
   // och gå till den länken.
   const handleClick = (e) => {
@@ -104,7 +91,7 @@ const TextTVPage = (props) => {
           sendStats(pageData, "view");
         })
         .catch((fetchErr) => {
-          console.log("Fel vid hämtning av sida:", fetchErr);
+          // Fel vid hämtning av sida.
         });
     }
 

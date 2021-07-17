@@ -128,10 +128,6 @@ const PageTextTV = (props) => {
       return;
     }
 
-    console.log(
-      `Sida ${pageNum} dvs hem visas pga view enter med refreshTime ${refreshTime}, match.path ${match.path}. Ladda in sidan/sidorna, börja leta efter uppdateringar.`
-    );
-
     updateRefreshTime();
   }, [pageNum, pageId, refreshTime, match.path]);
 
@@ -151,18 +147,6 @@ const PageTextTV = (props) => {
         showToast: false,
       };
     });
-  }, [pageNum, pageId, refreshTime]);
-
-  useEffect(() => {
-    console.log(
-      `Sida ${pageNum} visas med refreshTime ${refreshTime}. Ladda in sidan/sidorna, börja leta efter uppdateringar.`
-    );
-
-    return function cleanup() {
-      console.log(
-        `Sida ${pageNum} visas inte längre eller komponenten har monterats av. Sluta leta efter uppdateringar.`
-      );
-    };
   }, [pageNum, pageId, refreshTime]);
 
   /**
@@ -227,27 +211,14 @@ const PageTextTV = (props) => {
       // Kolla inte heller efter uppdatering om toast för uppdatering
       // har visats för denna sida redan.
       if (isHiddenPage) {
-        // console.log(
-        //   `${pageNum} är inte synlig, så kollar inte efter uppdatering`
-        // );
+        // `${pageNum} är inte synlig, så kollar inte efter uppdatering`
         doCheckForUpdate = false;
       } else if (pageUpdatedToastState.toastDismissed) {
-        // console.log(
-        //   `${pageNum} har redan kollats efter uppdatering och användare tryckte på cancel i toast, så kollar inte mer efter uppdatering`
-        // );
+        // `${pageNum} har redan kollats efter uppdatering och användare tryckte på cancel i toast, så kollar inte mer efter uppdatering`
         doCheckForUpdate = false;
       } else {
-        // console.log(
-        //   `${pageNum} är synlig, så letar efter uppdatering av sidan, via url ${url}`
-        // );
+        // `${pageNum} är synlig, så letar efter uppdatering av sidan, via url ${url}`
       }
-
-      console.log(
-        "checkForUpdate",
-        { pageNum },
-        { refreshTime },
-        { doCheckForUpdate }
-      );
 
       if (!doCheckForUpdate) {
         return;
@@ -290,9 +261,7 @@ const PageTextTV = (props) => {
       // och då kan en uppdatering som finns gälla föregående sida.
       const isHiddenPageAfterFetch = closestIonPage.matches(".ion-page-hidden");
       if (isHiddenPageAfterFetch) {
-        console.log(
-          "sidan som har en uppdatering är inte längre den aktiva, så visa inte toast"
-        );
+        // Sidan som har en uppdatering är inte längre den aktiva, så visa inte toast".
         return;
       }
 
@@ -334,8 +303,6 @@ const PageTextTV = (props) => {
   }, [pageTitle]);
 
   const stopCheckForUpdates = ({ reason }) => {
-    console.log(reason, pageNum);
-
     clearInterval(checkForUpdateIntervalId.current);
   };
 
