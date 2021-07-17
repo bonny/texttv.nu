@@ -8,7 +8,7 @@ dayjs.locale("sv");
 dayjs.extend(relativeTime);
 
 const ListItem = (props) => {
-  const { link, page, history } = props;
+  const { link, page, history, listingType } = props;
   const dayJsFromNow = dayjs(page.date_added_unix * 1000).fromNow(true);
 
   return (
@@ -17,7 +17,7 @@ const ListItem = (props) => {
       detail
       onClick={(e) => {
         e.preventDefault();
-        logPageView(page.page_num, "latest_or_most_read");
+        logPageView(page.page_num, listingType);
         history.push(link);
       }}
       href={link}
@@ -35,7 +35,7 @@ const ListItem = (props) => {
 
 const PagesListing = (props) => {
   // linkto = pagenum | pageid
-  const { pages, history, linkTo = "pagenum" } = props;
+  const { pages, history, linkTo = "pagenum", listingType } = props;
   // Om sökväg är t.ex "/sidor/100" så ger detta "sidor".
   const firstPathName = history.location.pathname
     .split("/")
@@ -73,9 +73,10 @@ const PagesListing = (props) => {
         page={page}
         key={page.id}
         passedHistory={history}
+        listingType={listingType}
       />
     );
   });
 };
 
-export default PagesListing;
+export { PagesListing };

@@ -5,20 +5,10 @@
 ## Blandat Todo
 
 - [ ] Uppdatera Capacitor till 3 https://capacitorjs.com/docs/updating/3-0
-- [ ] Lägg till statistik till Firebase
-  - [ ] Sida visas, ange "source" via param så alla får samma "huvud-event"
-    - [x] när sida gås till via "sök"-rutan/gå till-input
-    - [x] när sida visas via klick
-    - [x] när sida gås till via meny/sidor
-    - [ ] när man byter flik
-    - [/] när man går till sida på nyast/när man går till sida på mest läst
-      - [ ] klart men man måste se om det var nyast eller mest läst
-  - [x] när man väljer att redigera favoriter
-  - [x] när man sparar favoriter
-  - [x] vilka favoriter man sparar?
 
 ## Kanske till nästa uppdatering
 
+- [ ] Om inget internet finns (eller tar lång tid) så fastnar laddningen på skeleton och inget ytterligare feedback kommer.
 - [ ] Ibland när man går till sida får man direkt en uppdatering-finns-notis, klickar man ladda om känns det som att sidan faktiskt inte fått en uppdatering... anrop från tidigare sida som är kvar eller nåt? sätt nån unmounted-flagga eller nåt.
 - [ ] Dela-knappen: lägga lite tydligare
 - [ ] Breadcrumb, API-baserad
@@ -80,3 +70,14 @@
   - [x] Går scrolla på fysisk Ipad mini
   - [x] Installera på fysisk enhet och testa om samma problem finns där
 - [x] Ta bort debug logs
+- [x] Lägg till statistik till Firebase
+  - [x] Sida visas, ange "source" via param så alla får samma "huvud-event"
+    - [x] när sida gås till via "sök"-rutan/gå till-input
+    - [x] när sida visas via klick
+    - [x] när sida gås till via meny/sidor
+    - [ ] när man byter flik
+    - [x] när man går till sida på nyast/när man går till sida på mest läst
+      - [x] klart men man måste se om det var nyast eller mest läst
+  - [x] när man väljer att redigera favoriter
+  - [x] när man sparar favoriter
+  - [x] vilka favoriter man sparar?

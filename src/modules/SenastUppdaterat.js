@@ -1,7 +1,7 @@
 import { IonList } from "@ionic/react";
 import { useEffect, useState } from "react";
 import SkeletonList from "./SkeletonList";
-import PagesListing from "./PagesListing";
+import { PagesListing } from "./PagesListing";
 
 const SenastUppdateradeLista = (props) => {
   const { type = "news", history, refreshTime, count = 15 } = props;
@@ -56,7 +56,9 @@ const SenastUppdateradeLista = (props) => {
     };
   }, [type, count, refreshTime]);
 
-  const Pages = <PagesListing pages={pages} history={history} />;
+  const Pages = (
+    <PagesListing pages={pages} history={history} listingType="latestUpdated" />
+  );
 
   return (
     <>

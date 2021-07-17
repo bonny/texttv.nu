@@ -1,7 +1,7 @@
 import { IonList } from "@ionic/react";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
-import PagesListing from "./PagesListing";
+import { PagesListing } from "./PagesListing";
 import SkeletonList from "./SkeletonList";
 
 const MestLastaLista = (props) => {
@@ -62,7 +62,12 @@ const MestLastaLista = (props) => {
   }, [day, count, refreshTime]);
 
   const Pages = (
-    <PagesListing pages={pages} history={history} linkTo="pageid" />
+    <PagesListing
+      pages={pages}
+      history={history}
+      linkTo="pageid"
+      listingType="mostRead"
+    />
   );
 
   let Knastext = null;
