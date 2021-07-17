@@ -520,6 +520,28 @@ function getTabHeight() {
   return tabHeight;
 }
 
+/**
+ * Logga en sidvisning.
+ *
+ * @param pageNum
+ * @param type Varifrån sidvisningen kommer, t.ex. "manually" om man angivit den manuellt i sökruta/inputruta.
+ */
+function logPageView(pageNum, source) {
+  if (!pageNum || !source) {
+    return;
+  }
+
+  try {
+    FirebaseAnalytics.logEvent({
+      name: "go_to_page",
+      params: {
+        source: source,
+        page_num: pageNum,
+      },
+    });
+  } catch (e) {}
+}
+
 export {
   getPageRangeInfo,
   getCacheBustTimeString,
@@ -547,4 +569,5 @@ export {
   saveFavorites,
   FAVORITES_DEFAULT_PAGES,
   getTabHeight,
+  logPageView,
 };

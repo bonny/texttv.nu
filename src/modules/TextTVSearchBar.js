@@ -1,5 +1,5 @@
 import { IonSearchbar } from "@ionic/react";
-import { FirebaseAnalytics } from "../analytics";
+import { logPageView } from "../functions";
 
 /**
  * "Sökruta"/gå-till-sida-input som ska ligga i IonHeader > IonToolbar.
@@ -23,15 +23,7 @@ const TextTVSearchBar = (props) => {
       elm.blur();
     });
 
-    try {
-      FirebaseAnalytics.logEvent({
-        name: "go_to_page",
-        params: {
-          type: "manually",
-          page_num: pageNum,
-        },
-      });
-    } catch (e) {}
+    logPageView(pageNum, "manually");
   };
 
   return (
