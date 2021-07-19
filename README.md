@@ -4,6 +4,8 @@ Här bygger vi [iOS appen](https://itunes.apple.com/se/app/texttv.nu/id607998045
 
 [Android-appen för SVT Text TV](https://play.google.com/store/apps/details?id=com.mufflify.TextTVnu&hl=sv) är också rätt så baserad på denna kod också.
 
+![Skärmdump som visar hur appen ser ut](https://raw.githubusercontent.com/bonny/texttv.nu/main/src/images/text-tv-app-2019-sk%C3%A4rmdump.png)
+
 Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka in förbättringsförslag.
 
 ## Kom igång
@@ -19,15 +21,20 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 - `npx cap sync` (borde göra samma sak som ovan men verkar göra med, t.ex. köra pod update för mig)
 - `capacitor open android`
 
-## Ny app 2019 🎉
-
-För att fira att SVT Text TV fyllt 40 år så håller vi (långsamt...) på att ta fram en ny app. Du kan tjyvkika på den här:
-
-https://app.texttv.nu/
-
-![Skärmdump som visar hur nya appen för SVT Text TV ungefär kommer se ut](https://raw.githubusercontent.com/bonny/texttv.nu/main/src/images/text-tv-app-2019-sk%C3%A4rmdump.png)
-
 ### Nyheter i nya text-tv-appen
+
+#### Version 3.1 (juli 2021)
+
+- @HERE: sammanfatta finare vad som är nytt
+- Diverse smått och gott (T.ex. uppdaterade NPM-paket).
+- Snabbare navigation mellan sidor (t.ex. inga jobbiga animationer).
+- Bättre logik och känsla när man går tillbaka i historiken och när man klickar på en flik (går till flikens "start" istället för senast besökta sida på fliken)
+- Startsidan/hemsidan laddas nu om när du trycker på fliken i navigationen (ett snabbt och smart sätt att ladda om dina favoriter).
+- Sidnummer visas nu i listan på nyaste sidorna och på mest lästa sidorna.
+- Färgerna är mer korrekt nu (se gärna sidan https://texttv.nu/777 för exempel på färger och grafik!)
+- Mer konsekvent navigation, Tillbaka-knapp och "Gå till sida"-input finns nu även på "Nyast" och "Mest läst", så navigationen blir mer konsekvent.
+- Meddelande om att det finns en uppdatering av sidan visas mer korrekt. Den var lite väl tjatig förut...
+- Meddelande om att sidan har en uppdatering skriver även ut sidnumret, så du vet vilken av dina favoritsidor som faktiskt fått en uppdatering.
 
 #### Version 3.0.2 (25 feb 2020)
 
