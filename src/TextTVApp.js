@@ -20,7 +20,10 @@ const { SplashScreen, AdMob, StatusBar } = Plugins;
 // https://ionicframework.com/docs/react/platform
 if (isPlatform("hybrid")) {
   try {
-    AdMob.initialize()
+    AdMob.initialize({
+      initializeForTesting: true,
+      testingDevices: ["20639CA0A77ABBB0C705B559536A5046"],
+    })
       .then(() => {
         // AdMob init ok.
       })
@@ -77,9 +80,16 @@ function TextTVApp(props) {
     try {
       AdMob.showBanner(adMobAdOptions).then();
 
+      // https://developers.google.com/admob/android/ad-load-errors
+      AdMob.addListener("onAdFailedToLoad", (err) => {
+        console.log("onAdFailedToLoad", JSON.stringify(err));
+      });
+
       // Callback när en annons visas. size = object med bredd och höjd, ca såhär:
       // {"width":375,"height":50}
       AdMob.addListener("onAdSize", (size) => {
+        console.log("admob onadsize", JSON.stringify(size));
+
         if (!size || !size.height) {
           return;
         }

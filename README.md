@@ -26,7 +26,10 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 #### Version 3.1 (juli 2021)
 
 - @HERE: sammanfatta finare vad som är nytt
-- TODO: testa att annonser fungerar på fysiska enheter
+- TODO:
+  - testa att annonser fungerar på fysiska enheter
+  - share fungerar en på android
+  - annonser syns ej på android
 - Diverse smått och gott (T.ex. uppdaterade NPM-paket).
 - Snabbare navigation mellan sidor (t.ex. inga jobbiga animationer).
 - Bättre logik och känsla när man går tillbaka i historiken och när man klickar på en flik (går till flikens "start" istället för senast besökta sida på fliken)
