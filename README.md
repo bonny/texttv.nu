@@ -13,7 +13,8 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 - Använd `rbenv local` för att få igång Ruby-version som fungar på M1. Kanske måste installera om cocoapods och ffi efter ändring av ruby-version.
 - `npm install -g @ionic/cli`
 - `npm start` eller `ionic serve`
-- Bygg på XCode med Intelprocessor pga får Firebase-pods-problem på M1.
+- Ios: Bygg på XCode med Intelprocessor pga får Firebase-pods-problem på M1.
+- Android: Bygg i Android Studio med intelprocessor pga emulator fungerar ännu inte på M1.
 
 ### Random kommandon
 
@@ -30,9 +31,8 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
   - [ ] share fungerar en på android
   - [ ] kolla att URLar fungerar att öppna i appen
   - [ ] testa att annonser fungerar på iphone/ios
-  - [x] annonser syns ej på android - fungerar nu!
+  - [ ] annonser syns ej på android - fungerar nu!
   - [ ] uppdatera version
-  - [ ] ta bort gamla paket för admob osv.
   - [ ] lägga till 401 som standard för favoriter
   - [ ] skriv changelog/vad är nytt
   - [ ] bygg till ios + ladda till app store
