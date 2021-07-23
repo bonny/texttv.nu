@@ -1,10 +1,8 @@
 // Must import the package once to make sure the web support initializes
-import "@capacitor-community/firebase-analytics";
-import { Plugins } from "@capacitor/core";
+// import "@capacitor-community/firebase-analytics";
+import { FirebaseAnalytics } from "@capacitor-community/firebase-analytics";
 import "firebase/analytics";
 import { isRunningInWebBrowser } from "./functions";
-
-const { FirebaseAnalytics } = Plugins;
 
 if (isRunningInWebBrowser()) {
   // Konfig för web. När app körs sätts dessa via app/capacitor tror jag.

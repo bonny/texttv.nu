@@ -1,4 +1,3 @@
-import { Plugins } from "@capacitor/core";
 import {
   IonCard,
   IonCardContent,
@@ -15,7 +14,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { TextTVPage } from "../modules/TextTVPage";
-const { AdMob } = Plugins;
+import { AdMob } from '@capacitor-community/admob';
 
 function PageDebug(props) {
   let adMobAdOptionsNewAd = {

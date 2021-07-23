@@ -1,4 +1,3 @@
-import { Plugins } from "@capacitor/core";
 import {
   IonAlert,
   IonButton,
@@ -21,7 +20,7 @@ import {
 import { add, close } from "ionicons/icons";
 import { useEffect, useState } from "react";
 import { FirebaseAnalytics } from "../analytics";
-const { AdMob } = Plugins;
+import { AdMob } from "@capacitor-community/admob";
 
 const RedigeraFavoriter = (props) => {
   const { isOpen, pages, handleSaveModal, handleCancelModal } = props;

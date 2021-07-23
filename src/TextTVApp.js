@@ -1,4 +1,3 @@
-import { Plugins, StatusBarStyle } from "@capacitor/core";
 import "@ionic/core/css/core.css";
 import "@ionic/core/css/ionic.bundle.css";
 import { IonApp, IonSplitPane, isPlatform } from "@ionic/react";
@@ -13,7 +12,10 @@ import { Navigationsflikar } from "./modules/Navigationsflikar";
 import { MenuWithRouter } from "./modules/SideMenu";
 import { adMobAdOptions } from "./options";
 
-const { SplashScreen, AdMob, StatusBar } = Plugins;
+import { AdMob } from "@capacitor-community/admob";
+
+import { StatusBar, Style } from "@capacitor/status-bar";
+import { SplashScreen } from "@capacitor/splash-screen";
 
 // Initiera saker på en Ios eller Android-enhet.
 // Hybrid = "a device running Capacitor or Cordova".
@@ -37,7 +39,7 @@ if (isPlatform("hybrid")) {
   SplashScreen.hide();
 
   StatusBar.setStyle({
-    style: StatusBarStyle.Dark,
+    style: Style.Dark,
   });
 }
 

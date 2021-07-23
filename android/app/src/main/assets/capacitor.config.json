@@ -1,11 +1,11 @@
 {
-  "appId": "com.mufflify.TextTVnu",
-  "appName": "TextTV.nu",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "build",
-  "SplashScreen": {
-    "showSpinner": true,
-    "backgroundColor": "#ff0000"
-  }
+	"appId": "com.mufflify.TextTVnu",
+	"appName": "TextTV.nu",
+	"bundledWebRuntime": false,
+	"npmClient": "npm",
+	"webDir": "build",
+	"SplashScreen": {
+		"showSpinner": true,
+		"backgroundColor": "#ff0000"
+	}
 }

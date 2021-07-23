@@ -19,8 +19,8 @@ public class MainActivity extends BridgeActivity {
       // Additional plugins you've installed go here
       // Ex: add(TotallyAwesomePlugin.class);
 
-      // Add AdMob as a Capacitor Plugin
-      add(com.getcapacitor.community.admob.AdMob.class);
+      // Add AdMob as a Capacitor Plugin.
+      registerPlugin(com.getcapacitor.community.admob.AdMob.class);
 
       // Add Capacitor Firebase analytics plugin
       add(FirebaseAnalytics.class);

@@ -1,11 +1,11 @@
 /**
  * Hjälpare.
  */
-import { Plugins, Share } from "@capacitor/core";
+import { Share } from "@capacitor/share";
+import { Clipboard } from "@capacitor/clipboard";
+import { Storage } from "@capacitor/storage";
 import { isPlatform } from "@ionic/react";
 import { FirebaseAnalytics } from "./analytics";
-
-const { Clipboard, Storage } = Plugins;
 
 const handleCopyTextToClipboard = (pageData, pageNum) => {
   const pageRangeInfo = getPageRangeInfo(pageNum);

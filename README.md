@@ -28,9 +28,12 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 - @HERE: sammanfatta finare vad som är nytt
 - TODO:
   - [ ] share fungerar en på android
-  - testa att annonser fungerar på iphone/ios
+  - [ ] kolla att URLar fungerar att öppna i appen
+  - [ ] testa att annonser fungerar på iphone/ios
   - [x] annonser syns ej på android - fungerar nu!
   - [ ] uppdatera version
+  - [ ] ta bort gamla paket för admob osv.
+  - [ ] lägga till 401 som standard för favoriter
   - [ ] skriv changelog/vad är nytt
   - [ ] bygg till ios + ladda till app store
   - [ ] när okej till ios bygg + publicera till android/play store
