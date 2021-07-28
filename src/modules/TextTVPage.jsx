@@ -44,7 +44,7 @@ const TextTVPage = (props) => {
     }
 
     // Also keep version of href without / for stats.
-    const linkPageNum = href.replaceAll("/", "");
+    const linkPageNum = href.replace(/\//g, "");
 
     // Göm ev synliga toasts.
     // TODO: göm toast via state och inte via query selector + api method
