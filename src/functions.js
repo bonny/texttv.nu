@@ -470,7 +470,7 @@ function isRunningInWebBrowser() {
   return !isPlatform("ios") && !isPlatform("android");
 }
 
-const FAVORITES_DEFAULT_PAGES = ["100", "300", "700"];
+const FAVORITES_DEFAULT_PAGES = ["100", "300", "401", "700"];
 
 /**
  * @async
