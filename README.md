@@ -28,10 +28,11 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 - @HERE: sammanfatta finare vad som är nytt
 - TODO:
-  - [ ] share fungerar en på android
+  - [x] favoriter är tomma när man startar på android
+  - [x] share fungerar ej på android
+  - [x] annonser syns ej på android
   - [ ] kolla att URLar fungerar att öppna i appen
   - [ ] testa att annonser fungerar på iphone/ios
-  - [ ] annonser syns ej på android - fungerar nu!
   - [ ] uppdatera version
   - [ ] lägga till 401 som standard för favoriter
   - [ ] skriv changelog/vad är nytt

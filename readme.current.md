@@ -9,6 +9,7 @@
 ## Kanske till nästa uppdatering
 
 - [ ] Om inget internet finns (eller tar lång tid) så fastnar laddningen på skeleton och inget ytterligare feedback kommer.
+- [ ] Kopiera sida som bild, ta med diskret vattenmärkning.
 - [ ] Ibland när man går till sida får man direkt en uppdatering-finns-notis, klickar man ladda om känns det som att sidan faktiskt inte fått en uppdatering... anrop från tidigare sida som är kvar eller nåt? sätt nån unmounted-flagga eller nåt.
 - [ ] Dela-knappen: lägga lite tydligare
 - [ ] Breadcrumb, API-baserad
