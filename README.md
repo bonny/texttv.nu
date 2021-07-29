@@ -27,14 +27,19 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 #### Version 3.1 (juli 2021)
 
 - @HERE: sammanfatta finare vad som är nytt
+- Större sammanfattning för Android pga mer som är nytt, t.ex. tillbaka-knapp fungerar osv.
 - TODO:
   - [x] favoriter är tomma när man startar på android
   - [x] share fungerar ej på android
   - [x] annonser syns ej på android
+  - [x] Eget nytt annons-id för Android - sätt annons-id baserat på app (Ios el. Android)
+  - [ ] api 27: 
+    - [x] klicka på länkar fungerar ej
+    - [ ] sidor blir för korta, går ej att scrolla förbi annonsen för att se all text
   - [ ] kolla att URLar fungerar att öppna i appen
   - [ ] testa att annonser fungerar på iphone/ios
   - [ ] uppdatera version
-  - [ ] lägga till 401 som standard för favoriter
+  - [x] lägga till 401 som standard för favoriter
   - [ ] skriv changelog/vad är nytt
   - [ ] bygg till ios + ladda till app store
   - [ ] när okej till ios bygg + publicera till android/play store
