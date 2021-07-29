@@ -91,6 +91,10 @@ function TextTVApp(props) {
       // AdMob.addListener("onAdFailedToLoad", (err) => {
       //   console.log("onAdFailedToLoad", JSON.stringify(err));
       // });
+      AdMob.addListener(BannerAdPluginEvents.FailedToLoad, (err) => {
+        console.log("admob FailedToLoad");
+        console.log(JSON.stringify(err));
+      });
 
       // Callback när en annons visas. size = object med bredd och höjd, ca såhär:
       // {"width":375,"height":50}
@@ -98,8 +102,6 @@ function TextTVApp(props) {
         if (!size || !size.height) {
           return;
         }
-
-        console.log(`admob got resize height ${size.height}`);
 
         document.documentElement.style.setProperty(
           "--text-tv-ad-height",
