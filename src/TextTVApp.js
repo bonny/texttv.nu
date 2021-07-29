@@ -10,10 +10,8 @@ import "./css/theme.css";
 import { getTabHeight, loadFavorites } from "./functions";
 import { Navigationsflikar } from "./modules/Navigationsflikar";
 import { MenuWithRouter } from "./modules/SideMenu";
-import { adMobAdOptions } from "./options";
-
+import { adMobAdOptions } from "./adMobAdOptions";
 import { AdMob } from "@capacitor-community/admob";
-
 import { StatusBar, Style } from "@capacitor/status-bar";
 import { SplashScreen } from "@capacitor/splash-screen";
 
