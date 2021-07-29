@@ -29,13 +29,10 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 - @HERE: sammanfatta finare vad som är nytt
 - Större sammanfattning för Android pga mer som är nytt, t.ex. tillbaka-knapp fungerar osv.
 - TODO:
-  - [x] favoriter är tomma när man startar på android
-  - [x] share fungerar ej på android
-  - [x] annonser syns ej på android
-  - [x] Eget nytt annons-id för Android - sätt annons-id baserat på app (Ios el. Android)
+  - [ ] uppdatera lyssnare osv för admob https://github.com/capacitor-community/admob
   - [ ] api 27: 
     - [x] klicka på länkar fungerar ej
-    - [ ] sidor blir för korta, går ej att scrolla förbi annonsen för att se all text
+    - [x] sidor blir för korta, går ej att scrolla förbi annonsen för att se all text (t.ex. pixel 2)
   - [ ] kolla att URLar fungerar att öppna i appen
   - [ ] testa att annonser fungerar på iphone/ios
   - [ ] uppdatera version
