@@ -1,4 +1,5 @@
 import { isPlatform } from "@ionic/react";
+import { BannerAdSize, BannerAdPosition, BannerAdPluginEvents, AdMobBannerSize } from '@capacitor-community/admob';
 
 const adIdIos = "ca-app-pub-1689239266452655/6481628543";
 const adIdAndroid = "ca-app-pub-1689239266452655/7602900801";
@@ -17,8 +18,8 @@ const adMobAdOptions = {
   // https://apps.admob.com/v2/apps/1859283602/adunits/list
   //adIdAndroid: "ca-app-pub-1689239266452655/7602900801",
   adId: adId,
-  adSize: "SMART_BANNER",
-  position: "BOTTOM_CENTER",
+  adSize: BannerAdSize.ADAPTIVE_BANNER,
+  position: BannerAdPosition.BOTTOM_CENTER,
   isTesting: false,
 };
 

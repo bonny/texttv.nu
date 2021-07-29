@@ -11,7 +11,14 @@ import { getTabHeight, loadFavorites } from "./functions";
 import { Navigationsflikar } from "./modules/Navigationsflikar";
 import { MenuWithRouter } from "./modules/SideMenu";
 import { adMobAdOptions } from "./adMobAdOptions";
-import { AdMob } from "@capacitor-community/admob";
+import {
+  AdMob,
+  BannerAdOptions,
+  BannerAdSize,
+  BannerAdPosition,
+  BannerAdPluginEvents,
+  AdMobBannerSize,
+} from "@capacitor-community/admob";
 import { StatusBar, Style } from "@capacitor/status-bar";
 import { SplashScreen } from "@capacitor/splash-screen";
 
@@ -81,18 +88,18 @@ function TextTVApp(props) {
       AdMob.showBanner(adMobAdOptions).then();
 
       // https://developers.google.com/admob/android/ad-load-errors
-      AdMob.addListener("onAdFailedToLoad", (err) => {
-        console.log("onAdFailedToLoad", JSON.stringify(err));
-      });
+      // AdMob.addListener("onAdFailedToLoad", (err) => {
+      //   console.log("onAdFailedToLoad", JSON.stringify(err));
+      // });
 
       // Callback när en annons visas. size = object med bredd och höjd, ca såhär:
       // {"width":375,"height":50}
-      AdMob.addListener("onAdSize", (size) => {
-        console.log("admob onadsize", JSON.stringify(size));
-
+      AdMob.addListener(BannerAdPluginEvents.SizeChanged, (size) => {
         if (!size || !size.height) {
           return;
         }
+
+        console.log(`admob got resize height ${size.height}`);
 
         document.documentElement.style.setProperty(
           "--text-tv-ad-height",
