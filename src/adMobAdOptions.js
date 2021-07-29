@@ -3,7 +3,6 @@ import { isPlatform } from "@ionic/react";
 const adIdIos = "ca-app-pub-1689239266452655/6481628543";
 const adIdAndroid = "ca-app-pub-1689239266452655/7602900801";
 const adId = isPlatform("android") ? adIdAndroid : adIdIos;
-console.log("admob adid is", adId);
 
 const adMobAdOptions = {
   // Banner: TextTV.nu IOS React App
