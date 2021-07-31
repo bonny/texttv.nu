@@ -9,7 +9,11 @@ const TextTVSearchBar = (props) => {
 
   const handlePageNumInputChange = (e) => {
     const target = e.target;
-    const pageNum = target.value;
+    let pageNum = target.value;
+
+    // Tillåt endast siffror.
+    pageNum = pageNum.replace(/\D/g, '');
+    target.value = pageNum;
 
     // Baila om vi inte har tre tecken, dvs. ett sidnummer.
     if (pageNum.length !== 3) {
@@ -29,8 +33,9 @@ const TextTVSearchBar = (props) => {
   return (
     <IonSearchbar
       placeholder="Gå till sida…"
-      type="number"
-      inputmode="numeric"
+      type="text"
+      inputmode="decimal"
+      pattern="\d*"
       showCancelButton="never"
       clearIcon={false}
       onIonChange={handlePageNumInputChange}
