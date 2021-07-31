@@ -30,10 +30,10 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 - Större sammanfattning för Android pga mer som är nytt, t.ex. tillbaka-knapp fungerar osv.
 - TODO:
   - [ ] uppdatera lyssnare osv för admob https://github.com/capacitor-community/admob
-  - [ ] api 27: 
+  - [ ] api 27:
     - [x] klicka på länkar fungerar ej
     - [x] sidor blir för korta, går ej att scrolla förbi annonsen för att se all text (t.ex. pixel 2)
-  - [ ] kolla att URLar fungerar att öppna i appen
+  - [x] kolla att URLar fungerar att öppna i appen, t.ex. sid 440
   - [ ] testa att annonser fungerar på iphone/ios
   - [ ] uppdatera version
   - [x] lägga till 401 som standard för favoriter

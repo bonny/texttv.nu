@@ -32,6 +32,14 @@ const TextTVPage = (props) => {
       return;
     }
 
+    // Om det inte är en sida utan t.ex. en vanlig länk
+    // så följer vi den som vanligt, dvs. låter sidan öppnas
+    // i enhetens webbläsare.
+    let target = link.getAttribute("target");
+    if (target && target === "_blank") {
+      return;
+    }
+
     // Följ inte länken eftersom vi pushar manuellt till history.
     e.preventDefault();
 
