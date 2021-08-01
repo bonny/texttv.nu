@@ -22,16 +22,46 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 - `npx cap sync` (borde göra samma sak som ovan men verkar göra med, t.ex. köra pod update för mig)
 - `capacitor open android`
 
+### Släppa ny version
+
+- Uppdatera version i `package.json`
+- Ios
+  - Lägg till ny version på [App Store Connect](https://appstoreconnect.apple.com/apps/607998045/appstore/).
+  - `$ ionic capacitor sync ios`.
+  - `$ ionic capacitor open ios` för att öppna Xcode.
+  - Uppdatera app-version i Xcode.
+- Android (inte testat helt ännu)
+  - I Android Studio: "Build => Generate Signed Bundle / APK”
+  - Skapa release via webben i Play Store
+  - https://developer.android.com/distribute/best-practices/launch/launch-checklist
+
 ### Nyheter i nya text-tv-appen
 
 #### Version 3.1 (juli 2021)
 
+*Vad är nytt Ios*
+
+Vi har pillat lite i koden för att göra text tv-appen lite bättre:
+
+- Navigation mellan sidor är nu snabbare.
+- Trycker du på hem-fliken nu så laddas favoriterna in på nytt. Ett snabbt och smart sätt att ladda om dina favoriter!
+- Sidnumret för en nyhet visas nu i listan på nyaste sidorna och på mest lästa sidorna.
+- Färgerna är mer korrekta nu (se gärna den galna tekniktestsidan 777 (https://texttv.nu/777) för exempel på färger och grafik!
+- Navigation är mer konsekvent. T.ex. så finns tillbaka-knappen och "Gå till sida"-rutan även på "Nyast" och "Mest läst".
+- Meddelande om att det finns en uppdatering av sidan visas mer korrekt. Den var lite väl tjatig förut...
+- ...och dessutom skriver meddelande om att sidan har en uppdatering även ut sidnumret numera, så du vet vilken av dina favoritsidor som faktiskt fått en uppdatering.
+- Blandade småfixar här och där för att göra appen allmänt trevligare att umgås med.
+
+Gillar du appen så ge oss gärna en positiv recension! Det hjälper andra användare att hitta appen och det gör oss väldigt glada :)
+
+Är det däremot något du inte gillar med appen så hör av dig till oss på kontakt@texttv.nu så kanske vi kan fixa det till nästa version!
+
+--- 
+
 - @HERE: sammanfatta finare vad som är nytt
 - Större sammanfattning för Android pga mer som är nytt, t.ex. tillbaka-knapp fungerar osv.
 - TODO:
-  - [ ] uppdatera lyssnare osv för admob https://github.com/capacitor-community/admob
-  - [ ] Tangentbord på ios borde bara visa siffror
-  - [ ] uppdatera version
+  - [ ] uppdatera version - ska bli 3.1
   - [ ] skriv changelog/vad är nytt
   - [ ] bygg till ios + ladda till app store
   - [ ] när okej till ios bygg + publicera till android/play store
