@@ -1,8 +1,14 @@
+import {
+  AdMob, BannerAdPluginEvents
+} from "@capacitor-community/admob";
+import { SplashScreen } from "@capacitor/splash-screen";
+import { StatusBar, Style } from "@capacitor/status-bar";
 import "@ionic/core/css/core.css";
 import "@ionic/core/css/ionic.bundle.css";
 import { IonApp, IonSplitPane, isPlatform } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { useEffect, useState } from "react";
+import { adMobAdOptions } from "./adMobAdOptions";
 import { FavoritesContext } from "./contexts/FavoritesContext";
 import "./css/app.css";
 import "./css/texttv-page.css";
@@ -10,17 +16,6 @@ import "./css/theme.css";
 import { getTabHeight, loadFavorites } from "./functions";
 import { Navigationsflikar } from "./modules/Navigationsflikar";
 import { MenuWithRouter } from "./modules/SideMenu";
-import { adMobAdOptions } from "./adMobAdOptions";
-import {
-  AdMob,
-  BannerAdOptions,
-  BannerAdSize,
-  BannerAdPosition,
-  BannerAdPluginEvents,
-  AdMobBannerSize,
-} from "@capacitor-community/admob";
-import { StatusBar, Style } from "@capacitor/status-bar";
-import { SplashScreen } from "@capacitor/splash-screen";
 
 // Initiera saker på en Ios eller Android-enhet.
 // Hybrid = "a device running Capacitor or Cordova".
