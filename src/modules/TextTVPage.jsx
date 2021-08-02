@@ -61,6 +61,7 @@ const TextTVPage = (props) => {
     logPageView(linkPageNum, "click");
 
     const fullUrl = `/sidor${href}`;
+    console.log(`history push ${fullUrl}`);
     history.push(fullUrl);
   };
 
