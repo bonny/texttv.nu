@@ -24,6 +24,7 @@ import {
 import Header from "../modules/Header";
 import { TextTVPage } from "../modules/TextTVPage";
 import TextTVRefresher from "../modules/TextTVRefresher";
+import { logPageView } from "../functions";
 
 const scrollToTop = (speed = 750) => {
   let currentIonPageContent = getCurrentIonPageContentElm();
@@ -345,21 +346,19 @@ const PageTextTV = (props) => {
         navToPageNum = pageNextNum;
       }
 
-      console.log(
-        `slideDidChange activeIndex ${activeIndex} navToPageNum ${navToPageNum}`
-      );
-
       if (!navToPageNum) {
         return;
       }
 
+      logPageView(navToPageNum, "swipe");
+
       // Gå till sida och gå sedan tillbaka till slidern i mitten.
       const pushToURL = `/sidor/${navToPageNum}`;
-      console.log(`pushToURL ${pushToURL}`);
       history.push(pushToURL);
 
       // Får ibland på Vercel "Cannot read property 'slideTo' of null" trots att vi kollat denna tidigare.
-      swiper.slideTo(1, 0);
+      // 0 i speed fungerar ej på Ios, får webkit error då. 1 fungerar dock.
+      swiper.slideTo(1, 1);
       scrollToTop(0);
 
       // Göm ev. synlig uppdatering-finns-toast.
