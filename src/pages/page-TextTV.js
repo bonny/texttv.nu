@@ -345,12 +345,19 @@ const PageTextTV = (props) => {
         navToPageNum = pageNextNum;
       }
 
+      console.log(
+        `slideDidChange activeIndex ${activeIndex} navToPageNum ${navToPageNum}`
+      );
+
       if (!navToPageNum) {
         return;
       }
 
       // Gå till sida och gå sedan tillbaka till slidern i mitten.
-      history.push(`/sidor/${navToPageNum}`);
+      const pushToURL = `/sidor/${navToPageNum}`;
+      console.log(`pushToURL ${pushToURL}`);
+      history.push(pushToURL);
+
       // Får ibland på Vercel "Cannot read property 'slideTo' of null" trots att vi kollat denna tidigare.
       swiper.slideTo(1, 0);
       scrollToTop(0);
