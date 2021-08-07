@@ -30,6 +30,7 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
   - `$ ionic capacitor sync ios`.
   - `$ ionic capacitor open ios` för att öppna Xcode.
   - Uppdatera app-version i Xcode.
+  - I XCode kör Product » Archive.
 - Android (inte testat helt ännu)
   - I Android Studio: "Build => Generate Signed Bundle / APK”
   - Skapa release via webben i Play Store
