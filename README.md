@@ -40,41 +40,17 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 #### Version 3.1 (juli 2021)
 
-*Vad är nytt Ios*
-
-Vi har pillat lite i koden för att göra text tv-appen lite bättre:
-
+- Uppdaterat NPM-paket och Capacitor till version 3.
 - Navigation mellan sidor är nu snabbare.
-- Trycker du på hem-fliken nu så laddas favoriterna in på nytt. Ett snabbt och smart sätt att ladda om dina favoriter!
+- Tryck på hem-fliken för att ladda om favoriterna på nytt.
 - Sidnumret för en nyhet visas nu i listan på nyaste sidorna och på mest lästa sidorna.
 - Färgerna är mer korrekta nu (se gärna den galna tekniktestsidan 777 (https://texttv.nu/777) för exempel på färger och grafik!
 - Navigation är mer konsekvent. T.ex. så finns tillbaka-knappen och "Gå till sida"-rutan även på "Nyast" och "Mest läst".
 - Meddelande om att det finns en uppdatering av sidan visas mer korrekt. Den var lite väl tjatig förut...
-- ...och dessutom skriver meddelande om att sidan har en uppdatering även ut sidnumret numera, så du vet vilken av dina favoritsidor som faktiskt fått en uppdatering.
+- Meddelande om att sidan har en uppdatering skriver ut sidnumret, så man vet vilken av sida som faktiskt fått en uppdatering.
 - Blandade småfixar här och där för att göra appen allmänt trevligare att umgås med.
-
-Gillar du appen så ge oss gärna en positiv recension! Det hjälper andra användare att hitta appen och det gör oss väldigt glada :)
-
-Är det däremot något du inte gillar med appen så hör av dig till oss på kontakt@texttv.nu så kanske vi kan fixa det till nästa version!
-
---- 
-
-- @HERE: sammanfatta finare vad som är nytt
-- Större sammanfattning för Android pga mer som är nytt, t.ex. tillbaka-knapp fungerar osv.
-- TODO:
-  - [ ] uppdatera version - ska bli 3.1
-  - [ ] skriv changelog/vad är nytt
-  - [ ] bygg till ios + ladda till app store
-  - [ ] när okej till ios bygg + publicera till android/play store
-- Diverse smått och gott (T.ex. uppdaterade NPM-paket).
-- Snabbare navigation mellan sidor (t.ex. inga jobbiga animationer).
 - Bättre logik och känsla när man går tillbaka i historiken och när man klickar på en flik (går till flikens "start" istället för senast besökta sida på fliken)
-- Startsidan/hemsidan laddas nu om när du trycker på fliken i navigationen (ett snabbt och smart sätt att ladda om dina favoriter).
-- Sidnummer visas nu i listan på nyaste sidorna och på mest lästa sidorna.
-- Färgerna är mer korrekt nu (se gärna sidan https://texttv.nu/777 för exempel på färger och grafik!)
 - Mer konsekvent navigation, Tillbaka-knapp och "Gå till sida"-input finns nu även på "Nyast" och "Mest läst", så navigationen blir mer konsekvent.
-- Meddelande om att det finns en uppdatering av sidan visas mer korrekt. Den var lite väl tjatig förut...
-- Meddelande om att sidan har en uppdatering skriver även ut sidnumret, så du vet vilken av dina favoritsidor som faktiskt fått en uppdatering.
 
 #### Version 3.0.2 (25 feb 2020)
 

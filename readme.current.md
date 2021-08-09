@@ -4,8 +4,6 @@
 
 ## Blandat Todo
 
-- [ ] Uppdatera Capacitor till 3 https://capacitorjs.com/docs/updating/3-0
-
 ## Kanske till nästa uppdatering
 
 - [ ] `app=texttvapp` ska vara olika för Ios och Android.
