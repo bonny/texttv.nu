@@ -6,6 +6,7 @@
 
 ## Kanske till nästa uppdatering
 
+- [ ] Få igång lite ratings mha https://github.com/Nodonisko/capacitor-rate-app#ios-limitations---important
 - [ ] `app=texttvapp` ska vara olika för Ios och Android.
 - [ ] Om inget internet finns (eller tar lång tid) så fastnar laddningen på skeleton och inget ytterligare feedback kommer.
 - [ ] Kopiera sida som bild, ta med diskret vattenmärkning.

@@ -31,6 +31,8 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
   - `$ ionic capacitor open ios` för att öppna Xcode.
   - Uppdatera app-version i Xcode.
   - I XCode kör Product » Archive.
+  - Gå till organizer och ladda upp.
+  - Välj filen i App Store Connect, klicka i alla random saker som Apple gnäller på, och välj att skicka in till review.
 - Android (inte testat helt ännu)
   - I Android Studio: "Build => Generate Signed Bundle / APK”
   - Skapa release via webben i Play Store
