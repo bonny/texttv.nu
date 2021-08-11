@@ -4,7 +4,7 @@ Här bygger vi [iOS appen](https://itunes.apple.com/se/app/texttv.nu/id607998045
 
 [Android-appen för SVT Text TV](https://play.google.com/store/apps/details?id=com.mufflify.TextTVnu&hl=sv) är också rätt så baserad på denna kod också.
 
-![Skärmdump som visar hur appen ser ut](https://user-images.githubusercontent.com/221570/129085488-6617f74b-f893-4e2c-b03a-6866b11d3020.png)
+<img src="https://user-images.githubusercontent.com/221570/129085488-6617f74b-f893-4e2c-b03a-6866b11d3020.png" width="320" />
 
 Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka in förbättringsförslag.
 
