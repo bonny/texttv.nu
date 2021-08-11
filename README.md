@@ -38,7 +38,7 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
   - Skapa release via webben i Play Store
   - https://developer.android.com/distribute/best-practices/launch/launch-checklist
 
-### Nyheter i nya text-tv-appen
+### Ändringslogg
 
 #### Version 3.1 (juli 2021)
 
