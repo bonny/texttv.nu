@@ -357,9 +357,11 @@ const PageTextTV = (props) => {
       history.push(pushToURL);
 
       // Får ibland på Vercel "Cannot read property 'slideTo' of null" trots att vi kollat denna tidigare.
-      // 0 i speed fungerar ej på Ios, får webkit error då. 1 fungerar dock.
-      swiper.slideTo(1, 1);
+      // slideTo() har bråkat lite och har buggat i Ios.
+      // ev. har det någon med css-animations att göra. 
+      // Tog bort en animation och då fungerade det.
       scrollToTop(0);
+      swiper.slideTo(1, 0);
 
       // Göm ev. synlig uppdatering-finns-toast.
       setPageUpdatedToastState({

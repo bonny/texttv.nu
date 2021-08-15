@@ -20,7 +20,6 @@ const TextTVPage = (props) => {
 
   const [pageData, setPageData] = useState([]);
   const [pageIsLoading, setPageIsLoading] = useState(false);
-  const [pageIsDoneLoading, setPageIsDoneLoading] = useState(false);
 
   // Leta upp närmaste länk, om någon, vid klick nånstans på sidan,
   // och gå till den länken.
@@ -100,7 +99,6 @@ const TextTVPage = (props) => {
 
           setPageData(pageData);
           setPageIsLoading(false);
-          setPageIsDoneLoading(true);
           sendStats(pageData, "view");
         })
         .catch((fetchErr) => {
@@ -109,7 +107,6 @@ const TextTVPage = (props) => {
     }
 
     setPageIsLoading(true);
-    setPageIsDoneLoading(false);
     fetchPageContents();
   }, [pageNum, pageId, refreshTime]);
 
@@ -123,9 +120,9 @@ const TextTVPage = (props) => {
   }, [pageNum, pageData, onPageUpdate]);
 
   const classes = classNames({
-    "TextTVPage--isLoading": pageIsLoading,
-    "TextTVPage--isDoneLoading": pageIsDoneLoading,
     TextTVPage: true,
+    "TextTVPage--isLoading": pageIsLoading,
+    "TextTVPage--isDoneLoading": !pageIsLoading,
   });
 
   // Lägg en `div` runt varje sida.

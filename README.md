@@ -41,6 +41,10 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 ### Ändringslogg
 
+#### Version 3.n (augusti 2021)
+
+- Fixat problem med att navigera på äldre Ios-enheter, t.ex. Ipad med Ios 12.5.4. (Fixar #13.)
+
 #### Version 3.1 (juli 2021)
 
 - Uppdaterat NPM-paket och Capacitor till version 3.
