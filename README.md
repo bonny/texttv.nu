@@ -45,6 +45,7 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 - Fixat problem med att navigera på äldre Ios-enheter, t.ex. Ipad med Ios 12.5.4. (#13)
 - Placera `toasts` ovanför flikar och annons. Löser problem där toast hamnade delvis bakom annonser. (#5)
+- Använd olika `appid` vid anrop till API beroende på platform (web/ios/android). (#8)
 
 #### Version 3.1 (juli 2021)
 

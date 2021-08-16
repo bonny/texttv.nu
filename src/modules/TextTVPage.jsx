@@ -4,6 +4,7 @@
  */
 import classNames from "classnames";
 import { useEffect, useState } from "react";
+import { isPlatform } from "@ionic/react";
 import {
   createMarkupForPage,
   getCacheBustTimeString,
@@ -86,10 +87,22 @@ const TextTVPage = (props) => {
       // Gruppera API-anrop genom cachebuster-sträng.
       const cacheBustTimeString = getCacheBustTimeString(15);
 
-      if (pageId) {
-        url = `https://api.texttv.nu/api/getid/${pageId}/${pageNum}?cb=${cacheBustTimeString}app=texttvapp${slowAnswerQueryString}`;
+      let platform = "";
+
+      if (isPlatform("ios")) {
+        platform = "ios";
+      } else if (isPlatform("android")) {
+        platform = "android";
       } else {
-        url = `https://api.texttv.nu/api/get/${pageNum}?cb=${cacheBustTimeString}&app=texttvapp${slowAnswerQueryString}`;
+        platform = "web";
+      }
+
+      const appId = "texttvapp." + platform;
+
+      if (pageId) {
+        url = `https://api.texttv.nu/api/getid/${pageId}/${pageNum}?cb=${cacheBustTimeString}app=${appId}${slowAnswerQueryString}`;
+      } else {
+        url = `https://api.texttv.nu/api/get/${pageNum}?cb=${cacheBustTimeString}&app=${appId}${slowAnswerQueryString}`;
       }
 
       fetch(url)
