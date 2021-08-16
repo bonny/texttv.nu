@@ -297,10 +297,11 @@ Positionera toast ovanför tabbar.
   --border-color: #4a4a4a;
 }
 
-/* Visas annonser ska toast upp ovanför annonser också */
-.plt-ios .TextTVPage_Toast,
-.plt-android .TextTVPage_Toast {
-  top: -8em;
+/* Placera toasts ovanför flikar + annonser */
+.TextTVPage_Toast {
+  top: calc(
+    -1 * (var(--text-tv-ad-height) + var(--text-tv-tab-bar-height))
+  ) !important;
 }
 
 /* Popover med sid-åtgärder är för smal i Ios */
