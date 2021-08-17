@@ -16,6 +16,10 @@ import "./css/theme.css";
 import { getTabHeight, loadFavorites } from "./functions";
 import { Navigationsflikar } from "./modules/Navigationsflikar";
 import { MenuWithRouter } from "./modules/SideMenu";
+import { RateApp } from "capacitor-rate-app";
+
+// TODO: inte köra denna varje gång, bara ibland + när man använt appen ett tag.
+RateApp.requestReview()
 
 // Initiera saker på en Ios eller Android-enhet.
 // Hybrid = "a device running Capacitor or Cordova".
