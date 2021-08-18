@@ -39,7 +39,7 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
   - I Android Studio: "Build => Generate Signed Bundle / APK”
   - Skapa release via webben i Play Store
   - https://developer.android.com/distribute/best-practices/launch/launch-checklist
-- Taggar och mergea in branch i main.
+- Tagga och mergea in release-branch i main.
 
 ### Ändringslogg
 
