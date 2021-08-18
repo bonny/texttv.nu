@@ -25,6 +25,7 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 ### Släppa ny version
 
+- Skapa release-branch
 - Uppdatera version i `package.json`
 - Ios
   - Lägg till ny version på [App Store Connect](https://appstoreconnect.apple.com/apps/607998045/appstore/).
@@ -38,6 +39,7 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
   - I Android Studio: "Build => Generate Signed Bundle / APK”
   - Skapa release via webben i Play Store
   - https://developer.android.com/distribute/best-practices/launch/launch-checklist
+- Taggar och mergea in branch i main.
 
 ### Ändringslogg
 
