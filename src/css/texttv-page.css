@@ -29,7 +29,7 @@
 
 .TextTVPage a {
   color: rgb(221, 221, 221);
-  text-underline-position: under;
+  text-decoration-thickness: from-font;
 }
 
 .TextTVPage .root {

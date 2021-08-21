@@ -51,7 +51,8 @@ const TextTVPageBreadcrumbs = (props) => {
     xtextDecoration: "none",
     //lineHeight: 1,
     // verticalAlign: "middle",
-    textUnderlinePosition: 'under'
+    textDecorationThickness: "from-font",
+    textUnderlineOffset: "4px",
   };
 
   const itemDivider = {
@@ -67,10 +68,13 @@ const TextTVPageBreadcrumbs = (props) => {
       <li key={crumb.num} style={listItemStyles}>
         <Link to={crumb.url} style={linkStyles}>
           {idx === 0 && (
-            <IonIcon
-              style={{ height: "1.8ex", position: "relative", top: "1px" }}
-              icon={homeSharp}
-            />
+            <span>
+              <IonIcon
+                style={{ height: "1.8ex", position: "relative", top: "1px", padding: '0 .25em 0 0' }}
+                icon={homeSharp}
+                />
+              Hem
+            </span>
           )}
           {idx > 0 && crumb.name}
         </Link>
