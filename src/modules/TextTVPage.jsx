@@ -4,7 +4,9 @@
  */
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import { isPlatform } from "@ionic/react";
+import { isPlatform, IonIcon } from "@ionic/react";
+import { document, home, homeOutline, homeSharp } from "ionicons/icons";
+import { Link } from "react-router-dom";
 import {
   createMarkupForPage,
   getCacheBustTimeString,
@@ -14,6 +16,71 @@ import {
   logPageView,
 } from "../functions";
 import SkeletonTextTVPage from "../modules/SkeletonTextTVPage";
+
+const TextTVPageBreadcrumbs = (props) => {
+  console.log("props?.pageData", props?.pageData);
+  const firstPageBreadcrumbs = props?.pageData?.slice(0, 1)?.pop()?.breadcrumbs;
+
+  if (!firstPageBreadcrumbs) {
+    return null;
+  }
+
+  const listStyles = {
+    listStyle: "none",
+    padding: 0,
+    margin: "0 0 .5em .4em",
+    textAlign: "left",
+    borderBottom: "1px solid #222",
+    fontSize: "1.25rem",
+    verticalAlign: "middle",
+    // lineHeight: 1
+  };
+
+  const listItemStyles = {
+    // outline: "1px solid red",
+    display: "inline-block",
+    // verticalAlign: "middle",
+    // lineHeight: 1
+  };
+
+  const linkStyles = {
+    // outline: "1px solid pink",
+    display: "inline-block",
+    padding: ".5em .5em .75em .5em",
+    color: "#777",
+    xtextDecoration: "none",
+    //lineHeight: 1,
+    // verticalAlign: "middle",
+    textUnderlinePosition: 'from-font'
+  };
+
+  const itemDivider = {
+    // outline: "1px solid green",
+    padding: "0 .5em",
+    margin: 0,
+    color: "#444",
+    // verticalAlign: "middle",
+  };
+
+  const breadcrumbs = firstPageBreadcrumbs.map((crumb, idx, arr) => {
+    return (
+      <li key={crumb.num} style={listItemStyles}>
+        <Link to={crumb.url} style={linkStyles}>
+          {idx === 0 && (
+            <IonIcon
+              style={{ height: "1.8ex", position: "relative", top: "1px" }}
+              icon={homeSharp}
+            />
+          )}
+          {idx > 0 && crumb.name}
+        </Link>
+        {idx < arr.length - 1 && <span style={itemDivider}>/</span>}
+      </li>
+    );
+  });
+
+  return <ol style={listStyles}>{breadcrumbs}</ol>;
+};
 
 const TextTVPage = (props) => {
   const { pageNum, pageId, children, history, refreshTime, onPageUpdate } =
@@ -139,25 +206,30 @@ const TextTVPage = (props) => {
   });
 
   // Lägg en `div` runt varje sida.
-  const pagesHtml = pageData.map((page) => {
-    return (
-      <div
-        className={classes}
-        key={page.id}
-        data-page-num={pageNum}
-        data-page-id={pageId}
-      >
-        <div className="TextTVPage__wrap">
+  const pagesHtml = (
+    <>
+      <TextTVPageBreadcrumbs pageData={pageData} />
+      {pageData.map((page) => {
+        return (
           <div
-            className="TextTVPage__inner"
-            onClick={handleClick}
-            dangerouslySetInnerHTML={createMarkupForPage(page)}
-          />
-        </div>
-        {children}
-      </div>
-    );
-  });
+            className={classes}
+            key={page.id}
+            data-page-num={pageNum}
+            data-page-id={pageId}
+          >
+            <div className="TextTVPage__wrap">
+              <div
+                className="TextTVPage__inner"
+                onClick={handleClick}
+                dangerouslySetInnerHTML={createMarkupForPage(page)}
+              />
+            </div>
+            {children}
+          </div>
+        );
+      })}
+    </>
+  );
 
   return (
     <>
