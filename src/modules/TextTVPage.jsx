@@ -51,7 +51,7 @@ const TextTVPageBreadcrumbs = (props) => {
     xtextDecoration: "none",
     //lineHeight: 1,
     // verticalAlign: "middle",
-    textUnderlinePosition: 'from-font'
+    textUnderlinePosition: 'under'
   };
 
   const itemDivider = {
