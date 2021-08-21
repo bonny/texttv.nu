@@ -63,22 +63,38 @@ const TextTVPageBreadcrumbs = (props) => {
     // verticalAlign: "middle",
   };
 
+  const lastItemStyles = {
+    ...linkStyles,
+  };
+
+  const iconStyles = {
+    height: "1.8ex",
+    position: "relative",
+    top: "1px",
+    padding: "0 .25em 0 0",
+  };
+
   const breadcrumbs = firstPageBreadcrumbs.map((crumb, idx, arr) => {
     return (
       <li key={crumb.num} style={listItemStyles}>
-        <Link to={crumb.url} style={linkStyles}>
-          {idx === 0 && (
-            <span>
-              <IonIcon
-                style={{ height: "1.8ex", position: "relative", top: "1px", padding: '0 .25em 0 0' }}
-                icon={homeSharp}
-                />
-              Hem
-            </span>
-          )}
-          {idx > 0 && crumb.name}
-        </Link>
-        {idx < arr.length - 1 && <span style={itemDivider}>/</span>}
+        {idx < arr.length - 1 && (
+          <>
+            <Link to={crumb.url} style={linkStyles}>
+              {idx === 0 && (
+                <span>
+                  <IonIcon style={iconStyles} icon={homeSharp} />
+                  Hem
+                </span>
+              )}
+              {idx > 0 && crumb.name}
+            </Link>
+
+            <span style={itemDivider}>/</span>
+          </>
+        )}
+        {idx === arr.length - 1 && (
+          <span style={lastItemStyles}>{crumb.name}</span>
+        )}
       </li>
     );
   });
