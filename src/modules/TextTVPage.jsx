@@ -25,15 +25,14 @@ const TextTVPageBreadcrumbs = (props) => {
   }
 
   const listStyles = {
+    // borderTop: "1px solid #222",
     listStyle: "none",
     padding: "0 0 .5em 0",
     margin: "0 0 .5em .4em",
     textAlign: "left",
-    // borderTop: "1px solid #222",
     borderBottom: "1px solid #222",
-    fontSize: "1.25rem",
+    fontSize: "1.15rem",
     verticalAlign: "middle",
-    // lineHeight: 1
   };
 
   const listItemStyles = {
