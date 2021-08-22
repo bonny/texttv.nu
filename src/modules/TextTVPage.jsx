@@ -18,18 +18,18 @@ import {
 import SkeletonTextTVPage from "../modules/SkeletonTextTVPage";
 
 const TextTVPageBreadcrumbs = (props) => {
-  console.log("props?.pageData", props?.pageData);
   const firstPageBreadcrumbs = props?.pageData?.slice(0, 1)?.pop()?.breadcrumbs;
 
-  if (!firstPageBreadcrumbs) {
+  if (!firstPageBreadcrumbs || !firstPageBreadcrumbs.length) {
     return null;
   }
 
   const listStyles = {
     listStyle: "none",
-    padding: 0,
+    padding: "0 0 .5em 0",
     margin: "0 0 .5em .4em",
     textAlign: "left",
+    // borderTop: "1px solid #222",
     borderBottom: "1px solid #222",
     fontSize: "1.25rem",
     verticalAlign: "middle",
@@ -49,9 +49,6 @@ const TextTVPageBreadcrumbs = (props) => {
     padding: ".5em .5em .75em .5em",
     color: "#777",
     xtextDecoration: "none",
-    //lineHeight: 1,
-    // verticalAlign: "middle",
-    textDecorationThickness: "from-font",
     textUnderlineOffset: "4px",
   };
 
@@ -70,8 +67,9 @@ const TextTVPageBreadcrumbs = (props) => {
   const iconStyles = {
     height: "1.8ex",
     position: "relative",
-    top: "1px",
-    padding: "0 .25em 0 0",
+    top: "7px",
+    padding: "0 0 3px 0",
+    borderBottom: "2px solid #777",
   };
 
   const breadcrumbs = firstPageBreadcrumbs.map((crumb, idx, arr) => {
@@ -80,12 +78,7 @@ const TextTVPageBreadcrumbs = (props) => {
         {idx < arr.length - 1 && (
           <>
             <Link to={crumb.url} style={linkStyles}>
-              {idx === 0 && (
-                <span>
-                  <IonIcon style={iconStyles} icon={homeSharp} />
-                  Hem
-                </span>
-              )}
+              {idx === 0 && <IonIcon style={iconStyles} icon={homeSharp} />}
               {idx > 0 && crumb.name}
             </Link>
 
