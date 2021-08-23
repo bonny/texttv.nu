@@ -2,18 +2,17 @@
  * En text-tv-sida som visas i en IonPage.
  * Visas i en befintlig sida alltså.
  */
+import { isPlatform } from "@ionic/react";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import { isPlatform } from "@ionic/react";
 import {
   createMarkupForPage,
   getCacheBustTimeString,
   getNearestLink,
-  hidePageUpdatedToasts,
-  sendStats,
-  logPageView,
+  hidePageUpdatedToasts, logPageView, sendStats
 } from "../functions";
 import SkeletonTextTVPage from "../modules/SkeletonTextTVPage";
+import { TextTVPageBreadcrumbs } from "./TextTVPageBreadcrumbs";
 
 const TextTVPage = (props) => {
   const { pageNum, pageId, children, history, refreshTime, onPageUpdate } =
@@ -139,25 +138,30 @@ const TextTVPage = (props) => {
   });
 
   // Lägg en `div` runt varje sida.
-  const pagesHtml = pageData.map((page) => {
-    return (
-      <div
-        className={classes}
-        key={page.id}
-        data-page-num={pageNum}
-        data-page-id={pageId}
-      >
-        <div className="TextTVPage__wrap">
+  const pagesHtml = (
+    <>
+      <TextTVPageBreadcrumbs pageData={pageData} />
+      {pageData.map((page) => {
+        return (
           <div
-            className="TextTVPage__inner"
-            onClick={handleClick}
-            dangerouslySetInnerHTML={createMarkupForPage(page)}
-          />
-        </div>
-        {children}
-      </div>
-    );
-  });
+            className={classes}
+            key={page.id}
+            data-page-num={pageNum}
+            data-page-id={pageId}
+          >
+            <div className="TextTVPage__wrap">
+              <div
+                className="TextTVPage__inner"
+                onClick={handleClick}
+                dangerouslySetInnerHTML={createMarkupForPage(page)}
+              />
+            </div>
+            {children}
+          </div>
+        );
+      })}
+    </>
+  );
 
   return (
     <>

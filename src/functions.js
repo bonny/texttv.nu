@@ -524,7 +524,8 @@ function getTabHeight() {
  * Logga en sidvisning.
  *
  * @param pageNum
- * @param type Varifrån sidvisningen kommer, t.ex. "manually" om man angivit den manuellt i sökruta/inputruta.
+ * @param type Varifrån sidvisningen kommer, 
+ * t.ex. "manually" om man angivit den manuellt i sökruta/inputruta.
  */
 function logPageView(pageNum, source) {
   if (!pageNum || !source) {

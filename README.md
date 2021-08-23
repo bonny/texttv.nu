@@ -43,7 +43,11 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 ### Ändringslogg
 
-#### Version 3.n (augusti 2021)
+#### Version 3.n.n (mmm 2021)
+
+- Lagt till brödsmulor för att förenkla navigering tillbaka till innehållets kategori. (#12)
+
+#### Version 3.1.1 (augusti 2021)
 
 - Fixat problem med att navigera på äldre Ios-enheter, t.ex. Ipad med Ios 12.5.4. (#13)
 - Placera `toasts` ovanför flikar och annons. Löser problem där toast hamnade delvis bakom annonser. (#5)
