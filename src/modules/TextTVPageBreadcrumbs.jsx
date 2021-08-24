@@ -13,10 +13,10 @@ export const TextTVPageBreadcrumbs = (props) => {
     // borderTop: "1px solid #222",
     listStyle: "none",
     padding: "0 0 .5em 0",
-    margin: "0 0 .5em .4em",
+    margin: "0 0 .5em .2em",
     textAlign: "left",
     borderBottom: "1px solid #222",
-    fontSize: "1.15rem",
+    fontSize: "1rem",
     verticalAlign: "middle",
   };
 
@@ -31,13 +31,15 @@ export const TextTVPageBreadcrumbs = (props) => {
     // outline: "1px solid pink",
     display: "inline-block",
     padding: ".5em .5em .75em .5em",
-    color: "#999",
+    color: "#aaa",
     textUnderlineOffset: "4px",
+    textDecorationThickness: '2px',
+    textDecorationColor: '#555'
   };
 
   const itemDivider = {
     // outline: "1px solid green",
-    padding: "0 .25em",
+    padding: "0 .15em",
     margin: 0,
     color: "#444",
     // verticalAlign: "middle",
@@ -52,7 +54,7 @@ export const TextTVPageBreadcrumbs = (props) => {
     position: "relative",
     top: "7px",
     padding: "0 0 3px 0",
-    borderBottom: "2px solid #777",
+    borderBottom: "2px solid #555",
   };
 
   const breadcrumbs = firstPageBreadcrumbs.map((crumb, idx, arr) => {
