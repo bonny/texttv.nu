@@ -92,7 +92,7 @@ const Header = (props) => {
           </IonTitle>
         </IonToolbar>
 
-        <IonToolbar mode="md">
+        <IonToolbar mode="md" style={{borderBottom: '1px solid #48494c'}}>
           <IonButtons slot="start">
             <BackButton history={history} />
           </IonButtons>

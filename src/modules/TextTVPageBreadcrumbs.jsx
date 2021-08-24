@@ -12,10 +12,10 @@ export const TextTVPageBreadcrumbs = (props) => {
   const listStyles = {
     // borderTop: "1px solid #222",
     listStyle: "none",
-    padding: "0 0 .5em 0",
-    margin: "0 0 .5em .2em",
+    padding: "0",
+    margin: "1em 0 .75em .2em",
     textAlign: "left",
-    borderBottom: "1px solid #222",
+    // borderBottom: "1px solid #222",
     fontSize: "1rem",
     verticalAlign: "middle",
   };
@@ -33,8 +33,8 @@ export const TextTVPageBreadcrumbs = (props) => {
     padding: ".5em .5em .75em .5em",
     color: "#aaa",
     textUnderlineOffset: "4px",
-    textDecorationThickness: '2px',
-    textDecorationColor: '#555'
+    textDecorationThickness: "2px",
+    textDecorationColor: "#555",
   };
 
   const itemDivider = {
