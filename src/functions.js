@@ -7,6 +7,8 @@ import { Storage } from "@capacitor/storage";
 import { isPlatform } from "@ionic/react";
 import { FirebaseAnalytics } from "./analytics";
 
+const FAVORITES_DEFAULT_PAGES = ["100", "300", "401", "700"];
+
 const handleCopyTextToClipboard = (pageData, pageNum) => {
   const pageRangeInfo = getPageRangeInfo(pageNum);
   const pageIdsString = getPageIdsFromPageData(pageData);
@@ -470,8 +472,6 @@ function isRunningInWebBrowser() {
   return !isPlatform("ios") && !isPlatform("android");
 }
 
-const FAVORITES_DEFAULT_PAGES = ["100", "300", "401", "700"];
-
 /**
  * @async
  * @return {Promise<array>} Favoriter som array.
@@ -524,7 +524,7 @@ function getTabHeight() {
  * Logga en sidvisning.
  *
  * @param pageNum
- * @param type Varifrån sidvisningen kommer, 
+ * @param type Varifrån sidvisningen kommer,
  * t.ex. "manually" om man angivit den manuellt i sökruta/inputruta.
  */
 function logPageView(pageNum, source) {
@@ -542,6 +542,68 @@ function logPageView(pageNum, source) {
     });
   } catch (e) {}
 }
+
+/**
+ * Lagra
+ *
+ * antal app-starter
+ * antal app-resume
+ * antal visningar av sidor
+ * antal visningar per sidnummer
+ *
+ * https://github.com/ionic-team/ionic-storage
+ *
+ * get stats
+ * set/update stat for key
+ */
+async function getStats() {
+  let { value } = await Storage.get({
+    key: "stats",
+  });
+
+  // console.log("getStats value", value);
+
+  if (value) {
+    value = JSON.parse(value);
+  } else {
+    value = {};
+  }
+
+  console.log("getStats value", value);
+  return value;
+}
+
+async function increaseStatForPage(pageNum) {
+  let stats = await getStats();
+
+  if (!("pages" in stats)) {
+    stats.pages = {};
+  }
+
+  if (!(pageNum in stats.pages)) {
+    stats.pages[pageNum] = 0;
+  }
+
+  stats.pages[pageNum] = stats.pages[pageNum] + 1;
+
+  saveStats(stats);
+
+  return stats.pages[pageNum];
+}
+
+async function saveStats(statsObj) {
+  await Storage.set({
+    key: "stats",
+    value: JSON.stringify(statsObj),
+  });
+}
+
+// async function test() {
+//   const newVal = await increaseStatForPage(100);
+//   const newVal2 = await increaseStatForPage(377);
+//   console.log({ newVal, newVal2 });
+// }
+// test();
 
 export {
   getPageRangeInfo,
