@@ -561,24 +561,26 @@ async function getStats() {
     key: "stats",
   });
 
-  // console.log("getStats value", value);
-
   if (value) {
     value = JSON.parse(value);
   } else {
     value = {};
   }
 
-  console.log("getStats value", value);
+  // Se till att .pages och .custom finns.
+  if (!("pages" in value)) {
+    value.pages = {};
+  }
+
+  if (!("custom" in value)) {
+    value.custom = {};
+  }
+
   return value;
 }
 
 async function increaseStatForPage(pageNum) {
   let stats = await getStats();
-
-  if (!("pages" in stats)) {
-    stats.pages = {};
-  }
 
   if (!(pageNum in stats.pages)) {
     stats.pages[pageNum] = 0;
@@ -591,6 +593,20 @@ async function increaseStatForPage(pageNum) {
   return stats.pages[pageNum];
 }
 
+async function increaseStatForCustom(customKey) {
+  let stats = await getStats();
+
+  if (!(customKey in stats.custom)) {
+    stats.custom[customKey] = 0;
+  }
+
+  stats.custom[customKey] = stats.custom[customKey] + 1;
+
+  saveStats(stats);
+
+  return stats.custom[customKey];
+}
+
 async function saveStats(statsObj) {
   await Storage.set({
     key: "stats",
@@ -598,14 +614,25 @@ async function saveStats(statsObj) {
   });
 }
 
-// async function test() {
-//   const newVal = await increaseStatForPage(100);
-//   const newVal2 = await increaseStatForPage(377);
-//   console.log({ newVal, newVal2 });
-// }
-// test();
+window.getStats = getStats;
+
+async function testStats() {
+  const statsForPage100 = await increaseStatForPage(100);
+  const statsForPage377 = await increaseStatForPage(377);
+  const statsForCustomStart = await increaseStatForCustom("app/start");
+  const statsForCustomResume = await increaseStatForCustom("app/resume");
+  console.table({
+    statsForPage100,
+    statsForPage377,
+    statsForCustomStart,
+    statsForCustomResume,
+  });
+}
+testStats();
 
 export {
+  increaseStatForPage,
+  getStats,
   getPageRangeInfo,
   getCacheBustTimeString,
   getUnixtime,
