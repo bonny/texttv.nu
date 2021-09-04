@@ -6,6 +6,7 @@ import { Clipboard } from "@capacitor/clipboard";
 import { Storage } from "@capacitor/storage";
 import { isPlatform } from "@ionic/react";
 import { FirebaseAnalytics } from "./analytics";
+import { RateApp } from "capacitor-rate-app";
 
 const FAVORITES_DEFAULT_PAGES = ["100", "300", "401", "700"];
 
@@ -529,7 +530,7 @@ function getTabHeight() {
  */
 function logPageView(pageNum, source) {
   // @TODO: första visningen av en sida loggas inte, t.ex. när app startas
-  console.log('logPageView', pageNum, source)
+  // console.log('logPageView', pageNum, source)
   if (!pageNum || !source) {
     return;
   }
@@ -611,6 +612,18 @@ async function increaseStatForCustom(customKey) {
   stats.custom[customKey] = stats.custom[customKey] + 1;
 
   saveStats(stats);
+
+  // Om man använt appen rätt ofta så fråga om review.
+  const numAppStartsAndResumes =
+    (stats.custom.appStart || 0) + (stats.custom.appResume || 0);
+  const askForReviewNums = [10, 20, 30, 50, 100, 200, 500, 1000, 2000];
+  if (askForReviewNums.includes(numAppStartsAndResumes)) {
+    console.log(
+      "ask for review because numAppStartsAndResumes is ",
+      numAppStartsAndResumes
+    );
+    RateApp.requestReview();
+  }
 
   return stats.custom[customKey];
 }

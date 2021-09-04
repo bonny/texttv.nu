@@ -43,11 +43,7 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 #### Under utveckling
 
-- [ ] Statistik
-  - [ ] statistik vid sidvisning
-  - [ ] statistik vid appstart
-  - [ ] statistik vid appresume
-  - [ ] ny route /statistik som visar det i tabell
+- [x] Statistik, finns på https://app.texttv.nu/statistik eller under sidor-menyn.
 
 #### Version 3.n (augusti 2021)
 

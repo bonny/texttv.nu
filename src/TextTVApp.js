@@ -18,7 +18,6 @@ import {
 } from "./functions";
 import { Navigationsflikar } from "./modules/Navigationsflikar";
 import { MenuWithRouter } from "./modules/SideMenu";
-import { RateApp } from "capacitor-rate-app";
 import { App } from "@capacitor/app";
 
 App.addListener("appStateChange", ({ isActive }) => {
@@ -32,9 +31,6 @@ App.addListener("appStateChange", ({ isActive }) => {
 SplashScreen.hide();
 
 increaseStatForCustom("appStart");
-
-// TODO: inte köra denna varje gång, bara ibland + när man använt appen ett tag.
-RateApp.requestReview();
 
 // Initiera saker på en Ios eller Android-enhet.
 // Hybrid = "a device running Capacitor or Cordova".
