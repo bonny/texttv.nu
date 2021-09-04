@@ -4,36 +4,30 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonContent,
-  IonHeader,
-  IonItem,
-  IonLabel,
   IonPage,
-  IonText,
-  IonTitle,
-  IonToolbar,
-  IonList,
-  IonNote,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonListHeader,
   IonRouterLink,
+  IonText,
 } from "@ionic/react";
 import { useEffect, useState } from "react";
+import { useRouteMatch } from "react-router-dom";
 import { getStats } from "../functions";
 import { TextTVHeader } from "../modules/TextTVHeader";
-import { Link } from "react-router-dom";
 
 function PageStatistik(props) {
+  const routeMatch = useRouteMatch({ path: "/statistik", exact: true }) ? true : false;
   const [stats, setStats] = useState({});
 
   useEffect(() => {
+    if (!routeMatch) {
+      return;
+    }
+
     async function get() {
       setStats(await getStats());
     }
 
     get();
-  }, []);
+  }, [routeMatch]);
 
   const numAppStarts = stats?.custom?.appStart || 0;
   const numAppResume = stats?.custom?.appResume || 0;
@@ -66,7 +60,7 @@ function PageStatistik(props) {
                 {sortedPages.map(([pageNum, count]) => {
                   const link = `sidor/${pageNum}`;
                   return (
-                    <tr>
+                    <tr key={pageNum}>
                       <td style={tdStyle}>
                         <IonRouterLink routerLink={link} color="light">
                           {pageNum}
