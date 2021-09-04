@@ -9,7 +9,9 @@ import {
   createMarkupForPage,
   getCacheBustTimeString,
   getNearestLink,
-  hidePageUpdatedToasts, logPageView, sendStats
+  hidePageUpdatedToasts,
+  logPageView,
+  sendStats,
 } from "../functions";
 import SkeletonTextTVPage from "../modules/SkeletonTextTVPage";
 import { TextTVPageBreadcrumbs } from "./TextTVPageBreadcrumbs";
@@ -103,9 +105,6 @@ const TextTVPage = (props) => {
       } else {
         url = `https://api.texttv.nu/api/get/${pageNum}?cb=${cacheBustTimeString}&app=${appId}${slowAnswerQueryString}`;
       }
-
-      //logPageView(linkPageNum, "click");
-      console.log("fetch");
 
       fetch(url)
         .then(async (responseDatas) => {

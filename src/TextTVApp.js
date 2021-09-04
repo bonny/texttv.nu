@@ -96,9 +96,6 @@ function TextTVApp(props) {
       AdMob.showBanner(adMobAdOptions).then();
 
       // https://developers.google.com/admob/android/ad-load-errors
-      // AdMob.addListener("onAdFailedToLoad", (err) => {
-      //   console.log("onAdFailedToLoad", JSON.stringify(err));
-      // });
       AdMob.addListener(BannerAdPluginEvents.FailedToLoad, (err) => {
         console.log("admob FailedToLoad");
         console.log(JSON.stringify(err));
