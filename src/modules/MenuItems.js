@@ -30,7 +30,7 @@ const MenuItems = (props) => {
         </IonListHeader>
         <IonItem routerLink="/statistik">
           <IonIcon slot="start" icon={analytics} />
-          <IonLabel>Statistik på sidvisningar</IonLabel>
+          <IonLabel>Statistik</IonLabel>
         </IonItem>
       </IonList>
 
