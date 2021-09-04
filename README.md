@@ -39,19 +39,17 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
   - I Android Studio: "Build => Generate Signed Bundle / APK”
   - Skapa release via webben i Play Store
   - https://developer.android.com/distribute/best-practices/launch/launch-checklist
-- Taggar och mergea in branch i main.
+- Tagga och mergea in branch i main.
 
 ### Ändringslogg
 
 #### Under utveckling
 
-- ...
-
 #### Version 3.n (mmm 2021)
 
 - Lagt till brödsmulor för att förenkla navigering tillbaka till innehållets kategori. (#12)
-- Lagra och visa statistik för antal starter av appen och vilka sidor som besökts. Statistik går att se på https://app.texttv.nu/statistik eller under sidor-menyn i appen.
-- Fråga efter en recension av appen när man använt appen ett tag.
+- Lagra och visa statistik för antal starter av appen och vilka sidor som besökts. Statistik går att se på https://app.texttv.nu/statistik eller under sidor-menyn i appen. (#14)
+- Fråga efter en recension av appen när man använt appen ett tag. (#7)
 
 #### Version 3.1.1 (augusti 2021)
 
