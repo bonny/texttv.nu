@@ -6,6 +6,9 @@ import { Clipboard } from "@capacitor/clipboard";
 import { Storage } from "@capacitor/storage";
 import { isPlatform } from "@ionic/react";
 import { FirebaseAnalytics } from "./analytics";
+import { RateApp } from "capacitor-rate-app";
+
+const FAVORITES_DEFAULT_PAGES = ["100", "300", "401", "700"];
 
 const handleCopyTextToClipboard = (pageData, pageNum) => {
   const pageRangeInfo = getPageRangeInfo(pageNum);
@@ -470,8 +473,6 @@ function isRunningInWebBrowser() {
   return !isPlatform("ios") && !isPlatform("android");
 }
 
-const FAVORITES_DEFAULT_PAGES = ["100", "300", "401", "700"];
-
 /**
  * @async
  * @return {Promise<array>} Favoriter som array.
@@ -524,13 +525,17 @@ function getTabHeight() {
  * Logga en sidvisning.
  *
  * @param pageNum
- * @param type Varifrån sidvisningen kommer, 
+ * @param type Varifrån sidvisningen kommer,
  * t.ex. "manually" om man angivit den manuellt i sökruta/inputruta.
  */
 function logPageView(pageNum, source) {
+  // @TODO: första visningen av en sida loggas inte, t.ex. när app startas
+  // console.log('logPageView', pageNum, source)
   if (!pageNum || !source) {
     return;
   }
+
+  increaseStatForPage(pageNum);
 
   try {
     FirebaseAnalytics.logEvent({
@@ -543,7 +548,117 @@ function logPageView(pageNum, source) {
   } catch (e) {}
 }
 
+/**
+ * Hämta object med statistik.
+ *
+ * @returns {object}
+ */
+async function getStats() {
+  let { value } = await Storage.get({
+    key: "stats",
+  });
+
+  if (value) {
+    value = JSON.parse(value);
+  } else {
+    value = {};
+  }
+
+  // Se till att .pages och .custom finns.
+  if (!("pages" in value)) {
+    value.pages = {};
+  }
+
+  if (!("custom" in value)) {
+    value.custom = {};
+  }
+
+  return value;
+}
+
+/**
+ * Öka stats för ett sidnummer.
+ *
+ * @param {number} customKey
+ * @returns {number} Nytt antal i db
+ */
+async function increaseStatForPage(pageNum) {
+  let stats = await getStats();
+
+  if (!(pageNum in stats.pages)) {
+    stats.pages[pageNum] = 0;
+  }
+
+  stats.pages[pageNum] = stats.pages[pageNum] + 1;
+
+  saveStats(stats);
+
+  return stats.pages[pageNum];
+}
+
+/**
+ * Öka stats för valfritt värde/nyckel.
+ *
+ * @param {string} customKey
+ * @returns {number}
+ */
+async function increaseStatForCustom(customKey) {
+  let stats = await getStats();
+
+  if (!(customKey in stats.custom)) {
+    stats.custom[customKey] = 0;
+  }
+
+  stats.custom[customKey] = stats.custom[customKey] + 1;
+
+  saveStats(stats);
+
+  // Om man använt appen rätt ofta så fråga om review.
+  const numAppStartsAndResumes =
+    (stats.custom.appStart || 0) + (stats.custom.appResume || 0);
+  const askForReviewNums = [10, 20, 30, 50, 100, 200, 500, 1000, 2000];
+  if (askForReviewNums.includes(numAppStartsAndResumes)) {
+    console.log(
+      "ask for review because numAppStartsAndResumes is ",
+      numAppStartsAndResumes
+    );
+    RateApp.requestReview();
+  }
+
+  return stats.custom[customKey];
+}
+
+/**
+ * Spara stats.
+ *
+ * @param {object} statsObj
+ */
+async function saveStats(statsObj) {
+  await Storage.set({
+    key: "stats",
+    value: JSON.stringify(statsObj),
+  });
+}
+
+// window.getStats = getStats;
+// async function testStats() {
+//   const statsForPage100 = await increaseStatForPage(100);
+//   const statsForPage377 = await increaseStatForPage(377);
+//   const statsForCustomStart = await increaseStatForCustom("appStart");
+//   const statsForCustomResume = await increaseStatForCustom("appResume");
+//   console.table({
+//     statsForPage100,
+//     statsForPage377,
+//     statsForCustomStart,
+//     statsForCustomResume,
+//   });
+// }
+// testStats();
+
 export {
+  getStats,
+  increaseStatForPage,
+  increaseStatForCustom,
   getPageRangeInfo,
   getCacheBustTimeString,
   getUnixtime,

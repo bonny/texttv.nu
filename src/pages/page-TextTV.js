@@ -162,12 +162,14 @@ const PageTextTV = (props) => {
 
   const handlePullToRefresh = (e) => {
     updateRefreshTime();
+    logPageView(pageNum, 'pullToRefresh');
     setTimeout(() => {
       e.target.complete();
     }, 500);
   };
 
   const handleRefreshBtnClick = (e) => {
+    logPageView(pageNum, 'reloadButton');
     updateRefreshTime();
   };
 

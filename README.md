@@ -43,9 +43,15 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 ### Ändringslogg
 
-#### Version 3.n.n (mmm 2021)
+#### Under utveckling
+
+- ...
+
+#### Version 3.n (mmm 2021)
 
 - Lagt till brödsmulor för att förenkla navigering tillbaka till innehållets kategori. (#12)
+- Lagra och visa statistik för antal starter av appen och vilka sidor som besökts. Statistik går att se på https://app.texttv.nu/statistik eller under sidor-menyn i appen.
+- Fråga efter en recension av appen när man använt appen ett tag.
 
 #### Version 3.1.1 (augusti 2021)
 

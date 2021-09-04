@@ -1,6 +1,4 @@
-import {
-  AdMob, BannerAdPluginEvents
-} from "@capacitor-community/admob";
+import { AdMob, BannerAdPluginEvents } from "@capacitor-community/admob";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { StatusBar, Style } from "@capacitor/status-bar";
 import "@ionic/core/css/core.css";
@@ -13,9 +11,26 @@ import { FavoritesContext } from "./contexts/FavoritesContext";
 import "./css/app.css";
 import "./css/texttv-page.css";
 import "./css/theme.css";
-import { getTabHeight, loadFavorites } from "./functions";
+import {
+  getTabHeight,
+  loadFavorites,
+  increaseStatForCustom,
+} from "./functions";
 import { Navigationsflikar } from "./modules/Navigationsflikar";
 import { MenuWithRouter } from "./modules/SideMenu";
+import { App } from "@capacitor/app";
+
+App.addListener("appStateChange", ({ isActive }) => {
+  // flyttar app till bakgrund: App state changed. Is active? false
+  // multitaskar fram den igen: App state changed. Is active? true
+  if (isActive) {
+    increaseStatForCustom("appResume");
+  }
+});
+
+SplashScreen.hide();
+
+increaseStatForCustom("appStart");
 
 // Initiera saker på en Ios eller Android-enhet.
 // Hybrid = "a device running Capacitor or Cordova".
@@ -35,8 +50,6 @@ if (isPlatform("hybrid")) {
   } catch (e) {
     // AdMob init error.
   }
-
-  SplashScreen.hide();
 
   StatusBar.setStyle({
     style: Style.Dark,
