@@ -1,8 +1,8 @@
 const favoriter = [
   { title: "Hem/Favoriter", href: "/hem", isHome: true },
   { title: "SVT Text Start", pages: "100" },
-  { title: "Inrikesnyheter", pages: "101-103" },
-  { title: "Utrikesnyheter", pages: "104-105" },
+  { title: "Inrikes", pages: "101-103" },
+  { title: "Utrikes", pages: "104-105" },
   { title: "Ekonomi", pages: "200-202" },
   { title: "Sport", pages: "300-302" },
   { title: "Resultatbörsen", pages: "330" },

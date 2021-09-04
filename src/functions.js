@@ -528,9 +528,13 @@ function getTabHeight() {
  * t.ex. "manually" om man angivit den manuellt i sökruta/inputruta.
  */
 function logPageView(pageNum, source) {
+  // @TODO: första visningen av en sida loggas inte, t.ex. när app startas
+  console.log('logPageView', pageNum, source)
   if (!pageNum || !source) {
     return;
   }
+
+  increaseStatForPage(pageNum);
 
   try {
     FirebaseAnalytics.logEvent({
@@ -544,17 +548,9 @@ function logPageView(pageNum, source) {
 }
 
 /**
- * Lagra
+ * Hämta object med statistik.
  *
- * antal app-starter
- * antal app-resume
- * antal visningar av sidor
- * antal visningar per sidnummer
- *
- * https://github.com/ionic-team/ionic-storage
- *
- * get stats
- * set/update stat for key
+ * @returns {object}
  */
 async function getStats() {
   let { value } = await Storage.get({
@@ -579,6 +575,12 @@ async function getStats() {
   return value;
 }
 
+/**
+ * Öka stats för ett sidnummer.
+ *
+ * @param {number} customKey
+ * @returns {number} Nytt antal i db
+ */
 async function increaseStatForPage(pageNum) {
   let stats = await getStats();
 
@@ -593,6 +595,12 @@ async function increaseStatForPage(pageNum) {
   return stats.pages[pageNum];
 }
 
+/**
+ * Öka stats för valfritt värde/nyckel.
+ *
+ * @param {string} customKey
+ * @returns {number}
+ */
 async function increaseStatForCustom(customKey) {
   let stats = await getStats();
 
@@ -607,6 +615,11 @@ async function increaseStatForCustom(customKey) {
   return stats.custom[customKey];
 }
 
+/**
+ * Spara stats.
+ *
+ * @param {object} statsObj
+ */
 async function saveStats(statsObj) {
   await Storage.set({
     key: "stats",
@@ -614,25 +627,25 @@ async function saveStats(statsObj) {
   });
 }
 
-window.getStats = getStats;
-
-async function testStats() {
-  const statsForPage100 = await increaseStatForPage(100);
-  const statsForPage377 = await increaseStatForPage(377);
-  const statsForCustomStart = await increaseStatForCustom("app/start");
-  const statsForCustomResume = await increaseStatForCustom("app/resume");
-  console.table({
-    statsForPage100,
-    statsForPage377,
-    statsForCustomStart,
-    statsForCustomResume,
-  });
-}
-testStats();
+// window.getStats = getStats;
+// async function testStats() {
+//   const statsForPage100 = await increaseStatForPage(100);
+//   const statsForPage377 = await increaseStatForPage(377);
+//   const statsForCustomStart = await increaseStatForCustom("appStart");
+//   const statsForCustomResume = await increaseStatForCustom("appResume");
+//   console.table({
+//     statsForPage100,
+//     statsForPage377,
+//     statsForCustomStart,
+//     statsForCustomResume,
+//   });
+// }
+// testStats();
 
 export {
-  increaseStatForPage,
   getStats,
+  increaseStatForPage,
+  increaseStatForCustom,
   getPageRangeInfo,
   getCacheBustTimeString,
   getUnixtime,

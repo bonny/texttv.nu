@@ -105,6 +105,9 @@ const TextTVPage = (props) => {
         url = `https://api.texttv.nu/api/get/${pageNum}?cb=${cacheBustTimeString}&app=${appId}${slowAnswerQueryString}`;
       }
 
+      //logPageView(linkPageNum, "click");
+      console.log("fetch");
+
       fetch(url)
         .then(async (responseDatas) => {
           // Sida är laddad.

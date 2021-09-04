@@ -11,6 +11,7 @@ import { Page404 } from "../pages/page-404.js";
 import PageTextTV from "../pages/page-TextTV.js";
 import PageCatchAll from "../pages/PageCatchAll";
 import { PageDebug } from "../pages/pageDebug.js";
+import { PageStatistik } from "../pages/statistik.js";
 import { TabPopulart } from "../pages/tab-mest-last";
 import { TabNyast } from "../pages/tab-nyast";
 import { TabSidor } from "../pages/tab-sidor";
@@ -40,6 +41,7 @@ export const Navigationsflikar = () => {
         <Route exact path="/" render={() => <Redirect to="/hem" />} />
         {/* Diverse testsidor/testsökvägar. */}
         <Route path="/debug" component={PageDebug} />
+        <Route path="/statistik" component={PageStatistik} />
         <Route path="/test/skeleton" component={PageTestSkeleton} />
         <Route path="/test/texttvsida" component={PageTestTextTVSida} />
         <Route path="/test/texttvsida/:urlPageNum" component={PageTestTextTVSida} />

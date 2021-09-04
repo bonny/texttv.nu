@@ -41,6 +41,14 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 ### Ändringslogg
 
+#### Under utveckling
+
+- [ ] Statistik
+  - [ ] statistik vid sidvisning
+  - [ ] statistik vid appstart
+  - [ ] statistik vid appresume
+  - [ ] ny route /statistik som visar det i tabell
+
 #### Version 3.n (augusti 2021)
 
 - Fixat problem med att navigera på äldre Ios-enheter, t.ex. Ipad med Ios 12.5.4. (#13)

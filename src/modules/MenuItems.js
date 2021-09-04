@@ -3,9 +3,9 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader
+  IonListHeader,
 } from "@ionic/react";
-import { document } from "ionicons/icons";
+import { document, analytics } from "ionicons/icons";
 import { navItems, navItemsAlsoLike } from "./navItems";
 import TextTVSidorLista from "./TextTVSidorLista";
 
@@ -19,16 +19,26 @@ const MenuItem = ({ item }) => {
   );
 };
 
-const MenuItems = props => {
+const MenuItems = (props) => {
   return (
     <>
       <TextTVSidorLista {...props} showHeader={false} />
 
       <IonList>
         <IonListHeader>
+          <IonLabel>För nördar</IonLabel>
+        </IonListHeader>
+        <IonItem routerLink="/statistik">
+          <IonIcon slot="start" icon={analytics} />
+          <IonLabel>Statistik på sidvisningar</IonLabel>
+        </IonItem>
+      </IonList>
+
+      <IonList>
+        <IonListHeader>
           <IonLabel>Externa länkar om texttv.nu</IonLabel>
         </IonListHeader>
-        {navItems.map(item => {
+        {navItems.map((item) => {
           return <MenuItem item={item} key={item.href} />;
         })}
       </IonList>
@@ -37,7 +47,7 @@ const MenuItems = props => {
         <IonListHeader>
           <IonLabel>Vi på TextTV.nu gillar också</IonLabel>
         </IonListHeader>
-        {navItemsAlsoLike.map(item => {
+        {navItemsAlsoLike.map((item) => {
           return <MenuItem item={item} key={item.href} />;
         })}
         <IonItem routerLink="/debug" style={{ opacity: 0 }}>
