@@ -25,14 +25,14 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 ### Släppa ny version
 
-- Skapa release-branch
+- Skapa release-branch, t.ex. `release/1.2.3`
 - Uppdatera version i `package.json`
 - Ios
   - Lägg till ny version på [App Store Connect](https://appstoreconnect.apple.com/apps/607998045/appstore/).
   - `$ ionic capacitor sync ios`.
   - `$ ionic capacitor open ios` för att öppna Xcode.
   - Uppdatera app-version i Xcode.
-  - I XCode kör Product » Archive.
+  - I Xcode kör Product » Archive.
   - Gå till organizer och ladda upp.
   - Välj filen i App Store Connect, klicka i alla random saker som Apple gnäller på, och välj att skicka in till review.
 - Android (inte testat helt ännu)
