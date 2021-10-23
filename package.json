@@ -21,7 +21,7 @@
     "@capacitor/storage": "^1.2.2",
     "@ionic/react": "^5.8.4",
     "@ionic/react-router": "^5.8.4",
-    "capacitor-rate-app": "^1.1.0",
+    "capacitor-rate-app": "^2.0.0",
     "classnames": "^2.2.6",
     "dayjs": "^1.10.7",
     "firebase": "^8.10.0",
