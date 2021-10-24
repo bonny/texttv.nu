@@ -41,6 +41,6 @@
 	},
 	{
 		"pkg": "capacitor-rate-app",
-		"classpath": "com.capacitor.rateApp.CapacitorRateApp"
+		"classpath": "com.capacitor.rateapp.CapacitorRateAppPlugin"
 	}
 ]
