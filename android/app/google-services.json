@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "30223179902-4i4en86cphqp7lfor0u87kbb6svm61ud.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mufflify.TextTVnu",
+            "certificate_hash": "c6892df2978ca38f2239bbb0c3c8fcdb91f8e980"
+          }
+        },
+        {
           "client_id": "30223179902-bkmsu16p5bd5du7el83il5vpcqkkltal.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -32,10 +40,47 @@
               "client_type": 3
             },
             {
-              "client_id": "30223179902-kms7el00gajqpo2ihf9g53843q7ult6o.apps.googleusercontent.com",
+              "client_id": "30223179902-4o2bim7de5hu78imurdgl0geiu6g3b67.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.mufflify.brottsplatskartan",
+                "bundle_id": "com.mufflify.TextTVnu",
+                "app_store_id": "607998045"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30223179902:android:254c128b01be29cc0bf82f",
+        "android_client_info": {
+          "package_name": "com.mufflify.TextTVnu2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "30223179902-bkmsu16p5bd5du7el83il5vpcqkkltal.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe3_vEfxAFck_NfmqJpNrtcs00IwqrTvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "30223179902-4ik1e42ed7alujli0dsu2l9m9udtsn33.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "30223179902-4o2bim7de5hu78imurdgl0geiu6g3b67.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mufflify.TextTVnu",
                 "app_store_id": "607998045"
               }
             }
