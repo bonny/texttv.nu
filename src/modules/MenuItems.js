@@ -5,7 +5,7 @@ import {
   IonList,
   IonListHeader,
 } from "@ionic/react";
-import { document, analytics } from "ionicons/icons";
+import { document, analytics, informationCircleOutline } from "ionicons/icons";
 import { navItems, navItemsAlsoLike } from "./navItems";
 import TextTVSidorLista from "./TextTVSidorLista";
 
@@ -25,12 +25,16 @@ const MenuItems = (props) => {
       <TextTVSidorLista {...props} showHeader={false} />
 
       <IonList>
-        <IonListHeader>
+        {/* <IonListHeader>
           <IonLabel>För nördar</IonLabel>
-        </IonListHeader>
+        </IonListHeader> */}
         <IonItem routerLink="/statistik">
           <IonIcon slot="start" icon={analytics} />
           <IonLabel>Statistik</IonLabel>
+        </IonItem>
+        <IonItem routerLink="/kontakta-oss">
+          <IonIcon slot="start" icon={informationCircleOutline} />
+          <IonLabel>Kontakta oss</IonLabel>
         </IonItem>
       </IonList>
 
