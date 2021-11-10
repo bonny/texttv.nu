@@ -157,6 +157,8 @@ const TextTVPage = (props) => {
                   {new Date(page.date_updated_unix * 1000).toLocaleString()}
                 </li>
               );
+            } else {
+              return null;
             }
           })}
         </ul>
