@@ -47,7 +47,7 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 #### Under utveckling
 
 - Lagt till kontakta oss-sida, vilket är ett krav från Google Play Store för att kunna visas i nyhets-kategorin.
--
+- Lagt till källa (svt.se/text-tv/nnn) under sidorna.
 
 #### Version 3.2 (mmm 2021)
 
