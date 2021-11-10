@@ -147,7 +147,7 @@ const TextTVPage = (props) => {
   const PagesAttribution = function () {
     return (
       <aside className="TextTVPage__attribution">
-        <p>Källor:</p>
+        <p>{pageData.length === 1 ? "Källa:" : "Källor:"}</p>
         <ul>
           {pageData.map((page) => {
             if (pageData && pageData.length) {

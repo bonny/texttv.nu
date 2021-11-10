@@ -144,6 +144,18 @@
   font-size: 1rem;
   /* max-width: 20em; */
   padding: var(--ion-padding, 16px);
+  text-align: left;
+  color: var(--ion-color-step-600);
+}
+
+.TextTVPage__attribution > ul {
+  margin: 0 0 0 1.2rem;
+  padding: 0;
+}
+
+.TextTVPage__attribution > ul > li {
+  /* margin: 0;
+  padding: 0; */
 }
 
 .TextTVPage__attribution > p {
