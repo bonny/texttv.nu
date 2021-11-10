@@ -137,3 +137,16 @@
 .TextTVPage .bgImg {
   image-rendering: pixelated;
 }
+
+/* Text med källa, dvs. svt.se. */
+.TextTVPage__attribution {
+  /* border: 1px solid red; */
+  font-size: 1rem;
+  /* max-width: 20em; */
+  padding: var(--ion-padding, 16px);
+}
+
+.TextTVPage__attribution > p {
+  margin: 0;
+  text-align: left;
+}

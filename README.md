@@ -46,7 +46,10 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 #### Under utveckling
 
-#### Version 3.n (mmm 2021)
+- Lagt till kontakta oss-sida, vilket är ett krav från Google Play Store för att kunna visas i nyhets-kategorin.
+-
+
+#### Version 3.2 (mmm 2021)
 
 - Lagt till brödsmulor för att förenkla navigering tillbaka till innehållets kategori. (#12)
 - Lagra och visa statistik för antal starter av appen och vilka sidor som besökts. Statistik går att se på https://app.texttv.nu/statistik eller under sidor-menyn i appen. (#14)

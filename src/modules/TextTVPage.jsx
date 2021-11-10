@@ -139,6 +139,31 @@ const TextTVPage = (props) => {
     "TextTVPage--isDoneLoading": !pageIsLoading,
   });
 
+  /**
+   * Visar attribution/källa för aktuella text tv-sidor.
+   *
+   * @returns Array Attributions
+   */
+  const PagesAttribution = function () {
+    return (
+      <aside className="TextTVPage__attribution">
+        <p>Källor:</p>
+        <ul>
+          {pageData.map((page) => {
+            if (pageData && pageData.length) {
+              return (
+                <li>
+                  svt.se/text-tv/{page.num} • Hämtad{" "}
+                  {new Date(page.date_updated_unix * 1000).toLocaleString()}
+                </li>
+              );
+            }
+          })}
+        </ul>
+      </aside>
+    );
+  };
+
   // Lägg en `div` runt varje sida.
   const pagesHtml = (
     <>
@@ -162,6 +187,7 @@ const TextTVPage = (props) => {
           </div>
         );
       })}
+      <PagesAttribution />
     </>
   );
 
