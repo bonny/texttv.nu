@@ -6,8 +6,8 @@ android {
         applicationId "com.mufflify.TextTVnu2"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 2
-        versionName "3.2"
+        versionCode 3
+        versionName "3.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
