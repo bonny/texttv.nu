@@ -26,8 +26,8 @@ function PageKontaktaOss(props) {
               kan nå mig på{" "}
               <a href="mailto:par.thernstrom@gmail.com">
                 par.thernstrom@gmail.com
-              </a>
-              .
+              </a>{" "}
+              eller telefon 070-225 14 91.
             </p>
           </IonCardContent>
         </IonCard>
