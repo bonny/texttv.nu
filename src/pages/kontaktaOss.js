@@ -27,7 +27,15 @@ function PageKontaktaOss(props) {
               <a href="mailto:par.thernstrom@gmail.com">
                 par.thernstrom@gmail.com
               </a>{" "}
-              eller telefon <span className="ion-text-nowrap">070-225 14 91</span>.
+              eller telefon{" "}
+              <span className="ion-text-nowrap">070-225 14 91</span>.
+            </p>
+            <p>
+              Läs mer{" "}
+              <a target="_blank" href="https://texttv.nu/sida/om-texttv-nu">
+                om TextTV.nu
+              </a>{" "}
+              på vår hemsida.
             </p>
           </IonCardContent>
         </IonCard>
