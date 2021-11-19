@@ -36,8 +36,9 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
   - Gå till organizer och ladda upp.
   - Välj filen i App Store Connect, klicka i alla random saker som Apple gnäller på, och välj att skicka in till review.
 - Android (inte testat helt ännu)
+  - Uppdatera version i `build.gradle`
   - `$ ionic capacitor sync android`
-  - I Android Studio: "Build => Generate Signed Bundle / APK”
+  - I Android Studio: "Build => Generate Signed Bundle / APK"
   - Skapa release via webben i Play Store
   - https://developer.android.com/distribute/best-practices/launch/launch-checklist
 - Tagga och mergea in branch i main.
