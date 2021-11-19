@@ -32,7 +32,11 @@ function PageKontaktaOss(props) {
             </p>
             <p>
               Läs mer{" "}
-              <a target="_blank" href="https://texttv.nu/sida/om-texttv-nu">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://texttv.nu/sida/om-texttv-nu"
+              >
                 om TextTV.nu
               </a>{" "}
               på vår hemsida.
