@@ -1,8 +1,9 @@
-# texttv.nu – en fin och bra mobilapp för SVT Text TV
+# TextTV.nu: smartare SVT Text i mobilen
 
-Här bygger vi [iOS appen](https://itunes.apple.com/se/app/texttv.nu/id607998045) för [TextTV.nu](https://texttv.nu/).
+Här bygger vi på [TextTV.nu](https://texttv.nu/) appar för Ios och Android.
 
-[Android-appen för SVT Text TV](https://play.google.com/store/apps/details?id=com.mufflify.TextTVnu&hl=sv) är också rätt så baserad på denna kod också.
+- [iOS appen](https://itunes.apple.com/se/app/texttv.nu/id607998045).
+- [Android-appen för SVT Text TV](https://play.google.com/store/apps/details?id=com.mufflify.TextTVnu2).
 
 <img src="https://user-images.githubusercontent.com/221570/129085488-6617f74b-f893-4e2c-b03a-6866b11d3020.png" width="320" />
 
