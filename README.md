@@ -7,6 +7,10 @@ Här bygger vi på [TextTV.nu](https://texttv.nu/) appar för Ios och Android.
 
 <img src="https://user-images.githubusercontent.com/221570/129085488-6617f74b-f893-4e2c-b03a-6866b11d3020.png" width="320" />
 
+![Skärmdump av appen](https://texttv.nu/bloggimages/2021-11-ny-android-app.png)
+
+<img src="https://texttv.nu/bloggimages/2021-11-ny-android-app.png" width="320" />
+
 Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka in förbättringsförslag.
 
 ## Kom igång
