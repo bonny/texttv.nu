@@ -42,5 +42,16 @@
       "headers": { "cache-control": "s-maxage=0" },
       "dest": "/index.html"
     }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
   ]
 }
