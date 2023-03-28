@@ -5,7 +5,7 @@
 
         <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="@string/admob_app_id"/>
 
-        <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:name="io.ionic.starter.MainActivity" android:label="@string/title_activity_main" android:theme="@style/AppTheme.NoActionBarLaunch" android:launchMode="singleTask">
+        <activity android:exported="true" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:name="io.ionic.starter.MainActivity" android:label="@string/title_activity_main" android:theme="@style/AppTheme.NoActionBarLaunch" android:launchMode="singleTask">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
