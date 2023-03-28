@@ -20,7 +20,6 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 ### Random kommandon
 
-- `ionic capacitor sync`
 - `npx cap sync` (borde göra samma sak som ovan men verkar göra med, t.ex. köra pod update för mig)
 - `capacitor open android`
 
