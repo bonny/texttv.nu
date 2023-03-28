@@ -22,7 +22,7 @@
     "@capacitor/status-bar": "4.1.1",
     "@ionic/react": "^5.8.5",
     "@ionic/react-router": "^5.8.5",
-    "capacitor-rate-app": "^2.0.0",
+    "capacitor-rate-app": "^3.0.0",
     "classnames": "^2.2.6",
     "dayjs": "^1.10.7",
     "firebase": "^8.10.0",
