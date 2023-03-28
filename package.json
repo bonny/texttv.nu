@@ -64,14 +64,5 @@
     "@capacitor/cli": "^3.3.1",
     "@ionic/lab": "^3.1.0",
     "cordova-plugin-device": "^2.0.3"
-  },
-  "cordova": {
-    "plugins": {
-      "cordova-plugin-whitelist": {},
-      "cordova-plugin-device": {}
-    },
-    "platforms": [
-      "ios"
-    ]
   }
 }
