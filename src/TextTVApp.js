@@ -1,8 +1,6 @@
 import { AdMob, BannerAdPluginEvents } from "@capacitor-community/admob";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { StatusBar, Style } from "@capacitor/status-bar";
-import "@ionic/core/css/core.css";
-import "@ionic/core/css/ionic.bundle.css";
 import { IonApp, IonSplitPane, isPlatform } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { useEffect, useState } from "react";
@@ -19,6 +17,27 @@ import {
 import { Navigationsflikar } from "./modules/Navigationsflikar";
 import { MenuWithRouter } from "./modules/SideMenu";
 import { App } from "@capacitor/app";
+import { setupIonicReact } from "@ionic/react";
+
+/* Core CSS required for Ionic components to work properly */
+import "@ionic/react/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+import "@ionic/react/css/normalize.css";
+import "@ionic/react/css/structure.css";
+import "@ionic/react/css/typography.css";
+
+/* Optional CSS utils that can be commented out */
+import "@ionic/react/css/padding.css";
+import "@ionic/react/css/float-elements.css";
+import "@ionic/react/css/text-alignment.css";
+import "@ionic/react/css/text-transformation.css";
+import "@ionic/react/css/flex-utils.css";
+import "@ionic/react/css/display.css";
+
+setupIonicReact({
+  mode: "md",
+});
 
 App.addListener("appStateChange", ({ isActive }) => {
   // flyttar app till bakgrund: App state changed. Is active? false
