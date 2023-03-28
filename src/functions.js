@@ -3,7 +3,7 @@
  */
 import { Share } from "@capacitor/share";
 import { Clipboard } from "@capacitor/clipboard";
-import { Storage } from "@capacitor/storage";
+import { Preferences } from "@capacitor/preferences";
 import { isPlatform } from "@ionic/react";
 import { FirebaseAnalytics } from "./analytics";
 import { RateApp } from "capacitor-rate-app";
@@ -479,7 +479,7 @@ function isRunningInWebBrowser() {
  */
 async function loadFavorites() {
   let favs;
-  const ret = await Storage.get({ key: "favorites" });
+  const ret = await Preferences.get({ key: "favorites" });
 
   try {
     favs = JSON.parse(ret.value);
@@ -496,7 +496,7 @@ async function loadFavorites() {
 }
 
 async function saveFavorites(favs) {
-  await Storage.set({
+  await Preferences.set({
     key: "favorites",
     value: JSON.stringify(favs),
   });
@@ -554,7 +554,7 @@ function logPageView(pageNum, source) {
  * @returns {object}
  */
 async function getStats() {
-  let { value } = await Storage.get({
+  let { value } = await Preferences.get({
     key: "stats",
   });
 
@@ -635,7 +635,7 @@ async function increaseStatForCustom(customKey) {
  * @param {object} statsObj
  */
 async function saveStats(statsObj) {
-  await Storage.set({
+  await Preferences.set({
     key: "stats",
     value: JSON.stringify(statsObj),
   });
