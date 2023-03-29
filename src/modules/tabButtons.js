@@ -23,7 +23,7 @@ export const tabButtons = [
     icon: listOutline,
     iconSelected: list,
     href: "/sidor",
-    className: "ion-hide-lg-up",
+    // className: "ion-hide-lg-up",
   },
   {
     tab: "nyast",
