@@ -12,7 +12,7 @@ import {
   IonToolbar,
   isPlatform,
 } from "@ionic/react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   copyOutline,
   linkOutline,
@@ -28,7 +28,6 @@ import { BackButton } from "./BackButton";
 
 const Header = (props) => {
   const {
-    history,
     onShare,
     handleRefreshBtnClick,
     onCopyTextToClipboard,
@@ -37,6 +36,7 @@ const Header = (props) => {
     editFavoritesButton,
   } = props;
 
+  const history = useHistory();
   const [showPopover, setShowPopover] = useState(false);
   const [popoverEvent, setPopoverEvent] = useState();
   const [actionPerformedToastOpened, setActionPerformedToastOpened] =
@@ -92,7 +92,7 @@ const Header = (props) => {
           </IonTitle>
         </IonToolbar>
 
-        <IonToolbar mode="md" style={{borderBottom: '1px solid #48494c'}}>
+        <IonToolbar mode="md" style={{ borderBottom: "1px solid #48494c" }}>
           <IonButtons slot="start">
             <BackButton history={history} />
           </IonButtons>
