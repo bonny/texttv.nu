@@ -152,7 +152,7 @@ const TextTVPage = (props) => {
           {pageData.map((page) => {
             if (pageData && pageData.length) {
               return (
-                <li>
+                <li key={page.num}>
                   svt.se/text-tv/{page.num} • Hämtad{" "}
                   {new Date(page.date_updated_unix * 1000).toLocaleString()}
                 </li>
