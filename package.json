@@ -22,6 +22,7 @@
     "@capacitor/status-bar": "4.1.1",
     "@ionic/react": "^6.7.0",
     "@ionic/react-router": "^6.7.0",
+    "history": "^4.9.0",
     "capacitor-rate-app": "^3.0.0",
     "classnames": "^2.2.6",
     "dayjs": "^1.10.7",
@@ -32,8 +33,8 @@
     "source-map-explorer": "^2.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
+    "react-router": "^5.3.4",
+    "react-router-dom": "^5.3.4",
     "react-scripts": "^5.0.0"
   },
   "scripts": {
