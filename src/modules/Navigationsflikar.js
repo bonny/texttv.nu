@@ -6,13 +6,13 @@ import {
   IonTabButton,
   IonTabs,
 } from "@ionic/react";
-import { Route, Redirect, useHistory, useLocation } from "react-router-dom";
+import { Redirect, Route, useLocation } from "react-router-dom";
+import { PageKontaktaOss } from "../pages/kontaktaOss.js";
 import { Page404 } from "../pages/page-404.js";
 import PageTextTV from "../pages/page-TextTV.js";
 import PageCatchAll from "../pages/PageCatchAll";
 import { PageDebug } from "../pages/pageDebug.js";
 import { PageStatistik } from "../pages/statistik.js";
-import { PageKontaktaOss } from "../pages/kontaktaOss.js";
 import { TabPopulart } from "../pages/tab-mest-last";
 import { TabNyast } from "../pages/tab-nyast";
 import { TabSidor } from "../pages/tab-sidor";
@@ -22,23 +22,14 @@ import { PageTestTextTVSida } from "../pages/tabTestTextTVSida";
 import { tabButtons } from "./tabButtons";
 
 export const Navigationsflikar = () => {
-  const history = useHistory();
   const location = useLocation();
-
-  // Click fungerar ej pga:
-  // https://github.com/ionic-team/ionic-framework/issues/22511
-  // https://github.com/ionic-team/ionic-framework/issues/17761
-  // så därför använder vi mouseup.
-  const handleTabMouseDown = (e) => {
-    const tabButton = e.target.closest("ion-tab-button");
-    const tabHref = tabButton.getAttribute("data-href");
-    const time = Date.now();
-    history.push(`${tabHref}?clicktime=${time}`);
-  };
 
   return (
     <IonTabs id="mainContent">
       <IonRouterOutlet id="routerOutletElm" animated={false}>
+        {/* 404-sida */}
+        <Route path="*" component={Page404} />
+
         <Route exact path="/" render={() => <Redirect to="/hem" />} />
         {/* Diverse testsidor/testsökvägar. */}
         <Route path="/debug" component={PageDebug} />
@@ -46,7 +37,10 @@ export const Navigationsflikar = () => {
         <Route path="/kontakta-oss" component={PageKontaktaOss} />
         <Route path="/test/skeleton" component={PageTestSkeleton} />
         <Route path="/test/texttvsida" component={PageTestTextTVSida} />
-        <Route path="/test/texttvsida/:urlPageNum" component={PageTestTextTVSida} />
+        <Route
+          path="/test/texttvsida/:urlPageNum"
+          component={PageTestTextTVSida}
+        />
 
         <Route path="/hem/:pageNum" component={PageTextTV} exact={true} />
         <Route path="/hem" component={Startsida} exact={true} />
@@ -70,9 +64,6 @@ export const Navigationsflikar = () => {
             Bra om man t.ex. hijackar url och skriver sida där manuellt.
             */}
         <Route path="/:pageNum([0-9]{3}.*/?)" component={PageCatchAll} />
-
-        {/* 404-sida */}
-        <Route component={Page404} />
       </IonRouterOutlet>
 
       <IonTabBar slot="bottom">
@@ -86,10 +77,7 @@ export const Navigationsflikar = () => {
 
           return (
             <IonTabButton
-              // onClick fungerar inte pga bugg i ionic (se handleClick)
-              onMouseDown={handleTabMouseDown}
-              // href={href}
-              data-href={href}
+              href={href}
               key={`${tab}`}
               tab={`${tab}`}
               className={className}
