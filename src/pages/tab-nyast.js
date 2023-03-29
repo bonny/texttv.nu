@@ -15,7 +15,7 @@ import TextTVRefresher from "../modules/TextTVRefresher";
 import TextTVSearchBar from "../modules/TextTVSearchBar";
 import { BackButton } from "../modules/BackButton";
 
-const queryString = require("query-string");
+import queryString from "query-string";
 
 const TabNyast = (props) => {
   const { history } = props;

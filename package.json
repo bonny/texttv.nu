@@ -27,7 +27,7 @@
     "dayjs": "^1.10.7",
     "firebase": "^8.10.0",
     "ionicons": "^5.5.4",
-    "query-string": "^7.0.1",
+    "query-string": "^8.1.0",
     "react": "^18.2.0",
     "react-app-rewire-disable-chunks": "0.0.1",
     "react-dom": "^18.2.0",
