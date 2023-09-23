@@ -8,8 +8,6 @@ import {
   IonItem,
   IonLabel,
   IonPage,
-  IonSlide,
-  IonSlides,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
@@ -136,7 +134,7 @@ function PageDebug(props) {
           </IonCardContent>
         </IonCard>
 
-        <IonSlides
+        {/* <IonSlides
           pager={false}
           options={slideOpts}
           style={{ outline: "2px solid pink" }}
@@ -166,7 +164,7 @@ function PageDebug(props) {
               <TextTVPage pageNum="300-302,376,377" history={props.history} />
             </div>
           </IonSlide>
-        </IonSlides>
+        </IonSlides> */}
       </IonContent>
     </IonPage>
   );

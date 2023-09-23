@@ -5,8 +5,6 @@ import {
   IonContent,
   IonIcon,
   IonPage,
-  IonSlide,
-  IonSlides,
   IonToast,
   useIonViewWillEnter,
   useIonViewWillLeave,
@@ -414,14 +412,14 @@ const PageTextTV = (props) => {
           refreshTime: {refreshTime}
         </p>
  */}
-        <IonSlides
+        {/* <IonSlides
           pager={false}
           options={sliderOptions}
           onIonSlidesDidLoad={handleSlidesDidLoad}
           onIonSlideDidChange={handleSlideDidChange}
         >
-          <IonSlide>
-            <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev">
+          <IonSlide> */}
+            {/* <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev">
               <div className="TextTVNextPrevSwipeNav__inner">
                 <IonIcon
                   className="TextTVNextPrevSwipeNav__icon"
@@ -431,10 +429,10 @@ const PageTextTV = (props) => {
                   Gå till {pagePrevNum}
                 </span>
               </div>
-            </div>
-          </IonSlide>
+            </div> */}
+          {/* </IonSlide> */}
 
-          <IonSlide>
+          {/* <IonSlide> */}
             <div>
               <TextTVPage
                 pageNum={pageNum}
@@ -444,9 +442,9 @@ const PageTextTV = (props) => {
                 onPageUpdate={handlePageUpdate}
               />
             </div>
-          </IonSlide>
+          {/* </IonSlide> */}
 
-          <IonSlide>
+          {/* <IonSlide>
             <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--next">
               <div className="TextTVNextPrevSwipeNav__inner">
                 <span className="TextTVNextPrevSwipeNav__number">
@@ -459,7 +457,7 @@ const PageTextTV = (props) => {
               </div>
             </div>
           </IonSlide>
-        </IonSlides>
+        </IonSlides> */}
 
         {/* Toast med meddelande om att uppdatering av sidan finns. */}
         <IonToast
