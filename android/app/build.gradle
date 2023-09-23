@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace "com.mufflify.TextTVnu"
     compileSdkVersion 30
     defaultConfig {
         applicationId "com.mufflify.TextTVnu2"

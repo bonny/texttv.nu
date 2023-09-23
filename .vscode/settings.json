@@ -1,0 +1,9 @@
+{
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-17",
+            "path": "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home",
+            "default": true
+        },
+    ]
+}
