@@ -5,7 +5,7 @@ Här bygger vi på [TextTV.nu](https://texttv.nu/) appar för Ios och Android.
 - [Ios-appen för SVT Text TV](https://itunes.apple.com/se/app/texttv.nu/id607998045).
 - [Android-appen för SVT Text TV](https://play.google.com/store/apps/details?id=com.mufflify.TextTVnu2).
 
-<img src="https://texttv.nu/bloggimages/2021-11-ny-android-app.png" width="640" alt="Skärmdump av appen" />
+<img src="src/images/android-app-screenshot.png" width="640" alt="Skärmdump av appen" />
 
 Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka in förbättringsförslag.
 
