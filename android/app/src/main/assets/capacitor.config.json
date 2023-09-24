@@ -1,7 +1,6 @@
 {
 	"appId": "com.mufflify.TextTVnu",
 	"appName": "TextTV.nu",
-	"bundledWebRuntime": false,
 	"npmClient": "npm",
 	"webDir": "build",
 	"SplashScreen": {
