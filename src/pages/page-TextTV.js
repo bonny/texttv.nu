@@ -442,22 +442,24 @@ const PageTextTV = (props) => {
         />
 
         {pageCurrentNum > 100 ? (
-          <IonFab slot="fixed" vertical="center" horizontal="start">
+          <IonFab slot="fixed" vertical="bottom" horizontal="start">
             <IonFabButton
               color={"dark"}
               translucent={true}
               onClick={handleFabPrevClick}
+              size="small"
             >
               <IonIcon icon={caretBackCircle} color="tertiary"></IonIcon>
             </IonFabButton>
           </IonFab>
         ) : null}
         {pageCurrentNum < 999 ? (
-          <IonFab slot="fixed" vertical="center" horizontal="end">
+          <IonFab slot="fixed" vertical="bottom" horizontal="end">
             <IonFabButton
               color={"dark"}
               translucent={true}
               onClick={handleFabPrNextClick}
+              size="small"
             >
               <IonIcon icon={caretForwardCircle} color="tertiary"></IonIcon>
             </IonFabButton>
