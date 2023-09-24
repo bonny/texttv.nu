@@ -4,7 +4,7 @@
 import { Share } from "@capacitor/share";
 import { Clipboard } from "@capacitor/clipboard";
 import { Preferences } from "@capacitor/preferences";
-import { isPlatform } from "@ionic/react";
+import { isPlatform, getPlatforms } from "@ionic/react";
 import { FirebaseAnalytics } from "./analytics";
 import { RateApp } from "capacitor-rate-app";
 
@@ -617,7 +617,7 @@ async function increaseStatForCustom(customKey) {
   const numAppStartsAndResumes =
     (stats.custom.appStart || 0) + (stats.custom.appResume || 0);
   const askForReviewNums = [10, 20, 30, 50, 100, 200, 500, 1000, 2000];
-  console.log('numAppStartsAndResumes', numAppStartsAndResumes);
+  console.log("numAppStartsAndResumes", numAppStartsAndResumes);
   if (askForReviewNums.includes(numAppStartsAndResumes)) {
     console.log(
       "ask for review because numAppStartsAndResumes is ",
