@@ -10,6 +10,7 @@ import {
   IonToast,
   useIonViewWillEnter,
   useIonViewWillLeave,
+  IonFooter,
 } from "@ionic/react";
 import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
 import { useEffect, useRef, useState } from "react";
