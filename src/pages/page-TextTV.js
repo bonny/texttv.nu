@@ -8,8 +8,15 @@ import {
   IonToast,
   useIonViewWillEnter,
   useIonViewWillLeave,
+  IonFab,
+  IonFabButton,
 } from "@ionic/react";
-import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
+import {
+  caretBackCircle,
+  caretForwardCircle,
+  add,
+  caretBack,
+} from "ionicons/icons";
 import { useEffect, useRef, useState } from "react";
 import {
   getCurrentIonPageContentElm,
@@ -160,14 +167,14 @@ const PageTextTV = (props) => {
 
   const handlePullToRefresh = (e) => {
     updateRefreshTime();
-    logPageView(pageNum, 'pullToRefresh');
+    logPageView(pageNum, "pullToRefresh");
     setTimeout(() => {
       e.target.complete();
     }, 500);
   };
 
   const handleRefreshBtnClick = (e) => {
-    logPageView(pageNum, 'reloadButton');
+    logPageView(pageNum, "reloadButton");
     updateRefreshTime();
   };
 
@@ -331,6 +338,22 @@ const PageTextTV = (props) => {
     initialSlide: 1,
   };
 
+  // Go to prev page.
+  const handleFabPrevClick = () => {
+    if (pagePrevNum) {
+      logPageView(pagePrevNum, "fabPrevClick");
+      history.push(`/sidor/${pagePrevNum}`);
+    }
+  };
+
+  // Go to next page.
+  const handleFabPrNextClick = () => {
+    if (pageNextNum) {
+      logPageView(pageNextNum, "fabNextClick");
+      history.push(`/sidor/${pageNextNum}`);
+    }
+  };
+
   /**
    * När man swipeat åt ett håll navigeras man iväg till den sidan
    * via en history.push().
@@ -358,7 +381,7 @@ const PageTextTV = (props) => {
 
       // Får ibland på Vercel "Cannot read property 'slideTo' of null" trots att vi kollat denna tidigare.
       // slideTo() har bråkat lite och har buggat i Ios.
-      // ev. har det någon med css-animations att göra. 
+      // ev. har det någon med css-animations att göra.
       // Tog bort en animation och då fungerade det.
       scrollToTop(0);
       swiper.slideTo(1, 0);
@@ -419,7 +442,7 @@ const PageTextTV = (props) => {
           onIonSlideDidChange={handleSlideDidChange}
         >
           <IonSlide> */}
-            {/* <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev">
+        {/* <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev">
               <div className="TextTVNextPrevSwipeNav__inner">
                 <IonIcon
                   className="TextTVNextPrevSwipeNav__icon"
@@ -430,21 +453,21 @@ const PageTextTV = (props) => {
                 </span>
               </div>
             </div> */}
-          {/* </IonSlide> */}
+        {/* </IonSlide> */}
 
-          {/* <IonSlide> */}
-            <div>
-              <TextTVPage
-                pageNum={pageNum}
-                pageId={pageId}
-                history={history}
-                refreshTime={refreshTime}
-                onPageUpdate={handlePageUpdate}
-              />
-            </div>
-          {/* </IonSlide> */}
+        {/* <IonSlide> */}
+        <div>
+          <TextTVPage
+            pageNum={pageNum}
+            pageId={pageId}
+            history={history}
+            refreshTime={refreshTime}
+            onPageUpdate={handlePageUpdate}
+          />
+        </div>
+        {/* </IonSlide> */}
 
-          {/* <IonSlide>
+        {/* <IonSlide>
             <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--next">
               <div className="TextTVNextPrevSwipeNav__inner">
                 <span className="TextTVNextPrevSwipeNav__number">
@@ -496,6 +519,29 @@ const PageTextTV = (props) => {
             },
           ]}
         />
+
+        {pageNum > 100 ? (
+          <IonFab slot="fixed" vertical="center" horizontal="start">
+            <IonFabButton
+              color={"dark"}
+              translucent={true}
+              onClick={handleFabPrevClick}
+            >
+              <IonIcon icon={caretBackCircle}></IonIcon>
+            </IonFabButton>
+          </IonFab>
+        ) : null}
+        {pageNum < 999 ? (
+          <IonFab slot="fixed" vertical="center" horizontal="end">
+            <IonFabButton
+              color={"dark"}
+              translucent={true}
+              onClick={handleFabPrNextClick}
+            >
+              <IonIcon icon={caretForwardCircle}></IonIcon>
+            </IonFabButton>
+          </IonFab>
+        ) : null}
 
         {children}
       </IonContent>
