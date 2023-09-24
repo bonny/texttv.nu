@@ -5,12 +5,12 @@ PODS:
     - Capacitor
   - CapacitorClipboard (5.0.6):
     - Capacitor
-  - CapacitorCommunityAdmob (4.2.0):
+  - CapacitorCommunityAdmob (5.1.1):
     - Capacitor
     - Google-Mobile-Ads-SDK (= 10.1.0)
-  - CapacitorCommunityFirebaseAnalytics (4.0.0):
+  - CapacitorCommunityFirebaseAnalytics (5.0.1):
     - Capacitor
-    - Firebase/Analytics
+    - FirebaseAnalytics
   - CapacitorCordova (5.4.1)
   - CapacitorDevice (5.0.6):
     - Capacitor
@@ -179,8 +179,8 @@ SPEC CHECKSUMS:
   Capacitor: 4c0681b47eebeba1f902093d24149cf2f518393e
   CapacitorApp: 024e1b1bea5f883d79f6330d309bc441c88ad04a
   CapacitorClipboard: 77edf49827ea21da2a9c05c690a4a6a4d07199c4
-  CapacitorCommunityAdmob: 0dace1911ba7eeff384d90cb3482852daa9d1c7d
-  CapacitorCommunityFirebaseAnalytics: 981bf1cc9a66879b3abf2d308c1cd55c857b1d48
+  CapacitorCommunityAdmob: a2425d38150c074a57c491c26ca4ca8509ac4ab8
+  CapacitorCommunityFirebaseAnalytics: a29279a99fad771ba307d9a07571372ea2f36b1f
   CapacitorCordova: 1222fdd78bfd0d323cc22bf254eed1484fe6c92a
   CapacitorDevice: 2c968f98a1ec4d22357418c1521e7ddc46c675e6
   CapacitorHaptics: 1fffc1217c7e64a472d7845be50fb0c2f7d4204c

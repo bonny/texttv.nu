@@ -15,6 +15,8 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 - Använd `nvm use` för att använda rätt Node-version.
 - `npm install`
 - `npm install -g @ionic/cli`
+- `rbenv local`
+- `sdk use java 17.0.8-zulu`
 - `npm start` eller `ionic serve` (kanske även `ionic serve --external`).
 - Ios: Bygg på XCode med Intelprocessor pga får Firebase-pods-problem på M1.
 - Android: Bygg i Android Studio med intelprocessor pga emulator fungerar ännu inte på M1.
