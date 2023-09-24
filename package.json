@@ -6,8 +6,8 @@
     "node": "18.x"
   },
   "dependencies": {
-    "@capacitor-community/admob": "^4.2.0",
-    "@capacitor-community/firebase-analytics": "^4.0.0",
+    "@capacitor-community/admob": "^5.1.1",
+    "@capacitor-community/firebase-analytics": "^5.0.1",
     "@capacitor/android": "^5.0.0",
     "@capacitor/app": "^5.0.0",
     "@capacitor/clipboard": "^5.0.0",
