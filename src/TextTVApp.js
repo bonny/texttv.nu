@@ -1,7 +1,13 @@
-import { AdMob, BannerAdPluginEvents } from "@capacitor-community/admob";
+import {
+  AdMob,
+  BannerAdPluginEvents,
+  AdmobConsentStatus,
+  AdmobConsentDebugGeography,
+} from "@capacitor-community/admob";
+import { App } from "@capacitor/app";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { StatusBar, Style } from "@capacitor/status-bar";
-import { IonApp, IonSplitPane, isPlatform } from "@ionic/react";
+import { IonApp, isPlatform, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { useEffect, useState } from "react";
 import { adMobAdOptions } from "./adMobAdOptions";
@@ -11,13 +17,10 @@ import "./css/texttv-page.css";
 import "./css/theme.css";
 import {
   getTabHeight,
-  loadFavorites,
   increaseStatForCustom,
+  loadFavorites,
 } from "./functions";
 import { Navigationsflikar } from "./modules/Navigationsflikar";
-import { MenuWithRouter } from "./modules/SideMenu";
-import { App } from "@capacitor/app";
-import { setupIonicReact } from "@ionic/react";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -28,12 +31,12 @@ import "@ionic/react/css/structure.css";
 import "@ionic/react/css/typography.css";
 
 /* Optional CSS utils that can be commented out */
-import "@ionic/react/css/padding.css";
+import "@ionic/react/css/display.css";
+import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/float-elements.css";
+import "@ionic/react/css/padding.css";
 import "@ionic/react/css/text-alignment.css";
 import "@ionic/react/css/text-transformation.css";
-import "@ionic/react/css/flex-utils.css";
-import "@ionic/react/css/display.css";
 
 setupIonicReact({
   mode: "md",
@@ -51,11 +54,31 @@ SplashScreen.hide();
 
 increaseStatForCustom("appStart");
 
+const showConsent = async () => {
+  const consentInfo = await AdMob.requestConsentInfo();
+  console.log("requestConsentInfo consentInfo", consentInfo);
+
+  if (
+    consentInfo.isConsentFormAvailable &&
+    consentInfo.status === AdmobConsentStatus.REQUIRED
+  ) {
+    console.log("before showConsentForm");
+    const { status } = await AdMob.showConsentForm();
+    console.log("showConsentForm status", status);
+    // Here now we can show ads.
+  }
+};
+
 // Initiera saker på en Ios eller Android-enhet.
 // Hybrid = "a device running Capacitor or Cordova".
 // https://ionicframework.com/docs/react/platform
 if (isPlatform("hybrid")) {
   try {
+    // https://github.com/capacitor-community/admob#user-message-platform-ump
+    console.log("before showconsent");
+    showConsent();
+    console.log("after showconsent");
+
     AdMob.initialize({
       initializeForTesting: true,
       testingDevices: ["20639CA0A77ABBB0C705B559536A5046"],
@@ -68,6 +91,7 @@ if (isPlatform("hybrid")) {
       });
   } catch (e) {
     // AdMob init error.
+    console.log("AdMob init error", e);
   }
 
   StatusBar.setStyle({
@@ -142,8 +166,8 @@ function TextTVApp(props) {
       <IonApp>
         <IonReactRouter>
           {/* <IonSplitPane contentId="mainContent"> */}
-            {/* <MenuWithRouter {...props} /> */}
-            <Navigationsflikar />
+          {/* <MenuWithRouter {...props} /> */}
+          <Navigationsflikar />
           {/* </IonSplitPane> */}
         </IonReactRouter>
       </IonApp>
