@@ -28,12 +28,11 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 ### Släppa ny version
 
-- Skapa release-branch, t.ex. `release/1.2.3`
+- Skapa release-branch, t.ex. `release/3.3.0`
 - Uppdatera version i `package.json`
 - Ios
   - Lägg till ny version på [App Store Connect](https://appstoreconnect.apple.com/apps/607998045/appstore/).
-  - `$ ionic capacitor sync ios`.
-  - `$ ionic capacitor open ios` för att öppna Xcode.
+  - `$ ionic capacitor build ios` för att bygga och öppna i Xcode.
   - Uppdatera app-version i Xcode.
   - I Xcode kör Product » Archive.
   - Gå till organizer och ladda upp.
@@ -47,6 +46,13 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 - Tagga och mergea in branch i main.
 
 ### Ändringslogg
+
+#### Version 3.4.0
+
+- Lagt till Google consent-message pga GDRP.
+- Uppdaterat alla paket till senaste versioner.
+- Tagit bort svep-funktionen för att gå till nästa/föregående sida, pga Ionic har tagit bort den.
+- Lade till FAB-knappar för att byta till nästa/föregående sida.
 
 #### Version 3.3
 
