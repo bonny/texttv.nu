@@ -2,7 +2,6 @@ import {
   AdMob,
   BannerAdPluginEvents,
   AdmobConsentStatus,
-  AdmobConsentDebugGeography,
 } from "@capacitor-community/admob";
 import { App } from "@capacitor/app";
 import { SplashScreen } from "@capacitor/splash-screen";
@@ -12,6 +11,7 @@ import { IonReactRouter } from "@ionic/react-router";
 import { useEffect, useState } from "react";
 import { adMobAdOptions } from "./adMobAdOptions";
 import { FavoritesContext } from "./contexts/FavoritesContext";
+import { createState } from "state-pool";
 import "./css/app.css";
 import "./css/texttv-page.css";
 import "./css/theme.css";
@@ -54,46 +54,39 @@ SplashScreen.hide();
 
 increaseStatForCustom("appStart");
 
-const showConsent = async () => {
-  const consentInfo = await AdMob.requestConsentInfo();
-  console.log("requestConsentInfo consentInfo", consentInfo);
+const consentStatus = createState(AdmobConsentStatus.UNKNOWN);
 
-  if (
-    consentInfo.isConsentFormAvailable &&
-    consentInfo.status === AdmobConsentStatus.REQUIRED
-  ) {
-    console.log("before showConsentForm");
-    const { status } = await AdMob.showConsentForm();
-    console.log("showConsentForm status", status);
-    // Here now we can show ads.
-  }
-};
+// Init admob + consent message.
+AdMob.initialize({
+  initializeForTesting: true,
+  testingDevices: ["20639CA0A77ABBB0C705B559536A5046"],
+})
+  .then(async () => {
+    // AdMob init ok.
+    const consentInfo = await AdMob.requestConsentInfo();
+    console.log("requestConsentInfo consentInfo", consentInfo);
+    consentStatus.setValue(consentInfo.status);
+
+    if (
+      consentInfo.isConsentFormAvailable &&
+      consentInfo.status === AdmobConsentStatus.REQUIRED
+    ) {
+      console.log("before showConsentForm");
+      const { status } = await AdMob.showConsentForm();
+      console.log("showConsentForm status", status);
+      consentStatus.setValue(status);
+      // Here now we can show ads.
+    }
+  })
+  .catch((e) => {
+    // AdMob init catch.
+    console.log("AdMob init catch", e);
+  });
 
 // Initiera saker på en Ios eller Android-enhet.
 // Hybrid = "a device running Capacitor or Cordova".
 // https://ionicframework.com/docs/react/platform
 if (isPlatform("hybrid")) {
-  try {
-    // https://github.com/capacitor-community/admob#user-message-platform-ump
-    console.log("before showconsent");
-    showConsent();
-    console.log("after showconsent");
-
-    AdMob.initialize({
-      initializeForTesting: true,
-      testingDevices: ["20639CA0A77ABBB0C705B559536A5046"],
-    })
-      .then(() => {
-        // AdMob init ok.
-      })
-      .catch((e) => {
-        // AdMob init catch.
-      });
-  } catch (e) {
-    // AdMob init error.
-    console.log("AdMob init error", e);
-  }
-
   StatusBar.setStyle({
     style: Style.Dark,
   });
@@ -109,6 +102,8 @@ document.documentElement.style.setProperty(
 adMobAdOptions.margin = tabHeight;
 
 function TextTVApp(props) {
+  const [consentStatuslocal, setConsentStatuslocal] = consentStatus.useState();
+
   const initialFavoritesState = {
     pages: [],
     setPages: (pages) => {
@@ -128,14 +123,21 @@ function TextTVApp(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Visa annons + sätt annons-höjd till variabel när sidan renderas.
+  // Visa annons + sätt annons-höjd till variabel när sidan renderas
+  // och vi har ett consent OBTAINED.
   useEffect(() => {
     // Baila om vi inte kör på en enhet.
     if (!isPlatform("hybrid")) {
       return;
     }
 
+    console.log("consentStatuslocal", consentStatuslocal);
+    if (consentStatuslocal !== AdmobConsentStatus.OBTAINED) {
+      return;
+    }
+
     try {
+      console.log("showbanner");
       AdMob.showBanner(adMobAdOptions).then();
 
       // https://developers.google.com/admob/android/ad-load-errors
@@ -159,7 +161,7 @@ function TextTVApp(props) {
     } catch (e) {
       // AdMob got error when trying to show banner.
     }
-  }, []);
+  }, [consentStatuslocal]);
 
   return (
     <FavoritesContext.Provider value={favorites}>

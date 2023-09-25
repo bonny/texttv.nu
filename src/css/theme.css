@@ -314,5 +314,7 @@ ion-popover.sc-ion-popover-ios {
 }
 
 ion-fab {
-  margin-bottom: calc(var(--ion-safe-area-bottom, 0) + 40px);
+  margin-bottom: calc(
+    var(--ion-safe-area-bottom, 0) + var(--text-tv-ad-height, 0)
+  );
 }
