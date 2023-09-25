@@ -64,18 +64,14 @@ AdMob.initialize({
   .then(async () => {
     // AdMob init ok.
     const consentInfo = await AdMob.requestConsentInfo();
-    console.log("requestConsentInfo consentInfo", consentInfo);
     consentStatus.setValue(consentInfo.status);
 
     if (
       consentInfo.isConsentFormAvailable &&
       consentInfo.status === AdmobConsentStatus.REQUIRED
     ) {
-      console.log("before showConsentForm");
       const { status } = await AdMob.showConsentForm();
-      console.log("showConsentForm status", status);
       consentStatus.setValue(status);
-      // Here now we can show ads.
     }
   })
   .catch((e) => {
@@ -131,13 +127,11 @@ function TextTVApp(props) {
       return;
     }
 
-    console.log("consentStatuslocal", consentStatuslocal);
     if (consentStatuslocal !== AdmobConsentStatus.OBTAINED) {
       return;
     }
 
     try {
-      console.log("showbanner");
       AdMob.showBanner(adMobAdOptions).then();
 
       // https://developers.google.com/admob/android/ad-load-errors
