@@ -11,9 +11,13 @@ import {
   useIonViewWillEnter,
   useIonViewWillLeave,
   IonFooter,
+  IonicSlides,
 } from "@ionic/react";
 import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
 import { useEffect, useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "@ionic/react/css/ionic-swiper.css";
 import {
   getCurrentIonPageContentElm,
   getUnixtime,
@@ -87,6 +91,8 @@ const PageTextTV = (props) => {
     toastDismissed: false,
   });
   const [pageData, setPageData] = useState([]);
+
+  const [swiperInstance, setSwiperInstance] = useState();
 
   // Ref till ion-content-elementet.
   const contentRef = useRef();
@@ -330,10 +336,6 @@ const PageTextTV = (props) => {
     });
   }, [pageNum]);
 
-  const sliderOptions = {
-    initialSlide: 1,
-  };
-
   // Go to prev page.
   const handleFabPrevClick = () => {
     if (pagePrevNum) {
@@ -355,38 +357,40 @@ const PageTextTV = (props) => {
    * via en history.push().
    */
   const handleSlideDidChange = (e) => {
-    e.target.getSwiper().then((swiper) => {
-      const activeIndex = swiper.activeIndex;
-      let navToPageNum;
+    if (swiperInstance === undefined) {
+      return;
+    }
 
-      if (activeIndex === 0) {
-        navToPageNum = pagePrevNum;
-      } else if (activeIndex === 2) {
-        navToPageNum = pageNextNum;
-      }
+    const activeIndex = swiperInstance.activeIndex;
+    let navToPageNum;
 
-      if (!navToPageNum) {
-        return;
-      }
+    if (activeIndex === 0) {
+      navToPageNum = pagePrevNum;
+    } else if (activeIndex === 2) {
+      navToPageNum = pageNextNum;
+    }
 
-      logPageView(navToPageNum, "swipe");
+    if (!navToPageNum) {
+      return;
+    }
 
-      // Gå till sida och gå sedan tillbaka till slidern i mitten.
-      const pushToURL = `/sidor/${navToPageNum}`;
-      history.push(pushToURL);
+    logPageView(navToPageNum, "swipe");
 
-      // Får ibland på Vercel "Cannot read property 'slideTo' of null" trots att vi kollat denna tidigare.
-      // slideTo() har bråkat lite och har buggat i Ios.
-      // ev. har det någon med css-animations att göra.
-      // Tog bort en animation och då fungerade det.
-      scrollToTop(0);
-      swiper.slideTo(1, 0);
+    // Gå till sida och gå sedan tillbaka till slidern i mitten.
+    const pushToURL = `/sidor/${navToPageNum}`;
+    history.push(pushToURL);
 
-      // Göm ev. synlig uppdatering-finns-toast.
-      setPageUpdatedToastState({
-        ...pageUpdatedToastState,
-        showToast: false,
-      });
+    // Får ibland på Vercel "Cannot read property 'slideTo' of null" trots att vi kollat denna tidigare.
+    // slideTo() har bråkat lite och har buggat i Ios.
+    // ev. har det någon med css-animations att göra.
+    // Tog bort en animation och då fungerade det.
+    scrollToTop(0);
+    swiperInstance.slideTo(1, 0);
+
+    // Göm ev. synlig uppdatering-finns-toast.
+    setPageUpdatedToastState({
+      ...pageUpdatedToastState,
+      showToast: false,
     });
   };
 
@@ -431,13 +435,13 @@ const PageTextTV = (props) => {
           refreshTime: {refreshTime}
         </p>
  */}
-        <IonSlides
-          pager={false}
-          options={sliderOptions}
-          onIonSlidesDidLoad={handleSlidesDidLoad}
-          onIonSlideDidChange={handleSlideDidChange}
+        <Swiper
+          modules={[IonicSlides]}
+          initialSlide={1}
+          onSwiper={(swiper) => setSwiperInstance(swiper)}
+          onSlideChange={handleSlideDidChange}
         >
-          <IonSlide>
+          <SwiperSlide>
             <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev">
               <div className="TextTVNextPrevSwipeNav__inner">
                 <IonIcon
@@ -449,9 +453,9 @@ const PageTextTV = (props) => {
                 </span>
               </div>
             </div>
-          </IonSlide>
+          </SwiperSlide>
 
-          <IonSlide>
+          <SwiperSlide>
             <div>
               <TextTVPage
                 pageNum={pageNum}
@@ -461,9 +465,9 @@ const PageTextTV = (props) => {
                 onPageUpdate={handlePageUpdate}
               />
             </div>
-          </IonSlide>
+          </SwiperSlide>
 
-          <IonSlide>
+          <SwiperSlide>
             <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--next">
               <div className="TextTVNextPrevSwipeNav__inner">
                 <span className="TextTVNextPrevSwipeNav__number">
@@ -475,8 +479,8 @@ const PageTextTV = (props) => {
                 />
               </div>
             </div>
-          </IonSlide>
-        </IonSlides>
+          </SwiperSlide>
+        </Swiper>
 
         {/* Toast med meddelande om att uppdatering av sidan finns. */}
         <IonToast
