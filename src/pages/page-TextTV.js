@@ -34,6 +34,36 @@ const scrollToTop = (speed = 750) => {
   }
 };
 
+const handleSlidesDidLoad = (e) => {
+  // När slides körs på startsidan så blir det nån bugg som gör att slides Swiper
+  // inte initieras helt korrekt på nåt vis och av nån anledning.
+  // Eventligen beror detta på att på startsidan så visas mer innehåller under slider
+  // komponenten tar mer än 20 ms att ladda?
+  // update() på swiper verkar lösa detta.
+  e.target.getSwiper().then((swiper) => {
+    const checkInterval = 10;
+    const maxNumberOfChecks = 10;
+    let checkNum = 0;
+
+    const checkIntervalId = setInterval(() => {
+      const hasTranslateApplied =
+        swiper.wrapperEl.style.cssText.indexOf("translate3d");
+
+      if (checkNum > maxNumberOfChecks) {
+        clearInterval(checkIntervalId);
+      }
+
+      if (hasTranslateApplied === -1) {
+        swiper.update();
+      } else {
+        clearInterval(checkIntervalId);
+      }
+
+      checkNum++;
+    }, checkInterval);
+  });
+};
+
 const PageTextTV = (props) => {
   const {
     match,
@@ -300,6 +330,10 @@ const PageTextTV = (props) => {
     });
   }, [pageNum]);
 
+  const sliderOptions = {
+    initialSlide: 1,
+  };
+
   // Go to prev page.
   const handleFabPrevClick = () => {
     if (pagePrevNum) {
@@ -314,6 +348,46 @@ const PageTextTV = (props) => {
       logPageView(pageNextNum, "fabNextClick");
       history.push(`/sidor/${pageNextNum}`);
     }
+  };
+
+  /**
+   * När man swipeat åt ett håll navigeras man iväg till den sidan
+   * via en history.push().
+   */
+  const handleSlideDidChange = (e) => {
+    e.target.getSwiper().then((swiper) => {
+      const activeIndex = swiper.activeIndex;
+      let navToPageNum;
+
+      if (activeIndex === 0) {
+        navToPageNum = pagePrevNum;
+      } else if (activeIndex === 2) {
+        navToPageNum = pageNextNum;
+      }
+
+      if (!navToPageNum) {
+        return;
+      }
+
+      logPageView(navToPageNum, "swipe");
+
+      // Gå till sida och gå sedan tillbaka till slidern i mitten.
+      const pushToURL = `/sidor/${navToPageNum}`;
+      history.push(pushToURL);
+
+      // Får ibland på Vercel "Cannot read property 'slideTo' of null" trots att vi kollat denna tidigare.
+      // slideTo() har bråkat lite och har buggat i Ios.
+      // ev. har det någon med css-animations att göra.
+      // Tog bort en animation och då fungerade det.
+      scrollToTop(0);
+      swiper.slideTo(1, 0);
+
+      // Göm ev. synlig uppdatering-finns-toast.
+      setPageUpdatedToastState({
+        ...pageUpdatedToastState,
+        showToast: false,
+      });
+    });
   };
 
   return (
@@ -357,14 +431,14 @@ const PageTextTV = (props) => {
           refreshTime: {refreshTime}
         </p>
  */}
-        {/* <IonSlides
+        <IonSlides
           pager={false}
           options={sliderOptions}
           onIonSlidesDidLoad={handleSlidesDidLoad}
           onIonSlideDidChange={handleSlideDidChange}
         >
-          <IonSlide> */}
-        {/* <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev">
+          <IonSlide>
+            <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--prev">
               <div className="TextTVNextPrevSwipeNav__inner">
                 <IonIcon
                   className="TextTVNextPrevSwipeNav__icon"
@@ -374,22 +448,22 @@ const PageTextTV = (props) => {
                   Gå till {pagePrevNum}
                 </span>
               </div>
-            </div> */}
-        {/* </IonSlide> */}
+            </div>
+          </IonSlide>
 
-        {/* <IonSlide> */}
-        <div>
-          <TextTVPage
-            pageNum={pageNum}
-            pageId={pageId}
-            history={history}
-            refreshTime={refreshTime}
-            onPageUpdate={handlePageUpdate}
-          />
-        </div>
-        {/* </IonSlide> */}
+          <IonSlide>
+            <div>
+              <TextTVPage
+                pageNum={pageNum}
+                pageId={pageId}
+                history={history}
+                refreshTime={refreshTime}
+                onPageUpdate={handlePageUpdate}
+              />
+            </div>
+          </IonSlide>
 
-        {/* <IonSlide>
+          <IonSlide>
             <div className="TextTVNextPrevSwipeNav TextTVNextPrevSwipeNav--next">
               <div className="TextTVNextPrevSwipeNav__inner">
                 <span className="TextTVNextPrevSwipeNav__number">
@@ -402,7 +476,7 @@ const PageTextTV = (props) => {
               </div>
             </div>
           </IonSlide>
-        </IonSlides> */}
+        </IonSlides>
 
         {/* Toast med meddelande om att uppdatering av sidan finns. */}
         <IonToast
