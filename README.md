@@ -47,6 +47,11 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 ### Ändringslogg
 
+#### Version 3.5.0 (unreleased)
+
+- Uppdaterat alla paket till senaste versioner.
+- Återinfört svep-funktionalitet för att gå till nästa/föregående sida.
+
 #### Version 3.4.0
 
 - Lagt till Google consent-message pga GDRP.
