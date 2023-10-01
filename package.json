@@ -36,7 +36,8 @@
     "react-router-dom": "^5.3.4",
     "react-scripts": "^5.0.0",
     "source-map-explorer": "^2.5.3",
-    "state-pool": "^0.10.0"
+    "state-pool": "^0.10.0",
+    "swiper": "^10.3.1"
   },
   "scripts": {
     "start": "GENERATE_SOURCEMAP=false react-scripts start",
