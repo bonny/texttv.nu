@@ -14,7 +14,7 @@ https://ionicframework.com/docs/theming/advanced
   --text-tv-color: #e8eaed;
   --text-tv-color-rgb: 32, 33, 36;
   --text-tv-font-family: "Ubuntu Mono", Courier, monospace;
-  --text-tv-font-size: 4.4vw;
+  --text-tv-font-size: 4.8vw;
   --text-tv-color-white: var(--text-tv-color);
   /* Används av sidlisting bland annat  */
   --text-tv-color-yellow: #e2e200;
