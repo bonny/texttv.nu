@@ -1,6 +1,6 @@
 {
   "name": "texttv2019",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "private": true,
   "engines": {
     "node": "18.x"

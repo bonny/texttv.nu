@@ -47,10 +47,10 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 ### Ändringslogg
 
-#### Version 3.5.0 (unreleased)
+#### Version 3.5.0 (oktober 2023)
 
 - Uppdaterat alla paket till senaste versioner.
-- Återinfört svep-funktionalitet för att gå till nästa/föregående sida.
+- Återinfört svep-funktionalitet för att gå till nästa/föregående sida (följde guiden ["Migrating From IonSlides to Swiper.js"](https://ionicframework.com/docs/react/slides)).
 
 #### Version 3.4.0
 
