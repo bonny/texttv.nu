@@ -47,6 +47,10 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 ### Ändringslogg
 
+#### Version 3.5.1 (oktober 2023)
+
+- Fixat så att man går till en sida direkt när man angett 3 siffror i "Gå till sida"-rutan.
+
 #### Version 3.5.0 (oktober 2023)
 
 - Uppdaterat alla paket till senaste versioner.

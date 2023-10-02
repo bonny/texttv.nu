@@ -37,7 +37,7 @@ const TextTVSearchBar = (props) => {
       inputmode="decimal"
       pattern="\d*"
       showCancelButton="never"
-      onIonChange={handlePageNumInputChange}
+      onIonInput={handlePageNumInputChange}
       debounce="100"
       className="texttv-pagenumber-input"
       enterkeyhint="go"
