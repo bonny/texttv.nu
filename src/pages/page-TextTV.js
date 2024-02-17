@@ -8,16 +8,15 @@ import {
   IonIcon,
   IonPage,
   IonToast,
+  IonicSlides,
   useIonViewWillEnter,
   useIonViewWillLeave,
-  IonFooter,
-  IonicSlides,
 } from "@ionic/react";
+import "@ionic/react/css/ionic-swiper.css";
 import { caretBackCircle, caretForwardCircle } from "ionicons/icons";
 import { useEffect, useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "@ionic/react/css/ionic-swiper.css";
+import { Swiper, SwiperSlide } from "swiper/react";
 import {
   getCurrentIonPageContentElm,
   getUnixtime,
@@ -36,36 +35,6 @@ const scrollToTop = (speed = 750) => {
   if (currentIonPageContent) {
     currentIonPageContent.scrollToTop(speed);
   }
-};
-
-const handleSlidesDidLoad = (e) => {
-  // När slides körs på startsidan så blir det nån bugg som gör att slides Swiper
-  // inte initieras helt korrekt på nåt vis och av nån anledning.
-  // Eventligen beror detta på att på startsidan så visas mer innehåller under slider
-  // komponenten tar mer än 20 ms att ladda?
-  // update() på swiper verkar lösa detta.
-  e.target.getSwiper().then((swiper) => {
-    const checkInterval = 10;
-    const maxNumberOfChecks = 10;
-    let checkNum = 0;
-
-    const checkIntervalId = setInterval(() => {
-      const hasTranslateApplied =
-        swiper.wrapperEl.style.cssText.indexOf("translate3d");
-
-      if (checkNum > maxNumberOfChecks) {
-        clearInterval(checkIntervalId);
-      }
-
-      if (hasTranslateApplied === -1) {
-        swiper.update();
-      } else {
-        clearInterval(checkIntervalId);
-      }
-
-      checkNum++;
-    }, checkInterval);
-  });
 };
 
 const PageTextTV = (props) => {
@@ -435,6 +404,7 @@ const PageTextTV = (props) => {
           refreshTime: {refreshTime}
         </p>
  */}
+
         <Swiper
           modules={[IonicSlides]}
           initialSlide={1}
