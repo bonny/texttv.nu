@@ -316,3 +316,13 @@ ion-popover.sc-ion-popover-ios {
 ion-fab {
   margin-bottom: calc(var(--text-tv-ad-height, 0));
 }
+
+.LargeFontDetector {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  /* To see the font detector move up the z-index */
+  /* z-index: 999; */
+}
