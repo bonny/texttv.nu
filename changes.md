@@ -1,5 +1,9 @@
 # Ändringslogg
 
+## Version 3.5.2 (februari 2024)
+
+- Fixat så att texten inte blir för bred på Android-enheter där användarna har valt att ha större textstorlek i systeminställningarna.
+
 ## Version 3.5.1 (oktober 2023)
 
 - Fixat så att man går till en sida direkt när man angett 3 siffror i "Gå till sida"-rutan.
