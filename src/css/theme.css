@@ -324,5 +324,12 @@ ion-fab {
   width: 100%;
   background-color: white;
   /* To see the font detector move up the z-index */
-  /* z-index: 999; */
+  z-index: -1;
+  opacity: 0;
+}
+
+.LargeFontDetector .dynamic {
+  background-color: red;
+  white-space: nowrap;
+  display: inline-block;
 }

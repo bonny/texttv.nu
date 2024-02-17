@@ -68,6 +68,7 @@ const Startsida = (props) => {
     const handleResize = () => {
       setWindowInnerWidth(window.innerWidth);
       setElmWidth(debugElmRef.current.clientWidth);
+      console.log('handleResize', debugElmRef.current.clientWidth);
     };
 
     useEffect(() => {
@@ -104,16 +105,14 @@ const Startsida = (props) => {
       <div className="LargeFontDetector">
         <div className="TextTVPage">
           {/* The next span is 40 chars wide */}
-          <span className="dynamic" ref={debugElmRef}>
+          <span className="line dynamic" ref={debugElmRef}>
             Lorem ipsum dolor sit amet dynamic abcde
           </span>
         </div>
-        {/* <div>
+        <div>
           <p>Window inner width: {windowInnerWidth}</p>
-          <p>Debug elm width: {elmWidth}</p>
-          <p>Is modified: {isModified.toString()}</p>
-          <p>New value after modification: {newValueAfterModification}</p>
-        </div> */}
+          <p>Test elm width: {elmWidth}</p>
+        </div>
       </div>
     );
   };
