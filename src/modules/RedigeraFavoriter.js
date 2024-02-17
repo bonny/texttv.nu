@@ -97,7 +97,7 @@ const RedigeraFavoriter = (props) => {
         <IonContent>
           <IonGrid>
             <IonRow>
-              <IonCol class="ion-margin">
+              <IonCol className="ion-margin">
                 <p>
                   Sidorna du anger här visas när du går till startsidan/hem.
                 </p>
