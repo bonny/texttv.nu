@@ -29,20 +29,26 @@ Vill du göra appen bättre? Bidra med kod eller rapportera buggar eller skicka 
 
 - Skapa release-branch, t.ex. `release/3.3.0`
 - Uppdatera version i `package.json`
-- Ios:
-  - Lägg till ny version på [App Store Connect](https://appstoreconnect.apple.com/apps/607998045/appstore/).
-  - `$ ionic capacitor build ios` för att bygga och öppna i Xcode.
-  - Uppdatera app-version i Xcode.
-  - I Xcode kör Product » Archive.
-  - Gå till organizer och ladda upp.
-  - Välj filen i App Store Connect, klicka i alla random saker som Apple gnäller på, och välj att skicka in till review.
-- Android (inte testat helt ännu):
-  - Uppdatera version i `build.gradle`.
-  - `$ ionic capacitor sync android`.
-  - `$ ionic capacitor open android` för att öppna i Android Studio.
-  - "Build => Generate Signed Bundle / APK" i Android Studio.
-  - Skapa release via webben i Play Store
-  - https://developer.android.com/distribute/best-practices/launch/launch-checklist
+
+**Ios-specifika saker**
+
+- Lägg till ny version på [App Store Connect](https://appstoreconnect.apple.com/apps/607998045/appstore/).
+- `$ ionic capacitor build ios` för att bygga och öppna i Xcode.
+- Uppdatera app-version i Xcode.
+- I Xcode kör Product » Archive.
+- Gå till organizer och ladda upp.
+- Välj filen i App Store Connect, klicka i alla random saker som Apple gnäller på, och välj att skicka in till review.
+
+**Android-specifika saker**
+
+- Uppdatera `versionName` och `versionCode` i `android/app/build.gradle`.
+- `$ ionic capacitor sync android`.
+- `$ ionic capacitor open android` för att öppna i Android Studio.
+- "Build => Generate Signed Bundle / APK" i Android Studio.
+  - Välj "Android App bundle"
+  - Bygget byggs.
+- Skapa [ny release via webben i Play Store](https://play.google.com/console/u/0/developers/5182370220927018066/app/4974731206804873917/tracks/production)
+- https://developer.android.com/distribute/best-practices/launch/launch-checklist
 - Tagga och mergea in branch i main.
 
 ### Ändringslogg
