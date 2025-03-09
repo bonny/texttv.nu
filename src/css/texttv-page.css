@@ -156,4 +156,23 @@
 .TextTVPage__attribution > p {
   margin: 0;
   text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+.TextTVPage__error {
+  padding: 2rem;
+  text-align: center;
+  color: var(--ion-color-danger);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.TextTVPage__error p {
+  margin-bottom: 1rem;
+}
+
+.TextTVPage__error-details {
+  font-size: 0.8rem;
+  color: var(--ion-color-medium);
+  white-space: pre-wrap;
 }

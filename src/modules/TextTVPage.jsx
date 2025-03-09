@@ -4,24 +4,22 @@
  */
 import { isPlatform } from "@ionic/react";
 import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   createMarkupForPage,
-  getCacheBustTimeString,
   getNearestLink,
   hidePageUpdatedToasts,
   logPageView,
-  sendStats,
 } from "../functions";
 import SkeletonTextTVPage from "../modules/SkeletonTextTVPage";
 import { TextTVPageBreadcrumbs } from "./TextTVPageBreadcrumbs";
+import { useTextTVPage } from "../hooks";
 
 const TextTVPage = (props) => {
   const { pageNum, pageId, children, history, refreshTime, onPageUpdate } =
     props;
 
-  const [pageData, setPageData] = useState([]);
-  const [pageIsLoading, setPageIsLoading] = useState(false);
+  const { pageData, pageIsLoading, error } = useTextTVPage(pageNum, pageId, refreshTime);
 
   // Leta upp närmaste länk, om någon, vid klick nånstans på sidan,
   // och gå till den länken.
@@ -64,65 +62,6 @@ const TextTVPage = (props) => {
     const fullUrl = `/sidor${href}`;
     history.push(fullUrl);
   };
-
-  /**
-   * Ladda in sida från API när pageNum eller refreshTime ändras.
-   */
-  useEffect(() => {
-    async function fetchPageContents() {
-      // Baila om ingen sida är satt.
-      if (!pageNum && !pageId) {
-        return;
-      }
-
-      // Hämta senaste sidan om bara pageNum,
-      // hämta arkiv-sida om pageId
-      let url;
-
-      // Set to seconds integer to fake a slow answer.
-      const slowAnswer = false;
-      let slowAnswerQueryString = slowAnswer
-        ? `&slow_answer=${slowAnswer}`
-        : "";
-
-      // Gruppera API-anrop genom cachebuster-sträng.
-      const cacheBustTimeString = getCacheBustTimeString(15);
-
-      let platform = "";
-
-      if (isPlatform("ios")) {
-        platform = "ios";
-      } else if (isPlatform("android")) {
-        platform = "android";
-      } else {
-        platform = "web";
-      }
-
-      const appId = "texttvapp." + platform;
-
-      if (pageId) {
-        url = `https://api.texttv.nu/api/getid/${pageId}/${pageNum}?cb=${cacheBustTimeString}app=${appId}${slowAnswerQueryString}`;
-      } else {
-        url = `https://api.texttv.nu/api/get/${pageNum}?cb=${cacheBustTimeString}&app=${appId}${slowAnswerQueryString}`;
-      }
-
-      fetch(url)
-        .then(async (responseDatas) => {
-          // Sida är laddad.
-          const pageData = await responseDatas.json();
-
-          setPageData(pageData);
-          setPageIsLoading(false);
-          sendStats(pageData, "view");
-        })
-        .catch((fetchErr) => {
-          // Fel vid hämtning av sida.
-        });
-    }
-
-    setPageIsLoading(true);
-    fetchPageContents();
-  }, [pageNum, pageId, refreshTime]);
 
   /**
    * Kör uppdaterad-funktion från props.
@@ -196,7 +135,13 @@ const TextTVPage = (props) => {
   return (
     <>
       {pageIsLoading && <SkeletonTextTVPage pageNum={pageNum} />}
-      {!pageIsLoading && pagesHtml}
+      {error && !pageIsLoading && (
+        <div className="TextTVPage__error">
+          <p>Det gick inte att ladda sidan. Försök igen senare.</p>
+          {error && <p className="TextTVPage__error-details">{error}</p>}
+        </div>
+      )}
+      {!pageIsLoading && !error && pagesHtml}
     </>
   );
 };
