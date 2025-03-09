@@ -1,9 +1,9 @@
 {
   "name": "texttv2019",
-  "version": "3.5.2",
+  "version": "3.5.3",
   "private": true,
   "engines": {
-    "node": "18.x"
+    "node": "22.x"
   },
   "dependencies": {
     "@capacitor-community/admob": "^5.1.1",

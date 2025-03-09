@@ -1,5 +1,9 @@
 # Ändringslogg
 
+## Version 3.5.3 (utveckling)
+
+- Uppdaterat Node.js från version 18 till version 22.
+
 ## Version 3.5.2 (februari 2024)
 
 - Fixat så att texten inte blir för bred på Android-enheter där användarna har valt att ha större textstorlek i systeminställningarna.
