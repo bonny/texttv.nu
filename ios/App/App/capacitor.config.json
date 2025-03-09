@@ -6,5 +6,19 @@
 	"SplashScreen": {
 		"showSpinner": true,
 		"backgroundColor": "#ff0000"
-	}
+	},
+	"packageClassList": [
+		"AdMob",
+		"FirebaseAnalytics",
+		"AppPlugin",
+		"ClipboardPlugin",
+		"DevicePlugin",
+		"HapticsPlugin",
+		"KeyboardPlugin",
+		"PreferencesPlugin",
+		"SharePlugin",
+		"SplashScreenPlugin",
+		"StatusBarPlugin",
+		"CapacitorRateAppPlugin"
+	]
 }

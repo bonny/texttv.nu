@@ -6,8 +6,8 @@
     "node": "22.x"
   },
   "dependencies": {
-    "@capacitor-community/admob": "^5.1.1",
-    "@capacitor-community/firebase-analytics": "^5.0.1",
+    "@capacitor-community/admob": "^6.2.0",
+    "@capacitor-community/firebase-analytics": "^6.0.0",
     "@capacitor/android": "^6.0.0",
     "@capacitor/app": "^6.0.0",
     "@capacitor/clipboard": "^6.0.0",
@@ -23,7 +23,6 @@
     "@ionic/core": "^8.4.3",
     "@ionic/react": "^7.4.1",
     "@ionic/react-router": "^7.4.1",
-    "capacitor-rate-app": "^4.0.0",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.7",
     "firebase": "^10.4.0",
