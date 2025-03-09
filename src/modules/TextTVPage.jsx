@@ -24,7 +24,7 @@ import { useHistory } from "react-router";
 import { SenastUppdaterat } from "../modules/SenastUppdaterat";
 
 function LatestUpdatedPagesxxx(props) {
-  const { pageData, pageNum, refreshTime } = props;
+  const { refreshTime } = props;
   const history = useHistory();
 
   return (
