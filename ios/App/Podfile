@@ -43,7 +43,15 @@ target 'App' do
   pod 'Firebase/Analytics'
 end
 
-
 post_install do |installer|
   assertDeploymentTarget(installer)
+
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      # Force all Pods to use at least iOS 15.0 (or whatever minimum you prefer)
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+    end
+  end
+
 end
+
