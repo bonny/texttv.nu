@@ -10,6 +10,7 @@ import {
 import SkeletonTextTVPage from "../modules/SkeletonTextTVPage";
 import { TextTVPageBreadcrumbs } from "./TextTVPageBreadcrumbs";
 import { useTextTVPage, useTextTVPageNavigation, useTextTVPageUpdate } from "../hooks";
+import { TextTVPageAttribution } from "../components";
 
 const TextTVPage = (props) => {
   const { pageNum, pageId, children, history, refreshTime, onPageUpdate } =
@@ -24,33 +25,6 @@ const TextTVPage = (props) => {
     "TextTVPage--isLoading": pageIsLoading,
     "TextTVPage--isDoneLoading": !pageIsLoading,
   });
-
-  /**
-   * Visar attribution/källa för aktuella text tv-sidor.
-   *
-   * @returns Array Attributions
-   */
-  const PagesAttribution = function () {
-    return (
-      <aside className="TextTVPage__attribution">
-        <p>{pageData.length === 1 ? "Källa:" : "Källor:"}</p>
-        <ul>
-          {pageData.map((page) => {
-            if (pageData && pageData.length) {
-              return (
-                <li key={page.num}>
-                  svt.se/text-tv/{page.num} • Hämtad{" "}
-                  {new Date(page.date_updated_unix * 1000).toLocaleString()}
-                </li>
-              );
-            } else {
-              return null;
-            }
-          })}
-        </ul>
-      </aside>
-    );
-  };
 
   // Lägg en `div` runt varje sida.
   const pagesHtml = (
@@ -75,7 +49,7 @@ const TextTVPage = (props) => {
           </div>
         );
       })}
-      <PagesAttribution />
+      <TextTVPageAttribution pageData={pageData} />
     </>
   );
 
