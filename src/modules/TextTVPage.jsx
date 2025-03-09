@@ -2,21 +2,26 @@
  * En text-tv-sida som visas i en IonPage.
  * Visas i en befintlig sida alltså.
  */
-import { isPlatform } from "@ionic/react";
 import classNames from "classnames";
-import {
-  createMarkupForPage,
-} from "../functions";
+import { createMarkupForPage } from "../functions";
 import SkeletonTextTVPage from "../modules/SkeletonTextTVPage";
 import { TextTVPageBreadcrumbs } from "./TextTVPageBreadcrumbs";
-import { useTextTVPage, useTextTVPageNavigation, useTextTVPageUpdate } from "../hooks";
+import {
+  useTextTVPage,
+  useTextTVPageNavigation,
+  useTextTVPageUpdate,
+} from "../hooks";
 import { TextTVPageAttribution } from "../components";
 
 const TextTVPage = (props) => {
   const { pageNum, pageId, children, history, refreshTime, onPageUpdate } =
     props;
 
-  const { pageData, pageIsLoading, error } = useTextTVPage(pageNum, pageId, refreshTime);
+  const { pageData, pageIsLoading, error } = useTextTVPage(
+    pageNum,
+    pageId,
+    refreshTime
+  );
   const handleClick = useTextTVPageNavigation(history);
   useTextTVPageUpdate(onPageUpdate, pageData, pageNum);
 
@@ -30,6 +35,7 @@ const TextTVPage = (props) => {
   const pagesHtml = (
     <>
       <TextTVPageBreadcrumbs pageData={pageData} />
+
       {pageData.map((page) => {
         return (
           <div
@@ -49,6 +55,7 @@ const TextTVPage = (props) => {
           </div>
         );
       })}
+
       <TextTVPageAttribution pageData={pageData} />
     </>
   );
