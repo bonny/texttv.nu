@@ -20,7 +20,7 @@
     "@capacitor/share": "^7.0.0",
     "@capacitor/splash-screen": "^7.0.0",
     "@capacitor/status-bar": "^7.0.0",
-    "@ionic/core": "^7.4.3",
+    "@ionic/core": "^8.4.3",
     "@ionic/react": "^8.4.3",
     "@ionic/react-router": "^8.4.3",
     "classnames": "^2.3.2",
