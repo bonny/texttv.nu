@@ -214,23 +214,13 @@ b {
 
 /* Skeleton-sidan tonas in om laddningen inte syns direkt */
 .TextTVPage--skeleton {
-  animation-fill-mode: both;
-  animation-name: fadeIn;
-  animation-delay: 0.75s;
-  animation-duration: 1s;
+  /* Animation properties removed */
+  opacity: 1;
 }
 
 .TextTVPage--isDoneLoading {
-  animation-fill-mode: both;
-  animation-name: fadeIn;
-  animation-duration: 0.25s;
-  /*
-  Har ett problem att animationen inte startar på t.ex. 
-  Ipad med Ios 12.5
-  En liten fördröjning verkar ha löst det.
-  https://stackoverflow.com/questions/29219534/css-animation-not-always-starting-in-ios-8-safari/29221132
-  */
-  animation-delay: 0.1s;
+  /* Animation properties removed */
+  opacity: 1;
 }
 
 .u-max-width-texttvpage {
