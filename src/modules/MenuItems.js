@@ -25,9 +25,6 @@ const MenuItems = (props) => {
       <TextTVSidorLista {...props} showHeader={false} />
 
       <IonList>
-        {/* <IonListHeader>
-          <IonLabel>För nördar</IonLabel>
-        </IonListHeader> */}
         <IonItem routerLink="/statistik">
           <IonIcon slot="start" icon={analytics} />
           <IonLabel>Statistik</IonLabel>
