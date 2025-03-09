@@ -8,7 +8,7 @@
 		"backgroundColor": "#ff0000"
 	},
 	"packageClassList": [
-		"AdMob",
+		"AdMobPlugin",
 		"FirebaseAnalytics",
 		"AppPlugin",
 		"ClipboardPlugin",
@@ -18,7 +18,6 @@
 		"PreferencesPlugin",
 		"SharePlugin",
 		"SplashScreenPlugin",
-		"StatusBarPlugin",
-		"CapacitorRateAppPlugin"
+		"StatusBarPlugin"
 	]
 }

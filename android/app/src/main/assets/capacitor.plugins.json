@@ -42,9 +42,5 @@
 	{
 		"pkg": "@capacitor/status-bar",
 		"classpath": "com.capacitorjs.plugins.statusbar.StatusBarPlugin"
-	},
-	{
-		"pkg": "capacitor-rate-app",
-		"classpath": "com.capacitor.rateApp.CapacitorRateAppPlugin"
 	}
 ]
