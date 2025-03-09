@@ -1,7 +1,7 @@
 # TextTV.nu: smartare SVT Text i mobilen
 
 Här bygger vi på [TextTV.nu](https://texttv.nu/) appar för Ios och Android.
-Den är skapad i Ionic och Capactitor.
+Den är skapad i Ionic och Capacitor.
 
 - [Ios-appen för SVT Text TV](https://itunes.apple.com/se/app/texttv.nu/id607998045).
 - [Android-appen för SVT Text TV](https://play.google.com/store/apps/details?id=com.mufflify.TextTVnu2).
