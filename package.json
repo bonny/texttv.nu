@@ -6,21 +6,21 @@
     "node": "22.x"
   },
   "dependencies": {
-    "@capacitor-community/admob": "^6.2.0",
-    "@capacitor-community/firebase-analytics": "^6.0.0",
-    "@capacitor/android": "^6.0.0",
-    "@capacitor/app": "^6.0.0",
-    "@capacitor/clipboard": "^6.0.0",
-    "@capacitor/core": "^6.0.0",
-    "@capacitor/device": "^6.0.0",
-    "@capacitor/haptics": "^6.0.0",
-    "@capacitor/ios": "^6.0.0",
-    "@capacitor/keyboard": "^6.0.0",
-    "@capacitor/preferences": "^6.0.0",
-    "@capacitor/share": "^6.0.0",
-    "@capacitor/splash-screen": "^6.0.0",
-    "@capacitor/status-bar": "^6.0.0",
-    "@ionic/core": "^8.4.3",
+    "@capacitor-community/admob": "^7.0.0",
+    "@capacitor-community/firebase-analytics": "^7.0.0",
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/app": "^7.0.0",
+    "@capacitor/clipboard": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/device": "^7.0.0",
+    "@capacitor/haptics": "^7.0.0",
+    "@capacitor/ios": "^7.0.0",
+    "@capacitor/keyboard": "^7.0.0",
+    "@capacitor/preferences": "^7.0.0",
+    "@capacitor/share": "^7.0.0",
+    "@capacitor/splash-screen": "^7.0.0",
+    "@capacitor/status-bar": "^7.0.0",
+    "@ionic/core": "^7.4.3",
     "@ionic/react": "^7.4.1",
     "@ionic/react-router": "^7.4.1",
     "classnames": "^2.3.2",
@@ -59,7 +59,7 @@
     "iOS >=13"
   ],
   "devDependencies": {
-    "@capacitor/cli": "^6.0.0",
+    "@capacitor/cli": "^7.0.0",
     "@ionic/lab": "^3.2.15"
   }
 }
