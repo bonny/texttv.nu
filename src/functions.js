@@ -4,9 +4,9 @@
 import { Share } from "@capacitor/share";
 import { Clipboard } from "@capacitor/clipboard";
 import { Preferences } from "@capacitor/preferences";
-import { isPlatform, getPlatforms } from "@ionic/react";
+import { isPlatform } from "@ionic/react";
 import { FirebaseAnalytics } from "./analytics";
-import { RateApp } from "capacitor-rate-app";
+// import { RateApp } from "capacitor-rate-app";
 
 const FAVORITES_DEFAULT_PAGES = ["100", "300", "401", "700"];
 
@@ -623,7 +623,7 @@ async function increaseStatForCustom(customKey) {
       "ask for review because numAppStartsAndResumes is ",
       numAppStartsAndResumes
     );
-    RateApp.requestReview();
+    // RateApp.requestReview();
   }
 
   return stats.custom[customKey];
