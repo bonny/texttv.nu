@@ -25,9 +25,9 @@
     "@ionic/react-router": "^8.4.3",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.7",
-    "firebase": "^10.4.0",
+    "firebase": "^11.4.0",
     "ionicons": "^7.1.2",
-    "query-string": "^8.1.0",
+    "query-string": "^9.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-moment": "^1.1.3",
@@ -36,7 +36,7 @@
     "react-scripts": "^5.0.0",
     "source-map-explorer": "^2.5.3",
     "state-pool": "^0.10.0",
-    "swiper": "^10.3.1"
+    "swiper": "^11.2.5"
   },
   "scripts": {
     "start": "GENERATE_SOURCEMAP=false react-scripts start",
