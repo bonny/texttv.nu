@@ -95,10 +95,14 @@ const MenuItems = (props) => {
       </IonList>
 
       <IonList>
-        <IonItem routerLink="/statistik">
+        {/* <IonItem routerLink="/statistik">
           <IonIcon slot="start" icon={analytics} />
           <IonLabel>Statistik</IonLabel>
-        </IonItem>
+        </IonItem> */}
+        <IonListHeader>
+          <IonLabel>Kontakt</IonLabel>
+        </IonListHeader>
+
         <IonItem routerLink="/kontakta-oss">
           <IonIcon slot="start" icon={informationCircleOutline} />
           <IonLabel>Kontakta oss</IonLabel>
