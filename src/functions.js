@@ -600,7 +600,7 @@ async function increaseStatForPage(pageNum) {
  */
 async function increaseStatForCustom(customKey) {
   let stats = await getStats();
-
+  console.log("stats", stats);
   if (!(customKey in stats.custom)) {
     stats.custom[customKey] = 0;
   }
