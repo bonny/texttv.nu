@@ -10,33 +10,13 @@ import {
 export const navItems = [
   {
     title: "Best of SVT Text",
-    href: "http://bestofsvttext.eskapism.se",
+    href: "https://bestofsvttext.eskapism.se",
     icon: document,
-  },
-  {
-    title: "TextTV.nu på Facebook",
-    href: "https://www.facebook.com/texttv.nu/",
-    icon: logoFacebook,
   },
   {
     title: "Utvecklingsblogg",
     href: "https://texttv.nu/blogg",
     icon: informationCircleOutline,
-  },
-  {
-    title: "TextTV.nu på Twitter",
-    href: "https://twitter.com/texttv_nu",
-    icon: logoTwitter,
-  },
-  {
-    title: "@text_tv_sport",
-    href: "https://twitter.com/text_tv_sport",
-    icon: logoTwitter,
-  },
-  {
-    title: "@text_tv_nyheter",
-    href: "https://twitter.com/text_tv_nyheter",
-    icon: logoTwitter,
   },
   {
     title: "Omnämnt av Polisen",
@@ -59,11 +39,6 @@ export const navItemsAlsoLike = [
   {
     title: "SVT Sport på Twitter",
     href: "https://twitter.com/SVTSport",
-    icon: logoTwitter,
-  },
-  {
-    title: "❤️ 377",
-    href: "https://twitter.com/svt377",
     icon: logoTwitter,
   },
 ];
