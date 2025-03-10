@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Component that displays attribution/source for current text TV pages.
- * 
+ *
  * @param {Array} pageData - The page data to display attribution for
  * @returns {JSX.Element} - The attribution component
  */
@@ -10,6 +10,7 @@ export const TextTVPageAttribution = ({ pageData = [] }) => {
   return (
     <aside className="TextTVPage__attribution">
       <p>{pageData.length === 1 ? "Källa:" : "Källor:"}</p>
+
       <ul>
         {pageData.map((page) => {
           if (pageData && pageData.length) {
@@ -26,4 +27,4 @@ export const TextTVPageAttribution = ({ pageData = [] }) => {
       </ul>
     </aside>
   );
-}; 
+};

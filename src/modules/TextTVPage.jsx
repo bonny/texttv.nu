@@ -23,32 +23,34 @@ import {
 import { useHistory } from "react-router";
 import { SenastUppdaterat } from "../modules/SenastUppdaterat";
 
-function LatestUpdatedPagesxxx(props) {
+function LatestUpdatedSportAndNewsPages(props) {
   const { refreshTime } = props;
   const history = useHistory();
 
   return (
     <>
       <h2 className="ion-padding-start ion-padding-end ion-text-left ion-no-margin">
-        Senaste nyheterna
-      </h2>
-      <SenastUppdaterat
-        {...props}
-        history={history}
-        refreshTime={refreshTime}
-        selectedSegment="news"
-        count="5"
-      />
-
-      <h2 className="ion-padding-start ion-padding-end ion-text-left ion-no-margin">
         Senaste sportnyheterna
       </h2>
+
       <SenastUppdaterat
         {...props}
         history={history}
         refreshTime={refreshTime}
         selectedSegment="sports"
-        count="5"
+        count="15"
+      />
+
+      <h2 className="ion-padding-start ion-padding-end ion-text-left ion-no-margin">
+        Senaste nyheterna
+      </h2>
+
+      <SenastUppdaterat
+        {...props}
+        history={history}
+        refreshTime={refreshTime}
+        selectedSegment="news"
+        count="15"
       />
     </>
   );
@@ -60,20 +62,11 @@ function LatestUpdatedPagesxxx(props) {
  * Visas endast på sidor med en enda sida.
  */
 function RelatedPageContent(props) {
-  const { pageData, pageNum } = props;
-
-  console.log("pageData", pageData);
-  console.log("pageNum", pageNum);
-
   const history = useHistory();
 
   return (
     <div className="TextTVPage__related" style={{ textAlign: "left" }}>
       <IonList>
-        <IonListHeader>
-          <IonLabel>Sidor</IonLabel>
-        </IonListHeader>
-
         {favoriter.map((page) => {
           const pages = page.pages;
           const url = page.href ? page.href : `/sidor/${pages}`;
@@ -165,15 +158,15 @@ const TextTVPage = (props) => {
       {!pageIsLoading && !error && pagesHtml}
 
       {Array.isArray(pageData) && pageData.length === 1 && (
-        <>
-          <LatestUpdatedPagesxxx
+        <section style={{ backgroundColor: "var(--ion-color-primary-tint)" }}>
+          <LatestUpdatedSportAndNewsPages
             pageData={pageData}
             pageNum={pageNum}
             refreshTime={refreshTime}
           />
 
           <RelatedPageContent pageData={pageData} pageNum={pageNum} />
-        </>
+        </section>
       )}
     </>
   );
