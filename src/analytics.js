@@ -2,10 +2,11 @@
 // import "@capacitor-community/firebase-analytics";
 import { FirebaseAnalytics } from "@capacitor-community/firebase-analytics";
 import "firebase/analytics";
-import { isRunningInWebBrowser } from "./functions";
+import { Capacitor } from "@capacitor/core";
 
-if (isRunningInWebBrowser()) {
+if (Capacitor.getPlatform() === "web") {
   // Konfig för web. När app körs sätts dessa via app/capacitor tror jag.
+  console.log("init analytics");
   const firebaseConfig = {
     apiKey: "AIzaSyD74YswGldkaY4lpbebtHPMD6p26CeFqEk",
     authDomain: "teletext-a4d17.firebaseapp.com",

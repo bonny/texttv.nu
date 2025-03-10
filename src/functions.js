@@ -469,10 +469,6 @@ function hidePageUpdatedToasts() {
     });
 }
 
-function isRunningInWebBrowser() {
-  return !isPlatform("ios") && !isPlatform("android");
-}
-
 /**
  * @async
  * @return {Promise<array>} Favoriter som array.
@@ -681,7 +677,6 @@ export {
   handleCopyTextToClipboard,
   handleOpenLinkInBrowser,
   handleShare,
-  isRunningInWebBrowser,
   loadFavorites,
   saveFavorites,
   FAVORITES_DEFAULT_PAGES,
