@@ -2,7 +2,6 @@ import {
   alert,
   document,
   informationCircleOutline,
-  logoFacebook,
   logoTwitter,
   newspaper,
 } from "ionicons/icons";

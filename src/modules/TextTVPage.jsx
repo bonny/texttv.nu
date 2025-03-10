@@ -13,13 +13,7 @@ import {
 } from "../hooks";
 import { TextTVPageAttribution } from "../components";
 import { favoriter } from "./favoriter";
-import {
-  IonItem,
-  IonLabel,
-  IonList,
-  IonListHeader,
-  IonNote,
-} from "@ionic/react";
+import { IonItem, IonLabel, IonList, IonNote } from "@ionic/react";
 import { useHistory } from "react-router";
 import { SenastUppdaterat } from "../modules/SenastUppdaterat";
 
