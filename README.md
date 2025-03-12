@@ -30,7 +30,7 @@ Ingen inbördes ordning.
 
 ### Släppa ny version
 
-- Skapa release-branch, t.ex. `release/3.3.0`
+- Skapa release-branch, t.ex. `release/3.6.0`
 - Uppdatera version i `package.json`
 
 **Ios-specifika saker**
