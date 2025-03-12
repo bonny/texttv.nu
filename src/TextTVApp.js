@@ -161,10 +161,7 @@ function TextTVApp(props) {
     <FavoritesContext.Provider value={favorites}>
       <IonApp>
         <IonReactRouter>
-          {/* <IonSplitPane contentId="mainContent"> */}
-          {/* <MenuWithRouter {...props} /> */}
           <Navigationsflikar />
-          {/* </IonSplitPane> */}
         </IonReactRouter>
       </IonApp>
     </FavoritesContext.Provider>
