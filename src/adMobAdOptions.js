@@ -34,7 +34,7 @@ const adMobAdOptions = {
   // adIdAndroid: "ca-app-pub-1689239266452655/7602900801",
   adId: adId,
   adSize: BannerAdSize.ADAPTIVE_BANNER,
-  position: BannerAdPosition.TOP_CENTER,
+  position: BannerAdPosition.BOTTOM_CENTER,
   isTesting: false,
 };
 

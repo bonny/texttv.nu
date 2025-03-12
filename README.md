@@ -30,8 +30,10 @@ Ingen inbördes ordning.
 
 ### Släppa ny version
 
-- Skapa release-branch, t.ex. `release/3.6.0`
-- Uppdatera version i `package.json`
+- Skapa release-branch, t.ex. `release/3.6.0`.
+- Uppdatera version i `package.json`.
+- Uppdatera [changes.md](changes.md).
+- Tagga och mergea in branch i main.
 
 **Ios-specifika saker**
 
