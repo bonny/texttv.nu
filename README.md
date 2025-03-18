@@ -59,3 +59,7 @@ Ingen inbördes ordning.
 ### Ändringslogg
 
 Se [changes.md](changes.md) för att se vad som ändrats i olika versioner.
+
+### Teknik
+
+- Använder https://github.com/capacitor-community/admob för att visa annonser.
