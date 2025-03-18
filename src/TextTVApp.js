@@ -56,28 +56,61 @@ increaseStatForCustom("appStart");
 
 const consentStatus = createState(AdmobConsentStatus.UNKNOWN);
 
-// Init admob + consent message.
-AdMob.initialize({
-  initializeForTesting: true,
-  testingDevices: ["20639CA0A77ABBB0C705B559536A5046"],
-})
-  .then(async () => {
-    // AdMob init ok.
-    const consentInfo = await AdMob.requestConsentInfo();
-    consentStatus.setValue(consentInfo.status);
+async function initializeAdMob() {
+  console.log("initializeAdMob");
 
-    if (
-      consentInfo.isConsentFormAvailable &&
-      consentInfo.status === AdmobConsentStatus.REQUIRED
-    ) {
-      const { status } = await AdMob.showConsentForm();
-      consentStatus.setValue(status);
-    }
-  })
-  .catch((e) => {
-    // AdMob init catch.
-    console.log("AdMob init catch", e);
+  // Init admob + consent message.
+  await AdMob.initialize({
+    initializeForTesting: true,
+    testingDevices: ["20639CA0A77ABBB0C705B559536A5046"],
   });
+
+  const [trackingInfo, consentInfo] = await Promise.all([
+    AdMob.trackingAuthorizationStatus(),
+    AdMob.requestConsentInfo(),
+  ]);
+
+  if (trackingInfo.status === "notDetermined") {
+    /**
+     * If you want to explain TrackingAuthorization before showing the iOS dialog,
+     * you can show the modal here.
+     * ex)
+     * const modal = await this.modalCtrl.create({
+     *   component: RequestTrackingPage,
+     * });
+     * await modal.present();
+     * await modal.onDidDismiss();  // Wait for close modal
+     **/
+
+    await AdMob.requestTrackingAuthorization();
+  }
+
+  const authorizationStatus = await AdMob.trackingAuthorizationStatus();
+  if (
+    authorizationStatus.status === "authorized" &&
+    consentInfo.isConsentFormAvailable &&
+    consentInfo.status === AdmobConsentStatus.REQUIRED
+  ) {
+    await AdMob.showConsentForm();
+  }
+
+  // AdMob init ok.
+  // const consentInfo = await AdMob.requestConsentInfo();
+  consentStatus.setValue(consentInfo.status);
+
+  if (
+    consentInfo.isConsentFormAvailable &&
+    consentInfo.status === AdmobConsentStatus.REQUIRED
+  ) {
+    const { status } = await AdMob.showConsentForm();
+    consentStatus.setValue(status);
+  }
+
+  // AdMob init catch.
+  // console.log("AdMob init catch", e);
+}
+
+await initializeAdMob();
 
 // Initiera saker på en Ios eller Android-enhet.
 // Hybrid = "a device running Capacitor or Cordova".
