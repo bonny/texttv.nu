@@ -1,6 +1,6 @@
 # Ändringslogg
 
-## Version 3.6.0 (utveckling)
+## Version 3.6.0 (mars 2025)
 
 - Uppdaterat Node.js från version 18 till version 22.
 - Uppdaterat Capacitor till version 7.
