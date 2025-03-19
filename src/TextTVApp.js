@@ -79,7 +79,7 @@ document.documentElement.style.setProperty(
 adMobAdOptions.margin = tabHeight;
 
 function TextTVApp(props) {
-  const [consentStatuslocal, setConsentStatuslocal] = consentStatus.useState();
+  const [consentStatuslocal] = consentStatus.useState();
 
   const initialFavoritesState = {
     pages: [],
