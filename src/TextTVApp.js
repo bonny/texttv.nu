@@ -21,6 +21,7 @@ import {
   loadFavorites,
 } from "./functions";
 import { Navigationsflikar } from "./modules/Navigationsflikar";
+import { initializeAdMob } from "./services/admob";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -56,28 +57,8 @@ increaseStatForCustom("appStart");
 
 const consentStatus = createState(AdmobConsentStatus.UNKNOWN);
 
-// Init admob + consent message.
-AdMob.initialize({
-  initializeForTesting: true,
-  testingDevices: ["20639CA0A77ABBB0C705B559536A5046"],
-})
-  .then(async () => {
-    // AdMob init ok.
-    const consentInfo = await AdMob.requestConsentInfo();
-    consentStatus.setValue(consentInfo.status);
-
-    if (
-      consentInfo.isConsentFormAvailable &&
-      consentInfo.status === AdmobConsentStatus.REQUIRED
-    ) {
-      const { status } = await AdMob.showConsentForm();
-      consentStatus.setValue(status);
-    }
-  })
-  .catch((e) => {
-    // AdMob init catch.
-    console.log("AdMob init catch", e);
-  });
+// Initialize AdMob with the consent status setter
+await initializeAdMob((status) => consentStatus.setValue(status));
 
 // Initiera saker på en Ios eller Android-enhet.
 // Hybrid = "a device running Capacitor or Cordova".
@@ -131,18 +112,23 @@ function TextTVApp(props) {
       return;
     }
 
+    let bannerFailedListener;
+    let bannerSizeListener;
+
     try {
-      AdMob.showBanner(adMobAdOptions).then();
+      AdMob.showBanner(adMobAdOptions).catch(err => {
+        console.error('Error showing banner:', err);
+      });
 
       // https://developers.google.com/admob/android/ad-load-errors
-      AdMob.addListener(BannerAdPluginEvents.FailedToLoad, (err) => {
+      bannerFailedListener = AdMob.addListener(BannerAdPluginEvents.FailedToLoad, (err) => {
         console.log("admob FailedToLoad");
         console.log(JSON.stringify(err));
       });
 
       // Callback när en annons visas. size = object med bredd och höjd, ca såhär:
       // {"width":375,"height":50}
-      AdMob.addListener(BannerAdPluginEvents.SizeChanged, (size) => {
+      bannerSizeListener = AdMob.addListener(BannerAdPluginEvents.SizeChanged, (size) => {
         if (!size || !size.height) {
           return;
         }
@@ -153,8 +139,14 @@ function TextTVApp(props) {
         );
       });
     } catch (e) {
-      // AdMob got error when trying to show banner.
+      console.error('AdMob error:', e);
     }
+
+    // Cleanup function
+    return () => {
+      bannerFailedListener?.remove();
+      bannerSizeListener?.remove();
+    };
   }, [consentStatuslocal]);
 
   return (
